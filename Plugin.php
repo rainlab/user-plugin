@@ -9,9 +9,10 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'User Plugin',
+            'name' => 'User',
             'description' => 'Front-end user management.',
-            'author' => 'Alexey Bobkov, Samuel Georges'
+            'author' => 'Alexey Bobkov, Samuel Georges',
+            'icon' => 'icon-user'
         ];
     }
 
