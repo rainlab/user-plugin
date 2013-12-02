@@ -1,0 +1,16 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: User
+form: /plugins/october/user/models/user/form_fields.yaml
+model-class: Plugins\October\User\Models\User
+default-redirect: october/user/users
+
+create:
+    redirect: october/user/users/update/:id
+    redirect-close: october/user/users
+
+update:
+    redirect: october/user/users
+    redirect-close: october/user/users

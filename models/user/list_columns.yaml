@@ -1,0 +1,21 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    login:
+        label: Login
+        searchable: yes
+    first_name:
+        label: First Name
+        searchable: yes
+    last_name:
+        label: Last Name
+        searchable: yes
+    full_name:
+        label: Full Name
+        select: concat(first_name, ' ', last_name)
+        searchable: yes
+    email:
+        label: Email
+        searchable: yes

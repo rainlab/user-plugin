@@ -1,0 +1,36 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+  avatar:
+    span: right
+    label: Avatar
+    type: fileupload
+    options:
+      mode: image
+      image-height: 120
+      image-width: 120
+
+  first_name:
+    span: left
+    label: First Name
+
+  last_name:
+    span: left
+    label: Last Name
+
+  email:
+    span: left
+    label: Email
+
+  password:
+    type: password
+    span: left
+    label: Password
+
+  password_confirmation:
+    type: password
+    span: right
+    label: Password Confirmation
