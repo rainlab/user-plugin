@@ -1,11 +1,19 @@
-<form role="form">
+<form
+    data-request="{{ __SELF__.alias}}::onSignin">
     <div class="form-group">
-        <label for="userSigninEmail">Email address</label>
-        <input type="email" class="form-control" id="userSigninEmail" placeholder="Enter your email">
+        <label for="userRegisterName">Name</label>
+        <input type="text" class="form-control" id="userRegisterEmail" placeholder="Enter your name">
     </div>
 
     <div class="form-group">
-        <label for="userSigninPassword">Password</label>
-        <input type="password" class="form-control" id="userSigninPassword" placeholder="Enter your password">
+        <label for="userRegisterEmail">Email</label>
+        <input type="email" class="form-control" id="userRegisterEmail" placeholder="Enter your email">
     </div>
+
+    <div class="form-group">
+        <label for="userRegisterPassword">Password</label>
+        <input type="password" class="form-control" id="userRegisterPassword" placeholder="Choose a password">
+    </div>
+
+    <button type="submit" class="btn btn-default">Register</button>
 </form>
