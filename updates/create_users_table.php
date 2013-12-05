@@ -12,8 +12,7 @@ class CreatePostsTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('activation_code')->nullable()->index();

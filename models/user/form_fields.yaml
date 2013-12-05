@@ -13,13 +13,9 @@ fields:
       image-height: 120
       image-width: 120
 
-  first_name:
+  name:
     span: left
-    label: First Name
-
-  last_name:
-    span: left
-    label: Last Name
+    label: Name
 
   email:
     span: left

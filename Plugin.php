@@ -2,6 +2,7 @@
 
 use Backend;
 use Modules\System\Classes\PluginBase;
+use October\Rain\Support\FacadeLoader;
 
 class Plugin extends PluginBase
 {
@@ -14,6 +15,12 @@ class Plugin extends PluginBase
             'author' => 'Alexey Bobkov, Samuel Georges',
             'icon' => 'icon-user'
         ];
+    }
+
+    public function register()
+    {
+        $facade = FacadeLoader::instance();
+        $facade->facade('Auth', 'Plugins\October\User\Facades\Auth');
     }
 
     public function registerComponents()

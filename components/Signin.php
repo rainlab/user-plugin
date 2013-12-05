@@ -1,7 +1,9 @@
 <?php namespace Plugins\October\User\Components;
 
 use Auth;
+use Validator;
 use Modules\Cms\Classes\ComponentBase;
+use October\Rain\Support\ValidationException;
 
 class Signin extends ComponentBase
 {
@@ -26,7 +28,7 @@ class Signin extends ComponentBase
             'password' => 'required|min:2'
         ];
 
-        $validation = Validator::make(Input::all(), $rules);
+        $validation = Validator::make(post(), $rules);
         if ($validation->fails())
             throw new ValidationException($validation);
 

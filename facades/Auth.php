@@ -2,7 +2,7 @@
 
 use October\Rain\Support\Facade;
 
-class BackendAuth extends Facade
+class Auth extends Facade
 {
     /**
      * Get the class name this facade is acting on behalf of.
