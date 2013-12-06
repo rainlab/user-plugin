@@ -1,4 +1,4 @@
-<?php namespace Plugins\October\Blog\Updates;
+<?php namespace Plugins\October\User\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
