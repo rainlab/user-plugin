@@ -1,3 +1,4 @@
 1.0.1:
     - Initialize plugin
     - create_users_table.php
+    - create_throttle_table.php

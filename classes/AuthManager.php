@@ -10,5 +10,5 @@ class AuthManager extends RainAuthManager
 
     // protected $groupModel = 'Plugins\October\User\Models\Group';
 
-    // protected $throttleModel = 'Plugins\October\User\Models\Throttle';
+    protected $throttleModel = 'Plugins\October\User\Models\Throttle';
 }
