@@ -20,6 +20,6 @@ class Users extends BackendController
     {
         parent::__construct();
 
-        BackendMenu::setContext('October.User', 'user');
+        BackendMenu::setContext('October.User', 'user', 'users');
     }
 }
