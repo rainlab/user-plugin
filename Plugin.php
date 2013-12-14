@@ -52,4 +52,18 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerSettings()
+    {
+        return [
+            'location' => [
+                'label' => 'Locations',
+                'description' => 'Manage available user countries and states.',
+                'category' => 'Users',
+                'icon' => 'icon-globe',
+                'url' => 'october/user/locations',
+                'sort' => 100
+            ]
+        ];
+    }
+
 }
