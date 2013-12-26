@@ -2,7 +2,7 @@
 
 use Backend;
 use Modules\System\Classes\PluginBase;
-use October\Rain\Foundation\AliasLoader;
+use October\Rain\Foundation\FacadeLoader;
 
 class Plugin extends PluginBase
 {
@@ -19,8 +19,8 @@ class Plugin extends PluginBase
 
     public function register()
     {
-        $alias = AliasLoader::instance();
-        $alias->alias('Auth', 'Plugins\October\User\Facades\Auth');
+        $facade = FacadeLoader::instance();
+        $facade->facade('Auth', 'Plugins\October\User\Facades\Auth');
     }
 
     public function registerComponents()
