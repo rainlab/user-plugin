@@ -4,7 +4,7 @@ use Auth;
 use Input;
 use Validator;
 use Modules\Cms\Classes\ComponentBase;
-use October\Rain\Support\ValidationException;
+use October\Rain\Exceptions\ValidationException;
 
 
 use October\Rain\Support\FacadeLoader;

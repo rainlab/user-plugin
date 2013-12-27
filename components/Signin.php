@@ -3,7 +3,7 @@
 use Auth;
 use Validator;
 use Modules\Cms\Classes\ComponentBase;
-use October\Rain\Support\ValidationException;
+use October\Rain\Exceptions\ValidationException;
 
 class Signin extends ComponentBase
 {
