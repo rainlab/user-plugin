@@ -2,7 +2,7 @@
 
 use Backend;
 use Modules\System\Classes\PluginBase;
-use October\Rain\Foundation\FacadeLoader;
+use October\Rain\Support\FacadeLoader;
 
 class Plugin extends PluginBase
 {
