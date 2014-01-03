@@ -4,7 +4,7 @@
 
 name: User
 form: /plugins/october/user/models/user/form_fields.yaml
-model-class: Plugins\October\User\Models\User
+model-class: Plugins\RainLab\User\Models\User
 default-redirect: october/user/users
 
 create:

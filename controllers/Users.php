@@ -1,4 +1,4 @@
-<?php namespace Plugins\October\User\Controllers;
+<?php namespace Plugins\RainLab\User\Controllers;
 
 use BackendMenu;
 use BackendAuth;

@@ -1,4 +1,4 @@
-<?php namespace Plugins\October\User\Components;
+<?php namespace Plugins\RainLab\User\Components;
 
 use Auth;
 use Input;

@@ -4,7 +4,7 @@
 
 title: Manage Users
 list: /plugins/october/user/models/user/list_columns.yaml
-model-class: Plugins\October\User\Models\User
+model-class: Plugins\RainLab\User\Models\User
 record-url: october/user/users/update/:id
 no-records-message: backend::lang.list.no_records
 records-per-page: 5

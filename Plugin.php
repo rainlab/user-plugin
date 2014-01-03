@@ -1,4 +1,4 @@
-<?php namespace Plugins\October\User;
+<?php namespace Plugins\RainLab\User;
 
 use Backend;
 use Modules\System\Classes\PluginBase;
@@ -20,14 +20,14 @@ class Plugin extends PluginBase
     public function register()
     {
         $facade = FacadeLoader::instance();
-        $facade->facade('Auth', 'Plugins\October\User\Facades\Auth');
+        $facade->facade('Auth', 'Plugins\RainLab\User\Facades\Auth');
     }
 
     public function registerComponents()
     {
         return [
-            'Plugins\October\User\Components\Register' => 'userRegister',
-            'Plugins\October\User\Components\Signin' => 'userSignin',
+            'Plugins\RainLab\User\Components\Register' => 'userRegister',
+            'Plugins\RainLab\User\Components\Signin' => 'userSignin',
         ];
     }
 
