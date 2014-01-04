@@ -3,14 +3,14 @@
 # ===================================
 
 name: User
-form: /plugins/october/user/models/user/form_fields.yaml
+form: /plugins/rainlab/user/models/user/form_fields.yaml
 model-class: Plugins\RainLab\User\Models\User
-default-redirect: october/user/users
+default-redirect: rainlab/user/users
 
 create:
-    redirect: october/user/users/update/:id
-    redirect-close: october/user/users
+    redirect: rainlab/user/users/update/:id
+    redirect-close: rainlab/user/users
 
 update:
-    redirect: october/user/users
-    redirect-close: october/user/users
+    redirect: rainlab/user/users
+    redirect-close: rainlab/user/users

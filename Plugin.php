@@ -36,7 +36,7 @@ class Plugin extends PluginBase
         return [
             'user' => [
                 'label' => 'Users',
-                'url' => Backend::url('october/user/users'),
+                'url' => Backend::url('rainlab/user/users'),
                 'icon' => 'icon-user',
                 'permissions' => ['user:*'],
                 'order' => 500,
@@ -44,7 +44,7 @@ class Plugin extends PluginBase
                     'users' => [
                         'label' => 'All Users',
                         'icon' => 'icon-user',
-                        'url' => Backend::url('october/user/users'),
+                        'url' => Backend::url('rainlab/user/users'),
                         'permissions' => ['user:access_users'],
                     ],
                 ]
@@ -60,7 +60,7 @@ class Plugin extends PluginBase
                 'description' => 'Manage available user countries and states.',
                 'category' => 'Users',
                 'icon' => 'icon-globe',
-                'url' => 'october/user/locations',
+                'url' => 'rainlab/user/locations',
                 'sort' => 100
             ]
         ];
