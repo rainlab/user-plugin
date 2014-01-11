@@ -28,6 +28,7 @@ class Plugin extends PluginBase
         return [
             'Plugins\RainLab\User\Components\Register' => 'userRegister',
             'Plugins\RainLab\User\Components\Signin' => 'userSignin',
+            'Plugins\RainLab\User\Components\User' => 'activeUser',
         ];
     }
 
