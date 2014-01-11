@@ -8,7 +8,7 @@ class CreateThrottleTable extends Migration
 
     public function up()
     {
-        Schema::create('october_user_throttle', function($table)
+        Schema::create('user_throttle', function($table)
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -25,7 +25,7 @@ class CreateThrottleTable extends Migration
 
     public function down()
     {
-        Schema::drop('october_user_throttle');
+        Schema::drop('user_throttle');
     }
 
 }

@@ -8,7 +8,7 @@ class CreateUsersTable extends Migration
 
     public function up()
     {
-        Schema::create('october_users', function($table)
+        Schema::create('users', function($table)
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
 
     public function down()
     {
-        Schema::drop('october_users');
+        Schema::drop('users');
     }
 
 }

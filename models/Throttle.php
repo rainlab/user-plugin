@@ -7,7 +7,7 @@ class Throttle extends ThrottleBase
     /**
      * @var string The database table used by the model.
      */
-    protected $table = 'october_user_throttle';
+    protected $table = 'user_throttle';
 
     /**
      * @var array Relations

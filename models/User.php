@@ -7,13 +7,13 @@ class User extends UserBase
     /**
      * @var string The database table used by the model.
      */
-    protected $table = 'october_users';
+    protected $table = 'users';
 
     /**
      * Validation rules
      */
     public $rules = [
-        'email' => 'required|between:3,64|email|unique:october_users',
+        'email' => 'required|between:3,64|email|unique:users',
         'password' => 'required:create|between:2,32|confirmed',
         'password_confirmation' => 'required_with:password|between:2,32'
     ];
@@ -22,7 +22,7 @@ class User extends UserBase
      * Relations
      */
     // public $belongsToMany = [
-    //     'groups' => ['Plugins\RainLab\User\Models\Group', 'table' => 'october_user_groups']
+    //     'groups' => ['Plugins\RainLab\User\Models\Group', 'table' => 'user_groups']
     // ];
 
     public $morphOne = [
