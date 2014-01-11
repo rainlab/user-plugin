@@ -5,14 +5,14 @@ use Validator;
 use Modules\Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 
-class Signin extends ComponentBase
+class SignInForm extends ComponentBase
 {
 
     public function componentDetails()
     {
         return [
             'name' => 'Sign in',
-            'description' => 'Allows users to sign in.'
+            'description' => 'User sign in form.'
         ];
     }
 

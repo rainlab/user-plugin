@@ -6,16 +6,14 @@ use Validator;
 use Modules\Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 
-
-use October\Rain\Support\FacadeLoader;
-class Register extends ComponentBase
+class RegisterForm extends ComponentBase
 {
 
     public function componentDetails()
     {
         return [
-            'name' => 'Registration',
-            'description' => 'Allows user registration.'
+            'name' => 'Register',
+            'description' => 'User registration form.'
         ];
     }
 
