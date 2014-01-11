@@ -1,5 +1,6 @@
 <?php namespace Plugins\RainLab\User\Controllers;
 
+use Session;
 use BackendMenu;
 use BackendAuth;
 use Modules\Backend\Classes\BackendController;
@@ -21,5 +22,20 @@ class Users extends BackendController
         parent::__construct();
 
         BackendMenu::setContext('RainLab.User', 'user', 'users');
+    }
+
+    /**
+     * Manually activate a user
+     */
+    public function update_onActivate($recordId = null)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->attemptActivation($model->activation_code);
+
+        Session::flash('flash.success', 'User has been activated successfully!');
+
+        if ($redirect = $this->makeRedirect('update', $model))
+            return $redirect;
     }
 }

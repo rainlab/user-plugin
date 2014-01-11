@@ -7,35 +7,52 @@
 
 <?= Form::open(['class'=>'layout-item stretch layout-column']) ?>
 
+    <?php if (!$formModel->activated): ?>
+        <div class="callout callout-warning">
+            <div class="loading-indicator-container">
+                <h4>User not activated!</h4>
+                <p>This user has not been activated and will be unable to sign in.</p>
+                <button
+                    type="button"
+                    class="btn btn-warning"
+                    data-request="onActivate"
+                    data-load-indicator="Activating..."
+                    data-request-confirm="Do you really want to activate this user?">
+                    Activate this user manually
+                </button>
+            </div>
+        </div>
+    <?php endif ?>
+
     <?= $this->formRender() ?>
 
     <div class="form-buttons layout-item fix">
         <div class="loading-indicator-container">
             <button 
-                type="submit" 
-                data-request="onSave" 
-                data-request-data="redirect:false" 
+                type="submit"
+                data-request="onSave"
+                data-request-data="redirect:false"
                 data-hotkey="ctrl+s"
                 data-hotkey-mac="cmd+s"
-                data-load-indicator="Saving User..." 
+                data-load-indicator="Saving User..."
                 class="btn btn-primary">
                 <u>S</u>ave
             </button>
             <button 
-                type="button" 
-                data-request="onSave" 
-                data-request-data="close:true" 
+                type="button"
+                data-request="onSave"
+                data-request-data="close:true"
                 data-hotkey="ctrl+enter"
                 data-hotkey-mac="cmd+enter"
-                data-load-indicator="Saving User..." 
+                data-load-indicator="Saving User..."
                 class="btn btn-default">
                 Save and Close
             </button>
             <button 
-                type="button" 
-                class="btn btn-danger pull-right" 
-                data-request="onDelete" 
-                data-load-indicator="Deleting User..." 
+                type="button"
+                class="btn btn-danger pull-right"
+                data-request="onDelete"
+                data-load-indicator="Deleting User..."
                 data-request-confirm="Do you really want to delete this admin?">
                 Delete
             </button>
