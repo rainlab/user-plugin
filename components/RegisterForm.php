@@ -2,6 +2,7 @@
 
 use Auth;
 use Input;
+use Redirect;
 use Validator;
 use Modules\Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
@@ -19,11 +20,20 @@ class RegisterForm extends ComponentBase
 
     public function defineProperties()
     {
-        return [];
+        return [
+            'redirect-to' => [
+                'title' => 'Redirect to',
+                'description' => 'Page name to redirect to after registration.',
+                'type' => 'string'
+            ]
+        ];
     }
 
     public function onRegister()
     {
+        /*
+         * Validate input
+         */
         $data = post();
 
         if (!post('password_confirmation'))
@@ -38,12 +48,18 @@ class RegisterForm extends ComponentBase
         if ($validation->fails())
             throw new ValidationException($validation);
 
-        // Register user
+        /*
+         * Register user
+         */
         $user = Auth::register($data, true);
 
-        // Redirect to the intended page after successful sign in
-        if (post('redirect'))
-            return Redirect::intended(post('redirect'));
+        /*
+         * Redirect to the intended page after successful sign in
+         */
+        $redirectUrl = $this->controller->pageUrl($this->property('redirect-to'));
+
+        if ($redirectUrl = post('redirect', $redirectUrl))
+            return Redirect::intended($redirectUrl);
     }
 
 }
