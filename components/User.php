@@ -1,6 +1,7 @@
 <?php namespace Plugins\RainLab\User\Components;
 
 use Auth;
+use Redirect;
 use Modules\Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 
@@ -29,6 +30,18 @@ class User extends ComponentBase
             return null;
 
         return Auth::getUser();
+    }
+
+    /**
+     * Log out the user
+     *
+     * Usage:
+     *   <a data-request="user::onLogout">Sign out</a>
+     */
+    public function onLogout()
+    {
+        Auth::logout();
+        return Redirect::to('/');
     }
 
 }
