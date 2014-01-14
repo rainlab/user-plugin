@@ -26,8 +26,9 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Plugins\RainLab\User\Components\RegisterForm' => 'registerForm',
-            'Plugins\RainLab\User\Components\SignInForm' => 'signInForm',
+            'Plugins\RainLab\User\Components\RegisterForm' => 'userRegisterForm',
+            'Plugins\RainLab\User\Components\SignInForm' => 'userSignInForm',
+            'Plugins\RainLab\User\Components\ResetForm' => 'userResetForm',
             'Plugins\RainLab\User\Components\User' => 'user',
         ];
     }
