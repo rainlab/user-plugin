@@ -2,7 +2,11 @@ Hello <?= $name ?>,
 
 Somebody has requested a password reset for your account, if this was not you, please ignore this email.
 
-You can use the following link to restore your password: 
+Use the this activation code to restore your password:
+<?= $code ?>
+
+
+You can use the following link:
 <?= $link ?>
 
 
