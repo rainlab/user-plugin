@@ -1,4 +1,4 @@
-<?php namespace Plugins\RainLab\User\Models;
+<?php namespace RainLab\User\Models;
 
 use October\Rain\Auth\Models\Throttle as ThrottleBase;
 
@@ -13,6 +13,6 @@ class Throttle extends ThrottleBase
      * @var array Relations
      */
     public $belongsTo = [
-        'user' => ['Plugins\RainLab\User\Models\User', 'foreignKey' => 'user_id']
+        'user' => ['RainLab\User\Models\User', 'foreignKey' => 'user_id']
     ];
 }

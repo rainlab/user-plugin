@@ -1,10 +1,10 @@
-<?php namespace Plugins\RainLab\User\Components;
+<?php namespace RainLab\User\Components;
 
 use Auth;
 use Input;
 use Redirect;
 use Validator;
-use Modules\Cms\Classes\ComponentBase;
+use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 
 class RegisterForm extends ComponentBase

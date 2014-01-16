@@ -1,8 +1,8 @@
-<?php namespace Plugins\RainLab\User\Components;
+<?php namespace RainLab\User\Components;
 
 use Auth;
 use Redirect;
-use Modules\Cms\Classes\ComponentBase;
+use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 
 class User extends ComponentBase
@@ -22,17 +22,6 @@ class User extends ComponentBase
     }
 
     /**
-     * Returns the logged in user, if available
-     */
-    public function active()
-    {
-        if (!Auth::check())
-            return null;
-
-        return Auth::getUser();
-    }
-
-    /**
      * Log out the user
      *
      * Usage:
@@ -42,6 +31,17 @@ class User extends ComponentBase
     {
         Auth::logout();
         return Redirect::to('/');
+    }
+
+    /**
+     * Returns the logged in user, if available
+     */
+    public function active()
+    {
+        if (!Auth::check())
+            return null;
+
+        return Auth::getUser();
     }
 
 }

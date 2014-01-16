@@ -1,9 +1,9 @@
-<?php namespace Plugins\RainLab\User\Components;
+<?php namespace RainLab\User\Components;
 
 use Auth;
 use Redirect;
 use Validator;
-use Modules\Cms\Classes\ComponentBase;
+use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 
 class SignInForm extends ComponentBase

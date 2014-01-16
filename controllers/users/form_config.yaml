@@ -4,7 +4,7 @@
 
 name: User
 form: /plugins/rainlab/user/models/user/form_fields.yaml
-model-class: Plugins\RainLab\User\Models\User
+model-class: RainLab\User\Models\User
 default-redirect: rainlab/user/users
 
 create:

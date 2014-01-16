@@ -1,12 +1,12 @@
-<?php namespace Plugins\RainLab\User\Components;
+<?php namespace RainLab\User\Components;
 
 use Auth;
 use Mail;
 use View;
 use Validator;
-use Modules\Cms\Classes\ComponentBase;
+use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
-use Modules\System\Classes\ApplicationException;
+use System\Classes\ApplicationException;
 
 class ResetForm extends ComponentBase
 {
@@ -88,7 +88,7 @@ class ResetForm extends ComponentBase
             throw new ValidationException(['code' => 'Invalid activation code supplied']);
     }
 
-    public function getCode()
+    public function code()
     {
         $routeParameter = $this->property('code-param');
         return $this->param($routeParameter);

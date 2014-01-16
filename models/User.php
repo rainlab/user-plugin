@@ -1,4 +1,4 @@
-<?php namespace Plugins\RainLab\User\Models;
+<?php namespace RainLab\User\Models;
 
 use October\Rain\Auth\Models\User as UserBase;
 
@@ -22,11 +22,11 @@ class User extends UserBase
      * Relations
      */
     // public $belongsToMany = [
-    //     'groups' => ['Plugins\RainLab\User\Models\Group', 'table' => 'user_groups']
+    //     'groups' => ['RainLab\User\Models\Group', 'table' => 'user_groups']
     // ];
 
     public $morphOne = [
-        'avatar' => ['Modules\System\Models\File', 'name' => 'attachment']
+        'avatar' => ['System\Models\File', 'name' => 'attachment']
     ];
 
     /**

@@ -1,15 +1,15 @@
-<?php namespace Plugins\RainLab\User\Controllers;
+<?php namespace RainLab\User\Controllers;
 
 use Session;
 use BackendMenu;
 use BackendAuth;
-use Modules\Backend\Classes\BackendController;
+use Backend\Classes\BackendController;
 
 class Users extends BackendController
 {
     public $implement = [
-        'Modules.Backend.Behaviors.FormController',
-        'Modules.Backend.Behaviors.ListController'
+        'Backend.Behaviors.FormController',
+        'Backend.Behaviors.ListController'
     ];
 
     public $formConfig = 'form_config.yaml';
