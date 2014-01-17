@@ -1,0 +1,10 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+  require_activation:
+    span: left
+    label: Require Activation
+    comment: Users must activate their account before logging in
+    type: switch
