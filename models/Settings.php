@@ -8,4 +8,9 @@ class Settings extends Model
 
     public $settingsCode = 'user_settings';
     public $settingsFields = 'fields.yaml';
+
+    public function initSettingsData()
+    {
+        $this->require_activation = true;
+    }
 }

@@ -58,12 +58,20 @@ class Plugin extends PluginBase
     public function registerSettings()
     {
         return [
+            'settings' => [
+                'label' => 'User Settings',
+                'description' => 'Manage user based settings.',
+                'category' => 'Users',
+                'icon' => 'icon-cog',
+                'class' => 'RainLab\User\Models\Settings',
+                'sort' => 100
+            ],
             'location' => [
                 'label' => 'Locations',
                 'description' => 'Manage available user countries and states.',
                 'category' => 'Users',
                 'icon' => 'icon-globe',
-                'url' => 'rainlab/user/locations',
+                'url' => Backend::url('rainlab/user/locations'),
                 'sort' => 100
             ]
         ];
