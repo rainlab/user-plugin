@@ -12,8 +12,8 @@ class Users extends BackendController
         'Backend.Behaviors.ListController'
     ];
 
-    public $formConfig = 'form_config.yaml';
-    public $listConfig = 'list_config.yaml';
+    public $formConfig = 'config_form.yaml';
+    public $listConfig = 'config_list.yaml';
 
     public $requiredPermissions = ['october.manage_users'];
 

@@ -1,10 +1,11 @@
 <?php namespace RainLab\User\Models;
 
-use System\Models\SettingsBase;
+use Model;
 
-class Settings extends SettingsBase
+class Settings extends Model
 {
+    public $implement = ['System.Behaviors.SettingsModel'];
 
-    public $formConfig = 'form_config.yaml';
-
+    public $settingsCode = 'user_settings';
+    public $settingsFields = 'fields.yaml';
 }

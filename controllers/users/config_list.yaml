@@ -3,7 +3,7 @@
 # ===================================
 
 title: Manage Users
-list: @/plugins/rainlab/user/models/user/list_columns.yaml
+list: @/plugins/rainlab/user/models/user/columns.yaml
 model-class: RainLab\User\Models\User
 record-url: rainlab/user/users/update/:id
 no-records-message: backend::lang.list.no_records
