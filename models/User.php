@@ -25,8 +25,8 @@ class User extends UserBase
     //     'groups' => ['RainLab\User\Models\Group', 'table' => 'user_groups']
     // ];
 
-    public $morphOne = [
-        'avatar' => ['System\Models\File', 'name' => 'attachment']
+    public $attachOne = [
+        'avatar' => ['System\Models\File']
     ];
 
     /**
