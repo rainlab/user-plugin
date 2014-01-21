@@ -12,5 +12,7 @@ class Settings extends Model
     public function initSettingsData()
     {
         $this->require_activation = true;
+        $this->auto_activation = true;
+        $this->use_throttle = true;
     }
 }

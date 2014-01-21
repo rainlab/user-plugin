@@ -3,8 +3,21 @@
 # ===================================
 
 fields:
+
+  auto_activation:
+    span: left
+    label: Automatic Activation
+    comment: Activate users on registration automatically
+    type: switch
+
   require_activation:
     span: left
     label: Require Activation
-    comment: Users must activate their account before logging in
+    comment: Users must have an activated account to sign in
+    type: switch
+
+  use_throttle:
+    span: left
+    label: Throttle Sign In
+    comment: Repeat failed sign in attempts will temporarily suspend the user
     type: switch

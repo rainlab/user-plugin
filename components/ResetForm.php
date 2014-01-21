@@ -2,7 +2,6 @@
 
 use Auth;
 use Mail;
-use View;
 use Validator;
 use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
@@ -23,8 +22,8 @@ class ResetForm extends ComponentBase
     {
         return [
             'code-param' => [
-                'title' => 'Code Parameter Name',
-                'description' => 'The page URL parameter used for the activation code',
+                'title' => 'Reset Code Param',
+                'description' => 'The page URL parameter used for the reset code',
                 'type' => 'string',
                 'default' => 'code'
             ]

@@ -19,11 +19,11 @@ class User extends UserBase
     ];
 
     /**
-     * Relations
+     * @var array Relations
      */
-    // public $belongsToMany = [
-    //     'groups' => ['RainLab\User\Models\Group', 'table' => 'user_groups']
-    // ];
+    public $belongsToMany = [
+        // 'groups' => ['RainLab\User\Models\Group', 'table' => 'users_groups']
+    ];
 
     public $attachOne = [
         'avatar' => ['System\Models\File']
