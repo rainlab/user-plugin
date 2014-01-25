@@ -116,7 +116,7 @@ class RegisterForm extends ComponentBase
 
             Mail::send(['text' => 'rainlab.user::emails.activate'], $data, function($message) use ($user)
             {
-                $message->to($user->email, $user->full_name)->subject('Confirm Your Account');
+                $message->to($user->email, $user->name)->subject('Confirm Your Account');
             });
         }
         /*
