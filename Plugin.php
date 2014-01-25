@@ -30,6 +30,7 @@ class Plugin extends PluginBase
             'RainLab\User\Components\SignInForm' => 'userSignInForm',
             'RainLab\User\Components\ResetForm' => 'userResetForm',
             'RainLab\User\Components\UpdateForm' => 'userUpdateForm',
+            'RainLab\User\Components\AccessControl' => 'userAccessControl',
             'RainLab\User\Components\User' => 'user',
         ];
     }
