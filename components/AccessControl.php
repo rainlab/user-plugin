@@ -38,7 +38,15 @@ class AccessControl extends ComponentBase
      */
     public function onRun()
     {
+        $redirectUrl = $this->controller->pageUrl($this->property('redirect-to'));
         $allowedGroup = $this->property('allow-only', self::ALLOW_ALL);
+        $isAuthenticated = Auth::check();
+
+        if (!$isAuthenticated && $allowedGroup == self::ALLOW_USER)
+            return Redirect::intended($redirectUrl);
+
+        elseif ($isAuthenticated && $allowedGroup == self::ALLOW_GUEST)
+            return Redirect::intended($redirectUrl);
     }
 
 }
