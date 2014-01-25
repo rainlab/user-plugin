@@ -20,12 +20,8 @@ class UpdateForm extends ComponentBase
         return [];
     }
 
-
     /**
-     * Log out the user
-     *
-     * Usage:
-     *   <a data-request="user::onLogout">Sign out</a>
+     * Update the user
      */
     public function onUpdate()
     {
@@ -34,15 +30,12 @@ class UpdateForm extends ComponentBase
         if ($user)
             $user->save(post());
 
-        return Redirect::to('/');
+        if ($redirectUrl = post('redirect'))
+            return Redirect::to($redirectUrl);
     }
-
 
     public function user()
     {
-        if (!Auth::check())
-            return null;
-
         return Auth::getUser();
     }
 
