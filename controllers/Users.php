@@ -1,6 +1,6 @@
 <?php namespace RainLab\User\Controllers;
 
-use Session;
+use Flash;
 use BackendMenu;
 use BackendAuth;
 use Backend\Classes\BackendController;
@@ -33,7 +33,7 @@ class Users extends BackendController
 
         $model->attemptActivation($model->activation_code);
 
-        Session::flash('flash.success', 'User has been activated successfully!');
+        Flash::success('User has been activated successfully!');
 
         if ($redirect = $this->makeRedirect('update', $model))
             return $redirect;
