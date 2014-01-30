@@ -4,7 +4,7 @@ use Auth;
 use Redirect;
 use Cms\Classes\ComponentBase;
 
-class UpdateForm extends ComponentBase
+class Update extends ComponentBase
 {
 
     public function componentDetails()
@@ -21,22 +21,28 @@ class UpdateForm extends ComponentBase
     }
 
     /**
+     * @var RainLab\User\Models\User The user model
+     */
+    public $user;
+
+    /**
+     * Executed when this component is bound to a page or layout.
+     */
+    public function onRun()
+    {
+        $this->user = $this->page['user'] = Auth::getUser();
+    }
+
+    /**
      * Update the user
      */
     public function onUpdate()
     {
-        $user = $this->user();
-
-        if ($user)
+        if ($user = $this->user)
             $user->save(post());
 
         if ($redirectUrl = post('redirect'))
             return Redirect::to($redirectUrl);
-    }
-
-    public function user()
-    {
-        return Auth::getUser();
     }
 
 }

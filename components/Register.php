@@ -9,7 +9,7 @@ use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 use RainLab\User\Models\Settings as UserSettings;
 
-class RegisterForm extends ComponentBase
+class Register extends ComponentBase
 {
 
     public function componentDetails()

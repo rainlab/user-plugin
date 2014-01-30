@@ -6,7 +6,7 @@ use Validator;
 use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 
-class SignInForm extends ComponentBase
+class SignIn extends ComponentBase
 {
 
     public function componentDetails()

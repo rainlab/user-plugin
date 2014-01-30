@@ -7,7 +7,7 @@ use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 use System\Classes\ApplicationException;
 
-class ResetForm extends ComponentBase
+class Reset extends ComponentBase
 {
 
     public function componentDetails()
