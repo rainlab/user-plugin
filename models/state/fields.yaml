@@ -3,6 +3,8 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    name:
+        label: Name
+    code:
+        label: Code
+        comment-above: Enter a unique code to identify this state.

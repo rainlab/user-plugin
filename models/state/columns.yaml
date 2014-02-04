@@ -3,5 +3,5 @@
 # ===================================
 
 columns:
-    id:
-        label: ID
+    name: Name
+    code: Code

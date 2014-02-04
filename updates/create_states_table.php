@@ -12,7 +12,9 @@ class CreateStatesTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('country_id')->unsigned()->index();
+            $table->string('name')->index();
+            $table->string('code');
         });
     }
 
