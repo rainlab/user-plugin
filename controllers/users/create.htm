@@ -1,17 +1,18 @@
-<div class="control-breadcrumb">
-    <ul>
-        <li><a href="<?= Backend::url('rainlab/user/users') ?>">Users</a></li>
-        <li><?= e($this->pageTitle) ?></li>
-    </ul>
-</div>
+<?php Block::put('form-contents') ?>
 
-<?= Form::open(['class'=>'layout-item stretch layout-column']) ?>
+    <div class="control-breadcrumb">
+        <ul>
+            <li><a href="<?= Backend::url('rainlab/user/users') ?>">Users</a></li>
+            <li><?= e($this->pageTitle) ?></li>
+        </ul>
+    </div>
 
-    <?= $this->formRender() ?>
+    <?= $this->formRenderOutsideFields() ?>
+    <?= $this->formRenderPrimaryTabs() ?>
 
     <div class="form-buttons layout-item fix">
         <div class="loading-indicator-container">
-            <button 
+            <button
                 type="submit"
                 data-request="onSave"
                 data-hotkey="ctrl+s"
@@ -20,17 +21,28 @@
                 class="btn btn-primary">
                 Create
             </button>
-            <button 
+            <button
                 type="button"
                 data-request="onSave"
                 data-request-data="close:true"
                 data-hotkey="ctrl+enter"
                 data-hotkey-mac="cmd+enter"
-                data-load-indicator="Creating User..." 
+                data-load-indicator="Creating User..."
                 class="btn btn-default">
                 Create and Close
             </button>
+
+            <span class="btn-text">or <a href="<?= Backend::url('rainlab/user/users') ?>">Cancel</a></span>
         </div>
     </div>
+<?php Block::endPut() ?>
 
-<?= Form::close() ?>
+<?php Block::put('form-sidebar') ?>
+    <div class="hide-tabs"><?= $this->formRenderSecondaryTabs() ?></div>
+<?php Block::endPut() ?>
+
+<?php Block::put('body') ?>
+    <?= Form::open(['class'=>'layout stretch']) ?>
+        <?= $this->makeLayout('form-with-sidebar') ?>
+    <?= Form::close() ?>
+<?php Block::endPut() ?>

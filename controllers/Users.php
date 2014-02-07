@@ -17,6 +17,8 @@ class Users extends BackendController
 
     public $requiredPermissions = ['october.manage_users'];
 
+    public $bodyClass = 'compact-container';
+
     public function __construct()
     {
         parent::__construct();

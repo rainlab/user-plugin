@@ -3,22 +3,12 @@
 # ===================================
 
 fields:
-
-  avatar:
-    span: right
-    label: Avatar
-    type: fileupload
-    options:
-      mode: image
-      image-height: 120
-      image-width: 120
-
   name:
-    span: left
+    span: auto
     label: Name
 
   email:
-    span: left
+    span: auto
     label: Email
 
   password:
@@ -30,3 +20,14 @@ fields:
     type: password
     span: right
     label: Password Confirmation
+
+secondary-tabs:
+  fields:
+
+    avatar:
+      label: Avatar
+      type: fileupload
+      options:
+        mode: image
+        image-height: 260
+        image-width: 260
