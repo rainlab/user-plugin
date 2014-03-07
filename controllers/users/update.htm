@@ -1,73 +1,88 @@
-<?php Block::put('form-contents') ?>
-    <div class="control-breadcrumb">
-        <ul>
-            <li><a href="<?= Backend::url('rainlab/user/users') ?>">Users</a></li>
-            <li><?= e($this->pageTitle) ?></li>
-        </ul>
-    </div>
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('rainlab/user/users') ?>">Users</a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
 
-    <?php if (!$formModel->activated): ?>
-        <div class="callout callout-warning">
+<?php if (!isset($fatalError)): ?>
+
+    <?php Block::put('form-contents') ?>
+
+        <?php if (!$formModel->activated): ?>
+            <div class="callout callout-warning">
+                <div class="loading-indicator-container">
+                    <h4>User not activated!</h4>
+                    <p>This user has not been activated and will be unable to sign in.</p>
+                    <button
+                        type="button"
+                        class="btn btn-warning"
+                        data-request="onActivate"
+                        data-load-indicator="Activating..."
+                        data-request-confirm="Do you really want to activate this user?">
+                        Activate this user manually
+                    </button>
+                </div>
+            </div>
+        <?php endif ?>
+
+        <?= $this->formRenderOutsideFields() ?>
+        <?= $this->formRenderPrimaryTabs() ?>
+
+        <div class="form-buttons layout-item fix">
             <div class="loading-indicator-container">
-                <h4>User not activated!</h4>
-                <p>This user has not been activated and will be unable to sign in.</p>
-                <button
+                <button 
+                    type="submit"
+                    data-request="onSave"
+                    data-request-data="redirect:false"
+                    data-hotkey="ctrl+s"
+                    data-hotkey-mac="cmd+s"
+                    data-load-indicator="Saving User..."
+                    class="btn btn-primary">
+                    <u>S</u>ave
+                </button>
+                <button 
                     type="button"
-                    class="btn btn-warning"
-                    data-request="onActivate"
-                    data-load-indicator="Activating..."
-                    data-request-confirm="Do you really want to activate this user?">
-                    Activate this user manually
+                    data-request="onSave"
+                    data-request-data="close:true"
+                    data-hotkey="ctrl+enter"
+                    data-hotkey-mac="cmd+enter"
+                    data-load-indicator="Saving User..."
+                    class="btn btn-default">
+                    Save and Close
+                </button>
+                <span class="btn-text">
+                    or <a href="<?= Backend::url('rainlab/user/users') ?>">Cancel</a>
+                </span>
+                <button
+                    class="oc-icon-trash btn-icon danger pull-right"
+                    data-request="onDelete"
+                    data-load-indicator="Deleting User..."
+                    data-request-confirm="Do you really want to delete this user?">
                 </button>
             </div>
         </div>
-    <?php endif ?>
 
-    <?= $this->formRenderOutsideFields() ?>
-    <?= $this->formRenderPrimaryTabs() ?>
+    <?php Block::endPut() ?>
 
-    <div class="form-buttons layout-item fix">
-        <div class="loading-indicator-container">
-            <button 
-                type="submit"
-                data-request="onSave"
-                data-request-data="redirect:false"
-                data-hotkey="ctrl+s"
-                data-hotkey-mac="cmd+s"
-                data-load-indicator="Saving User..."
-                class="btn btn-primary">
-                <u>S</u>ave
-            </button>
-            <button 
-                type="button"
-                data-request="onSave"
-                data-request-data="close:true"
-                data-hotkey="ctrl+enter"
-                data-hotkey-mac="cmd+enter"
-                data-load-indicator="Saving User..."
-                class="btn btn-default">
-                Save and Close
-            </button>
+    <?php Block::put('form-sidebar') ?>
+        <div class="hide-tabs"><?= $this->formRenderSecondaryTabs() ?></div>
+    <?php Block::endPut() ?>
 
-            <span class="btn-text">or <a href="<?= Backend::url('rainlab/user/users') ?>">Cancel</a></span>
+    <?php Block::put('body') ?>
+        <?= Form::open(['class'=>'layout stretch']) ?>
+            <?= $this->makeLayout('form-with-sidebar') ?>
+        <?= Form::close() ?>
+    <?php Block::endPut() ?>
 
-            <button
-                class="oc-icon-trash btn-icon danger pull-right"
-                data-request="onDelete"
-                data-load-indicator="Deleting User..."
-                data-request-confirm="Do you really want to delete this user?">
-            </button>
+<?php else: ?>
+    <div class="padded-container">
+        <div class="control-breadcrumb">
+            <?= Block::placeholder('breadcrumb') ?>
         </div>
+        <div class="alert alert-danger">
+            <p><?= $fatalError ?></p>
+        </div>
+        <p><a href="<?= Backend::url('rainlab/user/users') ?>" class="btn btn-default">Return to users list</a></p>
     </div>
-
-<?php Block::endPut() ?>
-
-<?php Block::put('form-sidebar') ?>
-    <div class="hide-tabs"><?= $this->formRenderSecondaryTabs() ?></div>
-<?php Block::endPut() ?>
-
-<?php Block::put('body') ?>
-    <?= Form::open(['class'=>'layout stretch']) ?>
-        <?= $this->makeLayout('form-with-sidebar') ?>
-    <?= Form::close() ?>
-<?php Block::endPut() ?>
+<?php endif ?>
