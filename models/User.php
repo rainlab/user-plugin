@@ -56,12 +56,12 @@ class User extends UserBase
     /**
      * Returns the public image file path to this user's avatar.
      */
-    public function getAvatarPath()
+    public function getAvatarPath($gravatarSize = 25, $gravatarDefault = null)
     {
         if ($this->avatar)
             return $this->avatar->getPath();
         else
-            return '//www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?s=25';
+            return '//www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?s='.$gravatarSize.'&d='.urlencode($gravatarDefault);
     }
 
 }
