@@ -2,6 +2,7 @@
 
 use Auth;
 use Redirect;
+use Request;
 use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 
@@ -26,11 +27,22 @@ class User extends ComponentBase
      *
      * Usage:
      *   <a data-request="user::onLogout">Sign out</a>
+     *
+     * With the optional redirect parameter:
+     *   <a data-request="user::onLogout" data-request-data="redirect: '/good-bye'">Sign out</a>
+     * 
+     * With the optional redirect-to-current parameter:
+     *   <a data-request="user::onLogout" data-request-data="redirect-to-current: 1">Sign out</a>
      */
     public function onLogout()
     {
         Auth::logout();
-        return Redirect::to('/');
+
+        $url = Request::input('redirect-to-current') ? 
+            Request::fullUrl() : 
+            Request::input('redirect', '/');
+        
+        return Redirect::to($url);
     }
 
     /**
