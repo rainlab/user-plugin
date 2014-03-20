@@ -23,12 +23,12 @@ class Register extends ComponentBase
     public function defineProperties()
     {
         return [
-            'redirect-to' => [
+            'redirect' => [
                 'title' => 'Redirect to',
                 'description' => 'Page name to redirect to after registration.',
                 'type' => 'string'
             ],
-            'code-param' => [
+            'paramCode' => [
                 'title' => 'Activation Code Param',
                 'description' => 'The page URL parameter used for the activation code',
                 'type' => 'string',
@@ -42,7 +42,7 @@ class Register extends ComponentBase
      */
     public function onRun()
     {
-        $routeParameter = $this->property('code-param');
+        $routeParameter = $this->property('paramCode');
         if ($activationCode = $this->param($routeParameter))
             $this->onActivate($activationCode);
     }
@@ -105,7 +105,7 @@ class Register extends ComponentBase
 
             $code = implode('!', [$user->id, $user->getActivationCode()]);
             $link = $this->controller->currentPageUrl([
-                $this->property('code-param') => $code
+                $this->property('paramCode') => $code
             ]);
 
             $data = [
@@ -129,7 +129,7 @@ class Register extends ComponentBase
         /*
          * Redirect to the intended page after successful sign in
          */
-        $redirectUrl = $this->controller->pageUrl($this->property('redirect-to'));
+        $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
 
         if ($redirectUrl = post('redirect', $redirectUrl))
             return Redirect::intended($redirectUrl);

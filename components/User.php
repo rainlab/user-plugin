@@ -30,18 +30,12 @@ class User extends ComponentBase
      *
      * With the optional redirect parameter:
      *   <a data-request="user::onLogout" data-request-data="redirect: '/good-bye'">Sign out</a>
-     * 
-     * With the optional redirect-to-current parameter:
-     *   <a data-request="user::onLogout" data-request-data="redirect-to-current: 1">Sign out</a>
+     *
      */
     public function onLogout()
     {
         Auth::logout();
-
-        $url = Request::input('redirect-to-current') ? 
-            Request::fullUrl() : 
-            Request::input('redirect', '/');
-        
+        $url = post('redirect', Request::fullUrl());
         return Redirect::to($url);
     }
 

@@ -27,7 +27,7 @@ class Plugin extends PluginBase
     {
         return [
             'RainLab\User\Components\User' => 'user',
-            'RainLab\User\Components\AccessControl' => 'userAccessControl',
+            'RainLab\User\Components\Security' => 'userSecurity',
             'RainLab\User\Components\Register' => 'userRegister',
             'RainLab\User\Components\SignIn' => 'userSignIn',
             'RainLab\User\Components\Reset' => 'userReset',

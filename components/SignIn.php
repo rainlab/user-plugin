@@ -20,7 +20,7 @@ class SignIn extends ComponentBase
     public function defineProperties()
     {
         return [
-            'redirect-to' => [
+            'redirect' => [
                 'title' => 'Redirect to',
                 'description' => 'Page name to redirect to after signing in.',
                 'type' => 'string'
@@ -53,7 +53,7 @@ class SignIn extends ComponentBase
         /*
          * Redirect to the intended page after successful sign in
          */
-        $redirectUrl = $this->controller->pageUrl($this->property('redirect-to'));
+        $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
 
         if ($redirectUrl = post('redirect', $redirectUrl))
             return Redirect::intended($redirectUrl);

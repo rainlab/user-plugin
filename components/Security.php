@@ -1,8 +1,10 @@
 <?php namespace RainLab\User\Components;
 
+use Auth;
+use Redirect;
 use Cms\Classes\ComponentBase;
 
-class AccessControl extends ComponentBase
+class Security extends ComponentBase
 {
 
     const ALLOW_ALL = 'all';
@@ -12,7 +14,7 @@ class AccessControl extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'Access Control',
+            'name' => 'Security',
             'description' => 'Restricts page access for users'
         ];
     }
@@ -20,12 +22,12 @@ class AccessControl extends ComponentBase
     public function defineProperties()
     {
         return [
-            'allow-only' => [
+            'allow' => [
                 'title' => 'Allow only',
                 'description' => 'Who is allowed to access this page.',
                 'type' => 'string' // @todo Dropdown: all, guest, user
             ],
-            'redirect-to' => [
+            'redirect' => [
                 'title' => 'Redirect to',
                 'description' => 'Page name to redirect if access is denied.',
                 'type' => 'string'
@@ -38,8 +40,8 @@ class AccessControl extends ComponentBase
      */
     public function onRun()
     {
-        $redirectUrl = $this->controller->pageUrl($this->property('redirect-to'));
-        $allowedGroup = $this->property('allow-only', self::ALLOW_ALL);
+        $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
+        $allowedGroup = $this->property('allow', self::ALLOW_ALL);
         $isAuthenticated = Auth::check();
 
         if (!$isAuthenticated && $allowedGroup == self::ALLOW_USER)

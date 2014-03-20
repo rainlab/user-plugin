@@ -21,7 +21,7 @@ class Reset extends ComponentBase
     public function defineProperties()
     {
         return [
-            'code-param' => [
+            'paramCode' => [
                 'title' => 'Reset Code Param',
                 'description' => 'The page URL parameter used for the reset code',
                 'type' => 'string',
@@ -45,7 +45,7 @@ class Reset extends ComponentBase
 
         $code = implode('!', [$user->id, $user->getResetPasswordCode()]);
         $link = $this->controller->currentPageUrl([
-            $this->property('code-param') => $code
+            $this->property('paramCode') => $code
         ]);
 
         $data = [
@@ -89,7 +89,7 @@ class Reset extends ComponentBase
 
     public function code()
     {
-        $routeParameter = $this->property('code-param');
+        $routeParameter = $this->property('paramCode');
         return $this->param($routeParameter);
     }
 
