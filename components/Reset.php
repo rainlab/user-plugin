@@ -13,7 +13,7 @@ class Reset extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'Reset Password',
+            'name'        => 'Reset Password',
             'description' => 'Forgotten password form.'
         ];
     }
@@ -22,10 +22,10 @@ class Reset extends ComponentBase
     {
         return [
             'paramCode' => [
-                'title' => 'Reset Code Param',
+                'title'       => 'Reset Code Param',
                 'description' => 'The page URL parameter used for the reset code',
-                'type' => 'string',
-                'default' => 'code'
+                'type'        => 'string',
+                'default'     => 'code'
             ]
         ];
     }

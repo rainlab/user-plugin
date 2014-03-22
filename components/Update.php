@@ -10,7 +10,7 @@ class Update extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'Update',
+            'name'        => 'Update',
             'description' => 'User management form.'
         ];
     }

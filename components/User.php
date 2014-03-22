@@ -12,7 +12,7 @@ class User extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'User Provider',
+            'name'        => 'User Provider',
             'description' => 'General user-based features.'
         ];
     }

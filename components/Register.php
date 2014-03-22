@@ -15,7 +15,7 @@ class Register extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'Register',
+            'name'        => 'Register',
             'description' => 'User registration form.'
         ];
     }
@@ -24,15 +24,15 @@ class Register extends ComponentBase
     {
         return [
             'redirect' => [
-                'title' => 'Redirect to',
+                'title'       => 'Redirect to',
                 'description' => 'Page name to redirect to after registration.',
-                'type' => 'string'
+                'type'        => 'string'
             ],
             'paramCode' => [
-                'title' => 'Activation Code Param',
+                'title'       => 'Activation Code Param',
                 'description' => 'The page URL parameter used for the activation code',
-                'type' => 'string',
-                'default' => 'code'
+                'type'        => 'string',
+                'default'     => 'code'
             ]
         ];
     }

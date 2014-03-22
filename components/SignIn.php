@@ -12,7 +12,7 @@ class SignIn extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'Sign in',
+            'name'        => 'Sign in',
             'description' => 'User sign in form.'
         ];
     }
@@ -21,9 +21,9 @@ class SignIn extends ComponentBase
     {
         return [
             'redirect' => [
-                'title' => 'Redirect to',
+                'title'       => 'Redirect to',
                 'description' => 'Page name to redirect to after signing in.',
-                'type' => 'string'
+                'type'        => 'string'
             ]
         ];
     }

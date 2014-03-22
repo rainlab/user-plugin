@@ -14,7 +14,7 @@ class Security extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'Security',
+            'name'        => 'Security',
             'description' => 'Restricts page access for users'
         ];
     }
@@ -23,14 +23,14 @@ class Security extends ComponentBase
     {
         return [
             'allow' => [
-                'title' => 'Allow only',
+                'title'       => 'Allow only',
                 'description' => 'Who is allowed to access this page.',
-                'type' => 'string' // @todo Dropdown: all, guest, user
+                'type'        => 'string' // @todo Dropdown: all, guest, user
             ],
             'redirect' => [
-                'title' => 'Redirect to',
+                'title'       => 'Redirect to',
                 'description' => 'Page name to redirect if access is denied.',
-                'type' => 'string'
+                'type'        => 'string'
             ]
         ];
     }
