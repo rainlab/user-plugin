@@ -10,4 +10,4 @@ fields:
         label: Name
     code:
         label: Code
-        comment-above: Enter a unique code to identify this country.
+        commentAbove: Enter a unique code to identify this country.

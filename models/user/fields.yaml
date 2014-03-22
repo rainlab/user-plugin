@@ -21,7 +21,7 @@ fields:
     span: right
     label: Password Confirmation
 
-secondary-tabs:
+secondaryTabs:
   fields:
 
     avatar:
