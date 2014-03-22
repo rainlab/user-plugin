@@ -3,9 +3,9 @@
 use Flash;
 use BackendMenu;
 use BackendAuth;
-use Backend\Classes\BackendController;
+use Backend\Classes\Controller;
 
-class Users extends BackendController
+class Users extends Controller
 {
     public $implement = [
         'Backend.Behaviors.FormController',
