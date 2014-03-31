@@ -5,8 +5,8 @@ use October\Rain\Support\Facade;
 class Auth extends Facade
 {
     /**
-     * Get the class name this facade is acting on behalf of.
+     * Get the registered name of the component.
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'RainLab\User\Classes\AuthManager'; }
+    protected static function getFacadeAccessor() { return 'user.auth'; }
 }

@@ -1,8 +1,9 @@
 <?php namespace RainLab\User;
 
+use App;
 use Backend;
 use System\Classes\PluginBase;
-use October\Rain\Support\FacadeLoader;
+use Illuminate\Foundation\AliasLoader;
 
 class Plugin extends PluginBase
 {
@@ -19,8 +20,12 @@ class Plugin extends PluginBase
 
     public function register()
     {
-        $facade = FacadeLoader::instance();
-        $facade->facade('Auth', 'RainLab\User\Facades\Auth');
+        $alias = AliasLoader::getInstance();
+        $alias->alias('Auth', 'RainLab\User\Facades\Auth');
+
+        App::singleton('user.auth', function() {
+            return \RainLab\User\Classes\AuthManager::instance();
+        });
     }
 
     public function registerComponents()
