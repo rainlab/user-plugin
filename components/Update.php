@@ -1,6 +1,7 @@
 <?php namespace RainLab\User\Components;
 
 use Auth;
+use Flash;
 use Redirect;
 use Cms\Classes\ComponentBase;
 
@@ -41,8 +42,11 @@ class Update extends ComponentBase
         if ($user = $this->user)
             $user->save(post());
 
-        if ($redirectUrl = post('redirect'))
+        if ($redirectUrl = post('redirect')) {
+            Flash::success(post('flash', 'Settings successfully saved!'));
+
             return Redirect::to($redirectUrl);
+        }
     }
 
 }
