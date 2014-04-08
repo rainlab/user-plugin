@@ -1,8 +1,8 @@
 <?php namespace RainLab\User\Components;
 
 use Auth;
-use Redirect;
 use Request;
+use Redirect;
 use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 

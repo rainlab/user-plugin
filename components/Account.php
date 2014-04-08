@@ -1,8 +1,12 @@
 <?php namespace RainLab\User\Components;
 
 use Auth;
+use Flash;
 use Redirect;
+use Validator;
 use Cms\Classes\ComponentBase;
+use System\Classes\ApplicationException;
+use October\Rain\Support\ValidationException;
 
 class Account extends ComponentBase
 {
