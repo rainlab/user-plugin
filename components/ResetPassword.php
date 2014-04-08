@@ -7,7 +7,7 @@ use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 use System\Classes\ApplicationException;
 
-class Reset extends ComponentBase
+class ResetPassword extends ComponentBase
 {
 
     public function componentDetails()
@@ -30,6 +30,9 @@ class Reset extends ComponentBase
         ];
     }
 
+    /**
+     * Trigger the password reset email
+     */
     public function onRestorePassword()
     {
         $rules = [
@@ -60,6 +63,9 @@ class Reset extends ComponentBase
         });
     }
 
+    /**
+     * Perform the password reset
+     */
     public function onResetPassword()
     {
         $rules = [
@@ -87,6 +93,10 @@ class Reset extends ComponentBase
             throw new ValidationException(['code' => 'Invalid activation code supplied']);
     }
 
+    /**
+     * Returns the reset password code from the URL
+     * @return string
+     */
     public function code()
     {
         $routeParameter = $this->property('paramCode');
