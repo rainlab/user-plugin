@@ -186,8 +186,11 @@ class Account extends ComponentBase
         if ($user = $this->user)
             $user->save(post());
 
-        if ($redirectUrl = post('redirect'))
+        if ($redirectUrl = post('redirect')) {
+            Flash::success(post('flash', 'Settings successfully saved!'));
+
             return Redirect::to($redirectUrl);
+        }
     }
 
 }
