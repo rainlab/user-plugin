@@ -7,6 +7,7 @@ use Validator;
 use Cms\Classes\ComponentBase;
 use System\Classes\ApplicationException;
 use October\Rain\Support\ValidationException;
+use RainLab\User\Models\Settings as UserSettings;
 
 class Account extends ComponentBase
 {
