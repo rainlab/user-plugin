@@ -25,7 +25,7 @@ class Account extends ComponentBase
         return [
             'redirect' => [
                 'title'       => 'Redirect to',
-                'description' => 'Page name to redirect to after sign in or registration.',
+                'description' => 'Page name to redirect to after update, sign in or registration.',
                 'type'        => 'string'
             ],
             'paramCode' => [
@@ -38,20 +38,27 @@ class Account extends ComponentBase
     }
 
     /**
-     * @var RainLab\User\Models\User The user model
-     */
-    public $user;
-
-    /**
      * Executed when this component is bound to a page or layout.
      */
     public function onRun()
     {
-        $this->user = Auth::getUser();
-
         $routeParameter = $this->property('paramCode');
         if ($activationCode = $this->param($routeParameter))
             $this->onActivate($activationCode);
+
+        $this->page['user'] = $this->user();
+    }
+
+
+    /**
+     * Returns the logged in user, if available
+     */
+    public function user()
+    {
+        if (!Auth::check())
+            return null;
+
+        return Auth::getUser();
     }
 
     /**
@@ -188,14 +195,18 @@ class Account extends ComponentBase
      */
     public function onUpdate()
     {
-        if ($user = $this->user)
+        if ($user = $this->user())
             $user->save(post());
 
-        if ($redirectUrl = post('redirect')) {
-            Flash::success(post('flash', 'Settings successfully saved!'));
+        Flash::success(post('flash', 'Settings successfully saved!'));
 
+        /*
+         * Redirect to the intended page after successful update
+         */
+        $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
+
+        if ($redirectUrl = post('redirect', $redirectUrl))
             return Redirect::to($redirectUrl);
-        }
     }
 
 }

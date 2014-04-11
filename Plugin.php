@@ -31,7 +31,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'RainLab\User\Components\User'          => 'user',
+            'RainLab\User\Components\Session'       => 'session',
             'RainLab\User\Components\Account'       => 'account',
             'RainLab\User\Components\ResetPassword' => 'resetPassword',
         ];

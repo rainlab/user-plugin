@@ -1,11 +1,11 @@
-{% if not __SELF__.user %}
+{% if not user %}
 
     <div class="row">
 
         <div class="col-md-6">
             <h3>Sign in</h3>
             <form
-                data-request="{{ __SELF__ }}::onSignin">
+                data-request="onSignin">
                 <div class="form-group">
                     <label for="userSigninEmail">Email</label>
                     <input name="email" type="email" class="form-control" id="userSigninEmail" placeholder="Enter your email">
@@ -23,7 +23,7 @@
         <div class="col-md-6">
             <h3>Register</h3>
             <form
-                data-request="{{ __SELF__ }}::onRegister">
+                data-request="onRegister">
                 <div class="form-group">
                     <label for="registerName">Full Name</label>
                     <input name="name" type="text" class="form-control" id="registerEmail" placeholder="Enter your full name">
@@ -47,17 +47,16 @@
 
 {% else %}
 
-    <form
-        data-request="{{ __SELF__ }}::onUpdate">
+    {{ form_ajax('onUpdate', { model: user }) }}
 
         <div class="form-group">
             <label for="accountName">Full Name</label>
-            <input name="name" type="text" class="form-control" id="accountName" value="{{ __SELF__.user.name }}">
+            <input name="name" type="text" class="form-control" id="accountName" value="{{ form_value('name') }}">
         </div>
 
         <div class="form-group">
             <label for="accountEmail">Email</label>
-            <input name="email" type="email" class="form-control" id="accountEmail" value="{{ __SELF__.user.email }}">
+            <input name="email" type="email" class="form-control" id="accountEmail" value="{{ form_value('email') }}">
         </div>
 
         <div class="form-group">
@@ -71,6 +70,7 @@
         </div>
 
         <button type="submit" class="btn btn-default">Save</button>
-    </form>
+
+    {{ form_close() }}
 
 {% endif %}

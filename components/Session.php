@@ -6,7 +6,7 @@ use Redirect;
 use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
 
-class User extends ComponentBase
+class Session extends ComponentBase
 {
 
     const ALLOW_ALL = 'all';
@@ -16,8 +16,8 @@ class User extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'User',
-            'description' => 'Adds the user object to a page and can restrict page access.'
+            'name'        => 'Session',
+            'description' => 'Adds the user session to a page and can restrict page access.'
         ];
     }
 
@@ -52,16 +52,18 @@ class User extends ComponentBase
 
         elseif ($isAuthenticated && $allowedGroup == self::ALLOW_GUEST)
             return Redirect::intended($redirectUrl);
+
+        $this->page['user'] = $this->user();
     }
 
     /**
      * Log out the user
      *
      * Usage:
-     *   <a data-request="user::onLogout">Sign out</a>
+     *   <a data-request="onLogout">Sign out</a>
      *
      * With the optional redirect parameter:
-     *   <a data-request="user::onLogout" data-request-data="redirect: '/good-bye'">Sign out</a>
+     *   <a data-request="onLogout" data-request-data="redirect: '/good-bye'">Sign out</a>
      *
      */
     public function onLogout()
@@ -74,7 +76,7 @@ class User extends ComponentBase
     /**
      * Returns the logged in user, if available
      */
-    public function active()
+    public function user()
     {
         if (!Auth::check())
             return null;
