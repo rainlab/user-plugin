@@ -26,7 +26,7 @@ class Account extends ComponentBase
             'redirect' => [
                 'title'       => 'Redirect to',
                 'description' => 'Page name to redirect to after update, sign in or registration.',
-                'type'        => 'string'
+                'type'        => 'string' // @todo Page picker
             ],
             'paramCode' => [
                 'title'       => 'Activation Code Param',
