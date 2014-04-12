@@ -4,13 +4,13 @@
 
 name: User
 form: @/plugins/rainlab/user/models/user/fields.yaml
-model-class: RainLab\User\Models\User
-default-redirect: rainlab/user/users
+modelClass: RainLab\User\Models\User
+defaultRedirect: rainlab/user/users
 
 create:
     redirect: rainlab/user/users/update/:id
-    redirect-close: rainlab/user/users
+    redirectClose: rainlab/user/users
 
 update:
     redirect: rainlab/user/users
-    redirect-close: rainlab/user/users
+    redirectClose: rainlab/user/users

@@ -4,11 +4,11 @@
 
 title: Manage Users
 list: @/plugins/rainlab/user/models/user/columns.yaml
-model-class: RainLab\User\Models\User
-record-url: rainlab/user/users/update/:id
-no-records-message: backend::lang.list.no_records
-records-per-page: 5
-show-checkboxes: yes
+modelClass: RainLab\User\Models\User
+recordUrl: rainlab/user/users/update/:id
+noRecordsMessage: backend::lang.list.no_records
+recordsPerPage: 5
+showCheckboxes: yes
 
 toolbar:
     buttons: list_toolbar
