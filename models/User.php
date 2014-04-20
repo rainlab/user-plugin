@@ -56,7 +56,7 @@ class User extends UserBase
     /**
      * Returns the public image file path to this user's avatar.
      */
-    public function getAvatarPath($size = 25, $default = null)
+    public function getAvatarThumb($size = 25, $default = null)
     {
         if ($this->avatar)
             return $this->avatar->getThumb($size, $size);
