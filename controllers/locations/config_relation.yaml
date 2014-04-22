@@ -1,0 +1,10 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+states:
+    label: State
+    list: @/plugins/rainlab/user/models/state/columns.yaml
+    form: @/plugins/rainlab/user/models/state/fields.yaml
+    # toolbar:
+    #     buttons: relation_toolbar

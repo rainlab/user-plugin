@@ -5,3 +5,6 @@
 columns:
     name: Name
     code: Code
+    enabled:
+        label: Enabled
+        type: switch

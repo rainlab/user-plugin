@@ -1,3 +1,7 @@
+1.0.2:
+    - Add seed data for countries and states
+    - seed_all_tables.php
+
 1.0.1:
     - Initialize plugin
     - create_users_table.php

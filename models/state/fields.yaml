@@ -5,6 +5,9 @@
 fields:
     name:
         label: Name
+        span: auto
+        commentAbove: Enter the display name for this state.
     code:
         label: Code
+        span: auto
         commentAbove: Enter a unique code to identify this state.

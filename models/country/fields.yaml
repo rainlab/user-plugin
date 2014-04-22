@@ -6,8 +6,12 @@ fields:
     enabled:
         label: Enabled
         type: checkbox
+
     name:
         label: Name
+        span: auto
+
     code:
         label: Code
-        commentAbove: Enter a unique code to identify this country.
+        span: auto
+        comment: Enter a unique code to identify this country.

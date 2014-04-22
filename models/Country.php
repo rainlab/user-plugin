@@ -35,4 +35,9 @@ class Country extends Model
         'states' => ['RainLab\User\Models\State']
     ];
 
+    /**
+     * @var bool Indicates if the model should be timestamped.
+     */
+    public $timestamps = false;
+
 }
