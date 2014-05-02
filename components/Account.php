@@ -1,6 +1,7 @@
 <?php namespace RainLab\User\Components;
 
 use Auth;
+use Mail;
 use Flash;
 use Redirect;
 use Validator;
