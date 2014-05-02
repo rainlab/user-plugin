@@ -44,8 +44,18 @@ class Account extends ComponentBase
     public function onRun()
     {
         $routeParameter = $this->property('paramCode');
-        if ($activationCode = $this->param($routeParameter))
-            $this->onActivate($activationCode);
+
+        /*
+         * Activation code supplied
+         */
+        if ($activationCode = $this->param($routeParameter)) {
+            try {
+                $this->onActivate($activationCode);
+            }
+            catch (\Exception $ex) {
+                Flash::error($ex->getMessage());
+            }
+        }
 
         $this->page['user'] = $this->user();
     }
@@ -167,8 +177,7 @@ class Account extends ComponentBase
      */
     public function onActivate($code = null)
     {
-        if (!$code)
-            $code = post('code');
+        $code = post('code', $code);
 
         /*
          * Break up the code parts
