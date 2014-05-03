@@ -49,12 +49,7 @@ class Account extends ComponentBase
          * Activation code supplied
          */
         if ($activationCode = $this->param($routeParameter)) {
-            try {
-                $this->onActivate($activationCode);
-            }
-            catch (\Exception $ex) {
-                Flash::error($ex->getMessage());
-            }
+            $this->onActivate(false, $activationCode);
         }
 
         $this->page['user'] = $this->user();
@@ -175,29 +170,36 @@ class Account extends ComponentBase
      * Activate the user
      * @param  string $code Activation code
      */
-    public function onActivate($code = null)
+    public function onActivate($isAjax = true, $code = null)
     {
-        $code = post('code', $code);
+        try {
+            $code = post('code', $code);
 
-        /*
-         * Break up the code parts
-         */
-        $parts = explode('!', $code);
-        if (count($parts) != 2)
-            throw new ValidationException(['code' => 'Invalid activation code supplied']);
+            /*
+             * Break up the code parts
+             */
+            $parts = explode('!', $code);
+            if (count($parts) != 2)
+                throw new ValidationException(['code' => 'Invalid activation code supplied']);
 
-        list($userId, $code) = $parts;
+            list($userId, $code) = $parts;
 
-        if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId)))
-            throw new ApplicationException('A user was not found with the given credentials.');
+            if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId)))
+                throw new ApplicationException('A user was not found with the given credentials.');
 
-        if (!$user->attemptActivation($code))
-            throw new ValidationException(['code' => 'Invalid activation code supplied']);
+            if (!$user->attemptActivation($code))
+                throw new ValidationException(['code' => 'Invalid activation code supplied']);
 
-        /*
-         * Sign in the user
-         */
-        Auth::login($user);
+            /*
+             * Sign in the user
+             */
+            Auth::login($user);
+
+        }
+        catch (\Exception $ex) {
+            if ($isAjax) throw $ex;
+            else Flash::error($ex->getMessage());
+        }
     }
 
     /**
