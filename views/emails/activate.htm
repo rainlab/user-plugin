@@ -1,0 +1,27 @@
+subject = "Confirm Your Account"
+==
+
+Hello {{ name }},
+
+We need to verify that this is your email address.
+
+Please click the link below to confirm your account:
+{{ link }}
+
+
+---
+This is an automatic message. Do not reply to it.
+
+==
+
+<p>Hello {{ name }},</p>
+
+<p>We need to verify that this is your email address.</p>
+
+<p>
+    Please click the link below to confirm your account:<br />
+    <a href="{{ link }}">{{ link }}</a>
+</p>
+
+<hr />
+<strong>This is an automatic message. Do not reply to it.</strong>

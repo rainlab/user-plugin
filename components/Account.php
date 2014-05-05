@@ -145,9 +145,9 @@ class Account extends ComponentBase
                 'code' => $code
             ];
 
-            Mail::send(['text' => 'rainlab.user::emails.activate'], $data, function($message) use ($user)
+            Mail::send('rainlab.user::emails.activate', $data, function($message) use ($user)
             {
-                $message->to($user->email, $user->name)->subject('Confirm Your Account');
+                $message->to($user->email, $user->name);
             });
         }
         /*
