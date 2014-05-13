@@ -57,6 +57,7 @@ class SeedAllTables extends Seeder
             ['enabled' => false, 'code' => 'BM', 'name' => 'Bermuda'],
             ['enabled' => false, 'code' => 'BT', 'name' => 'Bhutan'],
             ['enabled' => false, 'code' => 'BO', 'name' => 'Bolivia, Plurinational State of'],
+            ['enabled' => false, 'code' => 'BQ', 'name' => 'Bonaire, Sint Eustatius and Saba'],
             ['enabled' => false, 'code' => 'BA', 'name' => 'Bosnia and Herzegovina'],
             ['enabled' => false, 'code' => 'BW', 'name' => 'Botswana'],
             ['enabled' => false, 'code' => 'BV', 'name' => 'Bouvet Island'],
@@ -85,6 +86,7 @@ class SeedAllTables extends Seeder
             ['enabled' => false, 'code' => 'CI', 'name' => 'Cote d\'Ivoire'],
             ['enabled' => false, 'code' => 'HR', 'name' => 'Croatia'],
             ['enabled' => false, 'code' => 'CU', 'name' => 'Cuba'],
+            ['enabled' => false, 'code' => 'CW', 'name' => 'Curaçao'],
             ['enabled' => false, 'code' => 'CY', 'name' => 'Cyprus'],
             ['enabled' => false, 'code' => 'DJ', 'name' => 'Djibouti'],
             ['enabled' => false, 'code' => 'DM', 'name' => 'Dominica'],
@@ -174,7 +176,6 @@ class SeedAllTables extends Seeder
             ['enabled' => false, 'code' => 'NA', 'name' => 'Namibia'],
             ['enabled' => false, 'code' => 'NR', 'name' => 'Nauru'],
             ['enabled' => false, 'code' => 'NP', 'name' => 'Nepal'],
-            ['enabled' => false, 'code' => 'AN', 'name' => 'Netherlands Antilles'],
             ['enabled' => false, 'code' => 'NC', 'name' => 'New Caledonia'],
             ['enabled' => false, 'code' => 'NI', 'name' => 'Nicaragua'],
             ['enabled' => false, 'code' => 'NE', 'name' => 'Niger'],
@@ -214,6 +215,7 @@ class SeedAllTables extends Seeder
             ['enabled' => false, 'code' => 'SC', 'name' => 'Seychelles'],
             ['enabled' => false, 'code' => 'SL', 'name' => 'Sierra Leone'],
             ['enabled' => false, 'code' => 'SG', 'name' => 'Singapore'],
+            ['enabled' => false, 'code' => 'SX', 'name' => 'Sint Maarten (Dutch part)'],
             ['enabled' => false, 'code' => 'SK', 'name' => 'Slovakia'],
             ['enabled' => false, 'code' => 'SI', 'name' => 'Slovenia'],
             ['enabled' => false, 'code' => 'SB', 'name' => 'Solomon Islands'],
@@ -399,6 +401,22 @@ class SeedAllTables extends Seeder
             ['code' => 'SO', 'name' => 'Sligo'],
             ['code' => 'LM', 'name' => 'Leitrim'],
             ['code' => 'DL', 'name' => 'Donegal'],
+        ]);
+        
+        $nl = Country::whereCode('NL')->first();
+        $nl->states()->createMany([
+            ['code' => 'DR', 'name' => 'Drenthe'],
+            ['code' => 'FL', 'name' => 'Flevoland'],
+            ['code' => 'FR', 'name' => 'Friesland'],
+            ['code' => 'GE', 'name' => 'Gelderland'],
+            ['code' => 'GR', 'name' => 'Groningen'],
+            ['code' => 'LI', 'name' => 'Limburg'],
+            ['code' => 'NB', 'name' => 'Noord-Brabant'],
+            ['code' => 'NH', 'name' => 'Noord-Holland'],
+            ['code' => 'OV', 'name' => 'Overijssel'],
+            ['code' => 'UT', 'name' => 'Utrecht'],
+            ['code' => 'ZE', 'name' => 'Zeeland'],
+            ['code' => 'ZH', 'name' => 'Zuid-Holland'],
         ]);
 
     }
