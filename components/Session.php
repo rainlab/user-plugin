@@ -52,7 +52,7 @@ class Session extends ComponentBase
     public function onRun()
     {
         $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
-        $allowedGroup = $this->property('allow', self::ALLOW_ALL);
+        $allowedGroup = $this->property('security', self::ALLOW_ALL);
         $isAuthenticated = Auth::check();
 
         if (!$isAuthenticated && $allowedGroup == self::ALLOW_USER)
