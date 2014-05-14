@@ -6,6 +6,7 @@ use Flash;
 use Redirect;
 use Validator;
 use Cms\Classes\ComponentBase;
+use Cms\Classes\CmsPropertyHelper;
 use System\Classes\ApplicationException;
 use October\Rain\Support\ValidationException;
 use RainLab\User\Models\Settings as UserSettings;
@@ -27,7 +28,8 @@ class Account extends ComponentBase
             'redirect' => [
                 'title'       => 'Redirect to',
                 'description' => 'Page name to redirect to after update, sign in or registration.',
-                'type'        => 'string' // @todo Page picker
+                'type'        => 'dropdown',
+                'default'     => ''
             ],
             'paramCode' => [
                 'title'       => 'Activation Code Param',
@@ -36,6 +38,11 @@ class Account extends ComponentBase
                 'default'     => 'code'
             ]
         ];
+    }
+
+    public function getRedirectOptions()
+    {
+        return array_merge([''=>'- none -'], CmsPropertyHelper::listPages());
     }
 
     /**
@@ -54,7 +61,6 @@ class Account extends ComponentBase
 
         $this->page['user'] = $this->user();
     }
-
 
     /**
      * Returns the logged in user, if available

@@ -4,6 +4,7 @@ use Auth;
 use Request;
 use Redirect;
 use Cms\Classes\ComponentBase;
+use Cms\Classes\CmsPropertyHelper;
 use October\Rain\Support\ValidationException;
 
 class Session extends ComponentBase
@@ -27,15 +28,22 @@ class Session extends ComponentBase
             'security' => [
                 'title'       => 'Allow only',
                 'description' => 'Who is allowed to access this page.',
-                'type'        => 'string', // @todo Dropdown: all, guest, user
-                'default'     => 'all'
+                'type'        => 'dropdown',
+                'default'     => 'all',
+                'options'     => ['all' => 'All', 'user' => 'Users', 'guest' => 'Guests']
             ],
             'redirect' => [
                 'title'       => 'Redirect to',
                 'description' => 'Page name to redirect if access is denied.',
-                'type'        => 'string'
+                'type'        => 'dropdown'
+                'default'     => ''
             ]
         ];
+    }
+
+    public function getRedirectOptions()
+    {
+        return array_merge([''=>'- none -'], CmsPropertyHelper::listPages());
     }
 
     /**
