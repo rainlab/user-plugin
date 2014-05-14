@@ -35,7 +35,7 @@ class Session extends ComponentBase
             'redirect' => [
                 'title'       => 'Redirect to',
                 'description' => 'Page name to redirect if access is denied.',
-                'type'        => 'dropdown'
+                'type'        => 'dropdown',
                 'default'     => ''
             ]
         ];
