@@ -101,7 +101,7 @@ class Account extends ComponentBase
         /*
          * Redirect to the intended page after successful sign in
          */
-        $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
+        $redirectUrl = $this->pageUrl($this->property('redirect'));
 
         if ($redirectUrl = post('redirect', $redirectUrl))
             return Redirect::intended($redirectUrl);
@@ -132,6 +132,7 @@ class Account extends ComponentBase
         /*
          * Register user
          */
+        $requireActivation = UserSettings::get('require_activation', true);
         $automaticActivation = UserSettings::get('auto_activation', true);
         $user = Auth::register($data, $automaticActivation);
 
@@ -139,34 +140,20 @@ class Account extends ComponentBase
          * Activation is required, send the email
          */
         if (!$automaticActivation) {
-
-            $code = implode('!', [$user->id, $user->getActivationCode()]);
-            $link = $this->controller->currentPageUrl([
-                $this->property('paramCode') => $code
-            ]);
-
-            $data = [
-                'name' => $user->name,
-                'link' => $link,
-                'code' => $code
-            ];
-
-            Mail::send('rainlab.user::emails.activate', $data, function($message) use ($user)
-            {
-                $message->to($user->email, $user->name);
-            });
+            $this->sendActivationEmail($user);
         }
+
         /*
-         * Automatically activated, log the user in
+         * Automatically activated or not required, log the user in
          */
-        else {
+        if ($automaticActivation || !$requireActivation) {
             Auth::login($user);
         }
 
         /*
          * Redirect to the intended page after successful sign in
          */
-        $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
+        $redirectUrl = $this->pageUrl($this->property('redirect'));
 
         if ($redirectUrl = post('redirect', $redirectUrl))
             return Redirect::intended($redirectUrl);
@@ -196,6 +183,8 @@ class Account extends ComponentBase
             if (!$user->attemptActivation($code))
                 throw new ValidationException(['code' => 'Invalid activation code supplied']);
 
+            Flash::success('Successfully activated your account.');
+
             /*
              * Sign in the user
              */
@@ -221,10 +210,66 @@ class Account extends ComponentBase
         /*
          * Redirect to the intended page after successful update
          */
-        $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
+        $redirectUrl = $this->pageUrl($this->property('redirect'));
 
         if ($redirectUrl = post('redirect', $redirectUrl))
             return Redirect::to($redirectUrl);
+    }
+
+    /**
+     * Trigger a subsequent activation email
+     */
+    public function onSendActivationEmail($isAjax = true)
+    {
+        try {
+            $user = $this->user();
+            if (!$user)
+                throw new \Exception('You must be logged in first!');
+
+            if ($user->isActivated())
+                throw new \Exception('Your account is already activated!');
+
+            Flash::success('Activation email has been sent to your nominated email address.');
+
+            $this->sendActivationEmail($user);
+
+        }
+        catch (\Exception $ex) {
+            if ($isAjax) throw $ex;
+            else Flash::error($ex->getMessage());
+        }
+
+        /*
+         * Redirect
+         */
+        $redirectUrl = $this->pageUrl($this->property('redirect'));
+
+        if ($redirectUrl = post('redirect', $redirectUrl))
+            return Redirect::to($redirectUrl);
+    }
+
+    /**
+     * Sends the activation email to a user
+     * @param  User $user
+     * @return void
+     */
+    protected function sendActivationEmail($user)
+    {
+        $code = implode('!', [$user->id, $user->getActivationCode()]);
+        $link = $this->currentPageUrl([
+            $this->property('paramCode') => $code
+        ]);
+
+        $data = [
+            'name' => $user->name,
+            'link' => $link,
+            'code' => $code
+        ];
+
+        Mail::send('rainlab.user::emails.activate', $data, function($message) use ($user)
+        {
+            $message->to($user->email, $user->name);
+        });
     }
 
 }
