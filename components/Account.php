@@ -10,6 +10,7 @@ use Cms\Classes\CmsPropertyHelper;
 use System\Classes\ApplicationException;
 use October\Rain\Support\ValidationException;
 use RainLab\User\Models\Settings as UserSettings;
+use Exception;
 
 class Account extends ComponentBase
 {
@@ -191,7 +192,7 @@ class Account extends ComponentBase
             Auth::login($user);
 
         }
-        catch (\Exception $ex) {
+        catch (Exception $ex) {
             if ($isAjax) throw $ex;
             else Flash::error($ex->getMessage());
         }
@@ -224,17 +225,17 @@ class Account extends ComponentBase
         try {
             $user = $this->user();
             if (!$user)
-                throw new \Exception('You must be logged in first!');
+                throw new Exception('You must be logged in first!');
 
             if ($user->isActivated())
-                throw new \Exception('Your account is already activated!');
+                throw new Exception('Your account is already activated!');
 
             Flash::success('Activation email has been sent to your nominated email address.');
 
             $this->sendActivationEmail($user);
 
         }
-        catch (\Exception $ex) {
+        catch (Exception $ex) {
             if ($isAjax) throw $ex;
             else Flash::error($ex->getMessage());
         }
