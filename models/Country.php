@@ -26,7 +26,10 @@ class Country extends Model
     /**
      * @var array Validation rules
      */
-    public $rules = [];
+    public $rules = [
+        'name' => 'required',
+        'code' => 'unique:rainlab_user_countries',
+    ];
 
     /**
      * @var array Relations

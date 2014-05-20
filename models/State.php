@@ -26,7 +26,10 @@ class State extends Model
     /**
      * @var array Validation rules
      */
-    public $rules = [];
+    public $rules = [
+        'name' => 'required',
+        'code' => 'required',
+    ];
 
     /**
      * @var array Relations
