@@ -11,17 +11,22 @@
 
         <?php if (!$formModel->activated): ?>
             <div class="callout callout-warning">
-                <div class="loading-indicator-container">
-                    <h4>User not activated!</h4>
+                <div class="header">
+                    <i class="icon-warning"></i>
+                    <h3>User not activated!</h3>
                     <p>This user has not been activated and will be unable to sign in.</p>
-                    <button
-                        type="button"
-                        class="btn btn-warning"
-                        data-request="onActivate"
-                        data-load-indicator="Activating..."
-                        data-request-confirm="Do you really want to activate this user?">
-                        Activate this user manually
-                    </button>
+                </div>
+                <div class="content">
+                    <div class="loading-indicator-container">
+                        <button
+                            type="button"
+                            class="btn btn-warning"
+                            data-request="onActivate"
+                            data-load-indicator="Activating..."
+                            data-request-confirm="Do you really want to activate this user?">
+                            Activate this user manually
+                        </button>
+                    </div>
                 </div>
             </div>
         <?php endif ?>
