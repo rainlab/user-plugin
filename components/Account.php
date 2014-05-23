@@ -5,8 +5,8 @@ use Mail;
 use Flash;
 use Redirect;
 use Validator;
+use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use Cms\Classes\CmsPropertyHelper;
 use System\Classes\ApplicationException;
 use October\Rain\Support\ValidationException;
 use RainLab\User\Models\Settings as UserSettings;
@@ -43,7 +43,8 @@ class Account extends ComponentBase
 
     public function getRedirectOptions()
     {
-        return array_merge([''=>'- none -'], CmsPropertyHelper::listPages());
+        $pages = Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+        return array_merge([''=>'- none -'], $pages);
     }
 
     /**
