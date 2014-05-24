@@ -43,8 +43,7 @@ class Account extends ComponentBase
 
     public function getRedirectOptions()
     {
-        $pages = Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
-        return array_merge([''=>'- none -'], $pages);
+        return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
     /**
