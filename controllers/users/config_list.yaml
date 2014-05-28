@@ -8,7 +8,7 @@ modelClass: RainLab\User\Models\User
 recordUrl: rainlab/user/users/update/:id
 noRecordsMessage: backend::lang.list.no_records
 recordsPerPage: 20
-showCheckboxes: yes
+showCheckboxes: true
 
 toolbar:
     buttons: list_toolbar

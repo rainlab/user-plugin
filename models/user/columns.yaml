@@ -5,9 +5,9 @@
 columns:
     name:
         label: Name
-        searchable: yes
+        searchable: true
     email:
         label: Email
-        searchable: yes
+        searchable: true
     created_at:
         label: Registered

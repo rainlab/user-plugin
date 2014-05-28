@@ -20,6 +20,11 @@ noRecordsMessage: backend::lang.list.no_records
 # Records to display per page
 recordsPerPage: 20
 
+# Default sorting column
+defaultSort:
+    column: name
+    direction: asc
+
 # Display checkboxes next to each record
 showCheckboxes: true
 
