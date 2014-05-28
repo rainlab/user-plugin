@@ -24,4 +24,10 @@ class Locations extends Controller
 
         BackendMenu::setContext('RainLab.User', 'user', 'locations');
     }
+
+    public function listInjectRowClass($record, $definition = null)
+    {
+        if (!$record->enabled)
+            return 'safe disabled';
+    }
 }
