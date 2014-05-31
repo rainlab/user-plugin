@@ -22,7 +22,7 @@ class Locations extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('RainLab.User', 'user', 'locations');
+        BackendMenu::setContext('October.System', 'system', 'settings');
     }
 
     public function listInjectRowClass($record, $definition = null)
