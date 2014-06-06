@@ -12,7 +12,7 @@ class CreateCountriesTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->boolean('enabled')->default(false);
+            $table->boolean('is_enabled')->default(false);
             $table->string('name')->index();
             $table->string('code');
         });

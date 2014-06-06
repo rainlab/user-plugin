@@ -1,3 +1,21 @@
 <div data-control="toolbar">
-    <a href="<?= Backend::url('rainlab/user/locations/create') ?>" class="btn btn-primary oc-icon-plus">New Location</a>
+    <a
+        href="<?= Backend::url('rainlab/user/locations/create') ?>"
+        class="btn btn-primary oc-icon-plus">
+        <?= e(trans('rainlab.user::lang.location.new')) ?>
+    </a>
+    <button
+        class="btn btn-default oc-icon-magic"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+            checked: $('.control-list').listWidget('getChecked')
+        })"
+        data-control="popup"
+        data-handler="onLoadDisableForm"
+        data-trigger-type="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-stripe-load-indicator>
+        <?= e(trans('rainlab.user::lang.locations.enable_or_disable')) ?>
+    </button>
 </div>

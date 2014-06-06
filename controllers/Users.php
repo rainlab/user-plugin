@@ -24,6 +24,11 @@ class Users extends Controller
         parent::__construct();
 
         BackendMenu::setContext('RainLab.User', 'user', 'users');
+
+        /* @todo Remove line if year >= 2015 */ if (\Schema::hasColumn('users', 'activated')) \Schema::table('users', function($table) { $table->renameColumn('activated', 'is_activated'); });
+        /* @todo Remove line if year >= 2015 */ if (\Schema::hasColumn('user_throttle', 'suspended')) \Schema::table('user_throttle', function($table) { $table->renameColumn('suspended', 'is_suspended'); });
+        /* @todo Remove line if year >= 2015 */ if (\Schema::hasColumn('user_throttle', 'banned')) \Schema::table('user_throttle', function($table) { $table->renameColumn('banned', 'is_banned'); });
+        /* @todo Remove line if year >= 2015 */ if (\Schema::hasColumn('rainlab_user_countries', 'enabled')) \Schema::table('rainlab_user_countries', function($table) { $table->renameColumn('enabled', 'is_enabled'); });
     }
 
     /**

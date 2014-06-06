@@ -82,4 +82,12 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerEmailTemplates()
+    {
+        return [
+            'rainlab.user::emails.activate' => 'Activation email sent to new users.',
+            'rainlab.user::emails.restore' => 'Password reset instructions for front-end users.',
+        ];
+    }
+
 }
