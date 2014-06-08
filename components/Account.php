@@ -227,7 +227,7 @@ class Account extends ComponentBase
             if (!$user)
                 throw new Exception('You must be logged in first!');
 
-            if ($user->isActivated())
+            if ($user->is_activated)
                 throw new Exception('Your account is already activated!');
 
             Flash::success('Activation email has been sent to your nominated email address.');
