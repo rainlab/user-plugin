@@ -90,4 +90,18 @@ class Plugin extends PluginBase
         ];
     }
 
+    /**
+     * Register new Twig variables
+     * @return array
+     */
+    public function registerMarkupTags()
+    {
+        return [
+            'functions' => [
+                'form_select_country' => ['RainLab\User\Models\Country', 'formSelect'],
+                'form_select_state' => ['RainLab\User\Models\State', 'formSelect'],
+            ]
+        ];
+    }
+
 }

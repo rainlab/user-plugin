@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Models;
 
+use Form;
 use Model;
 
 /**
@@ -42,5 +43,23 @@ class Country extends Model
      * @var bool Indicates if the model should be timestamped.
      */
     public $timestamps = false;
+
+    /**
+     * @var array Cache for nameList() method
+     */
+    protected static $nameList = null;
+
+    public static function getNameList()
+    {
+        if (self::$nameList)
+            return self::$nameList;
+
+        return self::$nameList = self::lists('name', 'id');
+    }
+
+    public static function formSelect($name, $selectedValue = null, $options = [])
+    {
+        return Form::select($name, self::getNameList(), $selectedValue, $options);
+    }
 
 }
