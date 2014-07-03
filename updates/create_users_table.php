@@ -12,8 +12,6 @@ class CreateUsersTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('country_id')->unsigned()->nullable()->index();
-            $table->integer('state_id')->unsigned()->nullable()->index();
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
@@ -24,13 +22,15 @@ class CreateUsersTable extends Migration
             $table->boolean('is_activated')->default(0);
             $table->timestamp('activated_at')->nullable();
             $table->timestamp('last_login')->nullable();
+            $table->integer('country_id')->unsigned()->nullable()->index();
+            $table->integer('state_id')->unsigned()->nullable()->index();
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('users');
+        Schema::dropIfExists('users');
     }
 
 }

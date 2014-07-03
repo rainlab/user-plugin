@@ -1,3 +1,6 @@
+1.0.5:
+    - Added contact details for users
+    - users_add_contact_details.php
 1.0.4: Improvements to user-interface for Location manager
 1.0.3: Translated hard-coded text to language strings
 1.0.2:

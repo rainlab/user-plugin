@@ -3,30 +3,72 @@
 # ===================================
 
 fields:
-  name:
-    span: auto
-    label: Name
+    name:
+        span: auto
+        label: Name
 
-  email:
-    span: auto
-    label: Email
+    email:
+        span: auto
+        label: Email
 
-  password:
-    type: password
-    span: left
-    label: Password
+    password:
+        type: password
+        span: left
+        label: Password
 
-  password_confirmation:
-    type: password
-    span: right
-    label: Password Confirmation
+    password_confirmation:
+        type: password
+        span: right
+        label: Password Confirmation
+
+tabs:
+    fields:
+
+        phone:
+            label: Phone
+            tab: Contact Details
+            span: left
+
+        company:
+            label: Company
+            tab: Contact Details
+            span: right
+
+        city:
+            label: City
+            tab: Contact Details
+            span: left
+
+        zip:
+            label: Zip
+            tab: Contact Details
+            span: right
+
+        street_addr:
+            label: Street Address
+            tab: Contact Details
+
+        country:
+            label: Country
+            type: dropdown
+            tab: Contact Details
+            span: left
+            placeholder: -- select country --
+
+        state:
+            label: State
+            type: dropdown
+            tab: Contact Details
+            span: right
+            depends: country
+            placeholder: -- select state --
 
 secondaryTabs:
-  fields:
+    fields:
 
-    avatar:
-      label: Avatar
-      type: fileupload
-      mode: image
-      imageHeight: 260
-      imageWidth: 260
+        avatar:
+            label: Avatar
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260

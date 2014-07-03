@@ -3,6 +3,7 @@
 use Auth;
 use Mail;
 use Flash;
+use Input;
 use Redirect;
 use Validator;
 use Cms\Classes\Page;
@@ -118,7 +119,7 @@ class Account extends ComponentBase
          */
         $data = post();
 
-        if (!post('password_confirmation'))
+        if (!array_key_exists('password_confirmation', Input::all()))
             $data['password_confirmation'] = post('password');
 
         $rules = [

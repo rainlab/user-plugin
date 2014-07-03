@@ -54,12 +54,17 @@ class Country extends Model
         if (self::$nameList)
             return self::$nameList;
 
-        return self::$nameList = self::lists('name', 'id');
+        return self::$nameList = self::isEnabled()->lists('name', 'id');
     }
 
     public static function formSelect($name, $selectedValue = null, $options = [])
     {
         return Form::select($name, self::getNameList(), $selectedValue, $options);
+    }
+
+    public function scopeIsEnabled($query)
+    {
+        return $query->where('is_enabled', true);
     }
 
 }

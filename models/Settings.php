@@ -14,5 +14,18 @@ class Settings extends Model
         $this->require_activation = true;
         $this->auto_activation = true;
         $this->use_throttle = true;
+        $this->use_throttle = true;
+        $this->default_country = 1;
+        $this->default_state = 1;
+    }
+
+    public function getDefaultCountryOptions()
+    {
+        return Country::getNameList();
+    }
+
+    public function getDefaultStateOptions()
+    {
+        return State::getNameList($this->default_country);
     }
 }

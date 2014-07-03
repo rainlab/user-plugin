@@ -2,22 +2,40 @@
 #  Field Definitions
 # ===================================
 
-fields:
+tabs:
+    fields:
+        default_country:
+            label: Default Country
+            comment: When a user does not specify their location, select a default country to use.
+            type: dropdown
+            tab: General
+            span: left
 
-  auto_activation:
-    span: left
-    label: Automatic Activation
-    comment: Activate users on registration automatically
-    type: switch
+        default_state:
+            label: Default State
+            comment: When a user does not specify their location, select a default state to use.
+            type: dropdown
+            tab: General
+            span: right
+            depends: default_country
 
-  require_activation:
-    span: left
-    label: Require Activation
-    comment: Users must have an activated account to sign in
-    type: switch
+        auto_activation:
+            span: left
+            label: Automatic Activation
+            comment: Activate users on registration automatically.
+            type: switch
+            tab: General
 
-  use_throttle:
-    span: left
-    label: Throttle Sign In
-    comment: Repeat failed sign in attempts will temporarily suspend the user
-    type: switch
+        require_activation:
+            span: right
+            label: Require Activation
+            comment: Users must have an activated account to sign in.
+            type: switch
+            tab: General
+
+        use_throttle:
+            span: left
+            label: Throttle Sign In
+            comment: Repeat failed sign in attempts will temporarily suspend the user.
+            type: switch
+            tab: General

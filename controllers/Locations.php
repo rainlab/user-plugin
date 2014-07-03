@@ -47,6 +47,7 @@ class Locations extends Controller
         catch (Exception $ex) {
             $this->handleError($ex);
         }
+
         return $this->makePartial('disable_form');
     }
 

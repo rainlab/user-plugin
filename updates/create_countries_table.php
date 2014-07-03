@@ -20,7 +20,7 @@ class CreateCountriesTable extends Migration
 
     public function down()
     {
-        Schema::drop('rainlab_user_countries');
+        Schema::dropIfExists('rainlab_user_countries');
     }
 
 }

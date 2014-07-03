@@ -20,7 +20,7 @@ class CreateStatesTable extends Migration
 
     public function down()
     {
-        Schema::drop('rainlab_user_states');
+        Schema::dropIfExists('rainlab_user_states');
     }
 
 }

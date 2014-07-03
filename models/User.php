@@ -25,6 +25,11 @@ class User extends UserBase
         // 'groups' => ['RainLab\User\Models\Group', 'table' => 'users_groups']
     ];
 
+    public $belongsTo = [
+        'country' => ['RainLab\User\Models\Country'],
+        'state'   => ['RainLab\User\Models\State'],
+    ];
+
     public $attachOne = [
         'avatar' => ['System\Models\File']
     ];
@@ -32,7 +37,7 @@ class User extends UserBase
     /**
      * @var array The attributes that are mass assignable.
      */
-    protected $fillable = ['name', 'email', 'password', 'password_confirmation'];
+    protected $fillable = ['name', 'email', 'password', 'password_confirmation', 'country', 'state'];
 
     /**
      * Purge attributes from data set.
@@ -40,6 +45,16 @@ class User extends UserBase
     protected $purgeable = ['password_confirmation'];
 
     protected static $loginAttribute = 'email';
+
+    public function getCountryOptions()
+    {
+        return Country::getNameList();
+    }
+
+    public function getStateOptions()
+    {
+        return State::getNameList($this->country_id);
+    }
 
     /**
      * Gets a code for when the user is persisted to a cookie or session which identifies the user.
