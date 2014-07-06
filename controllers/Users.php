@@ -15,7 +15,7 @@ class Users extends Controller
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
 
-    public $requiredPermissions = ['october.manage_users'];
+    public $requiredPermissions = ['users.manage_users'];
 
     public $bodyClass = 'compact-container';
 

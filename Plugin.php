@@ -1,9 +1,11 @@
 <?php namespace RainLab\User;
 
 use App;
+use Event;
 use Backend;
 use System\Classes\PluginBase;
 use Illuminate\Foundation\AliasLoader;
+use RainLab\User\Models\MailBlocker;
 
 class Plugin extends PluginBase
 {
@@ -26,6 +28,13 @@ class Plugin extends PluginBase
         App::singleton('user.auth', function() {
             return \RainLab\User\Classes\AuthManager::instance();
         });
+
+        /*
+         * Apply user-based mail blocking 
+         */
+        Event::listen('mailer.beforeSend', function($mailer, $view, $message){
+            return MailBlocker::filterMessage($view, $message);
+        });
     }
 
     public function registerComponents()
@@ -44,7 +53,7 @@ class Plugin extends PluginBase
                 'label'       => 'Users',
                 'url'         => Backend::url('rainlab/user/users'),
                 'icon'        => 'icon-user',
-                'permissions' => ['user:*'],
+                'permissions' => ['users.*'],
                 'order'       => 500,
 
                 'sideMenu' => [
@@ -52,7 +61,7 @@ class Plugin extends PluginBase
                         'label'       => 'All Users',
                         'icon'        => 'icon-user',
                         'url'         => Backend::url('rainlab/user/users'),
-                        'permissions' => ['user:access_users'],
+                        'permissions' => ['users.access_users'],
                     ],
                 ]
 
@@ -82,11 +91,11 @@ class Plugin extends PluginBase
         ];
     }
 
-    public function registerEmailTemplates()
+    public function registerMailTemplates()
     {
         return [
-            'rainlab.user::emails.activate' => 'Activation email sent to new users.',
-            'rainlab.user::emails.restore' => 'Password reset instructions for front-end users.',
+            'rainlab.user::mail.activate' => 'Activation email sent to new users.',
+            'rainlab.user::mail.restore' => 'Password reset instructions for front-end users.',
         ];
     }
 

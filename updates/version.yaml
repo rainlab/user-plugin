@@ -1,14 +1,17 @@
-1.0.5:
-    - Added contact details for users
-    - users_add_contact_details.php
-1.0.4: Improvements to user-interface for Location manager
-1.0.3: Translated hard-coded text to language strings
-1.0.2:
-    - Add seed data for countries and states
-    - seed_all_tables.php
 1.0.1:
     - Initialize plugin
     - create_users_table.php
     - create_throttle_table.php
     - create_states_table.php
     - create_countries_table.php
+1.0.2:
+    - Add seed data for countries and states
+    - seed_all_tables.php
+1.0.3: Translated hard-coded text to language strings
+1.0.4: Improvements to user-interface for Location manager
+1.0.5:
+    - Added contact details for users
+    - users_add_contact_details.php
+1.0.6:
+    - Added Mail Blocker utility so users can block specific mail templates
+    - create_mail_blockers_table.php
