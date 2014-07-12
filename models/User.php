@@ -4,6 +4,10 @@ use October\Rain\Auth\Models\User as UserBase;
 
 class User extends UserBase
 {
+    use \October\Rain\Database\Traits\Hashable;
+    use \October\Rain\Database\Traits\Purgeable;
+    use \October\Rain\Database\Traits\Validation;
+
     /**
      * @var string The database table used by the model.
      */
