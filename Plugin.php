@@ -78,7 +78,7 @@ class Plugin extends PluginBase
                 'category'    => 'Users',
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
-                'sort'        => 100
+                'order'       => 500,
             ],
             'location' => [
                 'label'       => 'Locations',
@@ -86,7 +86,7 @@ class Plugin extends PluginBase
                 'category'    => 'Users',
                 'icon'        => 'icon-globe',
                 'url'         => Backend::url('rainlab/user/locations'),
-                'sort'        => 100
+                'order'       => 500,
             ]
         ];
     }
