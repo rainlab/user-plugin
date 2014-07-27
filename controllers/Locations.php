@@ -7,6 +7,7 @@ use Redirect;
 use BackendMenu;
 use RainLab\User\Models\Country;
 use Backend\Classes\Controller;
+use System\Classes\SettingsManager;
 
 /**
  * Locations Back-end Controller
@@ -28,6 +29,7 @@ class Locations extends Controller
         parent::__construct();
 
         BackendMenu::setContext('October.System', 'system', 'settings');
+        SettingsManager::setContext('RainLab.User', 'location');
     }
 
     /**
