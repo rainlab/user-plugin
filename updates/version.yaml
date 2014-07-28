@@ -17,3 +17,4 @@
     - create_mail_blockers_table.php
 1.0.7: Adds default country and state fields to Settings page
 1.0.8: Updated the Settings page
+1.0.9: Added UK Counties
