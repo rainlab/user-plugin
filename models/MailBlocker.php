@@ -68,6 +68,31 @@ class MailBlocker extends Model
     }
 
     /**
+     * Toggles a set of templates on or off for a user, optionally filtered by a supplied set.
+     * @param  array $templates   An array containing the template name as the key and the on/off value. If false, template is blocked. 
+     * @param  RainLab\User\Models\User $user
+     * @param  array $inTemplates An optional array where values are template names to process, others are ignored.
+     * @return void
+     */
+    public static function toggleBlocks($templates, $user, array $inTemplates = null)
+    {
+        foreach ((array) $templates as $template => $value) {
+
+            if ($inTemplates && !array_key_exists($template, $inTemplates) && !in_array($template, $inTemplates))
+                continue;
+
+            // Template uses an alias
+            if (isset($inTemplates[$template]))
+                $template = $inTemplates[$template];
+
+            if ($value)
+                static::removeBlock($template, $user);
+            else
+                static::addBlock($template, $user);
+        }
+    }
+
+    /**
      * Updates mail blockers for a user if they change their email address
      * @param  Model $user
      * @return mixed
