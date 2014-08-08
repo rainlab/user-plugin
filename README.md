@@ -63,3 +63,27 @@ The reset password component allows a user to reset their password if they have 
     {% component 'resetPassword' %}
 
 This will display the initial restoration request form and also the password reset form used after the verification email has been received by the user. The `paramCode` is the URL routing code used for resetting the password.
+
+## Error handling
+
+### Flash messages
+This plugin makes use of October's [``Flash api``](http://octobercms.com/docs/cms/markup#flash-messages). In order to display the error messages, you need to place the following snippet in your layout or page.
+
+    {% flash %} 
+    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div> 
+    {% endflash %}
+    
+### AJAX errors
+The User plugin displays AJAX error messages in a simple ``alert()``-box by default. However, this might scare non-technical users. You can change the default behavior of an AJAX error from displaying an ``alert()`` message, like this:
+
+    <script>
+    $(window).on('ajaxErrorMessage', function(event, message){
+    
+        // This can be any custom JavaScript you want
+        alert('Something bad happened, mate, here it is: ' + message);
+    
+        // This will stop the default alert() message
+        event.preventDefault();
+    
+    })
+    </script>
