@@ -8,11 +8,13 @@ class UsersAddLoginColumn extends Migration
 {
     public function up()
     {
-        Schema::table('users', function($table)
+        if(!Schema::hasColumn('users', 'login'))
         {
-            $table->string('login')->unique()->index();
-        });
-
+            Schema::table('users', function($table)
+            {
+                $table->string('login')->unique()->index();
+            });
+        }
         /*
          * Set login for existing users
          */
