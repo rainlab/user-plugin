@@ -10,7 +10,7 @@ class UsersAddLoginColumn extends Migration
     {
         Schema::table('users', function($table)
         {
-            $table->string('login')->unique();
+            $table->string('login')->unique()->index();
         });
 
         /*
