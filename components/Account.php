@@ -135,13 +135,14 @@ class Account extends ComponentBase
          * Register user
          */
         $requireActivation = UserSettings::get('require_activation', true);
-        $automaticActivation = UserSettings::get('auto_activation', true);
+        $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
+        $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
         $user = Auth::register($data, $automaticActivation);
 
         /*
-         * Activation is required, send the email
+         * Activation is by the user, send the email
          */
-        if (!$automaticActivation) {
+        if ($userActivation) {
             $this->sendActivationEmail($user);
         }
 

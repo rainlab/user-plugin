@@ -4,38 +4,42 @@
 
 tabs:
     fields:
-        default_country:
-            label: Default Country
-            comment: When a user does not specify their location, select a default country to use.
-            type: dropdown
-            tab: General
-            span: left
 
-        default_state:
-            label: Default State
-            comment: When a user does not specify their location, select a default state to use.
+        # Require Activation
+        require_activation:
+            label: rainlab.user::lang.settings.require_activation
+            comment: rainlab.user::lang.settings.require_activation_comment
+            type: switch
+            tab: rainlab.user::lang.settings.activation_tab
+
+        # Activation Mode
+        activate_mode:
+            commentAbove: rainlab.user::lang.settings.activate_mode_comment
+            label: rainlab.user::lang.settings.activate_mode
+            type: radio
+            tab: rainlab.user::lang.settings.activation_tab
+
+        # Default Country
+        default_country:
+            span: left
+            label: rainlab.user::lang.settings.default_country
+            comment: rainlab.user::lang.settings.default_country_comment
             type: dropdown
-            tab: General
+            tab: rainlab.user::lang.settings.location_tab
+
+        # Default State
+        default_state:
             span: right
+            label: rainlab.user::lang.settings.default_state
+            comment: rainlab.user::lang.settings.default_state_comment
+            type: dropdown
+            tab: rainlab.user::lang.settings.location_tab
             depends: default_country
 
-        auto_activation:
-            span: left
-            label: Automatic Activation
-            comment: Activate users on registration automatically.
-            type: switch
-            tab: General
-
-        require_activation:
-            span: right
-            label: Require Activation
-            comment: Users must have an activated account to sign in.
-            type: switch
-            tab: General
-
+        # Throttle Sign In
         use_throttle:
             span: left
-            label: Throttle Sign In
-            comment: Repeat failed sign in attempts will temporarily suspend the user.
+            label: rainlab.user::lang.settings.use_throttle 
+            comment: rainlab.user::lang.settings.use_throttle_comment
             type: switch
-            tab: General
+            tab: rainlab.user::lang.settings.security_tab

@@ -1,6 +1,8 @@
 <?php namespace RainLab\User\Models;
 
+use Mail;
 use October\Rain\Auth\Models\User as UserBase;
+use RainLab\User\Models\Settings as UserSettings;
 
 class User extends UserBase
 {
@@ -77,6 +79,31 @@ class User extends UserBase
             return $this->avatar->getThumb($size, $size);
         else
             return '//www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?s='.$size.'&d='.urlencode($default);
+    }
+
+    /**
+     * Sends the confirmation email to a user, after activating
+     * @param  string $code
+     * @return void
+     */
+    public function attemptActivation($code)
+    {
+        $result = parent::attemptActivation($code);
+        if ($result === false)
+            return false;
+
+        if (!$mailTemplate = UserSettings::get('confirmed_template'))
+            return;
+
+        $data = [
+            'name' => $this->name,
+            'email' => $this->email
+        ];
+
+        Mail::send($mailTemplate, $data, function($message)
+        {
+            $message->to($this->email, $this->name);
+        });
     }
 
 }
