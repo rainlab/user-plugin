@@ -1,12 +1,23 @@
-subject = "Your account has been confirmed!"
+subject = "A new user has signed up"
+layout = "system"
 ==
 
 Hello {{ name }},
 
-This is a message to inform you that your account has been activated successfully.
+A new user has just signed up. Here are there details:
+
+ID: {{ id }}
+Name: {{ name }}
+Email: {{ email }}
 
 ==
 
 <p>Hello {{ name }},</p>
 
-<p>This is a message to inform you that your account has been activated successfully.</p>
+<p>A new user has just signed up. Here are there details:</p>
+
+<ul>
+    <li>ID: {{ id }}</li>
+    <li>Name: {{ name }}</li>
+    <li>Email: {{ email }}</li>
+</ul>

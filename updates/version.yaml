@@ -16,4 +16,8 @@
     - Added Mail Blocker utility so users can block specific mail templates
     - create_mail_blockers_table.php
 1.0.7: Adds default country and state fields to Settings page
-1.0.8: Updated the Settings page
+1.0.8: Adds new welcome mail message for users and administrators.
+1.0.9: Adds administrator-only activation mode.
+1.0.10:
+    - Users now have an optional login field that defaults to the email field.
+    - users_add_login_column.php

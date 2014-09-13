@@ -3,65 +3,77 @@
 # ===================================
 
 fields:
+
     name:
-        span: auto
+        span: full
         label: Name
-
-    email:
-        span: auto
-        label: Email
-
-    password:
-        type: password
-        span: left
-        label: Password
-
-    password_confirmation:
-        type: password
-        span: right
-        label: Password Confirmation
+        tab: Details
 
 tabs:
     fields:
 
+        email:
+            span: full
+            label: Email
+            tab: Details
+
         phone:
             label: Phone
-            tab: Contact Details
+            tab: Details
             span: left
 
         company:
             label: Company
-            tab: Contact Details
+            tab: Details
             span: right
 
         city:
             label: City
-            tab: Contact Details
+            tab: Details
             span: left
 
         zip:
             label: Zip
-            tab: Contact Details
+            tab: Details
             span: right
 
         street_addr:
             label: Street Address
-            tab: Contact Details
+            tab: Details
 
         country:
             label: Country
             type: dropdown
-            tab: Contact Details
+            tab: Details
             span: left
             placeholder: -- select country --
 
         state:
             label: State
             type: dropdown
-            tab: Contact Details
+            tab: Details
             span: right
             depends: country
             placeholder: -- select state --
+
+        login:
+            span: left
+            label: Login
+            tab: Account
+
+        password:
+            type: password
+            span: left
+            label: Reset Password
+            comment: To reset this users password, enter a new password here.
+            tab: Account
+
+        password_confirmation:
+            type: password
+            span: right
+            label: Password Confirmation
+            comment: Enter the password again to confirm it.
+            tab: Account
 
 secondaryTabs:
     fields:

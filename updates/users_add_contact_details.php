@@ -1,4 +1,4 @@
-<?php namespace October\Market\Updates;
+<?php namespace RainLab\User\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
