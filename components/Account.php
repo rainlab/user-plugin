@@ -84,9 +84,13 @@ class Account extends ComponentBase
          * Validate input
          */
         $rules = [
-            'email'    => 'required|email|min:2|max:64',
             'password' => 'required|min:2'
         ];
+
+        if (array_key_exists('email', Input::all()))
+            $rules['email'] = 'required|email|between:2,64';
+        else
+            $rules['login'] = 'required|between:2,64';
 
         $validation = Validator::make(post(), $rules);
         if ($validation->fails())
@@ -96,7 +100,7 @@ class Account extends ComponentBase
          * Authenticate user
          */
         $user = Auth::authenticate([
-            'email' => post('email'),
+            'login' => post('login', post('email')),
             'password' => post('password')
         ], true);
 
@@ -123,9 +127,14 @@ class Account extends ComponentBase
             $data['password_confirmation'] = post('password');
 
         $rules = [
-            'email'    => 'required|email|min:2|max:64',
+            'email'    => 'required|email|between:2,64',
             'password' => 'required|min:2'
         ];
+
+        if (!array_key_exists('login', Input::all()))
+            $data['login'] = post('email');
+        else
+            $rules['login'] = 'required|between:2,64';
 
         $validation = Validator::make($data, $rules);
         if ($validation->fails())

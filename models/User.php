@@ -47,7 +47,7 @@ class User extends UserBase
      */
     protected $purgeable = ['password_confirmation'];
 
-    protected static $loginAttribute = 'email';
+    protected static $loginAttribute = 'login';
 
     public function getCountryOptions()
     {
