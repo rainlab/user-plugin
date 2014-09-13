@@ -22,6 +22,7 @@ class Settings extends Model
         $this->use_throttle = true;
         $this->default_country = 1;
         $this->default_state = 1;
+        $this->welcome_template = 'rainlab.user::mail.welcome';
     }
 
     public function getDefaultCountryOptions()
@@ -49,6 +50,11 @@ class Settings extends Model
             return self::ACTIVATE_AUTO;
 
         return $value;
+    }
+
+    public function getWelcomeTemplateOptions()
+    {
+        return [''=>'- '.Lang::get('rainlab.user::lang.settings.no_mail_template').' -'] + MailTemplate::orderBy('code')->lists('code', 'code');
     }
 
 }

@@ -25,6 +25,8 @@ return [
         'activate_mode_user_comment' => 'The user activates their own account using mail.',
         'activate_mode_admin' => 'Administrator',
         'activate_mode_admin_comment' => 'Only an Administrator can activate a user.',
+        'welcome_template' => 'Welcome Template',
+        'welcome_template_comment' => 'Mail template to send a user when they are first activated.',
         'require_activation' => 'Sign in requires activation',
         'require_activation_comment' => 'Users must have an activated account to sign in.',
         'default_country' => 'Default Country',
@@ -33,5 +35,7 @@ return [
         'default_state_comment' => 'When a user does not specify their location, select a default state to use.',
         'use_throttle' => 'Throttle Sign In',
         'use_throttle_comment' => 'Repeat failed sign in attempts will temporarily suspend the user.',
+        'no_mail_template' => 'Do not send a notification',
+        'hint_templates' => 'You can customize mail templates by selecting Mail > Mail Templates from the settings menu.',
     ],
 ];

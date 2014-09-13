@@ -95,7 +95,9 @@ class Plugin extends PluginBase
     {
         return [
             'rainlab.user::mail.activate' => 'Activation email sent to new users.',
+            'rainlab.user::mail.welcome' => 'Welcome email sent when a user is activated.',
             'rainlab.user::mail.restore' => 'Password reset instructions for front-end users.',
+            'rainlab.user::mail.new_user' => 'Sent to administrators when a new user joins.',
         ];
     }
 
