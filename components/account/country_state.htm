@@ -1,0 +1,19 @@
+<div class="form-group">
+    <label for="accountCountry">Country</label>
+    {{ form_select_country('country_id', form_value('country_id'), { 
+        id: 'accountCountry',
+        class: 'form-control',
+        'data-request': 'onInit',
+        'data-request-update': {
+            (__SELF__ ~ '::country_state'): '#partialCountryState'
+        }
+    }) }}
+</div>
+
+<div class="form-group">
+    <label for="accountState">State</label>
+    {{ form_select_state('state_id', form_value('country_id'), null, {
+        id: 'accountState',
+        class: 'form-control'
+    }) }}
+</div>

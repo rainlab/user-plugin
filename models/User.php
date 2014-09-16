@@ -40,7 +40,20 @@ class User extends UserBase
     /**
      * @var array The attributes that are mass assignable.
      */
-    protected $fillable = ['name', 'login', 'email', 'password', 'password_confirmation', 'country', 'state'];
+    protected $fillable = [
+        'name',
+        'login',
+        'email',
+        'password',
+        'password_confirmation',
+        'company',
+        'phone',
+        'street_addr',
+        'city',
+        'zip',
+        'country',
+        'state'
+    ];
 
     /**
      * Purge attributes from data set.
