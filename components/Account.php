@@ -214,8 +214,17 @@ class Account extends ComponentBase
      */
     public function onUpdate()
     {
-        if ($user = $this->user())
-            $user->save(post());
+        if (!$user = $this->user())
+            return;
+
+        $user->save(post());
+
+        /*
+         * Password has changed, reauthenticate the user
+         */
+        if (strlen(post('password'))) {
+            Auth::login($user->reload(), true);
+        }
 
         Flash::success(post('flash', 'Settings successfully saved!'));
 
