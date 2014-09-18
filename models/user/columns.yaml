@@ -52,8 +52,12 @@ columns:
         label: Country
         searchable: true
         invisible: true
+        relation: country
+        select: @name
 
     state:
         label: State
         searchable: true
         invisible: true
+        relation: country
+        select: @name
