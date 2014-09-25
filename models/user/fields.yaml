@@ -27,6 +27,10 @@ tabs:
             tab: Details
             span: right
 
+        street_addr:
+            label: Street Address
+            tab: Details
+
         city:
             label: City
             tab: Details
@@ -36,10 +40,6 @@ tabs:
             label: Zip
             tab: Details
             span: right
-
-        street_addr:
-            label: Street Address
-            tab: Details
 
         country:
             label: Country
