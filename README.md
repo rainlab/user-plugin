@@ -64,10 +64,44 @@ The reset password component allows a user to reset their password if they have 
 
 This will display the initial restoration request form and also the password reset form used after the verification email has been received by the user. The `paramCode` is the URL routing code used for resetting the password.
 
+## Using a login name
+
+By default October will expect the login name to be an email address. To switch to using a user defined login name, simply use a form that supplies a `login` input name instead of an `email` input name. For example, with the **Account** component attached, this sign in form can be used:
+
+    <form data-request="onSignin">
+        <label>Login</label>
+        <input name="login" placeholder="Enter your login">
+
+        <label>Password</label>
+        <input name="password" type="password" placeholder="Enter your password">
+
+        <button type="submit" >Sign in</button>
+    </form>
+
+And for the registration form, we simply add the login field:
+
+    <form data-request="onRegister">
+        <label>Full Name</label>
+        <input name="name" type="text" placeholder="Enter your full name">
+
+        <label>Email</label>
+        <input name="email" type="email" placeholder="Enter your email">
+
+        <label>Login</label>
+        <input name="login" type="email" placeholder="Pick a login name">
+
+        <label>Password</label>
+        <input name="password" type="password" placeholder="Choose a password">
+
+        <button type="submit" class="btn btn-default">Register</button>
+    </form>
+
+We can add any other additional fields here too, such as `phone`, `company`, etc.
+
 ## Error handling
 
 ### Flash messages
-This plugin makes use of October's [``Flash api``](http://octobercms.com/docs/cms/markup#flash-messages). In order to display the error messages, you need to place the following snippet in your layout or page.
+This plugin makes use of October's [`Flash API`](http://octobercms.com/docs/cms/markup#flash-messages). In order to display the error messages, you need to place the following snippet in your layout or page.
 
     {% flash %} 
     <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div> 
