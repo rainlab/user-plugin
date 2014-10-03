@@ -66,7 +66,7 @@ This will display the initial restoration request form and also the password res
 
 ## Using a login name
 
-By default October will expect the login name to be an email address. To switch to using a user defined login name, simply use a form that supplies a `login` input name instead of an `email` input name. For example, with the **Account** component attached, this sign in form can be used:
+By default the User plugin will mirror the email address as the login name. To switch to using a user defined login name, simply use a form that supplies a `login` input name instead of an `email` input name. For example, with the **Account** component attached, this sign in form can be used:
 
     <form data-request="onSignin">
         <label>Login</label>
