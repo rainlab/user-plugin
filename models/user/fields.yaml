@@ -56,10 +56,11 @@ tabs:
             depends: country
             placeholder: -- select state --
 
-        login:
+        username:
             span: left
-            label: Login
+            label: Username
             tab: Account
+            hidden: true
 
         password:
             type: password

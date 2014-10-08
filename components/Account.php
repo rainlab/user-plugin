@@ -83,16 +83,22 @@ class Account extends ComponentBase
         /*
          * Validate input
          */
+        $data = post();
         $rules = [
             'password' => 'required|min:2'
         ];
 
-        if (array_key_exists('email', Input::all()))
-            $rules['email'] = 'required|email|between:2,64';
-        else
-            $rules['login'] = 'required|between:2,64';
+        $loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
 
-        $validation = Validator::make(post(), $rules);
+        if ($loginAttribute == UserSettings::LOGIN_USERNAME)
+            $rules['login'] = 'required|between:2,64';
+        else
+            $rules['email'] = 'required|email|between:2,64';
+
+        if (!in_array($data, 'login'))
+            $data['login'] = post('username', post('email'));
+
+        $validation = Validator::make($data, $rules);
         if ($validation->fails())
             throw new ValidationException($validation);
 
@@ -100,8 +106,8 @@ class Account extends ComponentBase
          * Authenticate user
          */
         $user = Auth::authenticate([
-            'login' => post('login', post('email')),
-            'password' => post('password')
+            'login' => array_get($data, 'login'),
+            'password' => array_get($data, 'password')
         ], true);
 
         /*
@@ -131,10 +137,9 @@ class Account extends ComponentBase
             'password' => 'required|min:2'
         ];
 
-        if (!array_key_exists('login', Input::all()))
-            $data['login'] = post('email');
-        else
-            $rules['login'] = 'required|between:2,64';
+        $loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
+        if ($loginAttribute == UserSettings::LOGIN_USERNAME)
+            $rules['username'] = 'required|between:2,64';
 
         $validation = Validator::make($data, $rules);
         if ($validation->fails())

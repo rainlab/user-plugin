@@ -5,6 +5,7 @@ use BackendMenu;
 use BackendAuth;
 use Backend\Classes\Controller;
 use System\Classes\SettingsManager;
+use RainLab\User\Models\Settings as UserSettings;
 
 class Users extends Controller
 {
@@ -26,11 +27,6 @@ class Users extends Controller
 
         BackendMenu::setContext('RainLab.User', 'user', 'users');
         SettingsManager::setContext('RainLab.User', 'settings');
-
-        /* @todo Remove line if year >= 2015 */ if (\Schema::hasColumn('users', 'activated')) \Schema::table('users', function($table) { $table->renameColumn('activated', 'is_activated'); });
-        /* @todo Remove line if year >= 2015 */ if (\Schema::hasColumn('user_throttle', 'suspended')) \Schema::table('user_throttle', function($table) { $table->renameColumn('suspended', 'is_suspended'); });
-        /* @todo Remove line if year >= 2015 */ if (\Schema::hasColumn('user_throttle', 'banned')) \Schema::table('user_throttle', function($table) { $table->renameColumn('banned', 'is_banned'); });
-        /* @todo Remove line if year >= 2015 */ if (\Schema::hasColumn('rainlab_user_countries', 'enabled')) \Schema::table('rainlab_user_countries', function($table) { $table->renameColumn('enabled', 'is_enabled'); });
     }
 
     /**
@@ -46,5 +42,18 @@ class Users extends Controller
 
         if ($redirect = $this->makeRedirect('update', $model))
             return $redirect;
+    }
+
+    /**
+     * Display username field if settings permit
+     */
+    protected function formExtendFields($form)
+    {
+        $loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
+        if ($loginAttribute != UserSettings::LOGIN_USERNAME)
+            return;
+
+        if (array_key_exists('username', $form->getFields()))
+            $form->getField('username')->hidden = false;
     }
 }

@@ -36,6 +36,22 @@ tabs:
             path: $/rainlab/user/models/settings/_template_hint.htm
             tab: rainlab.user::lang.settings.activation_tab
 
+        # Throttle Sign In
+        use_throttle:
+            span: auto
+            label: rainlab.user::lang.settings.use_throttle
+            comment: rainlab.user::lang.settings.use_throttle_comment
+            type: switch
+            tab: rainlab.user::lang.settings.signin_tab
+
+        # Login Attribute
+        login_attribute:
+            span: auto
+            label: rainlab.user::lang.settings.login_attribute
+            comment: rainlab.user::lang.settings.login_attribute_comment
+            type: dropdown
+            tab: rainlab.user::lang.settings.signin_tab
+
         # Default Country
         default_country:
             span: left
@@ -52,11 +68,3 @@ tabs:
             type: dropdown
             tab: rainlab.user::lang.settings.location_tab
             depends: default_country
-
-        # Throttle Sign In
-        use_throttle:
-            span: left
-            label: rainlab.user::lang.settings.use_throttle 
-            comment: rainlab.user::lang.settings.use_throttle_comment
-            type: switch
-            tab: rainlab.user::lang.settings.security_tab

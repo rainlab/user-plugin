@@ -3,6 +3,7 @@
 use Lang;
 use Model;
 use System\Models\MailTemplate;
+use RainLab\User\Models\User as UserModel;
 
 class Settings extends Model
 {
@@ -15,6 +16,9 @@ class Settings extends Model
     const ACTIVATE_USER = 'user';
     const ACTIVATE_ADMIN = 'admin';
 
+    const LOGIN_EMAIL = 'email';
+    const LOGIN_USERNAME = 'username';
+
     public function initSettingsData()
     {
         $this->require_activation = true;
@@ -23,6 +27,7 @@ class Settings extends Model
         $this->default_country = 1;
         $this->default_state = 1;
         $this->welcome_template = 'rainlab.user::mail.welcome';
+        $this->login_attribute = self::LOGIN_EMAIL;
     }
 
     public function getDefaultCountryOptions()
@@ -41,6 +46,14 @@ class Settings extends Model
             self::ACTIVATE_AUTO => ['rainlab.user::lang.settings.activate_mode_auto', 'rainlab.user::lang.settings.activate_mode_auto_comment'],
             self::ACTIVATE_USER => ['rainlab.user::lang.settings.activate_mode_user', 'rainlab.user::lang.settings.activate_mode_user_comment'],
             self::ACTIVATE_ADMIN => ['rainlab.user::lang.settings.activate_mode_admin', 'rainlab.user::lang.settings.activate_mode_admin_comment'],
+        ];
+    }
+
+    public function getLoginAttributeOptions()
+    {
+        return [
+            self::LOGIN_EMAIL => ['rainlab.user::lang.login.attribute_email'],
+            self::LOGIN_USERNAME => ['rainlab.user::lang.login.attribute_username'],
         ];
     }
 

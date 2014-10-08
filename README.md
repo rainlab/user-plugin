@@ -66,19 +66,7 @@ This will display the initial restoration request form and also the password res
 
 ## Using a login name
 
-By default the User plugin will mirror the email address as the login name. To switch to using a user defined login name, simply use a form that supplies a `login` input name instead of an `email` input name. For example, with the **Account** component attached, this sign in form can be used:
-
-    <form data-request="onSignin">
-        <label>Login</label>
-        <input name="login" placeholder="Enter your login">
-
-        <label>Password</label>
-        <input name="password" type="password" placeholder="Enter your password">
-
-        <button type="submit" >Sign in</button>
-    </form>
-
-And for the registration form, we simply add the login field:
+By default the User plugin will use the email address as the login name. To switch to using a user defined login name, navigate to the backend under System > Users > User Settings and change the Login attribute under the Sign in tab to be **Username**. Then simply ask for a username upon registration by adding the username field:
 
     <form data-request="onRegister">
         <label>Full Name</label>
@@ -87,8 +75,8 @@ And for the registration form, we simply add the login field:
         <label>Email</label>
         <input name="email" type="email" placeholder="Enter your email">
 
-        <label>Login</label>
-        <input name="login" type="email" placeholder="Pick a login name">
+        <label>Username</label>
+        <input name="username" placeholder="Pick a login name">
 
         <label>Password</label>
         <input name="password" type="password" placeholder="Choose a password">

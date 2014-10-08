@@ -16,7 +16,7 @@ return [
     'settings' => [
         'activation_tab' => 'Activation',
         'location_tab' => 'Location',
-        'security_tab' => 'Security',
+        'signin_tab' => 'Sign in',
         'activate_mode' => 'Activation mode',
         'activate_mode_comment' => 'Select how a user account should be activated.',
         'activate_mode_auto' => 'Automatic',
@@ -33,9 +33,15 @@ return [
         'default_country_comment' => 'When a user does not specify their location, select a default country to use.',
         'default_state' => 'Default State',
         'default_state_comment' => 'When a user does not specify their location, select a default state to use.',
-        'use_throttle' => 'Throttle Sign In',
+        'use_throttle' => 'Throttle attemps',
         'use_throttle_comment' => 'Repeat failed sign in attempts will temporarily suspend the user.',
+        'login_attribute' => 'Login attribute',
+        'login_attribute_comment' => 'Select what user detail should be used for signing in.',
         'no_mail_template' => 'Do not send a notification',
         'hint_templates' => 'You can customize mail templates by selecting Mail > Mail Templates from the settings menu.',
+    ],
+    'login' => [
+        'attribute_email' => 'Email',
+        'attribute_username' => 'Username',
     ],
 ];

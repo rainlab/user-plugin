@@ -8,9 +8,10 @@ columns:
         label: ID
         invisible: true
 
-    login:
-        label: Login
+    username:
+        label: Username
         searchable: true
+        invisible: true
 
     name:
         label: Name

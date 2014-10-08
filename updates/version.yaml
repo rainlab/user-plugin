@@ -22,3 +22,6 @@
 1.0.11:
     - Users now have an optional login field that defaults to the email field.
     - users_add_login_column.php
+1.0.12:
+    - Create a dedicated setting for choosing the login mode.
+    - users_rename_login_to_username.php

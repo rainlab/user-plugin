@@ -15,7 +15,7 @@ class User extends UserBase
      * Validation rules
      */
     public $rules = [
-        'login' => 'required|between:2,64|unique:users',
+        'username' => 'required|between:2,64|unique:users',
         'email' => 'required|between:3,64|email|unique:users',
         'password' => 'required:create|between:4,64|confirmed',
         'password_confirmation' => 'required_with:password|between:4,64'
@@ -60,7 +60,28 @@ class User extends UserBase
      */
     protected $purgeable = ['password_confirmation'];
 
-    protected static $loginAttribute = 'login';
+    public static $loginAttribute = null;
+
+    /**
+     * @return string Returns the name for the user's login.
+     */
+    public function getLoginName()
+    {
+        if (static::$loginAttribute !== null)
+            return static::$loginAttribute;
+
+        return static::$loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
+    }
+
+    /**
+     * Before validation event
+     * @return void
+     */
+    public function beforeValidate()
+    {
+        if (!$this->username)
+            $this->username = $this->email;
+    }
 
     public function getCountryOptions()
     {
