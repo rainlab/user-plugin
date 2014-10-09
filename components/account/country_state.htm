@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="accountCountry">{{e(trans('rainlab.user::lang.account.country')) }}</label>
+    <label for="accountCountry">{{ 'rainlab.user::lang.account.country'|trans</label>
     {{ form_select_country('country_id', form_value('country_id'), { 
         id: 'accountCountry',
         class: 'form-control',
