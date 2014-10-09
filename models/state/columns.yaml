@@ -3,5 +3,5 @@
 # ===================================
 
 columns:
-    name: Name
-    code: Code
+    name: rainlab.user::lang.state.name
+    code: rainlab.user::lang.state.code

@@ -41,7 +41,7 @@
             type="submit"
             class="btn btn-primary"
             data-request="onDisableLocations"
-            data-request-confirm="Are you sure?"
+            data-request-confirm="<?= e(trans('rainlab.user::lang.locations.disable_confirm'))"
             data-stripe-load-indicator>
             <?= e(trans('backend::lang.form.apply')) ?>
         </button>

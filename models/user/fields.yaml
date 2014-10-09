@@ -6,81 +6,81 @@ fields:
 
     name:
         span: full
-        label: Name
-        tab: Details
+        label: rainlab.user::lang.user.name
+        tab: rainlab.user::lang.user.details
 
 tabs:
     fields:
 
         email:
             span: full
-            label: Email
-            tab: Details
+            label: rainlab.user::lang.user.email
+            tab: rainlab.user::lang.user.details
 
         phone:
-            label: Phone
-            tab: Details
+            label: rainlab.user::lang.user.phone
+            tab: rainlab.user::lang.user.details
             span: left
 
         company:
-            label: Company
-            tab: Details
+            label: rainlab.user::lang.user.company
+            tab: rainlab.user::lang.user.details
             span: right
 
         street_addr:
-            label: Street Address
-            tab: Details
+            label: rainlab.user::lang.user.street_addr
+            tab: rainlab.user::lang.user.details
 
         city:
-            label: City
-            tab: Details
+            label: rainlab.user::lang.user.city
+            tab: rainlab.user::lang.user.details
             span: left
 
         zip:
-            label: Zip
-            tab: Details
+            label: rainlab.user::lang.user.zip
+            tab: rainlab.user::lang.user.details
             span: right
 
         country:
-            label: Country
+            label: rainlab.user::lang.user.country
             type: dropdown
-            tab: Details
+            tab: rainlab.user::lang.user.details
             span: left
             placeholder: -- select country --
 
         state:
-            label: State
+            label: rainlab.user::lang.user.state
             type: dropdown
-            tab: Details
+            tab: rainlab.user::lang.user.details
             span: right
             depends: country
             placeholder: -- select state --
 
         username:
             span: left
-            label: Username
-            tab: Account
+            label: rainlab.user::lang.user.username
+            tab: rainlab.user::lang.user.account
             hidden: true
 
         password:
             type: password
             span: left
-            label: Reset Password
-            comment: To reset this users password, enter a new password here.
-            tab: Account
+            label: rainlab.user::lang.user.reset_password
+            comment: rainlab.user::lang.user.reset_password_comment
+            tab: rainlab.user::lang.user.account
 
         password_confirmation:
             type: password
             span: right
-            label: Password Confirmation
-            comment: Enter the password again to confirm it.
-            tab: Account
+            label: rainlab.user::lang.user.confirm_password
+            comment: rainlab.user::lang.user.confirm_password_comment
+            tab: rainlab.user::lang.user.account
 
 secondaryTabs:
     fields:
 
         avatar:
-            label: Avatar
+            label: rainlab.user::lang.user.avatar
             type: fileupload
             mode: image
             imageHeight: 260
