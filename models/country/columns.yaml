@@ -4,13 +4,13 @@
 
 columns:
     name:
-        label: Name
+        label: rainlab.user::lang.country.name
         searchable: true
 
     code:
-        label: Code
+        label: rainlab.user::lang.country.code
         searchable: true
 
     is_enabled:
-        label: Enabled
+        label: rainlab.user::lang.country.enabled
         type: switch

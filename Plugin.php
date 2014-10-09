@@ -50,7 +50,7 @@ class Plugin extends PluginBase
     {
         return [
             'user' => [
-                'label'       => 'Users',
+                'label'       => 'rainlab.user::lang.users.users',
                 'url'         => Backend::url('rainlab/user/users'),
                 'icon'        => 'icon-user',
                 'permissions' => ['users.*'],
@@ -58,7 +58,7 @@ class Plugin extends PluginBase
 
                 'sideMenu' => [
                     'users' => [
-                        'label'       => 'All Users',
+                        'label'       => 'rainlab.user::lang.users.all_users',
                         'icon'        => 'icon-user',
                         'url'         => Backend::url('rainlab/user/users'),
                         'permissions' => ['users.access_users'],
@@ -73,16 +73,16 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label'       => 'User Settings',
-                'description' => 'Manage user based settings.',
+                'label'       => 'rainlab.user::lang.users.user_settings',
+                'description' => 'rainlab.user::lang.users.user_settings_desc',
                 'category'    => 'Users',
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
             ],
             'location' => [
-                'label'       => 'Locations',
-                'description' => 'Manage available user countries and states.',
+                'label'       => 'rainlab.user::lang.locations.locations',
+                'description' => 'rainlab.user::lang.users.locations_desc',
                 'category'    => 'Users',
                 'icon'        => 'icon-globe',
                 'url'         => Backend::url('rainlab/user/locations'),

@@ -17,8 +17,8 @@ class Session extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'Session',
-            'description' => 'Adds the user session to a page and can restrict page access.'
+            'name'        => e(trans('rainlab.user::lang.session.session')),
+            'description' => e(trans('rainlab.user::lang.session.session_desc'))
         ];
     }
 
@@ -26,15 +26,17 @@ class Session extends ComponentBase
     {
         return [
             'security' => [
-                'title'       => 'Allow only',
-                'description' => 'Who is allowed to access this page.',
+                'title'       => e(trans('rainlab.user::lang.session.security_title')),
+                'description' => e(trans('rainlab.user::lang.session.security_desc')),
                 'type'        => 'dropdown',
                 'default'     => 'all',
-                'options'     => ['all' => 'All', 'user' => 'Users', 'guest' => 'Guests']
+                'options'     => ['all' => e(trans('rainlab.user::lang.session.all')),
+                                  'user' => e(trans('rainlab.user::lang.session.users')),
+                                  'guest' => e(trans('rainlab.user::lang.session.guests'))]
             ],
             'redirect' => [
-                'title'       => 'Redirect to',
-                'description' => 'Page name to redirect if access is denied.',
+                'title'       => e(trans('rainlab.user::lang.session.redirect_title')),
+                'description' => e(trans('rainlab.user::lang.session.redirect_desc')),
                 'type'        => 'dropdown',
                 'default'     => ''
             ]

@@ -1,19 +1,19 @@
 <form
     data-request="onRegister">
     <div class="form-group">
-        <label for="registerName">Full Name</label>
-        <input name="name" type="text" class="form-control" id="registerEmail" placeholder="Enter your full name">
+        <label for="registerName">{{ e(trans('rainlab.user::lang.account.full_name')) }}</label>
+        <input name="name" type="text" class="form-control" id="registerEmail" placeholder="{{ e(trans('rainlab.user::lang.account.enter_full_name')) }}">
     </div>
 
     <div class="form-group">
-        <label for="registerEmail">Email</label>
-        <input name="email" type="email" class="form-control" id="registerEmail" placeholder="Enter your email">
+        <label for="registerEmail">{{ e(trans('rainlab.user::lang.account.enter_full_name')) }}</label>
+        <input name="email" type="email" class="form-control" id="registerEmail" placeholder="{{ e(trans('rainlab.user::lang.account.enter_email')) }}">
     </div>
 
     <div class="form-group">
-        <label for="registerPassword">Password</label>
-        <input name="password" type="password" class="form-control" id="registerPassword" placeholder="Choose a password">
+        <label for="registerPassword">{{ e(trans('rainlab.user::lang.account.password')) }}</label>
+        <input name="password" type="password" class="form-control" id="registerPassword" placeholder="{{ e(trans('rainlab.user::lang.account.choose_password')) }}">
     </div>
 
-    <button type="submit" class="btn btn-default">Register</button>
+    <button type="submit" class="btn btn-default">{{ e(trans('rainlab.user::lang.account.register')) }}</button>
 </form>

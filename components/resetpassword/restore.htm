@@ -2,9 +2,9 @@
     data-request="{{ __SELF__ }}::onRestorePassword"
     data-request-update="'{{ __SELF__ }}::reset': '#partialUserResetForm'">
     <div class="form-group">
-        <label for="userRestoreEmail">Email</label>
-        <input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="Enter your email">
+        <label for="userRestoreEmail">{{ e(trans('rainlab.user::lang.user.email')) }}</label>
+        <input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="{{ e(trans('rainlab.user::lang.account.enter_email')) }}">
     </div>
 
-    <button type="submit" class="btn btn-default">Restore password</button>
+    <button type="submit" class="btn btn-default">{{ e(trans('rainlab.user::lang.reset_password.restore')) }}</button>
 </form>
