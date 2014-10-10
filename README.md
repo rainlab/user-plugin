@@ -81,7 +81,7 @@ By default the User plugin will use the email address as the login name. To swit
         <label>Password</label>
         <input name="password" type="password" placeholder="Choose a password">
 
-        <button type="submit" class="btn btn-default">Register</button>
+        <button type="submit">Register</button>
     </form>
 
 We can add any other additional fields here too, such as `phone`, `company`, etc.
