@@ -16,16 +16,16 @@ defaultRedirect: rainlab/user/locations
 
 # Create page
 create:
-    title: Create Location
+    title: rainlab.user::lang.location.create_title
     redirect: rainlab/user/locations/update/:id
     redirectClose: rainlab/user/locations
 
 # Update page
 update:
-    title: Edit Location
+    title: rainlab.user::lang.location.update_title
     redirect: rainlab/user/locations
     redirectClose: rainlab/user/locations
 
 # Preview page
 preview:
-    title: Preview Locations
+    title: rainlab.user::lang.location.preview_title

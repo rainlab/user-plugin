@@ -1,33 +1,33 @@
 {{ form_ajax('onUpdate', { model: user }) }}
 
     <div class="form-group">
-        <label for="accountName">Full Name</label>
+        <label for="accountName">{{ 'rainlab.user::lang.account.full_name'|trans }}</label>
         <input name="name" type="text" class="form-control" id="accountName" value="{{ form_value('name') }}">
     </div>
 
     <div class="form-group">
-        <label for="accountEmail">Email</label>
+        <label for="accountEmail">{{ 'rainlab.user::lang.account.email'|trans }}</label>
         <input name="email" type="email" class="form-control" id="accountEmail" value="{{ form_value('email') }}">
     </div>
 
     <div class="form-group">
-        <label for="accountCompany">Company</label>
-        <input name="company" type="text" class="form-control" id="accountCompany" placeholder="Enter your company or business name" value="{{ form_value('company') }}">
+        <label for="accountCompany">{{ 'rainlab.user::lang.user.company'|trans }}</label>
+        <input name="company" type="text" class="form-control" id="accountCompany" placeholder="{{ 'rainlab.user::lang.account.enter_company'|trans }}" value="{{ form_value('company') }}">
     </div>
 
     <div class="form-group">
-        <label for="accountPhone">Phone</label>
-        <input name="phone" type="text" class="form-control" id="accountPhone" placeholder="Enter your contact phone number" value="{{ form_value('phone') }}">
+        <label for="accountPhone">{{ 'rainlab.user::lang.user.phone'|trans }}</label>
+        <input name="phone" type="text" class="form-control" id="accountPhone" placeholder="{{ 'rainlab.user::lang.account.enter_phone'|trans }}" value="{{ form_value('phone') }}">
     </div>
 
     <div class="form-group">
-        <label for="accountAddress">Address</label>
-        <input name="street_addr" type="text" class="form-control" id="accountAddress" placeholder="Enter your street address" value="{{ form_value('address') }}">
+        <label for="accountAddress">{{ 'rainlab.user::lang.account.address'|trans }}</label>
+        <input name="street_addr" type="text" class="form-control" id="accountAddress" placeholder="{{ 'rainlab.user::lang.account.enter_address'|trans }}" value="{{ form_value('address') }}">
     </div>
 
     <div class="form-group">
-        <label for="accountCity">City / Suburb</label>
-        <input name="city" type="text" class="form-control" id="accountCity" placeholder="Enter your city or suburb" value="{{ form_value('city') }}">
+        <label for="accountCity">{{ 'rainlab.user::lang.account.city_suburb'|trans }}</label>
+        <input name="city" type="text" class="form-control" id="accountCity" placeholder="{{ 'rainlab.user::lang.account.enter_city_suburb'|trans }}" value="{{ form_value('city') }}">
     </div>
 
     <div id="partialCountryState">
@@ -35,20 +35,20 @@
     </div>
 
     <div class="form-group">
-        <label for="accountZip">Postal code</label>
-        <input name="zip" type="text" class="form-control" id="accountZip" placeholder="Enter your zip / post code" value="{{ form_value('zip') }}">
+        <label for="accountZip">{{ 'rainlab.user::lang.account.postal_code'|trans }}</label>
+        <input name="zip" type="text" class="form-control" id="accountZip" placeholder="{{ 'rainlab.user::lang.account.enter_postal_code'|trans }}" value="{{ form_value('zip') }}">
     </div>
 
     <div class="form-group">
-        <label for="accountPassword">New Password</label>
+        <label for="accountPassword">{{ 'rainlab.user::lang.account.new_password'|trans }}</label>
         <input name="password" type="password" class="form-control" id="accountPassword">
     </div>
 
     <div class="form-group">
-        <label for="accountPasswordConfirm">Confirm New Password</label>
+        <label for="accountPasswordConfirm">C{{ 'rainlab.user::lang.account.new_password_confirm'|trans }}</label>
         <input name="password_confirmation" type="password" class="form-control" id="accountPasswordConfirm">
     </div>
 
-    <button type="submit" class="btn btn-default">Save</button>
+    <button type="submit" class="btn btn-default">{{ 'backend::lang.form.save'|trans }}</button>
 
 {{ form_close() }}

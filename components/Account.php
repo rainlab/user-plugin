@@ -19,8 +19,8 @@ class Account extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'Account',
-            'description' => 'User management form.'
+            'name'        => e(trans('rainlab.user::lang.account.account')),
+            'description' => e(trans('rainlab.user::lang.account.account_desc'))
         ];
     }
 
@@ -28,14 +28,14 @@ class Account extends ComponentBase
     {
         return [
             'redirect' => [
-                'title'       => 'Redirect to',
-                'description' => 'Page name to redirect to after update, sign in or registration.',
+                'title'       => e(trans('rainlab.user::lang.account.redirect_to')),
+                'description' => e(trans('rainlab.user::lang.account.redirect_to_desc')),
                 'type'        => 'dropdown',
                 'default'     => ''
             ],
             'paramCode' => [
-                'title'       => 'Activation Code Param',
-                'description' => 'The page URL parameter used for the registration activation code',
+                'title'       => e(trans('rainlab.user::lang.account.code_param')),
+                'description' => e(trans('rainlab.user::lang.account.code_param_desc')),
                 'type'        => 'string',
                 'default'     => 'code'
             ]
@@ -190,17 +190,17 @@ class Account extends ComponentBase
              */
             $parts = explode('!', $code);
             if (count($parts) != 2)
-                throw new ValidationException(['code' => 'Invalid activation code supplied']);
+                throw new ValidationException(['code' => e(trans('rainlab.user::lang.account.invalid_activation_code'))]);
 
             list($userId, $code) = $parts;
 
             if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId)))
-                throw new ApplicationException('A user was not found with the given credentials.');
+                throw new ApplicationException(e(trans('rainlab.user::lang.account.invalid_user')));
 
             if (!$user->attemptActivation($code))
-                throw new ValidationException(['code' => 'Invalid activation code supplied']);
+                throw new ValidationException(['code' => e(trans('rainlab.user::lang.account.invalid_activation_code'))]);
 
-            Flash::success('Successfully activated your account.');
+            Flash::success(e(trans('rainlab.user::lang.account.succ_activation')));
 
             /*
              * Sign in the user
@@ -231,7 +231,7 @@ class Account extends ComponentBase
             Auth::login($user->reload(), true);
         }
 
-        Flash::success(post('flash', 'Settings successfully saved!'));
+        Flash::success(post('flash', e(trans('rainlab.user::lang.account.succ_saved'))));
 
         /*
          * Redirect to the intended page after successful update
@@ -250,12 +250,12 @@ class Account extends ComponentBase
         try {
             $user = $this->user();
             if (!$user)
-                throw new Exception('You must be logged in first!');
+                throw new Exception(e(trans('rainlab.user::lang.account.login_first')));
 
             if ($user->is_activated)
-                throw new Exception('Your account is already activated!');
+                throw new Exception(e(trans('rainlab.user::lang.account.alredy_active')));
 
-            Flash::success('Activation email has been sent to your nominated email address.');
+            Flash::success(e(trans('rainlab.user::lang.account.activation_email_sent')));
 
             $this->sendActivationEmail($user);
 

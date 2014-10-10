@@ -5,52 +5,52 @@
 columns:
 
     id:
-        label: ID
+        label: rainlab.user::lang.user.id
         invisible: true
 
     username:
-        label: Username
+        label: rainlab.user::lang.user.username
         searchable: true
         invisible: true
 
     name:
-        label: Name
+        label: rainlab.user::lang.user.name
         searchable: true
 
     email:
-        label: Email
+        label: rainlab.user::lang.user.email
         searchable: true
 
     created_at:
-        label: Registered
+        label: rainlab.user::lang.user.created_at
 
     phone:
-        label: Phone
+        label: rainlab.user::lang.user.phone
         searchable: true
         invisible: true
 
     company:
-        label: Company
+        label: rainlab.user::lang.user.company
         searchable: true
         invisible: true
 
     city:
-        label: City
+        label: rainlab.user::lang.user.city
         searchable: true
         invisible: true
 
     zip:
-        label: Zip
+        label: rainlab.user::lang.user.zip
         searchable: true
         invisible: true
 
     street_addr:
-        label: Street Address
+        label: rainlab.user::lang.user.street_addr
         searchable: true
         invisible: true
 
     country:
-        label: Country
+        label: rainlab.user::lang.user.country
         searchable: true
         invisible: true
         relation: country
@@ -58,7 +58,7 @@ columns:
         sortable: false
 
     state:
-        label: State
+        label: rainlab.user::lang.user.state
         searchable: true
         invisible: true
         relation: country

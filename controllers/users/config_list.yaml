@@ -2,7 +2,7 @@
 #  List Behavior Config
 # ===================================
 
-title: Manage Users
+title: rainlab.user::lang.users.list_title
 list: @/plugins/rainlab/user/models/user/columns.yaml
 modelClass: RainLab\User\Models\User
 recordUrl: rainlab/user/users/update/:id

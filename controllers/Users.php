@@ -38,7 +38,7 @@ class Users extends Controller
 
         $model->attemptActivation($model->activation_code);
 
-        Flash::success('User has been activated successfully!');
+        Flash::success(e(trans('rainlab.user::lang.users.activated_succ')));
 
         if ($redirect = $this->makeRedirect('update', $model))
             return $redirect;

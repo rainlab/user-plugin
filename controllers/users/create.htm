@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('rainlab/user/users') ?>">Users</a></li>
+        <li><a href="<?= Backend::url('rainlab/user/users') ?>"><?= e(trans('rainlab.user::lang.users.users')) ?></a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -18,21 +18,21 @@
                     type="submit"
                     data-request="onSave"
                     data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="Creating User..."
+                    data-load-indicator="<?= e(trans('rainlab.user::lang.users.creating')) ?>"
                     class="btn btn-primary">
-                    Create
+                    <?= e(trans('backend::lang.form.create')) ?>
                 </button>
                 <button
                     type="button"
                     data-request="onSave"
                     data-request-data="close:1"
                     data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="Creating User..."
+                    data-load-indicator="<?= e(trans('rainlab.user::lang.users.creating')) ?>"
                     class="btn btn-default">
-                    Create and Close
+                    <?= e(trans('backend::lang.form.create_and_close')) ?>
                 </button>
                 <span class="btn-text">
-                    or <a href="<?= Backend::url('rainlab/user/users') ?>">Cancel</a>
+                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('rainlab/user/users') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
             </div>
         </div>
@@ -55,6 +55,6 @@
     </div>
     <div class="padded-container">
         <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-        <p><a href="<?= Backend::url('rainlab/user/users') ?>" class="btn btn-default">Return to users list</a></p>
+        <p><a href="<?= Backend::url('rainlab/user/users') ?>" class="btn btn-default"><?= e(trans('rainlab.user::lang.users.return_to_list')) ?></a></p>
     </div>
 <?php endif ?>
