@@ -1,14 +1,14 @@
 <form
     data-request="onSignin">
     <div class="form-group">
-        <label for="signinLogin">{{ 'rainlab.user::lang.account.login'|trans }}</label>
-        <input name="login" type="text" class="form-control" id="signinLogin" placeholder="{{ 'rainlab.user::lang.account.enter_login'|trans }}">
+        <label for="userSigninEmail">Email</label>
+        <input name="email" type="email" class="form-control" id="userSigninEmail" placeholder="Enter your email">
     </div>
 
     <div class="form-group">
-        <label for="signinPassword">{{ 'rainlab.user::lang.account.password'|trans }}</label>
-        <input name="password" type="password" class="form-control" id="signinPassword" placeholder="{{ 'rainlab.user::lang.account.enter_password'|trans }}">
+        <label for="userSigninPassword">Password</label>
+        <input name="password" type="password" class="form-control" id="userSigninPassword" placeholder="Enter your password">
     </div>
 
-    <button type="submit" class="btn btn-default">{{ 'rainlab.user::lang.account.sign_in'|trans }}</button>
+    <button type="submit" class="btn btn-default">Sign in</button>
 </form>

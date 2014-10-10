@@ -17,8 +17,8 @@ class Session extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => e(trans('rainlab.user::lang.session.session')),
-            'description' => e(trans('rainlab.user::lang.session.session_desc'))
+            'name'        => 'rainlab.user::lang.session.session',
+            'description' => 'rainlab.user::lang.session.session_desc'
         ];
     }
 
@@ -26,17 +26,19 @@ class Session extends ComponentBase
     {
         return [
             'security' => [
-                'title'       => e(trans('rainlab.user::lang.session.security_title')),
-                'description' => e(trans('rainlab.user::lang.session.security_desc')),
+                'title'       => 'rainlab.user::lang.session.security_title',
+                'description' => 'rainlab.user::lang.session.security_desc',
                 'type'        => 'dropdown',
                 'default'     => 'all',
-                'options'     => ['all' => e(trans('rainlab.user::lang.session.all')),
-                                  'user' => e(trans('rainlab.user::lang.session.users')),
-                                  'guest' => e(trans('rainlab.user::lang.session.guests'))]
+                'options'     => [
+                    'all'   => 'rainlab.user::lang.session.all',
+                    'user'  => 'rainlab.user::lang.session.users',
+                    'guest' => 'rainlab.user::lang.session.guests'
+                ]
             ],
             'redirect' => [
-                'title'       => e(trans('rainlab.user::lang.session.redirect_title')),
-                'description' => e(trans('rainlab.user::lang.session.redirect_desc')),
+                'title'       => 'rainlab.user::lang.session.redirect_title',
+                'description' => 'rainlab.user::lang.session.redirect_desc',
                 'type'        => 'dropdown',
                 'default'     => ''
             ]

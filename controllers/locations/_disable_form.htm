@@ -12,8 +12,8 @@
         <p><?= e(trans('rainlab.user::lang.locations.selected_amount', ['amount'=>count($checked)])) ?></p>
 
         <div class="form-preview">
-
             <div class="form-group">
+
                 <!-- Checkbox -->
                 <div class="checkbox custom-checkbox">
                     <input
@@ -26,8 +26,8 @@
                     </label>
                     <p class="help-block"><?= e(trans('rainlab.user::lang.locations.enabled_help')) ?></p>
                 </div>
-            </div>
 
+            </div>
         </div>
 
         <?php foreach ($checked as $id): ?>
@@ -41,7 +41,7 @@
             type="submit"
             class="btn btn-primary"
             data-request="onDisableLocations"
-            data-request-confirm="<?= e(trans('rainlab.user::lang.locations.disable_confirm'))"
+            data-request-confirm="<?= e(trans('rainlab.user::lang.locations.disable_confirm')) ?>"
             data-stripe-load-indicator>
             <?= e(trans('backend::lang.form.apply')) ?>
         </button>

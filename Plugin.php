@@ -50,7 +50,7 @@ class Plugin extends PluginBase
     {
         return [
             'user' => [
-                'label'       => 'rainlab.user::lang.users.users',
+                'label'       => 'rainlab.user::lang.users.menu_label',
                 'url'         => Backend::url('rainlab/user/users'),
                 'icon'        => 'icon-user',
                 'permissions' => ['users.*'],
@@ -81,7 +81,7 @@ class Plugin extends PluginBase
                 'order'       => 500,
             ],
             'location' => [
-                'label'       => 'rainlab.user::lang.locations.locations',
+                'label'       => 'rainlab.user::lang.locations.menu_label',
                 'description' => 'rainlab.user::lang.users.locations_desc',
                 'category'    => 'Users',
                 'icon'        => 'icon-globe',

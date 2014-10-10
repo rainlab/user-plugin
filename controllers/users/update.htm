@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('rainlab/user/users') ?>"><?= e(trans('rainlab.user::lang.users.users')) ?></a></li>
+        <li><a href="<?= Backend::url('rainlab/user/users') ?>"><?= e(trans('rainlab.user::lang.users.menu_label')) ?></a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -13,8 +13,8 @@
             <div class="callout callout-warning">
                 <div class="header">
                     <i class="icon-warning"></i>
-                    <h3><?= e(trans('rainlab.user::lang.users.activate_warn_title')) ?></h3>
-                    <p><?= e(trans('rainlab.user::lang.users.activate_warn_desc')) ?></p>
+                    <h3><?= e(trans('rainlab.user::lang.users.activate_warning_title')) ?></h3>
+                    <p><?= e(trans('rainlab.user::lang.users.activate_warning_desc')) ?></p>
                 </div>
                 <div class="content">
                     <div class="loading-indicator-container">
@@ -22,7 +22,7 @@
                             type="button"
                             class="btn btn-warning"
                             data-request="onActivate"
-                            data-load-indicator="<?= e(trans('rainlab.user::lang.users.activint')) ?>"
+                            data-load-indicator="<?= e(trans('rainlab.user::lang.users.activating')) ?>"
                             data-request-confirm="<?= e(trans('rainlab.user::lang.users.activate_confirm')) ?>">
                             <?= e(trans('rainlab.user::lang.users.active_manually')) ?>
                         </button>
@@ -36,21 +36,21 @@
 
         <div class="form-buttons layout-item fix">
             <div class="loading-indicator-container">
-                <button 
+                <button
                     type="submit"
                     data-request="onSave"
                     data-request-data="redirect:0"
                     data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="<?= e(trans('rainlab.user::lang.users.saving')) ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
                     class="btn btn-primary">
                     <?= e(trans('backend::lang.form.save')) ?>
                 </button>
-                <button 
+                <button
                     type="button"
                     data-request="onSave"
                     data-request-data="close:1"
                     data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="<?= e(trans('rainlab.user::lang.users.aving')) ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name'=>$formRecordName])) ?>"
                     class="btn btn-default">
                     <?= e(trans('backend::lang.form.save_and_close')) ?>
                 </button>
@@ -60,7 +60,7 @@
                 <button
                     class="oc-icon-trash-o btn-icon danger pull-right"
                     data-request="onDelete"
-                    data-load-indicator="<?= e(trans('rainlab.user::lang.users.deleting')) ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.deleting_name', ['name'=>$formRecordName])) ?>"
                     data-request-confirm="<?= e(trans('rainlab.user::lang.users.delete_confirm')) ?>">
                 </button>
             </div>
