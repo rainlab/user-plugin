@@ -6,6 +6,7 @@ return [
     ],
     'locations' => [
         'menu_label' => 'Locations',
+        'menu_description' => 'Manage available user countries and states.',
         'enabled_label' => "Enabled",
         'enabled_help' => "Disabled locations are not visible on the front-end.",
         'enable_or_disable_title' => "Enable or Disable Locations",
@@ -25,9 +26,6 @@ return [
     'users' => [
         'menu_label' => 'Users',
         'all_users' => 'All Users',
-        'user_settings' => 'User Settings',
-        'user_settings_desc' => 'Manage user based settings.',
-        'locations_desc' => 'Manage available user countries and states.',
         'new_user' => 'New User',
         'list_title' => 'Manage Users',
         'activating' => 'Activating...',
@@ -40,6 +38,8 @@ return [
         'return_to_list' => 'Return to users list',
     ],
     'settings' => [
+        'menu_label' => 'User Settings',
+        'menu_description' => 'Manage user based settings.',
         'activation_tab' => 'Activation',
         'location_tab' => 'Location',
         'signin_tab' => 'Sign in',

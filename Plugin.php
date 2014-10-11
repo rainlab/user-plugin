@@ -73,8 +73,8 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label'       => 'rainlab.user::lang.users.user_settings',
-                'description' => 'rainlab.user::lang.users.user_settings_desc',
+                'label'       => 'rainlab.user::lang.settings.menu_label',
+                'description' => 'rainlab.user::lang.settings.menu_description',
                 'category'    => 'Users',
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
@@ -82,7 +82,7 @@ class Plugin extends PluginBase
             ],
             'location' => [
                 'label'       => 'rainlab.user::lang.locations.menu_label',
-                'description' => 'rainlab.user::lang.users.locations_desc',
+                'description' => 'rainlab.user::lang.locations.menu_description',
                 'category'    => 'Users',
                 'icon'        => 'icon-globe',
                 'url'         => Backend::url('rainlab/user/locations'),
