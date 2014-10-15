@@ -93,10 +93,7 @@ class Account extends ComponentBase
         if ($loginAttribute == UserSettings::LOGIN_USERNAME)
             $rules['login'] = 'required|between:2,64';
         else
-            $rules['email'] = 'required|email|between:2,64';
-
-        if (!in_array('login', $data))
-            $data['login'] = post('username', post('email'));
+            $rules['login'] = 'required|email|between:2,64';
 
         $validation = Validator::make($data, $rules);
         if ($validation->fails())
