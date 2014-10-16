@@ -1,7 +1,7 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
         <li><a href="<?= Backend::url('rainlab/user/locations') ?>"><?= e(trans('rainlab.user::lang.locations.menu_label')) ?></a></li>
-        <li><?= e($this->pageTitle) ?></li>
+        <li><?= e(trans($this->pageTitle)) ?></li>
     </ul>
 <?php Block::endPut() ?>
 
@@ -50,7 +50,7 @@
 
 <?php else: ?>
 
-    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
     <p><a href="<?= Backend::url('rainlab/user/locations') ?>" class="btn btn-default"><?= e(trans('rainlab.user::lang.locations.back_to_list')) ?></a></p>
 
 <?php endif ?>

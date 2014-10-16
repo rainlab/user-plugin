@@ -3,6 +3,9 @@
 return [
     'location' => [
         'new' => 'New Location',
+        'create_title' => 'Create Location',
+        'update_title' => 'Edit Location',
+        'preview_title' => 'Preview Location',
     ],
     'locations' => [
         'menu_label' => 'Locations',
@@ -15,9 +18,6 @@ return [
         'enable_success' => "Successfully enabled those locations.",
         'disable_success' => "Successfully disabled those locations.",
         'disable_confirm' => 'Are you sure?',
-        'create_title' => 'Create Location',
-        'update_title' => 'Edit Location',
-        'preview_title' => 'Preview Locations',
         'list_title' => 'Manage Locations',
         'state' => 'State',
         'delete_confirm' => 'Do you really want to delete this location?',
@@ -38,7 +38,7 @@ return [
         'return_to_list' => 'Return to users list',
     ],
     'settings' => [
-        'menu_label' => 'User Settings',
+        'menu_label' => 'User settings',
         'menu_description' => 'Manage user based settings.',
         'activation_tab' => 'Activation',
         'location_tab' => 'Location',
