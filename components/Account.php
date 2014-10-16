@@ -95,6 +95,9 @@ class Account extends ComponentBase
         else
             $rules['login'] = 'required|email|between:2,64';
 
+        if (!in_array('login', $data))
+            $data['login'] = post('username', post('email'));
+
         $validation = Validator::make($data, $rules);
         if ($validation->fails())
             throw new ValidationException($validation);
