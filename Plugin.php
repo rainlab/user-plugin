@@ -52,7 +52,7 @@ class Plugin extends PluginBase
             'user' => [
                 'label'       => 'rainlab.user::lang.users.menu_label',
                 'url'         => Backend::url('rainlab/user/users'),
-                'icon'        => 'icon-user',
+                'icon'        => 'icon-users',
                 'permissions' => ['users.*'],
                 'order'       => 500,
 
