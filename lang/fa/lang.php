@@ -3,6 +3,9 @@
 return [
     'location' => [
         'new' => 'موقعیت جدید',
+        'create_title' => 'افزودن موقعیت',
+        'update_title' => 'ویرایش موقعیت',
+        'preview_title' => 'پیش نمایش موقعیت',
     ],
     'locations' => [
         'menu_label' => 'موقعیت ها',
@@ -15,9 +18,6 @@ return [
         'enable_success' => "موقعیت ها با موفقیت فعال شدند.",
         'disable_success' => "موقعیت ها با موفقیت غیر فعال شدن.",
         'disable_confirm' => 'آیا اطمینان دارید؟',
-        'create_title' => 'موقعیت جدید',
-        'update_title' => 'ویرایش موقعیت',
-        'preview_title' => 'پیش نمایش موقعیت',
         'list_title' => 'مدیریت موقعیت ها',
         'state' => 'استان',
         'delete_confirm' => 'آیا از حذف این موقعیت اطمینان دارید؟',
