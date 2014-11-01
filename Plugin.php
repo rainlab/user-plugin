@@ -32,7 +32,7 @@ class Plugin extends PluginBase
         /*
          * Apply user-based mail blocking 
          */
-        Event::listen('mailer.beforeSend', function($mailer, $view, $message){
+        Event::listen('mailer.prepareSend', function($mailer, $view, $message){
             return MailBlocker::filterMessage($view, $message);
         });
     }
@@ -52,7 +52,7 @@ class Plugin extends PluginBase
             'user' => [
                 'label'       => 'rainlab.user::lang.users.menu_label',
                 'url'         => Backend::url('rainlab/user/users'),
-                'icon'        => 'icon-users',
+                'icon'        => 'icon-user',
                 'permissions' => ['users.*'],
                 'order'       => 500,
 
