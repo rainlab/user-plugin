@@ -14,6 +14,7 @@ return [
     'locations' => [
         'menu_label' => 'موقعیت ها',
         'menu_description' => 'مدیریت کشور ها و استانهای موجود برای کاربران.',
+        'hide_disabled' => 'Hide disabled',
         'enabled_label' => "فعال",
         'enabled_help' => "موقعیت های غیر فعال شده در محیط کاربری نماسش داده نمی شوند.",
         'enable_or_disable_title' => "فعال و یا غیر فعال سازی موقعیت ها",
