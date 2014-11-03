@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'plugin' => [
+        'name' => 'User',
+        'description' => 'Front-end user management.'
+    ],
     'location' => [
         'new' => 'New Location',
         'create_title' => 'Create Location',

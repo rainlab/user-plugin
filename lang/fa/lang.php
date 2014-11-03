@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'plugin' => [
+        'name' => 'User',
+        'description' => 'Front-end user management.'
+    ],
     'location' => [
         'new' => 'موقعیت جدید',
         'create_title' => 'افزودن موقعیت',
@@ -39,7 +43,7 @@ return [
     ],
     'settings' => [
         'menu_label' => 'تنظیمات کاربر',
-        'menu_description' => 'مدیریت تنظیمات مربوط به کاربر.',    
+        'menu_description' => 'مدیریت تنظیمات مربوط به کاربر.',
         'activation_tab' => 'فعال سازی',
         'location_tab' => 'موقعیت',
         'signin_tab' => 'ورود',
@@ -148,5 +152,5 @@ return [
         'guests' => 'میهمان ها',
         'redirect_title' => 'انتقال به',
         'redirect_desc' => 'نام صفحه ای که در صورت عدم اجازه دسترسی کاربر به آن انتقال پیدا میکند.',
-    ],    
+    ],
 ];
