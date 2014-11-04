@@ -2,7 +2,7 @@
 #  Form Behavior Config
 # ===================================
 
-name: User
+name: rainlab.user::lang.user.user
 form: @/plugins/rainlab/user/models/user/fields.yaml
 modelClass: RainLab\User\Models\User
 defaultRedirect: rainlab/user/users

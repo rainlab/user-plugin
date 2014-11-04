@@ -6,6 +6,7 @@ return [
         'description' => 'Front-end user management.'
     ],
     'location' => [
+        'location' => 'location',
         'new' => 'موقعیت جدید',
         'create_title' => 'افزودن موقعیت',
         'update_title' => 'ویرایش موقعیت',
@@ -84,6 +85,7 @@ return [
         'enabled' => 'فعال',
     ],
     'user' => [
+        'user' => 'user',
         'id' => 'مشخصه',
         'username' => 'نام کاربری',
         'name' => 'نام',
