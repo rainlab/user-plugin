@@ -1,7 +1,12 @@
 <?php
 
 return [
+    'plugin' => [
+        'name' => 'User',
+        'description' => 'Front-end user management.'
+    ],
     'location' => [
+        'location' => 'location',
         'new' => 'New Location',
         'create_title' => 'Create Location',
         'update_title' => 'Edit Location',
@@ -10,6 +15,7 @@ return [
     'locations' => [
         'menu_label' => 'Locations',
         'menu_description' => 'Manage available user countries and states.',
+        'hide_disabled' => 'Hide disabled',
         'enabled_label' => "Enabled",
         'enabled_help' => "Disabled locations are not visible on the front-end.",
         'enable_or_disable_title' => "Enable or Disable Locations",
@@ -79,6 +85,7 @@ return [
         'enabled' => 'Enabled',
     ],
     'user' => [
+        'user' => 'user',
         'id' => 'ID',
         'username' => 'Username',
         'name' => 'Name',

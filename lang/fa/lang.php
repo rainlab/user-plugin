@@ -1,7 +1,12 @@
 <?php
 
 return [
+    'plugin' => [
+        'name' => 'User',
+        'description' => 'Front-end user management.'
+    ],
     'location' => [
+        'location' => 'location',
         'new' => 'موقعیت جدید',
         'create_title' => 'افزودن موقعیت',
         'update_title' => 'ویرایش موقعیت',
@@ -10,6 +15,7 @@ return [
     'locations' => [
         'menu_label' => 'موقعیت ها',
         'menu_description' => 'مدیریت کشور ها و استانهای موجود برای کاربران.',
+        'hide_disabled' => 'Hide disabled',
         'enabled_label' => "فعال",
         'enabled_help' => "موقعیت های غیر فعال شده در محیط کاربری نماسش داده نمی شوند.",
         'enable_or_disable_title' => "فعال و یا غیر فعال سازی موقعیت ها",
@@ -39,7 +45,7 @@ return [
     ],
     'settings' => [
         'menu_label' => 'تنظیمات کاربر',
-        'menu_description' => 'مدیریت تنظیمات مربوط به کاربر.',    
+        'menu_description' => 'مدیریت تنظیمات مربوط به کاربر.',
         'activation_tab' => 'فعال سازی',
         'location_tab' => 'موقعیت',
         'signin_tab' => 'ورود',
@@ -79,6 +85,7 @@ return [
         'enabled' => 'فعال',
     ],
     'user' => [
+        'user' => 'user',
         'id' => 'مشخصه',
         'username' => 'نام کاربری',
         'name' => 'نام',
@@ -148,5 +155,5 @@ return [
         'guests' => 'میهمان ها',
         'redirect_title' => 'انتقال به',
         'redirect_desc' => 'نام صفحه ای که در صورت عدم اجازه دسترسی کاربر به آن انتقال پیدا میکند.',
-    ],    
+    ],
 ];

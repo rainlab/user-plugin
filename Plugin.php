@@ -13,8 +13,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'User',
-            'description' => 'Front-end user management.',
+            'name'        => 'rainlab.user::lang.plugin.name',
+            'description' => 'rainlab.user::lang.plugin.description',
             'author'      => 'Alexey Bobkov, Samuel Georges',
             'icon'        => 'icon-user'
         ];
@@ -30,7 +30,7 @@ class Plugin extends PluginBase
         });
 
         /*
-         * Apply user-based mail blocking 
+         * Apply user-based mail blocking
          */
         Event::listen('mailer.prepareSend', function($mailer, $view, $message){
             return MailBlocker::filterMessage($view, $message);
