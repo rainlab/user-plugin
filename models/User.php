@@ -51,8 +51,8 @@ class User extends UserBase
         'street_addr',
         'city',
         'zip',
-        'country',
-        'state'
+        'country_id',
+        'state_id'
     ];
 
     /**
