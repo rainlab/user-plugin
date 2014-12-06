@@ -65,7 +65,7 @@ return [
         'default_country_comment' => 'When a user does not specify their location, select a default country to use.',
         'default_state' => 'Default State',
         'default_state_comment' => 'When a user does not specify their location, select a default state to use.',
-        'use_throttle' => 'Throttle attemps',
+        'use_throttle' => 'Throttle attempts',
         'use_throttle_comment' => 'Repeat failed sign in attempts will temporarily suspend the user.',
         'login_attribute' => 'Login attribute',
         'login_attribute_comment' => 'Select what user detail should be used for signing in.',
