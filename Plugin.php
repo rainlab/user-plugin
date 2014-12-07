@@ -30,7 +30,7 @@ class Plugin extends PluginBase
         });
 
         /*
-         * Apply user-based mail blocking
+         * Apply user-based mail blocking 
          */
         Event::listen('mailer.prepareSend', function($mailer, $view, $message){
             return MailBlocker::filterMessage($view, $message);
@@ -75,7 +75,7 @@ class Plugin extends PluginBase
             'settings' => [
                 'label'       => 'rainlab.user::lang.settings.menu_label',
                 'description' => 'rainlab.user::lang.settings.menu_description',
-                'category'    => 'Users',
+                'category'    => 'rainlab.user::lang.settings.users',
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
@@ -83,7 +83,7 @@ class Plugin extends PluginBase
             'location' => [
                 'label'       => 'rainlab.user::lang.locations.menu_label',
                 'description' => 'rainlab.user::lang.locations.menu_description',
-                'category'    => 'Users',
+                'category'    => 'rainlab.user::lang.settings.users',
                 'icon'        => 'icon-globe',
                 'url'         => Backend::url('rainlab/user/locations'),
                 'order'       => 500,

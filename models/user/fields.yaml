@@ -46,7 +46,7 @@ tabs:
             type: dropdown
             tab: rainlab.user::lang.user.details
             span: left
-            placeholder: -- select country --
+            placeholder: rainlab.user::lang.user.select_country
 
         state:
             label: rainlab.user::lang.user.state
@@ -54,7 +54,7 @@ tabs:
             tab: rainlab.user::lang.user.details
             span: right
             depends: country
-            placeholder: -- select state --
+            placeholder: rainlab.user::lang.user.select_state
 
         username:
             span: left
