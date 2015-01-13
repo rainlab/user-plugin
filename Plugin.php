@@ -46,6 +46,13 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerPermissions()
+    {
+        return [
+            'rainlab.users.access_users'  => ['label' => 'Manage Users'],
+        ];
+    }
+
     public function registerNavigation()
     {
         return [
@@ -53,7 +60,7 @@ class Plugin extends PluginBase
                 'label'       => 'rainlab.user::lang.users.menu_label',
                 'url'         => Backend::url('rainlab/user/users'),
                 'icon'        => 'icon-user',
-                'permissions' => ['users.*'],
+                'permissions' => ['rainlab.users.*'],
                 'order'       => 500,
 
                 'sideMenu' => [
@@ -61,7 +68,7 @@ class Plugin extends PluginBase
                         'label'       => 'rainlab.user::lang.users.all_users',
                         'icon'        => 'icon-user',
                         'url'         => Backend::url('rainlab/user/users'),
-                        'permissions' => ['users.access_users'],
+                        'permissions' => ['rainlab.users.access_users'],
                     ],
                 ]
 

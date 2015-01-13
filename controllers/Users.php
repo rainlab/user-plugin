@@ -17,7 +17,7 @@ class Users extends Controller
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
 
-    public $requiredPermissions = ['users.manage_users'];
+    public $requiredPermissions = ['rainlab.users.access_users'];
 
     public $bodyClass = 'compact-container';
 
