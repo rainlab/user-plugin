@@ -25,6 +25,9 @@ defaultSort:
     column: name
     direction: asc
 
+# Display setup option
+showSetup: true
+
 # Display checkboxes next to each record
 showCheckboxes: true
 
