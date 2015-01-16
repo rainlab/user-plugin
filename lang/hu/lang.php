@@ -1,7 +1,12 @@
 <?php
 
 return [
+    'plugin' => [
+        'name' => 'Felhasználó',
+        'description' => 'Felhasználó-kezelés a felhasználói oldalon.'
+    ],
     'location' => [
+        'label' => 'Tartózkodási hely',
         'new' => 'Új tartózkodási hely',
         'create_title' => 'Tartózkodási hely létrehozása',
         'update_title' => 'Tartózkodási hely szerkesztése',
@@ -10,13 +15,14 @@ return [
     'locations' => [
         'menu_label' => 'Tartózkodási helyek',
         'menu_description' => 'Elérhető felhasználói országok és államok/megyék kezelése.',
+        'hide_disabled' => 'Letiltottak elrejtése',
         'enabled_label' => "Engedélyezve",
         'enabled_help' => "A letiltott tartózkodási helyek nem láthatók a felhasználói oldalon.",
         'enable_or_disable_title' => "Tartózkodási helyek engedélyezése vagy letiltása",
         'enable_or_disable' => 'Engedélyezés vagy letiltás',
         'selected_amount' => 'Kiválasztott tartózkodási helyek: :amount',
-        'enable_success' => "A tartózkodási helyek engedélyezése sikerült.",
-        'disable_success' => "A tartózkodási helyek letiltása sikerült.",
+        'enable_success' => 'A tartózkodási helyek engedélyezése sikerült.',
+        'disable_success' => 'A tartózkodási helyek letiltása sikerült.',
         'disable_confirm' => 'Biztos benne?',
         'list_title' => 'Tartózkodási helyek kezelése',
         'state' => 'Állam/megye',
@@ -38,6 +44,7 @@ return [
         'return_to_list' => 'Vissza a felhasználólistához',
     ],
     'settings' => [
+        'users' => 'Felhasználók',
         'menu_label' => 'Felhasználói beállítások',
         'menu_description' => 'A felhasználó alapú beállítások kezelése.',
         'activation_tab' => 'Aktiválás',
@@ -56,7 +63,6 @@ return [
         'require_activation' => 'A bejelentkezéshez aktiválás szükséges',
         'require_activation_comment' => 'A felhasználóknak aktivált fiókkal kell rendelkezniük a bejelentkezéshez.',
         'default_country' => 'Alapértelmezett ország',
-        'default_country_comment' => 'Ha egy felhasználó nem adja meg a tartózkodási helyét, akkor válasszon egy országot.',
         'default_country_comment' => 'Ha egy felhasználó nem adja meg a tartózkodási helyét, akkor válasszon egy országot.',
         'default_state' => 'Alapértelmezett állam/megye',
         'default_state_comment' => 'Ha egy felhasználó nem adja meg a tartózkodási helyét, akkor válasszon egy államot/megyét.',
@@ -80,6 +86,7 @@ return [
         'enabled' => 'Engedélyezve',
     ],
     'user' => [
+        'label' => 'Felhasználó',
         'id' => 'Azonosító',
         'username' => 'Felhasználónév',
         'name' => 'Név',
@@ -91,7 +98,9 @@ return [
         'zip' => 'Irányítószám',
         'street_addr' => 'Utca, házszám',
         'country' => 'Ország',
+        'select_country' => '-- válasszon országot --',
         'state' => 'Állam/megye',
+        'select_state' => '-- válasszon államot/megyét --',
         'reset_password' => 'Új jelszó megadása',
         'reset_password_comment' => 'Új jelszó ezen felhasználó részére való megadásához adjon meg itt egy új jelszót.',
         'confirm_password' => 'Jelszó megerősítése',
