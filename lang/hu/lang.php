@@ -1,31 +1,36 @@
 <?php
 
 return [
+    'plugin' => [
+        'name' => 'Felhasználók',
+        'description' => 'Regisztrált felhasználók menedzselése.'
+    ],
     'location' => [
         'new' => 'Új tartózkodási hely',
         'create_title' => 'Tartózkodási hely létrehozása',
         'update_title' => 'Tartózkodási hely szerkesztése',
-        'preview_title' => 'Tartózkodási hely villámnézete',
+        'preview_title' => 'Tartózkodási hely villámnézete'
     ],
     'locations' => [
         'menu_label' => 'Tartózkodási helyek',
-        'menu_description' => 'Elérhető felhasználói országok és államok/megyék kezelése.',
-        'enabled_label' => "Engedélyezve",
-        'enabled_help' => "A letiltott tartózkodási helyek nem láthatók a felhasználói oldalon.",
-        'enable_or_disable_title' => "Tartózkodási helyek engedélyezése vagy letiltása",
+        'menu_description' => 'Országok és államok / megyék kezelése.',
+        'hide_disabled' => 'Letiltottak elrejtése',
+        'enabled_label' => 'Engedélyezve',
+        'enabled_help' => 'A letiltott tartózkodási helyek nem láthatók a felhasználói oldalon.',
+        'enable_or_disable_title' => 'Tartózkodási helyek engedélyezése vagy letiltása',
         'enable_or_disable' => 'Engedélyezés vagy letiltás',
         'selected_amount' => 'Kiválasztott tartózkodási helyek: :amount',
-        'enable_success' => "A tartózkodási helyek engedélyezése sikerült.",
-        'disable_success' => "A tartózkodási helyek letiltása sikerült.",
+        'enable_success' => 'A tartózkodási helyek engedélyezése sikerült.',
+        'disable_success' => 'A tartózkodási helyek letiltása sikerült.',
         'disable_confirm' => 'Biztos benne?',
         'list_title' => 'Tartózkodási helyek kezelése',
-        'state' => 'Állam/megye',
+        'state' => 'Állam / megye',
         'delete_confirm' => 'Valóban törölni akarja ezt a tartózkodási helyet?',
-        'return_to_list' => 'Vissza a tartózkodási helyek listájához',
+        'return_to_list' => 'Vissza a tartózkodási helyek listájához'
     ],
     'users' => [
         'menu_label' => 'Felhasználók',
-        'all_users' => 'Minden felhasználó',
+        'all_users' => 'Felhasználók',
         'new_user' => 'Új felhasználó',
         'list_title' => 'Felhasználók kezelése',
         'activating' => 'Aktiválás...',
@@ -35,11 +40,12 @@ return [
         'active_manually' => 'A felhasználó kézi aktiválása',
         'delete_confirm' => 'Valóban törölni akarja ezt a felhasználót?',
         'activated_success' => 'A felhasználó aktiválása sikerült!',
-        'return_to_list' => 'Vissza a felhasználólistához',
+        'return_to_list' => 'Vissza a felhasználólistához'
     ],
     'settings' => [
+        'users' => 'Felhasználók',
         'menu_label' => 'Felhasználói beállítások',
-        'menu_description' => 'A felhasználó alapú beállítások kezelése.',
+        'menu_description' => 'A regisztráció és a fiókok testreszabása.',
         'activation_tab' => 'Aktiválás',
         'location_tab' => 'Tartózkodási hely',
         'signin_tab' => 'Bejelentkezés',
@@ -49,35 +55,34 @@ return [
         'activate_mode_auto_comment' => 'Regisztráláskor automatikusan aktiválva.',
         'activate_mode_user' => 'Felhasználó',
         'activate_mode_user_comment' => 'A felhasználó levéllel aktiválja a saját fiókját.',
-        'activate_mode_admin' => 'Webhelygazda',
-        'activate_mode_admin_comment' => 'Csak webhelygazda aktiválhat felhasználót.',
-        'welcome_template' => 'Üdvözlés sablon',
+        'activate_mode_admin' => 'Adminisztrátor',
+        'activate_mode_admin_comment' => 'Csak adminisztrátor aktiválhat felhasználót.',
+        'welcome_template' => 'Üdvözlő e-mail',
         'welcome_template_comment' => 'A felhasználónak első aktiváláskor küldendő levélsablon.',
         'require_activation' => 'A bejelentkezéshez aktiválás szükséges',
         'require_activation_comment' => 'A felhasználóknak aktivált fiókkal kell rendelkezniük a bejelentkezéshez.',
         'default_country' => 'Alapértelmezett ország',
         'default_country_comment' => 'Ha egy felhasználó nem adja meg a tartózkodási helyét, akkor válasszon egy országot.',
-        'default_country_comment' => 'Ha egy felhasználó nem adja meg a tartózkodási helyét, akkor válasszon egy országot.',
-        'default_state' => 'Alapértelmezett állam/megye',
-        'default_state_comment' => 'Ha egy felhasználó nem adja meg a tartózkodási helyét, akkor válasszon egy államot/megyét.',
+        'default_state' => 'Alapértelmezett állam / megye',
+        'default_state_comment' => 'Ha egy felhasználó nem adja meg a tartózkodási helyét, akkor válasszon egy államot / megyét.',
         'use_throttle' => 'Kísérletek késleltetése',
         'use_throttle_comment' => 'Az ismétlődő sikertelen bejelentkezések ideiglenesen felfüggesztik a felhasználót.',
-        'login_attribute' => 'Bejelentkezési attribútum',
+        'login_attribute' => 'Bejelentkezési azonosító',
         'login_attribute_comment' => 'Válassza ki, hogy milyen felhasználói adatot kell használni a bejelentkezéshez.',
-        'no_mail_template' => 'Nincs értesítés küldése',
-        'hint_templates' => 'A levélsablonokat a Beállítások menüben a Levelezés > Levélsablonok választásával szabhatja személyre.',
+        'no_mail_template' => 'Nem kap értesítést',
+        'hint_templates' => 'A levélsablonokat a Beállítások menüben a Levelezés > Levél sablonok választásával szabhatja személyre.'
     ],
     'state' => [
         'name' => 'Név',
-        'name_comment' => 'Írja be ennek az államnak/megyének a megjelenítendő nevét.',
+        'name_comment' => 'Írja be ennek az államnak / megyének a megjelenítendő nevét.',
         'code' => 'Kód',
-        'code_comment' => 'Írja be az ezt az államot/megyét azonosító egyedi kódot.',
+        'code_comment' => 'Írja be az államot / megyét azonosító egyedi kódot.'
     ],
     'country' => [
         'name' => 'Név',
         'code' => 'Kód',
-        'code_comment' => 'Írja be az ezt az országot azonosító egyedi kódot.',
-        'enabled' => 'Engedélyezve',
+        'code_comment' => 'Adja meg az országazonosítót vagy egyedi kódot.',
+        'enabled' => 'Engedélyezve'
     ],
     'user' => [
         'id' => 'Azonosító',
@@ -91,18 +96,20 @@ return [
         'zip' => 'Irányítószám',
         'street_addr' => 'Utca, házszám',
         'country' => 'Ország',
-        'state' => 'Állam/megye',
+        'select_country' => '-- választás a listából --',
+        'state' => 'Állam / megye',
+        'select_state' => '-- választás a listából --',
         'reset_password' => 'Új jelszó megadása',
         'reset_password_comment' => 'Új jelszó ezen felhasználó részére való megadásához adjon meg itt egy új jelszót.',
         'confirm_password' => 'Jelszó megerősítése',
         'confirm_password_comment' => 'Adja meg újra a jelszót a megerősítéséhez.',
         'avatar' => 'Avatar',
         'details' => 'Adatok',
-        'account' => 'Fiók',
+        'account' => 'Fiók'
     ],
     'login' => [
         'attribute_email' => 'E-mail cím',
-        'attribute_username' => 'Felhasználónév',
+        'attribute_username' => 'Felhasználónév'
     ],
     'account' => [
         'account' => 'Fiók',
@@ -110,7 +117,7 @@ return [
         'redirect_to' => 'Átirányítás',
         'redirect_to_desc' => 'A lapnév az átirányításhoz frissítés, bejelentkezés vagy regisztrálás után.',
         'code_param' => 'Aktiválási kód paraméter',
-        'code_param_desc' => 'A regisztrálás aktiválási kódjához használt lap URL-cím paramétere',
+        'code_param_desc' => 'A regisztrálás aktiválási kódjához használt lap URL cím paramétere',
         'invalid_activation_code' => 'A megadott aktiválási kód érvénytelen',
         'invalid_user' => 'Nem található a megadott hitelesítési adatokkal rendelkező felhasználó.',
         'success_activation' => 'A fiók aktiválása sikerült.',
@@ -119,7 +126,7 @@ return [
         'alredy_active' => 'Már aktiválta a fiókját!',
         'activation_email_sent' => 'Az aktiválási e-mail elküldése a megadott e-mail címre megtörtént.',
         'country' => 'Ország',
-        'state' => 'Állam/megye',
+        'state' => 'Állam / megye',
         'sign_in' => 'Bejelentkezés',
         'register' => 'Regisztráció',
         'full_name' => 'Teljes név',
@@ -131,13 +138,13 @@ return [
         'city_suburb' => 'Város',
         'postal_code' => 'Irányítószám',
         'new_password' => 'Új jelszó',
-        'new_password_confirm' => 'Új jelszó megerősítése',
+        'new_password_confirm' => 'Új jelszó megerősítése'
     ],
     'reset_password' => [
         'reset_password' => 'Új jelszó megadása',
         'reset_password_desc' => 'Elfelejtett jelszó űrlap.',
         'code_param' => 'Visszaállító kód paraméter',
-        'code_param_desc' => 'A visszaállító kódhoz használt lap URL-cím paraméter',
+        'code_param_desc' => 'A visszaállító kódhoz használt lap URL cím paraméter'
     ],
     'session' => [
         'session' => 'Munkamenet',
@@ -148,6 +155,6 @@ return [
         'users' => 'Felhasználók',
         'guests' => 'Vendégek',
         'redirect_title' => 'Átirányítás',
-        'redirect_desc' => 'Az átirányítandó lapnév, ha a hozzáférés megtagadva.',
-    ],
+        'redirect_desc' => 'Az átirányítandó lapnév, ha a hozzáférés megtagadva.'
+    ]
 ];

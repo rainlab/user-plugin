@@ -6,11 +6,10 @@ return [
         'description' => 'Front-end user management.'
     ],
     'location' => [
-        'location' => 'location',
         'new' => 'موقعیت جدید',
         'create_title' => 'افزودن موقعیت',
         'update_title' => 'ویرایش موقعیت',
-        'preview_title' => 'پیش نمایش موقعیت',
+        'preview_title' => 'پیش نمایش موقعیت'
     ],
     'locations' => [
         'menu_label' => 'موقعیت ها',
@@ -27,7 +26,7 @@ return [
         'list_title' => 'مدیریت موقعیت ها',
         'state' => 'استان',
         'delete_confirm' => 'آیا از حذف این موقعیت اطمینان دارید؟',
-        'return_to_list' => 'بازگشت به لیست موقعیت ها',
+        'return_to_list' => 'بازگشت به لیست موقعیت ها'
     ],
     'users' => [
         'menu_label' => 'کاربران',
@@ -41,9 +40,10 @@ return [
         'active_manually' => 'فعال سازی دستی ی این کاربر',
         'delete_confirm' => 'آیا از حذف این کاربر اطمینان دارید؟',
         'activated_success' => 'کاربر با اطمینان فعال شد!',
-        'return_to_list' => 'بازگشت به لیست کاربران',
+        'return_to_list' => 'بازگشت به لیست کاربران'
     ],
     'settings' => [
+        'users' => 'Users',
         'menu_label' => 'تنظیمات کاربر',
         'menu_description' => 'مدیریت تنظیمات مربوط به کاربر.',
         'activation_tab' => 'فعال سازی',
@@ -70,22 +70,21 @@ return [
         'login_attribute' => 'مشخصه ی ورود',
         'login_attribute_comment' => 'مشخصه ای را که کاربر برای ورود باید وارد نماید انتخاب نمایید.',
         'no_mail_template' => 'اطلاع رسانی نکن',
-        'hint_templates' => 'شما میتوانید قالب پست الکترونیکی را با انتخاب "پست الکترونیکی" > "قالب های نامه الکترونیکی" از قسمت "سیستم" تغییر دهید.',
+        'hint_templates' => 'شما میتوانید قالب پست الکترونیکی را با انتخاب "پست الکترونیکی" > "قالب های نامه الکترونیکی" از قسمت "سیستم" تغییر دهید.'
     ],
     'state' => [
         'name' => 'نام',
         'name_comment' => 'نام استان را جهت نمایش وارد نمایید.',
         'code' => 'کد',
-        'code_comment' => 'کد یکتایی جهت دسترسی به این استان وارد نمایید.',
+        'code_comment' => 'کد یکتایی جهت دسترسی به این استان وارد نمایید.'
     ],
     'country' => [
         'name' => 'نام',
         'code' => 'کد',
         'code_comment' => 'کد یکتایی را جهت دسترسی به این کشور را وارد نمایید.',
-        'enabled' => 'فعال',
+        'enabled' => 'فعال'
     ],
     'user' => [
-        'user' => 'user',
         'id' => 'مشخصه',
         'username' => 'نام کاربری',
         'name' => 'نام',
@@ -97,18 +96,20 @@ return [
         'zip' => 'کد پستی',
         'street_addr' => 'آدرس',
         'country' => 'کشور',
+        'select_country' => '-- select country --',
         'state' => 'استان',
+        'select_state' => '-- select state --',
         'reset_password' => 'تنظیم مجدد کلمه عبور',
         'reset_password_comment' => 'جهت تنظیم مجدد کلمه عبور کاربر ، کلمه عبور جدید را وارد نمایید.',
         'confirm_password' => 'تایید کلمه عبور',
         'confirm_password_comment' => 'جهت تایید کلمه عبور را مجددا وارد نمایید.',
         'avatar' => 'نمایه',
         'details' => 'جزییات',
-        'account' => 'حساب کاربری',
+        'account' => 'حساب کاربری'
     ],
     'login' => [
         'attribute_email' => 'پست الکترونیکی',
-        'attribute_username' => 'نام کاربری',
+        'attribute_username' => 'نام کاربری'
     ],
     'account' => [
         'account' => 'حساب کاربری',
@@ -137,13 +138,13 @@ return [
         'city_suburb' => 'شهر / بخش',
         'postal_code' => 'کد پستی',
         'new_password' => 'کلمه عبور جدید',
-        'new_password_confirm' => 'تایید کلمه عبور',
+        'new_password_confirm' => 'تایید کلمه عبور'
     ],
     'reset_password' => [
         'reset_password' => 'بازنشانی کلمه عبور',
         'reset_password_desc' => 'فرم کلمه عبور فراموش شده.',
         'code_param' => 'پارامتر کد بازنشانی',
-        'code_param_desc' => 'پارامتر آدرس صفحه ای که جهت کد بازنشانی استفاده خوهد شد',
+        'code_param_desc' => 'پارامتر آدرس صفحه ای که جهت کد بازنشانی استفاده خوهد شد'
     ],
     'session' => [
         'session' => 'جلسه',
@@ -154,6 +155,6 @@ return [
         'users' => 'کاربران',
         'guests' => 'میهمان ها',
         'redirect_title' => 'انتقال به',
-        'redirect_desc' => 'نام صفحه ای که در صورت عدم اجازه دسترسی کاربر به آن انتقال پیدا میکند.',
-    ],
+        'redirect_desc' => 'نام صفحه ای که در صورت عدم اجازه دسترسی کاربر به آن انتقال پیدا میکند.'
+    ]
 ];
