@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Models;
 
+use URL;
 use Mail;
 use October\Rain\Auth\Models\User as UserBase;
 use RainLab\User\Models\Settings as UserSettings;
@@ -79,8 +80,15 @@ class User extends UserBase
      */
     public function beforeValidate()
     {
-        if (!$this->username)
+        /*
+         * When the username is not used, the email is substituted.
+         */
+        if (
+            (!$this->username) ||
+            ($this->isDirty('email') && $this->getOriginal('email') == $this->username)
+        ) {
             $this->username = $this->email;
+        }
     }
 
     public function getCountryOptions()
@@ -110,6 +118,9 @@ class User extends UserBase
      */
     public function getAvatarThumb($size = 25, $default = null)
     {
+        if (!$default)
+            $default = 'mm'; // Mystery man
+
         if ($this->avatar)
             return $this->avatar->getThumb($size, $size);
         else

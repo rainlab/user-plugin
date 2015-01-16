@@ -6,6 +6,7 @@ return [
         'description' => 'Front-end user management.'
     ],
     'location' => [
+        'label' => 'Location',
         'new' => 'New Location',
         'create_title' => 'Create Location',
         'update_title' => 'Edit Location',
@@ -85,6 +86,7 @@ return [
         'enabled' => 'Enabled'
     ],
     'user' => [
+        'label' => 'User',
         'id' => 'ID',
         'username' => 'Username',
         'name' => 'Name',

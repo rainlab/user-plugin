@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: rainlab.user::lang.location.location
+name: rainlab.user::lang.location.label
 
 # Model Form Field configuration
 form: @/plugins/rainlab/user/models/country/fields.yaml
