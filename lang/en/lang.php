@@ -126,7 +126,7 @@ return [
         'success_saved' => 'Settings successfully saved!',
         'login_first' => 'You must be logged in first!',
         'alredy_active' => 'Your account is already activated!',
-        'activation_email_sent' => 'Activation email has been sent to your nominated email address.',
+        'activation_email_sent' => 'An activation code was sent to the email provided on registration, please follow instructions.',
         'country' => 'Country',
         'state' => 'State',
         'sign_in' => 'Sign in',

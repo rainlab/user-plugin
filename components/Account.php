@@ -158,6 +158,7 @@ class Account extends ComponentBase
          */
         if ($userActivation) {
             $this->sendActivationEmail($user);
+            Flash::success(trans('rainlab.user::lang.account.activation_email_sent'));
         }
 
         /*
