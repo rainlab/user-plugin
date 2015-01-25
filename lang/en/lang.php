@@ -25,7 +25,6 @@ return [
         'disable_success' => 'Successfully disabled those locations.',
         'disable_confirm' => 'Are you sure?',
         'list_title' => 'Manage Locations',
-        'state' => 'State',
         'delete_confirm' => 'Do you really want to delete this location?',
         'return_to_list' => 'Return to locations list'
     ],
@@ -74,12 +73,14 @@ return [
         'hint_templates' => 'You can customize mail templates by selecting Mail > Mail Templates from the settings menu.'
     ],
     'state' => [
+        'label' => 'State',
         'name' => 'Name',
         'name_comment' => 'Enter the display name for this state.',
         'code' => 'Code',
         'code_comment' => 'Enter a unique code to identify this state.'
     ],
     'country' => [
+        'label' => 'Country',
         'name' => 'Name',
         'code' => 'Code',
         'code_comment' => 'Enter a unique code to identify this country.',
