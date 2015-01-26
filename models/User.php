@@ -89,6 +89,10 @@ class User extends UserBase
         ) {
             $this->username = $this->email;
         }
+
+        if (!$this->name)
+            $this->name = $this->given_name.' '.$this->family_name;
+            
     }
 
     public function getCountryOptions()
