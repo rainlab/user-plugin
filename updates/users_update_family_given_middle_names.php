@@ -7,7 +7,7 @@ use RainLab\User\Models\User;
 class UsersUpdateFamilyGivenMiddleNames extends Migration
 {
 
-    public function run()
+    public function up()
     {
         $usr = User::get();
 
@@ -20,7 +20,7 @@ class UsersUpdateFamilyGivenMiddleNames extends Migration
                 
                 $user->given_name = $pcs[0];
                 $user->middle_initial =  $cnt>2?$pcs[1]:'';
-                $user->family_name =  $cnt>2?$pcs[2]:$pcs[1];
+                $user->family_name =  $cnt>2?$pcs[2]:$cnt>1?$pcs[1]:'';
                 
                 $user->save();
             }
