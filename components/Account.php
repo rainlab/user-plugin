@@ -15,6 +15,7 @@ use Exception;
 
 class Account extends ComponentBase
 {
+    public $loginAttribute = '';
 
     public function componentDetails()
     {
@@ -45,6 +46,16 @@ class Account extends ComponentBase
     public function getRedirectOptions()
     {
         return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+    }
+
+    public function onInit()
+    {
+        $this->loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
+        
+        $this->page['loginAttribute'] = ($this->loginAttribute == UserSettings::LOGIN_EMAIL)?
+                            trans('rainlab.user::lang.login.attribute_email'): //Email
+                            trans('rainlab.user::lang.login.attribute_username'); //Username
+        
     }
 
     /**
@@ -88,9 +99,7 @@ class Account extends ComponentBase
             'password' => 'required|min:2'
         ];
 
-        $loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
-
-        if ($loginAttribute == UserSettings::LOGIN_USERNAME)
+        if ($this->loginAttribute == UserSettings::LOGIN_USERNAME)
             $rules['login'] = 'required|between:2,64';
         else
             $rules['login'] = 'required|email|between:2,64';
@@ -137,8 +146,7 @@ class Account extends ComponentBase
             'password' => 'required|min:2'
         ];
 
-        $loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
-        if ($loginAttribute == UserSettings::LOGIN_USERNAME)
+        if ($this->loginAttribute == UserSettings::LOGIN_USERNAME)
             $rules['username'] = 'required|between:2,64';
 
         $validation = Validator::make($data, $rules);
