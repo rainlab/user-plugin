@@ -25,4 +25,9 @@
 1.0.12:
     - Create a dedicated setting for choosing the login mode.
     - users_rename_login_to_username.php
-1.0.13: Minor fix to the Account sign in logic.
+1.0.13:
+    - Minor fix to the Account sign in logic.
+1.0.14:
+    - Add Family,Given and middle names for sorting purposes.
+    - users_add_family_given_middle_names.php
+    - users_update_family_given_middle_names.php
