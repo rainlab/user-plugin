@@ -3,8 +3,8 @@
 # ===================================
 
 states:
-    label: rainlab.user::lang.locations.state
+    label: rainlab.user::lang.state.label
     list: ~/plugins/rainlab/user/models/state/columns.yaml
     form: ~/plugins/rainlab/user/models/state/fields.yaml
-    # toolbar:
-    #     buttons: relation_toolbar
+    view:
+        toolbarButtons: create|delete

@@ -25,7 +25,6 @@ return [
         'disable_success' => 'A tartózkodási helyek letiltása sikerült.',
         'disable_confirm' => 'Biztos benne?',
         'list_title' => 'Tartózkodási helyek kezelése',
-        'state' => 'Állam/megye',
         'delete_confirm' => 'Valóban törölni akarja ezt a tartózkodási helyet?',
         'return_to_list' => 'Vissza a tartózkodási helyek listájához',
     ],
@@ -74,6 +73,7 @@ return [
         'hint_templates' => 'A levélsablonokat a Beállítások menüben a Levelezés > Levélsablonok választásával szabhatja személyre.',
     ],
     'state' => [
+        'label' => 'Állam/megye',
         'name' => 'Név',
         'name_comment' => 'Írja be ennek az államnak/megyének a megjelenítendő nevét.',
         'code' => 'Kód',

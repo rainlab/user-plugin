@@ -3,5 +3,10 @@
 # ===================================
 
 columns:
-    name: rainlab.user::lang.state.name
-    code: rainlab.user::lang.state.code
+    name:
+        label: rainlab.user::lang.state.name
+        searchable: true
+
+    code:
+        label: rainlab.user::lang.state.code
+        searchable: true

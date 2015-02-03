@@ -25,7 +25,6 @@ return [
         'disable_success' => 'Successfully disabled those locations.',
         'disable_confirm' => 'Are you sure?',
         'list_title' => 'Manage Locations',
-        'state' => 'State',
         'delete_confirm' => 'Do you really want to delete this location?',
         'return_to_list' => 'Return to locations list'
     ],
@@ -74,12 +73,14 @@ return [
         'hint_templates' => 'You can customize mail templates by selecting Mail > Mail Templates from the settings menu.'
     ],
     'state' => [
+        'label' => 'State',
         'name' => 'Name',
         'name_comment' => 'Enter the display name for this state.',
         'code' => 'Code',
         'code_comment' => 'Enter a unique code to identify this state.'
     ],
     'country' => [
+        'label' => 'Country',
         'name' => 'Name',
         'code' => 'Code',
         'code_comment' => 'Enter a unique code to identify this country.',
@@ -126,7 +127,7 @@ return [
         'success_saved' => 'Settings successfully saved!',
         'login_first' => 'You must be logged in first!',
         'alredy_active' => 'Your account is already activated!',
-        'activation_email_sent' => 'An activation code was sent to the email provided on registration, please follow instructions.',
+        'activation_email_sent' => 'Activation email has been sent to your nominated email address.',
         'country' => 'Country',
         'state' => 'State',
         'sign_in' => 'Sign in',

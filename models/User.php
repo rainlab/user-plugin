@@ -150,8 +150,6 @@ class User extends UserBase
         {
             $message->to($this->email, $this->name);
         });
-
-        return true;
     }
 
 }
