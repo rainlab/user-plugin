@@ -197,7 +197,7 @@ class Account extends ComponentBase
             if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId)))
                 throw new ApplicationException(trans('rainlab.user::lang.account.invalid_user'));
 
-            if (!$user->attemptActivation($code))
+            if ($user->attemptActivation($code) === false)
                 throw new ValidationException(['code' => trans('rainlab.user::lang.account.invalid_activation_code')]);
 
             Flash::success(trans('rainlab.user::lang.account.success_activation'));
@@ -282,6 +282,7 @@ class Account extends ComponentBase
     protected function sendActivationEmail($user)
     {
         $code = implode('!', [$user->id, $user->getActivationCode()]);
+
         $link = $this->currentPageUrl([
             $this->property('paramCode') => $code
         ]);
