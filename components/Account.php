@@ -197,6 +197,7 @@ class Account extends ComponentBase
             if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId)))
                 throw new ApplicationException(trans('rainlab.user::lang.account.invalid_user'));
 
+            // if activation attempt fails
             if ($user->attemptActivation($code) === false)
                 throw new ValidationException(['code' => trans('rainlab.user::lang.account.invalid_activation_code')]);
 
