@@ -73,6 +73,6 @@ class Locations extends Controller
         else
             Flash::success(Lang::get('rainlab.user::lang.locations.disable_success'));
 
-        return Redirect::to(Backend::url('rainlab/user/locations'));
+        return Backend::redirect('rainlab/user/locations');
     }
 }

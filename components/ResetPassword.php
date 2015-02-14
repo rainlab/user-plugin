@@ -4,8 +4,8 @@ use Auth;
 use Mail;
 use Validator;
 use Cms\Classes\ComponentBase;
-use October\Rain\Support\ValidationException;
-use System\Classes\ApplicationException;
+use ValidationException;
+use ApplicationException;
 
 class ResetPassword extends ComponentBase
 {

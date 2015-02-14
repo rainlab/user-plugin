@@ -3,7 +3,7 @@
 # ===================================
 
 title: rainlab.user::lang.users.list_title
-list: @/plugins/rainlab/user/models/user/columns.yaml
+list: ~/plugins/rainlab/user/models/user/columns.yaml
 modelClass: RainLab\User\Models\User
 recordUrl: rainlab/user/users/update/:id
 noRecordsMessage: backend::lang.list.no_records

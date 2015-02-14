@@ -5,7 +5,7 @@ use Request;
 use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use October\Rain\Support\ValidationException;
+use ValidationException;
 
 class Session extends ComponentBase
 {

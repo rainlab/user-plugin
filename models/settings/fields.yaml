@@ -67,4 +67,4 @@ tabs:
             comment: rainlab.user::lang.settings.default_state_comment
             type: dropdown
             tab: rainlab.user::lang.settings.location_tab
-            depends: default_country
+            dependsOn: default_country

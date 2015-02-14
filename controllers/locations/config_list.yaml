@@ -3,7 +3,7 @@
 # ===================================
 
 # Model List Column configuration
-list: @/plugins/rainlab/user/models/country/columns.yaml
+list: ~/plugins/rainlab/user/models/country/columns.yaml
 
 # Model Class name
 modelClass: RainLab\User\Models\Country

@@ -6,7 +6,7 @@
 name: rainlab.user::lang.location.label
 
 # Model Form Field configuration
-form: @/plugins/rainlab/user/models/country/fields.yaml
+form: ~/plugins/rainlab/user/models/country/fields.yaml
 
 # Model Class name
 modelClass: RainLab\User\Models\Country

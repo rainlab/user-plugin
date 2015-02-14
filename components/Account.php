@@ -8,8 +8,8 @@ use Redirect;
 use Validator;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use System\Classes\ApplicationException;
-use October\Rain\Support\ValidationException;
+use ApplicationException;
+use ValidationException;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
 
