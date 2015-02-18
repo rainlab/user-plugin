@@ -1,3 +1,19 @@
 <div data-control="toolbar">
     <a href="<?= Backend::url('rainlab/user/users/create') ?>" class="btn btn-primary oc-icon-plus"><?= e(trans('rainlab.user::lang.users.new_user')) ?></a>
+
+    <button
+        class="btn btn-default oc-icon-trash-o"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+            checked: $('.control-list').listWidget('getChecked')
+        })"
+        data-request="onDelete"
+        data-request-confirm="<?= e(trans('rainlab.user::lang.users.delete_user_confirm')) ?>"
+        data-trigger-type="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-request-success="$el.prop('disabled', false)"
+        data-stripe-load-indicator>
+        <?= e(trans('backend::lang.form.delete')) ?>
+    </button>
 </div>

@@ -6,6 +6,7 @@ use BackendAuth;
 use Backend\Classes\Controller;
 use System\Classes\SettingsManager;
 use RainLab\User\Models\Settings as UserSettings;
+use RainLab\User\Models\User;
 
 class Users extends Controller
 {
@@ -55,5 +56,26 @@ class Users extends Controller
 
         if (array_key_exists('username', $form->getFields()))
             $form->getField('username')->hidden = false;
+    }
+
+    public function index_onDelete()
+    {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+
+            foreach ($checkedIds as $userId) {
+                if ((!$user = User::find($userId)))
+                    continue;
+
+                $user->delete();
+            }
+
+            Flash::success(trans('rainlab.user::lang.users.succesfully_deleted').' '.(count($checkedIds) ==  1 ? trans('rainlab.user::lang.users.this_user') : trans('rainlab.user::lang.users.those_users')));
+        }
+        else
+        {
+            Flash::error(trans('rainlab.user::lang.users.not_selected'));
+        }
+
+        return $this->listRefresh();
     }
 }
