@@ -9,7 +9,6 @@ use ValidationException;
 
 class Session extends ComponentBase
 {
-
     const ALLOW_ALL = 'all';
     const ALLOW_GUEST = 'guest';
     const ALLOW_USER = 'user';
@@ -59,11 +58,12 @@ class Session extends ComponentBase
         $allowedGroup = $this->property('security', self::ALLOW_ALL);
         $isAuthenticated = Auth::check();
 
-        if (!$isAuthenticated && $allowedGroup == self::ALLOW_USER)
-            return Redirect::intended($redirectUrl);
-
-        elseif ($isAuthenticated && $allowedGroup == self::ALLOW_GUEST)
-            return Redirect::intended($redirectUrl);
+        if (!$isAuthenticated && $allowedGroup == self::ALLOW_USER) {
+            return Redirect::guest($redirectUrl);
+        }
+        elseif ($isAuthenticated && $allowedGroup == self::ALLOW_GUEST) {
+            return Redirect::guest($redirectUrl);
+        }
 
         $this->page['user'] = $this->user();
     }
@@ -90,10 +90,10 @@ class Session extends ComponentBase
      */
     public function user()
     {
-        if (!Auth::check())
+        if (!Auth::check()) {
             return null;
+        }
 
         return Auth::getUser();
     }
-
 }

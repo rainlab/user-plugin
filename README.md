@@ -92,20 +92,36 @@ We can add any other additional fields here too, such as `phone`, `company`, etc
 This plugin makes use of October's [`Flash API`](http://octobercms.com/docs/cms/markup#flash-messages). In order to display the error messages, you need to place the following snippet in your layout or page.
 
     {% flash %} 
-    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div> 
+        <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div> 
     {% endflash %}
-    
+
 ### AJAX errors
 The User plugin displays AJAX error messages in a simple ``alert()``-box by default. However, this might scare non-technical users. You can change the default behavior of an AJAX error from displaying an ``alert()`` message, like this:
 
     <script>
-    $(window).on('ajaxErrorMessage', function(event, message){
-    
-        // This can be any custom JavaScript you want
-        alert('Something bad happened, mate, here it is: ' + message);
-    
-        // This will stop the default alert() message
-        event.preventDefault();
-    
-    })
+        $(window).on('ajaxErrorMessage', function(event, message){
+
+            // This can be any custom JavaScript you want
+            alert('Something bad happened, mate, here it is: ' + message);
+
+            // This will stop the default alert() message
+            event.preventDefault();
+
+        })
     </script>
+
+## Overriding functionality
+
+Here is how you would override the `onSignin()` handler to log any error messages. Inside the page code, define this method:
+
+    function onSignin()
+    {
+        try {
+            return $this->account->onSignin();
+        }
+        catch (Exception $ex) {
+            Log::error($ex);
+        }
+    }
+
+Here the local handler method will take priority over the **account** component's event handler. Then we simply inherit the logic by calling the parent handler manually, via the component object (`$this->account`).
