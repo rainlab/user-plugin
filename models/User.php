@@ -140,7 +140,7 @@ class User extends UserBase
             return false;
         }
 
-        if (!$mailTemplate = UserSettings::get('welcome_template')) {
+        if ($mailTemplate = UserSettings::get('welcome_template')) {
             $data = [
                 'name' => $this->name,
                 'email' => $this->email
