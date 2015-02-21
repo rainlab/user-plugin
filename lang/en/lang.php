@@ -39,8 +39,13 @@ return [
         'activate_confirm' => 'Do you really want to activate this user?',
         'active_manually' => 'Activate this user manually',
         'delete_confirm' => 'Do you really want to delete this user?',
+        'delete_user_confirm' => 'Are you sure?',
         'activated_success' => 'User has been activated successfully!',
-        'return_to_list' => 'Return to users list'
+        'return_to_list' => 'Return to users list',
+        'not_selected' => 'There is no user selected.',
+        'succesfully_deleted' => 'Successfully deleted',
+        'this_user' => 'this user',
+        'those_users' => 'those users',
     ],
     'settings' => [
         'users' => 'Users',
