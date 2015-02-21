@@ -3,9 +3,10 @@
 use Auth;
 use Mail;
 use Validator;
-use Cms\Classes\ComponentBase;
 use ValidationException;
 use ApplicationException;
+use Cms\Classes\ComponentBase;
+use RainLab\User\Models\User as UserModel;
 
 class ResetPassword extends ComponentBase
 {
@@ -40,11 +41,13 @@ class ResetPassword extends ComponentBase
         ];
 
         $validation = Validator::make(post(), $rules);
-        if ($validation->fails())
+        if ($validation->fails()) {
             throw new ValidationException($validation);
+        }
 
-        if (!($user = Auth::findUserByLogin(post('email'))))
+        if (!$user = UserModel::findByEmail(post('email'))) {
             throw new ApplicationException(trans('rainlab.user::lang.account.invalid_user'));
+        }
 
         $code = implode('!', [$user->id, $user->getResetPasswordCode()]);
         $link = $this->controller->currentPageUrl([
@@ -57,8 +60,7 @@ class ResetPassword extends ComponentBase
             'code' => $code
         ];
 
-        Mail::send('rainlab.user::mail.restore', $data, function($message) use ($user)
-        {
+        Mail::send('rainlab.user::mail.restore', $data, function($message) use ($user) {
             $message->to($user->email, $user->full_name);
         });
     }
@@ -74,23 +76,27 @@ class ResetPassword extends ComponentBase
         ];
 
         $validation = Validator::make(post(), $rules);
-        if ($validation->fails())
+        if ($validation->fails()) {
             throw new ValidationException($validation);
+        }
 
         /*
          * Break up the code parts
          */
         $parts = explode('!', post('code'));
-        if (count($parts) != 2)
+        if (count($parts) != 2) {
             throw new ValidationException(['code' => trans('rainlab.user::lang.account.invalid_activation_code')]);
+        }
 
         list($userId, $code) = $parts;
 
-        if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId)))
+        if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId))) {
             throw new ApplicationException(trans('rainlab.user::lang.account.invalid_user'));
+        }
 
-        if (!$user->attemptResetPassword($code, post('password')))
+        if (!$user->attemptResetPassword($code, post('password'))) {
             throw new ValidationException(['code' => trans('rainlab.user::lang.account.invalid_activation_code')]);
+        }
     }
 
     /**
