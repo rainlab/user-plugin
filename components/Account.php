@@ -6,10 +6,10 @@ use Flash;
 use Input;
 use Redirect;
 use Validator;
+use ValidationException;
+use ApplicationException;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use ApplicationException;
-use ValidationException;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
 
@@ -248,12 +248,13 @@ class Account extends ComponentBase
     public function onSendActivationEmail($isAjax = true)
     {
         try {
-            $user = $this->user();
-            if (!$user)
-                throw new Exception(trans('rainlab.user::lang.account.login_first'));
+            if (!$user = $this->user()) {
+                throw new ApplicationException(trans('rainlab.user::lang.account.login_first'));
+            }
 
-            if ($user->is_activated)
-                throw new Exception(trans('rainlab.user::lang.account.alredy_active'));
+            if ($user->is_activated) {
+                throw new ApplicationException(trans('rainlab.user::lang.account.alredy_active'));
+            }
 
             Flash::success(trans('rainlab.user::lang.account.activation_email_sent'));
 
