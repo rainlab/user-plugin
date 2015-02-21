@@ -43,6 +43,7 @@ class User extends UserBase
      */
     protected $fillable = [
         'name',
+        'surname',
         'login',
         'email',
         'password',

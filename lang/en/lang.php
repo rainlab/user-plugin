@@ -91,6 +91,7 @@ return [
         'id' => 'ID',
         'username' => 'Username',
         'name' => 'Name',
+        'surname' => 'Surname',
         'email' => 'Email',
         'created_at' => 'Registered',
         'phone' => 'Phone',

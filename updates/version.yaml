@@ -27,3 +27,6 @@
     - users_rename_login_to_username.php
 1.0.13: Minor fix to the Account sign in logic.
 1.0.14: Minor improvements to the code.
+1.0.15:
+    - Adds last name column to users table (surname).
+    - users_add_surname.php

@@ -5,9 +5,12 @@
 fields:
 
     name:
-        span: full
         label: rainlab.user::lang.user.name
-        tab: rainlab.user::lang.user.details
+        span: auto
+
+    surname:
+        label: rainlab.user::lang.user.surname
+        span: auto
 
 tabs:
     fields:
