@@ -1,8 +1,8 @@
 <form
     data-request="onSignin">
     <div class="form-group">
-        <label for="userSigninEmail">Email</label>
-        <input name="email" type="email" class="form-control" id="userSigninEmail" placeholder="Enter your email">
+        <label for="userSigninLogin">{{ loginAttributeLabel }}</label>
+        <input name="login" type="text" class="form-control" id="userSigninLogin" placeholder="Enter your {{ loginAttributeLabel|lower }}">
     </div>
 
     <div class="form-group">

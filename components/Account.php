@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Components;
 
+use Lang;
 use Auth;
 use Mail;
 use Flash;
@@ -15,6 +16,8 @@ use Exception;
 
 class Account extends ComponentBase
 {
+
+    public $loginAttribute;
 
     public function componentDetails()
     {
@@ -62,6 +65,8 @@ class Account extends ComponentBase
         }
 
         $this->page['user'] = $this->user();
+        $this->page['loginAttribute'] = $this->loginAttribute();
+        $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
     }
 
     /**
@@ -76,6 +81,27 @@ class Account extends ComponentBase
     }
 
     /**
+     * Returns the login model attribute.
+     */
+    public function loginAttribute()
+    {
+        if ($this->loginAttribute !== null)
+            return $this->loginAttribute;
+
+        return $this->loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
+    }
+
+    /**
+     * Returns the login label as a word.
+     */
+    public function loginAttributeLabel()
+    {
+        return $this->loginAttribute() == UserSettings::LOGIN_EMAIL
+            ? Lang::get('rainlab.user::lang.login.attribute_email')
+            : Lang::get('rainlab.user::lang.login.attribute_username');
+    }
+
+    /**
      * Sign in the user
      */
     public function onSignin()
@@ -84,23 +110,22 @@ class Account extends ComponentBase
          * Validate input
          */
         $data = post();
-        $rules = [
-            'password' => 'required|min:2'
-        ];
+        $rules = [];
 
-        $loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
+        $rules['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
+            ? 'required|between:2,64'
+            : 'required|email|between:2,64';
 
-        if ($loginAttribute == UserSettings::LOGIN_USERNAME)
-            $rules['login'] = 'required|between:2,64';
-        else
-            $rules['login'] = 'required|email|between:2,64';
+        $rules['password'] = 'required|min:2';
 
-        if (!in_array('login', $data))
+        if (!array_key_exists('login', $data)) {
             $data['login'] = post('username', post('email'));
+        }
 
         $validation = Validator::make($data, $rules);
-        if ($validation->fails())
+        if ($validation->fails()) {
             throw new ValidationException($validation);
+        }
 
         /*
          * Authenticate user
@@ -190,17 +215,17 @@ class Account extends ComponentBase
              */
             $parts = explode('!', $code);
             if (count($parts) != 2)
-                throw new ValidationException(['code' => trans('rainlab.user::lang.account.invalid_activation_code')]);
+                throw new ValidationException(['code' => Lang::get('rainlab.user::lang.account.invalid_activation_code')]);
 
             list($userId, $code) = $parts;
 
             if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId)))
-                throw new ApplicationException(trans('rainlab.user::lang.account.invalid_user'));
+                throw new ApplicationException(Lang::get('rainlab.user::lang.account.invalid_user'));
 
             if (!$user->attemptActivation($code))
-                throw new ValidationException(['code' => trans('rainlab.user::lang.account.invalid_activation_code')]);
+                throw new ValidationException(['code' => Lang::get('rainlab.user::lang.account.invalid_activation_code')]);
 
-            Flash::success(trans('rainlab.user::lang.account.success_activation'));
+            Flash::success(Lang::get('rainlab.user::lang.account.success_activation'));
 
             /*
              * Sign in the user
@@ -231,7 +256,7 @@ class Account extends ComponentBase
             Auth::login($user->reload(), true);
         }
 
-        Flash::success(post('flash', trans('rainlab.user::lang.account.success_saved')));
+        Flash::success(post('flash', Lang::get('rainlab.user::lang.account.success_saved')));
 
         /*
          * Redirect to the intended page after successful update
@@ -249,14 +274,14 @@ class Account extends ComponentBase
     {
         try {
             if (!$user = $this->user()) {
-                throw new ApplicationException(trans('rainlab.user::lang.account.login_first'));
+                throw new ApplicationException(Lang::get('rainlab.user::lang.account.login_first'));
             }
 
             if ($user->is_activated) {
-                throw new ApplicationException(trans('rainlab.user::lang.account.alredy_active'));
+                throw new ApplicationException(Lang::get('rainlab.user::lang.account.alredy_active'));
             }
 
-            Flash::success(trans('rainlab.user::lang.account.activation_email_sent'));
+            Flash::success(Lang::get('rainlab.user::lang.account.activation_email_sent'));
 
             $this->sendActivationEmail($user);
 
