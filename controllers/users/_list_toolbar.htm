@@ -8,12 +8,12 @@
             checked: $('.control-list').listWidget('getChecked')
         })"
         data-request="onDelete"
-        data-request-confirm="<?= e(trans('rainlab.user::lang.users.delete_user_confirm')) ?>"
+        data-request-confirm="<?= e(trans('rainlab.user::lang.users.delete_selected_confirm')) ?>"
         data-trigger-type="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
         data-request-success="$el.prop('disabled', false)"
         data-stripe-load-indicator>
-        <?= e(trans('backend::lang.form.delete')) ?>
+        <?= e(trans('backend::lang.list.delete_selected')) ?>
     </button>
 </div>
