@@ -113,7 +113,7 @@ class User extends UserBase
 
         return $this->persist_code;
     }
-
+    
     /**
      * Returns the public image file path to this user's avatar.
      */
@@ -152,6 +152,14 @@ class User extends UserBase
         }
 
         return true;
+    }
+    /**
+     * Stops xss in name field by html encoding the name attribute
+     *
+     * @return html safe name attribute 
+     */    
+    public function getNameAttribute(){
+        return htmlentities($this->attributes['name']);
     }
 
 }
