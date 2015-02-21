@@ -17,8 +17,6 @@ use Exception;
 class Account extends ComponentBase
 {
 
-    public $loginAttribute;
-
     public function componentDetails()
     {
         return [
@@ -85,10 +83,7 @@ class Account extends ComponentBase
      */
     public function loginAttribute()
     {
-        if ($this->loginAttribute !== null)
-            return $this->loginAttribute;
-
-        return $this->loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
+        return UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
     }
 
     /**
@@ -154,21 +149,23 @@ class Account extends ComponentBase
          */
         $data = post();
 
-        if (!array_key_exists('password_confirmation', Input::all()))
+        if (!array_key_exists('password_confirmation', $data)) {
             $data['password_confirmation'] = post('password');
+        }
 
         $rules = [
             'email'    => 'required|email|between:2,64',
             'password' => 'required|min:2'
         ];
 
-        $loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
-        if ($loginAttribute == UserSettings::LOGIN_USERNAME)
+        if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
             $rules['username'] = 'required|between:2,64';
+        }
 
         $validation = Validator::make($data, $rules);
-        if ($validation->fails())
+        if ($validation->fails()) {
             throw new ValidationException($validation);
+        }
 
         /*
          * Register user
@@ -183,6 +180,8 @@ class Account extends ComponentBase
          */
         if ($userActivation) {
             $this->sendActivationEmail($user);
+
+            Flash::success(Lang::get('rainlab.user::lang.account.activation_email_sent'));
         }
 
         /*
@@ -197,8 +196,9 @@ class Account extends ComponentBase
          */
         $redirectUrl = $this->pageUrl($this->property('redirect'));
 
-        if ($redirectUrl = post('redirect', $redirectUrl))
+        if ($redirectUrl = post('redirect', $redirectUrl)) {
             return Redirect::intended($redirectUrl);
+        }
     }
 
     /**
@@ -214,16 +214,19 @@ class Account extends ComponentBase
              * Break up the code parts
              */
             $parts = explode('!', $code);
-            if (count($parts) != 2)
+            if (count($parts) != 2) {
                 throw new ValidationException(['code' => Lang::get('rainlab.user::lang.account.invalid_activation_code')]);
+            }
 
             list($userId, $code) = $parts;
 
-            if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId)))
+            if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId))) {
                 throw new ApplicationException(Lang::get('rainlab.user::lang.account.invalid_user'));
+            }
 
-            if (!$user->attemptActivation($code))
+            if (!$user->attemptActivation($code)) {
                 throw new ValidationException(['code' => Lang::get('rainlab.user::lang.account.invalid_activation_code')]);
+            }
 
             Flash::success(Lang::get('rainlab.user::lang.account.success_activation'));
 
