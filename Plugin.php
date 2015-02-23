@@ -49,7 +49,7 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'rainlab.users.access_users'  => ['label' => 'Manage Users'],
+            'rainlab.users.access_users'  => ['tab' => 'Users', 'label' => 'Manage Users'],
         ];
     }
 
