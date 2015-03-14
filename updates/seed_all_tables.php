@@ -6,13 +6,12 @@ use RainLab\User\Models\State;
 
 class SeedAllTables extends Seeder
 {
-
     public function run()
     {
         Country::insert([
-            ['is_enabled' => true, 'code' => 'US', 'name' => 'United States'],
-            ['is_enabled' => true, 'code' => 'CA', 'name' => 'Canada'],
-            ['is_enabled' => true, 'code' => 'AU', 'name' => 'Australia'],
+            ['is_enabled' => true,  'code' => 'US', 'name' => 'United States'],
+            ['is_enabled' => true,  'code' => 'CA', 'name' => 'Canada'],
+            ['is_enabled' => true,  'code' => 'AU', 'name' => 'Australia'],
             ['is_enabled' => false, 'code' => 'FR', 'name' => 'France'],
             ['is_enabled' => false, 'code' => 'DE', 'name' => 'Germany'],
             ['is_enabled' => false, 'code' => 'IS', 'name' => 'Iceland'],
@@ -257,7 +256,7 @@ class SeedAllTables extends Seeder
             ['is_enabled' => false, 'code' => 'EH', 'name' => 'Western Sahara'],
             ['is_enabled' => false, 'code' => 'YE', 'name' => 'Yemen'],
             ['is_enabled' => false, 'code' => 'ZM', 'name' => 'Zambia'],
-            ['is_enabled' => false, 'code' => 'ZW', 'name' => 'Zimbabwe'],
+            ['is_enabled' => false, 'code' => 'ZW', 'name' => 'Zimbabwe']
         ]);
 
         $us = Country::whereCode('US')->first();
@@ -320,7 +319,7 @@ class SeedAllTables extends Seeder
             ['code' => 'WA', 'name' => 'Washington'],
             ['code' => 'WV', 'name' => 'West Virginia'],
             ['code' => 'WI', 'name' => 'Wisconsin'],
-            ['code' => 'WY', 'name' => 'Wyoming'],
+            ['code' => 'WY', 'name' => 'Wyoming']
         ]);
 
         $ca = Country::whereCode('CA')->first();
@@ -337,7 +336,7 @@ class SeedAllTables extends Seeder
             ['code' => 'PE', 'name' => 'Prince Edward Island'],
             ['code' => 'QC', 'name' => 'Quebec'],
             ['code' => 'SK', 'name' => 'Saskatchewan'],
-            ['code' => 'YT', 'name' => 'Yukon'],
+            ['code' => 'YT', 'name' => 'Yukon']
         ]);
 
         $au = Country::whereCode('AU')->first();
@@ -349,7 +348,7 @@ class SeedAllTables extends Seeder
             ['code' => 'VIC', 'name' => 'Victoria'],
             ['code' => 'WA', 'name' => 'Western Australia'],
             ['code' => 'NT', 'name' => 'Northern Territory'],
-            ['code' => 'ACT', 'name' => 'Australian Capital Territory'],
+            ['code' => 'ACT', 'name' => 'Australian Capital Territory']
         ]);
 
         $de = Country::whereCode('DE')->first();
@@ -369,7 +368,7 @@ class SeedAllTables extends Seeder
             ['code' => 'SN', 'name' => 'Saxony'],
             ['code' => 'ST', 'name' => 'Saxony-Anhalt'],
             ['code' => 'SH', 'name' => 'Schleswig-Holstein'],
-            ['code' => 'TH', 'name' => 'Thuringia'],
+            ['code' => 'TH', 'name' => 'Thuringia']
         ]);
 
         $ie = Country::whereCode('IE')->first();
@@ -400,7 +399,7 @@ class SeedAllTables extends Seeder
             ['code' => 'RN', 'name' => 'Roscommon'],
             ['code' => 'SO', 'name' => 'Sligo'],
             ['code' => 'LM', 'name' => 'Leitrim'],
-            ['code' => 'DL', 'name' => 'Donegal'],
+            ['code' => 'DL', 'name' => 'Donegal']
         ]);
         
         $nl = Country::whereCode('NL')->first();
@@ -416,104 +415,104 @@ class SeedAllTables extends Seeder
             ['code' => 'OV', 'name' => 'Overijssel'],
             ['code' => 'UT', 'name' => 'Utrecht'],
             ['code' => 'ZE', 'name' => 'Zeeland'],
-            ['code' => 'ZH', 'name' => 'Zuid-Holland'],
+            ['code' => 'ZH', 'name' => 'Zuid-Holland']
         ]);
 
         $gb = Country::whereCode('GB')->first();
         $gb->states()->createMany([
-            ["name"=>"Aberdeenshire",     "code"=>"ABE"],
-            ["name"=>"Anglesey",          "code"=>"ALY"],
-            ["name"=>"Angus",             "code"=>"ANG"],
-            ["name"=>"Argyll",            "code"=>"ARG"],
-            ["name"=>"Ayrshire",          "code"=>"AYR"],
-            ["name"=>"Banffshire",        "code"=>"BAN"],
-            ["name"=>"Bedfordshire",      "code"=>"BED"],
-            ["name"=>"Berkshire",         "code"=>"BER"],
-            ["name"=>"Berwickshire",      "code"=>"BWS"],
-            ["name"=>"Brecknockshire",    "code"=>"BRE"],
-            ["name"=>"Buckinghamshire",   "code"=>"BUC"],
-            ["name"=>"Bute",              "code"=>"BUT"],
-            ["name"=>"Caernarfonshire",   "code"=>"CAE"],
-            ["name"=>"Caithness",         "code"=>"CAI"],
-            ["name"=>"Cambridgeshire",    "code"=>"CAM"],
-            ["name"=>"Cardiganshire",     "code"=>"CAR"],
-            ["name"=>"Carmarthenshire",   "code"=>"CMS"],
-            ["name"=>"Cheshire",          "code"=>"CHE"],
-            ["name"=>"Clackmannanshire",  "code"=>"CLA"],
-            ["name"=>"Cleveland",         "code"=>"CLE"],
-            ["name"=>"Cornwall",          "code"=>"COR"],
-            ["name"=>"Cromartyshire",     "code"=>"CRO"],
-            ["name"=>"Cumberland",        "code"=>"CBR"],
-            ["name"=>"Cumbria",           "code"=>"CUM"],
-            ["name"=>"Denbighshire",      "code"=>"DEN"],
-            ["name"=>"Derbyshire",        "code"=>"DER"],
-            ["name"=>"Devon",             "code"=>"DEV"],
-            ["name"=>"Dorset",            "code"=>"DOR"],
-            ["name"=>"Dumbartonshire",    "code"=>"DBS"],
-            ["name"=>"Dumfriesshire",     "code"=>"DUM"],
-            ["name"=>"Durham",            "code"=>"DUR"],
-            ["name"=>"East Lothian",      "code"=>"ELO"],
-            ["name"=>"Essex",             "code"=>"ESS"],
-            ["name"=>"Flintshire",        "code"=>"FLI"],
-            ["name"=>"Fife",              "code"=>"FIF"],
-            ["name"=>"Glamorgan",         "code"=>"GLA"],
-            ["name"=>"Gloucestershire",   "code"=>"GLO"],
-            ["name"=>"Hampshire",         "code"=>"HAM"],
-            ["name"=>"Herefordshire",     "code"=>"HER"],
-            ["name"=>"Hertfordshire",     "code"=>"HTF"],
-            ["name"=>"Huntingdonshire",   "code"=>"HUN"],
-            ["name"=>"Inverness",         "code"=>"INV"],
-            ["name"=>"Kent",              "code"=>"KEN"],
-            ["name"=>"Kincardineshire",   "code"=>"KCD"],
-            ["name"=>"Kinross-shire",     "code"=>"KIN"],
-            ["name"=>"Kirkcudbrightshire","code"=>"KIR"],
-            ["name"=>"Lanarkshire",       "code"=>"LKS"],
-            ["name"=>"Lancashire",        "code"=>"LAN"],
-            ["name"=>"Leicestershire",    "code"=>"LEI"],
-            ["name"=>"Lincolnshire",      "code"=>"LIN"],
-            ["name"=>"London",            "code"=>"LON"],
-            ["name"=>"Manchester",        "code"=>"MAN"],
-            ["name"=>"Merionethshire",    "code"=>"MER"],
-            ["name"=>"Merseyside",        "code"=>"MER"],
-            ["name"=>"Middlesex",         "code"=>"MDX"],
-            ["name"=>"Midlands",          "code"=>"MID"],
-            ["name"=>"Midlothian",        "code"=>"MLT"],
-            ["name"=>"Monmouthshire",     "code"=>"MON"],
-            ["name"=>"Montgomeryshire",   "code"=>"MGY"],
-            ["name"=>"Moray",             "code"=>"MOR"],
-            ["name"=>"Nairnshire",        "code"=>"NAI"],
-            ["name"=>"Norfolk",           "code"=>"NOR"],
-            ["name"=>"Northamptonshire",  "code"=>"NMP"],
-            ["name"=>"Northumberland",    "code"=>"NUM"],
-            ["name"=>"Nottinghamshire",   "code"=>"NOT"],
-            ["name"=>"Orkney",            "code"=>"ORK"],
-            ["name"=>"Oxfordshire",       "code"=>"OXF"],
-            ["name"=>"Peebleshire",       "code"=>"PEE"],
-            ["name"=>"Pembrokeshire",     "code"=>"PEM"],
-            ["name"=>"Perthshire",        "code"=>"PER"],
-            ["name"=>"Radnorshire",       "code"=>"RAD"],
-            ["name"=>"Renfrewshire",      "code"=>"REN"],
-            ["name"=>"Ross & Cromarty",   "code"=>"ROS"],
-            ["name"=>"Roxburghshire",     "code"=>"ROX"],
-            ["name"=>"Rutland",           "code"=>"RUT"],
-            ["name"=>"Selkirkshire",      "code"=>"SEL"],
-            ["name"=>"Shetland",          "code"=>"SHE"],
-            ["name"=>"Shropshire",        "code"=>"SHR"],
-            ["name"=>"Somerset",          "code"=>"SOM"],
-            ["name"=>"Staffordshire",     "code"=>"STA"],
-            ["name"=>"Stirlingshire",     "code"=>"STI"],
-            ["name"=>"Suffolk",           "code"=>"SUF"],
-            ["name"=>"Surrey",            "code"=>"SUR"],
-            ["name"=>"Sussex",            "code"=>"SUS"],
-            ["name"=>"Sutherland",        "code"=>"SUT"],
-            ["name"=>"Tyne & Wear",       "code"=>"TYN"],
-            ["name"=>"Warwickshire",      "code"=>"WAR"],
-            ["name"=>"West Lothian",      "code"=>"WLO"],
-            ["name"=>"Westmorland",       "code"=>"WES"],
-            ["name"=>"Wigtownshire",      "code"=>"WIG"],
-            ["name"=>"Wiltshire",         "code"=>"WIL"],
-            ["name"=>"Worcestershire",    "code"=>"WOR"],
-            ["name"=>"Yorkshire",         "code"=>"YOR"]
+            ['code' => 'ABE', 'name' => 'Aberdeenshire'],
+            ['code' => 'ALY', 'name' => 'Anglesey'],
+            ['code' => 'ANG', 'name' => 'Angus'],
+            ['code' => 'ARG', 'name' => 'Argyll'],
+            ['code' => 'AYR', 'name' => 'Ayrshire'],
+            ['code' => 'BAN', 'name' => 'Banffshire'],
+            ['code' => 'BED', 'name' => 'Bedfordshire'],
+            ['code' => 'BER', 'name' => 'Berkshire'],
+            ['code' => 'BWS', 'name' => 'Berwickshire'],
+            ['code' => 'BRE', 'name' => 'Brecknockshire'],
+            ['code' => 'BUC', 'name' => 'Buckinghamshire'],
+            ['code' => 'BUT', 'name' => 'Bute'],
+            ['code' => 'CAE', 'name' => 'Caernarfonshire'],
+            ['code' => 'CAI', 'name' => 'Caithness'],
+            ['code' => 'CAM', 'name' => 'Cambridgeshire'],
+            ['code' => 'CAR', 'name' => 'Cardiganshire'],
+            ['code' => 'CMS', 'name' => 'Carmarthenshire'],
+            ['code' => 'CHE', 'name' => 'Cheshire'],
+            ['code' => 'CLA', 'name' => 'Clackmannanshire'],
+            ['code' => 'CLE', 'name' => 'Cleveland'],
+            ['code' => 'COR', 'name' => 'Cornwall'],
+            ['code' => 'CRO', 'name' => 'Cromartyshire'],
+            ['code' => 'CBR', 'name' => 'Cumberland'],
+            ['code' => 'CUM', 'name' => 'Cumbria'],
+            ['code' => 'DEN', 'name' => 'Denbighshire'],
+            ['code' => 'DER', 'name' => 'Derbyshire'],
+            ['code' => 'DEV', 'name' => 'Devon'],
+            ['code' => 'DOR', 'name' => 'Dorset'],
+            ['code' => 'DBS', 'name' => 'Dumbartonshire'],
+            ['code' => 'DUM', 'name' => 'Dumfriesshire'],
+            ['code' => 'DUR', 'name' => 'Durham'],
+            ['code' => 'ELO', 'name' => 'East Lothian'],
+            ['code' => 'ESS', 'name' => 'Essex'],
+            ['code' => 'FLI', 'name' => 'Flintshire'],
+            ['code' => 'FIF', 'name' => 'Fife'],
+            ['code' => 'GLA', 'name' => 'Glamorgan'],
+            ['code' => 'GLO', 'name' => 'Gloucestershire'],
+            ['code' => 'HAM', 'name' => 'Hampshire'],
+            ['code' => 'HER', 'name' => 'Herefordshire'],
+            ['code' => 'HTF', 'name' => 'Hertfordshire'],
+            ['code' => 'HUN', 'name' => 'Huntingdonshire'],
+            ['code' => 'INV', 'name' => 'Inverness'],
+            ['code' => 'KEN', 'name' => 'Kent'],
+            ['code' => 'KCD', 'name' => 'Kincardineshire'],
+            ['code' => 'KIN', 'name' => 'Kinross-shire'],
+            ['code' => 'KIR', 'name' => 'Kirkcudbrightshire'],
+            ['code' => 'LKS', 'name' => 'Lanarkshire'],
+            ['code' => 'LAN', 'name' => 'Lancashire'],
+            ['code' => 'LEI', 'name' => 'Leicestershire'],
+            ['code' => 'LIN', 'name' => 'Lincolnshire'],
+            ['code' => 'LON', 'name' => 'London'],
+            ['code' => 'MAN', 'name' => 'Manchester'],
+            ['code' => 'MER', 'name' => 'Merionethshire'],
+            ['code' => 'MER', 'name' => 'Merseyside'],
+            ['code' => 'MDX', 'name' => 'Middlesex'],
+            ['code' => 'MID', 'name' => 'Midlands'],
+            ['code' => 'MLT', 'name' => 'Midlothian'],
+            ['code' => 'MON', 'name' => 'Monmouthshire'],
+            ['code' => 'MGY', 'name' => 'Montgomeryshire'],
+            ['code' => 'MOR', 'name' => 'Moray'],
+            ['code' => 'NAI', 'name' => 'Nairnshire'],
+            ['code' => 'NOR', 'name' => 'Norfolk'],
+            ['code' => 'NMP', 'name' => 'Northamptonshire'],
+            ['code' => 'NUM', 'name' => 'Northumberland'],
+            ['code' => 'NOT', 'name' => 'Nottinghamshire'],
+            ['code' => 'ORK', 'name' => 'Orkney'],
+            ['code' => 'OXF', 'name' => 'Oxfordshire'],
+            ['code' => 'PEE', 'name' => 'Peebleshire'],
+            ['code' => 'PEM', 'name' => 'Pembrokeshire'],
+            ['code' => 'PER', 'name' => 'Perthshire'],
+            ['code' => 'RAD', 'name' => 'Radnorshire'],
+            ['code' => 'REN', 'name' => 'Renfrewshire'],
+            ['code' => 'ROS', 'name' => 'Ross & Cromarty'],
+            ['code' => 'ROX', 'name' => 'Roxburghshire'],
+            ['code' => 'RUT', 'name' => 'Rutland'],
+            ['code' => 'SEL', 'name' => 'Selkirkshire'],
+            ['code' => 'SHE', 'name' => 'Shetland'],
+            ['code' => 'SHR', 'name' => 'Shropshire'],
+            ['code' => 'SOM', 'name' => 'Somerset'],
+            ['code' => 'STA', 'name' => 'Staffordshire'],
+            ['code' => 'STI', 'name' => 'Stirlingshire'],
+            ['code' => 'SUF', 'name' => 'Suffolk'],
+            ['code' => 'SUR', 'name' => 'Surrey'],
+            ['code' => 'SUS', 'name' => 'Sussex'],
+            ['code' => 'SUT', 'name' => 'Sutherland'],
+            ['code' => 'TYN', 'name' => 'Tyne & Wear'],
+            ['code' => 'WAR', 'name' => 'Warwickshire'],
+            ['code' => 'WLO', 'name' => 'West Lothian'],
+            ['code' => 'WES', 'name' => 'Westmorland'],
+            ['code' => 'WIG', 'name' => 'Wigtownshire'],
+            ['code' => 'WIL', 'name' => 'Wiltshire'],
+            ['code' => 'WOR', 'name' => 'Worcestershire'],
+            ['code' => 'YOR', 'name' => 'Yorkshire']
         ]);
 
         $hu = Country::whereCode('HU')->first();
@@ -539,7 +538,5 @@ class SeedAllTables extends Seeder
             ['code' => 'VES', 'name' => 'Veszprém'],
             ['code' => 'ZAL', 'name' => 'Zala']
         ]);
-
     }
-
 }
