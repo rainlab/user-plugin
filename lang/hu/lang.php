@@ -157,6 +157,7 @@ return [
         'users' => 'Felhasználók',
         'guests' => 'Vendégek',
         'redirect_title' => 'Átirányítás',
-        'redirect_desc' => 'Az átirányítandó oldal neve, ha a hozzáférés megtagadva.'
+        'redirect_desc' => 'Az átirányítandó oldal neve, ha a hozzáférés megtagadva.',
+        'logout' => 'You have been successfully logged out!'
     ]
 ];

@@ -155,5 +155,6 @@ return [
         'guests' => 'Гости',
         'redirect_title' => 'Перенаправление',
         'redirect_desc' => 'Страница для перенаправления при отстутсвии доступа.',
+        'logout' => 'You have been successfully logged out!'
     ],
 ];
