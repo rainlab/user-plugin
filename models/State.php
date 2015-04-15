@@ -63,4 +63,9 @@ class State extends Model
         return Form::select($name, self::getNameList($countryId), $selectedValue, $options);
     }
 
+    public static function getDefault()
+    {
+        return static::find(Settings::get('default_state', 1));
+    }
+
 }
