@@ -162,6 +162,7 @@ return [
         'users' => 'Usuários',
         'guests' => 'Visitantes',
         'redirect_title' => 'Redirecionar para',
-        'redirect_desc' => 'Nome da página para qual redirecionar se o acesso for negado.'
+        'redirect_desc' => 'Nome da página para qual redirecionar se o acesso for negado.',
+        'logout' => 'You have been successfully logged out!'
     ]
 ];
