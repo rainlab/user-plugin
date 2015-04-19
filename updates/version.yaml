@@ -30,3 +30,5 @@
 1.0.15:
     - Adds last name column to users table (surname).
     - users_add_surname.php
+1.0.16:
+    - Require Permission 'permissions' => ['rainlab.users.*'] for Settings-Page too
