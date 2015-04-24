@@ -18,7 +18,21 @@ tabs:
         email:
             span: full
             label: rainlab.user::lang.user.email
-            tab: rainlab.user::lang.user.details
+            tab: rainlab.user::lang.user.account
+
+        password:
+            type: password
+            span: left
+            label: rainlab.user::lang.user.reset_password
+            comment: rainlab.user::lang.user.reset_password_comment
+            tab: rainlab.user::lang.user.account
+
+        password_confirmation:
+            type: password
+            span: right
+            label: rainlab.user::lang.user.confirm_password
+            comment: rainlab.user::lang.user.confirm_password_comment
+            tab: rainlab.user::lang.user.account
 
         phone:
             label: rainlab.user::lang.user.phone
@@ -64,20 +78,6 @@ tabs:
             label: rainlab.user::lang.user.username
             tab: rainlab.user::lang.user.account
             hidden: true
-
-        password:
-            type: password
-            span: left
-            label: rainlab.user::lang.user.reset_password
-            comment: rainlab.user::lang.user.reset_password_comment
-            tab: rainlab.user::lang.user.account
-
-        password_confirmation:
-            type: password
-            span: right
-            label: rainlab.user::lang.user.confirm_password
-            comment: rainlab.user::lang.user.confirm_password_comment
-            tab: rainlab.user::lang.user.account
 
 secondaryTabs:
     fields:
