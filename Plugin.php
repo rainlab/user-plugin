@@ -9,6 +9,11 @@ use RainLab\User\Models\MailBlocker;
 
 class Plugin extends PluginBase
 {
+    /**
+     * @var boolean Determine if this plugin should have elevated privileges.
+     */
+    public $elevated = true;
+
     public function pluginDetails()
     {
         return [
@@ -30,7 +35,7 @@ class Plugin extends PluginBase
         });
 
         /*
-         * Apply user-based mail blocking 
+         * Apply user-based mail blocking
          */
         Event::listen('mailer.prepareSend', function($mailer, $view, $message){
             return MailBlocker::filterMessage($view, $message);
