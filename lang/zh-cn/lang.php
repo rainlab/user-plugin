@@ -3,7 +3,9 @@
 return [
     'plugin' => [
         'name' => '用户',
-        'description' => '用户管理.'
+        'description' => '用户管理.',
+        'tab' => '用户',
+        'access_users' => '管理用戶'
     ],
     'location' => [
         'label' => '位置信息',

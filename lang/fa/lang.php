@@ -2,20 +2,22 @@
 
 return [
     'plugin' => [
-        'name' => 'User',
-        'description' => 'Front-end user management.'
+        'name' => 'کاربران',
+        'description' => 'مدیریت کاربر ظاهر.',
+        'tab' => 'کاربران',
+        'access_users' => 'مدیریت کاربران'
     ],
     'location' => [
-        'location' => 'location',
+        'location' => 'محل',
         'new' => 'موقعیت جدید',
         'create_title' => 'افزودن موقعیت',
         'update_title' => 'ویرایش موقعیت',
-        'preview_title' => 'پیش نمایش موقعیت',
+        'preview_title' => 'پیش نمایش موقعیت'
     ],
     'locations' => [
         'menu_label' => 'موقعیت ها',
         'menu_description' => 'مدیریت کشور ها و استانهای موجود برای کاربران.',
-        'hide_disabled' => 'Hide disabled',
+        'hide_disabled' => 'مخفی معلول',
         'enabled_label' => "فعال",
         'enabled_help' => "موقعیت های غیر فعال شده در محیط کاربری نماسش داده نمی شوند.",
         'enable_or_disable_title' => "فعال و یا غیر فعال سازی موقعیت ها",
@@ -27,6 +29,9 @@ return [
         'list_title' => 'مدیریت موقعیت ها',
         'delete_confirm' => 'آیا از حذف این موقعیت اطمینان دارید؟',
         'return_to_list' => 'بازگشت به لیست موقعیت ها',
+        'delete_selected_empty' => 'There are no selected users to delete.',
+        'delete_selected_confirm' => 'Delete the selected users?',
+        'delete_selected_success' => 'Successfully deleted the selected users.'
     ],
     'users' => [
         'menu_label' => 'کاربران',
@@ -40,7 +45,7 @@ return [
         'active_manually' => 'فعال سازی دستی ی این کاربر',
         'delete_confirm' => 'آیا از حذف این کاربر اطمینان دارید؟',
         'activated_success' => 'کاربر با اطمینان فعال شد!',
-        'return_to_list' => 'بازگشت به لیست کاربران',
+        'return_to_list' => 'بازگشت به لیست کاربران'
     ],
     'settings' => [
         'menu_label' => 'تنظیمات کاربر',
@@ -69,26 +74,28 @@ return [
         'login_attribute' => 'مشخصه ی ورود',
         'login_attribute_comment' => 'مشخصه ای را که کاربر برای ورود باید وارد نماید انتخاب نمایید.',
         'no_mail_template' => 'اطلاع رسانی نکن',
-        'hint_templates' => 'شما میتوانید قالب پست الکترونیکی را با انتخاب "پست الکترونیکی" > "قالب های نامه الکترونیکی" از قسمت "سیستم" تغییر دهید.',
+        'hint_templates' => 'شما میتوانید قالب پست الکترونیکی را با انتخاب "پست الکترونیکی" > "قالب های نامه الکترونیکی" از قسمت "سیستم" تغییر دهید.'
     ],
     'state' => [
         'label' => 'استان',
         'name' => 'نام',
         'name_comment' => 'نام استان را جهت نمایش وارد نمایید.',
         'code' => 'کد',
-        'code_comment' => 'کد یکتایی جهت دسترسی به این استان وارد نمایید.',
+        'code_comment' => 'کد یکتایی جهت دسترسی به این استان وارد نمایید.'
     ],
     'country' => [
+        'label' => 'کشور',
         'name' => 'نام',
         'code' => 'کد',
         'code_comment' => 'کد یکتایی را جهت دسترسی به این کشور را وارد نمایید.',
-        'enabled' => 'فعال',
+        'enabled' => 'فعال'
     ],
     'user' => [
         'user' => 'user',
         'id' => 'مشخصه',
         'username' => 'نام کاربری',
         'name' => 'نام',
+        'surname' => 'نام خانوادگی',
         'email' => 'پست الکترونیکی',
         'created_at' => 'تاریخ ثبت نام',
         'phone' => 'تلفن',
@@ -104,11 +111,11 @@ return [
         'confirm_password_comment' => 'جهت تایید کلمه عبور را مجددا وارد نمایید.',
         'avatar' => 'نمایه',
         'details' => 'جزییات',
-        'account' => 'حساب کاربری',
+        'account' => 'حساب کاربری'
     ],
     'login' => [
         'attribute_email' => 'پست الکترونیکی',
-        'attribute_username' => 'نام کاربری',
+        'attribute_username' => 'نام کاربری'
     ],
     'account' => [
         'account' => 'حساب کاربری',
@@ -137,13 +144,13 @@ return [
         'city_suburb' => 'شهر / بخش',
         'postal_code' => 'کد پستی',
         'new_password' => 'کلمه عبور جدید',
-        'new_password_confirm' => 'تایید کلمه عبور',
+        'new_password_confirm' => 'تایید کلمه عبور'
     ],
     'reset_password' => [
         'reset_password' => 'بازنشانی کلمه عبور',
         'reset_password_desc' => 'فرم کلمه عبور فراموش شده.',
         'code_param' => 'پارامتر کد بازنشانی',
-        'code_param_desc' => 'پارامتر آدرس صفحه ای که جهت کد بازنشانی استفاده خوهد شد',
+        'code_param_desc' => 'پارامتر آدرس صفحه ای که جهت کد بازنشانی استفاده خوهد شد'
     ],
     'session' => [
         'session' => 'جلسه',
@@ -155,6 +162,6 @@ return [
         'guests' => 'میهمان ها',
         'redirect_title' => 'انتقال به',
         'redirect_desc' => 'نام صفحه ای که در صورت عدم اجازه دسترسی کاربر به آن انتقال پیدا میکند.',
-        'logout' => 'You have been successfully logged out!'
-    ],
+        'logout' => 'شما شده اند با موفقیت از سیستم خارج!'
+    ]
 ];
