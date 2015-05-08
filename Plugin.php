@@ -91,15 +91,6 @@ class Plugin extends PluginBase
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
                 'permissions' => ['rainlab.users.*'],
-            ],
-            'location' => [
-                'label'       => 'rainlab.user::lang.locations.menu_label',
-                'description' => 'rainlab.user::lang.locations.menu_description',
-                'category'    => 'rainlab.user::lang.settings.users',
-                'icon'        => 'icon-globe',
-                'url'         => Backend::url('rainlab/user/locations'),
-                'order'       => 500,
-                'permissions' => ['rainlab.users.*'],
             ]
         ];
     }
@@ -111,20 +102,6 @@ class Plugin extends PluginBase
             'rainlab.user::mail.welcome'  => 'Welcome email sent when a user is activated.',
             'rainlab.user::mail.restore'  => 'Password reset instructions for front-end users.',
             'rainlab.user::mail.new_user' => 'Sent to administrators when a new user joins.'
-        ];
-    }
-
-    /**
-     * Register new Twig variables
-     * @return array
-     */
-    public function registerMarkupTags()
-    {
-        return [
-            'functions' => [
-                'form_select_country' => ['RainLab\User\Models\Country', 'formSelect'],
-                'form_select_state'   => ['RainLab\User\Models\State', 'formSelect'],
-            ]
         ];
     }
 }

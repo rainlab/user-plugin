@@ -24,20 +24,8 @@ class Settings extends Model
         $this->require_activation = true;
         $this->activate_mode = self::ACTIVATE_AUTO;
         $this->use_throttle = true;
-        $this->default_country = 1;
-        $this->default_state = 1;
         $this->welcome_template = 'rainlab.user::mail.welcome';
         $this->login_attribute = self::LOGIN_EMAIL;
-    }
-
-    public function getDefaultCountryOptions()
-    {
-        return Country::getNameList();
-    }
-
-    public function getDefaultStateOptions()
-    {
-        return State::getNameList($this->default_country);
     }
 
     public function getActivateModeOptions()

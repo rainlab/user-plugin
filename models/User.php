@@ -29,11 +29,6 @@ class User extends UserBase
         // 'groups' => ['RainLab\User\Models\Group', 'table' => 'users_groups']
     ];
 
-    public $belongsTo = [
-        'country' => ['RainLab\User\Models\Country'],
-        'state'   => ['RainLab\User\Models\State'],
-    ];
-
     public $attachOne = [
         'avatar' => ['System\Models\File']
     ];
@@ -48,13 +43,6 @@ class User extends UserBase
         'email',
         'password',
         'password_confirmation',
-        'company',
-        'phone',
-        'street_addr',
-        'city',
-        'zip',
-        'country',
-        'state'
     ];
 
     /**
@@ -90,16 +78,6 @@ class User extends UserBase
         ) {
             $this->username = $this->email;
         }
-    }
-
-    public function getCountryOptions()
-    {
-        return Country::getNameList();
-    }
-
-    public function getStateOptions()
-    {
-        return State::getNameList($this->country_id);
     }
 
     /**

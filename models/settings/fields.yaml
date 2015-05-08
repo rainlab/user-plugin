@@ -51,20 +51,3 @@ tabs:
             comment: rainlab.user::lang.settings.login_attribute_comment
             type: dropdown
             tab: rainlab.user::lang.settings.signin_tab
-
-        # Default Country
-        default_country:
-            span: left
-            label: rainlab.user::lang.settings.default_country
-            comment: rainlab.user::lang.settings.default_country_comment
-            type: dropdown
-            tab: rainlab.user::lang.settings.location_tab
-
-        # Default State
-        default_state:
-            span: right
-            label: rainlab.user::lang.settings.default_state
-            comment: rainlab.user::lang.settings.default_state_comment
-            type: dropdown
-            tab: rainlab.user::lang.settings.location_tab
-            dependsOn: default_country
