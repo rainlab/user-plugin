@@ -1,8 +1,8 @@
-1.0.1: Initialize plugin.
-1.0.2:
-    - Create database tables.
+1.0.1:
+    - Initialize plugin.
     - create_users_table.php
     - create_throttle_table.php
+1.0.2: Seed tables.
 1.0.3: Translated hard-coded text to language strings.
 1.0.4: Improvements to user-interface for Location manager.
 1.0.5: Added contact details for users.
