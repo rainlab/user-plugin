@@ -3,7 +3,9 @@
 return [
     'plugin' => [
         'name' => 'Uživatelé',
-        'description' => 'Správa front-end uživatelů.'
+        'description' => 'Správa front-end uživatelů.',
+        'tab' => 'Uživatelé',
+        'access_users' => 'Správa uživatelů'
     ],
     'location' => [
         'label' => 'Lokality',
@@ -43,7 +45,7 @@ return [
         'return_to_list' => 'Zpět na seznam uživatelů',
         'delete_selected_empty' => 'Nejdříve vyberte uživatele, které chcete smazat.',
         'delete_selected_confirm' => 'Chcete smazat vybrané uživatele?',
-        'delete_selected_success' => 'Vybraní uživatelé úspěšně odstraněni.',
+        'delete_selected_success' => 'Vybraní uživatelé úspěšně odstraněni.'
     ],
     'settings' => [
         'users' => 'Uživatelé',

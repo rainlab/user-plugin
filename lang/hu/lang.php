@@ -3,7 +3,9 @@
 return [
     'plugin' => [
         'name' => 'Felhasználók',
-        'description' => 'Felhasználók kezelés a honlapon.'
+        'description' => 'Felhasználók kezelés a honlapon.',
+        'tab' => 'Felhasználók',
+        'access_users' => 'Adatok kezelése'
     ],
     'location' => [
         'label' => 'Tartózkodási hely',
@@ -30,7 +32,7 @@ return [
     ],
     'users' => [
         'menu_label' => 'Felhasználók',
-        'all_users' => 'Minden felhasználó',
+        'all_users' => 'Felhasználók',
         'new_user' => 'Új felhasználó',
         'list_title' => 'Felhasználók kezelése',
         'activating' => 'Aktiválás...',
@@ -40,7 +42,10 @@ return [
         'active_manually' => 'A felhasználó kézi aktiválása',
         'delete_confirm' => 'Valóban törölni akarja ezt a felhasználót?',
         'activated_success' => 'A felhasználó aktiválása sikerült!',
-        'return_to_list' => 'Vissza a felhasználólistához'
+        'return_to_list' => 'Vissza a felhasználólistához',
+        'delete_selected_empty' => 'Nincs kiválasztva felhasználó a törléshez.',
+        'delete_selected_confirm' => 'Valóban törölni akarja a kiválasztott felhasználókat?',
+        'delete_selected_success' => 'A kiválasztott felhasználók sikeresen törölve lettek.'
     ],
     'settings' => [
         'users' => 'Felhasználók',
@@ -80,6 +85,7 @@ return [
         'code_comment' => 'Írja be az ezt az államot / megyét azonosító egyedi kódot.'
     ],
     'country' => [
+        'label' => 'Ország',
         'name' => 'Név',
         'code' => 'Kód',
         'code_comment' => 'Írja be az ezt az országot azonosító egyedi kódot.',
@@ -90,6 +96,7 @@ return [
         'id' => 'Azonosító',
         'username' => 'Felhasználónév',
         'name' => 'Név',
+        'surname' => 'Családnév',
         'email' => 'E-mail cím',
         'created_at' => 'Regisztrált',
         'phone' => 'Telefon',
@@ -158,6 +165,6 @@ return [
         'guests' => 'Vendégek',
         'redirect_title' => 'Átirányítás',
         'redirect_desc' => 'Az átirányítandó oldal neve, ha a hozzáférés megtagadva.',
-        'logout' => 'You have been successfully logged out!'
+        'logout' => 'Sikeresen kijelentkezett!'
     ]
 ];

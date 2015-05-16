@@ -3,14 +3,16 @@
 return [
     'plugin' => [
         'name' => 'Пользователи',
-        'description' => 'Фронтенд управление пользователями.'
+        'description' => 'Фронтенд управление пользователями.',
+        'tab' => 'Пользователи',
+        'access_users' => 'Управление пользователями'
     ],
     'location' => [
         'location' => 'локацию',
         'new' => 'Новая локация',
         'create_title' => 'Создать локацию',
         'update_title' => 'Изменить локацию',
-        'preview_title' => 'Просмотр локации',
+        'preview_title' => 'Просмотр локации'
     ],
     'locations' => [
         'menu_label' => 'Локации',
@@ -26,7 +28,7 @@ return [
         'disable_confirm' => 'Вы уверены?',
         'list_title' => 'Управление локациями',
         'delete_confirm' => 'Вы действительно хотите удалить эту локацию?',
-        'return_to_list' => 'Вернуться к списку локаций',
+        'return_to_list' => 'Вернуться к списку локаций'
     ],
     'users' => [
         'menu_label' => 'Пользователи',
@@ -41,6 +43,9 @@ return [
         'delete_confirm' => 'Вы действительно хотите удалить этого пользователя?',
         'activated_success' => 'Пользователь был успешно активирован!',
         'return_to_list' => 'Вернуться к списку пользователей',
+        'delete_selected_empty' => 'There are no selected users to delete.',
+        'delete_selected_confirm' => 'Delete the selected users?',
+        'delete_selected_success' => 'Successfully deleted the selected users.'
     ],
     'settings' => [
         'menu_label' => 'Настройки пользователя',
@@ -69,26 +74,28 @@ return [
         'login_attribute' => 'Логин',
         'login_attribute_comment' => 'Поле, используемое в качестве логина пользователя.',
         'no_mail_template' => 'Не отправлять уведомление',
-        'hint_templates' => 'Вы можете настроить шаблоны почты, выбрав "Почта" -> "Шаблоны почты" в меню настроек.',
+        'hint_templates' => 'Вы можете настроить шаблоны почты, выбрав "Почта" -> "Шаблоны почты" в меню настроек.'
     ],
     'state' => [
         'label' => 'Штат',
         'name' => 'Название',
         'name_comment' => 'Введите отображаемое имя для данного государства.',
         'code' => 'Код',
-        'code_comment' => 'Введите уникальный код для идентификации этой страны.',
+        'code_comment' => 'Введите уникальный код для идентификации этой страны.'
     ],
     'country' => [
+        'label' => 'страна',
         'name' => 'Название',
         'code' => 'Код',
         'code_comment' => 'Введите уникальный код для идентификации этой страны.',
-        'enabled' => 'Доступно для выбора',
+        'enabled' => 'Доступно для выбора'
     ],
     'user' => [
         'user' => 'пользователя',
         'id' => 'ID',
         'username' => 'Имя пользователя',
         'name' => 'Имя',
+        'surname' => 'фамилия',
         'email' => 'Почта',
         'created_at' => 'Дата регистрации',
         'phone' => 'Телефон',
@@ -104,11 +111,11 @@ return [
         'confirm_password_comment' => 'Введите пароль еще раз для подтверждения.',
         'avatar' => 'Аватар',
         'details' => 'Информация',
-        'account' => 'Аккаунт',
+        'account' => 'Аккаунт'
     ],
     'login' => [
         'attribute_email' => 'Почта',
-        'attribute_username' => 'Имя пользователя',
+        'attribute_username' => 'Имя пользователя'
     ],
     'account' => [
         'account' => 'Аккаунт',
@@ -137,13 +144,13 @@ return [
         'city_suburb' => 'Город / Пригород',
         'postal_code' => 'Почтовый индекс',
         'new_password' => 'Новый пароль',
-        'new_password_confirm' => 'Подтверждение пароля',
+        'new_password_confirm' => 'Подтверждение пароля'
     ],
     'reset_password' => [
         'reset_password' => 'Сброс пароля',
         'reset_password_desc' => 'Форма восстановления пароля.',
         'code_param' => 'Параметр кода',
-        'code_param_desc' => 'Параметр, в котором передаётся код сброса пароля.',
+        'code_param_desc' => 'Параметр, в котором передаётся код сброса пароля.'
     ],
     'session' => [
         'session' => 'Сессия',
@@ -155,6 +162,6 @@ return [
         'guests' => 'Гости',
         'redirect_title' => 'Перенаправление',
         'redirect_desc' => 'Страница для перенаправления при отстутсвии доступа.',
-        'logout' => 'You have been successfully logged out!'
-    ],
+        'logout' => 'Вы успешно вышли из!'
+    ]
 ];

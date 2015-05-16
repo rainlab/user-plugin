@@ -3,7 +3,9 @@
 return [
     'plugin' => [
         'name' => 'Utilisateur',
-        'description' => 'Gestion des utilisateurs Front-End.'
+        'description' => 'Gestion des utilisateurs Front-End.',
+        'tab' => 'Utilisateur',
+        'access_users' => 'Gérer les utilisateurs'
     ],
     'location' => [
         'label' => 'Lieu',
@@ -43,7 +45,7 @@ return [
         'return_to_list' => 'Retour à la liste des utilisateurs',
         'delete_selected_empty' => 'Aucun utilisateur n\'a été sélectionné pour la suppression.',
         'delete_selected_confirm' => 'Supprimer les utilisateurs sélectionnés ?',
-        'delete_selected_success' => 'Les utilisateurs sélectionnés ont été supprimés correctement.',
+        'delete_selected_success' => 'Les utilisateurs sélectionnés ont été supprimés correctement.'
     ],
     'settings' => [
         'users' => 'Utilisateurs',

@@ -3,7 +3,9 @@
 return [
     'plugin' => [
         'name' => 'User',
-        'description' => 'Front-end user management.'
+        'description' => 'Front-end user management.',
+        'tab' => 'Users',
+        'access_users' => 'Manage Users'
     ],
     'location' => [
         'label' => 'Location',
@@ -43,7 +45,7 @@ return [
         'return_to_list' => 'Return to users list',
         'delete_selected_empty' => 'There are no selected users to delete.',
         'delete_selected_confirm' => 'Delete the selected users?',
-        'delete_selected_success' => 'Successfully deleted the selected users.',
+        'delete_selected_success' => 'Successfully deleted the selected users.'
     ],
     'settings' => [
         'users' => 'Users',

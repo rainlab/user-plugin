@@ -37,7 +37,7 @@ class Plugin extends PluginBase
         /*
          * Apply user-based mail blocking
          */
-        Event::listen('mailer.prepareSend', function($mailer, $view, $message){
+        Event::listen('mailer.prepareSend', function($mailer, $view, $message) {
             return MailBlocker::filterMessage($view, $message);
         });
     }
@@ -54,7 +54,7 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'rainlab.users.access_users'  => ['tab' => 'Users', 'label' => 'Manage Users'],
+            'rainlab.users.access_users' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_users']
         ];
     }
 
@@ -90,7 +90,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
-                'permissions' => ['rainlab.users.*'],
+                'permissions' => ['rainlab.users.*']
             ],
             'location' => [
                 'label'       => 'rainlab.user::lang.locations.menu_label',
@@ -99,7 +99,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-globe',
                 'url'         => Backend::url('rainlab/user/locations'),
                 'order'       => 500,
-                'permissions' => ['rainlab.users.*'],
+                'permissions' => ['rainlab.users.*']
             ]
         ];
     }
@@ -123,7 +123,7 @@ class Plugin extends PluginBase
         return [
             'functions' => [
                 'form_select_country' => ['RainLab\User\Models\Country', 'formSelect'],
-                'form_select_state'   => ['RainLab\User\Models\State', 'formSelect'],
+                'form_select_state'   => ['RainLab\User\Models\State', 'formSelect']
             ]
         ];
     }
