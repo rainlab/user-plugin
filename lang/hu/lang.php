@@ -16,7 +16,7 @@ return [
     ],
     'locations' => [
         'menu_label' => 'Tartózkodási helyek',
-        'menu_description' => 'Elérhető felhasználói országok és államok / megyék kezelése.',
+        'menu_description' => 'Elérhető országok és államok / megyék kezelése.',
         'hide_disabled' => 'Letiltottak elrejtése',
         'enabled_label' => 'Engedélyezve',
         'enabled_help' => 'A letiltott tartózkodási helyek nem láthatók a felhasználói oldalon.',
@@ -25,7 +25,7 @@ return [
         'selected_amount' => 'Kiválasztott tartózkodási helyek: :amount',
         'enable_success' => 'A tartózkodási helyek engedélyezése sikerült.',
         'disable_success' => 'A tartózkodási helyek letiltása sikerült.',
-        'disable_confirm' => 'Biztos benne?',
+        'disable_confirm' => 'Biztos, hogy tiltani akarja a tartózkodási helyeket?',
         'list_title' => 'Tartózkodási helyek kezelése',
         'delete_confirm' => 'Valóban törölni akarja ezt a tartózkodási helyet?',
         'return_to_list' => 'Vissza a tartózkodási helyek listájához'
@@ -37,12 +37,12 @@ return [
         'list_title' => 'Felhasználók kezelése',
         'activating' => 'Aktiválás...',
         'activate_warning_title' => 'Nincs aktiválva a felhasználó!',
-        'activate_warning_desc' => 'Ennek a felhasználónak nem történt meg az aktiválása  és nem tud bejelentkezni.',
+        'activate_warning_desc' => 'Ennek a felhasználónak nem történt meg az aktiválása és nem tud bejelentkezni.',
         'activate_confirm' => 'Valóban aktiválni akarja ezt a felhasználót?',
         'active_manually' => 'A felhasználó kézi aktiválása',
         'delete_confirm' => 'Valóban törölni akarja ezt a felhasználót?',
         'activated_success' => 'A felhasználó aktiválása sikerült!',
-        'return_to_list' => 'Vissza a felhasználólistához',
+        'return_to_list' => 'Vissza a felhasználó listához',
         'delete_selected_empty' => 'Nincs kiválasztva felhasználó a törléshez.',
         'delete_selected_confirm' => 'Valóban törölni akarja a kiválasztott felhasználókat?',
         'delete_selected_success' => 'A kiválasztott felhasználók sikeresen törölve lettek.'
@@ -60,10 +60,10 @@ return [
         'activate_mode_auto_comment' => 'Regisztráláskor automatikusan aktiválva.',
         'activate_mode_user' => 'Felhasználó',
         'activate_mode_user_comment' => 'A felhasználó levéllel aktiválja a saját fiókját.',
-        'activate_mode_admin' => 'Webhelygazda',
-        'activate_mode_admin_comment' => 'Csak webhelygazda aktiválhat felhasználót.',
-        'welcome_template' => 'Üdvözlés sablon',
-        'welcome_template_comment' => 'A felhasználónak első aktiváláskor küldendő levél sablon.',
+        'activate_mode_admin' => 'Adminisztrátor',
+        'activate_mode_admin_comment' => 'Csak adminisztrátor aktiválhat felhasználót.',
+        'welcome_template' => 'Üdvözlő sablon',
+        'welcome_template_comment' => 'A felhasználónak első aktiváláskor küldendő levél sablonja.',
         'require_activation' => 'A bejelentkezéshez aktiválás szükséges',
         'require_activation_comment' => 'A felhasználóknak aktivált fiókkal kell rendelkezniük a bejelentkezéshez.',
         'default_country' => 'Alapértelmezett ország',
@@ -75,7 +75,7 @@ return [
         'login_attribute' => 'Bejelentkezési attribútum',
         'login_attribute_comment' => 'Válassza ki, hogy milyen felhasználói adatot kell használni a bejelentkezéshez.',
         'no_mail_template' => 'Nincs értesítés küldése',
-        'hint_templates' => 'A levélsablonokat a Beállítások menüben a Levelezés > Levélsablonok választásával szabhatja személyre.'
+        'hint_templates' => 'A sablonokat a Beállítások menüben a Levelezés > Levél sablonok választásával szabhatja személyre.'
     ],
     'state' => [
         'label' => 'Állam / megye',
@@ -157,7 +157,7 @@ return [
     ],
     'session' => [
         'session' => 'Munkamenet',
-        'session_desc' => 'Hozzáadja egy laphoz a felhasználói munkamenetet, és korlátozhatja a laphoz való hozzáférést.',
+        'session_desc' => 'Hozzáadja egy laphoz a felhasználói munkamenetet és korlátozhatja a laphoz való hozzáférést.',
         'security_title' => 'Csak engedélyezés',
         'security_desc' => 'Ki számára engedélyezett a hozzáférés ehhez laphoz.',
         'all' => 'Mindenki',
