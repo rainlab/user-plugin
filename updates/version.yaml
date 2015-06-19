@@ -31,3 +31,5 @@
     - Adds last name column to users table (surname).
     - users_add_surname.php
 1.0.16: Require permissions for settings page too.
+1.0.17:
+    - Added redirect using the (redirect) get parameter
