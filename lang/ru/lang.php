@@ -43,11 +43,12 @@ return [
         'delete_confirm' => 'Вы действительно хотите удалить этого пользователя?',
         'activated_success' => 'Пользователь был успешно активирован!',
         'return_to_list' => 'Вернуться к списку пользователей',
-        'delete_selected_empty' => 'There are no selected users to delete.',
-        'delete_selected_confirm' => 'Delete the selected users?',
-        'delete_selected_success' => 'Successfully deleted the selected users.'
+        'delete_selected_empty' => 'Нет выбранных пользователей для удаления.',
+        'delete_selected_confirm' => 'Удалить выбранных пользователей?',
+        'delete_selected_success' => 'Выбранные пользователи успешно удалены.'
     ],
     'settings' => [
+        'users' => 'Пользователи',
         'menu_label' => 'Настройки пользователя',
         'menu_description' => 'Управления параметрами пользователя.',
         'activation_tab' => 'Активация',
@@ -74,7 +75,7 @@ return [
         'login_attribute' => 'Логин',
         'login_attribute_comment' => 'Поле, используемое в качестве логина пользователя.',
         'no_mail_template' => 'Не отправлять уведомление',
-        'hint_templates' => 'Вы можете настроить шаблоны почты, выбрав "Почта" -> "Шаблоны почты" в меню настроек.'
+        'hint_templates' => 'Вы можете настроить шаблоны почты, выбрав «Почта» → «Шаблоны почты» в меню настроек.'
     ],
     'state' => [
         'label' => 'Штат',
@@ -91,7 +92,7 @@ return [
         'enabled' => 'Доступно для выбора'
     ],
     'user' => [
-        'user' => 'пользователя',
+        'label' => 'пользователя',
         'id' => 'ID',
         'username' => 'Имя пользователя',
         'name' => 'Имя',
@@ -104,7 +105,9 @@ return [
         'zip' => 'Почтовый индекс',
         'street_addr' => 'Адрес',
         'country' => 'Страна',
+        'select_country' => '-- Выберите страну --',
         'state' => 'Штат',
+        'select_state' => '-- Выберите штат --',
         'reset_password' => 'Сброс пароля',
         'reset_password_comment' => 'Для сброса пользовательского пароля, введите здесь новый пароль.',
         'confirm_password' => 'Подтверждение пароля',
@@ -161,7 +164,7 @@ return [
         'users' => 'Пользователи',
         'guests' => 'Гости',
         'redirect_title' => 'Перенаправление',
-        'redirect_desc' => 'Страница для перенаправления при отстутсвии доступа.',
-        'logout' => 'Вы успешно вышли из!'
+        'redirect_desc' => 'Страница для перенаправления при отсутствии доступа.',
+        'logout' => 'Вы успешно вышли из системы!'
     ]
 ];
