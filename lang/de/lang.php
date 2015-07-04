@@ -3,7 +3,9 @@
 return [
     'plugin' => [
         'name' => 'Benutzer',
-        'description' => 'Frontend-Benutzer Verwaltung.'
+        'description' => 'Frontend-Benutzer Verwaltung.',
+        'tab' => 'Benutzer',
+        'access_users' => 'Benutzer verwalten'
     ],
     'location' => [
         'label' => 'Standort',
@@ -43,7 +45,7 @@ return [
         'return_to_list' => 'Zurück zur Benutzerliste',
         'delete_selected_empty' => 'Keine Benutzer zum Löschen ausgewählt.',
         'delete_selected_confirm' => 'Ausgewählte Benutzer löschen?',
-        'delete_selected_success' => 'Ausgewählte Benutzer erfolgreich gelöscht.',
+        'delete_selected_success' => 'Ausgewählte Benutzer erfolgreich gelöscht.'
     ],
     'settings' => [
         'users' => 'Benutzer',
