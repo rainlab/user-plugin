@@ -135,8 +135,9 @@ class Account extends ComponentBase
          */
         $redirectUrl = $this->pageUrl($this->property('redirect'));
 
-        if ($redirectUrl = post('redirect', $redirectUrl))
+        if ($redirectUrl = input('redirect', $redirectUrl)) {
             return Redirect::intended($redirectUrl);
+        }
     }
 
     /**
