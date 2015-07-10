@@ -250,8 +250,9 @@ class Account extends ComponentBase
     {
         if (!$user = $this->user())
             return;
-
-        $user->save(post());
+    
+        $user->fill(post());
+        $user->save();
 
         /*
          * Password has changed, reauthenticate the user
