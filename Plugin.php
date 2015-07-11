@@ -104,6 +104,16 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerReportWidgets()
+    {
+        return [
+            'Mja\Extensions\ReportWidgets\Users' => [
+                'label'   => 'rainlab.user::reportwidget.users_title',
+                'context' => 'dashboard',
+            ],
+        ];
+    }
+
     public function registerMailTemplates()
     {
         return [

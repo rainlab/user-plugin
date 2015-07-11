@@ -166,5 +166,8 @@ return [
         'redirect_title' => 'Redirect to',
         'redirect_desc' => 'Page name to redirect if access is denied.',
         'logout' => 'You have been successfully logged out!'
-    ]
+    ],
+    'reportwidget' => [
+        'users_title' => 'Users - Registration and login counter'
+    ],
 ];
