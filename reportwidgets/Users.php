@@ -1,4 +1,4 @@
-<?php namespace Mja\Extensions\ReportWidgets;
+<?php namespace RainLab\User\ReportWidgets;
 
 use Carbon\Carbon;
 use Backend\Classes\ReportWidgetBase;
