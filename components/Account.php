@@ -135,8 +135,9 @@ class Account extends ComponentBase
          */
         $redirectUrl = $this->pageUrl($this->property('redirect'));
 
-        if ($redirectUrl = post('redirect', $redirectUrl))
+        if ($redirectUrl = input('redirect', $redirectUrl)) {
             return Redirect::intended($redirectUrl);
+        }
     }
 
     /**
@@ -249,8 +250,9 @@ class Account extends ComponentBase
     {
         if (!$user = $this->user())
             return;
-
-        $user->save(post());
+    
+        $user->fill(post());
+        $user->save();
 
         /*
          * Password has changed, reauthenticate the user

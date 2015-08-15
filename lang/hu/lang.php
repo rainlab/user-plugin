@@ -3,11 +3,13 @@
 return [
     'plugin' => [
         'name' => 'Felhasználók',
-        'description' => 'Felhasználók kezelés a honlapon.'
+        'description' => 'Felhasználók kezelés a honlapon.',
+        'tab' => 'Felhasználók',
+        'access_users' => 'Adatok kezelése'
     ],
     'users' => [
         'menu_label' => 'Felhasználók',
-        'all_users' => 'Minden felhasználó',
+        'all_users' => 'Felhasználók',
         'new_user' => 'Új felhasználó',
         'list_title' => 'Felhasználók kezelése',
         'activating' => 'Aktiválás...',
@@ -17,7 +19,10 @@ return [
         'active_manually' => 'A felhasználó kézi aktiválása',
         'delete_confirm' => 'Valóban törölni akarja ezt a felhasználót?',
         'activated_success' => 'A felhasználó aktiválása sikerült!',
-        'return_to_list' => 'Vissza a felhasználólistához'
+        'return_to_list' => 'Vissza a felhasználó listához',
+        'delete_selected_empty' => 'Nincs kiválasztva felhasználó a törléshez.',
+        'delete_selected_confirm' => 'Valóban törölni akarja a kiválasztott felhasználókat?',
+        'delete_selected_success' => 'A kiválasztott felhasználók sikeresen törölve lettek.'
     ],
     'settings' => [
         'users' => 'Felhasználók',
@@ -31,10 +36,10 @@ return [
         'activate_mode_auto_comment' => 'Regisztráláskor automatikusan aktiválva.',
         'activate_mode_user' => 'Felhasználó',
         'activate_mode_user_comment' => 'A felhasználó levéllel aktiválja a saját fiókját.',
-        'activate_mode_admin' => 'Webhelygazda',
-        'activate_mode_admin_comment' => 'Csak webhelygazda aktiválhat felhasználót.',
-        'welcome_template' => 'Üdvözlés sablon',
-        'welcome_template_comment' => 'A felhasználónak első aktiváláskor küldendő levél sablon.',
+        'activate_mode_admin' => 'Adminisztrátor',
+        'activate_mode_admin_comment' => 'Csak adminisztrátor aktiválhat felhasználót.',
+        'welcome_template' => 'Üdvözlő sablon',
+        'welcome_template_comment' => 'A felhasználónak első aktiváláskor küldendő levél sablonja.',
         'require_activation' => 'A bejelentkezéshez aktiválás szükséges',
         'require_activation_comment' => 'A felhasználóknak aktivált fiókkal kell rendelkezniük a bejelentkezéshez.',
         'use_throttle' => 'Kísérletek késleltetése',
@@ -42,13 +47,14 @@ return [
         'login_attribute' => 'Bejelentkezési attribútum',
         'login_attribute_comment' => 'Válassza ki, hogy milyen felhasználói adatot kell használni a bejelentkezéshez.',
         'no_mail_template' => 'Nincs értesítés küldése',
-        'hint_templates' => 'A levélsablonokat a Beállítások menüben a Levelezés > Levélsablonok választásával szabhatja személyre.'
+        'hint_templates' => 'A sablonokat a Beállítások menüben a Levelezés > Levél sablonok választásával szabhatja személyre.'
     ],
     'user' => [
         'label' => 'Felhasználó',
         'id' => 'Azonosító',
         'username' => 'Felhasználónév',
         'name' => 'Név',
+        'surname' => 'Családnév',
         'email' => 'E-mail cím',
         'created_at' => 'Regisztrált',
         'reset_password' => 'Új jelszó megadása',
@@ -95,7 +101,7 @@ return [
     ],
     'session' => [
         'session' => 'Munkamenet',
-        'session_desc' => 'Hozzáadja egy laphoz a felhasználói munkamenetet, és korlátozhatja a laphoz való hozzáférést.',
+        'session_desc' => 'Hozzáadja egy laphoz a felhasználói munkamenetet és korlátozhatja a laphoz való hozzáférést.',
         'security_title' => 'Csak engedélyezés',
         'security_desc' => 'Ki számára engedélyezett a hozzáférés ehhez laphoz.',
         'all' => 'Mindenki',
@@ -103,6 +109,6 @@ return [
         'guests' => 'Vendégek',
         'redirect_title' => 'Átirányítás',
         'redirect_desc' => 'Az átirányítandó oldal neve, ha a hozzáférés megtagadva.',
-        'logout' => 'You have been successfully logged out!'
+        'logout' => 'Sikeresen kijelentkezett!'
     ]
 ];

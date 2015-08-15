@@ -2,8 +2,10 @@
 
 return [
     'plugin' => [
-        'name' => 'User',
-        'description' => 'Front-end user management.'
+        'name' => 'کاربران',
+        'description' => 'مدیریت کاربر ظاهر.',
+        'tab' => 'کاربران',
+        'access_users' => 'مدیریت کاربران'
     ],
     'users' => [
         'menu_label' => 'کاربران',
@@ -17,7 +19,7 @@ return [
         'active_manually' => 'فعال سازی دستی ی این کاربر',
         'delete_confirm' => 'آیا از حذف این کاربر اطمینان دارید؟',
         'activated_success' => 'کاربر با اطمینان فعال شد!',
-        'return_to_list' => 'بازگشت به لیست کاربران',
+        'return_to_list' => 'بازگشت به لیست کاربران'
     ],
     'settings' => [
         'menu_label' => 'تنظیمات کاربر',
@@ -41,13 +43,14 @@ return [
         'login_attribute' => 'مشخصه ی ورود',
         'login_attribute_comment' => 'مشخصه ای را که کاربر برای ورود باید وارد نماید انتخاب نمایید.',
         'no_mail_template' => 'اطلاع رسانی نکن',
-        'hint_templates' => 'شما میتوانید قالب پست الکترونیکی را با انتخاب "پست الکترونیکی" > "قالب های نامه الکترونیکی" از قسمت "سیستم" تغییر دهید.',
+        'hint_templates' => 'شما میتوانید قالب پست الکترونیکی را با انتخاب "پست الکترونیکی" > "قالب های نامه الکترونیکی" از قسمت "سیستم" تغییر دهید.'
     ],
     'user' => [
         'user' => 'user',
         'id' => 'مشخصه',
         'username' => 'نام کاربری',
         'name' => 'نام',
+        'surname' => 'نام خانوادگی',
         'email' => 'پست الکترونیکی',
         'created_at' => 'تاریخ ثبت نام',
         'reset_password' => 'تنظیم مجدد کلمه عبور',
@@ -56,11 +59,11 @@ return [
         'confirm_password_comment' => 'جهت تایید کلمه عبور را مجددا وارد نمایید.',
         'avatar' => 'نمایه',
         'details' => 'جزییات',
-        'account' => 'حساب کاربری',
+        'account' => 'حساب کاربری'
     ],
     'login' => [
         'attribute_email' => 'پست الکترونیکی',
-        'attribute_username' => 'نام کاربری',
+        'attribute_username' => 'نام کاربری'
     ],
     'account' => [
         'account' => 'حساب کاربری',
@@ -84,13 +87,13 @@ return [
         'register' => 'ثبت نام',
         'login' => 'نام کاربری',
         'new_password' => 'کلمه عبور جدید',
-        'new_password_confirm' => 'تایید کلمه عبور',
+        'new_password_confirm' => 'تایید کلمه عبور'
     ],
     'reset_password' => [
         'reset_password' => 'بازنشانی کلمه عبور',
         'reset_password_desc' => 'فرم کلمه عبور فراموش شده.',
         'code_param' => 'پارامتر کد بازنشانی',
-        'code_param_desc' => 'پارامتر آدرس صفحه ای که جهت کد بازنشانی استفاده خوهد شد',
+        'code_param_desc' => 'پارامتر آدرس صفحه ای که جهت کد بازنشانی استفاده خوهد شد'
     ],
     'session' => [
         'session' => 'جلسه',
@@ -102,6 +105,6 @@ return [
         'guests' => 'میهمان ها',
         'redirect_title' => 'انتقال به',
         'redirect_desc' => 'نام صفحه ای که در صورت عدم اجازه دسترسی کاربر به آن انتقال پیدا میکند.',
-        'logout' => 'You have been successfully logged out!'
-    ],
+        'logout' => 'شما شده اند با موفقیت از سیستم خارج!'
+    ]
 ];

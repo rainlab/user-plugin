@@ -54,7 +54,7 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'rainlab.users.access_users'  => ['tab' => 'Users', 'label' => 'Manage Users'],
+            'rainlab.users.access_users' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_users']
         ];
     }
 
@@ -90,7 +90,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
-                'permissions' => ['rainlab.users.*'],
+                'permissions' => ['rainlab.users.*']
             ]
         ];
     }
