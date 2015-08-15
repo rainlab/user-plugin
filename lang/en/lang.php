@@ -87,6 +87,9 @@ return [
         'delete_selected_success' => 'Successfully deleted the selected groups.',
         'delete_selected_empty' => 'There are no selected groups to delete.',
         'return_to_list' => 'Back to groups list',
+        'create_title' => 'Create User Group',
+        'update_title' => 'Edit User Group',
+        'preview_title' => 'Preview User Group',
     ],
     'login' => [
         'attribute_email' => 'Email',
@@ -111,7 +114,6 @@ return [
         'full_name' => 'Full Name',
         'email' => 'Email',
         'password' => 'Password',
-        'register' => 'Register',
         'login' => 'Login',
         'new_password' => 'New Password',
         'new_password_confirm' => 'Confirm New Password'
