@@ -37,8 +37,13 @@ tabs:
         username:
             span: left
             label: rainlab.user::lang.user.username
-            tab: rainlab.user::lang.user.account
             hidden: true
+
+        groups:
+            label: Groups
+            tab: rainlab.user::lang.user.account
+            type: relation
+            emptyOption: There are no user groups available.
 
 secondaryTabs:
     fields:

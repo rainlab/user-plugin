@@ -15,10 +15,3 @@ In short, to retain the old functionaliy simply install the following plugins:
 
 - RainLab.Location
 - RainLab.UserPlus
-
-# Notes
-
-    1.1.0:
-        - !!! Profile fields and Locations have been removed.
-    1.1.1:
-        - Introduce User Groups.

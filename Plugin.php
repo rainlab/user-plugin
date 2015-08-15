@@ -54,7 +54,8 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'rainlab.users.access_users' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_users']
+            'rainlab.users.access_users' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_users'],
+            'rainlab.users.access_groups' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_groups']
         ];
     }
 
@@ -74,6 +75,12 @@ class Plugin extends PluginBase
                         'icon'        => 'icon-user',
                         'url'         => Backend::url('rainlab/user/users'),
                         'permissions' => ['rainlab.users.access_users']
+                    ],
+                    'usergroups' => [
+                        'label'       => 'rainlab.user::lang.groups.all_groups',
+                        'icon'        => 'icon-users',
+                        'url'         => Backend::url('rainlab/user/usergroups'),
+                        'permissions' => ['rainlab.groups.access_groups']
                     ]
                 ]
             ]

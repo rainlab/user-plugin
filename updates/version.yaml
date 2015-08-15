@@ -25,3 +25,8 @@
     - Adds last name column to users table (surname).
     - users_add_surname.php
 1.0.16: Require permissions for settings page too.
+1.1.0: !!! Profile fields and Locations have been removed.
+1.1.1:
+    - Users can now be added to groups.
+    - create_user_groups_table.php
+    - seed_user_groups_table.php

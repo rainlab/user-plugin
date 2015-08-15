@@ -26,7 +26,7 @@ class User extends UserBase
      * @var array Relations
      */
     public $belongsToMany = [
-        // 'groups' => ['RainLab\User\Models\Group', 'table' => 'users_groups']
+        'groups' => ['RainLab\User\Models\UserGroup', 'table' => 'users_groups']
     ];
 
     public $attachOne = [

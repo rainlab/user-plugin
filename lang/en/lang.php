@@ -5,7 +5,8 @@ return [
         'name' => 'User',
         'description' => 'Front-end user management.',
         'tab' => 'Users',
-        'access_users' => 'Manage Users'
+        'access_users' => 'Manage Users',
+        'access_groups' => 'Manage User Groups'
     ],
     'users' => [
         'menu_label' => 'Users',
@@ -64,6 +65,28 @@ return [
         'avatar' => 'Avatar',
         'details' => 'Details',
         'account' => 'Account'
+    ],
+    'group' => [
+        'label' => 'Group',
+        'id' => 'ID',
+        'name' => 'Name',
+        'description_field' => 'Description',
+        'code' => 'Code',
+        'code_comment' => 'Enter a unique code if you want to access it with the API.',
+        'created_at' => 'Created',
+        'is_new_user_default_field' => 'Add new administrators to this group by default.',
+        'users_count' => 'Users'
+    ],
+    'groups' => [
+        'menu_label' => 'Groups',
+        'all_groups' => 'User Groups',
+        'new_group' => 'New Group',
+        'delete_selected_confirm' => 'Do you really want to delete selected groups?',
+        'list_title' => 'Manage Groups',
+        'delete_confirm' => 'Do you really want to delete this group?',
+        'delete_selected_success' => 'Successfully deleted the selected groups.',
+        'delete_selected_empty' => 'There are no selected groups to delete.',
+        'return_to_list' => 'Back to groups list',
     ],
     'login' => [
         'attribute_email' => 'Email',

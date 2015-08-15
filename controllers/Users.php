@@ -7,6 +7,7 @@ use BackendAuth;
 use Backend\Classes\Controller;
 use System\Classes\SettingsManager;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserGroup;
 use RainLab\User\Models\Settings as UserSettings;
 
 class Users extends Controller
@@ -52,13 +53,24 @@ class Users extends Controller
      */
     protected function formExtendFields($form)
     {
-        $loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
-        if ($loginAttribute != UserSettings::LOGIN_USERNAME) {
-            return;
+        /*
+         * Show the username field if it is configured for use
+         */
+        if (
+            UserSettings::get('login_attribute') == UserSettings::LOGIN_USERNAME &&
+            array_key_exists('username', $form->getFields())
+        ) {
+            $form->getField('username')->hidden = false;
         }
 
-        if (array_key_exists('username', $form->getFields())) {
-            $form->getField('username')->hidden = false;
+        /*
+         * Mark default groups
+         */
+        if (!$form->model->exists) {
+            $defaultGroupIds = UserGroup::where('is_new_user_default', true)->lists('id');
+
+            $groupField = $form->getField('groups');
+            $groupField->value = $defaultGroupIds;
         }
     }
 
