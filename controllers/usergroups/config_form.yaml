@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: User Group
+name: rainlab.user::lang.group.label
 
 # Model Form Field configuration
 form: $/rainlab/user/models/usergroup/fields.yaml
@@ -16,16 +16,16 @@ defaultRedirect: rainlab/user/usergroups
 
 # Create page
 create:
-    title: Create User Group
+    title: rainlab.user::lang.groups.create_title
     redirect: rainlab/user/usergroups/update/:id
     redirectClose: rainlab/user/usergroups
 
 # Update page
 update:
-    title: Edit User Group
+    title: rainlab.user::lang.groups.update_title
     redirect: rainlab/user/usergroups
     redirectClose: rainlab/user/usergroups
 
 # Preview page
 preview:
-    title: Preview User Group
+    title: rainlab.user::lang.groups.update_title
