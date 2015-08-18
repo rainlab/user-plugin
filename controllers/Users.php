@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Controllers;
 
+use DB;
 use Lang;
 use Flash;
 use BackendMenu;
@@ -63,15 +64,19 @@ class Users extends Controller
     }
 
     /**
-     * Deleted checked users.
+     * Deleted checked users
      */
     public function index_onDelete()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
 
             foreach ($checkedIds as $userId) {
-                if (!$user = User::find($userId)) continue;
+                if (!$user = User::find($userId)) {
+                    continue;
+                }
+
                 $user->delete();
+                DB::table('system_files')->where('attachment_id', $userId)->where('attachment_type', 'RainLab\User\Models\User')->delete();
             }
 
             Flash::success(Lang::get('rainlab.user::lang.users.delete_selected_success'));
