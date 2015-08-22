@@ -9,7 +9,7 @@ list: $/rainlab/user/models/usergroup/columns.yaml
 modelClass: RainLab\User\Models\UserGroup
 
 # List Title
-title: Manage User Groups
+title: rainlab.user::lang.groups.list_title
 
 # Link URL for each record
 recordUrl: rainlab/user/usergroups/update/:id
