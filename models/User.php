@@ -40,6 +40,7 @@ class User extends UserBase
         'name',
         'surname',
         'login',
+        'username',
         'email',
         'password',
         'password_confirmation',
