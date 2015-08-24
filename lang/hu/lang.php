@@ -81,7 +81,7 @@ return [
         'success_activation' => 'A fiók aktiválása sikerült.',
         'success_saved' => 'Sikerült menteni a beállításokat!',
         'login_first' => 'Előbb be kell jelentkeznie!',
-        'alredy_active' => 'Már aktiválta a fiókját!',
+        'already_active' => 'Már aktiválta a fiókját!',
         'activation_email_sent' => 'Az aktiválási e-mail elküldése a megadott e-mail címre megtörtént.',
         'sign_in' => 'Bejelentkezés',
         'register' => 'Regisztráció',

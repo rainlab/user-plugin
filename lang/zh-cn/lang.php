@@ -81,7 +81,7 @@ return [
         'success_activation' => '您的帐号已成功激活.',
         'success_saved' => '设置保存成功!',
         'login_first' => '您需要先登录帐号才能访问该页面!',
-        'alredy_active' => '您的帐号暂未激活!',
+        'already_active' => '您的帐号暂未激活!',
         'activation_email_sent' => '激活邮件已发送至您的邮箱.',
         'sign_in' => '登录',
         'register' => '注册',

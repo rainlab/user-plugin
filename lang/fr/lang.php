@@ -82,7 +82,7 @@ return [
         'success_activation' => 'Votre compte a été correctement activé !',
         'success_saved' => 'Vos Paramètres on été correctement sauvegardés !',
         'login_first' => 'Vous devez d’abord vous connecter !',
-        'alredy_active' => 'Votre compte a déjà été activé !',
+        'already_active' => 'Votre compte a déjà été activé !',
         'activation_email_sent' => 'Un mail d’activation a été envoyé sur votre adresse email personnelle.',
         'sign_in' => 'Connexion',
         'register' => 'Enregistrement',

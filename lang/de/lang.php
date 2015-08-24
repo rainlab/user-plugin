@@ -130,7 +130,7 @@ return [
         'success_activation' => 'Benutzerkonto erfolgreich aktiviert.',
         'success_saved' => 'Einstellungen erfolgreich gespeichert!',
         'login_first' => 'Sie müssen sich erst einloggen!',
-        'alredy_active' => 'Ihr Benutzerkonto ist bereits aktiviert!',
+        'already_active' => 'Ihr Benutzerkonto ist bereits aktiviert!',
         'activation_email_sent' => 'Eine Aktivierungs-E-Mail wurde an Ihre E-Mail-Adresse versendet.',
         'country' => 'Land',
         'state' => 'Provinz',

@@ -81,7 +81,7 @@ return [
         'success_activation' => 'Sua conta foi ativada com sucesso.',
         'success_saved' => 'Configurações salvas com sucesso!',
         'login_first' => 'Você precisa se logar primeiro!',
-        'alredy_active' => 'Sua conta já está ativada!',
+        'already_active' => 'Sua conta já está ativada!',
         'activation_email_sent' => 'E-mail de ativação foi enviado para o endereço de e-mail informado.',
         'sign_in' => 'Login',
         'register' => 'Cadastrar-se',

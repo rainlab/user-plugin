@@ -81,7 +81,7 @@ return [
         'success_activation' => 'Váš účet byl úspěšně aktivován.',
         'success_saved' => 'Nastavení bylo úspěšně uloženo!',
         'login_first' => 'Nejdříve musíte být přihlášeni!',
-        'alredy_active' => 'Váš účet je již aktivován!',
+        'already_active' => 'Váš účet je již aktivován!',
         'activation_email_sent' => 'Aktivační e-mail byl zaslán na e-mail, který byl zadán při registraci.',
         'sign_in' => 'Přihlášení',
         'register' => 'Registrace',
