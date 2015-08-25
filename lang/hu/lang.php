@@ -3,9 +3,10 @@
 return [
     'plugin' => [
         'name' => 'Felhasználók',
-        'description' => 'Felhasználók kezelés a honlapon.',
+        'description' => 'Felhasználók kezelése a honlapon.',
         'tab' => 'Felhasználók',
-        'access_users' => 'Adatok kezelése'
+        'access_users' => 'Tagok kezelése',
+        'access_groups' => 'Csoportok kezelése'
     ],
     'users' => [
         'menu_label' => 'Felhasználók',
@@ -30,6 +31,10 @@ return [
         'menu_description' => 'A felhasználó alapú beállítások kezelése.',
         'activation_tab' => 'Aktiválás',
         'signin_tab' => 'Bejelentkezés',
+        'registration_tab' => 'Regisztráció',
+        'notifications_tab' => 'Értesítések',
+        'allow_registration' => 'Regisztráció engedélyezése',
+        'allow_registration_comment' => 'Tiltás esetén csak az adminisztrátorok adhatnak hozzá felhasználót.',
         'activate_mode' => 'Aktiválási mód',
         'activate_mode_comment' => 'Válassza ki, hogyan kell aktiválni egy felhasználói fiókot.',
         'activate_mode_auto' => 'Automatikus',
@@ -58,12 +63,37 @@ return [
         'email' => 'E-mail cím',
         'created_at' => 'Regisztrált',
         'reset_password' => 'Új jelszó megadása',
-        'reset_password_comment' => 'Új jelszó ezen felhasználó részére való megadásához adjon meg itt egy új jelszót.',
+        'reset_password_comment' => 'Kérjük használjon egyedi és erős jelszót.',
         'confirm_password' => 'Jelszó megerősítése',
-        'confirm_password_comment' => 'Adja meg újra a jelszót a megerősítéséhez.',
+        'confirm_password_comment' => 'Kérjük gépelje be újra a jelszót.',
         'avatar' => 'Profilkép',
         'details' => 'Adatok',
         'account' => 'Fiók'
+    ],
+    'group' => [
+        'label' => 'Csoport',
+        'id' => 'ID',
+        'name' => 'Név',
+        'description_field' => 'Leírás',
+        'code' => 'Kód',
+        'code_comment' => 'Egyedi azonosító az API eléréshez.',
+        'created_at' => 'Létrehozva',
+        'is_new_user_default_field' => 'Új alapértelmezett adminisztrátor hozzáadása ehhez a csoporthoz.',
+        'users_count' => 'Felhasználók'
+    ],
+    'groups' => [
+        'menu_label' => 'Csoportok',
+        'all_groups' => 'Összes',
+        'new_group' => 'Új csoport',
+        'delete_selected_confirm' => 'Valóban törölni akarja a kijelölt csoportokat?',
+        'list_title' => 'Csoportok kezelése',
+        'delete_confirm' => 'Valóban törölni akarja ezt a csoportot?',
+        'delete_selected_success' => 'A csoportok sikeresen eltávolításra kerültek.',
+        'delete_selected_empty' => 'A törléshez előbb ki kell választani csoportot.',
+        'return_to_list' => 'Vissza a csoportokhoz',
+        'create_title' => 'Csoport létrehozása',
+        'update_title' => 'Csoport szerkesztése',
+        'preview_title' => 'Csoport előnézete',
     ],
     'login' => [
         'attribute_email' => 'E-mail cím',
@@ -71,11 +101,11 @@ return [
     ],
     'account' => [
         'account' => 'Fiók',
-        'account_desc' => 'Felhasználókezelési űrlap.',
+        'account_desc' => 'Felhasználó kezelési űrlap.',
         'redirect_to' => 'Átirányítás',
         'redirect_to_desc' => 'A lapnév az átirányításhoz frissítés, bejelentkezés vagy regisztrálás után.',
         'code_param' => 'Aktiválási kód',
-        'code_param_desc' => 'A regisztrálás aktiválási kódjához használt oldal URL címe',
+        'code_param_desc' => 'A regisztrálás aktiválási kódjához használt oldal webcíme',
         'invalid_activation_code' => 'A megadott aktiválási kód érvénytelen',
         'invalid_user' => 'Nem található a megadott hitelesítési adatokkal rendelkező felhasználó.',
         'success_activation' => 'A fiók aktiválása sikerült.',
@@ -97,7 +127,7 @@ return [
         'reset_password' => 'Új jelszó megadása',
         'reset_password_desc' => 'Elfelejtett jelszó űrlap.',
         'code_param' => 'Visszaállító kód',
-        'code_param_desc' => 'A visszaállító kódhoz használt oldal URL címe'
+        'code_param_desc' => 'A visszaállító kódhoz használt oldal webcíme'
     ],
     'session' => [
         'session' => 'Munkamenet',
