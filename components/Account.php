@@ -1,10 +1,11 @@
 <?php namespace RainLab\User\Components;
 
-use Lang;
 use Auth;
-use Mail;
+use Event;
 use Flash;
 use Input;
+use Lang;
+use Mail;
 use Redirect;
 use Validator;
 use ValidationException;
@@ -129,6 +130,11 @@ class Account extends ComponentBase
             'login' => array_get($data, 'login'),
             'password' => array_get($data, 'password')
         ], true);
+
+        /*
+         * After login event
+         */
+        Event::fire('rainlab.user.afterlogin', [$user]);
 
         /*
          * Redirect to the intended page after successful sign in
