@@ -51,7 +51,7 @@ class Users extends Controller
     /**
      * Display username field if settings permit
      */
-    protected function formExtendFields($form)
+    public function formExtendFields($form)
     {
         /*
          * Show the username field if it is configured for use
