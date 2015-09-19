@@ -8,10 +8,10 @@ class SeedUserGroupsTable extends Seeder
     public function run()
     {
         UserGroup::create([
-            'name' => 'Default group',
-            'code' => 'default',
-            'description' => 'Default group for website users.',
-            'is_new_user_default' => true
+            'name' => 'Sample group',
+            'code' => 'sample',
+            'description' => 'Sample group for website users.',
+            'is_new_user_default' => false
         ]);
     }
 }
