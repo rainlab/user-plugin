@@ -68,21 +68,6 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-user',
                 'permissions' => ['rainlab.users.*'],
                 'order'       => 500,
-
-                'sideMenu' => [
-                    'users' => [
-                        'label'       => 'rainlab.user::lang.users.all_users',
-                        'icon'        => 'icon-user',
-                        'url'         => Backend::url('rainlab/user/users'),
-                        'permissions' => ['rainlab.users.access_users']
-                    ],
-                    'usergroups' => [
-                        'label'       => 'rainlab.user::lang.groups.all_groups',
-                        'icon'        => 'icon-users',
-                        'url'         => Backend::url('rainlab/user/usergroups'),
-                        'permissions' => ['rainlab.groups.access_groups']
-                    ]
-                ]
             ]
         ];
     }
