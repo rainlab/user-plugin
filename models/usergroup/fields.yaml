@@ -11,6 +11,7 @@ fields:
         label: rainlab.user::lang.group.code
         comment: rainlab.user::lang.group.code_comment
         span: right
+        preset: name
 
     description:
         label: rainlab.user::lang.group.description_field

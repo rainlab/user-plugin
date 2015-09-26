@@ -17,7 +17,7 @@ class UserGroup extends GroupBase
      */
     public $rules = [
         'name' => 'required|between:3,64',
-        'code' => 'regex:/^[a-zA-Z0-9_\-]+$/|unique:user_groups',
+        'code' => 'required|regex:/^[a-zA-Z0-9_\-]+$/|unique:user_groups',
     ];
 
     /**

@@ -76,7 +76,7 @@ return [
         'name' => 'Name',
         'description_field' => 'Description',
         'code' => 'Code',
-        'code_comment' => 'Enter a unique code if you want to access it with the API.',
+        'code_comment' => 'Enter a unique code used to identify this group.',
         'created_at' => 'Created',
         'users_count' => 'Users'
     ],
