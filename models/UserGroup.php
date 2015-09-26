@@ -36,16 +36,4 @@ class UserGroup extends GroupBase
         'code',
         'description'
     ];
-
-    public function afterCreate()
-    {
-        if ($this->is_new_user_default) {
-            $this->addAllUsersToGroup();
-        }
-    }
-
-    public function addAllUsersToGroup()
-    {
-        $this->users()->sync(User::lists('id'));
-    }
 }

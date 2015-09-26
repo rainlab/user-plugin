@@ -78,7 +78,6 @@ return [
         'code' => 'Kód',
         'code_comment' => 'Egyedi azonosító az API eléréshez.',
         'created_at' => 'Létrehozva',
-        'is_new_user_default_field' => 'Új alapértelmezett adminisztrátor hozzáadása ehhez a csoporthoz.',
         'users_count' => 'Felhasználók'
     ],
     'groups' => [

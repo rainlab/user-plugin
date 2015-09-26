@@ -62,16 +62,6 @@ class Users extends Controller
         ) {
             $form->getField('username')->hidden = false;
         }
-
-        /*
-         * Mark default groups
-         */
-        if (!$form->model->exists) {
-            $defaultGroupIds = UserGroup::where('is_new_user_default', true)->lists('id');
-
-            $groupField = $form->getField('groups');
-            $groupField->value = $defaultGroupIds;
-        }
     }
 
     /**

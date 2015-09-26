@@ -10,8 +10,7 @@ class SeedUserGroupsTable extends Seeder
         UserGroup::create([
             'name' => 'Sample group',
             'code' => 'sample',
-            'description' => 'Sample group for website users.',
-            'is_new_user_default' => false
+            'description' => 'Sample group for website users.'
         ]);
     }
 }

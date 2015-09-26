@@ -127,7 +127,6 @@ return [
         'code' => 'Code',
         'created_at' => 'Créé le',
         'users_count' => 'Nombre d’utilisateurs',
-        'is_new_user_default_field' => 'Ajouter les administrateurs à ce groupe par défaut',
         'code_comment' => 'Entrez un code unique pour y accéder via l’API',
         'description_field' => 'Description',
     ],

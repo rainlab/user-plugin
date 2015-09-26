@@ -78,7 +78,6 @@ return [
         'code' => 'Code',
         'code_comment' => 'Enter a unique code if you want to access it with the API.',
         'created_at' => 'Created',
-        'is_new_user_default_field' => 'Add new administrators to this group by default.',
         'users_count' => 'Users'
     ],
     'groups' => [

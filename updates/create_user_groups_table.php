@@ -15,7 +15,6 @@ class CreateUserGroupsTable extends Migration
             $table->string('name');
             $table->string('code')->nullable()->index('code_index');
             $table->text('description')->nullable();
-            $table->boolean('is_new_user_default')->default(false);
             $table->timestamps();
         });
 

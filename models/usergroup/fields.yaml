@@ -3,10 +3,6 @@
 # ===================================
 
 fields:
-    is_new_user_default:
-        label: rainlab.user::lang.group.is_new_user_default_field
-        type: checkbox
-
     name:
         label: rainlab.user::lang.group.name
         span: left
