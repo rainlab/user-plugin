@@ -3,9 +3,10 @@
 return [
     'plugin' => [
         'name' => 'کاربران',
-        'description' => 'مدیریت کاربر ظاهر.',
+        'description' => 'مدیریت کاربران',
         'tab' => 'کاربران',
-        'access_users' => 'مدیریت کاربران'
+        'access_users' => 'مدیریت کاربران',
+        'access_groups' => 'مدیریت گروه ها'
     ],
     'users' => [
         'menu_label' => 'کاربران',
@@ -16,16 +17,24 @@ return [
         'activate_warning_title' => 'کاربر فعال نمیباشد!',
         'activate_warning_desc' => 'این کاربر فعال نشده است و نمیتواند وارد سایت شود.',
         'activate_confirm' => 'آیا از فعالسازی این کاربر اطمینان دارید؟',
-        'active_manually' => 'فعال سازی دستی ی این کاربر',
+        'active_manually' => 'فعال سازی دستی این کاربر',
         'delete_confirm' => 'آیا از حذف این کاربر اطمینان دارید؟',
-        'activated_success' => 'کاربر با اطمینان فعال شد!',
-        'return_to_list' => 'بازگشت به لیست کاربران'
+        'activated_success' => 'کاربر با موفقیت فعال شد.',
+        'return_to_list' => 'بازگشت به لیست کاربران',
+        'delete_selected_empty' => 'کاربری جهت حذف انتخاب نشده است.',
+        'delete_selected_confirm' => 'آیا از حذف کاربران انتخاب شده اطمینان داری؟',
+        'delete_selected_success' => 'کاربران انتخاب شده با موفقیت حذف شدند.'
     ],
     'settings' => [
-        'menu_label' => 'تنظیمات کاربر',
+        'users' => 'کاربران',
+        'menu_label' => 'تنظیمات کاربران',
         'menu_description' => 'مدیریت تنظیمات مربوط به کاربر.',
         'activation_tab' => 'فعال سازی',
         'signin_tab' => 'ورود',
+        'registration_tab' => 'ایجاد حساب کاربری',
+        'notifications_tab' => 'هشدار ها',
+        'allow_registration' => 'به کاربران اجازه ثبت نام داده شود.',
+        'allow_registration_comment' => 'اگر این گزینه غیر فعال باشد حساب کاربری فقط توسط مدیران میتواند ایجاد شود.',
         'activate_mode' => 'روش فعال سازی',
         'activate_mode_comment' => 'روشی را که میخواهید حساب های کاربری از آن طریق فعال شوند را انتخاب نمایید.',
         'activate_mode_auto' => 'خودکار',
