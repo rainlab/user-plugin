@@ -87,9 +87,9 @@ class User extends UserBase
      * Before delete event
      * @return void
      */
-    public function beforeDelete()
+    public function afterDelete()
     {
-        DB::table('system_files')->where('attachment_id', $this->id)->where('attachment_type', 'RainLab\User\Models\User')->delete();
+        $this->avatar && $this->avatar->delete();
     }
 
     /**
