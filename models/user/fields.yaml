@@ -16,34 +16,34 @@ tabs:
     fields:
 
         email:
-            span: full
             label: rainlab.user::lang.user.email
             tab: rainlab.user::lang.user.account
+            span: full
 
         password:
-            type: password
-            span: left
             label: rainlab.user::lang.user.reset_password
             comment: rainlab.user::lang.user.reset_password_comment
             tab: rainlab.user::lang.user.account
+            type: password
+            span: left
 
         password_confirmation:
-            type: password
-            span: right
             label: rainlab.user::lang.user.confirm_password
             comment: rainlab.user::lang.user.confirm_password_comment
             tab: rainlab.user::lang.user.account
+            type: password
+            span: right
 
         username:
-            span: left
             label: rainlab.user::lang.user.username
             hidden: true
+            span: left
 
         groups:
-            label: Groups
+            label: rainlab.user::lang.user.groups
             tab: rainlab.user::lang.user.account
             type: relation
-            emptyOption: There are no user groups available.
+            emptyOption: rainlab.user::lang.user.empty_groups
 
 secondaryTabs:
     fields:
