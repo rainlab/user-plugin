@@ -66,6 +66,8 @@ return [
         'reset_password_comment' => 'To reset this users password, enter a new password here.',
         'confirm_password' => 'Password Confirmation',
         'confirm_password_comment' => 'Enter the password again to confirm it.',
+        'groups' => 'Groups',
+        'empty_groups' => 'There are no user groups available.',
         'avatar' => 'Avatar',
         'details' => 'Details',
         'account' => 'Account'
@@ -90,9 +92,10 @@ return [
         'delete_selected_success' => 'Successfully deleted the selected groups.',
         'delete_selected_empty' => 'There are no selected groups to delete.',
         'return_to_list' => 'Back to groups list',
+        'return_to_users' => 'Back to users list',
         'create_title' => 'Create User Group',
         'update_title' => 'Edit User Group',
-        'preview_title' => 'Preview User Group',
+        'preview_title' => 'Preview User Group'
     ],
     'login' => [
         'attribute_email' => 'Email',

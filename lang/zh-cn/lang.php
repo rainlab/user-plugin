@@ -61,6 +61,8 @@ return [
         'reset_password_comment' => '请输入新密码.',
         'confirm_password' => '确认密码',
         'confirm_password_comment' => '再次输入密码.',
+        'groups' => 'Groups',
+        'empty_groups' => 'There are no user groups available.',
         'avatar' => '头像',
         'details' => '描述',
         'account' => '帐号'

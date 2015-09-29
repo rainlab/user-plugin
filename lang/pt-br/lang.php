@@ -61,6 +61,8 @@ return [
         'reset_password_comment' => 'Para resetar a senha deste usuário, informe uma nova senha aqui.',
         'confirm_password' => 'Confirmação de Senha',
         'confirm_password_comment' => 'Informe a senha novamente para confirmá-la.',
+        'groups' => 'Groups',
+        'empty_groups' => 'There are no user groups available.',
         'avatar' => 'Avatar',
         'details' => 'Detalhes',
         'account' => 'Conta'

@@ -57,6 +57,8 @@ return [
         'reset_password_comment' => 'جهت تنظیم مجدد کلمه عبور کاربر ، کلمه عبور جدید را وارد نمایید.',
         'confirm_password' => 'تایید کلمه عبور',
         'confirm_password_comment' => 'جهت تایید کلمه عبور را مجددا وارد نمایید.',
+        'groups' => 'Groups',
+        'empty_groups' => 'There are no user groups available.',
         'avatar' => 'نمایه',
         'details' => 'جزییات',
         'account' => 'حساب کاربری'
