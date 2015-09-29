@@ -6,7 +6,7 @@ return [
         'description' => 'Gestion des utilisateurs Front-End.',
         'tab' => 'Utilisateur',
         'access_users' => 'Gérer les utilisateurs',
-        'access_groups' => 'Gérer les groupes',
+        'access_groups' => 'Gérer les groupes'
     ],
     'users' => [
         'menu_label' => 'Utilisateurs',
@@ -23,7 +23,7 @@ return [
         'return_to_list' => 'Retour à la liste des utilisateurs',
         'delete_selected_empty' => 'Aucun utilisateur n’a été sélectionné pour la suppression.',
         'delete_selected_confirm' => 'Supprimer les utilisateurs sélectionnés ?',
-        'delete_selected_success' => 'Les utilisateurs sélectionnés ont été supprimés correctement.',
+        'delete_selected_success' => 'Les utilisateurs sélectionnés ont été supprimés correctement.'
     ],
     'settings' => [
         'users' => 'Utilisateurs',
@@ -48,7 +48,7 @@ return [
         'login_attribute' => 'Login attribute',
         'login_attribute_comment' => 'Choisissez quel paramètre utilisateur doit être utilisé pour le login.',
         'no_mail_template' => 'Ne pas envoyer de notification',
-        'hint_templates' => 'Vous pouvez modifier les patrons de mail en choisissant Mail > Patrons de Mail à partir du menu Paramètres.',
+        'hint_templates' => 'Vous pouvez modifier les patrons de mail en choisissant Mail > Patrons de Mail à partir du menu Paramètres.'
     ],
     'user' => [
         'label' => 'Utilisateur',
@@ -62,13 +62,15 @@ return [
         'reset_password_comment' => 'Pour effacer le mot de passe de cet utilisateur, entrez un nouveau mot de passe ici.',
         'confirm_password' => 'Confirmation de mot de passe',
         'confirm_password_comment' => 'Entrez à nouveau le mot de passe pour le confirmer.',
+        'groups' => 'Groups',
+        'empty_groups' => 'There are no user groups available.',
         'avatar' => 'Avatar',
         'details' => 'Détails',
-        'account' => 'Compte',
+        'account' => 'Compte'
     ],
     'login' => [
         'attribute_email' => 'Email',
-        'attribute_username' => 'Pseudo',
+        'attribute_username' => 'Pseudo'
     ],
     'account' => [
         'account' => 'Compte',
@@ -91,13 +93,13 @@ return [
         'password' => 'Mot de passe',
         'login' => 'Login',
         'new_password' => 'Nouveau mot de passe',
-        'new_password_confirm' => 'Confirmez le nouveau mot de passe',
+        'new_password_confirm' => 'Confirmez le nouveau mot de passe'
     ],
     'reset_password' => [
         'reset_password' => 'Réinitialiser le mot de passe',
         'reset_password_desc' => 'Formulaire Mot de passe oublié.',
         'code_param' => 'Code de réinitialisation',
-        'code_param_desc' => 'URL de la page utilisée pour le code de réinitialisation',
+        'code_param_desc' => 'URL de la page utilisée pour le code de réinitialisation'
     ],
     'session' => [
         'session' => 'Session',
@@ -109,16 +111,20 @@ return [
         'guests' => 'Invités',
         'redirect_title' => 'Rediriger vers',
         'redirect_desc' => 'Nom de la page de redirection au cas où l’accès est refusé.',
-        'logout' => 'Vous avez été correctement déconnecté.',
+        'logout' => 'Vous avez été correctement déconnecté.'
     ],
     'groups' => [
         'all_groups' => 'Tous les groupes',
         'new_group' => 'Nouveau Groupe',
         'list_title' => 'Groupes d’utilisateurs',
-        'return_to_list' => 'Retour à la liste des groupes',
         'delete_confirm' => 'Êtes-vous certain de vouloir supprimer ce groupe d’utilisateurs ?',
+        'delete_selected_success' => 'Successfully deleted the selected groups.',
+        'delete_selected_empty' => 'There are no selected groups to delete.',
+        'return_to_list' => 'Retour à la liste des groupes',
+        'return_to_users' => 'Back to users list',
         'create_title' => 'Nouveau Groupe d’utilisateurs',
         'update_title' => 'Modifier un Groupe d’utilisateurs',
+        'preview_title' => 'Preview User Group'
     ],
     'group' => [
         'label' => 'Groupe d’utilisateurs',
@@ -128,6 +134,6 @@ return [
         'created_at' => 'Créé le',
         'users_count' => 'Nombre d’utilisateurs',
         'code_comment' => 'Entrez un code unique pour y accéder via l’API',
-        'description_field' => 'Description',
-    ],
+        'description_field' => 'Description'
+    ]
 ];

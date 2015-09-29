@@ -66,6 +66,8 @@ return [
         'reset_password_comment' => 'Kérjük használjon egyedi és erős jelszót.',
         'confirm_password' => 'Jelszó megerősítése',
         'confirm_password_comment' => 'Kérjük gépelje be újra a jelszót.',
+        'groups' => 'Csoportok',
+        'empty_groups' => 'Egy sincs létrehozva.',
         'avatar' => 'Profilkép',
         'details' => 'Adatok',
         'account' => 'Fiók'
@@ -82,7 +84,7 @@ return [
     ],
     'groups' => [
         'menu_label' => 'Csoportok',
-        'all_groups' => 'Összes',
+        'all_groups' => 'Csoportok',
         'new_group' => 'Új csoport',
         'delete_selected_confirm' => 'Valóban törölni akarja a kijelölt csoportokat?',
         'list_title' => 'Csoportok kezelése',
@@ -90,9 +92,10 @@ return [
         'delete_selected_success' => 'A csoportok sikeresen eltávolításra kerültek.',
         'delete_selected_empty' => 'A törléshez előbb ki kell választani csoportot.',
         'return_to_list' => 'Vissza a csoportokhoz',
+        'return_to_users' => 'Vissza a felhasználókhoz',
         'create_title' => 'Csoport létrehozása',
         'update_title' => 'Csoport szerkesztése',
-        'preview_title' => 'Csoport előnézete',
+        'preview_title' => 'Csoport előnézete'
     ],
     'login' => [
         'attribute_email' => 'E-mail cím',

@@ -66,6 +66,8 @@ return [
         'reset_password_comment' => 'Voer een nieuw wachtwoord in om het wachtwoord te resetten.',
         'confirm_password' => 'Herhaal wachtwoord',
         'confirm_password_comment' => 'Voer het wachtwoord nogmaals in.',
+        'groups' => 'Groep',
+        'empty_groups' => 'There are no user groups available.',
         'avatar' => 'Profielfoto',
         'details' => 'Details',
         'account' => 'Account'
@@ -91,9 +93,10 @@ return [
         'delete_selected_success' => 'De geselecteerde groepen zijn verwijderd.',
         'delete_selected_empty' => 'Er zijn geen groepen geselecteerd om te verwijderen.',
         'return_to_list' => 'Terug naar overzicht',
+        'return_to_users' => 'Back to users list',
         'create_title' => 'Groep aanmaken',
         'update_title' => 'Wijzig groep',
-        'preview_title' => 'Voorbeeldweergave groep',
+        'preview_title' => 'Voorbeeldweergave groep'
     ],
     'login' => [
         'attribute_email' => 'E-mailadres',
