@@ -5,7 +5,8 @@ return [
         'name' => 'Uživatelé',
         'description' => 'Správa front-end uživatelů.',
         'tab' => 'Uživatelé',
-        'access_users' => 'Správa uživatelů'
+        'access_users' => 'Správa uživatelů',
+        'access_groups' => 'Správa uživatelských skupin'
     ],
     'users' => [
         'menu_label' => 'Uživatelé',
@@ -30,6 +31,10 @@ return [
         'menu_description' => 'Správa nastavení uživatelů',
         'activation_tab' => 'Aktivace',
         'signin_tab' => 'Přihlášení',
+        'registration_tab' => 'Registrace',
+        'notifications_tab' => 'Notifikace',
+        'allow_registration' => 'Povolit registraci uživatelů',
+        'allow_registration_comment' => 'Pokud je registrace zakázaná, uživatelé lze vytvářet pouze v administraci.',
         'activate_mode' => 'Režim aktivace',
         'activate_mode_comment' => 'Vyberte jak má být uživatel aktivován.',
         'activate_mode_auto' => 'Automaticky',
@@ -61,11 +66,36 @@ return [
         'reset_password_comment' => 'Pro změnu hesla, zadejte nové heslo.',
         'confirm_password' => 'Nové heslo znovu pro kontrolu',
         'confirm_password_comment' => 'Zadejte heslo znovu pro kontrolu správnosti.',
-        'groups' => 'Groups',
-        'empty_groups' => 'There are no user groups available.',
+        'groups' => 'Skupiny',
+        'empty_groups' => 'V této skupině nejsou žádní uživatelé.',
         'avatar' => 'Obrázek',
         'details' => 'Detaily',
         'account' => 'Účet'
+    ],
+    'group' => [
+        'label' => 'Skupina',
+        'id' => 'ID',
+        'name' => 'Název',
+        'description_field' => 'Popis skupiny',
+        'code' => 'Kód',
+        'code_comment' => 'Zadejte unikátní kód pro jednoznačnou identifikaci této skupiny.',
+        'created_at' => 'Vytvořeno',
+        'users_count' => 'Počet uživatelů'
+    ],
+    'groups' => [
+        'menu_label' => 'Skupiny',
+        'all_groups' => 'Uživatelské skupiny',
+        'new_group' => 'Nová skupina',
+        'delete_selected_confirm' => 'Opravdu chcete smazat vybrané skupiny?',
+        'list_title' => 'Správa skupin',
+        'delete_confirm' => 'Opravdu chcete odstranit tuto skupinu?',
+        'delete_selected_success' => 'Vybrané skupiny byly úspěšně odstraněny.',
+        'delete_selected_empty' => 'Musíte nejdřív vybrat skupiny které chcete smazat.',
+        'return_to_list' => 'Zpět na seznam skupin',
+        'return_to_users' => 'Zpět na seznam uživatelů',
+        'create_title' => 'Vytvořit skupinu',
+        'update_title' => 'Upravit skupinu',
+        'preview_title' => 'Náhled skupiny'
     ],
     'login' => [
         'attribute_email' => 'E-mail',
