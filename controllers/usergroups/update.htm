@@ -1,7 +1,7 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('rainlab/user/locations') ?>"><?= e(trans('rainlab.user::lang.locations.menu_label')) ?></a></li>
-        <li><?= e(trans($this->pageTitle)) ?></li>
+        <li><a href="<?= Backend::url('rainlab/user/usergroups') ?>"><?= e(trans('rainlab.user::lang.groups.all_groups')) ?></a></li>
+        <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
 
@@ -9,15 +9,11 @@
 
     <?= Form::open(['class' => 'layout']) ?>
 
-        <div class="layout-row min-size">
-            <?= $this->formRender() ?>
-        </div>
         <div class="layout-row">
-            <?= $this->relationRender('states') ?>
+            <?= $this->formRender() ?>
         </div>
 
         <div class="form-buttons">
-
             <div class="loading-indicator-container">
                 <button
                     type="submit"
@@ -42,10 +38,10 @@
                     class="oc-icon-trash-o btn-icon danger pull-right"
                     data-request="onDelete"
                     data-load-indicator="<?= e(trans('backend::lang.form.deleting_name', ['name'=>$formRecordName])) ?>"
-                    data-request-confirm="<?= e(trans('rainlab.user::lang.locations.delete_confirm')) ?>">
+                    data-request-confirm="<?= e(trans('rainlab.user::lang.groups.delete_confirm')) ?>">
                 </button>
                 <span class="btn-text">
-                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('rainlab/user/locations') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
+                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('rainlab/user/usergroups') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
             </div>
         </div>
@@ -54,7 +50,7 @@
 
 <?php else: ?>
 
-    <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
-    <p><a href="<?= Backend::url('rainlab/user/locations') ?>" class="btn btn-default"><?= e(trans('rainlab.user::lang.locations.back_to_list')) ?></a></p>
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p><a href="<?= Backend::url('rainlab/user/usergroups') ?>" class="btn btn-default"><?= e(trans('rainlab.user::lang.groups.return_to_list')) ?></a></p>
 
 <?php endif ?>

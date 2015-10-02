@@ -6,8 +6,16 @@ tabs:
     fields:
 
         # Require Activation
+        allow_registration:
+            span: left
+            label: rainlab.user::lang.settings.allow_registration
+            comment: rainlab.user::lang.settings.allow_registration_comment
+            type: switch
+            tab: rainlab.user::lang.settings.registration_tab
+
+        # Require Activation
         require_activation:
-            span: auto
+            span: left
             label: rainlab.user::lang.settings.require_activation
             comment: rainlab.user::lang.settings.require_activation_comment
             type: switch
@@ -15,30 +23,15 @@ tabs:
 
         # Activation Mode
         activate_mode:
-            span: auto
+            span: left
             commentAbove: rainlab.user::lang.settings.activate_mode_comment
             label: rainlab.user::lang.settings.activate_mode
             type: radio
             tab: rainlab.user::lang.settings.activation_tab
 
-        # Welcome Template
-        welcome_template:
-            span: auto
-            label: rainlab.user::lang.settings.welcome_template
-            comment: rainlab.user::lang.settings.welcome_template_comment
-            type: dropdown
-            default: rainlab.user::mail.activate
-            tab: rainlab.user::lang.settings.activation_tab
-
-        # Hint
-        template_hint:
-            type: hint
-            path: $/rainlab/user/models/settings/_template_hint.htm
-            tab: rainlab.user::lang.settings.activation_tab
-
         # Throttle Sign In
         use_throttle:
-            span: auto
+            span: left
             label: rainlab.user::lang.settings.use_throttle
             comment: rainlab.user::lang.settings.use_throttle_comment
             type: switch
@@ -46,25 +39,23 @@ tabs:
 
         # Login Attribute
         login_attribute:
-            span: auto
+            span: left
             label: rainlab.user::lang.settings.login_attribute
-            comment: rainlab.user::lang.settings.login_attribute_comment
-            type: dropdown
+            commentAbove: rainlab.user::lang.settings.login_attribute_comment
+            type: radio
             tab: rainlab.user::lang.settings.signin_tab
 
-        # Default Country
-        default_country:
-            span: left
-            label: rainlab.user::lang.settings.default_country
-            comment: rainlab.user::lang.settings.default_country_comment
-            type: dropdown
-            tab: rainlab.user::lang.settings.location_tab
+        # Hint
+        template_hint:
+            type: hint
+            path: $/rainlab/user/models/settings/_template_hint.htm
+            tab: rainlab.user::lang.settings.notifications_tab
 
-        # Default State
-        default_state:
-            span: right
-            label: rainlab.user::lang.settings.default_state
-            comment: rainlab.user::lang.settings.default_state_comment
+        # Welcome Template
+        welcome_template:
+            span: left
+            label: rainlab.user::lang.settings.welcome_template
+            comment: rainlab.user::lang.settings.welcome_template_comment
             type: dropdown
-            tab: rainlab.user::lang.settings.location_tab
-            dependsOn: default_country
+            default: rainlab.user::mail.activate
+            tab: rainlab.user::lang.settings.notifications_tab

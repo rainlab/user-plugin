@@ -6,6 +6,7 @@ use Flash;
 use Input;
 use Lang;
 use Mail;
+use Request;
 use Redirect;
 use Validator;
 use ValidationException;
@@ -60,7 +61,7 @@ class Account extends ComponentBase
          * Activation code supplied
          */
         if ($activationCode = $this->param($routeParameter)) {
-            $this->onActivate(false, $activationCode);
+            $this->onActivate($activationCode);
         }
 
         $this->page['user'] = $this->user();
@@ -139,7 +140,8 @@ class Account extends ComponentBase
         /*
          * Redirect to the intended page after successful sign in
          */
-        $redirectUrl = $this->pageUrl($this->property('redirect'));
+        $redirectUrl = $this->pageUrl($this->property('redirect'))
+            ?: $this->property('redirect');
 
         if ($redirectUrl = input('redirect', $redirectUrl)) {
             return Redirect::intended($redirectUrl);
@@ -151,60 +153,72 @@ class Account extends ComponentBase
      */
     public function onRegister()
     {
-        /*
-         * Validate input
-         */
-        $data = post();
+        try {
+            if (!UserSettings::get('allow_registration', true)) {
+                throw new ApplicationException(Lang::get('rainlab.user::lang.account.registration_disabled'));
+            }
 
-        if (!array_key_exists('password_confirmation', $data)) {
-            $data['password_confirmation'] = post('password');
+            /*
+             * Validate input
+             */
+            $data = post();
+
+            if (!array_key_exists('password_confirmation', $data)) {
+                $data['password_confirmation'] = post('password');
+            }
+
+            $rules = [
+                'email'    => 'required|email|between:2,64',
+                'password' => 'required|min:2'
+            ];
+
+            if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
+                $rules['username'] = 'required|between:2,64';
+            }
+
+            $validation = Validator::make($data, $rules);
+            if ($validation->fails()) {
+                throw new ValidationException($validation);
+            }
+
+            /*
+             * Register user
+             */
+            $requireActivation = UserSettings::get('require_activation', true);
+            $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
+            $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
+            $user = Auth::register($data, $automaticActivation);
+
+            /*
+             * Activation is by the user, send the email
+             */
+            if ($userActivation) {
+                $this->sendActivationEmail($user);
+
+                Flash::success(Lang::get('rainlab.user::lang.account.activation_email_sent'));
+            }
+
+            /*
+             * Automatically activated or not required, log the user in
+             */
+            if ($automaticActivation || !$requireActivation) {
+                Auth::login($user);
+            }
+
+            /*
+             * Redirect to the intended page after successful sign in
+             */
+            $redirectUrl = $this->pageUrl($this->property('redirect'))
+                ?: $this->property('redirect');
+
+            if ($redirectUrl = post('redirect', $redirectUrl)) {
+                return Redirect::intended($redirectUrl);
+            }
+
         }
-
-        $rules = [
-            'email'    => 'required|email|between:2,64',
-            'password' => 'required|min:2'
-        ];
-
-        if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
-            $rules['username'] = 'required|between:2,64';
-        }
-
-        $validation = Validator::make($data, $rules);
-        if ($validation->fails()) {
-            throw new ValidationException($validation);
-        }
-
-        /*
-         * Register user
-         */
-        $requireActivation = UserSettings::get('require_activation', true);
-        $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
-        $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
-        $user = Auth::register($data, $automaticActivation);
-
-        /*
-         * Activation is by the user, send the email
-         */
-        if ($userActivation) {
-            $this->sendActivationEmail($user);
-
-            Flash::success(Lang::get('rainlab.user::lang.account.activation_email_sent'));
-        }
-
-        /*
-         * Automatically activated or not required, log the user in
-         */
-        if ($automaticActivation || !$requireActivation) {
-            Auth::login($user);
-        }
-
-        /*
-         * Redirect to the intended page after successful sign in
-         */
-        $redirectUrl = $this->pageUrl($this->property('redirect'));
-
-        if ($redirectUrl = post('redirect', $redirectUrl)) {
-            return Redirect::intended($redirectUrl);
+        catch (Exception $ex) {
+            if (Request::ajax()) throw $ex;
+            else Flash::error($ex->getMessage());
         }
     }
 
@@ -212,7 +226,7 @@ class Account extends ComponentBase
      * Activate the user
      * @param  string $code Activation code
      */
-    public function onActivate($isAjax = true, $code = null)
+    public function onActivate($code = null)
     {
         try {
             $code = post('code', $code);
@@ -244,7 +258,7 @@ class Account extends ComponentBase
 
         }
         catch (Exception $ex) {
-            if ($isAjax) throw $ex;
+            if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
     }
@@ -272,16 +286,18 @@ class Account extends ComponentBase
         /*
          * Redirect to the intended page after successful update
          */
-        $redirectUrl = $this->pageUrl($this->property('redirect'));
+        $redirectUrl = $this->pageUrl($this->property('redirect'))
+            ?: $this->property('redirect');
 
-        if ($redirectUrl = post('redirect', $redirectUrl))
+        if ($redirectUrl = post('redirect', $redirectUrl)) {
             return Redirect::to($redirectUrl);
+        }
     }
 
     /**
      * Trigger a subsequent activation email
      */
-    public function onSendActivationEmail($isAjax = true)
+    public function onSendActivationEmail()
     {
         try {
             if (!$user = $this->user()) {
@@ -289,7 +305,7 @@ class Account extends ComponentBase
             }
 
             if ($user->is_activated) {
-                throw new ApplicationException(Lang::get('rainlab.user::lang.account.alredy_active'));
+                throw new ApplicationException(Lang::get('rainlab.user::lang.account.already_active'));
             }
 
             Flash::success(Lang::get('rainlab.user::lang.account.activation_email_sent'));
@@ -298,17 +314,19 @@ class Account extends ComponentBase
 
         }
         catch (Exception $ex) {
-            if ($isAjax) throw $ex;
+            if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
 
         /*
          * Redirect
          */
-        $redirectUrl = $this->pageUrl($this->property('redirect'));
+        $redirectUrl = $this->pageUrl($this->property('redirect'))
+            ?: $this->property('redirect');
 
-        if ($redirectUrl = post('redirect', $redirectUrl))
+        if ($redirectUrl = post('redirect', $redirectUrl)) {
             return Redirect::to($redirectUrl);
+        }
     }
 
     /**

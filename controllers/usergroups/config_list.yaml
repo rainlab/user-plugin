@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: ~/plugins/rainlab/user/models/country/columns.yaml
+list: $/rainlab/user/models/usergroup/columns.yaml
 
 # Model Class name
-modelClass: RainLab\User\Models\Country
+modelClass: RainLab\User\Models\UserGroup
 
 # List Title
-title: rainlab.user::lang.locations.list_title
+title: rainlab.user::lang.groups.list_title
 
 # Link URL for each record
-recordUrl: rainlab/user/locations/update/:id
+recordUrl: rainlab/user/usergroups/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records
@@ -20,16 +20,19 @@ noRecordsMessage: backend::lang.list.no_records
 # Records to display per page
 recordsPerPage: 20
 
-# Default sorting column
-defaultSort:
-    column: name
-    direction: asc
-
-# Display setup option
+# Displays the list column set up button
 showSetup: true
 
+# Displays the sorting link on each column
+showSorting: true
+
+# Default sorting column
+# defaultSort:
+#     column: created_at
+#     direction: desc
+
 # Display checkboxes next to each record
-showCheckboxes: true
+# showCheckboxes: true
 
 # Toolbar widget configuration
 toolbar:
@@ -39,6 +42,3 @@ toolbar:
     # Search widget configuration
     search:
         prompt: backend::lang.list.search_prompt
-
-# Filter widget configuration
-filter: config_filter.yaml

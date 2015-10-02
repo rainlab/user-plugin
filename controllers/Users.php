@@ -7,6 +7,7 @@ use BackendAuth;
 use Backend\Classes\Controller;
 use System\Classes\SettingsManager;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserGroup;
 use RainLab\User\Models\Settings as UserSettings;
 
 class Users extends Controller
@@ -18,6 +19,7 @@ class Users extends Controller
 
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
+    public $relationConfig;
 
     public $requiredPermissions = ['rainlab.users.access_users'];
 
@@ -50,27 +52,30 @@ class Users extends Controller
     /**
      * Display username field if settings permit
      */
-    protected function formExtendFields($form)
+    public function formExtendFields($form)
     {
-        $loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
-        if ($loginAttribute != UserSettings::LOGIN_USERNAME) {
-            return;
-        }
-
-        if (array_key_exists('username', $form->getFields())) {
+        /*
+         * Show the username field if it is configured for use
+         */
+        if (
+            UserSettings::get('login_attribute') == UserSettings::LOGIN_USERNAME &&
+            array_key_exists('username', $form->getFields())
+        ) {
             $form->getField('username')->hidden = false;
         }
     }
 
     /**
-     * Deleted checked users.
+     * Deleted checked users
      */
     public function index_onDelete()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
 
             foreach ($checkedIds as $userId) {
-                if (!$user = User::find($userId)) continue;
+                if (!$user = User::find($userId)) {
+                    continue;
+                }
                 $user->delete();
             }
 

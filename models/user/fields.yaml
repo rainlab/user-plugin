@@ -16,68 +16,34 @@ tabs:
     fields:
 
         email:
-            span: full
             label: rainlab.user::lang.user.email
             tab: rainlab.user::lang.user.account
+            span: full
 
         password:
-            type: password
-            span: left
             label: rainlab.user::lang.user.reset_password
             comment: rainlab.user::lang.user.reset_password_comment
             tab: rainlab.user::lang.user.account
+            type: password
+            span: left
 
         password_confirmation:
-            type: password
-            span: right
             label: rainlab.user::lang.user.confirm_password
             comment: rainlab.user::lang.user.confirm_password_comment
             tab: rainlab.user::lang.user.account
-
-        phone:
-            label: rainlab.user::lang.user.phone
-            tab: rainlab.user::lang.user.details
-            span: left
-
-        company:
-            label: rainlab.user::lang.user.company
-            tab: rainlab.user::lang.user.details
+            type: password
             span: right
-
-        street_addr:
-            label: rainlab.user::lang.user.street_addr
-            tab: rainlab.user::lang.user.details
-
-        city:
-            label: rainlab.user::lang.user.city
-            tab: rainlab.user::lang.user.details
-            span: left
-
-        zip:
-            label: rainlab.user::lang.user.zip
-            tab: rainlab.user::lang.user.details
-            span: right
-
-        country:
-            label: rainlab.user::lang.user.country
-            type: dropdown
-            tab: rainlab.user::lang.user.details
-            span: left
-            placeholder: rainlab.user::lang.user.select_country
-
-        state:
-            label: rainlab.user::lang.user.state
-            type: dropdown
-            tab: rainlab.user::lang.user.details
-            span: right
-            dependsOn: country
-            placeholder: rainlab.user::lang.user.select_state
 
         username:
-            span: left
             label: rainlab.user::lang.user.username
-            tab: rainlab.user::lang.user.account
             hidden: true
+            span: left
+
+        groups:
+            label: rainlab.user::lang.user.groups
+            tab: rainlab.user::lang.user.account
+            type: relation
+            emptyOption: rainlab.user::lang.user.empty_groups
 
 secondaryTabs:
     fields:

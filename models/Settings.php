@@ -24,20 +24,9 @@ class Settings extends Model
         $this->require_activation = true;
         $this->activate_mode = self::ACTIVATE_AUTO;
         $this->use_throttle = true;
-        $this->default_country = 1;
-        $this->default_state = 1;
+        $this->allow_registration = true;
         $this->welcome_template = 'rainlab.user::mail.welcome';
         $this->login_attribute = self::LOGIN_EMAIL;
-    }
-
-    public function getDefaultCountryOptions()
-    {
-        return Country::getNameList();
-    }
-
-    public function getDefaultStateOptions()
-    {
-        return State::getNameList($this->default_country);
     }
 
     public function getActivateModeOptions()
@@ -59,15 +48,18 @@ class Settings extends Model
 
     public function getActivateModeAttribute($value)
     {
-        if (!$value)
+        if (!$value) {
             return self::ACTIVATE_AUTO;
+        }
 
         return $value;
     }
 
     public function getWelcomeTemplateOptions()
     {
-        return [''=>'- '.Lang::get('rainlab.user::lang.settings.no_mail_template').' -'] + MailTemplate::orderBy('code')->lists('code', 'code');
+        $codes = array_keys(MailTemplate::listAllTemplates());
+        $result = [''=>'- '.Lang::get('rainlab.user::lang.settings.no_mail_template').' -'];
+        $result += array_combine($codes, $codes);
+        return $result;
     }
-
 }

@@ -2,20 +2,14 @@
     - Initialize plugin.
     - create_users_table.php
     - create_throttle_table.php
-    - create_states_table.php
-    - create_countries_table.php
-1.0.2:
-    - Add seed data for countries and states.
-    - seed_all_tables.php
+1.0.2: Seed tables.
 1.0.3: Translated hard-coded text to language strings.
 1.0.4: Improvements to user-interface for Location manager.
-1.0.5:
-    - Added contact details for users.
-    - users_add_contact_details.php
+1.0.5: Added contact details for users.
 1.0.6:
     - Added Mail Blocker utility so users can block specific mail templates.
     - create_mail_blockers_table.php
-1.0.7: Adds default country and state fields to Settings page.
+1.0.7: Add back-end Settings page.
 1.0.8: Updated the Settings page.
 1.0.9: Adds new welcome mail message for users and administrators.
 1.0.10: Adds administrator-only activation mode.
@@ -31,3 +25,9 @@
     - Adds last name column to users table (surname).
     - users_add_surname.php
 1.0.16: Require permissions for settings page too.
+1.1.0: !!! Profile fields and Locations have been removed.
+1.1.1:
+    - Users can now be added to groups.
+    - create_user_groups_table.php
+    - seed_user_groups_table.php
+1.1.2: A raw URL can now be passed as the redirect property in the Account component.

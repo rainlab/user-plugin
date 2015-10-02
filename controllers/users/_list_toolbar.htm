@@ -16,8 +16,12 @@
         data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
-        data-request-success="$(this).prop('disabled', false)"
+        data-request-success="$(this).prop('disabled', true)"
         data-stripe-load-indicator>
         <?= e(trans('backend::lang.list.delete_selected')) ?>
     </button>
+
+    <a href="<?= Backend::url('rainlab/user/usergroups') ?>" class="btn btn-default oc-icon-group">
+        <?= e(trans('rainlab.user::lang.groups.all_groups')) ?>
+    </a>
 </div>
