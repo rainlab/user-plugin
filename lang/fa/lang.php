@@ -72,6 +72,31 @@ return [
         'details' => 'جزییات',
         'account' => 'حساب کاربری'
     ],
+    'group' => [
+        'label' => 'گروه',
+        'id' => 'مشخصه',
+        'name' => 'نام',
+        'description_field' => 'توضیحات',
+        'code' => 'کد یکتا',
+        'code_comment' => 'کد یکتایی را جهت دسترسی به این گروه وارد نمایید',
+        'created_at' => 'تاریخ ایجاد',
+        'users_count' => 'کاربران'
+    ],
+    'groups' => [
+        'menu_label' => 'گروه ها',
+        'all_groups' => 'گروه های کاربر',
+        'new_group' => 'گروه جدید',
+        'delete_selected_confirm' => 'آیا از حذف گروه های انتخاب شده اطمینان دارید؟',
+        'list_title' => 'مدیریت گروه ها',
+        'delete_confirm' => 'آیا از حذف این گروه اطمینان دارید؟',
+        'delete_selected_success' => 'گروه های انتخاب شده با موفقیت حذف شدند.',
+        'delete_selected_empty' => 'گروهی جهت حذف انتخاب نشده است.',
+        'return_to_list' => 'بازگشت به لیست گروه ها',
+        'return_to_users' => 'بازگشت به لیست کاربران',
+        'create_title' => 'ایجاد گروه کاربری جدید',
+        'update_title' => 'ویرایش گروه کاربری',
+        'preview_title' => 'پیش نمایش گروه کاربری'
+    ],
     'login' => [
         'attribute_email' => 'پست الکترونیکی',
         'attribute_username' => 'نام کاربری'
