@@ -134,7 +134,8 @@ class Account extends ComponentBase
         /*
          * Redirect to the intended page after successful sign in
          */
-        $redirectUrl = $this->pageUrl($this->property('redirect'));
+        $redirectUrl = $this->pageUrl($this->property('redirect'))
+            ?: $this->property('redirect');
 
         if ($redirectUrl = input('redirect', $redirectUrl)) {
             return Redirect::intended($redirectUrl);
@@ -201,7 +202,8 @@ class Account extends ComponentBase
             /*
              * Redirect to the intended page after successful sign in
              */
-            $redirectUrl = $this->pageUrl($this->property('redirect'));
+            $redirectUrl = $this->pageUrl($this->property('redirect'))
+                ?: $this->property('redirect');
 
             if ($redirectUrl = post('redirect', $redirectUrl)) {
                 return Redirect::intended($redirectUrl);
@@ -278,10 +280,12 @@ class Account extends ComponentBase
         /*
          * Redirect to the intended page after successful update
          */
-        $redirectUrl = $this->pageUrl($this->property('redirect'));
+        $redirectUrl = $this->pageUrl($this->property('redirect'))
+            ?: $this->property('redirect');
 
-        if ($redirectUrl = post('redirect', $redirectUrl))
+        if ($redirectUrl = post('redirect', $redirectUrl)) {
             return Redirect::to($redirectUrl);
+        }
     }
 
     /**
@@ -311,10 +315,12 @@ class Account extends ComponentBase
         /*
          * Redirect
          */
-        $redirectUrl = $this->pageUrl($this->property('redirect'));
+        $redirectUrl = $this->pageUrl($this->property('redirect'))
+            ?: $this->property('redirect');
 
-        if ($redirectUrl = post('redirect', $redirectUrl))
+        if ($redirectUrl = post('redirect', $redirectUrl)) {
             return Redirect::to($redirectUrl);
+        }
     }
 
     /**

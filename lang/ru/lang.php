@@ -57,11 +57,12 @@ return [
         'surname' => 'фамилия',
         'email' => 'Почта',
         'created_at' => 'Дата регистрации',
-        'select_state' => '-- Выберите штат --',
         'reset_password' => 'Сброс пароля',
         'reset_password_comment' => 'Для сброса пользовательского пароля, введите здесь новый пароль.',
         'confirm_password' => 'Подтверждение пароля',
         'confirm_password_comment' => 'Введите пароль еще раз для подтверждения.',
+        'groups' => 'Groups',
+        'empty_groups' => 'There are no user groups available.',
         'avatar' => 'Аватар',
         'details' => 'Информация',
         'account' => 'Аккаунт'

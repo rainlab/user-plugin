@@ -61,6 +61,8 @@ return [
         'reset_password_comment' => 'Pro změnu hesla, zadejte nové heslo.',
         'confirm_password' => 'Nové heslo znovu pro kontrolu',
         'confirm_password_comment' => 'Zadejte heslo znovu pro kontrolu správnosti.',
+        'groups' => 'Groups',
+        'empty_groups' => 'There are no user groups available.',
         'avatar' => 'Obrázek',
         'details' => 'Detaily',
         'account' => 'Účet'

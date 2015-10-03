@@ -19,6 +19,7 @@ class Users extends Controller
 
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
+    public $relationConfig;
 
     public $requiredPermissions = ['rainlab.users.access_users'];
 
@@ -65,14 +66,16 @@ class Users extends Controller
     }
 
     /**
-     * Deleted checked users.
+     * Deleted checked users
      */
     public function index_onDelete()
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
 
             foreach ($checkedIds as $userId) {
-                if (!$user = User::find($userId)) continue;
+                if (!$user = User::find($userId)) {
+                    continue;
+                }
                 $user->delete();
             }
 

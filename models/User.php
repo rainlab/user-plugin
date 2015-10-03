@@ -2,6 +2,7 @@
 
 use URL;
 use Mail;
+use DB;
 use October\Rain\Auth\Models\User as UserBase;
 use RainLab\User\Models\Settings as UserSettings;
 
@@ -16,10 +17,10 @@ class User extends UserBase
      * Validation rules
      */
     public $rules = [
-        'email' => 'required|between:3,64|email|unique:users',
+        'email'    => 'required|between:3,255|email|unique:users',
         'username' => 'required|between:2,64|unique:users',
-        'password' => 'required:create|between:4,64|confirmed',
-        'password_confirmation' => 'required_with:password|between:4,64'
+        'password' => 'required:create|between:4,255|confirmed',
+        'password_confirmation' => 'required_with:password|between:4,255'
     ];
 
     /**
@@ -43,7 +44,7 @@ class User extends UserBase
         'username',
         'email',
         'password',
-        'password_confirmation',
+        'password_confirmation'
     ];
 
     /**
@@ -58,8 +59,9 @@ class User extends UserBase
      */
     public function getLoginName()
     {
-        if (static::$loginAttribute !== null)
+        if (static::$loginAttribute !== null) {
             return static::$loginAttribute;
+        }
 
         return static::$loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
     }
@@ -82,13 +84,23 @@ class User extends UserBase
     }
 
     /**
+     * Before delete event
+     * @return void
+     */
+    public function afterDelete()
+    {
+        $this->avatar && $this->avatar->delete();
+    }
+
+    /**
      * Gets a code for when the user is persisted to a cookie or session which identifies the user.
      * @return string
      */
     public function getPersistCode()
     {
-        if (!$this->persist_code)
+        if (!$this->persist_code) {
             return parent::getPersistCode();
+        }
 
         return $this->persist_code;
     }
@@ -112,15 +124,15 @@ class User extends UserBase
             return $this->avatar->getThumb($size, $size, $options);
         }
         else {
-            return '//www.gravatar.com/avatar/' .
-                md5(strtolower(trim($this->email))) .
-                '?s='. $size .
-                '&d='. urlencode($default);
+            return '//www.gravatar.com/avatar/'.
+                md5(strtolower(trim($this->email))).
+                '?s='.$size.
+                '&d='.urlencode($default);
         }
     }
 
     /**
-     * Sends the confirmation email to a user, after activating
+     * Sends the confirmation email to a user, after activating.
      * @param  string $code
      * @return void
      */
@@ -133,7 +145,7 @@ class User extends UserBase
 
         if ($mailTemplate = UserSettings::get('welcome_template')) {
             $data = [
-                'name' => $this->name,
+                'name'  => $this->name,
                 'email' => $this->email
             ];
 
@@ -151,8 +163,10 @@ class User extends UserBase
      */
     public static function findByEmail($email)
     {
-        if (!$email) return;
+        if (!$email) {
+            return;
+        }
+
         return self::where('email', $email)->first();
     }
-
 }
