@@ -17,7 +17,6 @@ use Exception;
 
 class Account extends ComponentBase
 {
-
     public function componentDetails()
     {
         return [
@@ -73,8 +72,9 @@ class Account extends ComponentBase
      */
     public function user()
     {
-        if (!Auth::check())
+        if (!Auth::check()) {
             return null;
+        }
 
         return Auth::getUser();
     }
@@ -109,10 +109,10 @@ class Account extends ComponentBase
         $rules = [];
 
         $rules['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
-            ? 'required|between:2,64'
-            : 'required|email|between:2,64';
+            ? 'required|between:2,255'
+            : 'required|email|between:6,255';
 
-        $rules['password'] = 'required|min:2';
+        $rules['password'] = 'required|between:4,255';
 
         if (!array_key_exists('login', $data)) {
             $data['login'] = post('username', post('email'));
@@ -162,12 +162,12 @@ class Account extends ComponentBase
             }
 
             $rules = [
-                'email'    => 'required|email|between:2,64',
-                'password' => 'required|min:2'
+                'email'    => 'required|email|between:6,255',
+                'password' => 'required|between:4,255'
             ];
 
             if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
-                $rules['username'] = 'required|between:2,64';
+                $rules['username'] = 'required|between:2,255';
             }
 
             $validation = Validator::make($data, $rules);
@@ -211,8 +211,12 @@ class Account extends ComponentBase
 
         }
         catch (Exception $ex) {
-            if (Request::ajax()) throw $ex;
-            else Flash::error($ex->getMessage());
+            if (Request::ajax()) {
+                throw $ex;
+        }
+            else {
+                Flash::error($ex->getMessage());
+    }
         }
     }
 
@@ -252,8 +256,12 @@ class Account extends ComponentBase
 
         }
         catch (Exception $ex) {
-            if (Request::ajax()) throw $ex;
-            else Flash::error($ex->getMessage());
+            if (Request::ajax()) {
+                throw $ex;
+        }
+            else {
+                Flash::error($ex->getMessage());
+    }
         }
     }
 
@@ -332,8 +340,12 @@ class Account extends ComponentBase
 
         }
         catch (Exception $ex) {
-            if (Request::ajax()) throw $ex;
-            else Flash::error($ex->getMessage());
+            if (Request::ajax()) {
+                throw $ex;
+        }
+            else {
+                Flash::error($ex->getMessage());
+            }
         }
 
         /*
@@ -362,12 +374,10 @@ class Account extends ComponentBase
             'code' => $code
         ];
 
-        Mail::send('rainlab.user::mail.activate', $data, function($message) use ($user)
-        {
+        Mail::send('rainlab.user::mail.activate', $data, function($message) use ($user) {
             $message->to($user->email, $user->name);
         });
     }
-
     /**
      * Redirect to the intended page after successful update, sign in or registration.
      * The URL can come from the "redirect" property or the "redirect" postback value.

@@ -10,7 +10,6 @@ use RainLab\User\Models\User as UserModel;
 
 class ResetPassword extends ComponentBase
 {
-
     public function componentDetails()
     {
         return [
@@ -37,7 +36,7 @@ class ResetPassword extends ComponentBase
     public function onRestorePassword()
     {
         $rules = [
-            'email' => 'required|email|min:2|max:32'
+            'email' => 'required|email|between:6,255'
         ];
 
         $validation = Validator::make(post(), $rules);
@@ -71,8 +70,8 @@ class ResetPassword extends ComponentBase
     public function onResetPassword()
     {
         $rules = [
-            'code' => 'required',
-            'password' => 'required|min:2'
+            'code'     => 'required',
+            'password' => 'required|between:4,255'
         ];
 
         $validation = Validator::make(post(), $rules);
@@ -106,7 +105,7 @@ class ResetPassword extends ComponentBase
     public function code()
     {
         $routeParameter = $this->property('paramCode');
+
         return $this->param($routeParameter);
     }
-
 }
