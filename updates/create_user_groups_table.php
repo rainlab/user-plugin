@@ -13,7 +13,7 @@ class CreateUserGroupsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
-            $table->string('code')->nullable()->index('code_index');
+            $table->string('code')->nullable()->index();
             $table->text('description')->nullable();
             $table->timestamps();
         });

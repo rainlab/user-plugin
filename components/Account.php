@@ -262,9 +262,10 @@ class Account extends ComponentBase
      */
     public function onUpdate()
     {
-        if (!$user = $this->user())
+        if (!$user = $this->user()) {
             return;
-    
+        }
+
         $user->fill(post());
         $user->save();
 
