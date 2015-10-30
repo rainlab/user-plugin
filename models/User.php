@@ -18,7 +18,7 @@ class User extends UserBase
      */
     public $rules = [
         'email'    => 'required|between:3,255|email|unique:users',
-        'username' => 'required|between:2,64|unique:users',
+        'username' => 'required|between:2,255|unique:users',
         'password' => 'required:create|between:4,255|confirmed',
         'password_confirmation' => 'required_with:password|between:4,255'
     ];
@@ -84,7 +84,7 @@ class User extends UserBase
     }
 
     /**
-     * Before delete event
+     * After delete event
      * @return void
      */
     public function afterDelete()
