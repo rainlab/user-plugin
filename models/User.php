@@ -84,7 +84,7 @@ class User extends UserBase
     }
 
     /**
-     * Before delete event
+     * After delete event
      * @return void
      */
     public function afterDelete()
