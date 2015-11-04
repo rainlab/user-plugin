@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Components;
 
+use Event;
 use Lang;
 use Auth;
 use Mail;
@@ -120,7 +121,11 @@ class Account extends ComponentBase
 
         $validation = Validator::make($data, $rules);
         if ($validation->fails()) {
-            throw new ValidationException($validation);
+            $validationException = new ValidationException($validation);
+
+            Event::fire('rainlab.user.authentication.failed', $validationException);
+
+            throw new $validationException;
         }
 
         /*
@@ -130,6 +135,8 @@ class Account extends ComponentBase
             'login' => array_get($data, 'login'),
             'password' => array_get($data, 'password')
         ], true);
+
+        Event::fire('rainlab.user.authentication.success', $user);
 
         /*
          * Redirect to the intended page after successful sign in
@@ -196,6 +203,8 @@ class Account extends ComponentBase
              */
             if ($automaticActivation || !$requireActivation) {
                 Auth::login($user);
+
+                Event::fire('rainlab.user.authentication.success', $user);
             }
 
             /*
@@ -248,8 +257,8 @@ class Account extends ComponentBase
              */
             Auth::login($user);
 
-        }
-        catch (Exception $ex) {
+            Event::fire('rainlab.user.authentication.success', $user);
+        } catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
@@ -262,7 +271,7 @@ class Account extends ComponentBase
     {
         if (!$user = $this->user())
             return;
-    
+
         $user->fill(post());
         $user->save();
 
