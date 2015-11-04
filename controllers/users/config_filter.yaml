@@ -1,0 +1,19 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    groups:
+
+         # Filter name
+        label: rainlab.user::lang.group.label
+
+        # Model Class name
+        modelClass: RainLab\User\Models\UserGroup
+
+        # Model attribute to display for the name
+        nameFrom: name
+
+        # SQL Conditions
+        scope: filterByGroup
