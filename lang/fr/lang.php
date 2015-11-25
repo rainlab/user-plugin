@@ -6,7 +6,8 @@ return [
         'description' => 'Gestion des utilisateurs Front-End.',
         'tab' => 'Utilisateur',
         'access_users' => 'Gérer les utilisateurs',
-        'access_groups' => 'Gérer les groupes'
+        'access_groups' => 'Gérer les groupes',
+        'access_settings' => 'Gérer les Settings'
     ],
     'users' => [
         'menu_label' => 'Utilisateurs',
