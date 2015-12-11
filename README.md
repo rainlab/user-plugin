@@ -89,7 +89,7 @@ We can add any other additional fields here too, such as `phone`, `company`, etc
 ## Error handling
 
 ### Flash messages
-This plugin makes use of October's [`Flash API`](http://octobercms.com/docs/cms/markup#flash-messages). In order to display the error messages, you need to place the following snippet in your layout or page.
+This plugin makes use of October's [`Flash API`](http://octobercms.com/docs/markup/tag-flash). In order to display the error messages, you need to place the following snippet in your layout or page.
 
     {% flash %}
         <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
