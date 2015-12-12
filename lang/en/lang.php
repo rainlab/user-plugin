@@ -6,7 +6,8 @@ return [
         'description' => 'Front-end user management.',
         'tab' => 'Users',
         'access_users' => 'Manage Users',
-        'access_groups' => 'Manage User Groups'
+        'access_groups' => 'Manage User Groups',
+        'access_settings' => 'Manage User Settings'
     ],
     'users' => [
         'menu_label' => 'Users',
