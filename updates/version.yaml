@@ -33,3 +33,7 @@
 1.1.2: A raw URL can now be passed as the redirect property in the Account component.
 1.1.3: Adds a super user flag to the users table, reserved for future use.
 1.1.4: User list can be filtered by the group they belong to.
+1.1.5: Adds a new permission to hide the User settings menu item.
+1.2.0:
+    - Users can now deactivate their own accounts.
+    - users_add_deleted_at.php

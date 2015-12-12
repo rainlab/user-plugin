@@ -56,7 +56,7 @@ class Plugin extends PluginBase
         return [
             'rainlab.users.access_users' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_users'],
             'rainlab.users.access_groups' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_groups'],
-			'rainlab.users.access_settings' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_settings']
+            'rainlab.users.access_settings' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_settings']
         ];
     }
 
@@ -91,10 +91,11 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'rainlab.user::mail.activate' => 'Activation email sent to new users.',
-            'rainlab.user::mail.welcome'  => 'Welcome email sent when a user is activated.',
-            'rainlab.user::mail.restore'  => 'Password reset instructions for front-end users.',
-            'rainlab.user::mail.new_user' => 'Sent to administrators when a new user joins.'
+            'rainlab.user::mail.activate'   => 'Activation email sent to new users.',
+            'rainlab.user::mail.welcome'    => 'Welcome email sent when a user is activated.',
+            'rainlab.user::mail.restore'    => 'Password reset instructions for front-end users.',
+            'rainlab.user::mail.new_user'   => 'Sent to administrators when a new user joins.',
+            'rainlab.user::mail.reactivate' => 'Notification for users who reactivate their account.',
         ];
     }
 }

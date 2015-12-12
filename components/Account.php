@@ -279,13 +279,36 @@ class Account extends ComponentBase
         Flash::success(post('flash', Lang::get('rainlab.user::lang.account.success_saved')));
 
         /*
-         * Redirect to the intended page after successful update
+         * Redirect
          */
-        $redirectUrl = $this->pageUrl($this->property('redirect'))
-            ?: $this->property('redirect');
+        if ($redirect = $this->makeRedirection()) {
+            return $redirect;
+        }
+    }
 
-        if ($redirectUrl = post('redirect', $redirectUrl)) {
-            return Redirect::to($redirectUrl);
+    /**
+     * Deactivate user
+     */
+    public function onDeactivate()
+    {
+        if (!$user = $this->user()) {
+            return;
+        }
+
+        if (!$user->checkHashValue('password', post('password'))) {
+            throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_deactivation_pass')]);
+        }
+
+        $user->delete();
+        Auth::logout();
+
+        Flash::success(post('flash', Lang::get('rainlab.user::lang.account.success_deactivation')));
+
+        /*
+         * Redirect
+         */
+        if ($redirect = $this->makeRedirection()) {
+            return $redirect;
         }
     }
 
@@ -316,11 +339,8 @@ class Account extends ComponentBase
         /*
          * Redirect
          */
-        $redirectUrl = $this->pageUrl($this->property('redirect'))
-            ?: $this->property('redirect');
-
-        if ($redirectUrl = post('redirect', $redirectUrl)) {
-            return Redirect::to($redirectUrl);
+        if ($redirect = $this->makeRedirection()) {
+            return $redirect;
         }
     }
 
@@ -346,6 +366,21 @@ class Account extends ComponentBase
         {
             $message->to($user->email, $user->name);
         });
+    }
+
+    /**
+     * Redirect to the intended page after successful update, sign in or registration.
+     * The URL can come from the "redirect" property or the "redirect" postback value.
+     * @return mixed
+     */
+    protected function makeRedirection()
+    {
+        $redirectUrl = $this->pageUrl($this->property('redirect'))
+            ?: $this->property('redirect');
+
+        if ($redirectUrl = post('redirect', $redirectUrl)) {
+            return Redirect::to($redirectUrl);
+        }
     }
 
 }

@@ -11,7 +11,7 @@ class AuthManager extends RainAuthManager
 
     protected $userModel = 'RainLab\User\Models\User';
 
-    // protected $groupModel = 'RainLab\User\Models\Group';
+    protected $groupModel = 'RainLab\User\Models\UserGroup';
 
     protected $throttleModel = 'RainLab\User\Models\Throttle';
 
@@ -20,5 +20,10 @@ class AuthManager extends RainAuthManager
         $this->useThrottle = UserSettings::get('use_throttle', $this->useThrottle);
         $this->requireActivation = UserSettings::get('require_activation', $this->requireActivation);
         parent::init();
+    }
+
+    public function extendUserQuery($query)
+    {
+        $query->withTrashed();
     }
 }

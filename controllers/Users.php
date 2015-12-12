@@ -34,19 +34,27 @@ class Users extends Controller
     }
 
     /**
-     * Manually activate a user
+     * {@inheritDoc}
      */
-    public function update_onActivate($recordId = null)
+    public function listInjectRowClass($record, $definition = null)
     {
-        $model = $this->formFindModelObject($recordId);
-
-        $model->attemptActivation($model->activation_code);
-
-        Flash::success(Lang::get('rainlab.user::lang.users.activated_success'));
-
-        if ($redirect = $this->makeRedirect('update', $model)) {
-            return $redirect;
+        if ($record->trashed()) {
+            return 'strike';
         }
+
+        if (!$record->is_activated) {
+            return 'disabled';
+        }
+    }
+
+    public function listExtendQuery($query)
+    {
+        $query->withTrashed();
+    }
+
+    public function formExtendQuery($query)
+    {
+        $query->withTrashed();
     }
 
     /**
@@ -62,6 +70,22 @@ class Users extends Controller
             array_key_exists('username', $form->getFields())
         ) {
             $form->getField('username')->hidden = false;
+        }
+    }
+
+    /**
+     * Manually activate a user
+     */
+    public function update_onActivate($recordId = null)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->attemptActivation($model->activation_code);
+
+        Flash::success(Lang::get('rainlab.user::lang.users.activated_success'));
+
+        if ($redirect = $this->makeRedirect('update', $model)) {
+            return $redirect;
         }
     }
 
