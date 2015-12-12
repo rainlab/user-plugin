@@ -170,6 +170,7 @@ Here the local handler method will take priority over the **account** component'
 
 This plugin will fire some global events that can be useful for interacting with other plugins.
 
+- **rainlab.user.login**: The user has successfully signed in.
 - **rainlab.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
 - **rainlab.user.reactivate**: The user has reactivated their own account by signing back in. This should revive the users content on the site.
 

@@ -99,6 +99,8 @@ class User extends UserBase
         else {
             parent::afterLogin();
         }
+
+        Event::fire('rainlab.user.login', [$this]);
     }
 
     /**
