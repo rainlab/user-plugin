@@ -92,6 +92,18 @@ class User extends UserBase
         $this->avatar && $this->avatar->delete();
     }
 
+    public function scopeIsActivated($query)
+    {
+        return $query->where('is_activated', 1);
+    }
+
+    public function scopeFilterByGroup($query, $filter)
+    {
+        return $query->whereHas('groups', function($group) use ($filter) {
+            $group->whereIn('id', $filter);
+        });
+    }
+
     /**
      * Gets a code for when the user is persisted to a cookie or session which identifies the user.
      * @return string
