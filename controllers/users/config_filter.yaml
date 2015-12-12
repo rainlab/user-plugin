@@ -6,7 +6,7 @@ scopes:
 
     groups:
 
-         # Filter name
+        # Filter name
         label: rainlab.user::lang.group.label
 
         # Model Class name
@@ -15,5 +15,5 @@ scopes:
         # Model attribute to display for the name
         nameFrom: name
 
-        # SQL Conditions
+        # Filter scope
         scope: filterByGroup
