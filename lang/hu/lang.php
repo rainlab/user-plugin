@@ -3,9 +3,9 @@
 return [
     'plugin' => [
         'name' => 'Felhasználók',
-        'description' => 'Felhasználók kezelése a honlapon.',
+        'description' => 'Felhasználók menedzselése a honlapon.',
         'tab' => 'Felhasználók',
-        'access_users' => 'Tagok kezelése',
+        'access_users' => 'Fiókok kezelése',
         'access_groups' => 'Csoportok kezelése'
     ],
     'users' => [
@@ -15,7 +15,7 @@ return [
         'list_title' => 'Felhasználók kezelése',
         'activating' => 'Aktiválás...',
         'activate_warning_title' => 'Nincs aktiválva a felhasználó!',
-        'activate_warning_desc' => 'Ennek a felhasználónak nem történt meg az aktiválása  és nem tud bejelentkezni.',
+        'activate_warning_desc' => 'Ennek a felhasználónak nem történt meg az aktiválása és nem tud bejelentkezni.',
         'activate_confirm' => 'Valóban aktiválni akarja ezt a felhasználót?',
         'active_manually' => 'A felhasználó kézi aktiválása',
         'delete_confirm' => 'Valóban törölni akarja ezt a felhasználót?',
@@ -27,7 +27,7 @@ return [
     ],
     'settings' => [
         'users' => 'Felhasználók',
-        'menu_label' => 'Felhasználói beállítások',
+        'menu_label' => 'Beállítások',
         'menu_description' => 'A felhasználó alapú beállítások kezelése.',
         'activation_tab' => 'Aktiválás',
         'signin_tab' => 'Bejelentkezés',
@@ -74,7 +74,7 @@ return [
     ],
     'group' => [
         'label' => 'Csoport',
-        'id' => 'ID',
+        'id' => 'Azonosító',
         'name' => 'Név',
         'description_field' => 'Leírás',
         'code' => 'Kód',
