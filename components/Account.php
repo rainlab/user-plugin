@@ -14,6 +14,7 @@ use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
+use October\Rain\Auth\AuthException;
 
 class Account extends ComponentBase
 {
@@ -126,10 +127,20 @@ class Account extends ComponentBase
         /*
          * Authenticate user
          */
-        $user = Auth::authenticate([
-            'login' => array_get($data, 'login'),
-            'password' => array_get($data, 'password')
-        ], true);
+        try {
+            $user = Auth::authenticate([
+                'login' => array_get($data, 'login'),
+                'password' => array_get($data, 'password')
+            ], true);
+        }  catch (AuthException $e) {
+            $msg = $e->getMessage();
+            switch($msg){
+                case 'A user was not found with the given credentials.':
+                    $msg  = Lang::get('rainlab.user::lang.account.invalid_user');
+                    break;
+            }
+            return Flash::error($msg);
+        }
 
         /*
          * Redirect to the intended page after successful sign in
