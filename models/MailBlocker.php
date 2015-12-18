@@ -60,8 +60,9 @@ class MailBlocker extends Model
             'user_id' => $user->id
         ])->first();
 
-        if (!$blocker)
+        if (!$blocker) {
             return false;
+        }
 
         $blocker->delete();
         return true;
@@ -78,17 +79,25 @@ class MailBlocker extends Model
     {
         foreach ((array) $templates as $template => $value) {
 
-            if ($inTemplates && !array_key_exists($template, $inTemplates) && !in_array($template, $inTemplates))
+            if (
+                $inTemplates &&
+                !array_key_exists($template, $inTemplates) &&
+                !in_array($template, $inTemplates)
+            ) {
                 continue;
+            }
 
             // Template uses an alias
-            if (isset($inTemplates[$template]))
+            if (isset($inTemplates[$template])) {
                 $template = $inTemplates[$template];
+            }
 
-            if ($value)
+            if ($value) {
                 static::removeBlock($template, $user);
-            else
+            }
+            else {
                 static::addBlock($template, $user);
+            }
         }
     }
 
@@ -121,11 +130,13 @@ class MailBlocker extends Model
      */
     public static function checkForEmail($template, $email)
     {
-        if (empty($email))
+        if (empty($email)) {
             return [];
+        }
 
-        if (!is_array($email))
+        if (!is_array($email)) {
             $email = [$email => null];
+        }
 
         $emails = array_keys($email);
 
@@ -146,12 +157,14 @@ class MailBlocker extends Model
     {
         $recipients = $message->getTo();
         $blockedAddresses = static::checkForEmail($template, $recipients);
-        if (!count($blockedAddresses))
+        if (!count($blockedAddresses)) {
             return true;
+        }
 
         foreach ($recipients as $address => $name) {
-            if (in_array($address, $blockedAddresses))
+            if (in_array($address, $blockedAddresses)) {
                 unset($recipients[$address]);
+            }
         }
 
         $message->setTo($recipients);

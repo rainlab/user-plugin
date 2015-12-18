@@ -16,7 +16,7 @@ class UsersAddLoginColumn extends Migration
         /*
          * Set login for existing users
          */
-        $users = User::all();
+        $users = User::withTrashed()->get();
         foreach ($users as $user) {
             $user->login = $user->email;
             $user->save();
