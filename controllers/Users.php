@@ -90,6 +90,22 @@ class Users extends Controller
     }
 
     /**
+     * Force delete a user.
+     */
+    public function update_onDelete($recordId = null)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->forceDelete();
+
+        Flash::success(Lang::get('backend::lang.form.delete_success'));
+
+        if ($redirect = $this->makeRedirect('delete', $model)) {
+            return $redirect;
+        }
+    }
+
+    /**
      * Deleted checked users
      */
     public function index_onDelete()
