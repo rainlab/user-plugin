@@ -127,7 +127,7 @@ class Account extends ComponentBase
          * Authenticate user
          */
         $user = Auth::authenticate([
-            'login' => array_get($data, 'login'),
+            'login'    => array_get($data, 'login'),
             'password' => array_get($data, 'password')
         ], true);
 
@@ -211,12 +211,8 @@ class Account extends ComponentBase
 
         }
         catch (Exception $ex) {
-            if (Request::ajax()) {
-                throw $ex;
-        }
-            else {
-                Flash::error($ex->getMessage());
-    }
+            if (Request::ajax()) throw $ex;
+            else Flash::error($ex->getMessage());
         }
     }
 
@@ -256,12 +252,8 @@ class Account extends ComponentBase
 
         }
         catch (Exception $ex) {
-            if (Request::ajax()) {
-                throw $ex;
-        }
-            else {
-                Flash::error($ex->getMessage());
-    }
+            if (Request::ajax()) throw $ex;
+            else Flash::error($ex->getMessage());
         }
     }
 
@@ -340,12 +332,8 @@ class Account extends ComponentBase
 
         }
         catch (Exception $ex) {
-            if (Request::ajax()) {
-                throw $ex;
-        }
-            else {
-                Flash::error($ex->getMessage());
-            }
+            if (Request::ajax()) throw $ex;
+            else Flash::error($ex->getMessage());
         }
 
         /*
@@ -378,6 +366,7 @@ class Account extends ComponentBase
             $message->to($user->email, $user->name);
         });
     }
+
     /**
      * Redirect to the intended page after successful update, sign in or registration.
      * The URL can come from the "redirect" property or the "redirect" postback value.
@@ -392,5 +381,4 @@ class Account extends ComponentBase
             return Redirect::to($redirectUrl);
         }
     }
-
 }
