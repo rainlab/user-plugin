@@ -133,6 +133,36 @@ class MailBlocker extends Model
     }
 
     /**
+     * Blocks all mail messages for a user.
+     * @param RainLab\User\Models\User $user
+     * @return bool
+     */
+    public static function blockAll($user)
+    {
+        return static::addBlock('*', $user);
+    }
+
+    /**
+     * Removes block on all mail messages for a user.
+     * @param RainLab\User\Models\User $user
+     * @return bool
+     */
+    public static function unblockAll($user)
+    {
+        return static::removeBlock('*', $user);
+    }
+
+    /**
+     * Checks if a user is blocking all templates.
+     * @param RainLab\User\Models\User $user
+     * @return bool
+     */
+    public static function isBlockAll($user)
+    {
+        return static::checkForEmail('*', $user->email);
+    }
+
+    /**
      * Updates mail blockers for a user if they change their email address
      * @param  Model $user
      * @return mixed
@@ -171,7 +201,9 @@ class MailBlocker extends Model
 
         $emails = array_keys($email);
 
-        return static::where('template', $template)
+        return static::where(function($q) use ($template) {
+                $q->where('template', $template)->orWhere('template', '*');
+            })
             ->whereIn('email', $emails)
             ->lists('email');
     }
