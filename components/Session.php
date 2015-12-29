@@ -90,14 +90,18 @@ class Session extends ComponentBase
     }
 
     /**
-     * Returns the logged in user, if available
+     * Returns the logged in user, if available, and touches
+     * the last seen timestamp.
+     * @return RainLab\User\Models\User
      */
     public function user()
     {
-        if (!Auth::check()) {
+        if (!$user = Auth::getUser()) {
             return null;
         }
 
-        return Auth::getUser();
+        $user->touchLastSeen();
+
+        return $user;
     }
 }

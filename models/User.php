@@ -204,4 +204,49 @@ class User extends UserBase
 
         return self::where('email', $email)->first();
     }
+
+    //
+    // Last Seen
+    //
+
+    /**
+     * Checks if the user has been seen in the last 5 minutes, and if not,
+     * updates the last_login timestamp to reflect their online status.
+     * @return void
+     */
+    public function touchLastSeen()
+    {
+        if ($this->isOnline()) {
+            return;
+        }
+
+        $oldTimestamps = $this->timestamps;
+        $this->timestamps = false;
+
+        $this
+            ->newQuery()
+            ->where('id', $this->id)
+            ->update(['last_login' => $this->freshTimestamp()])
+        ;
+
+        $this->timestamps = $oldTimestamps;
+    }
+
+    /**
+     * Returns true if the user has been active within the last 5 minutes.
+     * @return bool
+     */
+    public function isOnline()
+    {
+        return $this->getLastSeen() > $this->freshTimestamp()->subMinutes(5);
+    }
+
+    /**
+     * Returns the date this user was last seen.
+     * @return Carbon\Carbon
+     */
+    public function getLastSeen()
+    {
+        return $this->last_login ?: $this->created_at;
+    }
 }
