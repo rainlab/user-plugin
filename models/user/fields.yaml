@@ -36,6 +36,7 @@ tabs:
 
         username:
             label: rainlab.user::lang.user.username
+            tab: rainlab.user::lang.user.account
             hidden: true
             span: left
 
