@@ -172,6 +172,7 @@ Here the local handler method will take priority over the **account** component'
 
 This plugin will fire some global events that can be useful for interacting with other plugins.
 
+- **rainlab.user.beforeAuthenticate**: Before the user is attempting to authenticate using hte Account component.
 - **rainlab.user.login**: The user has successfully signed in.
 - **rainlab.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
 - **rainlab.user.reactivate**: The user has reactivated their own account by signing back in. This should revive the users content on the site.
@@ -182,3 +183,26 @@ Here is an example of hooking an event:
         // Hide all posts by the user
     });
 
+A common requirement is to adapt another to a legacy authentication system. In the example below, the `WordPressLogin::check` method would check the user password using an alternative hashing method, and if successful, update to the new one used by October.
+
+    Event::listen('rainlab.user.beforeAuthenticate', function($component, $credentials) {
+        $login = array_get($credentials, 'login');
+        $password = array_get($credentials, 'password');
+
+        /*
+         * No such user exists
+         */
+        if (!$user = Auth::findUserByLogin($login)) {
+            return;
+        }
+
+        /*
+         * The user is logging in with their old WordPress account
+         * for the first time. Rehash their password using the new
+         * October system.
+         */
+        if (WordPressLogin::check($user->password, $password)) {
+            $user->password = $user->password_confirmation = $password;
+            $user->forceSave();
+        }
+    });

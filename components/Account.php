@@ -3,6 +3,7 @@
 use Lang;
 use Auth;
 use Mail;
+use Event;
 use Flash;
 use Input;
 use Request;
@@ -126,10 +127,14 @@ class Account extends ComponentBase
         /*
          * Authenticate user
          */
-        $user = Auth::authenticate([
+        $credentials = [
             'login'    => array_get($data, 'login'),
             'password' => array_get($data, 'password')
-        ], true);
+        ];
+
+        Event::fire('rainlab.user.beforeAuthenticate', [$this, $credentials]);
+
+        $user = Auth::authenticate($credentials, true);
 
         /*
          * Redirect to the intended page after successful sign in
