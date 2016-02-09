@@ -20,7 +20,14 @@ tabs:
             tab: rainlab.user::lang.user.account
             span: full
 
-        password:
+        password@create:
+            label: rainlab.user::lang.user.create_password
+            comment: rainlab.user::lang.user.create_password_comment
+            tab: rainlab.user::lang.user.account
+            type: password
+            span: left
+
+        password@update:
             label: rainlab.user::lang.user.reset_password
             comment: rainlab.user::lang.user.reset_password_comment
             tab: rainlab.user::lang.user.account
@@ -33,6 +40,7 @@ tabs:
             tab: rainlab.user::lang.user.account
             type: password
             span: right
+            context: [create, update]
 
         username:
             label: rainlab.user::lang.user.username

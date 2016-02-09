@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Controllers;
 
+use Auth;
 use Lang;
 use Flash;
 use BackendMenu;
@@ -31,6 +32,13 @@ class Users extends Controller
 
         BackendMenu::setContext('RainLab.User', 'user', 'users');
         SettingsManager::setContext('RainLab.User', 'settings');
+    }
+
+    public function index()
+    {
+        $this->addJs('/plugins/rainlab/user/assets/js/bulk-actions.js');
+
+        $this->asExtension('ListController')->index();
     }
 
     /**
@@ -106,25 +114,57 @@ class Users extends Controller
     }
 
     /**
-     * Deleted checked users
+     * Perform bulk action on selected users
      */
-    public function index_onDelete()
+    public function index_onBulkAction()
     {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+        if (
+            ($bulkAction = post('action')) &&
+            ($checkedIds = post('checked')) &&
+            is_array($checkedIds) &&
+            count($checkedIds)
+        ) {
 
             foreach ($checkedIds as $userId) {
-                if (!$user = User::find($userId)) {
+                if (!$user = User::withTrashed()->find($userId)) {
                     continue;
                 }
-                $user->delete();
+
+                switch ($bulkAction) {
+                    case 'delete':
+                        $user->forceDelete();
+                        break;
+
+                    case 'deactivate':
+                        $user->delete();
+                        break;
+
+                    case 'restore':
+                        $user->restore();
+                        break;
+
+                    case 'ban':
+                        Auth::findThrottleByUserId($user->id)->ban();
+                        break;
+
+                    case 'unban':
+                        Auth::findThrottleByUserId($user->id)->unban();
+                        break;
+                }
             }
 
-            Flash::success(Lang::get('rainlab.user::lang.users.delete_selected_success'));
+            Flash::success(Lang::get('rainlab.user::lang.users.'.$bulkAction.'_selected_success'));
         }
         else {
-            Flash::error(Lang::get('rainlab.user::lang.users.delete_selected_empty'));
+            Flash::error(Lang::get('rainlab.user::lang.users.'.$bulkAction.'_selected_empty'));
         }
 
         return $this->listRefresh();
+    }
+
+    public function checkBanned($user)
+    {
+        $throttle = Auth::createThrottleModel()->where('user_id', $user->id)->first();
+        return $throttle ? $throttle->is_banned : false;
     }
 }

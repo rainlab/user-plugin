@@ -38,3 +38,4 @@
     - Users can now deactivate their own accounts.
     - users_add_deleted_at.php
 1.2.1: New feature for checking if a user is recently active/online.
+1.2.2: Add bulk action button to user list.

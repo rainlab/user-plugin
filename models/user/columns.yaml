@@ -28,3 +28,8 @@ columns:
 
     created_at:
         label: rainlab.user::lang.user.created_at
+        type: timetense
+
+    last_login:
+        label: Last seen
+        type: timetense

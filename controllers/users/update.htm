@@ -9,12 +9,6 @@
 
     <?php Block::put('form-contents') ?>
 
-        <?php if ($formModel->trashed()): ?>
-            <?= $this->makePartial('hint_trashed') ?>
-        <?php elseif (!$formModel->is_activated): ?>
-            <?= $this->makePartial('hint_activate') ?>
-        <?php endif ?>
-
         <div class="layout-row min-size">
             <?= $this->formRenderOutsideFields() ?>
         </div>
@@ -44,7 +38,7 @@
                     <?= e(trans('backend::lang.form.save_and_close')) ?>
                 </button>
                 <span class="btn-text">
-                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('rainlab/user/users') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
+                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('rainlab/user/users/preview/'.$formModel->id) ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
                 <button
                     class="oc-icon-trash-o btn-icon danger pull-right"
