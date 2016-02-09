@@ -8,14 +8,18 @@
     </p>
 </div>
 <div class="scoreboard-item title-value">
-    <h4>Status</h4>
-    <p>Active</p>
-    <p class="description">Last seen: <?= $formModel->last_login->diffForHumans() ?></p>
-</div>
-<div class="scoreboard-item title-value">
     <h4>Joined</h4>
-    <p title="<?= e($formModel->name) ?>"><?= $formModel->created_at->diffForHumans() ?></p>
+    <p title="<?= e($formModel->name) ?>"><?= $formModel->created_at->toFormattedDateString() ?></p>
     <p class="description">
-        <?= $formModel->created_at->toFormattedDateString() ?>
+        <?= $formModel->created_at->diffForHumans() ?>
     </p>
 </div>
+<?php if ($formModel->last_login): ?>
+    <div class="scoreboard-item title-value">
+        <h4>Last seen</h4>
+        <p><?= $formModel->last_login->diffForHumans() ?></p>
+        <p class="description">
+            <?= $formModel->isOnline() ? 'Online now' : 'Currently offline' ?>
+        </p>
+    </div>
+<?php endif ?>
