@@ -39,3 +39,4 @@
     - users_add_deleted_at.php
 1.2.1: New feature for checking if a user is recently active/online.
 1.2.2: Add bulk action button to user list.
+1.2.3: Included some descriptive paragraphs in the Reset Password component markup.
