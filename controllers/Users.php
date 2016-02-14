@@ -84,7 +84,7 @@ class Users extends Controller
     /**
      * Manually activate a user
      */
-    public function update_onActivate($recordId = null)
+    public function preview_onActivate($recordId = null)
     {
         $model = $this->formFindModelObject($recordId);
 
