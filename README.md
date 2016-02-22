@@ -172,6 +172,56 @@ Here is how you would override the `onSignin()` handler to log any error message
 
 Here the local handler method will take priority over the **account** component's event handler. Then we simply inherit the logic by calling the parent handler manually, via the component object (`$this->account`).
 
+## Auth facade
+
+There is an `Auth` facade you may use for common tasks, it primarily inherits the `October\Rain\Auth\Manager` class for functionality.
+
+You may use `Auth::register` to register an account:
+
+    $user = Auth::register([
+        'name' => 'Some User',
+        'email' => 'some@website.tld',
+        'password' => 'changeme',
+        'password_confirmation' => 'changeme',
+    ]);
+
+The second argument can specify if the account should be automatically activated:
+
+    // Auto activate this user
+    $user = Auth::register([...], true);
+
+The `Auth::check` method is a quick way to check if the user is signed in.
+
+    // Returns true if signed in.
+    $loggedIn = Auth::check();
+
+To return the user model that is signed in, use `Auth::getUser` instead.
+
+    // Returns the signed in user
+    $user = Auth::getUser();
+
+You may authenticate a user by providing their login and password with `Auth::authenticate`.
+
+    // Authenticate user by credentials
+    $user = Auth::authenticate([
+        'login' => post('login'),
+        'password' => post('password')
+    ]);
+
+The second argument is used to store a non-expire cookie for the user.
+
+    $user = Auth::authenticate([...], true);
+
+You can also authenticate as a user simply by passing the user model along with `Auth::login`.
+
+    // Sign in as a specific user
+    Auth::login($user);
+
+The second argument is the same.
+
+    // Sign in and remember the user
+    Auth::login($user, true);
+
 ## Events
 
 This plugin will fire some global events that can be useful for interacting with other plugins.
