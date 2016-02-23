@@ -174,7 +174,7 @@ For the email input we use the `data-request` and `data-track-input` attributes 
             type="email"
             class="form-control"
             data-request="onCheckEmail"
-            data-request-success="$('#loginTaken').toggle(data.isTaken)"
+            data-request-success="$('#loginTaken').toggle(!!data.isTaken)"
             data-track-input />
     </div>
 
