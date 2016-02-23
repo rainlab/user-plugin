@@ -156,6 +156,32 @@ The User plugin displays AJAX error messages in a simple ``alert()``-box by defa
         })
     </script>
 
+### Checking if a login name is already taken
+
+Here is a simple example of how you can quickly check if an email address / username is available in your registration forms. First create an AJAX handler to check the login name, here we are using the email address:
+
+    public function onCheckEmail()
+    {
+        return ['isTaken' => Auth::findUserByLogin(post('email')) ? 1 : 0];
+    }
+
+For the email input we use the `data-request` and `data-track-input` attributes to call the `onCheckEmail` handler any time the field is updated. The `data-request-success` attribute will call some jQuery code to toggle the alert box.
+
+    <div class="form-group">
+        <label>Email address</label>
+        <input
+            name="email"
+            type="email"
+            class="form-control"
+            data-request="onCheckEmail"
+            data-request-success="$('#loginTaken').toggle(data.isTaken)"
+            data-track-input />
+    </div>
+
+    <div id="loginTaken" class="alert alert-danger" style="display: none">
+        Sorry, that login name is already taken.
+    </div>
+
 ## Overriding functionality
 
 Here is how you would override the `onSignin()` handler to log any error messages. Inside the page code, define this method:
@@ -221,6 +247,10 @@ The second argument is the same.
 
     // Sign in and remember the user
     Auth::login($user, true);
+
+You may look up a user by their login name using the `Auth::findUserByLogin` method.
+
+    $user = Auth::findUserByLogin('some@email.tld');
 
 ## Events
 
