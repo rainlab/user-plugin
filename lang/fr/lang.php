@@ -129,7 +129,7 @@ return [
         'return_to_users' => 'Retour à la liste des utilisateurs',
         'create_title' => 'Nouveau groupe d’utilisateurs',
         'update_title' => 'Modifier un groupe d’utilisateurs',
-        'preview_title' => 'Visualiser le groupe d\'utilisateur'
+        'preview_title' => 'Visualiser le groupe d\'utilisateurs'
     ],
     'group' => [
         'label' => 'Groupe d’utilisateurs',
