@@ -4,6 +4,7 @@ use App;
 use Event;
 use Backend;
 use System\Classes\PluginBase;
+use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Models\MailBlocker;
 
@@ -79,7 +80,7 @@ class Plugin extends PluginBase
             'settings' => [
                 'label'       => 'rainlab.user::lang.settings.menu_label',
                 'description' => 'rainlab.user::lang.settings.menu_description',
-                'category'    => 'rainlab.user::lang.settings.users',
+                'category'    => SettingsManager::CATEGORY_USERS,
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
