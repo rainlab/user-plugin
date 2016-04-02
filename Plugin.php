@@ -84,7 +84,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
-                'permissions' => ['rainlab.users.settings']
+                'permissions' => ['rainlab.users.access_settings'],
             ]
         ];
     }
