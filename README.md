@@ -79,6 +79,14 @@ The Session component allows the restriction of a page or layout by allowing onl
 
 The `security` property can be user, guest or all. The `redirect` property refers to a page name to redirect to when access is restricted.
 
+### Route restriction
+
+Access to routes can be restricted by applying the `AuthMiddleware`.
+
+    Route::group(['middleware' => 'RainLab\User\Classes\AuthMiddleware'], function () {
+        // All routes here will require authentication
+    });
+
 ## Account component
 
 The account component provides a user sign in form, registration form, activation form and update form. To display the form:
