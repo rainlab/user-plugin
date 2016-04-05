@@ -6,7 +6,8 @@ return [
         'description' => 'Správa front-end uživatelů.',
         'tab' => 'Uživatelé',
         'access_users' => 'Správa uživatelů',
-        'access_groups' => 'Správa uživatelských skupin'
+        'access_groups' => 'Správa uživatelských skupin',
+        'access_settings' => 'Správa nastavení uživatelů',
     ],
     'users' => [
         'menu_label' => 'Uživatelé',
@@ -14,6 +15,10 @@ return [
         'new_user' => 'Vytvořit uživatele',
         'list_title' => 'Správa uživatelů',
         'activating' => 'Povoluji...',
+        'trashed_hint_title' => 'Uživatel deaktivoval svůj účet',
+        'trashed_hint_desc' => 'Uživatel zablokoval svůj účet a nechce se dále objevovat na stránkách. Může však svůj účet kdykoli obnovit přihlášením se zpět.',
+        'banned_hint_title' => 'Uživatel byl zabanován',
+        'banned_hint_desc' => 'Tento uživatel byl zablokován administrátorem a nebude moct se přihlásit.',
         'activate_warning_title' => 'Uživatel není aktivní!',
         'activate_warning_desc' => 'Tento uživatel nemohl být aktivován a nebude mít možnost se přihlásit.',
         'activate_confirm' => 'Opravdu chcete aktivovat tohoto uživatele?',
@@ -21,9 +26,26 @@ return [
         'delete_confirm' => 'Opravdu chcete smazat tohoto uživatele?',
         'activated_success' => 'Uživatel byl úspěšně aktivován!',
         'return_to_list' => 'Zpět na seznam uživatelů',
-        'delete_selected_empty' => 'Nejdříve vyberte uživatele, které chcete smazat.',
+        'delete_selected' => 'Odstranit vybrané',
         'delete_selected_confirm' => 'Chcete smazat vybrané uživatele?',
-        'delete_selected_success' => 'Vybraní uživatelé úspěšně odstraněni.'
+        'delete_selected_empty' => 'Nejdříve vyberte uživatele, které chcete smazat.',
+        'delete_selected_success' => 'Vybraní uživatelé úspěšně odstraněni.',
+        'deactivate_selected' => 'Deaktivovat vybrané',
+        'deactivate_selected_confirm' => 'Deaktivovat vybrané uživatele?',
+        'deactivate_selected_empty' => 'Musíte vybrat uživatele, které chcete deaktivovat.',
+        'deactivate_selected_success' => 'Vybraní uživatelé byli úspěšně deaktivování.',
+        'restore_selected' => 'Obnovit vybrané',
+        'restore_selected_confirm' => 'Opravdu chcete obnovit vybrané uživatele?',
+        'restore_selected_empty' => 'Musíte vybrat uživatele, které chcete obnovit.',
+        'restore_selected_success' => 'Vybraní uživatele byli úspěšně obnoveni.',
+        'ban_selected' => 'Zabanovat vybrané',
+        'ban_selected_confirm' => 'Opravdu chcete zabanovat vybrané uživatele?',
+        'ban_selected_empty' => 'Musíte vybrat uživatele, které chcete zabanovat.',
+        'ban_selected_success' => 'Vybraní uživatelé byli úspěšně zabanováni.',
+        'unban_selected' => 'Odbanovat vybrané',
+        'unban_selected_confirm' => 'Opravdu chcete odbanovat vybrané uživatele?',
+        'unban_selected_empty' => 'Musíte vybrat uživatele, které chcete odbanovat.',
+        'unban_selected_success' => 'Vybraní uživatelé byli úspěšně odbanováni.',
     ],
     'settings' => [
         'users' => 'Uživatelé',
@@ -52,7 +74,7 @@ return [
         'login_attribute' => 'Přihlašovací atribut',
         'login_attribute_comment' => 'Zvolte, jaký atribut bude použitý k přihlášení uživatele.',
         'no_mail_template' => 'Neposílat upozornění',
-        'hint_templates' => 'Šablony můžete upravovat ve správě nastavení Mail > Mail Templates.'
+        'hint_templates' => 'Šablony můžete upravovat ve správě nastavení Mail > Mail Templates.',
     ],
     'user' => [
         'label' => 'Uživatel',
@@ -62,6 +84,8 @@ return [
         'surname' => 'Příjmení',
         'email' => 'E-mail',
         'created_at' => 'Datum registrace',
+        'create_password' => 'Vytvořit heslo',
+        'create_password_comment' => 'Zadejte heslo které se bude používat k přihlašování.',
         'reset_password' => 'Nové heslo',
         'reset_password_comment' => 'Pro změnu hesla, zadejte nové heslo.',
         'confirm_password' => 'Nové heslo znovu pro kontrolu',
@@ -70,7 +94,7 @@ return [
         'empty_groups' => 'V této skupině nejsou žádní uživatelé.',
         'avatar' => 'Obrázek',
         'details' => 'Detaily',
-        'account' => 'Účet'
+        'account' => 'Účet',
     ],
     'group' => [
         'label' => 'Skupina',
@@ -80,7 +104,7 @@ return [
         'code' => 'Kód',
         'code_comment' => 'Zadejte unikátní kód pro jednoznačnou identifikaci této skupiny.',
         'created_at' => 'Vytvořeno',
-        'users_count' => 'Počet uživatelů'
+        'users_count' => 'Počet uživatelů',
     ],
     'groups' => [
         'menu_label' => 'Skupiny',
@@ -95,11 +119,11 @@ return [
         'return_to_users' => 'Zpět na seznam uživatelů',
         'create_title' => 'Vytvořit skupinu',
         'update_title' => 'Upravit skupinu',
-        'preview_title' => 'Náhled skupiny'
+        'preview_title' => 'Náhled skupiny',
     ],
     'login' => [
         'attribute_email' => 'E-mail',
-        'attribute_username' => 'Uživatelské jméno'
+        'attribute_username' => 'Uživatelské jméno',
     ],
     'account' => [
         'account' => 'Správa účtu',
@@ -108,19 +132,21 @@ return [
         'redirect_to_desc' => 'Název stránky pro přesměrování po úpravě údajů, přihlášení nebo registraci.',
         'code_param' => 'Parametr aktivačního kódu',
         'code_param_desc' => 'Parametr z URL stránky, který se použije pro aktivační kód',
-        'invalid_activation_code' => 'Zadán nesprávný parametr pro aktivační kód',
         'invalid_user' => 'Uživatel s těmito údaji nebyl nalezen.',
+        'invalid_activation_code' => 'Zadán nesprávný parametr pro aktivační kód',
+        'invalid_deactivation_pass' => 'Zadané heslo není správné.',
         'success_activation' => 'Váš účet byl úspěšně aktivován.',
+        'success_deactivation' => 'Váš účet byl úspěšně deaktivován. Mrzí nás, že odcházíte!',
         'success_saved' => 'Nastavení bylo úspěšně uloženo!',
         'login_first' => 'Nejdříve musíte být přihlášeni!',
         'already_active' => 'Váš účet je již aktivován!',
         'activation_email_sent' => 'Aktivační e-mail byl zaslán na e-mail, který byl zadán při registraci.',
+        'registration_disabled' => 'Registrace jsou dočasně pozastaveny.',
         'sign_in' => 'Přihlášení',
         'register' => 'Registrace',
         'full_name' => 'Celé jméno',
         'email' => 'E-mail',
         'password' => 'Heslo',
-        'register' => 'Registrace',
         'login' => 'Přihlášení',
         'new_password' => 'Nové heslo',
         'new_password_confirm' => 'Potvrzení nového hesla'
