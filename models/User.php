@@ -54,7 +54,6 @@ class User extends UserBase
      */
     protected $purgeable = [
         'password_confirmation',
-        'block_mail'
     ];
 
     public static $loginAttribute = null;
@@ -154,19 +153,6 @@ class User extends UserBase
         return static::$loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
     }
 
-    /**
-     * Returns true if this user has mail blocked.
-     * @return bool
-     */
-    public function getBlockMailAttribute()
-    {
-        if (array_key_exists('block_mail', $this->attributes)) {
-            return $this->attributes['block_mail'];
-        }
-
-        return MailBlocker::isBlockAll($this);
-    }
-
     //
     // Scopes
     //
@@ -193,18 +179,6 @@ class User extends UserBase
      */
     public function beforeValidate()
     {
-        /*
-         * Check mail blocker setting
-         */
-        if ($this->isDirty('block_mail')) {
-            if ($this->block_mail) {
-                MailBlocker::blockAll($this);
-            }
-            else {
-                MailBlocker::unblockAll($this);
-            }
-        }
-
         /*
          * When the username is not used, the email is substituted.
          */

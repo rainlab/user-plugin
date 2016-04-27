@@ -9,6 +9,7 @@ use Backend\Classes\Controller;
 use System\Classes\SettingsManager;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserGroup;
+use RainLab\User\Models\MailBlocker;
 use RainLab\User\Models\Settings as UserSettings;
 
 class Users extends Controller
@@ -79,6 +80,23 @@ class Users extends Controller
         ) {
             $form->getField('username')->hidden = false;
         }
+    }
+
+    public function formAfterUpdate($model)
+    {
+        $blockMail = post('User[block_mail]', false);
+        if ($blockMail !== false) {
+            $blockMail ? MailBlocker::blockAll($model) : MailBlocker::unblockAll($model);
+        }
+    }
+
+    public function formExtendModel($model)
+    {
+        $model->block_mail = MailBlocker::isBlockAll($this);
+
+        $model->bindEvent('model.saveInternal', function() use ($model) {
+            unset($model->attributes['block_mail']);
+        });
     }
 
     /**

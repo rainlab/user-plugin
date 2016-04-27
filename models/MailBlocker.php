@@ -108,14 +108,25 @@ class MailBlocker extends Model
      */
     public static function addBlock($template, $user)
     {
-        $blocker = static::firstOrNew([
+        $blocker = static::where([
             'template' => $template,
             'user_id' => $user->id
-        ]);
+        ])->first();
+
+        if ($blocker && $blocker->email == $user->email) {
+            return false;
+        }
+
+        if (!$blocker) {
+            $blocker = new static;
+            $blocker->template = $template;
+            $blocker->user_id = $user->id;
+        }
 
         $blocker->email = $user->email;
         $blocker->save();
-        return $blocker;
+
+        return true;
     }
 
     /**
@@ -129,13 +140,19 @@ class MailBlocker extends Model
         $blocker = static::where([
             'template' => $template,
             'user_id' => $user->id
-        ])->first();
+        ])->orWhere([
+            'template' => $template,
+            'email' => $user->email
+        ])->get();
 
-        if (!$blocker) {
+        if (!$blocker->count()) {
             return false;
         }
 
-        $blocker->delete();
+        $blocker->each(function($block) {
+            $block->delete();
+        });
+
         return true;
     }
 
