@@ -7,8 +7,8 @@
                 <?= e(trans('rainlab.user::lang.users.activate_warning_desc')) ?>
                 <a href="javascript:;"
                     data-request="onActivate"
-                    data-load-indicator="<?= e(trans('rainlab.user::lang.users.activating')) ?>"
                     data-request-confirm="<?= e(trans('rainlab.user::lang.users.activate_confirm')) ?>"
+                    data-stripe-load-indicator
                 ><?= e(trans('rainlab.user::lang.users.active_manually')) ?></a>.
             </p>
         </div>

@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Models;
 
+use Auth;
 use Mail;
 use Event;
 use October\Rain\Auth\Models\User as UserBase;
@@ -51,12 +52,98 @@ class User extends UserBase
     /**
      * Purge attributes from data set.
      */
-    protected $purgeable = ['password_confirmation'];
+    protected $purgeable = [
+        'password_confirmation',
+        'block_mail'
+    ];
 
     public static $loginAttribute = null;
 
     /**
-     * @return string Returns the name for the user's login.
+     * Sends the confirmation email to a user, after activating.
+     * @param  string $code
+     * @return void
+     */
+    public function attemptActivation($code)
+    {
+        $result = parent::attemptActivation($code);
+        if ($result === false) {
+            return false;
+        }
+
+        if ($mailTemplate = UserSettings::get('welcome_template')) {
+            Mail::sendTo($this, $mailTemplate, [
+                'name'  => $this->name,
+                'email' => $this->email
+            ]);
+        }
+
+        return true;
+    }
+
+    //
+    // Constructors
+    //
+
+    /**
+     * Looks up a user by their email address.
+     * @return self
+     */
+    public static function findByEmail($email)
+    {
+        if (!$email) {
+            return;
+        }
+
+        return self::where('email', $email)->first();
+    }
+
+    //
+    // Getters
+    //
+
+    /**
+     * Gets a code for when the user is persisted to a cookie or session which identifies the user.
+     * @return string
+     */
+    public function getPersistCode()
+    {
+        if (!$this->persist_code) {
+            return parent::getPersistCode();
+        }
+
+        return $this->persist_code;
+    }
+
+    /**
+     * Returns the public image file path to this user's avatar.
+     */
+    public function getAvatarThumb($size = 25, $options = null)
+    {
+        if (is_string($options)) {
+            $options = ['default' => $options];
+        }
+        elseif (!is_array($options)) {
+            $options = [];
+        }
+
+        // Default is "mm" (Mystery man)
+        $default = array_get($options, 'default', 'mm');
+
+        if ($this->avatar) {
+            return $this->avatar->getThumb($size, $size, $options);
+        }
+        else {
+            return '//www.gravatar.com/avatar/'.
+                md5(strtolower(trim($this->email))).
+                '?s='.$size.
+                '&d='.urlencode($default);
+        }
+    }
+
+    /**
+     * Returns the name for the user's login.
+     * @return string
      */
     public function getLoginName()
     {
@@ -68,11 +155,56 @@ class User extends UserBase
     }
 
     /**
+     * Returns true if this user has mail blocked.
+     * @return bool
+     */
+    public function getBlockMailAttribute()
+    {
+        if (array_key_exists('block_mail', $this->attributes)) {
+            return $this->attributes['block_mail'];
+        }
+
+        return MailBlocker::isBlockAll($this);
+    }
+
+    //
+    // Scopes
+    //
+
+    public function scopeIsActivated($query)
+    {
+        return $query->where('is_activated', 1);
+    }
+
+    public function scopeFilterByGroup($query, $filter)
+    {
+        return $query->whereHas('groups', function($group) use ($filter) {
+            $group->whereIn('id', $filter);
+        });
+    }
+
+    //
+    // Events
+    //
+
+    /**
      * Before validation event
      * @return void
      */
     public function beforeValidate()
     {
+        /*
+         * Check mail blocker setting
+         */
+        if ($this->isDirty('block_mail')) {
+            if ($this->block_mail) {
+                MailBlocker::blockAll($this);
+            }
+            else {
+                MailBlocker::unblockAll($this);
+            }
+        }
+
         /*
          * When the username is not used, the email is substituted.
          */
@@ -119,90 +251,36 @@ class User extends UserBase
         parent::afterDelete();
     }
 
-    public function scopeIsActivated($query)
-    {
-        return $query->where('is_activated', 1);
-    }
-
-    public function scopeFilterByGroup($query, $filter)
-    {
-        return $query->whereHas('groups', function($group) use ($filter) {
-            $group->whereIn('id', $filter);
-        });
-    }
+    //
+    // Banning
+    //
 
     /**
-     * Gets a code for when the user is persisted to a cookie or session which identifies the user.
-     * @return string
-     */
-    public function getPersistCode()
-    {
-        if (!$this->persist_code) {
-            return parent::getPersistCode();
-        }
-
-        return $this->persist_code;
-    }
-
-    /**
-     * Returns the public image file path to this user's avatar.
-     */
-    public function getAvatarThumb($size = 25, $options = null)
-    {
-        if (is_string($options)) {
-            $options = ['default' => $options];
-        }
-        elseif (!is_array($options)) {
-            $options = [];
-        }
-
-        // Default is "mm" (Mystery man)
-        $default = array_get($options, 'default', 'mm');
-
-        if ($this->avatar) {
-            return $this->avatar->getThumb($size, $size, $options);
-        }
-        else {
-            return '//www.gravatar.com/avatar/'.
-                md5(strtolower(trim($this->email))).
-                '?s='.$size.
-                '&d='.urlencode($default);
-        }
-    }
-
-    /**
-     * Sends the confirmation email to a user, after activating.
-     * @param  string $code
+     * Ban this user, preventing them from signing in.
      * @return void
      */
-    public function attemptActivation($code)
+    public function ban()
     {
-        $result = parent::attemptActivation($code);
-        if ($result === false) {
-            return false;
-        }
-
-        if ($mailTemplate = UserSettings::get('welcome_template')) {
-            Mail::sendTo($this, $mailTemplate, [
-                'name'  => $this->name,
-                'email' => $this->email
-            ]);
-        }
-
-        return true;
+        Auth::findThrottleByUserId($this->id)->ban();
     }
 
     /**
-     * Looks up a user by their email address.
-     * @return self
+     * Remove the ban on this user.
+     * @return void
      */
-    public static function findByEmail($email)
+    public function unban()
     {
-        if (!$email) {
-            return;
-        }
+        Auth::findThrottleByUserId($this->id)->unban();
+    }
 
-        return self::where('email', $email)->first();
+    /**
+     * Check if the user is banned.
+     * @return bool
+     */
+    public function isBanned()
+    {
+        $throttle = Auth::createThrottleModel()->where('user_id', $this->id)->first();
+        return $throttle ? $throttle->is_banned : false;
     }
 
     //

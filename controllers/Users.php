@@ -92,7 +92,23 @@ class Users extends Controller
 
         Flash::success(Lang::get('rainlab.user::lang.users.activated_success'));
 
-        if ($redirect = $this->makeRedirect('update', $model)) {
+        if ($redirect = $this->makeRedirect('update-close', $model)) {
+            return $redirect;
+        }
+    }
+
+    /**
+     * Manually unban a user
+     */
+    public function preview_onUnban($recordId = null)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->unban();
+
+        Flash::success(Lang::get('rainlab.user::lang.users.unbanned_success'));
+
+        if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
         }
     }
@@ -144,11 +160,11 @@ class Users extends Controller
                         break;
 
                     case 'ban':
-                        Auth::findThrottleByUserId($user->id)->ban();
+                        $user->ban();
                         break;
 
                     case 'unban':
-                        Auth::findThrottleByUserId($user->id)->unban();
+                        $user->unban();
                         break;
                 }
             }
@@ -160,11 +176,5 @@ class Users extends Controller
         }
 
         return $this->listRefresh();
-    }
-
-    public function checkBanned($user)
-    {
-        $throttle = Auth::createThrottleModel()->where('user_id', $user->id)->first();
-        return $throttle ? $throttle->is_banned : false;
     }
 }

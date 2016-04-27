@@ -32,6 +32,13 @@ class MailBlocker extends Model
     ];
 
     /**
+     * @var array Templates names that cannot be blocked.
+     */
+    protected static $safeTemplates = [
+        'rainlab.user::mail.restore'
+    ];
+
+    /**
      * Sets mail blocking preferences for a user. Eg:
      *
      * MailBlocker::setPreferences($user, [acme.blog::post.new_reply => 0])
@@ -159,7 +166,7 @@ class MailBlocker extends Model
      */
     public static function isBlockAll($user)
     {
-        return static::checkForEmail('*', $user->email);
+        return count(static::checkForEmail('*', $user->email)) > 0;
     }
 
     /**
@@ -191,6 +198,10 @@ class MailBlocker extends Model
      */
     public static function checkForEmail($template, $email)
     {
+        if (in_array($template, static::$safeTemplates)) {
+            return [];
+        }
+
         if (empty($email)) {
             return [];
         }
@@ -232,38 +243,6 @@ class MailBlocker extends Model
 
         $message->setTo($recipients);
         return count($recipients) ? true : false;
-    }
-
-    /**
-     * @deprecated Use MailBlocker::setPreferences instead
-     * @TODO Remove this function in the next major version or if year >= 2017
-     */
-    public static function toggleBlocks($templates, $user, array $inTemplates = null)
-    {
-        traceLog('MailBlocker::toggleBlocks is deprecated, please use MailBlocker::setPreferences instead');
-
-        foreach ((array) $templates as $template => $value) {
-
-            if (
-                $inTemplates &&
-                !array_key_exists($template, $inTemplates) &&
-                !in_array($template, $inTemplates)
-            ) {
-                continue;
-            }
-
-            // Template uses an alias
-            if (isset($inTemplates[$template])) {
-                $template = $inTemplates[$template];
-            }
-
-            if ($value) {
-                static::removeBlock($template, $user);
-            }
-            else {
-                static::addBlock($template, $user);
-            }
-        }
     }
 
 }

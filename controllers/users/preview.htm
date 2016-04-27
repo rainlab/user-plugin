@@ -9,7 +9,7 @@
 
     <?php Block::put('form-contents') ?>
 
-        <?php if ($this->checkBanned($formModel)): ?>
+        <?php if ($formModel->isBanned()): ?>
             <?= $this->makePartial('hint_banned') ?>
         <?php elseif ($formModel->trashed()): ?>
             <?= $this->makePartial('hint_trashed') ?>
