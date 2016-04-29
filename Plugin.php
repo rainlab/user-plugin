@@ -68,6 +68,7 @@ class Plugin extends PluginBase
                 'label'       => 'rainlab.user::lang.users.menu_label',
                 'url'         => Backend::url('rainlab/user/users'),
                 'icon'        => 'icon-user',
+                'iconSvg'     => 'plugins/rainlab/user/assets/images/user-icon.svg',
                 'permissions' => ['rainlab.users.*'],
                 'order'       => 500,
             ]
