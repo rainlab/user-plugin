@@ -77,6 +77,8 @@ class User extends UserBase
             ]);
         }
 
+        Event::fire('rainlab.user.activate', [$this]);
+
         return true;
     }
 
