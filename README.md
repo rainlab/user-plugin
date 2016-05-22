@@ -10,6 +10,8 @@ This plugin requires the [Ajax Framework](https://octobercms.com/docs/cms/ajax) 
 
 Users are managed on the Users tab found in the back-end. Each user provides minimal data fields - **Name**, **Surname**, **Email** and **Password**. The Name can represent either the person's first name or their full name, making the Surname field optional, depending on the complexity of your site.
 
+Below the **Email** field is an checkbox to block all outgoing mail sent to the user. This is a useful feature for accounts with an email address that is bouncing mail or has reported spam. When checked, no mail will ever be sent to this address, except for the mail template used for resetting the password.
+
 ## Plugin settings
 
 This plugin creates a Settings menu item, found by navigating to **Settings > Users > User settings**. This page allows the setting of common features, described in more detail below.
@@ -78,6 +80,14 @@ The Session component allows the restriction of a page or layout by allowing onl
     redirect = "home"
 
 The `security` property can be user, guest or all. The `redirect` property refers to a page name to redirect to when access is restricted.
+
+### Route restriction
+
+Access to routes can be restricted by applying the `AuthMiddleware`.
+
+    Route::group(['middleware' => 'RainLab\User\Classes\AuthMiddleware'], function () {
+        // All routes here will require authentication
+    });
 
 ## Account component
 
@@ -256,7 +266,7 @@ You may look up a user by their login name using the `Auth::findUserByLogin` met
 
 This plugin will fire some global events that can be useful for interacting with other plugins.
 
-- **rainlab.user.beforeAuthenticate**: Before the user is attempting to authenticate using hte Account component.
+- **rainlab.user.beforeAuthenticate**: Before the user is attempting to authenticate using the Account component.
 - **rainlab.user.login**: The user has successfully signed in.
 - **rainlab.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
 - **rainlab.user.reactivate**: The user has reactivated their own account by signing back in. This should revive the users content on the site.

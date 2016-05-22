@@ -18,11 +18,17 @@
             data-trigger-action="enable"
             data-trigger=".control-list input[type=checkbox]"
             data-trigger-condition="checked"
-            data-request-success="$(this).prop('disabled', true)"
+            data-request-success="$(this).prop('disabled', true).next().prop('disabled', true)"
             data-stripe-load-indicator>
             Bulk actions
         </button>
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <button
+            type="button"
+            class="btn btn-default dropdown-toggle"
+            data-trigger-action="enable"
+            data-trigger=".control-list input[type=checkbox]"
+            data-trigger-condition="checked"
+            data-toggle="dropdown">
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" data-dropdown-title="Bulk actions">

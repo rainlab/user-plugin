@@ -49,6 +49,7 @@
 
     BulkActions.prototype.onClickMenuItem = function(ev) {
         this.setActiveItem($(ev.target))
+        this.$primaryBtn.click()
     }
 
     BulkActions.prototype.setActiveItem = function($el) {

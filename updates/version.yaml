@@ -40,3 +40,7 @@
 1.2.1: New feature for checking if a user is recently active/online.
 1.2.2: Add bulk action button to user list.
 1.2.3: Included some descriptive paragraphs in the Reset Password component markup.
+1.2.4: Added a checkbox for blocking all mail sent to the user.
+1.2.5:
+    - Database maintenance. Updated all timestamp columns to be nullable.
+    - update_timestamp_nullable.php

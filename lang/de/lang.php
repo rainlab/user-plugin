@@ -211,4 +211,4 @@ return [
     'update_title' => 'Benutzergruppe bearbeiten',
     'preview_title' => 'Vorschau der Benutzergruppe',
   ],
-]
+];

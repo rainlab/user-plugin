@@ -20,6 +20,13 @@ tabs:
             tab: rainlab.user::lang.user.account
             span: full
 
+        block_mail:
+            label: Block all outgoing mail sent to this user.
+            tab: rainlab.user::lang.user.account
+            type: checkbox
+            span: full
+            cssClass: field-align-above
+
         password@create:
             label: rainlab.user::lang.user.create_password
             comment: rainlab.user::lang.user.create_password_comment

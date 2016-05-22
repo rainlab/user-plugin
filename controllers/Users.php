@@ -9,6 +9,7 @@ use Backend\Classes\Controller;
 use System\Classes\SettingsManager;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserGroup;
+use RainLab\User\Models\MailBlocker;
 use RainLab\User\Models\Settings as UserSettings;
 
 class Users extends Controller
@@ -81,6 +82,23 @@ class Users extends Controller
         }
     }
 
+    public function formAfterUpdate($model)
+    {
+        $blockMail = post('User[block_mail]', false);
+        if ($blockMail !== false) {
+            $blockMail ? MailBlocker::blockAll($model) : MailBlocker::unblockAll($model);
+        }
+    }
+
+    public function formExtendModel($model)
+    {
+        $model->block_mail = MailBlocker::isBlockAll($this);
+
+        $model->bindEvent('model.saveInternal', function() use ($model) {
+            unset($model->attributes['block_mail']);
+        });
+    }
+
     /**
      * Manually activate a user
      */
@@ -92,7 +110,23 @@ class Users extends Controller
 
         Flash::success(Lang::get('rainlab.user::lang.users.activated_success'));
 
-        if ($redirect = $this->makeRedirect('update', $model)) {
+        if ($redirect = $this->makeRedirect('update-close', $model)) {
+            return $redirect;
+        }
+    }
+
+    /**
+     * Manually unban a user
+     */
+    public function preview_onUnban($recordId = null)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->unban();
+
+        Flash::success(Lang::get('rainlab.user::lang.users.unbanned_success'));
+
+        if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
         }
     }
@@ -144,11 +178,11 @@ class Users extends Controller
                         break;
 
                     case 'ban':
-                        Auth::findThrottleByUserId($user->id)->ban();
+                        $user->ban();
                         break;
 
                     case 'unban':
-                        Auth::findThrottleByUserId($user->id)->unban();
+                        $user->unban();
                         break;
                 }
             }
@@ -160,11 +194,5 @@ class Users extends Controller
         }
 
         return $this->listRefresh();
-    }
-
-    public function checkBanned($user)
-    {
-        $throttle = Auth::createThrottleModel()->where('user_id', $user->id)->first();
-        return $throttle ? $throttle->is_banned : false;
     }
 }
