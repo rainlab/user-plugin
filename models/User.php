@@ -194,8 +194,9 @@ class User extends UserBase
 
     public function afterLogin()
     {
+        $this->last_login = $this->last_seen = $this->freshTimestamp();
+
         if ($this->trashed()) {
-            $this->last_login = $this->freshTimestamp();
             $this->restore();
 
             Mail::sendTo($this, 'rainlab.user::mail.reactivate', [
@@ -265,7 +266,7 @@ class User extends UserBase
 
     /**
      * Checks if the user has been seen in the last 5 minutes, and if not,
-     * updates the last_login timestamp to reflect their online status.
+     * updates the last_seen timestamp to reflect their online status.
      * @return void
      */
     public function touchLastSeen()
@@ -280,7 +281,7 @@ class User extends UserBase
         $this
             ->newQuery()
             ->where('id', $this->id)
-            ->update(['last_login' => $this->freshTimestamp()])
+            ->update(['last_seen' => $this->freshTimestamp()])
         ;
 
         $this->timestamps = $oldTimestamps;
@@ -301,6 +302,6 @@ class User extends UserBase
      */
     public function getLastSeen()
     {
-        return $this->last_login ?: $this->created_at;
+        return $this->last_seen ?: $this->created_at;
     }
 }

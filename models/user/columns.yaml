@@ -30,6 +30,6 @@ columns:
         label: rainlab.user::lang.user.created_at
         type: timetense
 
-    last_login:
+    last_seen:
         label: Last seen
         type: timetense

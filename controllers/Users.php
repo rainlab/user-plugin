@@ -92,7 +92,7 @@ class Users extends Controller
 
     public function formExtendModel($model)
     {
-        $model->block_mail = MailBlocker::isBlockAll($this);
+        $model->block_mail = MailBlocker::isBlockAll($model);
 
         $model->bindEvent('model.saveInternal', function() use ($model) {
             unset($model->attributes['block_mail']);

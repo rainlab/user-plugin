@@ -14,10 +14,10 @@
         <?= $formModel->created_at->diffForHumans() ?>
     </p>
 </div>
-<?php if ($formModel->last_login): ?>
+<?php if ($formModel->last_seen): ?>
     <div class="scoreboard-item title-value">
         <h4>Last seen</h4>
-        <p><?= $formModel->last_login->diffForHumans() ?></p>
+        <p><?= $formModel->last_seen->diffForHumans() ?></p>
         <p class="description">
             <?= $formModel->isOnline() ? 'Online now' : 'Currently offline' ?>
         </p>
