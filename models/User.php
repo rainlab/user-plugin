@@ -55,6 +55,15 @@ class User extends UserBase
     protected $purgeable = [
         'password_confirmation',
     ];
+    
+    protected $dates = [
+        'last_seen',
+        'deleted_at',
+        'created_at',
+        'updated_at',
+        'activated_at',
+        'last_login'
+    ];
 
     public static $loginAttribute = null;
 
