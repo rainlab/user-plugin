@@ -1,0 +1,72 @@
+<h3>{{language.register}}</h3>
+<div id="registration_error"></div>
+<form
+        data-request="onRegister">
+    <div class="form-group">
+        <label for="registerName">{{language.full_name}}</label>
+        <input
+                name="name"
+                type="text"
+                class="form-control"
+                id="registerName"
+                placeholder="{{language.enter_your_name}}" />
+    </div>
+
+    <div class="form-group">
+        <label for="registerEmail">Email</label>
+        <input
+                name="email"
+                type="email"
+                class="form-control"
+                id="registerEmail"
+                placeholder="{{language.enter_your_email}}" />
+    </div>
+
+    <div class="form-group">
+        <label for="registerPassword">{{language.password}}</label>
+        <input
+                name="password"
+                type="password"
+                class="form-control"
+                id="registerPassword"
+                placeholder="{{language.enter_your_password}}" />
+    </div>
+
+    {% if config.rules_active %}
+    <div class="form-group">
+
+        <input
+                name="rules"
+                type="checkbox"
+                id="registerRules"/>
+        <label for="registerPassword">{{language.i_agree_with}} <a href="#" onclick="$('#register_rules').toggle('fast'); return false;">{{language.rules}}</a></label>
+    </div>
+
+    <div id="register_rules">
+        {{config.rules_text|raw}}
+    </div>
+
+    {% endif %}
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">{{language.register}}</button>
+    </div>
+</form>
+
+<style>
+    #register_rules{
+        overflow:auto;
+        height: 150px;
+        border: #ccc 1px dotted;
+        border-radius: 4px;
+        background: #F5F5F5;
+        padding: 10px;
+        display:none;
+    }
+
+    #register_rules p {
+        margin: 0 0 8px;
+        font-size: 13px;
+        line-height: 1.6em;
+    }
+
+</style>
