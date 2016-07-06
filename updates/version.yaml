@@ -47,3 +47,4 @@
 1.2.6:
     - Add a dedicated last seen column for users.
     - users_add_last_seen.php
+1.2.7: Minor fix to user timestamp attributes.
