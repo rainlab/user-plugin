@@ -46,9 +46,11 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'RainLab\User\Components\Session'       => 'session',
-            'RainLab\User\Components\Account'       => 'account',
-            'RainLab\User\Components\ResetPassword' => 'resetPassword'
+            'RainLab\User\Components\Session'           => 'session',
+            'RainLab\User\Components\Account'           => 'account',
+            'RainLab\User\Components\ResetPassword'     => 'resetPassword',
+            'RainLab\User\Components\Login'             => 'login',
+            'RainLab\User\Components\Signup'          => 'signup',
         ];
     }
 
@@ -93,11 +95,11 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'rainlab.user::mail.activate'   => 'Activation email sent to new users.',
-            'rainlab.user::mail.welcome'    => 'Welcome email sent when a user is activated.',
-            'rainlab.user::mail.restore'    => 'Password reset instructions for front-end users.',
-            'rainlab.user::mail.new_user'   => 'Sent to administrators when a new user joins.',
-            'rainlab.user::mail.reactivate' => 'Notification for users who reactivate their account.',
+            'rainlab.user::mail.activate'   => 'rainlab.user::lang.mail_templates.activation',
+            'rainlab.user::mail.welcome'    => 'rainlab.user::lang.mail_templates.welcome',
+            'rainlab.user::mail.restore'    => 'rainlab.user::lang.mail_templates.restore',
+            'rainlab.user::mail.new_user'   => 'rainlab.user::lang.mail_templates.new_user',
+            'rainlab.user::mail.reactivate' => 'rainlab.user::lang.mail_templates.reactivate',
         ];
     }
 }
