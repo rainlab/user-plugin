@@ -54,6 +54,7 @@ class Account extends ComponentBase
      */
     public function onRun()
     {
+
         $routeParameter = $this->property('paramCode');
 
         /*
@@ -66,6 +67,8 @@ class Account extends ComponentBase
         $this->page['user'] = $this->user();
         $this->page['loginAttribute'] = $this->loginAttribute();
         $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
+
+        $this->page['language'] = Lang::get('rainlab.user::lang.components');
     }
 
     /**
@@ -170,6 +173,10 @@ class Account extends ComponentBase
                 'email'    => 'required|email|between:6,255',
                 'password' => 'required|between:4,255'
             ];
+
+            if( $this->config['rules_active'] ){
+                $rules['rules'] = 'required';
+            }
 
             if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
                 $rules['username'] = 'required|between:2,255';
