@@ -76,7 +76,10 @@ return [
         'login_attribute' => 'Login attribute',
         'login_attribute_comment' => 'Select what primary user detail should be used for signing in.',
         'no_mail_template' => 'Do not send a notification',
-        'hint_templates' => 'You can customize mail templates by selecting Mail > Mail Templates from the settings menu.'
+        'hint_templates' => 'You can customize mail templates by selecting Mail > Mail Templates from the settings menu.',
+        'rule' => 'Rule',
+        'rule_comment' => 'Will display to the user of the rule in case of registration, and will require their acceptance',
+        'rule_text' => 'Rule text'
     ],
     'user' => [
         'label' => 'User',
@@ -125,7 +128,15 @@ return [
     ],
     'login' => [
         'attribute_email' => 'Email',
-        'attribute_username' => 'Username'
+        'attribute_username' => 'Username',
+        'did_not_match' => 'A user was found to match all plain text credentials however hashed credential "%s" did not match..',
+        'user_was_not_found_credentials' => 'A user was not found with the given credentials.',
+        'attribute_is_required' => 'The "%s" attribute is required.',
+        'password_attribute_is_required' => 'The password attribute is required.',
+        'cannot_login_user_not_activated.' => 'Cannot login user "%s" as they are not activated.',
+        'login_attribute_was_not_provided.' => 'Login attribute "%s" was not provided.',
+        'user_banned' => 'User [%s] has been banned.',
+        'user_suspended' => 'User [%s] has been suspended.',
     ],
     'account' => [
         'account' => 'Account',
@@ -170,5 +181,33 @@ return [
         'redirect_title' => 'Redirect to',
         'redirect_desc' => 'Page name to redirect if access is denied.',
         'logout' => 'You have been successfully logged out!'
+    ],
+    'components' => [
+        'password' => 'Password',
+        'sign_in' => 'Sign in',
+        'enter_your_name' => 'Enter your name',
+        'enter_your_email' => 'Enter your email',
+        'enter_your_password' => 'Enter your password',
+        'full_name' => 'Your name',
+        'register' => 'Register',
+        'i_agree_with' => 'I agree with the',
+        'rules' => 'rules',
+        'rule_required' => 'You must agree to the rules',
+        'email_is_unique' => 'User with this email already in the system',
+        'login' => [
+            'title' => 'Login',
+            'description' => 'Login form'
+        ],
+        'signup' => [
+            'title' => 'Signup',
+            'description' => 'Signup form'
+        ]
+    ],
+    'mail_templates' => [
+            'activation' => 'Activation email sent to new users.',
+            'welcome'    => 'Welcome email sent when a user is activated.',
+            'restore'    => 'Password reset instructions for front-end users.',
+            'new_user'   => 'Sent to administrators when a new user joins.',
+            'reactivate' => 'Notification for users who reactivate their account.',
     ]
 ];

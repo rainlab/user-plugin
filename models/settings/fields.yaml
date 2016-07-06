@@ -59,3 +59,17 @@ tabs:
             type: dropdown
             default: rainlab.user::mail.activate
             tab: rainlab.user::lang.settings.notifications_tab
+        rules_active:
+            label: rainlab.user::lang.settings.rule
+            comment: rainlab.user::lang.settings.rule_comment
+            span: full
+            required: 1
+            type: switch
+            tab: rainlab.user::lang.settings.rule
+        rule_text:
+            label: 'rainlab.user::lang.settings.rule_text'
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: rainlab.user::lang.settings.rule

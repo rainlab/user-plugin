@@ -1,24 +1,26 @@
+<h3>{{language.sign_in}}</h3>
+<div id="login_error"></div>
 <form
     data-request="onSignin">
     <div class="form-group">
         <label for="userSigninLogin">{{ loginAttributeLabel }}</label>
         <input
             name="login"
-            type="text"
+            type="email"
             class="form-control"
             id="userSigninLogin"
-            placeholder="Enter your {{ loginAttributeLabel|lower }}" />
+            placeholder="{{ language.enter_your_email|lower }}" />
     </div>
 
     <div class="form-group">
-        <label for="userSigninPassword">Password</label>
+        <label for="userSigninPassword">{{language.password}}</label>
         <input
             name="password"
             type="password"
             class="form-control"
             id="userSigninPassword"
-            placeholder="Enter your password" />
+            placeholder="{{ language.enter_your_password|lower }}" />
     </div>
 
-    <button type="submit" class="btn btn-default">{{language.register}}</button>
+    <button type="submit" class="btn btn-default">{{language.sign_in}}</button>
 </form>
