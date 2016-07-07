@@ -7,13 +7,15 @@
         </a>
     </p>
 </div>
-<div class="scoreboard-item title-value">
-    <h4>Joined</h4>
-    <p title="<?= e($formModel->name) ?>"><?= $formModel->created_at->toFormattedDateString() ?></p>
-    <p class="description">
-        <?= $formModel->created_at->diffForHumans() ?>
-    </p>
-</div>
+<?php if ($formModel->created_at): ?>
+    <div class="scoreboard-item title-value">
+        <h4>Joined</h4>
+        <p title="<?= e($formModel->name) ?>"><?= $formModel->created_at->toFormattedDateString() ?></p>
+        <p class="description">
+            <?= $formModel->created_at->diffForHumans() ?>
+        </p>
+    </div>
+<?php endif ?>
 <?php if ($formModel->last_seen): ?>
     <div class="scoreboard-item title-value">
         <h4>Last seen</h4>
