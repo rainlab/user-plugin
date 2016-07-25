@@ -48,3 +48,4 @@
     - Add a dedicated last seen column for users.
     - users_add_last_seen.php
 1.2.7: Minor fix to user timestamp attributes.
+1.2.8: Add date range filter to users list. Introduced a logout event.
