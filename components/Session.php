@@ -8,6 +8,7 @@ use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use ValidationException;
+use Event;
 
 class Session extends ComponentBase
 {
