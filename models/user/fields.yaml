@@ -21,7 +21,7 @@ tabs:
             span: full
 
         block_mail:
-            label: rainlab.user::lang.user.block
+            label: rainlab.user::lang.user.block_mail
             tab: rainlab.user::lang.user.account
             type: checkbox
             span: full

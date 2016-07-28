@@ -97,7 +97,7 @@ return [
         'avatar' => 'Avatar',
         'details' => 'Details',
         'account' => 'Account',
-        'block' => 'Block all outgoing mail sent to this user.'
+        'block_mail' => 'Block all outgoing mail sent to this user.'
     ],
     'group' => [
         'label' => 'Group',

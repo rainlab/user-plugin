@@ -68,7 +68,7 @@ return [
         'avatar' => 'Avatar',
         'details' => 'Detalhes',
         'account' => 'Conta',
-        'block' => 'Bloquear todos os envios de e-mail para este usuário.'
+        'block_mail' => 'Bloquear todos os envios de e-mail para este usuário.'
     ],
     'login' => [
         'attribute_email' => 'E-mail',
