@@ -21,7 +21,7 @@ tabs:
             span: full
 
         block_mail:
-            label: Block all outgoing mail sent to this user.
+            label: rainlab.user::lang.user.block_mail
             tab: rainlab.user::lang.user.account
             type: checkbox
             span: full

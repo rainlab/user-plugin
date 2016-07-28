@@ -57,15 +57,18 @@ return [
         'surname' => 'Sobrenome',
         'email' => 'E-mail',
         'created_at' => 'Registrado',
+        'create_password' => 'Criar Senha',
+        'create_password_comment' => 'Informe uma senha para login do usuário.',
         'reset_password' => 'Resetar senha',
         'reset_password_comment' => 'Para resetar a senha deste usuário, informe uma nova senha aqui.',
         'confirm_password' => 'Confirmação de Senha',
         'confirm_password_comment' => 'Informe a senha novamente para confirmá-la.',
-        'groups' => 'Groups',
-        'empty_groups' => 'There are no user groups available.',
+        'groups' => 'Grupos',
+        'empty_groups' => 'Não há grupos disponíveis.',
         'avatar' => 'Avatar',
         'details' => 'Detalhes',
-        'account' => 'Conta'
+        'account' => 'Conta',
+        'block_mail' => 'Bloquear todos os envios de e-mail para este usuário.'
     ],
     'login' => [
         'attribute_email' => 'E-mail',

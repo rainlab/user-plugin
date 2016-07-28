@@ -96,7 +96,8 @@ return [
         'empty_groups' => 'There are no user groups available.',
         'avatar' => 'Avatar',
         'details' => 'Details',
-        'account' => 'Account'
+        'account' => 'Account',
+        'block_mail' => 'Block all outgoing mail sent to this user.'
     ],
     'group' => [
         'label' => 'Group',
