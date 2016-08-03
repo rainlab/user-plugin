@@ -20,7 +20,7 @@
             data-trigger-condition="checked"
             data-request-success="$(this).prop('disabled', true).next().prop('disabled', true)"
             data-stripe-load-indicator>
-            Bulk actions
+            <?= e(trans('rainlab.user::lang.users.bulk_actions')) ?>
         </button>
         <button
             type="button"
@@ -31,7 +31,7 @@
             data-toggle="dropdown">
             <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu" data-dropdown-title="Bulk actions">
+        <ul class="dropdown-menu" data-dropdown-title="<?= e(trans('rainlab.user::lang.users.bulk_actions')) ?>">
             <li>
                 <a href="javascript:;" class="oc-icon-trash-o" data-action="delete" data-confirm="<?= e(trans('rainlab.user::lang.users.delete_selected_confirm')) ?>">
                     <?= e(trans('rainlab.user::lang.users.delete_selected')) ?>

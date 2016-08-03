@@ -31,5 +31,5 @@ columns:
         type: timetense
 
     last_seen:
-        label: Last seen
+        label: rainlab.user::lang.user.last_seen
         type: timetense
