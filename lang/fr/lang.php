@@ -84,9 +84,9 @@ return [
     'user' => [
         'label' => 'Utilisateur',
         'id' => 'ID',
-        'username' => 'Pseudonyme de l’utilisateur',
-        'name' => 'Nom',
-        'surname' => 'Prénom',
+        'username' => 'Identifiant',
+        'name' => 'Prénom',
+        'surname' => 'Nom',
         'email' => 'E-mail',
         'created_at' => 'Enregistré le',
         'last_seen' => 'Dernière connexion',
