@@ -91,6 +91,8 @@ return [
         'created_at' => 'Enregistré le',
         'last_seen' => 'Dernière connexion',
         'joined' => 'Inscrit le',
+        'is_online' => 'Est actuellement connecté',
+        'is_offline' => 'N’est pas connecté',
         'create_password' => 'Créer un mot de passe',
         'create_password_comment' => 'Entrez un nouveau mot de passe de connexion.',
         'reset_password' => 'Réinitialiser le mot de passe',

@@ -90,6 +90,8 @@ return [
         'created_at' => 'Registered',
         'last_seen' => 'Last seen',
         'joined' => 'Joined',
+        'is_online' => 'Online now',
+        'is_offline' => 'Currently offline',
         'create_password' => 'Create Password',
         'create_password_comment' => 'Enter a new password used for signing in.',
         'reset_password' => 'Reset Password',
