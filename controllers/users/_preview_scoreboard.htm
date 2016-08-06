@@ -21,7 +21,7 @@
         <h4><?= e(trans('rainlab.user::lang.user.last_seen')) ?></h4>
         <p><?= $formModel->last_seen->diffForHumans() ?></p>
         <p class="description">
-            <?= $formModel->isOnline() ? 'Online now' : 'Currently offline' ?>
+            <?= $formModel->isOnline() ? e(trans('rainlab.user::lang.user.is_online')) : e(trans('rainlab.user::lang.user.is_offline')) ?>
         </p>
     </div>
 <?php endif ?>
