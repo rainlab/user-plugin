@@ -70,20 +70,24 @@ class User extends UserBase
     /**
      * Sends the confirmation email to a user, after activating.
      * @param  string $code
+     * @param  array $templateParams
      * @return void
      */
-    public function attemptActivation($code)
+    public function attemptActivation($code, $templateParams = [])
     {
         $result = parent::attemptActivation($code);
         if ($result === false) {
             return false;
         }
 
+        // default template parameters
+        $templateParams += [
+            'name'  => $this->name,
+            'email' => $this->email,
+        ];
+
         if ($mailTemplate = UserSettings::get('welcome_template')) {
-            Mail::sendTo($this, $mailTemplate, [
-                'name'  => $this->name,
-                'email' => $this->email
-            ]);
+            Mail::sendTo($this, $mailTemplate, $templateParams);
         }
 
         Event::fire('rainlab.user.activate', [$this]);
