@@ -22,7 +22,7 @@ return [
         'activate_warning_desc' => 'Ennek a felhasználónak nem történt meg az aktiválása, így nem tud bejelentkezni.',
         'activate_confirm' => 'Valóban aktiválni akarja ezt a felhasználót?',
         'activated_success' => 'A felhasználó aktiválása megtörtént',
-        'active_manually' => 'A felhasználó kézi aktiválása',
+        'activate_manually' => 'A felhasználó kézi aktiválása',
         'delete_confirm' => 'Valóban törölni akarja ezt a felhasználót?',
         'unban_user' => 'Felhasználó engedélyezése',
         'unban_confirm' => 'Valóban engedélyezni akarja ezt a felhasználót?',

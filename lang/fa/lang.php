@@ -20,7 +20,7 @@ return [
         'activate_warning_title' => 'کاربر فعال نمیباشد!',
         'activate_warning_desc' => 'این کاربر فعال نشده است و نمیتواند وارد سایت شود.',
         'activate_confirm' => 'آیا از فعالسازی این کاربر اطمینان دارید؟',
-        'active_manually' => 'فعال سازی دستی این کاربر',
+        'activate_manually' => 'فعال سازی دستی این کاربر',
         'delete_confirm' => 'آیا از حذف این کاربر اطمینان دارید؟',
         'activated_success' => 'کاربر با موفقیت فعال شد.',
         'return_to_list' => 'بازگشت به لیست کاربران',

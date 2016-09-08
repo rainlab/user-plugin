@@ -4,6 +4,21 @@
 
 tabs:
     fields:
+        # Throttle Sign In
+        use_throttle:
+            span: left
+            label: rainlab.user::lang.settings.use_throttle
+            comment: rainlab.user::lang.settings.use_throttle_comment
+            type: switch
+            tab: rainlab.user::lang.settings.signin_tab
+
+        # Login Attribute
+        login_attribute:
+            span: left
+            label: rainlab.user::lang.settings.login_attribute
+            commentAbove: rainlab.user::lang.settings.login_attribute_comment
+            type: radio
+            tab: rainlab.user::lang.settings.signin_tab
 
         # Require Activation
         allow_registration:
@@ -29,22 +44,6 @@ tabs:
             type: radio
             tab: rainlab.user::lang.settings.activation_tab
 
-        # Throttle Sign In
-        use_throttle:
-            span: left
-            label: rainlab.user::lang.settings.use_throttle
-            comment: rainlab.user::lang.settings.use_throttle_comment
-            type: switch
-            tab: rainlab.user::lang.settings.signin_tab
-
-        # Login Attribute
-        login_attribute:
-            span: left
-            label: rainlab.user::lang.settings.login_attribute
-            commentAbove: rainlab.user::lang.settings.login_attribute_comment
-            type: radio
-            tab: rainlab.user::lang.settings.signin_tab
-
         # Hint
         template_hint:
             type: hint
@@ -53,7 +52,6 @@ tabs:
 
         # Welcome Template
         welcome_template:
-            span: left
             label: rainlab.user::lang.settings.welcome_template
             comment: rainlab.user::lang.settings.welcome_template_comment
             type: dropdown

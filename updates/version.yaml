@@ -49,3 +49,9 @@
     - users_add_last_seen.php
 1.2.7: Minor fix to user timestamp attributes.
 1.2.8: Add date range filter to users list. Introduced a logout event.
+1.2.9: Add invitation mail for new accounts created in the back-end.
+1.3.0:
+    - Introduced guest user accounts.
+    - users_add_guest_flag.php
+    - users_add_superuser_flag.php
+1.3.1: User notification variables can now be extended.

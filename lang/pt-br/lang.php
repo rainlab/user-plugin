@@ -16,7 +16,7 @@ return [
         'activate_warning_title' => 'Usuário não ativado!',
         'activate_warning_desc' => 'Este usuário não foi ativado e estará impossibilitado de logar-se.',
         'activate_confirm' => 'Você realmente deseja ativar este usuário?',
-        'active_manually' => 'Ativar este usuário manualmente',
+        'activate_manually' => 'Ativar este usuário manualmente',
         'delete_confirm' => 'Você realmente deseja deletar este usuário?',
         'activated_success' => 'O usuário foi ativado com sucesso!',
         'return_to_list' => 'Retornar à lista de usuários',

@@ -23,7 +23,7 @@ return [
         'activate_warning_desc' => 'Este usuario todavía no ha sido activado y no será capaz de iniciar sesión.',
         'activate_confirm' => '¿Realmente desea activar este usuario?',
         'activated_success' => '¡El usuario ha sido activado exitosamente!',
-        'active_manually' => 'Activar usuario manualmente',
+        'activate_manually' => 'Activar usuario manualmente',
         'delete_confirm' => '¿Realmente desea eliminar este usuario?',
         'unban_user' => 'Desbloquear este usuario',
         'unban_confirm' => '¿Realmente desea desbloquear este usuario?',

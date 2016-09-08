@@ -22,7 +22,7 @@ return [
         'activate_warning_desc' => 'Cet utilisateur n’a pas été activé et sera dans l’impossibilité de se connecter.',
         'activate_confirm' => 'Confirmez-vous l’activation de cet utilisateur ?',
         'activated_success' => 'L’utilisateur a été activé avec succès !',
-        'active_manually' => 'Activer cet utilisateur manuellement',
+        'activate_manually' => 'Activer cet utilisateur manuellement',
         'delete_confirm' => 'Confirmez-vous la suppression de cet utilisateur ?',
         'unban_user' => 'Lever le bannissement de cet utilisateur',
         'unban_confirm' => 'Confirmez-vous la levée du bannissement de cet utilisateur ?',

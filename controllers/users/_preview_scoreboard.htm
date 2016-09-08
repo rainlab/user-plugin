@@ -1,6 +1,10 @@
 <div class="scoreboard-item title-value">
     <h4><?= e(trans('rainlab.user::lang.user.label')) ?></h4>
-    <p><?= $formModel->name ?></p>
+    <?php if ($formModel->name): ?>
+        <p><?= $formModel->name ?></p>
+    <?php else: ?>
+        <p><em><?= e(trans('rainlab.user::lang.user.name_empty')) ?></em></p>
+    <?php endif ?>
     <p class="description">
         <a href="mailto:<?= e($formModel->email) ?>">
             <?= $formModel->email ?>
@@ -10,9 +14,18 @@
 <?php if ($formModel->created_at): ?>
     <div class="scoreboard-item title-value">
         <h4><?= e(trans('rainlab.user::lang.user.joined')) ?></h4>
-        <p title="<?= e($formModel->name) ?>"><?= $formModel->created_at->toFormattedDateString() ?></p>
+        <p title="<?= $formModel->created_at->diffForHumans() ?>">
+            <?= $formModel->created_at->toFormattedDateString() ?>
+        </p>
         <p class="description">
-            <?= $formModel->created_at->diffForHumans() ?>
+            Status:
+            <?php if ($formModel->is_guest): ?>
+                <?= e(trans('rainlab.user::lang.user.status_guest')) ?>
+            <?php elseif ($formModel->is_activated): ?>
+                <?= e(trans('rainlab.user::lang.user.status_activated')) ?>
+            <?php else: ?>
+                <?= e(trans('rainlab.user::lang.user.status_registered')) ?>
+            <?php endif ?>
         </p>
     </div>
 <?php endif ?>

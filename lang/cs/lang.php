@@ -22,7 +22,7 @@ return [
         'activate_warning_title' => 'Uživatel není aktivní!',
         'activate_warning_desc' => 'Tento uživatel nemohl být aktivován a nebude mít možnost se přihlásit.',
         'activate_confirm' => 'Opravdu chcete aktivovat tohoto uživatele?',
-        'active_manually' => 'Aktivovat uživatele manuálně',
+        'activate_manually' => 'Aktivovat uživatele manuálně',
         'delete_confirm' => 'Opravdu chcete smazat tohoto uživatele?',
         'activated_success' => 'Uživatel byl úspěšně aktivován!',
         'return_to_list' => 'Zpět na seznam uživatelů',

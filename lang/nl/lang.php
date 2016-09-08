@@ -17,7 +17,7 @@ return [
         'activate_warning_title' => 'Gebruiker is niet geactiveerd!',
         'activate_warning_desc' => 'Deze gebruiker is niet geactiveerd en kan niet inloggen.',
         'activate_confirm' => 'Weet u zeker dat u het gebruikersaccount wilt activeren?',
-        'active_manually' => 'Deze gebruiker handmatig activeren',
+        'activate_manually' => 'Deze gebruiker handmatig activeren',
         'delete_confirm' => 'Weet u zeker dat u deze gebruiker wilt verwijderen?',
         'activated_success' => 'Gebruikersaccount succesvol geactiveerd!',
         'return_to_list' => 'Terug naar overzicht',

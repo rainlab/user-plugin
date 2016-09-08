@@ -16,7 +16,7 @@ return [
         'activate_warning_title' => '用户未激活!',
         'activate_warning_desc' => '用户未激活,无法登录.',
         'activate_confirm' => '确认激活该用户?',
-        'active_manually' => '手动激活该用户',
+        'activate_manually' => '手动激活该用户',
         'delete_confirm' => '确认删除该用户?',
         'activated_success' => '用户激活成功!',
         'return_to_list' => '返回用户列表',

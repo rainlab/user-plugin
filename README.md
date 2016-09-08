@@ -262,6 +262,33 @@ You may look up a user by their login name using the `Auth::findUserByLogin` met
 
     $user = Auth::findUserByLogin('some@email.tld');
 
+## Guest users
+
+Creating a guest user allows the registration process to be deferred. For example, making a purchase without needing to register first. Guest users are not able to sign in and will be added to the user group with the code `guest`.
+
+Use the `Auth::registerGuest` method to create a guest user, it will return a user object and can be called multiple times. The unique identifier is the email address, which is a required field.
+
+    $user = Auth::registerGuest(['email' => 'person@acme.tld']);
+
+When a user registers with the same email address using the `Auth::register` method, they will inherit the existing guest user account.
+
+    // This will not throw an "Email already taken" error
+    $user = Auth::register([
+        'email' => 'person@acme.tld',
+        'password' => 'changeme',
+        'password_confirmation' => 'changeme',
+    ]);
+
+> **Important**: If you are using guest accounts, it is important to disable sensitive functionality for user accounts that are not verified, since it may be possible for anyone to inherit a guest account.
+
+You may also convert a guest to a registered user with the `convertToRegistered` method. This will generate a random password and sends an invitation using the `rainlab.user::mail.invite` template.
+
+    $user->convertToRegistered();
+
+To disable the notification and password reset, pass the first argument as false.
+
+    $user->convertToRegistered(false);
+
 ## Events
 
 This plugin will fire some global events that can be useful for interacting with other plugins.

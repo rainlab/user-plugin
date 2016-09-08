@@ -41,7 +41,7 @@ return [
     'activate_warning_title' => 'Benutzer nicht aktiviert!',
     'activate_warning_desc' => 'Dieser Benutzer wurde noch nicht aktiviert und kann sich nicht einloggen.',
     'activate_confirm' => 'Möchten Sie diesen Benutzer wirklich aktivieren?',
-    'active_manually' => 'Benutzer manuell aktivieren',
+    'activate_manually' => 'Benutzer manuell aktivieren',
     'delete_confirm' => 'Möchten Sie diesen Benutzer wirklich löschen?',
     'activated_success' => 'Benutzer erfolgreich aktiviert!',
     'return_to_list' => 'Zurück zur Benutzerliste',

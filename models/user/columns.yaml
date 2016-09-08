@@ -33,3 +33,8 @@ columns:
     last_seen:
         label: rainlab.user::lang.user.last_seen
         type: timetense
+
+    is_guest:
+        label: rainlab.user::lang.user.is_guest
+        type: switch
+        invisible: true

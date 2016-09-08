@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Models;
 
+use Str;
 use Auth;
 use Mail;
 use Event;
@@ -52,10 +53,8 @@ class User extends UserBase
     /**
      * Purge attributes from data set.
      */
-    protected $purgeable = [
-        'password_confirmation',
-    ];
-    
+    protected $purgeable = ['password_confirmation', 'send_invite'];
+
     protected $dates = [
         'last_seen',
         'deleted_at',
@@ -80,15 +79,35 @@ class User extends UserBase
         }
 
         if ($mailTemplate = UserSettings::get('welcome_template')) {
-            Mail::sendTo($this, $mailTemplate, [
-                'name'  => $this->name,
-                'email' => $this->email
-            ]);
+            Mail::sendTo($this, $mailTemplate, $this->getNotificationVars());
         }
 
         Event::fire('rainlab.user.activate', [$this]);
 
         return true;
+    }
+
+    /**
+     * Converts a guest user to a registered one and sends an invitation notification.
+     * @return void
+     */
+    public function convertToRegistered($sendNotification = true)
+    {
+        // Already a registered user
+        if (!$this->is_guest) {
+            return;
+        }
+
+        if ($sendNotification) {
+            $this->generatePassword();
+        }
+
+        $this->is_guest = false;
+        $this->save();
+
+        if ($sendNotification) {
+            $this->sendInvitation();
+        }
     }
 
     //
@@ -191,6 +210,13 @@ class User extends UserBase
     public function beforeValidate()
     {
         /*
+         * Guests are special
+         */
+        if ($this->is_guest && !$this->password) {
+            $this->generatePassword();
+        }
+
+        /*
          * When the username is not used, the email is substituted.
          */
         if (
@@ -201,6 +227,23 @@ class User extends UserBase
         }
     }
 
+    /**
+     * After create event
+     * @return void
+     */
+    public function afterCreate()
+    {
+        $this->restorePurgedValues();
+
+        if ($this->send_invite) {
+            $this->sendInvitation();
+        }
+    }
+
+    /**
+     * After login event
+     * @return void
+     */
     public function afterLogin()
     {
         $this->last_login = $this->last_seen = $this->freshTimestamp();
@@ -312,5 +355,52 @@ class User extends UserBase
     public function getLastSeen()
     {
         return $this->last_seen ?: $this->created_at;
+    }
+
+    //
+    // Utils
+    //
+
+    /**
+     * Returns the variables available when sending a user notification.
+     * @return array
+     */
+    protected function getNotificationVars()
+    {
+        $vars = [
+            'name'  => $this->name,
+            'email' => $this->email,
+            'username' => $this->username,
+            'login' => $this->getLogin(),
+            'password' => $this->getOriginalHashValue('password'),
+        ];
+
+        /*
+         * Extensibility
+         */
+        $result = Event::fire('rainlab.user.getNotificationVars', [$this]);
+        if ($result && is_array($result)) {
+            $vars = call_user_func_array('array_merge', $result) + $vars;
+        }
+
+        return $vars;
+    }
+
+    /**
+     * Sends an invitation to the user using template "rainlab.user::mail.invite".
+     * @return void
+     */
+    protected function sendInvitation()
+    {
+        Mail::sendTo($this, 'rainlab.user::mail.invite', $this->getNotificationVars());
+    }
+
+    /**
+     * Assigns this user with a random password.
+     * @return void
+     */
+    protected function generatePassword()
+    {
+        $this->password = $this->password_confirmation = Str::random(6);
     }
 }

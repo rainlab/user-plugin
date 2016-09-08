@@ -132,6 +132,46 @@ class Users extends Controller
     }
 
     /**
+     * Display the convert to registered user popup
+     */
+    public function preview_onLoadConvertGuestForm($recordId)
+    {
+        $this->vars['groups'] = UserGroup::where('code', '!=', UserGroup::GROUP_GUEST)->get();
+
+        return $this->makePartial('convert_guest_form');
+    }
+
+    /**
+     * Manually convert a guest user to a registered one
+     */
+    public function preview_onConvertGuest($recordId)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        // Convert user and send notification
+        $model->convertToRegistered(post('send_registration_notification', false));
+
+        // Remove user from guest group
+        if ($group = UserGroup::getGuestGroup()) {
+            $model->groups()->remove($group);
+        }
+
+        // Add user to new group
+        if (
+            ($groupId = post('new_group')) &&
+            ($group = UserGroup::find($groupId))
+        ) {
+            $model->groups()->add($group);
+        }
+
+        Flash::success(Lang::get('rainlab.user::lang.users.convert_guest_success'));
+
+        if ($redirect = $this->makeRedirect('update-close', $model)) {
+            return $redirect;
+        }
+    }
+
+    /**
      * Force delete a user.
      */
     public function update_onDelete($recordId = null)

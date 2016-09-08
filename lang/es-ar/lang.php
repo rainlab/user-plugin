@@ -22,7 +22,7 @@ return [
         'activate_warning_title' => 'El usuario no esta activado!',
         'activate_warning_desc' => 'Éste usuario no esta activado y quizá no pueda ingresar.',
         'activate_confirm' => 'Realmente desea activar éste usuario?',
-        'active_manually' => 'Activar éste usuario manualmente',
+        'activate_manually' => 'Activar éste usuario manualmente',
         'delete_confirm' => 'Realmente desea eliminar éste usuario?',
         'activated_success' => 'El usuario ha sido activado con éxito!',
         'return_to_list' => 'Regresar a la lista de usuarios',

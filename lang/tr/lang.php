@@ -39,7 +39,7 @@ return [
         'activate_warning_title' => 'Kullanıcı hesabı aktif edilmemiş!',
         'activate_warning_desc' => 'Bu kullanıcı hesabı aktif edilmedi ve oturum açamayacaktır.',
         'activate_confirm' => 'Bu kullanıcıyı gerçekten aktif etmek istediğinize emin misiniz?',
-        'active_manually' => 'Bu kullanıcıyı aktif et',
+        'activate_manually' => 'Bu kullanıcıyı aktif et',
         'delete_confirm' => 'Bu kullanıcıyı gerçekten silmek istediğinize emin misiniz?',
         'activated_success' => 'Kullanıcı başarıyla aktif edildi!',
         'return_to_list' => 'Kullanıcı listesine geri dön',
