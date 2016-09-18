@@ -56,7 +56,7 @@ class AuthManager extends RainAuthManager
             return $this->convertGuestToUser($guest, $credentials, $activate);
         }
 
-        parent::register($credentials, $activate);
+        return parent::register($credentials, $activate);
     }
 
     //
