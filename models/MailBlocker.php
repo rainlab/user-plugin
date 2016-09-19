@@ -238,11 +238,11 @@ class MailBlocker extends Model
 
     /**
      * Filters a Illuminate\Mail\Message and removes blocked recipients.
-     * If no recipients remain, false is returned. Returns true if mailing
+     * If no recipients remain, false is returned. Returns null if mailing
      * should proceed.
      * @param  string $template
      * @param  Illuminate\Mail\Message $message 
-     * @return bool
+     * @return bool|null
      */
     public static function filterMessage($template, $message)
     {
@@ -259,7 +259,7 @@ class MailBlocker extends Model
         }
 
         $message->setTo($recipients);
-        return count($recipients) ? true : false;
+        return count($recipients) ? null : false;
     }
 
 }
