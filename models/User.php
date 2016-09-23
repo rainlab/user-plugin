@@ -336,6 +336,7 @@ class User extends UserBase
             ->update(['last_seen' => $this->freshTimestamp()])
         ;
 
+        $this->last_seen = $this->freshTimestamp();
         $this->timestamps = $oldTimestamps;
     }
 
