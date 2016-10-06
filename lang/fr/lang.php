@@ -18,6 +18,8 @@ return [
         'trashed_hint_desc' => 'Cet utilisateur a désactivé son compte ou ne souhaite plus apparaître sur le site. Il peut réactiver son compte à tout moment en se réinscrivant.',
         'banned_hint_title' => 'L’utilisateur a été banni',
         'banned_hint_desc' => 'Cet utilisateur a été banni par l’administrateur et ne pourra plus se réinscrire.',
+        'guest_hint_title' => 'Ceci est un utilisteur invité',
+        'guest_hint_desc' => 'Cette utilisateur est enregistré comme référence seulement, il doit s\'inscire avant de se connecter.',
         'activate_warning_title' => 'L’utilisateur n’est pas activé !',
         'activate_warning_desc' => 'Cet utilisateur n’a pas été activé et sera dans l’impossibilité de se connecter.',
         'activate_confirm' => 'Confirmez-vous l’activation de cet utilisateur ?',
