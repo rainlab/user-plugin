@@ -1,14 +1,14 @@
 <?php namespace RainLab\User\Components;
 
-use Auth;
-use Flash;
 use Lang;
+use Auth;
+use Event;
+use Flash;
 use Request;
 use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use ValidationException;
-use Event;
 
 class Session extends ComponentBase
 {
