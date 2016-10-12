@@ -249,7 +249,7 @@ class MailBlocker extends Model
         $recipients = $message->getTo();
         $blockedAddresses = static::checkForEmail($template, $recipients);
         if (!count($blockedAddresses)) {
-            return true;
+            return null;
         }
 
         foreach ($recipients as $address => $name) {
