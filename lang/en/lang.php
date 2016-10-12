@@ -161,7 +161,7 @@ return [
         'success_saved' => 'Settings successfully saved!',
         'login_first' => 'You must be logged in first!',
         'already_active' => 'Your account is already activated!',
-        'activation_email_sent' => 'An activation email has been sent to your nominated email address.',
+        'activation_email_sent' => 'An activation email has been sent to your email address.',
         'registration_disabled' => 'Registrations are currently disabled.',
         'sign_in' => 'Sign in',
         'register' => 'Register',
