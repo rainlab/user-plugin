@@ -40,7 +40,7 @@ By default a User will sign in to the site using their email address as a unique
 
 If a user experiences too many failed sign in attempts, their account will be temporarily suspended for a period of time. This feature is enabled by default and will suspend an account for 15 minutes after 5 failed sign in attempts, for a given IP address. You may disable this feature by switching **Throttle attempts** to the OFF setting.
 
-As a security precaution, you may restrict users from having sessions across multiple devices at the same time. Enable the **Prevent concurrent sessions** to use this feature. When a user signs in to their account, it will automatically sign out the user for all other sessions.
+As a security precaution, you may restrict users from having sessions across multiple devices at the same time. Enable the **Prevent concurrent sessions** setting to use this feature. When a user signs in to their account, it will automatically sign out the user for all other sessions.
 
 #### Notifications
 
