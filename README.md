@@ -296,6 +296,7 @@ To disable the notification and password reset, pass the first argument as false
 This plugin will fire some global events that can be useful for interacting with other plugins.
 
 - **rainlab.user.beforeAuthenticate**: Before the user is attempting to authenticate using the Account component.
+- **rainlab.user.beforeRegister**: Before the user is registered using the Account component.
 - **rainlab.user.login**: The user has successfully signed in.
 - **rainlab.user.logout**: The user has successfully signed out.
 - **rainlab.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
