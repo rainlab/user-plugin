@@ -174,7 +174,7 @@ class Account extends ComponentBase
 
             $rules = [
                 'email'    => 'required|email|between:6,255',
-                'password' => 'required|between:4,255'
+                'password' => 'required|between:4,255|confirmed'
             ];
 
             if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
