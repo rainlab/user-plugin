@@ -9,6 +9,7 @@ use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\UserGroup;
+
 use ValidationException;
 
 class Session extends ComponentBase
