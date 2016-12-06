@@ -42,6 +42,26 @@ class Users extends Controller
         $this->asExtension('ListController')->index();
     }
 
+    public function create($recordId = null, $context = null)
+    {
+        $this->addCss('/plugins/rainlab/user/assets/css/autocomplete.css');
+        $this->addJs('/plugins/rainlab/user/assets/js/jquery.email-autocomplete.min.js');
+        $this->addJs('/plugins/rainlab/user/assets/js/user.js');
+
+        // Call the FormController behavior create() method
+        return $this->asExtension('FormController')->create($recordId, $context);
+    }
+
+    public function update($recordId, $context = null)
+    {
+        $this->addCss('/plugins/rainlab/user/assets/css/autocomplete.css');
+        $this->addJs('/plugins/rainlab/user/assets/js/jquery.email-autocomplete.min.js');
+        $this->addJs('/plugins/rainlab/user/assets/js/user.js');
+
+        // Call the FormController behavior update() method
+        return $this->asExtension('FormController')->update($recordId, $context);
+    }
+
     /**
      * {@inheritDoc}
      */
