@@ -98,6 +98,7 @@ class Plugin extends PluginBase
             'rainlab.user::mail.restore'    => 'Password reset instructions for front-end users.',
             'rainlab.user::mail.new_user'   => 'Sent to administrators when a new user joins.',
             'rainlab.user::mail.reactivate' => 'Notification for users who reactivate their account.',
+            'rainlab.user::mail.invite'     => 'Invite email sent to user when he is converted from guest to registered user.',
         ];
     }
 }
