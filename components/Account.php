@@ -40,7 +40,13 @@ class Account extends ComponentBase
                 'description' => 'rainlab.user::lang.account.code_param_desc',
                 'type'        => 'string',
                 'default'     => 'code'
-            ]
+            ],
+            'forceSecure' => [
+                'title'       => 'Force secure protocol',
+                'description' => 'Always redirect the URL with the HTTPS schema.',
+                'type'        => 'checkbox',
+                'default'     => 0
+            ],
         ];
     }
 
@@ -54,11 +60,18 @@ class Account extends ComponentBase
      */
     public function onRun()
     {
-        $routeParameter = $this->property('paramCode');
+        /*
+         * Redirect to HTTPS checker
+         */
+        if ($redirect = $this->redirectForceSecure()) {
+            return $redirect;
+        }
 
         /*
          * Activation code supplied
          */
+        $routeParameter = $this->property('paramCode');
+
         if ($activationCode = $this->param($routeParameter)) {
             $this->onActivate($activationCode);
         }
@@ -391,5 +404,23 @@ class Account extends ComponentBase
         if ($redirectUrl = post('redirect', $redirectUrl)) {
             return Redirect::to($redirectUrl);
         }
+    }
+
+    /**
+     * Checks if the force secure property is enabled and if so
+     * returns a redirect object.
+     * @return mixed
+     */
+    protected function redirectForceSecure()
+    {
+        if (
+            Request::secure() ||
+            Request::ajax() ||
+            !$this->property('forceSecure')
+        ) {
+            return;
+        }
+
+        return Redirect::secure(Request::path());
     }
 }
