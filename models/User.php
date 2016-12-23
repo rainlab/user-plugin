@@ -69,7 +69,7 @@ class User extends UserBase
     /**
      * Sends the confirmation email to a user, after activating.
      * @param  string $code
-     * @return void
+     * @return bool
      */
     public function attemptActivation($code)
     {
