@@ -322,9 +322,9 @@ class Account extends ComponentBase
         if (!$user->checkHashValue('password', post('password'))) {
             throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_deactivation_pass')]);
         }
-
-        $user->delete();
+        
         Auth::logout();
+        $user->delete();
 
         Flash::success(post('flash', Lang::get('rainlab.user::lang.account.success_deactivation')));
 
