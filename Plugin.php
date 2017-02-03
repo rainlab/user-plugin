@@ -38,7 +38,7 @@ class Plugin extends PluginBase
         /*
          * Apply user-based mail blocking
          */
-        Event::listen('mailer.prepareSend', function($mailer, $view, $message){
+        Event::listen('mailer.prepareSend', function($mailer, $view, $message) {
             return MailBlocker::filterMessage($view, $message);
         });
     }
@@ -55,9 +55,18 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'rainlab.users.access_users' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_users'],
-            'rainlab.users.access_groups' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_groups'],
-            'rainlab.users.access_settings' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_settings']
+            'rainlab.users.access_users' => [
+                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'label' => 'rainlab.user::lang.plugin.access_users'
+            ],
+            'rainlab.users.access_groups' => [
+                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'label' => 'rainlab.user::lang.plugin.access_groups'
+            ],
+            'rainlab.users.access_settings' => [
+                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'label' => 'rainlab.user::lang.plugin.access_settings'
+            ]
         ];
     }
 
@@ -70,7 +79,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-user',
                 'iconSvg'     => 'plugins/rainlab/user/assets/images/user-icon.svg',
                 'permissions' => ['rainlab.users.*'],
-                'order'       => 500,
+                'order'       => 500
             ]
         ];
     }
@@ -85,7 +94,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
-                'permissions' => ['rainlab.users.access_settings'],
+                'permissions' => ['rainlab.users.access_settings']
             ]
         ];
     }
@@ -97,7 +106,7 @@ class Plugin extends PluginBase
             'rainlab.user::mail.welcome'    => 'Welcome email sent when a user is activated.',
             'rainlab.user::mail.restore'    => 'Password reset instructions for front-end users.',
             'rainlab.user::mail.new_user'   => 'Sent to administrators when a new user joins.',
-            'rainlab.user::mail.reactivate' => 'Notification for users who reactivate their account.',
+            'rainlab.user::mail.reactivate' => 'Notification for users who reactivate their account.'
         ];
     }
 }
