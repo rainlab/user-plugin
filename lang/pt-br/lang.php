@@ -5,7 +5,7 @@ return [
         'name' => 'Usuário',
         'description' => 'Gerenciamento de usuários de front-end.',
         'tab' => 'Usuário',
-        'access_users' => 'Gerenciar usuários'
+        'access_users' => 'Gerenciar usuários',
         'access_groups' => 'Gerenciar Grupos de Usuários',
         'access_settings' => 'Gerenciar configurações do usuário'
     ],
@@ -112,7 +112,7 @@ return [
         'avatar' => 'Avatar',
         'details' => 'Detalhes',
         'account' => 'Conta',
-        'block_mail' => 'Bloquear todos os envios de e-mail para este usuário.'
+        'block_mail' => 'Bloquear todos os envios de e-mail para este usuário.',
         'status_guest' => 'Convidado',
         'status_activated' => 'Ativado',
         'status_registered' => 'Registrado'
