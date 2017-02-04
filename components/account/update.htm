@@ -1,8 +1,13 @@
 {{ form_ajax('onUpdate', { model: user }) }}
 
     <div class="form-group">
-        <label for="accountName">Full Name</label>
+        <label for="accountName">First Name</label>
         <input name="name" type="text" class="form-control" id="accountName" value="{{ form_value('name') }}">
+    </div>
+
+    <div class="form-group">
+        <label for="accountSurname">Surname</label>
+        <input name="surname" type="text" class="form-control" id="accountSurname" value="{{ form_value('surname') }}">
     </div>
 
     <div class="form-group">
