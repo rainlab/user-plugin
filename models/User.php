@@ -9,7 +9,7 @@ use RainLab\User\Models\Settings as UserSettings;
 
 class User extends UserBase
 {
-    use \October\Rain\Database\Traits\SoftDeleting;
+    use \October\Rain\Database\Traits\SoftDelete;
 
     /**
      * @var string The database table used by the model.
