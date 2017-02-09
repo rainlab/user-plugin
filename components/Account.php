@@ -202,10 +202,14 @@ class Account extends ComponentBase
             /*
              * Register user
              */
+            Event::fire('rainlab.user.beforeRegister', [&$data]);
+            
             $requireActivation = UserSettings::get('require_activation', true);
             $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
             $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
             $user = Auth::register($data, $automaticActivation);
+            
+            Event::fire('rainlab.user.register', [$user]);
 
             /*
              * Activation is by the user, send the email
