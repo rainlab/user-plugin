@@ -295,11 +295,14 @@ To disable the notification and password reset, pass the first argument as false
 
 This plugin will fire some global events that can be useful for interacting with other plugins.
 
+- **rainlab.user.beforeRegister**: Before the user's registration is processed. Passed the `$data` variable by reference to enable direct modifications to the `$data` provided to the `Auth::register()` method.
+- **rainlab.user.register**: The user has successfully registered. Passed the `$user` object, along with the `$requireActivation, $automaticActivation, $userActivation` registration setting variables.
 - **rainlab.user.beforeAuthenticate**: Before the user is attempting to authenticate using the Account component.
 - **rainlab.user.login**: The user has successfully signed in.
 - **rainlab.user.logout**: The user has successfully signed out.
 - **rainlab.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
 - **rainlab.user.reactivate**: The user has reactivated their own account by signing back in. This should revive the users content on the site.
+- **rainlab.user.getNotificationVars**: Fires when sending a user notification to enable passing more variables to the email templates. Passes the `$user` model the template will be for.
 
 Here is an example of hooking an event:
 
