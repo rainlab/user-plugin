@@ -296,7 +296,7 @@ To disable the notification and password reset, pass the first argument as false
 This plugin will fire some global events that can be useful for interacting with other plugins.
 
 - **rainlab.user.beforeRegister**: Before the user's registration is processed. Passed the `$data` variable by reference to enable direct modifications to the `$data` provided to the `Auth::register()` method.
-- **rainlab.user.register**: The user has successfully registered. Passed the `$user` object, along with the `$requireActivation, $automaticActivation, $userActivation` registration setting variables.
+- **rainlab.user.register**: The user has successfully registered. Passed the `$user` object and the submitted `$data` variable.
 - **rainlab.user.beforeAuthenticate**: Before the user is attempting to authenticate using the Account component.
 - **rainlab.user.login**: The user has successfully signed in.
 - **rainlab.user.logout**: The user has successfully signed out.
