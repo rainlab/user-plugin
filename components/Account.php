@@ -18,6 +18,12 @@ use Exception;
 
 class Account extends ComponentBase
 {
+    /**
+     * Flag for allowing registration, pulled from UserSettings
+     * @var bool
+     */
+    public $canRegister;
+    
     public function componentDetails()
     {
         return [
@@ -53,6 +59,14 @@ class Account extends ComponentBase
     public function getRedirectOptions()
     {
         return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+    }
+    
+    /**
+     * Executed when this component is initialized
+     */
+    public function init()
+    {
+        $this->canRegister = $this->page['canRegister'] = UserSettings::get('allow_registration', true);
     }
 
     /**
@@ -172,7 +186,7 @@ class Account extends ComponentBase
     public function onRegister()
     {
         try {
-            if (!UserSettings::get('allow_registration', true)) {
+            if (!$this->canRegister) {
                 throw new ApplicationException(Lang::get('rainlab.user::lang.account.registration_disabled'));
             }
 
