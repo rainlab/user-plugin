@@ -94,7 +94,7 @@ return [
         'surname' => 'Último nome',
         'email' => 'E-mail',
         'created_at' => 'Registado em',
-        'last_seen' => 'Visto po último',
+        'last_seen' => 'Visto por último',
         'is_guest' => 'Convidado',
         'joined' => 'Registou-se a',
         'is_online' => 'Online agora',
