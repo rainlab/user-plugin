@@ -80,6 +80,8 @@ return [
         'require_activation_comment' => 'A felhasználóknak aktivált fiókkal kell rendelkezniük a bejelentkezéshez.',
         'use_throttle' => 'Kísérletek késleltetése',
         'use_throttle_comment' => 'Az ismétlődő sikertelen bejelentkezések ideiglenesen felfüggesztik a felhasználót.',
+        'block_persistence' => 'Egyidejű munkamenet',
+        'block_persistence_comment' => 'Engedélyezés esetén a felhasználók nem tudnak bejelentkezni egyszerre több eszközről.',
         'login_attribute' => 'Bejelentkezési azonosító',
         'login_attribute_comment' => 'Válassza ki, hogy milyen felhasználói adatot kell használni a bejelentkezéshez.',
         'no_mail_template' => 'Nincs értesítés küldése',
