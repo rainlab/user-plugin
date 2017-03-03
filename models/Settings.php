@@ -52,7 +52,7 @@ class Settings extends Model
     {
         return [
             self::LOGIN_EMAIL => ['rainlab.user::lang.login.attribute_email'],
-            self::LOGIN_USERNAME => ['rainlab.user::lang.login.attribute_username'],
+            self::LOGIN_USERNAME => ['rainlab.user::lang.login.attribute_username']
         ];
     }
 
@@ -68,7 +68,7 @@ class Settings extends Model
     public function getWelcomeTemplateOptions()
     {
         $codes = array_keys(MailTemplate::listAllTemplates());
-        $result = [''=>'- '.Lang::get('rainlab.user::lang.settings.no_mail_template').' -'];
+        $result = ['' => '- '.Lang::get('rainlab.user::lang.settings.no_mail_template').' -'];
         $result += array_combine($codes, $codes);
 
         return $result;
