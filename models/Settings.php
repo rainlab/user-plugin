@@ -33,9 +33,18 @@ class Settings extends Model
     public function getActivateModeOptions()
     {
         return [
-            self::ACTIVATE_AUTO => ['rainlab.user::lang.settings.activate_mode_auto', 'rainlab.user::lang.settings.activate_mode_auto_comment'],
-            self::ACTIVATE_USER => ['rainlab.user::lang.settings.activate_mode_user', 'rainlab.user::lang.settings.activate_mode_user_comment'],
-            self::ACTIVATE_ADMIN => ['rainlab.user::lang.settings.activate_mode_admin', 'rainlab.user::lang.settings.activate_mode_admin_comment'],
+            self::ACTIVATE_AUTO => [
+                'rainlab.user::lang.settings.activate_mode_auto',
+                'rainlab.user::lang.settings.activate_mode_auto_comment'
+            ],
+            self::ACTIVATE_USER => [
+                'rainlab.user::lang.settings.activate_mode_user',
+                'rainlab.user::lang.settings.activate_mode_user_comment'
+            ],
+            self::ACTIVATE_ADMIN => [
+                'rainlab.user::lang.settings.activate_mode_admin',
+                'rainlab.user::lang.settings.activate_mode_admin_comment'
+            ]
         ];
     }
 
@@ -61,6 +70,7 @@ class Settings extends Model
         $codes = array_keys(MailTemplate::listAllTemplates());
         $result = [''=>'- '.Lang::get('rainlab.user::lang.settings.no_mail_template').' -'];
         $result += array_combine($codes, $codes);
+
         return $result;
     }
 }

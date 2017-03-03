@@ -371,11 +371,11 @@ class User extends UserBase
     protected function getNotificationVars()
     {
         $vars = [
-            'name'  => $this->name,
-            'email' => $this->email,
+            'name'     => $this->name,
+            'email'    => $this->email,
             'username' => $this->username,
-            'login' => $this->getLogin(),
-            'password' => $this->getOriginalHashValue('password'),
+            'login'    => $this->getLogin(),
+            'password' => $this->getOriginalHashValue('password')
         ];
 
         /*

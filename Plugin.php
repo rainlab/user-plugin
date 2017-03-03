@@ -38,7 +38,7 @@ class Plugin extends PluginBase
         /*
          * Apply user-based mail blocking
          */
-        Event::listen('mailer.prepareSend', function($mailer, $view, $message){
+        Event::listen('mailer.prepareSend', function($mailer, $view, $message) {
             return MailBlocker::filterMessage($view, $message);
         });
     }
@@ -55,9 +55,18 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'rainlab.users.access_users' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_users'],
-            'rainlab.users.access_groups' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_groups'],
-            'rainlab.users.access_settings' => ['tab' => 'rainlab.user::lang.plugin.tab', 'label' => 'rainlab.user::lang.plugin.access_settings']
+            'rainlab.users.access_users' => [
+                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'label' => 'rainlab.user::lang.plugin.access_users'
+            ],
+            'rainlab.users.access_groups' => [
+                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'label' => 'rainlab.user::lang.plugin.access_groups'
+            ],
+            'rainlab.users.access_settings' => [
+                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'label' => 'rainlab.user::lang.plugin.access_settings'
+            ]
         ];
     }
 
@@ -85,7 +94,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
-                'permissions' => ['rainlab.users.access_settings'],
+                'permissions' => ['rainlab.users.access_settings']
             ]
         ];
     }
@@ -98,7 +107,7 @@ class Plugin extends PluginBase
             'rainlab.user::mail.restore'    => 'Password reset instructions for front-end users.',
             'rainlab.user::mail.new_user'   => 'Sent to administrators when a new user joins.',
             'rainlab.user::mail.reactivate' => 'Notification for users who reactivate their account.',
-            'rainlab.user::mail.invite'     => 'Invite email sent to user when he is converted from guest to registered user.',
+            'rainlab.user::mail.invite'     => 'Invite email sent to user when he is converted from guest to registered user.'
         ];
     }
 }
