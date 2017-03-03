@@ -15,8 +15,8 @@ tabs:
         # Prevent concurrent sessions
         block_persistence:
             span: right
-            label: Prevent concurrent sessions
-            comment: When enabled users cannot sign in to multiple devices at the same time.
+            label: rainlab.user::lang.settings.block_persistence
+            comment: rainlab.user::lang.settings.block_persistence_comment
             type: switch
             tab: rainlab.user::lang.settings.signin_tab
 

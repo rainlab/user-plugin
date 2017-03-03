@@ -80,6 +80,8 @@ return [
         'require_activation_comment' => 'Users must have an activated account to sign in.',
         'use_throttle' => 'Throttle attempts',
         'use_throttle_comment' => 'Repeat failed sign in attempts will temporarily suspend the user.',
+        'block_persistence' => 'Prevent concurrent sessions',
+        'block_persistence_comment' => 'When enabled users cannot sign in to multiple devices at the same time.',
         'login_attribute' => 'Login attribute',
         'login_attribute_comment' => 'Select what primary user detail should be used for signing in.',
         'no_mail_template' => 'Do not send a notification',
