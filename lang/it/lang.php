@@ -78,6 +78,8 @@ return [
         'welcome_template_comment' => 'Questo modello di email è inviato a un utente la prima volta che viene attivato',
         'require_activation' => 'Effettuare l\'accesso richiede l\'attivazione.',
         'require_activation_comment' => 'Gli utenti devono avere un account attivato per effettuare l\'accesso.',
+        'block_persistence' => 'Previeni sessioni concorrenti',
+        'block_persistence_comment' => 'Quando abilitato gli utenti non possono effettuare il log-in da diversi dispositivi contemporaneamente',
         'use_throttle' => 'Limita tentativi',
         'use_throttle_comment' => 'Ripetuti tentativi errati di accesso porteranno alla sospensione temporanea dell\'utente.',
         'login_attribute' => 'Metodo di login',
