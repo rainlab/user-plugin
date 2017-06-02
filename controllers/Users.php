@@ -209,6 +209,10 @@ class Users extends Controller
                         $user->forceDelete();
                         break;
 
+                    case 'activate':
+                        $user->attemptActivation($user->activation_code);
+                        break;
+
                     case 'deactivate':
                         $user->delete();
                         break;
