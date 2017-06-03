@@ -208,6 +208,9 @@ class Account extends ComponentBase
                 $rules['username'] = 'required|between:2,255';
             }
 
+            //pass by reference so other extensions can add or remove validation
+            Event::fire('rainlab.user.beforeRegister', [$this, & $rules, & $data]);
+
             $validation = Validator::make($data, $rules);
             if ($validation->fails()) {
                 throw new ValidationException($validation);

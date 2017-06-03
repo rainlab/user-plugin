@@ -298,6 +298,7 @@ This plugin will fire some global events that can be useful for interacting with
 - **rainlab.user.beforeRegister**: Before the user's registration is processed. Passed the `$data` variable by reference to enable direct modifications to the `$data` provided to the `Auth::register()` method.
 - **rainlab.user.register**: The user has successfully registered. Passed the `$user` object and the submitted `$data` variable.
 - **rainlab.user.beforeAuthenticate**: Before the user is attempting to authenticate using the Account component.
+- **rainlab.user.beforeRegister**: Before the user is registered using the Account component.
 - **rainlab.user.login**: The user has successfully signed in.
 - **rainlab.user.logout**: The user has successfully signed out.
 - **rainlab.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
