@@ -162,7 +162,7 @@ class Account extends ComponentBase
 
             Event::fire('rainlab.user.beforeAuthenticate', [$this, $credentials]);
 
-            $user = Auth::authenticate($credentials, true);
+            $user = Auth::authenticate($credentials, post('remember', true));
 
             /*
              * Redirect to the intended page after successful sign in
