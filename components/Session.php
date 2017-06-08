@@ -55,7 +55,7 @@ class Session extends ComponentBase
     /**
      * Executed when this component is bound to a page or layout.
      */
-    public function onRun()
+    public function init()
     {
         $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
         $allowedGroup = $this->property('security', self::ALLOW_ALL);
