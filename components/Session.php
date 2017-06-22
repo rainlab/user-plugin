@@ -5,6 +5,7 @@ use Auth;
 use Event;
 use Flash;
 use Request;
+use Response;
 use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
@@ -66,31 +67,23 @@ class Session extends ComponentBase
     }
 
     /**
-     * Executed when this component is bound to a page or layout.
+     * Component is initialized.
      */
     public function init()
     {
-        $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
-        $allowedGroup = $this->property('security', self::ALLOW_ALL);
-        $allowedUserGroups = $this->property('allowedUserGroups', []);
-        $isAuthenticated = Auth::check();
-
-        if ($isAuthenticated) {
-            if ($allowedGroup == self::ALLOW_GUEST) {
-                return Redirect::guest($redirectUrl);
-            }
-
-            if (!empty($allowedUserGroups)) {
-                $userGroups = Auth::getUser()->groups->lists('code');
-                if (!count(array_intersect($allowedUserGroups, $userGroups))) {
-                    return Redirect::guest($redirectUrl);
-                }
-            }
+        if (Request::ajax() && !$this->checkUserSecurity()) {
+            return Response::make('Access denied', 403);
         }
-        else {
-            if ($allowedGroup == self::ALLOW_USER) {
-                return Redirect::guest($redirectUrl);
-            }
+    }
+
+    /**
+     * Executed when this component is bound to a page or layout.
+     */
+    public function onRun()
+    {
+        if (!$this->checkUserSecurity()) {
+            $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
+            return Redirect::guest($redirectUrl);
         }
 
         $this->page['user'] = $this->user();
@@ -136,5 +129,36 @@ class Session extends ComponentBase
         $user->touchLastSeen();
 
         return $user;
+    }
+
+    /**
+     * Checks if the user can access this page based on the security rules
+     * @return bool
+     */
+    protected function checkUserSecurity()
+    {
+        $allowedGroup = $this->property('security', self::ALLOW_ALL);
+        $allowedUserGroups = $this->property('allowedUserGroups', []);
+        $isAuthenticated = Auth::check();
+
+        if ($isAuthenticated) {
+            if ($allowedGroup == self::ALLOW_GUEST) {
+                return false;
+            }
+
+            if (!empty($allowedUserGroups)) {
+                $userGroups = Auth::getUser()->groups->lists('code');
+                if (!count(array_intersect($allowedUserGroups, $userGroups))) {
+                    return false;
+                }
+            }
+        }
+        else {
+            if ($allowedGroup == self::ALLOW_USER) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
