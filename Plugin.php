@@ -1,12 +1,14 @@
 <?php namespace RainLab\User;
 
 use App;
+use Auth;
 use Event;
 use Backend;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Models\MailBlocker;
+use RainLab\Notify\Classes\Notifier;
 
 class Plugin extends PluginBase
 {
@@ -41,6 +43,11 @@ class Plugin extends PluginBase
         Event::listen('mailer.prepareSend', function($mailer, $view, $message) {
             return MailBlocker::filterMessage($view, $message);
         });
+
+        /*
+         * Compatability with RainLab.Notify
+         */
+        $this->bindNotificationEvents();
     }
 
     public function registerComponents()
@@ -109,5 +116,43 @@ class Plugin extends PluginBase
             'rainlab.user::mail.reactivate' => 'Notification for users who reactivate their account.',
             'rainlab.user::mail.invite'     => 'Invite email sent to user when he is converted from guest to registered user.'
         ];
+    }
+
+    public function registerNotificationRules()
+    {
+        return [
+            'groups' => [
+                'user' => [
+                    'label' => 'User',
+                    'icon' => 'icon-user'
+                ],
+            ],
+            'events' => [
+                \RainLab\User\NotifyRules\UserActivatedEvent::class,
+                \RainLab\User\NotifyRules\UserRegisteredEvent::class,
+            ],
+            'actions' => [],
+            'conditions' => [
+                \RainLab\User\NotifyRules\UserAttributeCondition::class
+            ],
+        ];
+    }
+
+    protected function bindNotificationEvents()
+    {
+        if (!class_exists(Notifier::class)) {
+            return;
+        }
+
+        Notifier::bindEvent(
+            'rainlab.user.activate',
+            \RainLab\User\NotifyRules\UserActivatedEvent::class
+        );
+
+        Notifier::instance()->registerCallback(function($manager) {
+            $manager->registerContextVars([
+                'user' => Auth::getUser()
+            ]);
+        });
     }
 }
