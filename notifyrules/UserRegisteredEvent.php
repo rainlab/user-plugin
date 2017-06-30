@@ -17,14 +17,9 @@ class UserRegisteredEvent extends EventBase
     }
 
     /**
-     * @var array Notification vars
-     */
-    public $vars;
-
-    /**
      * Defines the properties used by this class.
      */
-    public function defineProperties()
+    public function defineParams()
     {
         return [
             'name' => [],
@@ -32,13 +27,5 @@ class UserRegisteredEvent extends EventBase
             'username' => [],
             'login' => [],
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function defineFormFields()
-    {
-        return 'fields.yaml';
     }
 }

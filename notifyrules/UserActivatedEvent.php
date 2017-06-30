@@ -17,9 +17,9 @@ class UserActivatedEvent extends EventBase
     }
 
     /**
-     * Defines the properties used by this class.
+     * Defines the parameters used by this class.
      */
-    public function defineProperties()
+    public function defineParams()
     {
         return [
             'user' => [
@@ -29,7 +29,7 @@ class UserActivatedEvent extends EventBase
         ];
     }
 
-    public static function makePropertiesFromEvent(array $args, $eventName = null)
+    public static function makeParamsFromEvent(array $args, $eventName = null)
     {
         return [
             'user' => array_get($args, 0)

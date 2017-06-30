@@ -144,13 +144,12 @@ class Plugin extends PluginBase
             return;
         }
 
-        Notifier::bindEvent(
-            'rainlab.user.activate',
-            \RainLab\User\NotifyRules\UserActivatedEvent::class
-        );
+        Notifier::bindEvents([
+            'rainlab.user.activate' => \RainLab\User\NotifyRules\UserActivatedEvent::class
+        ]);
 
         Notifier::instance()->registerCallback(function($manager) {
-            $manager->registerContextVars([
+            $manager->registerGlobalParams([
                 'user' => Auth::getUser()
             ]);
         });
