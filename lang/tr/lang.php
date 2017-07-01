@@ -74,16 +74,12 @@ return [
         'activate_mode_user_comment' => 'Eposta adresini kullanarak aktif etsin.',
         'activate_mode_admin' => 'Yönetici',
         'activate_mode_admin_comment' => 'Sadece yöneticiler aktif edebilsin.',
-        'welcome_template' => 'Hoşgeldin Şablonu',
-        'welcome_template_comment' => 'Mail template to send a user when they are first activated.',
         'require_activation' => 'Üye girişleri aktivasyon gerektirsin',
         'require_activation_comment' => 'Üyeler oturum açabilmek için aktif edilmiş bir hesaba sahip olmalıdırlar.',
         'use_throttle' => 'Boğma Girişimleri',
         'use_throttle_comment' => 'Tekrarlayan hatalı girişlerde kısa süreliğine üyeyi askıya al.',
         'login_attribute' => 'Oturum Açma Yöntemi',
         'login_attribute_comment' => 'Üye girişlerinde hangi üye detayının kullanılacağını seçin.',
-        'no_mail_template' => 'Bildirim gönderme',
-        'hint_templates' => 'Mail şablonlarını ayarlar menüsünden Mail > Mail Şablonları kısmından düzenleyebilirsiniz.'
     ],
     'user' => [
         'label' => 'User',

@@ -78,8 +78,6 @@ return [
         'activate_mode_user_comment' => 'The user activates their own account using mail.',
         'activate_mode_admin' => 'Administrator',
         'activate_mode_admin_comment' => 'Only an Administrator can activate a user.',
-        'welcome_template' => 'Welcome mail template',
-        'welcome_template_comment' => 'This mail template is sent to a user when they are first activated.',
         'require_activation' => 'Sign in requires activation',
         'require_activation_comment' => 'Users must have an activated account to sign in.',
         'use_throttle' => 'Throttle attempts',
@@ -88,8 +86,6 @@ return [
         'block_persistence_comment' => 'When enabled users cannot sign in to multiple devices at the same time.',
         'login_attribute' => 'Login attribute',
         'login_attribute_comment' => 'Select what primary user detail should be used for signing in.',
-        'no_mail_template' => 'Do not send a notification',
-        'hint_templates' => 'You can customize mail templates by selecting Mail > Mail Templates from the settings menu.'
     ],
     'user' => [
         'label' => 'User',
