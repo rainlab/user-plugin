@@ -1,8 +1,8 @@
 <?php namespace RainLab\User\NotifyRules;
 
-use RainLab\Notify\Classes\EventBase;
+use RainLab\User\Classes\UserEventBase;
 
-class UserRegisteredEvent extends EventBase
+class UserRegisteredEvent extends UserEventBase
 {
     /**
      * Returns information about this event, including name and description.
@@ -13,19 +13,6 @@ class UserRegisteredEvent extends EventBase
             'name'        => 'Registered',
             'description' => 'A user has registered',
             'group'       => 'user'
-        ];
-    }
-
-    /**
-     * Defines the properties used by this class.
-     */
-    public function defineParams()
-    {
-        return [
-            'name' => [],
-            'email' => [],
-            'username' => [],
-            'login' => [],
         ];
     }
 }
