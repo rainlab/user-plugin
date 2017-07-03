@@ -364,7 +364,7 @@ class User extends UserBase
      * Returns the variables available when sending a user notification.
      * @return array
      */
-    protected function getNotificationVars()
+    public function getNotificationVars()
     {
         $vars = [
             'name'     => $this->name,
