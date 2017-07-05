@@ -5,6 +5,13 @@ use RainLab\Notify\Classes\EventBase;
 class UserEventBase extends EventBase
 {
     /**
+     * @var array Local conditions supported by this event.
+     */
+    public $conditions = [
+        \RainLab\User\NotifyRules\UserAttributeCondition::class
+    ];
+
+    /**
      * Defines the usable parameters provided by this class.
      */
     public function defineParams()
@@ -18,16 +25,6 @@ class UserEventBase extends EventBase
                 'title' => 'Email',
                 'label' => "User's email address",
             ],
-        ];
-    }
-
-    /**
-     * Local conditions supported by this event.
-     */
-    public function defineConditions()
-    {
-        return [
-            \RainLab\User\NotifyRules\UserAttributeCondition::class
         ];
     }
 
