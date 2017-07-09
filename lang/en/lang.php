@@ -28,6 +28,9 @@ return [
         'convert_guest_confirm' => 'Convert this guest to a user?',
         'convert_guest_manually' => 'Convert to registered user',
         'convert_guest_success' => 'User has been converted to a registered account',
+        'impersonate_user' => 'Impersonate user',
+        'impersonate_confirm' => 'Impersonate this user? You can revert to your original state by logging out.',
+        'impersonate_success' => 'You are now impersonating this user',
         'delete_confirm' => 'Do you really want to delete this user?',
         'unban_user' => 'Unban this user',
         'unban_confirm' => 'Do you really want to unban this user?',
@@ -192,6 +195,7 @@ return [
         'allowed_groups_description' => 'Choose allowed groups or none to allow all groups',
         'redirect_title' => 'Redirect to',
         'redirect_desc' => 'Page name to redirect if access is denied.',
-        'logout' => 'You have been successfully logged out!'
+        'logout' => 'You have been successfully logged out!',
+        'stop_impersonate_success' => 'You are no longer impersonating a user.',
     ]
 ];

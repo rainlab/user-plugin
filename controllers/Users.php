@@ -172,6 +172,18 @@ class Users extends Controller
     }
 
     /**
+     * Impersonate this user
+     */
+    public function preview_onImpersonateUser($recordId)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        Auth::impersonate($model);
+
+        Flash::success(Lang::get('rainlab.user::lang.users.impersonate_success'));
+    }
+
+    /**
      * Force delete a user.
      */
     public function update_onDelete($recordId = null)

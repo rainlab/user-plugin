@@ -117,6 +117,7 @@ class Session extends ComponentBase
         }
 
         $url = post('redirect', Request::fullUrl());
+
         Flash::success(Lang::get('rainlab.user::lang.session.logout'));
 
         return Redirect::to($url);
@@ -136,5 +137,32 @@ class Session extends ComponentBase
         $user->touchLastSeen();
 
         return $user;
+    }
+
+    /**
+     * If impersonating, revert back to the previously signed in user.
+     * @return Redirect
+     */
+    public function onStopImpersonating()
+    {
+        if (!Auth::isImpersonator()) {
+            return $this->onLogout();
+        }
+
+        Auth::stopImpersonate();
+
+        $url = post('redirect', Request::fullUrl());
+
+        Flash::success(Lang::get('rainlab.user::lang.session.stop_impersonate_success'));
+
+        return Redirect::to($url);
+    }
+
+    /**
+     * Returns the previously signed in user when impersonating.
+     */
+    public function impersonator()
+    {
+        return Auth::getImpersonator();
     }
 }
