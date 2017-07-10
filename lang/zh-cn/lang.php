@@ -139,7 +139,7 @@ return [
         'delete_selected_success' => '成功删除选中的用户组.',
         'delete_selected_empty' => '没有选中要删除的用户组.',
         'return_to_list' => '返回用户组列表',
-        'return_to_users' => '返回用户组列表',
+        'return_to_users' => '返回用户列表',
         'create_title' => '创建用户组',
         'update_title' => '编辑用户组',
         'preview_title' => '预览用户组'
