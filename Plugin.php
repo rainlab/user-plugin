@@ -73,7 +73,11 @@ class Plugin extends PluginBase
             'rainlab.users.access_settings' => [
                 'tab'   => 'rainlab.user::lang.plugin.tab',
                 'label' => 'rainlab.user::lang.plugin.access_settings'
-            ]
+            ],
+            'rainlab.users.impersonate_user' => [
+                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'label' => 'rainlab.user::lang.plugin.impersonate_user'
+            ],
         ];
     }
 

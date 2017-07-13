@@ -3,6 +3,7 @@
 use Auth;
 use Lang;
 use Flash;
+use Response;
 use BackendMenu;
 use BackendAuth;
 use Backend\Classes\Controller;
@@ -176,6 +177,10 @@ class Users extends Controller
      */
     public function preview_onImpersonateUser($recordId)
     {
+        if (!$this->user->hasAccess('rainlab.users.impersonate_user')) {
+            return Response::make(Lang::get('backend::lang.page.access_denied.label'), 403);
+        }
+
         $model = $this->formFindModelObject($recordId);
 
         Auth::impersonate($model);

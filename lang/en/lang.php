@@ -7,7 +7,8 @@ return [
         'tab' => 'Users',
         'access_users' => 'Manage Users',
         'access_groups' => 'Manage User Groups',
-        'access_settings' => 'Manage User Settings'
+        'access_settings' => 'Manage User Settings',
+        'impersonate_user' => 'Impersonate Users'
     ],
     'users' => [
         'menu_label' => 'Users',
