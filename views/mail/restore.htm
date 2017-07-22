@@ -1,36 +1,22 @@
 subject = "Requested Password Reset"
+description = "User requests a password reset"
 ==
-
-Hello {{ name }},
+Hello {{ name }}
 
 Somebody has requested a password reset for your account, if this was not you, please ignore this email.
 
 Use the this activation code to restore your password:
-{{ code }}
 
+{% component 'promotion' %}
+{{ code }}
+{% endcomponent %}
 
 You can use the following link:
-{{ link }}
 
+{% component 'button' url=link type='positive' %}
+Restore password
+{% endcomponent %}
 
----
-This is an automatic message. Please do not reply to it.
-
-==
-
-<p>Hello {{ name }},</p>
-
-<p>Somebody has requested a password reset for your account, if this was not you, please ignore this email.</p>
-
-<p>
-    Use the this activation code to restore your password:<br />
-    {{ code }}
-</p>
-
-<p>
-    You can use the following link:<br />
-    <a href="{{ link }}">{{ link }}</a>
-</p>
-
-<hr />
-<p>This is an automatic message. Please do not reply to it.</p>
+{% component 'subcopy' %}
+    **This is an automatic message. Please do not reply to it.**
+{% endcomponent %}

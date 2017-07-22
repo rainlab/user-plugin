@@ -113,12 +113,12 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'rainlab.user::mail.activate'   => 'Activation email sent to new users.',
-            'rainlab.user::mail.welcome'    => 'Welcome email sent when a user is activated.',
-            'rainlab.user::mail.restore'    => 'Password reset instructions for front-end users.',
-            'rainlab.user::mail.new_user'   => 'Sent to administrators when a new user joins.',
-            'rainlab.user::mail.reactivate' => 'Notification for users who reactivate their account.',
-            'rainlab.user::mail.invite'     => 'Invite email sent to user when he is converted from guest to registered user.'
+            'rainlab.user::mail.activate',
+            'rainlab.user::mail.welcome',
+            'rainlab.user::mail.restore',
+            'rainlab.user::mail.new_user',
+            'rainlab.user::mail.reactivate',
+            'rainlab.user::mail.invite',
         ];
     }
 
