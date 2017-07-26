@@ -7,16 +7,16 @@ Somebody has requested a password reset for your account, if this was not you, p
 
 Use the this activation code to restore your password:
 
-{% component 'promotion' %}
+{% partial 'promotion' body %}
 {{ code }}
-{% endcomponent %}
+{% endpartial %}
 
 You can use the following link:
 
-{% component 'button' url=link type='positive' %}
+{% partial 'button' url=link type='positive' body %}
 Restore password
-{% endcomponent %}
+{% endpartial %}
 
-{% component 'subcopy' %}
+{% partial 'subcopy' body %}
     **This is an automatic message. Please do not reply to it.**
-{% endcomponent %}
+{% endpartial %}
