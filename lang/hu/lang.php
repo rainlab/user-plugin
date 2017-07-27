@@ -39,6 +39,10 @@ return [
         'delete_selected_confirm' => 'Valóban törölni akarja a kiválasztott felhasználókat?',
         'delete_selected_empty' => 'Nincs kiválasztva felhasználó a törléshez.',
         'delete_selected_success' => 'A kiválasztott felhasználók sikeresen törölve lettek.',
+        'activate_selected' => 'Aktiválás',
+        'activate_selected_confirm' => 'Valóban aktiválni akarja a kiválasztott felhasználókat?',
+        'activate_selected_empty' => 'Nincs kiválasztva felhasználó az aktiváláshoz.',
+        'activate_selected_success' => 'A kiválasztott felhasználók sikeresen aktiválva lettek.',
         'deactivate_selected' => 'Deaktiválás',
         'deactivate_selected_confirm' => 'Valóban deaktiválni akarja a kiválasztott felhasználókat?',
         'deactivate_selected_empty' => 'Nincs kiválasztva felhasználó a deaktiváláshoz.',
@@ -178,7 +182,7 @@ return [
         'reset_password' => 'Új jelszó megadása',
         'reset_password_desc' => 'Elfelejtett jelszó űrlap.',
         'code_param' => 'Visszaállító kód',
-        'code_param_desc' => 'A visszaállító kódhoz használt oldal webcíme.'
+        'code_param_desc' => 'A visszaállító kódhoz használt lap webcíme.'
     ],
     'session' => [
         'session' => 'Munkamenet',
@@ -188,8 +192,10 @@ return [
         'all' => 'Mindenki',
         'users' => 'Felhasználók',
         'guests' => 'Vendégek',
+        'allowed_groups_title' => 'Csoportok engedélyezése',
+        'allowed_groups_description' => 'Válassza ki az engedélyezni kívánt csoportokat vagy egyiket sem az összes elfogadásához.',
         'redirect_title' => 'Átirányítás',
-        'redirect_desc' => 'Az átirányítandó oldal neve, ha a hozzáférés megtagadva.',
+        'redirect_desc' => 'Az átirányítandó lap neve, ha a hozzáférés meg van tagadva.',
         'logout' => 'Sikeresen kijelentkezett!'
     ]
 ];
