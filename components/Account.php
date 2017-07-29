@@ -24,12 +24,6 @@ use Exception;
  */
 class Account extends ComponentBase
 {
-    /**
-     * Flag for allowing registration, pulled from UserSettings
-     * @var bool
-     */
-    public $canRegister;
-
     public function componentDetails()
     {
         return [
@@ -64,15 +58,18 @@ class Account extends ComponentBase
 
     public function getRedirectOptions()
     {
-        return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+        return [''=>'- refresh page -', '0' => '- no redirect -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
-    
+
     /**
      * Executed when this component is initialized
      */
-    public function init()
+    public function prepareVars()
     {
-        $this->canRegister = $this->page['canRegister'] = UserSettings::get('allow_registration', true);
+        $this->page['user'] = $this->user();
+        $this->page['canRegister'] = $this->canRegister();
+        $this->page['loginAttribute'] = $this->loginAttribute();
+        $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
     }
 
     /**
@@ -96,9 +93,7 @@ class Account extends ComponentBase
             $this->onActivate($activationCode);
         }
 
-        $this->page['user'] = $this->user();
-        $this->page['loginAttribute'] = $this->loginAttribute();
-        $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
+        $this->prepareVars();
     }
 
     /**
@@ -111,6 +106,14 @@ class Account extends ComponentBase
         }
 
         return Auth::getUser();
+    }
+
+    /**
+     * Flag for allowing registration, pulled from UserSettings
+     */
+    public function canRegister()
+    {
+        return UserSettings::get('allow_registration', true);
     }
 
     /**
@@ -172,13 +175,10 @@ class Account extends ComponentBase
             $user = Auth::authenticate($credentials, true);
 
             /*
-             * Redirect to the intended page after successful sign in
+             * Redirect
              */
-            $redirectUrl = $this->pageUrl($this->property('redirect'))
-                ?: $this->property('redirect');
-
-            if ($redirectUrl = input('redirect', $redirectUrl)) {
-                return Redirect::intended($redirectUrl);
+            if ($redirect = $this->makeRedirection(true)) {
+                return $redirect;
             }
         }
         catch (Exception $ex) {
@@ -193,7 +193,7 @@ class Account extends ComponentBase
     public function onRegister()
     {
         try {
-            if (!$this->canRegister) {
+            if (!$this->canRegister()) {
                 throw new ApplicationException(Lang::get(/*Registrations are currently disabled.*/'rainlab.user::lang.account.registration_disabled'));
             }
 
@@ -337,6 +337,8 @@ class Account extends ComponentBase
         if ($redirect = $this->makeRedirection()) {
             return $redirect;
         }
+
+        $this->prepareVars();
     }
 
     /**
@@ -425,13 +427,20 @@ class Account extends ComponentBase
      * The URL can come from the "redirect" property or the "redirect" postback value.
      * @return mixed
      */
-    protected function makeRedirection()
+    protected function makeRedirection($intended = false)
     {
-        $redirectUrl = $this->pageUrl($this->property('redirect'))
-            ?: $this->property('redirect');
+        $method = $intended ? 'intended' : 'to';
+
+        $property = $this->property('redirect');
+
+        if (strlen($property) && !$property) {
+            return;
+        }
+
+        $redirectUrl = $this->pageUrl($property) ?: $property;
 
         if ($redirectUrl = post('redirect', $redirectUrl)) {
-            return Redirect::to($redirectUrl);
+            return Redirect::$method($redirectUrl);
         }
     }
 
