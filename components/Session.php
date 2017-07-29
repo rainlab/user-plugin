@@ -11,6 +11,12 @@ use Cms\Classes\ComponentBase;
 use RainLab\User\Models\UserGroup;
 use ValidationException;
 
+/**
+ * User session
+ *
+ * This will inject the user object to every page and provide the ability for
+ * the user to sign out. This can also be used to restrict access to pages.
+ */
 class Session extends ComponentBase
 {
     const ALLOW_ALL = 'all';

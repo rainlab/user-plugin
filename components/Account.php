@@ -16,6 +16,12 @@ use Cms\Classes\ComponentBase;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
 
+/**
+ * Account component
+ *
+ * Allows users to register, sign in and update their account. They can also
+ * deactivate their account and resend the account verification email.
+ */
 class Account extends ComponentBase
 {
     /**
@@ -306,6 +312,10 @@ class Account extends ComponentBase
     {
         if (!$user = $this->user()) {
             return;
+        }
+
+        if (Input::hasFile('avatar')) {
+            $user->avatar = Input::file('avatar');
         }
 
         $user->fill(post());

@@ -6,7 +6,12 @@ use RainLab\User\Models\User as UserModel;
 
 class Settings extends Model
 {
-    public $implement = ['System.Behaviors.SettingsModel'];
+    /**
+     * @var array Behaviors implemented by this model.
+     */
+    public $implement = [
+        \System\Behaviors\SettingsModel::class
+    ];
 
     public $settingsCode = 'user_settings';
     public $settingsFields = 'fields.yaml';

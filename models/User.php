@@ -21,20 +21,21 @@ class User extends UserBase
      */
     public $rules = [
         'email'    => 'required|between:6,255|email|unique:users',
+        'avatar'   => 'nullable|image|max:4000',
         'username' => 'required|between:2,255|unique:users',
         'password' => 'required:create|between:4,255|confirmed',
-        'password_confirmation' => 'required_with:password|between:4,255'
+        'password_confirmation' => 'required_with:password|between:4,255',
     ];
 
     /**
      * @var array Relations
      */
     public $belongsToMany = [
-        'groups' => ['RainLab\User\Models\UserGroup', 'table' => 'users_groups']
+        'groups' => [UserGroup::class, 'table' => 'users_groups']
     ];
 
     public $attachOne = [
-        'avatar' => ['System\Models\File']
+        'avatar' => \System\Models\File::class
     ];
 
     /**
