@@ -159,6 +159,8 @@ return [
         'redirect_to_desc' => 'Page name to redirect to after update, sign in or registration.',
         'code_param' => 'Activation Code Param',
         'code_param_desc' => 'The page URL parameter used for the registration activation code',
+        'force_secure' => 'Force secure protocol',
+        'force_secure_desc' => 'Always redirect the URL with the HTTPS schema.',
         'invalid_user' => 'A user was not found with the given credentials.',
         'invalid_activation_code' => 'Invalid activation code supplied.',
         'invalid_deactivation_pass' => 'The password you entered was invalid.',
