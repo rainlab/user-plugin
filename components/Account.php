@@ -16,6 +16,12 @@ use Cms\Classes\ComponentBase;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
 
+/**
+ * Account component
+ *
+ * Allows users to register, sign in and update their account. They can also
+ * deactivate their account and resend the account verification email.
+ */
 class Account extends ComponentBase
 {
     /**
@@ -23,7 +29,7 @@ class Account extends ComponentBase
      * @var bool
      */
     public $canRegister;
-    
+
     public function componentDetails()
     {
         return [
@@ -222,7 +228,7 @@ class Account extends ComponentBase
             $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
             $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
             $user = Auth::register($data, $automaticActivation);
-            
+
             Event::fire('rainlab.user.register', [$user, $data]);
 
             /*
@@ -308,6 +314,10 @@ class Account extends ComponentBase
             return;
         }
 
+        if (Input::hasFile('avatar')) {
+            $user->avatar = Input::file('avatar');
+        }
+
         $user->fill(post());
         $user->save();
 
@@ -340,7 +350,7 @@ class Account extends ComponentBase
         if (!$user->checkHashValue('password', post('password'))) {
             throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_deactivation_pass')]);
         }
-        
+
         Auth::logout();
         $user->delete();
 

@@ -74,8 +74,6 @@ return [
         'activate_mode_user_comment' => 'L\'utente si attiva da solo confermando la sua email',
         'activate_mode_admin' => 'Amministratore',
         'activate_mode_admin_comment' => 'Solo un amminstratore può attivare un utente.',
-        'welcome_template' => 'Modello mail di attivazione',
-        'welcome_template_comment' => 'Questo modello di email è inviato a un utente la prima volta che viene attivato',
         'require_activation' => 'Effettuare l\'accesso richiede l\'attivazione.',
         'require_activation_comment' => 'Gli utenti devono avere un account attivato per effettuare l\'accesso.',
         'block_persistence' => 'Previeni sessioni concorrenti',
@@ -84,8 +82,6 @@ return [
         'use_throttle_comment' => 'Ripetuti tentativi errati di accesso porteranno alla sospensione temporanea dell\'utente.',
         'login_attribute' => 'Metodo di login',
         'login_attribute_comment' => 'Seleziona che attributo gli utenti useranno per effettuare il login.' ,
-        'no_mail_template' => 'Non inviare notifiche',
-        'hint_templates' => 'Puoi personalizzare il modello di mail selezionando Mail > Modelli di e-mail dal menu delle impostazioni.'
     ],
     'user' => [
         'label' => 'Utente',

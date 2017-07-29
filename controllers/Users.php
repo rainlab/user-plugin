@@ -3,6 +3,7 @@
 use Auth;
 use Lang;
 use Flash;
+use Response;
 use BackendMenu;
 use BackendAuth;
 use Backend\Classes\Controller;
@@ -14,19 +15,42 @@ use RainLab\User\Models\Settings as UserSettings;
 
 class Users extends Controller
 {
+    /**
+     * @var array Extensions implemented by this controller.
+     */
     public $implement = [
-        'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController'
+        \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\ListController::class
     ];
 
+    /**
+     * @var array `FormController` configuration.
+     */
     public $formConfig = 'config_form.yaml';
+
+    /**
+     * @var array `ListController` configuration.
+     */
     public $listConfig = 'config_list.yaml';
+
+    /**
+     * @var array `RelationController` configuration, by extension.
+     */
     public $relationConfig;
 
+    /**
+     * @var array Permissions required to view this page.
+     */
     public $requiredPermissions = ['rainlab.users.access_users'];
 
+    /**
+     * @var string HTML body tag class
+     */
     public $bodyClass = 'compact-container';
 
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -169,6 +193,22 @@ class Users extends Controller
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
         }
+    }
+
+    /**
+     * Impersonate this user
+     */
+    public function preview_onImpersonateUser($recordId)
+    {
+        if (!$this->user->hasAccess('rainlab.users.impersonate_user')) {
+            return Response::make(Lang::get('backend::lang.page.access_denied.label'), 403);
+        }
+
+        $model = $this->formFindModelObject($recordId);
+
+        Auth::impersonate($model);
+
+        Flash::success(Lang::get('rainlab.user::lang.users.impersonate_success'));
     }
 
     /**

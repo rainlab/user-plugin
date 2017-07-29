@@ -78,8 +78,6 @@ return [
         'activate_mode_user_comment' => 'A felhasználó levéllel aktiválja a saját fiókját.',
         'activate_mode_admin' => 'Adminisztrátor',
         'activate_mode_admin_comment' => 'Csak adminisztrátor aktiválhat felhasználót.',
-        'welcome_template' => 'Üdvözlő sablon',
-        'welcome_template_comment' => 'A felhasználónak első aktiváláskor küldendő levél sablonja.',
         'require_activation' => 'A bejelentkezéshez aktiválás szükséges',
         'require_activation_comment' => 'A felhasználóknak aktivált fiókkal kell rendelkezniük a bejelentkezéshez.',
         'use_throttle' => 'Kísérletek késleltetése',
@@ -88,8 +86,6 @@ return [
         'block_persistence_comment' => 'Engedélyezés esetén a felhasználók nem tudnak bejelentkezni egyszerre több eszközről.',
         'login_attribute' => 'Bejelentkezési azonosító',
         'login_attribute_comment' => 'Válassza ki, hogy milyen felhasználói adatot kell használni a bejelentkezéshez.',
-        'no_mail_template' => 'Nincs értesítés küldése',
-        'hint_templates' => 'A sablonok kinézetét a Beállítások menüben a Levelezés > Sablonok oldalon módosíthatja.'
     ],
     'user' => [
         'label' => 'Felhasználó',
