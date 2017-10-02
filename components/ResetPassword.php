@@ -95,6 +95,10 @@ class ResetPassword extends ComponentBase
 
         list($userId, $code) = $parts;
 
+        if (!$code || !strlen(trim($code))) {
+            throw new ApplicationException(trans('rainlab.user::lang.account.invalid_activation_code'));
+        }
+
         if (!strlen(trim($userId)) || !($user = Auth::findUserById($userId))) {
             throw new ApplicationException(trans('rainlab.user::lang.account.invalid_user'));
         }
