@@ -61,3 +61,4 @@
 1.4.0: !!! The Notifications tab in User settings has been removed.
 1.4.1: Added support for user impersonation.
 1.4.2: Fixes security bug in Password Reset component.
+1.4.3: Fixes session handling for AJAX requests.
