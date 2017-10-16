@@ -78,7 +78,7 @@ class Session extends ComponentBase
     public function init()
     {
         if (Request::ajax() && !$this->checkUserSecurity()) {
-            return Response::make('Access denied', 403);
+            abort(403, 'Access denied');
         }
     }
 
