@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Classes;
 
+use Lang;
 use October\Rain\Auth\Manager as RainAuthManager;
 use RainLab\User\Models\Settings as UserSettings;
 use RainLab\User\Models\UserGroup as UserGroupModel;
@@ -39,9 +40,7 @@ class AuthManager extends RainAuthManager
     {
         if ($user->is_guest) {
             $login = $user->getLogin();
-            throw new AuthException(sprintf(
-                'Cannot login user "%s" as they are not registered.', $login
-            ));
+            throw new AuthException(Lang::get("rainlab.user::lang.account.failed_not_registered", ["email" => $login]));
         }
 
         parent::login($user, $remember);
