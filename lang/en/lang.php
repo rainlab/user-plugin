@@ -179,7 +179,8 @@ return [
         'password' => 'Password',
         'login' => 'Login',
         'new_password' => 'New Password',
-        'new_password_confirm' => 'Confirm New Password'
+        'new_password_confirm' => 'Confirm New Password',
+        'failed_not_registered' => 'Cannot login user :email as they are not registered.',
     ],
     'reset_password' => [
         'reset_password' => 'Reset Password',
