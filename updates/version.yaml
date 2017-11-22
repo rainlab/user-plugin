@@ -62,3 +62,5 @@
 1.4.1: Added support for user impersonation.
 1.4.2: Fixes security bug in Password Reset component.
 1.4.3: Fixes session handling for AJAX requests.
+1.4.4: Fixes bug where impersonation touches the last seen timestamp.
+

@@ -106,7 +106,9 @@ class Session extends ComponentBase
             return null;
         }
 
-        $user->touchLastSeen();
+        if (!Auth::isImpersonator()) {
+            $user->touchLastSeen();
+        }
 
         return $user;
     }
