@@ -39,8 +39,11 @@ class AuthManager extends RainAuthManager
         if ($guest = $this->findGuestUserByCredentials($credentials)) {
             return $this->convertGuestToUser($guest, $credentials, $activate);
         }
-
-        return parent::register($credentials, $activate);
+        
+        $user = parent::register($credentials, $activate);
+        Event::fire('rainlab.user.register', [$user, $credentials]);
+        
+        return $user;
     }
 
     //
