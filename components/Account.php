@@ -280,7 +280,7 @@ class Account extends ComponentBase
             $redirectUrl = $this->pageUrl($this->property('redirect'))
                 ?: $this->property('redirect');
 
-            if ($redirectUrl = post('redirect', $redirectUrl)) {
+            if (($redirectUrl = post('redirect', $redirectUrl)) && ($redirect = $this->makeRedirection(true)) {
                 return Redirect::intended($redirectUrl);
             }
 
