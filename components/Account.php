@@ -11,6 +11,7 @@ use Redirect;
 use Validator;
 use ValidationException;
 use ApplicationException;
+use October\Rain\Auth\AuthException;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\Settings as UserSettings;
@@ -346,18 +347,24 @@ class Account extends ComponentBase
         if (!$user = $this->user()) {
             return;
         }
+        
+        $data = post();
+        
+        if (!$user->checkHashValue('password', $data['password_old'])) {
+            throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_deactivation_pass')]);
+        }
 
         if (Input::hasFile('avatar')) {
             $user->avatar = Input::file('avatar');
         }
 
-        $user->fill(post());
+        $user->fill($data);
         $user->save();
 
         /*
          * Password has changed, reauthenticate the user
          */
-        if (strlen(post('password'))) {
+        if (strlen($data['password'])) {
             Auth::login($user->reload(), true);
         }
 
