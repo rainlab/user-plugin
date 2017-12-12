@@ -31,6 +31,7 @@ class Settings extends Model
         $this->block_persistence = false;
         $this->allow_registration = true;
         $this->login_attribute = self::LOGIN_EMAIL;
+        $this->update_requires_password = false;
     }
 
     public function getActivateModeOptions()
@@ -58,7 +59,7 @@ class Settings extends Model
             self::LOGIN_USERNAME => ['rainlab.user::lang.login.attribute_username']
         ];
     }
-
+    
     public function getActivateModeAttribute($value)
     {
         if (!$value) {

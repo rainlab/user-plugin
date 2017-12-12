@@ -71,6 +71,7 @@ class Account extends ComponentBase
         $this->page['canRegister'] = $this->canRegister();
         $this->page['loginAttribute'] = $this->loginAttribute();
         $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
+        $this->page['updateRequiresPassword'] = $this->updateRequiresPassword();
     }
 
     /**
@@ -136,6 +137,14 @@ class Account extends ComponentBase
             ? /*Email*/'rainlab.user::lang.login.attribute_email'
             : /*Username*/'rainlab.user::lang.login.attribute_username'
         );
+    }
+    
+    /**
+     * Returns the update requires password setting
+     */
+    public function updateRequiresPassword()
+    {
+        return UserSettings::get('update_requires_password', false);
     }
 
     /**
@@ -350,8 +359,10 @@ class Account extends ComponentBase
         
         $data = post();
         
-        if (!$user->checkHashValue('password', $data['password_old'])) {
-            throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_deactivation_pass')]);
+        if ($this->updateRequiresPassword()) {
+            if (!$user->checkHashValue('password', $data['password_old'])) {
+                throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_deactivation_pass')]);
+            }
         }
 
         if (Input::hasFile('avatar')) {
