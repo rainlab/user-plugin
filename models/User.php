@@ -6,6 +6,7 @@ use Mail;
 use Event;
 use October\Rain\Auth\Models\User as UserBase;
 use RainLab\User\Models\Settings as UserSettings;
+use October\Rain\Auth\AuthException;
 
 class User extends UserBase
 {
@@ -21,20 +22,21 @@ class User extends UserBase
      */
     public $rules = [
         'email'    => 'required|between:6,255|email|unique:users',
+        'avatar'   => 'nullable|image|max:4000',
         'username' => 'required|between:2,255|unique:users',
         'password' => 'required:create|between:4,255|confirmed',
-        'password_confirmation' => 'required_with:password|between:4,255'
+        'password_confirmation' => 'required_with:password|between:4,255',
     ];
 
     /**
      * @var array Relations
      */
     public $belongsToMany = [
-        'groups' => ['RainLab\User\Models\UserGroup', 'table' => 'users_groups']
+        'groups' => [UserGroup::class, 'table' => 'users_groups']
     ];
 
     public $attachOne = [
-        'avatar' => ['System\Models\File']
+        'avatar' => \System\Models\File::class
     ];
 
     /**
@@ -76,10 +78,6 @@ class User extends UserBase
         $result = parent::attemptActivation($code);
         if ($result === false) {
             return false;
-        }
-
-        if ($mailTemplate = UserSettings::get('welcome_template')) {
-            Mail::sendTo($this, $mailTemplate, $this->getNotificationVars());
         }
 
         Event::fire('rainlab.user.activate', [$this]);
@@ -243,12 +241,28 @@ class User extends UserBase
     }
 
     /**
+     * Before login event
+     * @return void
+     */
+    public function beforeLogin()
+    {
+        if ($this->is_guest) {
+            $login = $this->getLogin();
+            throw new AuthException(sprintf(
+                'Cannot login user "%s" as they are not registered.', $login
+            ));
+        }
+
+        parent::beforeLogin();
+    }
+
+    /**
      * After login event
      * @return void
      */
     public function afterLogin()
     {
-        $this->last_login = $this->last_seen = $this->freshTimestamp();
+        $this->last_login = $this->freshTimestamp();
 
         if ($this->trashed()) {
             $this->restore();
@@ -368,7 +382,7 @@ class User extends UserBase
      * Returns the variables available when sending a user notification.
      * @return array
      */
-    protected function getNotificationVars()
+    public function getNotificationVars()
     {
         $vars = [
             'name'     => $this->name,

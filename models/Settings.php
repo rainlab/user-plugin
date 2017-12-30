@@ -2,12 +2,16 @@
 
 use Lang;
 use Model;
-use System\Models\MailTemplate;
 use RainLab\User\Models\User as UserModel;
 
 class Settings extends Model
 {
-    public $implement = ['System.Behaviors.SettingsModel'];
+    /**
+     * @var array Behaviors implemented by this model.
+     */
+    public $implement = [
+        \System\Behaviors\SettingsModel::class
+    ];
 
     public $settingsCode = 'user_settings';
     public $settingsFields = 'fields.yaml';
@@ -26,7 +30,6 @@ class Settings extends Model
         $this->use_throttle = true;
         $this->block_persistence = false;
         $this->allow_registration = true;
-        $this->welcome_template = 'rainlab.user::mail.welcome';
         $this->login_attribute = self::LOGIN_EMAIL;
     }
 
@@ -63,14 +66,5 @@ class Settings extends Model
         }
 
         return $value;
-    }
-
-    public function getWelcomeTemplateOptions()
-    {
-        $codes = array_keys(MailTemplate::listAllTemplates());
-        $result = ['' => '- '.Lang::get('rainlab.user::lang.settings.no_mail_template').' -'];
-        $result += array_combine($codes, $codes);
-
-        return $result;
     }
 }

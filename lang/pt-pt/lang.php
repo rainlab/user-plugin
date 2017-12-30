@@ -74,16 +74,12 @@ return [
         'activate_mode_user_comment' => 'O utilizador activa a própria conta usando o e-mail.',
         'activate_mode_admin' => 'Administrador',
         'activate_mode_admin_comment' => 'Apenas um Administrador pode activar um utilizador.',
-        'welcome_template' => 'Modelo de Boas Vindas',
-        'welcome_template_comment' => 'Modelo de e-mail a ser enviado ao utilizador quanto ele é activado.',
         'require_activation' => 'Permissão para entrar requer ativação',
         'require_activation_comment' => 'Utilizadores precisam ter uma conta activada para entrar.',
         'use_throttle' => 'Tentativas limitadas',
         'use_throttle_comment' => 'Tentativas repetidas de entrada mal-sucedidas suspenderão temporariamente o utilizador.',
         'login_attribute' => 'Atributo para entrar',
         'login_attribute_comment' => 'Selecione qual atributo do utilizador deve ser usado para entrar.',
-        'no_mail_template' => 'Não enviar uma notificação',
-        'hint_templates' => 'Pode personalizar modelos de e-mail selecionando E-mail > Modelos de E-mail no menu de configurações.'
     ],
     'user' => [
         'label' => 'Utilizador',

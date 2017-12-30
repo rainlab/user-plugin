@@ -3,7 +3,6 @@
 use October\Rain\Auth\Manager as RainAuthManager;
 use RainLab\User\Models\Settings as UserSettings;
 use RainLab\User\Models\UserGroup as UserGroupModel;
-use October\Rain\Auth\AuthException;
 
 class AuthManager extends RainAuthManager
 {
@@ -30,21 +29,6 @@ class AuthManager extends RainAuthManager
     public function extendUserQuery($query)
     {
         $query->withTrashed();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function login($user, $remember = true)
-    {
-        if ($user->is_guest) {
-            $login = $user->getLogin();
-            throw new AuthException(sprintf(
-                'Cannot login user "%s" as they are not registered.', $login
-            ));
-        }
-
-        parent::login($user, $remember);
     }
 
     /**
