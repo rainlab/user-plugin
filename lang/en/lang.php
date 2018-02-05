@@ -90,6 +90,11 @@ return [
         'block_persistence_comment' => 'When enabled users cannot sign in to multiple devices at the same time.',
         'login_attribute' => 'Login attribute',
         'login_attribute_comment' => 'Select what primary user detail should be used for signing in.',
+        'remember_login' => 'Remember login mode',
+        'remember_login_comment' => 'Select if the user session should be persistent',
+        'remember_yes' => 'Yes (5 years cookie)',
+        'remember_no' => 'No (Login will expire when session expire)',
+        'remember_ask' => 'Ask user'
     ],
     'user' => [
         'label' => 'User',
