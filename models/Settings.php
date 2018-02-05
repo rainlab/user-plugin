@@ -23,6 +23,10 @@ class Settings extends Model
     const LOGIN_EMAIL = 'email';
     const LOGIN_USERNAME = 'username';
 
+    const REMEMBER_YES = 'yes';
+    const REMEMBER_NO = 'no';
+    const REMEMBER_ASK = 'ask';
+
     public function initSettingsData()
     {
         $this->require_activation = true;
@@ -31,6 +35,7 @@ class Settings extends Model
         $this->block_persistence = false;
         $this->allow_registration = true;
         $this->login_attribute = self::LOGIN_EMAIL;
+        $this->remember_login = self::REMEMBER_YES;
     }
 
     public function getActivateModeOptions()
@@ -56,6 +61,15 @@ class Settings extends Model
         return [
             self::LOGIN_EMAIL => ['rainlab.user::lang.login.attribute_email'],
             self::LOGIN_USERNAME => ['rainlab.user::lang.login.attribute_username']
+        ];
+    }
+
+    public function getRememberLoginOptions()
+    {
+        return [
+            self::REMEMBER_YES => ['rainlab.user::lang.settings.remember_yes'],
+            self::REMEMBER_NO => ['rainlab.user::lang.settings.remember_no'],
+            self::REMEMBER_ASK => ['rainlab.user::lang.settings.remember_ask']
         ];
     }
 

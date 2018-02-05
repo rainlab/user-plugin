@@ -28,6 +28,14 @@ tabs:
             type: radio
             tab: rainlab.user::lang.settings.signin_tab
 
+        # Remeber Login Mode
+        remember_login:
+            span: left
+            label: rainlab.user::lang.settings.remember_login
+            commentAbove: rainlab.user::lang.settings.remember_login_comment
+            type: radio
+            tab: rainlab.user::lang.settings.signin_tab
+
         # Require Activation
         allow_registration:
             span: left
