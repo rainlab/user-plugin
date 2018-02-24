@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Controllers;
 
+use Lang;
 use Flash;
 use BackendMenu;
 use Backend\Classes\Controller;
@@ -46,5 +47,23 @@ class UserGroups extends Controller
         parent::__construct();
 
         BackendMenu::setContext('RainLab.User', 'user', 'usergroups');
+    }
+    
+    public function index_onDelete()
+    {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+
+            foreach ($checkedIds as $userGroupId) {
+                if ((!$userGroup = UserGroup::find($userGroupId))) {
+                    continue;
+                }
+
+                $userGroup->delete();
+            }
+
+            Flash::success(Lang::get('rainlab.user::lang.groups.delete_selected_success'));
+        }
+
+        return $this->listRefresh();
     }
 }
