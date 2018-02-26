@@ -91,6 +91,21 @@ class Plugin extends PluginBase
                 'iconSvg'     => 'plugins/rainlab/user/assets/images/user-icon.svg',
                 'permissions' => ['rainlab.users.*'],
                 'order'       => 500,
+                
+                'sideMenu' => [
+                    'users' => [
+                        'label'       => 'rainlab.user::lang.users.menu_label',
+                        'icon'        => 'icon-user',
+                        'url'         => Backend::url('rainlab/user/users'),
+                        'permissions' => ['acme.blog.access_users']
+                    ],
+                    'groups' => [
+                        'label'       => 'rainlab.user::lang.groups.menu_label',
+                        'icon'        => 'icon-users',
+                        'url'         => Backend::url('rainlab/user/usergroups'),
+                        'permissions' => ['acme.blog.access_groups']
+                    ]
+                ]
             ]
         ];
     }
