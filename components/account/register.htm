@@ -21,6 +21,20 @@
                 id="registerEmail"
                 placeholder="Enter your email" />
         </div>
+		
+		{% if loginAttribute == "username" %}
+			<div class="form-group">
+				<label for="registerUsername">Username</label>
+				<input
+					name="username"
+					type="text"
+					class="form-control"
+					id="registerUsername"
+					placeholder="Enter your username" />
+			</div>
+		{% else %}
+			<!-- username is not loginAttribute. -->
+		{% endif %}
 
         <div class="form-group">
             <label for="registerPassword">Password</label>
