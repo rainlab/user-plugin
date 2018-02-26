@@ -99,7 +99,7 @@ class Plugin extends PluginBase
                         'url'         => Backend::url('rainlab/user/users'),
                         'permissions' => ['acme.blog.access_users']
                     ],
-                    'groups' => [
+                    'usergroups' => [
                         'label'       => 'rainlab.user::lang.groups.menu_label',
                         'icon'        => 'icon-users',
                         'url'         => Backend::url('rainlab/user/usergroups'),
