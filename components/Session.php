@@ -77,7 +77,7 @@ class Session extends ComponentBase
      */
     public function init()
     {
-        if (Request::ajax() && !$this->checkUserSecurity()) {
+        if ((Request::ajax() || $this->property('redirect') == '') && !$this->checkUserSecurity()) {
             abort(403, 'Access denied');
         }
     }
