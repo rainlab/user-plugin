@@ -77,7 +77,7 @@ class Session extends ComponentBase
      */
     public function init()
     {
-        if ((Request::ajax() || $this->property('redirect') == '') && !$this->checkUserSecurity()) {
+        if (Request::ajax() && !$this->checkUserSecurity()) {
             abort(403, 'Access denied');
         }
     }
@@ -88,7 +88,10 @@ class Session extends ComponentBase
     public function onRun()
     {
         if (!$this->checkUserSecurity()) {
-            $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
+            if ($redirect = $this->property('redirect') == '') {
+                throw new \InvalidArgumentException('Redirect property is empty');
+            }
+            
             return Redirect::guest($redirectUrl);
         }
 
