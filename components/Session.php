@@ -88,11 +88,11 @@ class Session extends ComponentBase
     public function onRun()
     {
         if (!$this->checkUserSecurity()) {
-            if ($redirect = $this->property('redirect') == '') {
+            if (empty($this->property('redirect')) {
                 throw new \InvalidArgumentException('Redirect property is empty');
             }
             
-            $redirectUrl = $this->controller->pageUrl($redirect);
+            $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
             return Redirect::guest($redirectUrl);
         }
 
