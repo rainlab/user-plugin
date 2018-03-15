@@ -88,7 +88,7 @@ class Session extends ComponentBase
     public function onRun()
     {
         if (!$this->checkUserSecurity()) {
-            if (empty($this->property('redirect')) {
+            if (empty($this->property('redirect'))) {
                 throw new \InvalidArgumentException('Redirect property is empty');
             }
             
