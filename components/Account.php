@@ -277,13 +277,9 @@ class Account extends ComponentBase
             /*
              * Redirect to the intended page after successful sign in
              */
-            $redirectUrl = $this->pageUrl($this->property('redirect'))
-                ?: $this->property('redirect');
-
-            if ($redirectUrl = post('redirect', $redirectUrl)) {
-                return Redirect::intended($redirectUrl);
+            if ($redirect = $this->makeRedirection(true)) {
+                return $redirect;
             }
-
         }
         catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
@@ -488,8 +484,6 @@ class Account extends ComponentBase
      */
     protected function makeRedirection($intended = false)
     {
-        $method = $intended ? 'intended' : 'to';
-
         $property = $this->property('redirect');
 
         if (strlen($property) && !$property) {
@@ -499,7 +493,10 @@ class Account extends ComponentBase
         $redirectUrl = $this->pageUrl($property) ?: $property;
 
         if ($redirectUrl = post('redirect', $redirectUrl)) {
-            return Redirect::$method($redirectUrl);
+            if ($intended)
+                return Auth::intended($redirectUrl);
+            else
+                return Redirect::to($redirectUrl);
         }
     }
 

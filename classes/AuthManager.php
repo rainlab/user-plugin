@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Classes;
 
+use Redirect;
 use October\Rain\Auth\Manager as RainAuthManager;
 use RainLab\User\Models\Settings as UserSettings;
 use RainLab\User\Models\UserGroup as UserGroupModel;
@@ -126,4 +127,22 @@ class AuthManager extends RainAuthManager
 
         return $this->user = $user;
     }
+
+    // replaces Redirector::guest to use a seperate session variable in place of url.intended (used on the backend)
+    public function guest($path, $status = 302, $headers = [], $secure = null)
+    {
+        \Session::put('url.frontend.intended', Redirect::getUrlGenerator()->full());
+        \Log::info(print_r(\Session::all(), true));
+
+        return Redirect::to($path, $status, $headers, $secure);
+    }
+
+    // replaces Redirector::intended to use a seperate session variable in place of url.intended (used on the backend)
+    public function intended($default = '/', $status = 302, $headers = [], $secure = null)
+    {
+        $path = \Session::get('url.frontend.intended', $default);
+
+        return Redirect::to($path, $status, $headers, $secure);
+    }
+
 }

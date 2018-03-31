@@ -93,7 +93,7 @@ class Session extends ComponentBase
             }
             
             $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
-            return Redirect::guest($redirectUrl);
+            return Auth::guest($redirectUrl);
         }
 
         $this->page['user'] = $this->user();
