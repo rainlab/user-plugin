@@ -16,8 +16,8 @@ class UserRedirector extends Redirector
      */
     public function guest($path, $status = 302, $headers = [], $secure = null)
     {
-        $intended_var = App::runningInBackend() ? 'url.intended' : 'url.frontend.intended';
-        $this->session->put($intended_var, $this->generator->full());
+        $sessionKey = App::runningInBackend() ? 'url.intended' : 'url.frontend.intended';
+        $this->session->put($sessionKey, $this->generator->full());
 
         return $this->to($path, $status, $headers, $secure);
     }
@@ -33,8 +33,8 @@ class UserRedirector extends Redirector
      */
     public function intended($default = '/', $status = 302, $headers = [], $secure = null)
     {
-        $intended_var = App::runningInBackend() ? 'url.intended' : 'url.frontend.intended';
-        $path = $this->session->pull($intended_var, $default);
+        $sessionKey = App::runningInBackend() ? 'url.intended' : 'url.frontend.intended';
+        $path = $this->session->pull($sessionKey, $default);
 
         return $this->to($path, $status, $headers, $secure);
     }
