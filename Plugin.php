@@ -33,13 +33,14 @@ class Plugin extends PluginBase
     {
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'RainLab\User\Facades\Auth');
-        $alias->alias('Redirect', 'RainLab\User\Facades\Redirect');
 
         App::singleton('user.auth', function() {
             return \RainLab\User\Classes\AuthManager::instance();
         });
 
         App::singleton('redirect', function ($app) {
+            // overrides with our own extended version of Redirector to support 
+            // seperate url.intended session variable for frontend
             $redirector = new UserRedirector($app['url']);
 
             // If the session is set on the application instance, we'll inject it into
