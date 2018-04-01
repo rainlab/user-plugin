@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Classes;
 
+use Session;
 use Redirect;
 use October\Rain\Auth\Manager as RainAuthManager;
 use RainLab\User\Models\Settings as UserSettings;
@@ -128,19 +129,37 @@ class AuthManager extends RainAuthManager
         return $this->user = $user;
     }
 
-    // replaces Redirector::guest to use a seperate session variable in place of url.intended (used on the backend)
+    /**
+     * Create a new redirect response, while putting the current URL in the session.
+     * replaces Redirector::guest to use a seperate session variable in place of 
+     * url.intended (used on the backend)
+     *
+     * @param  string  $path
+     * @param  int     $status
+     * @param  array   $headers
+     * @param  bool    $secure
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function guest($path, $status = 302, $headers = [], $secure = null)
     {
-        \Session::put('url.frontend.intended', Redirect::getUrlGenerator()->full());
-        \Log::info(print_r(\Session::all(), true));
+        Session::put('url.frontend.intended', Redirect::getUrlGenerator()->full());
 
         return Redirect::to($path, $status, $headers, $secure);
     }
 
-    // replaces Redirector::intended to use a seperate session variable in place of url.intended (used on the backend)
+    /**
+     * Create a new redirect response to the previously intended location.
+     * replaces Redirector::intended to use a seperate session variable in place of
+     * url.intended (used on the backend)
+     * @param  string  $default
+     * @param  int     $status
+     * @param  array   $headers
+     * @param  bool    $secure
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function intended($default = '/', $status = 302, $headers = [], $secure = null)
     {
-        $path = \Session::get('url.frontend.intended', $default);
+        $path = Session::get('url.frontend.intended', $default);
 
         return Redirect::to($path, $status, $headers, $secure);
     }
