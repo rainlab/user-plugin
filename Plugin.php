@@ -7,6 +7,7 @@ use Backend;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
+use RainLab\User\Classes\UserRedirector;
 use RainLab\User\Models\MailBlocker;
 use RainLab\Notify\Classes\Notifier;
 
@@ -32,9 +33,23 @@ class Plugin extends PluginBase
     {
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'RainLab\User\Facades\Auth');
+        $alias->alias('Redirect', 'RainLab\User\Facades\Redirect');
 
         App::singleton('user.auth', function() {
             return \RainLab\User\Classes\AuthManager::instance();
+        });
+
+        App::singleton('redirect', function ($app) {
+            $redirector = new UserRedirector($app['url']);
+
+            // If the session is set on the application instance, we'll inject it into
+            // the redirector instance. This allows the redirect responses to allow
+            // for the quite convenient "with" methods that flash to the session.
+            if (isset($app['session.store'])) {
+                $redirector->setSession($app['session.store']);
+            }
+
+            return $redirector;
         });
 
         /*
