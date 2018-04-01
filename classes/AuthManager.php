@@ -159,7 +159,7 @@ class AuthManager extends RainAuthManager
      */
     public function intended($default = '/', $status = 302, $headers = [], $secure = null)
     {
-        $path = Session::get('url.frontend.intended', $default);
+        $path = Session::pull('url.frontend.intended', $default);
 
         return Redirect::to($path, $status, $headers, $secure);
     }
