@@ -165,7 +165,8 @@ class Plugin extends PluginBase
         }
 
         Notifier::bindEvents([
-            'rainlab.user.activate' => \RainLab\User\NotifyRules\UserActivatedEvent::class
+            'rainlab.user.activate' => \RainLab\User\NotifyRules\UserActivatedEvent::class,
+            'rainlab.user.register' => \RainLab\User\NotifyRules\UserRegisteredEvent::class
         ]);
 
         Notifier::instance()->registerCallback(function($manager) {
