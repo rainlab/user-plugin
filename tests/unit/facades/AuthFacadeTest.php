@@ -21,6 +21,7 @@ class AuthFacadeTest extends PluginTestCase
         $this->assertInstanceOf('RainLab\User\Models\User', $user);
         
         // and that user should have the following data
+        $this->assertFalse($user->is_activated);
         $this->assertEquals('Some User', $user->name);
         $this->assertEquals('some@website.tld', $user->email);
     }
