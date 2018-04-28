@@ -43,6 +43,20 @@ class AuthFacadeTest extends PluginTestCase
         $this->assertTrue(Auth::check());
     }
 
+    public function test_registering_a_guest()
+    {
+        // register a guest
+        $guest = Auth::registerGuest(['email' => 'person@acme.tld']);
+
+        // our one guest should be returned
+        $this->assertEquals(1, User::count());
+        $this->assertInstanceOf('RainLab\User\Models\User', $guest);
+
+        // and that guest should have the following data
+        $this->assertTrue($guest->is_guest);
+        $this->assertEquals('person@acme.tld', $guest->email);
+    }
+
     public function test_login_and_checking_authentication()
     {
         // we should not be authenticated
