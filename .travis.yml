@@ -18,6 +18,7 @@ before_script:
   - mkdir -p ./october/plugins/rainlab/user
   - mv !(october) october/plugins/rainlab/user
   - cd october
+  - git clone https://github.com/rainlab/notify-plugin.git ./plugins/rainlab/notify
   - composer install
   - cp config/cms.php config/cms.php.testing
   - mv config/cms.php.testing config/testing/cms.php
