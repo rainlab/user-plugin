@@ -27,6 +27,9 @@ abstract class PluginTestCase extends BasePluginTestCase
         // reset any modified settings
         Settings::resetDefault();
 
+        // log out after each test
+        \RainLab\User\Classes\AuthManager::instance()->logout();
+
         // register the auth facade
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'RainLab\User\Facades\Auth');

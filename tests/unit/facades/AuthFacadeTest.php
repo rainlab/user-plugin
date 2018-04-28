@@ -38,5 +38,33 @@ class AuthFacadeTest extends PluginTestCase
 
         // that user should be activated
         $this->assertTrue($user->is_activated);
+
+        // and we should now be authenticated
+        $this->assertTrue(Auth::check());
+    }
+
+    public function test_login_and_checking_authentication()
+    {
+        // we should not be authenticated
+        $this->assertFalse(Auth::check());
+
+        // create a user
+        $user = User::create([
+            'name' => 'Some User',
+            'email' => 'some@website.tld',
+            'password' => 'changeme',
+            'password_confirmation' => 'changeme',
+        ]);
+
+        // in order to log in as this user, we must be activated
+        $user->is_activated = true;
+        $user->activated_at = now();
+        $user->save();
+
+        // log in as a new user
+        Auth::login($user);
+
+        // we should now be authenticated
+        $this->assertTrue(Auth::check());
     }
 }
