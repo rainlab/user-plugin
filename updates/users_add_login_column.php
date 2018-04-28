@@ -30,10 +30,12 @@ class UsersAddLoginColumn extends Migration
 
     public function down()
     {
-        Schema::table('users', function($table)
-        {
-            $table->dropColumn('login');
-        });
+        if (Schema::hasColumn('users', 'login')) {
+            Schema::table('users', function($table)
+            {
+                $table->dropColumn('login');
+            });
+        }
     }
 
 }
