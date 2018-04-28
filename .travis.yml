@@ -19,8 +19,7 @@ before_script:
   - mv !(october) october/plugins/rainlab/user
   - cd october
   - composer install
-  - cp config/cms.php config/cms.php.testing
-  - mv config/cms.php.testing config/testing/cms.php
+  - cp config/cms.php config/testing/cms.php
   - cd plugins/rainlab/user
   - composer install
 
