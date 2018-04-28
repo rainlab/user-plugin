@@ -25,4 +25,18 @@ class AuthFacadeTest extends PluginTestCase
         $this->assertEquals('Some User', $user->name);
         $this->assertEquals('some@website.tld', $user->email);
     }
+
+    public function test_registering_a_user_with_auto_activation()
+    {
+        // register a user with the auto-activate flag
+        $user = Auth::register([
+            'name' => 'Some User',
+            'email' => 'some@website.tld',
+            'password' => 'changeme',
+            'password_confirmation' => 'changeme',
+        ], true);
+
+        // that user should be activated
+        $this->assertTrue($user->is_activated);
+    }
 }
