@@ -27,12 +27,12 @@ abstract class PluginTestCase extends BasePluginTestCase
         // reset any modified settings
         Settings::resetDefault();
 
-        // // register the auth facade
-        // $alias = AliasLoader::getInstance();
-        // $alias->alias('Auth', 'RainLab\User\Facades\Auth');
+        // register the auth facade
+        $alias = AliasLoader::getInstance();
+        $alias->alias('Auth', 'RainLab\User\Facades\Auth');
     
-        // App::singleton('user.auth', function() {
-        //     return \RainLab\User\Classes\AuthManager::instance();
-        // });
+        App::singleton('user.auth', function() {
+            return \RainLab\User\Classes\AuthManager::instance();
+        });
     }
 }
