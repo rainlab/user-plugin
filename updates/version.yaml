@@ -64,3 +64,4 @@
 1.4.3: Fixes session handling for AJAX requests.
 1.4.4: Fixes bug where impersonation touches the last seen timestamp.
 1.4.5: Added token fallback process to Account / Reset Password components when parameter is missing.
+1.4.6: Fixes Auth::register method signature mismatch with core OctoberCMS Auth library
