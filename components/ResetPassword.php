@@ -90,7 +90,7 @@ class ResetPassword extends ComponentBase
         ];
 
         Mail::send('rainlab.user::mail.restore', $data, function($message) use ($user) {
-            $message->to($user->email, $user->full_name);
+            $message->to($user->email, $user->name);
         });
     }
 
