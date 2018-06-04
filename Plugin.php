@@ -39,7 +39,7 @@ class Plugin extends PluginBase
         });
 
         App::singleton('redirect', function ($app) {
-            // overrides with our own extended version of Redirector to support 
+            // overrides with our own extended version of Redirector to support
             // seperate url.intended session variable for frontend
             $redirector = new UserRedirector($app['url']);
 
@@ -107,6 +107,21 @@ class Plugin extends PluginBase
                 'iconSvg'     => 'plugins/rainlab/user/assets/images/user-icon.svg',
                 'permissions' => ['rainlab.users.*'],
                 'order'       => 500,
+
+                'sideMenu' => [
+                    'users' => [
+                        'label' => 'rainlab.user::lang.users.menu_label',
+                        'icon'        => 'icon-user',
+                        'url'         => Backend::url('rainlab/user/users'),
+                        'permissions' => ['rainlab.users.access_users']
+                    ],
+                    'usergroups' => [
+                        'label'       => 'rainlab.user::lang.groups.menu_label',
+                        'icon'        => 'icon-users',
+                        'url'         => Backend::url('rainlab/user/usergroups'),
+                        'permissions' => ['rainlab.users.access_groups']
+                    ]
+                ]
             ]
         ];
     }
