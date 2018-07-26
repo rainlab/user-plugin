@@ -29,34 +29,39 @@ class NewUsers extends ReportWidgetBase
     public function defineProperties()
     {
         return [
-            'title' => [
-                'default'           => e(trans('rainlab.user::lang.widgets.new_users_title')),
+            'widget_title' => [
+                'default'           => e(trans('rainlab.user::lang.widgets.new_users.widget_title')),
                 'title'             => 'backend::lang.dashboard.widget_title_label',
                 'type'              => 'string',
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error',
                 'validationPattern' => '^.+$',
             ],
-            'show_day' => [
+            'show_today' => [
                 'default'   => true,
-                'title'     => 'rainlab.user::lang.widgets.new_users_day_property',
+                'title'     => 'rainlab.user::lang.widgets.new_users.show_today',
                 'type'      => 'checkbox',
             ],
             'show_week' => [
                 'default'   => false,
-                'title'     => 'rainlab.user::lang.widgets.new_users_week_property',
+                'title'     => 'rainlab.user::lang.widgets.new_users.show_week',
                 'type'      => 'checkbox',
             ],
             'show_month' => [
                 'default'   => false,
-                'title'     => 'rainlab.user::lang.widgets.new_users_month_property',
+                'title'     => 'rainlab.user::lang.widgets.new_users.show_month',
                 'type'      => 'checkbox',
             ],
             'show_year' => [
                 'default'   => false,
-                'title'     => 'rainlab.user::lang.widgets.new_users_year_property',
+                'title'     => 'rainlab.user::lang.widgets.new_users.show_year',
                 'type'      => 'checkbox',
             ],
         ];
+    }
+
+    protected function loadAssets()
+    {
+        $this->addCss('css/style.css', 'RainLab.User');
     }
 
     /**
@@ -74,7 +79,7 @@ class NewUsers extends ReportWidgetBase
             ];
         };
 
-        if ($this->property('show_day')) {
+        if ($this->property('show_today')) {
             $this->vars['day'] = $query(
                 Carbon::now()->startOfDay(),
                 Carbon::yesterday()->startOfDay()

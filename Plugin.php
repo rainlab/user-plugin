@@ -178,7 +178,7 @@ class Plugin extends PluginBase
         return [
             'RainLab\User\ReportWidgets\NewUsers' => [
                 'context' => 'dashboard',
-                'label' => 'foo',
+                'label' => trans('rainlab.user::lang.widgets.new_users.dropdown_title'),
             ],
         ];
     }

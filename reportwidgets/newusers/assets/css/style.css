@@ -1,0 +1,9 @@
+.rainlab-user-new-users {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -40px;
+}
+
+.rainlab-user-new-users > div {
+    min-width: 140px;
+}
