@@ -3,48 +3,40 @@
     <h3><?= e($this->property('widget_title')) ?></h3>
 
     <?php if (!isset($error)): ?>
-        <div class="rainlab-user-new-users">
+        <div class="rainlab-user-new-users p-b">
             <!-- day -->
             <?php if ($this->property('show_today')): ?>
-                <div class="scoreboard p-b-md p-r-md">
-                    <div class="scoreboard-item title-value">
-                        <h4><?= e(trans('rainlab.user::lang.widgets.new_users.today')) ?></h4>
-                        <p class="positive"><?= $day['current'] ?></p>
-                        <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.today_previous')) ?>: <?= $day['previous'] ?></p>
-                    </div>
+                <div class="title-value">
+                    <h4><?= e(trans('rainlab.user::lang.widgets.new_users.today')) ?></h4>
+                    <p class="positive"><?= $day['current'] ?></p>
+                    <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.today_previous')) ?>: <?= $day['previous'] ?></p>
                 </div>
             <?php endif ?>
 
             <!-- week -->
             <?php if ($this->property('show_week')): ?>
-                <div class="scoreboard p-b-md p-r-md">
-                    <div class="scoreboard-item title-value">
-                        <h4><?= e(trans('rainlab.user::lang.widgets.new_users.week')) ?></h4>
-                        <p class="positive"><?= $week['current'] ?></p>
-                        <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.week_previous')) ?>: <?= $week['previous'] ?></p>
-                    </div>
+                <div class="title-value">
+                    <h4><?= e(trans('rainlab.user::lang.widgets.new_users.week')) ?></h4>
+                    <p class="positive"><?= $week['current'] ?></p>
+                    <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.week_previous')) ?>: <?= $week['previous'] ?></p>
                 </div>
             <?php endif ?>
 
             <!-- month -->
             <?php if ($this->property('show_month')): ?>
-                <div class="scoreboard p-b-md p-r-md">
-                    <div class="scoreboard-item title-value">
-                        <h4><?= e(trans('rainlab.user::lang.widgets.new_users.month')) ?></h4>
-                        <p class="positive"><?= $month['current'] ?></p>
-                        <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.month_previous')) ?>: <?= $month['previous'] ?></p>
-                    </div>
+                <div class="title-value">
+                    <h4><?= e(trans('rainlab.user::lang.widgets.new_users.month')) ?></h4>
+                    <p class="positive"><?= $month['current'] ?></p>
+                    <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.month_previous')) ?>: <?= $month['previous'] ?></p>
                 </div>
             <?php endif ?>
 
             <!-- year -->
             <?php if ($this->property('show_year')): ?>
-                <div class="scoreboard p-b-md p-r-md">
-                    <div class="scoreboard-item title-value">
-                        <h4><?= e(trans('rainlab.user::lang.widgets.new_users.year')) ?></h4>
-                        <p class="positive"><?= $year['current'] ?></p>
-                        <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.year_previous')) ?>: <?= $year['previous'] ?></p>
-                    </div>
+                <div class="title-value">
+                    <h4><?= e(trans('rainlab.user::lang.widgets.new_users.year')) ?></h4>
+                    <p class="positive"><?= $year['current'] ?></p>
+                    <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.year_previous')) ?>: <?= $year['previous'] ?></p>
                 </div>
             <?php endif ?>
         </div>
