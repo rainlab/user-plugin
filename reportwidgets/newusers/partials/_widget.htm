@@ -8,7 +8,7 @@
             <?php if ($this->property('show_today')): ?>
                 <div class="title-value">
                     <h4><?= e(trans('rainlab.user::lang.widgets.new_users.today')) ?></h4>
-                    <p class="positive"><?= $day['current'] ?></p>
+                    <p class="<?= $day['positive'] ? 'positive' : '' ?>"><?= $day['current'] ?></p>
                     <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.today_previous')) ?>: <?= $day['previous'] ?></p>
                 </div>
             <?php endif ?>
@@ -17,7 +17,7 @@
             <?php if ($this->property('show_week')): ?>
                 <div class="title-value">
                     <h4><?= e(trans('rainlab.user::lang.widgets.new_users.week')) ?></h4>
-                    <p class="positive"><?= $week['current'] ?></p>
+                    <p class="<?= $week['positive'] ? 'positive' : '' ?>"><?= $week['current'] ?></p>
                     <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.week_previous')) ?>: <?= $week['previous'] ?></p>
                 </div>
             <?php endif ?>
@@ -26,7 +26,7 @@
             <?php if ($this->property('show_month')): ?>
                 <div class="title-value">
                     <h4><?= e(trans('rainlab.user::lang.widgets.new_users.month')) ?></h4>
-                    <p class="positive"><?= $month['current'] ?></p>
+                    <p class="<?= $month['positive'] ? 'positive' : '' ?>"><?= $month['current'] ?></p>
                     <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.month_previous')) ?>: <?= $month['previous'] ?></p>
                 </div>
             <?php endif ?>
@@ -35,7 +35,7 @@
             <?php if ($this->property('show_year')): ?>
                 <div class="title-value">
                     <h4><?= e(trans('rainlab.user::lang.widgets.new_users.year')) ?></h4>
-                    <p class="positive"><?= $year['current'] ?></p>
+                    <p class="<?= $year['positive'] ? 'positive' : '' ?>"><?= $year['current'] ?></p>
                     <p class="description"><?= e(trans('rainlab.user::lang.widgets.new_users.year_previous')) ?>: <?= $year['previous'] ?></p>
                 </div>
             <?php endif ?>

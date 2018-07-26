@@ -70,12 +70,16 @@ class NewUsers extends ReportWidgetBase
     protected function loadData()
     {
         $query = function($start, $previous) {
+            $currentUsers = User::where('created_at', '>=', $start)->count();
+
+            $previousUsers = User::where('created_at', '>=', $previous)
+                ->where('created_at', '<', $start)
+                ->count();
+
             return [
-                'current' => User::where('created_at', '>=', $start)
-                    ->count(),
-                'previous' => User::where('created_at', '>=', $previous)
-                    ->where('created_at', '<', $start)
-                    ->count(),
+                'current' => $currentUsers,
+                'previous' => $previousUsers,
+                'positive' => $currentUsers > $previousUsers,
             ];
         };
 
