@@ -201,5 +201,21 @@ return [
         'redirect_desc' => 'Page name to redirect if access is denied.',
         'logout' => 'You have been successfully logged out!',
         'stop_impersonate_success' => 'You are no longer impersonating a user.',
-    ]
+    ],
+    'widgets' => [
+        'new_users_day_previous' => 'Yesterday',
+        'new_users_day_property' => 'Show today',
+        'new_users_day_title' => 'Today',
+        'new_users_month_previous' => 'Last month',
+        'new_users_month_property' => 'Month',
+        'new_users_month_property' => 'Show month',
+        'new_users_month_title' => 'This month',
+        'new_users_title' => 'New Users',
+        'new_users_week_previous' => 'Last week',
+        'new_users_week_property' => 'Show week',
+        'new_users_week_title' => 'This week',
+        'new_users_year_previous' => 'Last year',
+        'new_users_year_property' => 'Show year',
+        'new_users_year_title' => 'This year',
+    ],
 ];

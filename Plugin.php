@@ -173,6 +173,16 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerReportWidgets()
+    {
+        return [
+            'RainLab\User\ReportWidgets\NewUsers' => [
+                'context' => 'dashboard',
+                'label' => 'foo',
+            ],
+        ];
+    }
+
     protected function bindNotificationEvents()
     {
         if (!class_exists(Notifier::class)) {
