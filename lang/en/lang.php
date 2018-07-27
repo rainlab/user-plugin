@@ -204,8 +204,8 @@ return [
     ],
     'widgets' => [
         'new_users' => [
-            'dropdown_title' => 'User signups',
-            'widget_title' => 'Widget title',
+            'add_widget_title' => 'New Users',
+            'default_title' => 'New Users',
             'show_today' => 'Show today',
             'show_week' => 'Show this week',
             'show_month' => 'Show this month',

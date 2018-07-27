@@ -1,12 +1,12 @@
 .rainlab-user-new-users {
     display: flex;
     flex-wrap: wrap;
-    margin: -20px;
+    margin: -10px -10px -20px;
     overflow: hidden;
 }
 
 .rainlab-user-new-users > div {
     margin-top: 0 !important;
-    min-width: 140px;
-    padding: 20px;
+    min-width: 100px;
+    padding: 10px;
 }

@@ -3,6 +3,7 @@
 use Backend\Classes\ReportWidgetBase;
 use Carbon\Carbon;
 use Exception;
+use Lang;
 use RainLab\User\Models\User;
 
 class NewUsers extends ReportWidgetBase
@@ -30,7 +31,7 @@ class NewUsers extends ReportWidgetBase
     {
         return [
             'widget_title' => [
-                'default'           => e(trans('rainlab.user::lang.widgets.new_users.widget_title')),
+                'default'           => Lang::get('rainlab.user::lang.widgets.new_users.default_title'),
                 'title'             => 'backend::lang.dashboard.widget_title_label',
                 'type'              => 'string',
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error',
