@@ -333,3 +333,7 @@ A common requirement is to adapt another to a legacy authentication system. In t
             $user->forceSave();
         }
     });
+
+## Report Widgets
+
+This plugin comes with a dashboard report widget to track new users. To activate, click `Manage Widgets` -> `Add Widget` from the backend dashboard. You can set which metrics to display via the cog in the upper right corner, and toggling the desired checkboxes.
