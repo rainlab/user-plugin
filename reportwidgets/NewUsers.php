@@ -9,7 +9,7 @@ use RainLab\User\Models\User;
 class NewUsers extends ReportWidgetBase
 {
     /**
-     * Renders the widget.
+     * Render the widget.
      */
     public function render()
     {
@@ -60,6 +60,9 @@ class NewUsers extends ReportWidgetBase
         ];
     }
 
+    /**
+     * Load assets.
+     */
     protected function loadAssets()
     {
         $this->addCss('css/style.css', 'RainLab.User');
