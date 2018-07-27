@@ -37,6 +37,11 @@ class NewUsers extends ReportWidgetBase
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error',
                 'validationPattern' => '^.+$',
             ],
+            'activated_only' => [
+                'default'   => false,
+                'title'     => 'rainlab.user::lang.widgets.new_users.activated_only',
+                'type'      => 'checkbox',
+            ],
             'show_today' => [
                 'default'   => true,
                 'title'     => 'rainlab.user::lang.widgets.new_users.show_today',
@@ -74,11 +79,16 @@ class NewUsers extends ReportWidgetBase
     protected function loadData()
     {
         $query = function($start, $previous) {
-            $currentUsers = User::where('created_at', '>=', $start)->count();
+            $currentUsersQuery = User::where('created_at', '>=', $start);
+            $previousUsersQuery = User::where('created_at', '>=', $previous)->where('created_at', '<', $start);
 
-            $previousUsers = User::where('created_at', '>=', $previous)
-                ->where('created_at', '<', $start)
-                ->count();
+            if ($this->property('activated_only')) {
+                $currentUsersQuery->isActivated();
+                $previousUsersQuery->isActivated();
+            }
+
+            $currentUsers = $currentUsersQuery->count();
+            $previousUsers = $previousUsersQuery->count();
 
             return [
                 'current' => $currentUsers,

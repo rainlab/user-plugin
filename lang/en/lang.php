@@ -204,8 +204,9 @@ return [
     ],
     'widgets' => [
         'new_users' => [
-            'add_widget_title' => 'New Users',
+            'add_widget' => 'New Users',
             'default_title' => 'New Users',
+            'activated_only' => 'Only count activated users',
             'show_today' => 'Show today',
             'show_week' => 'Show this week',
             'show_month' => 'Show this month',
