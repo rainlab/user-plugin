@@ -178,7 +178,7 @@ class Plugin extends PluginBase
         return [
             'RainLab\User\ReportWidgets\NewUsers' => [
                 'context' => 'dashboard',
-                'label' => 'rainlab.user::lang.widgets.new_users.add_widget',
+                'label' => 'rainlab.user::lang.widgets.new_users.default_title',
             ],
         ];
     }

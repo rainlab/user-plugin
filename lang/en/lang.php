@@ -204,7 +204,6 @@ return [
     ],
     'widgets' => [
         'new_users' => [
-            'add_widget' => 'New Users',
             'default_title' => 'New Users',
             'activated_only' => 'Only count activated users',
             'show_today' => 'Show today',
