@@ -127,6 +127,14 @@ class Account extends ComponentBase
     }
 
     /**
+     * Remember preference for user sessions
+     */
+    public function shouldRemember()
+    {
+        return UserSettings::get('remember_user', true);
+    }
+
+    /**
      * Returns the login label as a word.
      */
     public function loginAttributeLabel()
@@ -194,7 +202,7 @@ class Account extends ComponentBase
 
             Event::fire('rainlab.user.beforeAuthenticate', [$this, $credentials]);
 
-            $user = Auth::authenticate($credentials, true);
+            $user = Auth::authenticate($credentials, $this->shouldRemember());
             if ($user->isBanned()) {
                 Auth::logout();
                 throw new AuthException(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'rainlab.user::lang.account.banned');

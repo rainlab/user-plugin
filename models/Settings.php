@@ -31,6 +31,7 @@ class Settings extends Model
         $this->block_persistence = false;
         $this->allow_registration = true;
         $this->login_attribute = self::LOGIN_EMAIL;
+        $this->remember_user = true;
     }
 
     public function getActivateModeOptions()

@@ -86,6 +86,8 @@ return [
         'require_activation_comment' => 'Users must have an activated account to sign in.',
         'use_throttle' => 'Throttle attempts',
         'use_throttle_comment' => 'Repeat failed sign in attempts will temporarily suspend the user.',
+        'remember_user' => 'Remember user',
+        'remember_user_comment' => 'Use a non-expire cookie to keep the user logged in',
         'block_persistence' => 'Prevent concurrent sessions',
         'block_persistence_comment' => 'When enabled users cannot sign in to multiple devices at the same time.',
         'login_attribute' => 'Login attribute',
