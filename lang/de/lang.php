@@ -119,6 +119,8 @@ return [
     'default_country_comment' => 'Wenn ein Benutzer keinen Standort angibt, wird dieser Standort als Standard gewählt.',
     'default_state' => 'Provinz-Voreinstellung',
     'default_state_comment' => 'Wenn ein Benutzer keinen Standort angibt, wird diese Provinz als Standard gewählt.',
+    'password_length' => 'Passwort Länge',
+    'password_length_comment' => 'Die minimale Passwortlänge für Benutzerpasswörter.'
   ],
   'state' => [
     'label' => 'Provinz',

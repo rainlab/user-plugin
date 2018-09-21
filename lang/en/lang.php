@@ -63,6 +63,8 @@ return [
         'unban_selected_confirm' => 'Unban the selected users?',
         'unban_selected_empty' => 'There are no selected users to unban.',
         'unban_selected_success' => 'Successfully unbanned the selected users.',
+        'password_length' => 'Password Length',
+        'password_length_comment' => 'The minimal length for user passwords.'
     ],
     'settings' => [
         'users' => 'Users',
