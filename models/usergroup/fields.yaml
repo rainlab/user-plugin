@@ -3,9 +3,12 @@
 # ===================================
 
 fields:
+
     name:
         label: rainlab.user::lang.group.name
         span: left
+        attributes:
+           autofocus: ''
 
     code:
         label: rainlab.user::lang.group.code
