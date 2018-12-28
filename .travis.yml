@@ -20,8 +20,6 @@ before_script:
   - cd october
   - composer install
   - cp config/cms.php config/testing/cms.php
-  - cd plugins/rainlab/user
-  - composer install
 
 script:
   - php vendor/bin/phpunit
