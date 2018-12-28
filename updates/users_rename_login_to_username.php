@@ -23,5 +23,4 @@ class UsersRenameLoginToUsername extends Migration
             });
         }
     }
-
 }

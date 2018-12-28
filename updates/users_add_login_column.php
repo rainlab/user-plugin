@@ -37,5 +37,4 @@ class UsersAddLoginColumn extends Migration
             });
         }
     }
-
 }
