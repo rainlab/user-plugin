@@ -145,6 +145,22 @@ By default the User plugin will use the email address as the login name. To swit
 
 We can add any other additional fields here too, such as `phone`, `company`, etc.
 
+## Chance minimum required password length
+
+By default the User plugin requires a minimum password length of 8 characters. You can extend the `User` model and
+override the validation rules to change these requirements.
+
+```php
+public function boot()
+{
+    // Allow 4 character passwords
+    User::extend(function (User $user) {
+        $user->rules['password']              = 'required:create|between:4,255|confirmed';
+        $user->rules['password_confirmation'] = 'required_with:password|between:4,255';
+    });
+}
+```
+
 ## Error handling
 
 ### Flash messages
