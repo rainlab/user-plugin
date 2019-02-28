@@ -430,6 +430,6 @@ class User extends UserBase
      */
     protected function generatePassword()
     {
-        $this->password = $this->password_confirmation = Str::random(6);
+        $this->password = $this->password_confirmation = Str::random(8);
     }
 }
