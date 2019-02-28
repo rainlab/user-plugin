@@ -24,8 +24,8 @@ class User extends UserBase
         'email'    => 'required|between:6,255|email|unique:users',
         'avatar'   => 'nullable|image|max:4000',
         'username' => 'required|between:2,255|unique:users',
-        'password' => 'required:create|between:4,255|confirmed',
-        'password_confirmation' => 'required_with:password|between:4,255',
+        'password' => 'required:create|between:8,255|confirmed',
+        'password_confirmation' => 'required_with:password|between:8,255',
     ];
 
     /**
