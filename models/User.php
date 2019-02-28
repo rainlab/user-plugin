@@ -183,6 +183,18 @@ class User extends UserBase
         return static::$loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
     }
 
+    /**
+     * Returns the password validation "between" rule as a string.
+     * @return string
+     */
+    public function getPasswordValidationBetweenRule()
+    {
+        $matches = [];
+        preg_match('/between:([^|]+)/i', $this->rules['password'], $matches);
+
+        return count($matches) > 1 ? $matches[1] : '8,255';
+    }
+
     //
     // Scopes
     //

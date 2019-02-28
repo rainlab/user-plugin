@@ -7,6 +7,7 @@ use Validator;
 use ValidationException;
 use ApplicationException;
 use Cms\Classes\ComponentBase;
+use RainLab\User\Models\User;
 use RainLab\User\Models\User as UserModel;
 
 /**
@@ -99,9 +100,10 @@ class ResetPassword extends ComponentBase
      */
     public function onResetPassword()
     {
+        $passwordLength = (new User())->getPasswordValidationBetweenRule();
         $rules = [
             'code'     => 'required',
-            'password' => 'required|between:4,255'
+            'password' => "required|between:{$passwordLength}"
         ];
 
         $validation = Validator::make(post(), $rules);

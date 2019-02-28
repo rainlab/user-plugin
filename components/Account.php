@@ -13,6 +13,7 @@ use ValidationException;
 use ApplicationException;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
+use RainLab\User\Models\User;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
 
@@ -173,7 +174,8 @@ class Account extends ComponentBase
                 ? 'required|between:2,255'
                 : 'required|email|between:6,255';
 
-            $rules['password'] = 'required|between:4,255';
+            $passwordLength = (new User())->getPasswordValidationBetweenRule();
+            $rules['password'] = "required|between:{$passwordLength}";
 
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
@@ -232,9 +234,10 @@ class Account extends ComponentBase
                 $data['password_confirmation'] = post('password');
             }
 
+            $passwordLength = (new User())->getPasswordValidationBetweenRule();
             $rules = [
                 'email'    => 'required|email|between:6,255',
-                'password' => 'required|between:4,255|confirmed'
+                'password' => "required|between:{$passwordLength}|confirmed",
             ];
 
             if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
