@@ -145,7 +145,7 @@ By default the User plugin will use the email address as the login name. To swit
 
 We can add any other additional fields here too, such as `phone`, `company`, etc.
 
-## Chance minimum required password length
+## Change minimum required password length
 
 By default the User plugin requires a minimum password length of 8 characters. You can extend the `User` model and
 override the validation rules to change these requirements.
