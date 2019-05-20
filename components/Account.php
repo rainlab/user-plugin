@@ -488,7 +488,7 @@ class Account extends ComponentBase
 
         $property = $this->property('redirect');
 
-        if (!strlen($property)) {
+        if (empty($property)) {
             return;
         }
 
