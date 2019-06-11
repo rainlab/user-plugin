@@ -488,8 +488,8 @@ class Account extends ComponentBase
 
         $property = $this->property('redirect');
 
-        if (empty($property)) {
-            return Redirect::refresh();
+        if ($property == "0") {
+            return;
         }
 
         $redirectUrl = $this->pageUrl($property) ?: $property;
