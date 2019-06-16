@@ -187,7 +187,7 @@ class User extends UserBase
      * Returns the minimum length for a new password from settings.
      * @return int
      */
-    public function getMinPasswordLength()
+    public static function getMinPasswordLength()
     {
         return (int) Settings::get(Settings::MIN_PASSWORD_LENGTH, Settings::MIN_PASSWORD_LENGTH_DEFAULT);
     }
@@ -239,7 +239,7 @@ class User extends UserBase
         /*
          * Apply Password Length Settings
          */
-        $minPasswordLength = $this->getMinPasswordLength();
+        $minPasswordLength = self::getMinPasswordLength();
         $this->rules['password'] = "required:create|between:$minPasswordLength,255|confirmed";
         $this->rules['password_confirmation'] = "required_with:password|between:$minPasswordLength,255";
     }
@@ -435,6 +435,6 @@ class User extends UserBase
      */
     protected function generatePassword()
     {
-        $this->password = $this->password_confirmation = Str::random($this->getMinPasswordLength());
+        $this->password = $this->password_confirmation = Str::random(self::getMinPasswordLength());
     }
 }
