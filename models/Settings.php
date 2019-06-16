@@ -23,7 +23,7 @@ class Settings extends Model
     const LOGIN_USERNAME = 'username';
 
     const MIN_PASSWORD_LENGTH = 'min_password_length';
-    const MIN_PASSWORD_LENGTH_DEFAULT = 7;
+    const MIN_PASSWORD_LENGTH_DEFAULT = 8;
 
     public function initSettingsData()
     {
