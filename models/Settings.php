@@ -22,7 +22,6 @@ class Settings extends Model
     const LOGIN_EMAIL = 'email';
     const LOGIN_USERNAME = 'username';
 
-    const MIN_PASSWORD_LENGTH = 'min_password_length';
     const MIN_PASSWORD_LENGTH_DEFAULT = 8;
 
     public function initSettingsData()
@@ -33,7 +32,7 @@ class Settings extends Model
         $this->block_persistence = false;
         $this->allow_registration = true;
         $this->login_attribute = self::LOGIN_EMAIL;
-        $this->{self::MIN_PASSWORD_LENGTH} = self::MIN_PASSWORD_LENGTH_DEFAULT;
+        $this->min_password_length = self::MIN_PASSWORD_LENGTH_DEFAULT;
     }
 
     public function getActivateModeOptions()

@@ -189,7 +189,7 @@ class User extends UserBase
      */
     public static function getMinPasswordLength()
     {
-        return (int) Settings::get(Settings::MIN_PASSWORD_LENGTH, Settings::MIN_PASSWORD_LENGTH_DEFAULT);
+        return (int) UserSettings::get('min_password_length', UserSettings::MIN_PASSWORD_LENGTH_DEFAULT);
     }
 
     //
