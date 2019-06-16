@@ -486,10 +486,15 @@ class Account extends ComponentBase
     {
         $method = $intended ? 'intended' : 'to';
 
-        $property = $this->property('redirect');
+        $property = trim((string) $this->property('redirect'));
 
-        if (!strlen($property)) {
+        // No redirect
+        if ($property === '0') {
             return;
+        }
+        // Refresh page
+        if ($property === '') {
+            return Redirect::refresh();
         }
 
         $redirectUrl = $this->pageUrl($property) ?: $property;
