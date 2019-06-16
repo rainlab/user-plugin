@@ -98,6 +98,8 @@ return [
     'notifications_tab' => 'Benachrichtigungen',
     'allow_registration' => 'Benutzerregistrierung erlauben',
     'allow_registration_comment' => 'Falls dies deaktivert ist, können Benutzer nur von Administratoren erstellt werden.',
+    'min_password_length' => 'Minimale Passwortlänge',
+    'min_password_length_comment' => 'Die minimale Passwortlänge für Benutzerpasswörter.',
     'activate_mode' => 'Aktivierungsmodus',
     'activate_mode_comment' => 'Wählen Sie aus, wie ein Benutzer aktiviert werden soll.',
     'activate_mode_auto' => 'Automatisch',
@@ -119,8 +121,6 @@ return [
     'default_country_comment' => 'Wenn ein Benutzer keinen Standort angibt, wird dieser Standort als Standard gewählt.',
     'default_state' => 'Provinz-Voreinstellung',
     'default_state_comment' => 'Wenn ein Benutzer keinen Standort angibt, wird diese Provinz als Standard gewählt.',
-    'password_length' => 'Passwort Länge',
-    'password_length_comment' => 'Die minimale Passwortlänge für Benutzerpasswörter.'
   ],
   'state' => [
     'label' => 'Provinz',

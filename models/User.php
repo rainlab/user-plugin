@@ -24,8 +24,8 @@ class User extends UserBase
         'email'    => 'required|between:6,255|email|unique:users',
         'avatar'   => 'nullable|image|max:4000',
         'username' => 'required|between:2,255|unique:users',
-        'password' => 'required:create|between:7,255|confirmed',
-        'password_confirmation' => 'required_with:password|between:7,255',
+        'password' => 'required:create|between:' . UserSettings::MIN_PASSWORD_LENGTH_DEFAULT . ',255|confirmed',
+        'password_confirmation' => 'required_with:password|between:' . UserSettings::MIN_PASSWORD_LENGTH_DEFAULT . ',255',
     ];
 
     /**
@@ -189,7 +189,7 @@ class User extends UserBase
      */
     public function getMinPasswordLength()
     {
-        return intval(Settings::get(Settings::PASSWORD_LENGTH_KEY,Settings::MIN_PASSWORD_LENGTH_DEFAULT));
+        return (int) Settings::get(Settings::MIN_PASSWORD_LENGTH, Settings::MIN_PASSWORD_LENGTH_DEFAULT);
     }
 
     //

@@ -36,6 +36,14 @@ tabs:
             type: switch
             tab: rainlab.user::lang.settings.registration_tab
 
+        # Minimum password length
+        min_password_length:
+            span: left
+            commentAbove: rainlab.user::lang.settings.min_password_length_comment
+            label: rainlab.user::lang.settings.min_password_length
+            type: number
+            tab: rainlab.user::lang.settings.registration_tab
+
         # Require Activation
         require_activation:
             span: left
@@ -51,11 +59,3 @@ tabs:
             label: rainlab.user::lang.settings.activate_mode
             type: radio
             tab: rainlab.user::lang.settings.activation_tab
-
-        # Min password length
-        password_length:
-            span: left
-            commentAbove: rainlab.user::lang.settings.password_length_comment
-            label: rainlab.user::lang.settings.password_length
-            type: number
-            tab: rainlab.user::lang.settings.registration_tab

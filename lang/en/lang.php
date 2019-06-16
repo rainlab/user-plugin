@@ -63,8 +63,6 @@ return [
         'unban_selected_confirm' => 'Unban the selected users?',
         'unban_selected_empty' => 'There are no selected users to unban.',
         'unban_selected_success' => 'Successfully unbanned the selected users.',
-        'password_length' => 'Password Length',
-        'password_length_comment' => 'The minimal length for user passwords.'
     ],
     'settings' => [
         'users' => 'Users',
@@ -76,6 +74,8 @@ return [
         'notifications_tab' => 'Notifications',
         'allow_registration' => 'Allow user registration',
         'allow_registration_comment' => 'If this is disabled users can only be created by administrators.',
+        'min_password_length' => 'Minimum password length',
+        'min_password_length_comment' => 'The minimum length of characters required for user passwords.',
         'activate_mode' => 'Activation mode',
         'activate_mode_comment' => 'Select how a user account should be activated.',
         'activate_mode_auto' => 'Automatic',
