@@ -239,7 +239,7 @@ class User extends UserBase
         /*
          * Apply Password Length Settings
          */
-        $minPasswordLength = self::getMinPasswordLength();
+        $minPasswordLength = static::getMinPasswordLength();
         $this->rules['password'] = "required:create|between:$minPasswordLength,255|confirmed";
         $this->rules['password_confirmation'] = "required_with:password|between:$minPasswordLength,255";
     }
@@ -435,6 +435,6 @@ class User extends UserBase
      */
     protected function generatePassword()
     {
-        $this->password = $this->password_confirmation = Str::random(self::getMinPasswordLength());
+        $this->password = $this->password_confirmation = Str::random(static::getMinPasswordLength());
     }
 }
