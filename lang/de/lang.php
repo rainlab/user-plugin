@@ -98,6 +98,8 @@ return [
     'notifications_tab' => 'Benachrichtigungen',
     'allow_registration' => 'Benutzerregistrierung erlauben',
     'allow_registration_comment' => 'Falls dies deaktivert ist, können Benutzer nur von Administratoren erstellt werden.',
+    'min_password_length' => 'Minimale Passwortlänge',
+    'min_password_length_comment' => 'Die minimale Passwortlänge für Benutzerpasswörter.',
     'activate_mode' => 'Aktivierungsmodus',
     'activate_mode_comment' => 'Wählen Sie aus, wie ein Benutzer aktiviert werden soll.',
     'activate_mode_auto' => 'Automatisch',

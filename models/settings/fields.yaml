@@ -36,6 +36,15 @@ tabs:
             type: switch
             tab: rainlab.user::lang.settings.registration_tab
 
+        # Minimum password length
+        min_password_length:
+            span: left
+            commentAbove: rainlab.user::lang.settings.min_password_length_comment
+            label: rainlab.user::lang.settings.min_password_length
+            type: number
+            tab: rainlab.user::lang.settings.registration_tab
+            min: 1
+
         # Require Activation
         require_activation:
             span: left
