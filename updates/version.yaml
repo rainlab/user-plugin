@@ -67,3 +67,4 @@
 1.4.6: Fixes Auth::register method signature mismatch with core OctoberCMS Auth library
 1.4.7: Fixes redirect bug in Account component / Update translations and separate user and group management.
 1.4.8: Fixes a bug where calling MailBlocker::removeBlock could remove all mail blocks for the user.
+1.5.0: !!! Required password length is now a minimum of 8 characters. Previous passwords will not be affected until the next password change.
