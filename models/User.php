@@ -75,9 +75,18 @@ class User extends UserBase
      */
     public function attemptActivation($code)
     {
-        $result = parent::attemptActivation($code);
-        if ($result === false) {
-            return false;
+        if ($this->trashed()) {
+            if ($code == $this->activation_code) {
+                $this->restore();
+            } else {
+                return false;
+            }
+        } else {
+            $result = parent::attemptActivation($code);
+
+            if ($result === false) {
+                return false;
+            }
         }
 
         Event::fire('rainlab.user.activate', [$this]);
