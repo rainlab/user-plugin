@@ -310,6 +310,7 @@ This plugin will fire some global events that can be useful for interacting with
 - **rainlab.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
 - **rainlab.user.reactivate**: The user has reactivated their own account by signing back in. This should revive the users content on the site.
 - **rainlab.user.getNotificationVars**: Fires when sending a user notification to enable passing more variables to the email templates. Passes the `$user` model the template will be for.
+- **rainlab.user.extendPreviewToolbar**: Extend User-Preview Toolbar.
 
 Here is an example of hooking an event:
 
