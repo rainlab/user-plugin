@@ -70,6 +70,7 @@ class Account extends ComponentBase
         $this->page['canRegister'] = $this->canRegister();
         $this->page['loginAttribute'] = $this->loginAttribute();
         $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
+        $this->page['rememberLoginMode'] = $this->rememberLoginMode();
     }
 
     /**
@@ -138,6 +139,14 @@ class Account extends ComponentBase
     }
 
     /**
+     * Returns the login remember mode.
+     */
+    public function rememberLoginMode()
+    {
+        return UserSettings::get('remember_login', UserSettings::REMEMBER_ALWAYS);
+    }
+
+    /**
      * Looks for the activation code from the URL parameter. If nothing
      * is found, the GET parameter 'activate' is used instead.
      * @return string
@@ -192,9 +201,24 @@ class Account extends ComponentBase
                 'password' => array_get($data, 'password')
             ];
 
+            /*
+            * Login remember mode
+            */
+            switch ($this->rememberLoginMode()) {
+                case UserSettings::REMEMBER_ALWAYS:
+                    $remember = true;
+                    break;
+                case UserSettings::REMEMBER_NEVER:
+                    $remember = false;
+                    break;
+                case UserSettings::REMEMBER_ASK:
+                    $remember = (bool) array_get($data, 'remember', false);
+                    break;
+            }
+
             Event::fire('rainlab.user.beforeAuthenticate', [$this, $credentials]);
 
-            $user = Auth::authenticate($credentials, true);
+            $user = Auth::authenticate($credentials, $remember);
             if ($user->isBanned()) {
                 Auth::logout();
                 throw new AuthException(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'rainlab.user::lang.account.banned');
