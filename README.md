@@ -1,5 +1,8 @@
 # Front-end user plugin
 
+[![Build Status](https://img.shields.io/travis/rainlab/user-plugin.svg?branch=master)](https://travis-ci.org/rainlab/user-plugin)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rainlab/user-plugin/blob/master/LICENCE.md)
+
 Front-end user management for October CMS.
 
 ## Requirements
@@ -113,7 +116,7 @@ The reset password component allows a user to reset their password if they have 
     title = "Forgotten your password?"
     url = "/forgot-password/:code?"
 
-    [resetPass]
+    [resetPassword]
     paramCode = "code"
     ==
     {% component 'resetPassword' %}
@@ -141,6 +144,10 @@ By default the User plugin will use the email address as the login name. To swit
     </form>
 
 We can add any other additional fields here too, such as `phone`, `company`, etc.
+
+## Password length requirements
+
+By default, the User plugin requires a minimum password length of 8 characters for all users when registering or changing their password. You can change this length requirement by going to backend and navigating to System > Users > User Settings. Inside the Registration tab, a **Minimum password length** field is provided, allowing you to increase or decrease this limit to your preferred length.
 
 ## Error handling
 

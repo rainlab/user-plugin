@@ -1,8 +1,6 @@
 <?php namespace RainLab\User\Models;
 
-use Lang;
 use Model;
-use RainLab\User\Models\User as UserModel;
 
 class Settings extends Model
 {
@@ -16,12 +14,18 @@ class Settings extends Model
     public $settingsCode = 'user_settings';
     public $settingsFields = 'fields.yaml';
 
+
     const ACTIVATE_AUTO = 'auto';
     const ACTIVATE_USER = 'user';
     const ACTIVATE_ADMIN = 'admin';
 
     const LOGIN_EMAIL = 'email';
     const LOGIN_USERNAME = 'username';
+
+    const REMEMBER_ALWAYS = 'always';
+    const REMEMBER_NEVER = 'never';
+    const REMEMBER_ASK = 'ask';
+    const MIN_PASSWORD_LENGTH_DEFAULT = 8;
 
     public function initSettingsData()
     {
@@ -32,6 +36,8 @@ class Settings extends Model
         $this->allow_registration = true;
         $this->login_attribute = self::LOGIN_EMAIL;
         $this->update_requires_password = false;
+        $this->remember_login = self::REMEMBER_ALWAYS;
+        $this->min_password_length = self::MIN_PASSWORD_LENGTH_DEFAULT;
     }
 
     public function getActivateModeOptions()
@@ -52,6 +58,15 @@ class Settings extends Model
         ];
     }
 
+    public function getActivateModeAttribute($value)
+    {
+        if (!$value) {
+            return self::ACTIVATE_AUTO;
+        }
+
+        return $value;
+    }
+
     public function getLoginAttributeOptions()
     {
         return [
@@ -59,11 +74,26 @@ class Settings extends Model
             self::LOGIN_USERNAME => ['rainlab.user::lang.login.attribute_username']
         ];
     }
-    
-    public function getActivateModeAttribute($value)
+
+    public function getRememberLoginOptions()
+    {
+        return [
+            self::REMEMBER_ALWAYS => [
+                'rainlab.user::lang.settings.remember_always',
+            ],
+            self::REMEMBER_NEVER => [
+                'rainlab.user::lang.settings.remember_never',
+            ],
+            self::REMEMBER_ASK => [
+                'rainlab.user::lang.settings.remember_ask',
+            ]
+        ];
+    }
+
+    public function getRememberLoginAttribute($value)
     {
         if (!$value) {
-            return self::ACTIVATE_AUTO;
+            return self::REMEMBER_ALWAYS;
         }
 
         return $value;

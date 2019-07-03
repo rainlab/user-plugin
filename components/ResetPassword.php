@@ -74,7 +74,8 @@ class ResetPassword extends ComponentBase
             throw new ValidationException($validation);
         }
 
-        if (!$user = UserModel::findByEmail(post('email'))) {
+        $user = UserModel::findByEmail(post('email'));
+        if (!$user || $user->is_guest) {
             throw new ApplicationException(Lang::get(/*A user was not found with the given credentials.*/'rainlab.user::lang.account.invalid_user'));
         }
 
@@ -100,7 +101,7 @@ class ResetPassword extends ComponentBase
     {
         $rules = [
             'code'     => 'required',
-            'password' => 'required|between:4,255'
+            'password' => 'required|between:' . UserModel::getMinPasswordLength() . ',255'
         ];
 
         $validation = Validator::make(post(), $rules);

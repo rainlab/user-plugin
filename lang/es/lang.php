@@ -7,7 +7,7 @@ return [
         'tab' => 'Usuarios',
         'access_users' => 'Administrar usuarios',
         'access_groups' => 'Administrar grupos',
-        'access_settings' => 'Preferencias de usuario'
+        'access_settings' => 'Preferencias de usuario',
     ],
     'users' => [
         'menu_label' => 'Usuarios',
@@ -49,6 +49,11 @@ return [
         'unban_selected_confirm' => '¿Desbloquear los usuarios seleccionados?',
         'unban_selected_empty' => 'No hay usuarios seleccionados a desbloquear.',
         'unban_selected_success' => 'Se desbloquearon exitosamente los usuarios seleccionados.',
+        'update_details' => 'Actualizar detalles',
+        'impersonate_user' => 'Iniciar sesión como este usuario',
+        'impersonate_confirm' => '¿Estás seguro que estas queriendo iniciar sesión como este usuario? Puede volver a su estado original cerrando la sesión.',
+        'impersonate_success' => 'Has iniciado sesión como este usuario correctamente.',
+        'activate_selected' => 'Activar usuarios seleccionados',
     ],
     'settings' => [
         'users' => 'Usuarios',
@@ -74,6 +79,8 @@ return [
         'use_throttle_comment' => 'Intentos de inicios de sesión seguidos que provocaran la suspensión temporal del perfil de usuario.',
         'login_attribute' => 'Atributo de inicio de sesión',
         'login_attribute_comment' => 'Seleccione que dato de usuario debería ser utilizado para el inicio de sesión.',
+        'block_persistence' => 'Prevenir sesiones concurrentes',
+        'block_persistence_comment' => 'Prevenir que los usuarios habilitados puedan iniciar sesión desde múltiples dispositivos.',
     ],
     'user' => [
         'label' => 'Usuario',
@@ -94,7 +101,12 @@ return [
         'avatar' => 'Avatar',
         'details' => 'Detalles',
         'account' => 'Perfil',
-        'block_mail' => 'Bloquear todos los envios de e-mail para este usuario.'
+        'block_mail' => 'Bloquear todos los envios de e-mail para este usuario.',
+        'send_invite' => 'Enviar invitación por email',
+        'send_invite_comment' => 'Envía un mensaje de bienvenida con información de inicio de sesión y contraseña.',
+        'last_seen' => 'Última vez visto',
+        'status_activated' => 'Activado',
+        'status_registered' => 'Registrado',
     ],
     'group' => [
         'label' => 'Grupo',
