@@ -74,6 +74,8 @@ return [
         'notifications_tab' => 'Notifications',
         'allow_registration' => 'Allow user registration',
         'allow_registration_comment' => 'If this is disabled users can only be created by administrators.',
+        'min_password_length' => 'Minimum password length',
+        'min_password_length_comment' => 'The minimum length of characters required for user passwords.',
         'activate_mode' => 'Activation mode',
         'activate_mode_comment' => 'Select how a user account should be activated.',
         'activate_mode_auto' => 'Automatic',

@@ -34,13 +34,13 @@ class AuthManager extends RainAuthManager
     /**
      * {@inheritDoc}
      */
-    public function register(array $credentials, $activate = false)
+    public function register(array $credentials, $activate = false, $autoLogin = true)
     {
         if ($guest = $this->findGuestUserByCredentials($credentials)) {
             return $this->convertGuestToUser($guest, $credentials, $activate);
         }
 
-        return parent::register($credentials, $activate);
+        return parent::register($credentials, $activate, $autoLogin);
     }
 
     //

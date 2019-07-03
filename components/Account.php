@@ -303,13 +303,9 @@ class Account extends ComponentBase
             /*
              * Redirect to the intended page after successful sign in
              */
-            $redirectUrl = $this->pageUrl($this->property('redirect'))
-                ?: $this->property('redirect');
-
-            if ($redirectUrl = post('redirect', $redirectUrl)) {
-                return Redirect::intended($redirectUrl);
+            if ($redirect = $this->makeRedirection(true)) {
+                return $redirect;
             }
-
         }
         catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
@@ -516,10 +512,15 @@ class Account extends ComponentBase
     {
         $method = $intended ? 'intended' : 'to';
 
-        $property = $this->property('redirect');
+        $property = trim((string) $this->property('redirect'));
 
-        if (strlen($property) && !$property) {
+        // No redirect
+        if ($property === '0') {
             return;
+        }
+        // Refresh page
+        if ($property === '') {
+            return Redirect::refresh();
         }
 
         $redirectUrl = $this->pageUrl($property) ?: $property;

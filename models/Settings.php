@@ -1,8 +1,6 @@
 <?php namespace RainLab\User\Models;
 
-use Lang;
 use Model;
-use RainLab\User\Models\User as UserModel;
 
 class Settings extends Model
 {
@@ -16,6 +14,7 @@ class Settings extends Model
     public $settingsCode = 'user_settings';
     public $settingsFields = 'fields.yaml';
 
+
     const ACTIVATE_AUTO = 'auto';
     const ACTIVATE_USER = 'user';
     const ACTIVATE_ADMIN = 'admin';
@@ -26,6 +25,7 @@ class Settings extends Model
     const REMEMBER_YES = 'yes';
     const REMEMBER_NO = 'no';
     const REMEMBER_ASK = 'ask';
+    const MIN_PASSWORD_LENGTH_DEFAULT = 8;
 
     public function initSettingsData()
     {
@@ -36,6 +36,7 @@ class Settings extends Model
         $this->allow_registration = true;
         $this->login_attribute = self::LOGIN_EMAIL;
         $this->remember_login = self::REMEMBER_YES;
+        $this->min_password_length = self::MIN_PASSWORD_LENGTH_DEFAULT;
     }
 
     public function getActivateModeOptions()

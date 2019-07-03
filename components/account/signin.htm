@@ -1,5 +1,5 @@
-<form
-    data-request="onSignin">
+{{ form_ajax('onSignin') }}
+
     <div class="form-group">
         <label for="userSigninLogin">{{ loginAttributeLabel }}</label>
         <input
@@ -29,4 +29,5 @@
     {% endif %}
 
     <button type="submit" class="btn btn-default">Sign in</button>
-</form>
+
+{{ form_close() }}

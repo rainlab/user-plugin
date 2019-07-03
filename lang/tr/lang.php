@@ -7,7 +7,8 @@ return [
         'tab' => 'Üyeler',
         'access_users' => 'Üyeleri Yönet',
         'access_groups' => 'Üye Gruplarını Yönet',
-        'access_settings' => 'Üye Ayarlarını Yönet'
+        'access_settings' => 'Üye Ayarlarını Yönet',
+        'impersonate_user' => 'Üye Gibi Gezin',
     ],
     'users' => [
         'menu_label' => 'Üyeler',
@@ -28,6 +29,9 @@ return [
         'convert_guest_confirm' => 'Ziyaretçiyi üyeye çevirmek istiyor musunuz?',
         'convert_guest_manually' => 'Kayıtlı üyeye çevir',
         'convert_guest_success' => 'Ziyaretçi, kayıtlı üyeye çevrildi.',
+        'impersonate_user' => 'Üye Gibi Gezin',
+        'impersonate_confirm' => 'Bu üye gibi giriş yapmak istediğinize emin misiniz? Çıkış yaparak tekrar orjinal halinize dönebilirsiniz.',
+        'impersonate_success' => 'Şimdi üye gibi gezinebilirsiniz.',
         'delete_confirm' => 'Bu üyeyi gerçekten silmek istediğinize emin misiniz?',
         'unban_user' => 'Üyenin engelini kaldır',
         'unban_confirm' => 'Bu üyenin engelini kaldırmak istediğinize emin misiniz?',
@@ -39,6 +43,10 @@ return [
         'delete_selected_confirm' => 'Seçili üyeleri sil?',
         'delete_selected_empty' => 'Silmek için seçili üye yok.',
         'delete_selected_success' => 'Seçili üyeler başarıyla silindi.',
+        'activate_selected' => 'Seçileni etkinleştir',
+        'activate_selected_confirm' => 'Seçili kullanıcılar etkinleştirilsin mi?',
+        'activate_selected_empty' => 'Etkinleştirilecek seçili kullanıcı yok.',
+        'activate_selected_success' => 'Seçilen kullanıcılar başarıyla etkinleştirildi.',
         'deactivate_selected' => 'Seçileni pasifleştir',
         'deactivate_selected_confirm' => 'Seçilen üyeler pasifleştirilsin mi?',
         'deactivate_selected_empty' => 'Pasifleştirmek için üye seçmelisiniz.',
@@ -78,6 +86,8 @@ return [
         'require_activation_comment' => 'Üyeler oturum açabilmek için aktif edilmiş bir hesaba sahip olmalıdırlar.',
         'use_throttle' => 'Boğma Girişimleri',
         'use_throttle_comment' => 'Tekrarlayan hatalı girişlerde kısa süreliğine üyeyi askıya al.',
+        'block_persistence' => 'Eşzamanlı oturumları engelle',
+        'block_persistence_comment' => 'Etkinleştirildiğinde, kullanıcılar aynı anda birden fazla cihazda oturum açamazlar.',
         'login_attribute' => 'Oturum Açma Yöntemi',
         'login_attribute_comment' => 'Üye girişlerinde hangi üye detayının kullanılacağını seçin.',
     ],
@@ -121,7 +131,7 @@ return [
         'code' => 'Kod',
         'code_comment' => 'Bu grubu tanımlayan eşsiz bir kod girin.',
         'created_at' => 'Oluşturulma',
-        'users_count' => 'Üyeler'
+        'users_count' => 'Üyeler',
     ],
     'groups' => [
         'menu_label' => 'Gruplar',
@@ -136,19 +146,22 @@ return [
         'return_to_users' => 'Üye listesine dön',
         'create_title' => 'Üye grubu oluştur',
         'update_title' => 'Üye grubunu düzenle',
-        'preview_title' => 'Grubu önizle'
+        'preview_title' => 'Grubu önizle',
     ],
     'login' => [
         'attribute_email' => 'Eposta',
-        'attribute_username' => 'Üye Adı'
+        'attribute_username' => 'Üye Adı',
     ],
     'account' => [
         'account' => 'Hesap',
         'account_desc' => 'Üye yönetimi formu.',
+        'banned' => 'Maalesef, bu kullanıcı şu anda etkin değil. Daha fazla yardım için lütfen bizimle iletişime geçin.',
         'redirect_to' => 'Yönlendir',
         'redirect_to_desc' => 'Güncellemeden sonra yönlendirilecek sayfanın adı, oturum aç ya da kayıt ol.',
         'code_param' => 'Aktivasyon Kodu Parametresi',
         'code_param_desc' => 'Üyelik aktivasyon kodu için sayfanın URL parametresi kullanılır.',
+        'force_secure' => 'Güvenli protokole zorla',
+        'force_secure_desc' => 'URL’yi her zaman HTTPS şemasına yönlendirin.',
         'invalid_user' => 'Girilen bilgilerle eşleşen bir üye yok.',
         'invalid_activation_code' => 'Geçersiz aktivasyon kodu',
         'invalid_deactivation_pass' => 'Girdiğiniz şifre geçersiz.',
@@ -166,13 +179,13 @@ return [
         'password' => 'Parola',
         'login' => 'Oturum Aç',
         'new_password' => 'Yeni Parola',
-        'new_password_confirm' => 'Yeni Şifre Onayla'
+        'new_password_confirm' => 'Yeni Şifre Onayla',
     ],
     'reset_password' => [
         'reset_password' => 'Parolanızı Sıfırlayın',
         'reset_password_desc' => 'Unutulan şifreyi sıfırlama formu.',
         'code_param' => 'Sıfırlama Kodu Parametresi',
-        'code_param_desc' => 'Sıfırlama kodu için sayfanın URL parametresi kullanılır.'
+        'code_param_desc' => 'Sıfırlama kodu için sayfanın URL parametresi kullanılır.',
     ],
     'session' => [
         'session' => 'Oturum',
@@ -182,8 +195,11 @@ return [
         'all' => 'Hepsi',
         'users' => 'Üyeler',
         'guests' => 'Misafirler',
+        'allowed_groups_title' => 'Gruplara izin ver',
+        'allowed_groups_description' => 'İzin verilecek grupları seçin, veya "hiçbiri" seçerek tüm gruplara izin verin.',
         'redirect_title' => 'Yönlendir ',
         'redirect_desc' => 'Erişimi engelliyse yönlendirilecek sayfa.',
-        'logout' => 'Başarıyla çıkış yaptınız!'
-    ]
+        'logout' => 'Başarıyla çıkış yaptınız!',
+        'stop_impersonate_success' => 'Artık üye gibi gezinmiyorsunuz. Kendi hesabınızı kullanabilirsiniz.',
+    ],
 ];
