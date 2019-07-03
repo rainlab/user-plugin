@@ -22,8 +22,8 @@ class Settings extends Model
     const LOGIN_EMAIL = 'email';
     const LOGIN_USERNAME = 'username';
 
-    const REMEMBER_YES = 'yes';
-    const REMEMBER_NO = 'no';
+    const REMEMBER_ALWAYS = 'always';
+    const REMEMBER_NEVER = 'never';
     const REMEMBER_ASK = 'ask';
     const MIN_PASSWORD_LENGTH_DEFAULT = 8;
 
@@ -35,7 +35,7 @@ class Settings extends Model
         $this->block_persistence = false;
         $this->allow_registration = true;
         $this->login_attribute = self::LOGIN_EMAIL;
-        $this->remember_login = self::REMEMBER_YES;
+        $this->remember_login = self::REMEMBER_ALWAYS;
         $this->min_password_length = self::MIN_PASSWORD_LENGTH_DEFAULT;
     }
 
@@ -57,6 +57,15 @@ class Settings extends Model
         ];
     }
 
+    public function getActivateModeAttribute($value)
+    {
+        if (!$value) {
+            return self::ACTIVATE_AUTO;
+        }
+
+        return $value;
+    }
+
     public function getLoginAttributeOptions()
     {
         return [
@@ -68,16 +77,22 @@ class Settings extends Model
     public function getRememberLoginOptions()
     {
         return [
-            self::REMEMBER_YES => ['rainlab.user::lang.settings.remember_yes'],
-            self::REMEMBER_NO => ['rainlab.user::lang.settings.remember_no'],
-            self::REMEMBER_ASK => ['rainlab.user::lang.settings.remember_ask']
+            self::REMEMBER_ALWAYS => [
+                'rainlab.user::lang.settings.remember_always',
+            ],
+            self::REMEMBER_NEVER => [
+                'rainlab.user::lang.settings.remember_never',
+            ],
+            self::REMEMBER_ASK => [
+                'rainlab.user::lang.settings.remember_ask',
+            ]
         ];
     }
 
-    public function getActivateModeAttribute($value)
+    public function getRememberLoginAttribute($value)
     {
         if (!$value) {
-            return self::ACTIVATE_AUTO;
+            return self::REMEMBER_ALWAYS;
         }
 
         return $value;

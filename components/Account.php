@@ -143,7 +143,7 @@ class Account extends ComponentBase
      */
     public function rememberLoginMode()
     {
-        return UserSettings::get('remember_login', UserSettings::REMEMBER_YES);
+        return UserSettings::get('remember_login', UserSettings::REMEMBER_ALWAYS);
     }
 
     /**
@@ -204,17 +204,15 @@ class Account extends ComponentBase
             /*
             * Login remember mode
             */
-            $remember = false;
-
             switch ($this->rememberLoginMode()) {
-                case UserSettings::REMEMBER_YES:
+                case UserSettings::REMEMBER_ALWAYS:
                     $remember = true;
                     break;
-                case UserSettings::REMEMBER_NO:
+                case UserSettings::REMEMBER_NEVER:
                     $remember = false;
                     break;
                 case UserSettings::REMEMBER_ASK:
-                    $remember = (bool)array_get($data, 'remember', false);
+                    $remember = (bool) array_get($data, 'remember', false);
                     break;
             }
 

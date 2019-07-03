@@ -93,10 +93,10 @@ return [
         'login_attribute' => 'Login attribute',
         'login_attribute_comment' => 'Select what primary user detail should be used for signing in.',
         'remember_login' => 'Remember login mode',
-        'remember_login_comment' => 'Select if the user session should be persistent',
-        'remember_yes' => 'Yes (5 years cookie)',
-        'remember_no' => 'No (Login will expire when session expire)',
-        'remember_ask' => 'Ask user'
+        'remember_login_comment' => 'Select if the user session should be persistent.',
+        'remember_always' => 'Always',
+        'remember_never' => 'Never',
+        'remember_ask' => 'Ask the user on login',
     ],
     'user' => [
         'label' => 'User',
