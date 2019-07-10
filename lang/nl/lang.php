@@ -66,7 +66,8 @@ return [
         'empty_groups' => 'There are no user groups available.',
         'avatar' => 'Profielfoto',
         'details' => 'Details',
-        'account' => 'Account'
+        'account' => 'Account',
+        'last_seen' => 'Laatste login',
     ],
     'group' => [
         'label' => 'Groep',
