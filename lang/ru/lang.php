@@ -79,6 +79,8 @@ return [
         'notifications_tab' => 'Оповещения',
         'allow_registration' => 'Разрешить регистрацию',
         'allow_registration_comment' => 'Если эта опция выключена, только администраторы смогут регистрировать пользователей.',
+        'min_password_length' => 'Минимальная длина пароля',
+        'min_password_length_comment' => 'Минимальное количество символов для пароля пользователя.',
         'activate_mode' => 'Активация',
         'activate_mode_comment' => 'Активация пользователя.',
         'activate_mode_auto' => 'Автоматическая',
@@ -95,6 +97,11 @@ return [
         'block_persistence_comment' => 'Если включено, пользователи не могут войти с разных устройств одновременно.',
         'login_attribute' => 'Логин',
         'login_attribute_comment' => 'Поле, используемое в качестве логина пользователя.',
+        'remember_login' => 'Режим "Запомнить меня"',
+        'remember_login_comment' => 'Выберите, должна ли сессия пользователя быть постоянной.',
+        'remember_always' => 'Всегда',
+        'remember_never' => 'Никогда',
+        'remember_ask' => 'Спросить пользователя при входе',
     ],
     'user' =>
     [
