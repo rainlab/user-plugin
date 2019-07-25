@@ -27,14 +27,6 @@ tabs:
             commentAbove: rainlab.user::lang.settings.login_attribute_comment
             type: radio
             tab: rainlab.user::lang.settings.signin_tab
-            
-        # Update requires Password
-        update_requires_password:
-            span: right
-            label: 'User Settings'
-            commentAbove: 'Settings update requires current user password'
-            type: switch
-            tab: rainlab.user::lang.settings.signin_tab
 
         # Remeber Login Mode
         remember_login:
@@ -76,3 +68,11 @@ tabs:
             label: rainlab.user::lang.settings.activate_mode
             type: radio
             tab: rainlab.user::lang.settings.activation_tab
+
+        # Require current password when editing profile
+        update_requires_password:
+            span: left
+            label: rainlab.user::lang.settings.update_requires_password
+            commentAbove: rainlab.user::lang.settings.update_requires_password_comment
+            type: switch
+            tab: rainlab.user::lang.settings.profile_tab

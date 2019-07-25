@@ -71,6 +71,7 @@ return [
         'activation_tab' => 'Activation',
         'signin_tab' => 'Sign in',
         'registration_tab' => 'Registration',
+        'profile_tab' => 'Profile',
         'notifications_tab' => 'Notifications',
         'allow_registration' => 'Allow user registration',
         'allow_registration_comment' => 'If this is disabled users can only be created by administrators.',
@@ -97,6 +98,8 @@ return [
         'remember_always' => 'Always',
         'remember_never' => 'Never',
         'remember_ask' => 'Ask the user on login',
+        'update_requires_password' => 'Confirm current password on update',
+        'update_requires_password_comment' => 'Require the current password of the user when changing their profile.'
     ],
     'user' => [
         'label' => 'User',
