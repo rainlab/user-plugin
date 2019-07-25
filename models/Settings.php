@@ -35,6 +35,7 @@ class Settings extends Model
         $this->block_persistence = false;
         $this->allow_registration = true;
         $this->login_attribute = self::LOGIN_EMAIL;
+        $this->update_requires_password = false;
         $this->remember_login = self::REMEMBER_ALWAYS;
         $this->min_password_length = self::MIN_PASSWORD_LENGTH_DEFAULT;
     }

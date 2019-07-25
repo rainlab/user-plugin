@@ -11,6 +11,7 @@ use Redirect;
 use Validator;
 use ValidationException;
 use ApplicationException;
+use October\Rain\Auth\AuthException;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\Settings as UserSettings;
@@ -70,6 +71,7 @@ class Account extends ComponentBase
         $this->page['canRegister'] = $this->canRegister();
         $this->page['loginAttribute'] = $this->loginAttribute();
         $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
+        $this->page['updateRequiresPassword'] = $this->updateRequiresPassword();
         $this->page['rememberLoginMode'] = $this->rememberLoginMode();
     }
 
@@ -136,6 +138,14 @@ class Account extends ComponentBase
             ? /*Email*/'rainlab.user::lang.login.attribute_email'
             : /*Username*/'rainlab.user::lang.login.attribute_username'
         );
+    }
+
+    /**
+     * Returns the update requires password setting
+     */
+    public function updateRequiresPassword()
+    {
+        return UserSettings::get('update_requires_password', false);
     }
 
     /**
@@ -367,17 +377,25 @@ class Account extends ComponentBase
             return;
         }
 
+        $data = post();
+
+        if ($this->updateRequiresPassword()) {
+            if (!$user->checkHashValue('password', $data['password_current'])) {
+                throw new ValidationException(['password_current' => Lang::get('rainlab.user::lang.account.invalid_current_pass')]);
+            }
+        }
+
         if (Input::hasFile('avatar')) {
             $user->avatar = Input::file('avatar');
         }
 
-        $user->fill(post());
+        $user->fill($data);
         $user->save();
 
         /*
          * Password has changed, reauthenticate the user
          */
-        if (strlen(post('password'))) {
+        if (strlen($data['password'])) {
             Auth::login($user->reload(), true);
         }
 
