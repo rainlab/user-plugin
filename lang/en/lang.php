@@ -172,6 +172,7 @@ return [
         'invalid_user' => 'A user was not found with the given credentials.',
         'invalid_activation_code' => 'Invalid activation code supplied.',
         'invalid_deactivation_pass' => 'The password you entered was invalid.',
+        'invalid_current_pass' => 'The current password you entered was invalid.',
         'success_activation' => 'Successfully activated your account.',
         'success_deactivation' => 'Successfully deactivated your account. Sorry to see you go!',
         'success_saved' => 'Settings successfully saved!',

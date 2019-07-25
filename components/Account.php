@@ -139,7 +139,7 @@ class Account extends ComponentBase
             : /*Username*/'rainlab.user::lang.login.attribute_username'
         );
     }
-    
+
     /**
      * Returns the update requires password setting
      */
@@ -376,12 +376,12 @@ class Account extends ComponentBase
         if (!$user = $this->user()) {
             return;
         }
-        
+
         $data = post();
-        
+
         if ($this->updateRequiresPassword()) {
-            if (!$user->checkHashValue('password', $data['password_old'])) {
-                throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_deactivation_pass')]);
+            if (!$user->checkHashValue('password', $data['password_current'])) {
+                throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_current_pass')]);
             }
         }
 
