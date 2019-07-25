@@ -381,7 +381,7 @@ class Account extends ComponentBase
 
         if ($this->updateRequiresPassword()) {
             if (!$user->checkHashValue('password', $data['password_current'])) {
-                throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_current_pass')]);
+                throw new ValidationException(['password_current' => Lang::get('rainlab.user::lang.account.invalid_current_pass')]);
             }
         }
 
