@@ -112,7 +112,7 @@ class Session extends ComponentBase
 
         if (!Auth::isImpersonator()) {
             $user->touchLastSeen();
-            Event::fire('rainlab.user.access');
+            Event::fire('rainlab.user.access', [$user]);
         }
 
         return $user;
