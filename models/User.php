@@ -376,7 +376,7 @@ class User extends UserBase
 
     /**
      * Returns true if IP address is throttled and cannot register
-     * again. Maximum 3 registrations every 15 minutes.
+     * again. Maximum 3 registrations every 60 minutes.
      * @return bool
      */
     public static function isRegisterThrottled($ipAddress)
@@ -385,7 +385,7 @@ class User extends UserBase
             return false;
         }
 
-        $timeLimit = Carbon::now()->subMinutes(15);
+        $timeLimit = Carbon::now()->subMinutes(60);
         $count = static::make()
             ->where('created_ip_address', $ipAddress)
             ->where('created_at', '>', $timeLimit)
