@@ -38,6 +38,7 @@ class Settings extends Model
         $this->update_requires_password = false;
         $this->remember_login = self::REMEMBER_ALWAYS;
         $this->min_password_length = self::MIN_PASSWORD_LENGTH_DEFAULT;
+        $this->use_register_throttle = true;
     }
 
     public function getActivateModeOptions()

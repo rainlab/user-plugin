@@ -589,6 +589,10 @@ class Account extends ComponentBase
      */
     protected function isRegisterThrottled()
     {
+        if (!UserSettings::get('use_register_throttle', true)) {
+            return false;
+        }
+
         return UserModel::isRegisterThrottled(Request::ip());
     }
 }
