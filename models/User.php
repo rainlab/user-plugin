@@ -378,6 +378,7 @@ class User extends UserBase
     /**
      * Returns true if IP address is throttled and cannot register
      * again. Maximum 3 registrations every 60 minutes.
+     * @param string|null $ipAddress
      * @return bool
      */
     public static function isRegisterThrottled($ipAddress)
