@@ -4,6 +4,7 @@ use Str;
 use Auth;
 use Mail;
 use Event;
+use Carbon\Carbon;
 use October\Rain\Auth\Models\User as UserBase;
 use RainLab\User\Models\Settings as UserSettings;
 use October\Rain\Auth\AuthException;
@@ -49,7 +50,9 @@ class User extends UserBase
         'username',
         'email',
         'password',
-        'password_confirmation'
+        'password_confirmation',
+        'created_ip_address',
+        'last_ip_address'
     ];
 
     /**
@@ -352,6 +355,44 @@ class User extends UserBase
     {
         $throttle = Auth::createThrottleModel()->where('user_id', $this->id)->first();
         return $throttle ? $throttle->is_banned : false;
+    }
+
+    //
+    // IP Recording and Throttle
+    //
+
+    /**
+     * Records the last_ip_address to reflect the last known IP for this user.
+     * @return void
+     */
+    public function touchIpAddress($ipAddress)
+    {
+        $this
+            ->newQuery()
+            ->where('id', $this->id)
+            ->update(['last_ip_address' => $ipAddress])
+        ;
+    }
+
+    /**
+     * Returns true if IP address is throttled and cannot register
+     * again. Maximum 3 registrations every 15 minutes.
+     * @return bool
+     */
+    public static function isRegisterThrottled($ipAddress)
+    {
+        if (!$ipAddress) {
+            return false;
+        }
+
+        $timeLimit = Carbon::now()->subMinutes(15);
+        $count = static::make()
+            ->where('created_ip_address', $ipAddress)
+            ->where('created_at', '>', $timeLimit)
+            ->count()
+        ;
+
+        return $count > 2;
     }
 
     //

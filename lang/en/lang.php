@@ -132,6 +132,8 @@ return [
         'status_guest' => 'Guest',
         'status_activated' => 'Activated',
         'status_registered' => 'Registered',
+        'created_ip_address' => 'Created IP Address',
+        'last_ip_address' => 'Last IP Address',
     ],
     'group' => [
         'label' => 'Group',
@@ -183,6 +185,7 @@ return [
         'already_active' => 'Your account is already activated!',
         'activation_email_sent' => 'An activation email has been sent to your email address.',
         'registration_disabled' => 'Registrations are currently disabled.',
+        'registration_throttled' => 'Registration is throttled. Please try again later.',
         'sign_in' => 'Sign in',
         'register' => 'Register',
         'full_name' => 'Full Name',

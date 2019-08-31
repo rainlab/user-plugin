@@ -14,6 +14,7 @@ use ApplicationException;
 use October\Rain\Auth\AuthException;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
+use RainLab\User\Models\User as UserModel;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
 
@@ -235,6 +236,13 @@ class Account extends ComponentBase
             }
 
             /*
+             * Record IP address
+             */
+            if ($ipAddress = Request::ip()) {
+                $user->touchIpAddress($ipAddress);
+            }
+
+            /*
              * Redirect
              */
             if ($redirect = $this->makeRedirection(true)) {
@@ -255,6 +263,10 @@ class Account extends ComponentBase
         try {
             if (!$this->canRegister()) {
                 throw new ApplicationException(Lang::get(/*Registrations are currently disabled.*/'rainlab.user::lang.account.registration_disabled'));
+            }
+
+            if ($this->isRegisterThrottled()) {
+                throw new ApplicationException(Lang::get(/*Registration is throttled. Please try again later.*/'rainlab.user::lang.account.registration_throttled'));
             }
 
             /*
@@ -278,6 +290,13 @@ class Account extends ComponentBase
             $validation = Validator::make($data, $rules);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
+            }
+
+            /*
+             * Record IP address
+             */
+            if ($ipAddress = Request::ip()) {
+                $data['created_ip_address'] = $data['last_ip_address'] = $ipAddress;
             }
 
             /*
@@ -562,5 +581,14 @@ class Account extends ComponentBase
         }
 
         return Redirect::secure(Request::path());
+    }
+
+    /**
+     * Returns true if user is throttled.
+     * @return bool
+     */
+    protected function isRegisterThrottled()
+    {
+        return UserModel::isRegisterThrottled(Request::ip());
     }
 }
