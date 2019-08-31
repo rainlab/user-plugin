@@ -363,6 +363,7 @@ class User extends UserBase
 
     /**
      * Records the last_ip_address to reflect the last known IP for this user.
+     * @param string|null $ipAddress
      * @return void
      */
     public function touchIpAddress($ipAddress)
