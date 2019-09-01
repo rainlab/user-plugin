@@ -589,7 +589,7 @@ class Account extends ComponentBase
      */
     protected function isRegisterThrottled()
     {
-        if (!UserSettings::get('use_register_throttle', true)) {
+        if (!UserSettings::get('use_register_throttle', false)) {
             return false;
         }
 
