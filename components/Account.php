@@ -55,6 +55,12 @@ class Account extends ComponentBase
                 'type'        => 'checkbox',
                 'default'     => 0
             ],
+            'requirePassword' => [
+                'title'       => /*Confirm password on update*/'rainlab.user::lang.account.update_requires_password',
+                'description' => /*Require the current password of the user when changing their profile.*/'rainlab.user::lang.account.update_requires_password_comment',
+                'type'        => 'checkbox',
+                'default'     => 0
+            ],
         ];
     }
 
@@ -146,7 +152,7 @@ class Account extends ComponentBase
      */
     public function updateRequiresPassword()
     {
-        return UserSettings::get('update_requires_password', false);
+        return $this->property('requirePassword', false);
     }
 
     /**
