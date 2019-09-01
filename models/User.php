@@ -26,8 +26,8 @@ class User extends UserBase
         'email'    => 'required|between:6,255|email|unique:users',
         'avatar'   => 'nullable|image|max:4000',
         'username' => 'required|between:2,255|unique:users',
-        'password' => 'required:create|between:' . UserSettings::MIN_PASSWORD_LENGTH_DEFAULT . ',255|confirmed',
-        'password_confirmation' => 'required_with:password|between:' . UserSettings::MIN_PASSWORD_LENGTH_DEFAULT . ',255',
+        'password' => 'required:create|between:8,255|confirmed',
+        'password_confirmation' => 'required_with:password|between:8,255',
     ];
 
     /**
@@ -202,7 +202,7 @@ class User extends UserBase
      */
     public static function getMinPasswordLength()
     {
-        return Config::get('min_password_length', 8);
+        return Config::get('rainlab.user::minPasswordLength', 8);
     }
 
     //
@@ -247,7 +247,6 @@ class User extends UserBase
         ) {
             $this->username = $this->email;
         }
-
 
         /*
          * Apply Password Length Settings
