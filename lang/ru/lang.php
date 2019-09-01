@@ -79,8 +79,6 @@ return [
         'notifications_tab' => 'Оповещения',
         'allow_registration' => 'Разрешить регистрацию',
         'allow_registration_comment' => 'Если эта опция выключена, только администраторы смогут регистрировать пользователей.',
-        'min_password_length' => 'Минимальная длина пароля',
-        'min_password_length_comment' => 'Минимальное количество символов для пароля пользователя.',
         'activate_mode' => 'Активация',
         'activate_mode_comment' => 'Активация пользователя.',
         'activate_mode_auto' => 'Автоматическая',

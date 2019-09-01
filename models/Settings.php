@@ -25,7 +25,6 @@ class Settings extends Model
     const REMEMBER_ALWAYS = 'always';
     const REMEMBER_NEVER = 'never';
     const REMEMBER_ASK = 'ask';
-    const MIN_PASSWORD_LENGTH_DEFAULT = 8;
 
     public function initSettingsData()
     {
@@ -37,7 +36,6 @@ class Settings extends Model
         $this->login_attribute = self::LOGIN_EMAIL;
         $this->update_requires_password = false;
         $this->remember_login = self::REMEMBER_ALWAYS;
-        $this->min_password_length = self::MIN_PASSWORD_LENGTH_DEFAULT;
         $this->use_register_throttle = true;
     }
 

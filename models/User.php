@@ -4,6 +4,7 @@ use Str;
 use Auth;
 use Mail;
 use Event;
+use Config;
 use Carbon\Carbon;
 use October\Rain\Auth\Models\User as UserBase;
 use RainLab\User\Models\Settings as UserSettings;
@@ -201,7 +202,7 @@ class User extends UserBase
      */
     public static function getMinPasswordLength()
     {
-        return (int) UserSettings::get('min_password_length', UserSettings::MIN_PASSWORD_LENGTH_DEFAULT);
+        return Config::get('min_password_length', 8);
     }
 
     //
