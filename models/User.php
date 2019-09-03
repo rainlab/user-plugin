@@ -80,7 +80,7 @@ class User extends UserBase
     public function attemptActivation($code)
     {
         if ($this->trashed()) {
-            if ($code == $this->activation_code) {
+            if ($code === $this->activation_code) {
                 $this->restore();
             } else {
                 return false;
