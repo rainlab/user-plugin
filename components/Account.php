@@ -204,6 +204,8 @@ class Account extends ComponentBase
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
             }
+            
+            $data['login'] = trim($data['login']);
 
             $validation = Validator::make($data, $rules);
             if ($validation->fails()) {
