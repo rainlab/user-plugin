@@ -85,6 +85,7 @@ class ResetPassword extends ComponentBase
 
         $data = [
             'name' => $user->name,
+            'username' => $user->username,
             'link' => $link,
             'code' => $code
         ];
