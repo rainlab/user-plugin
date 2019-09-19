@@ -74,7 +74,11 @@ class Users extends Controller
         if ($record->trashed()) {
             return 'strike';
         }
-
+        
+        if ($record->isBanned()) {
+            return 'negative';
+        }
+        
         if (!$record->is_activated) {
             return 'disabled';
         }
