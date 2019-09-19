@@ -71,12 +71,22 @@ class Users extends Controller
      */
     public function listInjectRowClass($record, $definition = null)
     {
+        $classes = [];
+
         if ($record->trashed()) {
-            return 'strike';
+            $classes[] = 'strike';
+        }
+
+        if ($record->isBanned()) {
+            $classes[] = 'negative';
         }
 
         if (!$record->is_activated) {
-            return 'disabled';
+            $classes[] = 'disabled';
+        }
+
+        if (count($classes) > 0) {
+            return join(' ', $classes);
         }
     }
 
