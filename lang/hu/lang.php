@@ -165,7 +165,7 @@ return [
     'account' => [
         'account' => 'Fiók',
         'account_desc' => 'Felhasználó kezelési űrlap.',
-        'banned' => 'Sajnáljuk, ez a felhasználó jelenleg nincs aktiválva. Kérjük, vegye fel velünk a kapcsolatot.',
+        'banned' => 'Sajnáljuk, ez a felhasználó jelenleg nincs aktiválva. Kérjük vegye fel velünk a kapcsolatot.',
         'redirect_to' => 'Átirányítás',
         'redirect_to_desc' => 'A lap neve az átirányításhoz frissítés, bejelentkezés vagy regisztrálás után.',
         'code_param' => 'Aktiválási kód',
@@ -183,7 +183,7 @@ return [
         'already_active' => 'Már aktiválta a fiókját!',
         'activation_email_sent' => 'Az aktiválási e-mail elküldése sikeresen megtörtént.',
         'registration_disabled' => 'A regisztráció jelenleg tiltva van az oldalon.',
-        'registration_throttled' => 'Újbóli regisztráció nem engedélyezett. Kérjük, próbálja meg később.',
+        'registration_throttled' => 'Újbóli regisztráció nem engedélyezett. Kérjük próbálja meg később.',
         'sign_in' => 'Bejelentkezés',
         'register' => 'Regisztráció',
         'full_name' => 'Teljes név',
