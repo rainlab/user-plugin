@@ -1,19 +1,19 @@
 <p class="lead">
-    Please check your email for the activation code.
+    {# Please check your email for the activation code. #}{{ 'rainlab.user::lang.reset_password.activation_check_notice' | trans }}
 </p>
 
 <form
     data-request="{{ __SELF__ }}::onResetPassword"
     data-request-update="'{{ __SELF__ }}::complete': '#partialUserResetForm'">
     <div class="form-group">
-        <label for="resetCode">Activation Code</label>
-        <input name="code" type="text" class="form-control" id="resetCode" placeholder="Enter the activation code" value="{{ __SELF__.code }}">
+        <label for="resetCode">{# Activation Code #}{{ 'rainlab.user::lang.reset_password.activation_code' | trans }}</label>
+        <input name="code" type="text" class="form-control" id="resetCode" placeholder="{# Enter the activation code #}{{ 'rainlab.user::lang.reset_password.activation_code_placeholder' | trans }}" value="{{ __SELF__.code }}">
     </div>
 
     <div class="form-group">
-        <label for="resetPassword">New Password</label>
-        <input name="password" type="password" class="form-control" id="resetPassword" placeholder="Enter a new password">
+        <label for="resetPassword">{# New Password #}{{ 'rainlab.user::lang.account.new_password' | trans }}</label>
+        <input name="password" type="password" class="form-control" id="resetPassword" placeholder="{# Enter a new password #}{# New Password #}{{ 'rainlab.user::lang.account.new_password_placeholder' | trans }}">
     </div>
 
-    <button type="submit" class="btn btn-default">Reset password</button>
+    <button type="submit" class="btn btn-default">{# Reset Password #}{{ 'rainlab.user::lang.reset_password.reset_password' | trans }}</button>
 </form>

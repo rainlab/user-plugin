@@ -1,51 +1,51 @@
 {% if canRegister %}
-    <h3>{{ 'rainlab.user::lang.account.register'|trans }}</h3>
+    <h3>{# Register #}{{ 'rainlab.user::lang.account.register' | trans }}</h3>
 
     {{ form_ajax('onRegister') }}
 
         <div class="form-group">
-            <label for="registerName">{{ 'rainlab.user::lang.account.full_name'|trans }}</label>
+            <label for="registerName">{# Full Name #}{{ 'rainlab.user::lang.account.full_name' | trans }}</label>
             <input
                 name="name"
                 type="text"
                 class="form-control"
                 id="registerName"
-                placeholder="{{ 'rainlab.user::lang.account.full_name_placeholder'|trans }}" />
+                placeholder="{# Enter your full name #}{{ 'rainlab.user::lang.account.full_name_placeholder' | trans }}" />
         </div>
 
         <div class="form-group">
-            <label for="registerEmail">{{ 'rainlab.user::lang.account.email'|trans }}</label>
+            <label for="registerEmail">{# Email #}{{ 'rainlab.user::lang.account.email' | trans }}</label>
             <input
                 name="email"
                 type="email"
                 class="form-control"
                 id="registerEmail"
-                placeholder="{{ 'rainlab.user::lang.account.email_placeholder'|trans }}" />
+                placeholder="{# Enter your email #}{{ 'rainlab.user::lang.account.email_placeholder' | trans }}" />
         </div>
 
         {% if loginAttribute == "username" %}
             <div class="form-group">
-                <label for="registerUsername">{{ 'rainlab.user::lang.account.username'|trans }}</label>
+                <label for="registerUsername">{# Username #}{{ 'rainlab.user::lang.user.username' | trans }}</label>
                 <input
                     name="username"
                     type="text"
                     class="form-control"
                     id="registerUsername"
-                    placeholder="{{ 'rainlab.user::lang.account.username_placeholder'|trans }}" />
+                    placeholder="{# Enter your username #}{{ 'rainlab.user::lang.account.username_placeholder' | trans }}" />
             </div>
         {% endif %}
 
         <div class="form-group">
-            <label for="registerPassword">{{ 'rainlab.user::lang.account.password'|trans }}</label>
+            <label for="registerPassword">{# Password #}{{ 'rainlab.user::lang.account.password' | trans }}</label>
             <input
                 name="password"
                 type="password"
                 class="form-control"
                 id="registerPassword"
-                placeholder="{{ 'rainlab.user::lang.account.password_placeholder'|trans }}" />
+                placeholder="{# Choose a password #}{{ 'rainlab.user::lang.account.choose_password_placeholder' | trans }}" />
         </div>
 
-        <button type="submit" class="btn btn-default">{{ 'rainlab.user::lang.account.register'|trans }}</button>
+        <button type="submit" class="btn btn-default">{# Register #}{{ 'rainlab.user::lang.account.register' | trans }}</button>
 
     {{ form_close() }}
 {% else %}

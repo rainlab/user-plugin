@@ -193,17 +193,37 @@ return [
         'username_placeholder' => 'Enter your username',
         'email_placeholder' => 'Enter your email',
         'full_name_placeholder' => 'Enter your full name',
-        'password_placeholder' => 'Choose a password',
+        'password_placeholder' => 'Enter your password',
+        'choose_password_placeholder' => 'Choose a password',
         'new_password' => 'New Password',
+        'new_password_placeholder' => 'Enter a new password',
         'new_password_confirm' => 'Confirm New Password',
         'update_requires_password' => 'Confirm password on update',
-        'update_requires_password_comment' => 'Require the current password of the user when changing their profile.'
+        'update_requires_password_comment' => 'Require the current password of the user when changing their profile.',
+        'stay_logged_in' => 'Stay logged in',
+        'required' => 'Required',
+        'type_password_to_continue' => 'To continue, please enter your password:',
+        'activation_pending_title' => 'Your email address has not yet been verified.',
+        'activation_pending_description' => 'You should verify your account otherwise it may be deleted. Please check your email to verify.',
+        'activation_send_again' => 'Send the verification email again',
+        'deactivation_label' => 'Deactivate account',
+        'deactivation_title' => 'Deactivate your account?',
+        'deactivation_description' => 'Your account will be disabled and your details removed from the site. You can reactivate your account any time by signing back in.',
+        'deactivation_confirm' => 'Confirm Deactivate Account',
+        'deactivation_cancel' => 'I changed my mind'
     ],
     'reset_password' => [
         'reset_password' => 'Reset Password',
         'reset_password_desc' => 'Forgotten password form.',
         'code_param' => 'Reset Code Param',
-        'code_param_desc' => 'The page URL parameter used for the reset code'
+        'code_param_desc' => 'The page URL parameter used for the reset code',
+        'reset_password_complete' => 'Password reset complete, you may now sign in.',
+        'activation_code' => 'Activation code',
+        'activation_code_placeholder' => 'Enter the activation code',
+        'activation_check_notice' => 'Please check your email for the activation code.',
+        'reset_password_title' => 'Lost your password?',
+        'reset_password_description' => 'No problem! Enter your email address to verify your account.',
+        'restore_password' => 'Restore password'
     ],
     'session' => [
         'session' => 'Session',
@@ -219,5 +239,5 @@ return [
         'redirect_desc' => 'Page name to redirect if access is denied.',
         'logout' => 'You have been successfully logged out!',
         'stop_impersonate_success' => 'You are no longer impersonating a user.',
-    ]
+    ],
 ];

@@ -1,14 +1,15 @@
 <p class="lead">
-    <strong>Lost your password?</strong> No problem! Enter your email address to verify your account.
+    <strong>{# Lost your password? #}{{ 'rainlab.user::lang.reset_password.reset_password_title' | trans }}</strong>
+    {# No problem! Enter your email address to verify your account. #}{{ 'rainlab.user::lang.reset_password.reset_password_description' | trans }}
 </p>
 
 <form
     data-request="{{ __SELF__ }}::onRestorePassword"
     data-request-update="'{{ __SELF__ }}::reset': '#partialUserResetForm'">
     <div class="form-group">
-        <label for="userRestoreEmail">Email</label>
-        <input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="Enter your email">
+        <label for="userRestoreEmail">{# Email #}{{ 'rainlab.user::lang.account.email' | trans }}</label>
+        <input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="{# Enter your email #}{{ 'rainlab.user::lang.account.email_placeholder' | trans }}">
     </div>
 
-    <button type="submit" class="btn btn-default">Restore password</button>
+    <button type="submit" class="btn btn-default">{# Restore password #}{{ 'rainlab.user::lang.reset_password.restore_password' | trans }}</button>
 </form>
