@@ -204,7 +204,7 @@ class Account extends ComponentBase
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
             }
-            
+
             $data['login'] = trim($data['login']);
 
             $validation = Validator::make($data, $rules);
@@ -286,13 +286,15 @@ class Account extends ComponentBase
                 $data['password_confirmation'] = post('password');
             }
 
+            $rules = (new UserModel)->rules;
+
             $rules = [
                 'email'    => 'required|email|between:6,255',
                 'password' => 'required|between:4,255|confirmed'
             ];
 
-            if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
-                $rules['username'] = 'required|between:2,255';
+            if ($this->loginAttribute() !== UserSettings::LOGIN_USERNAME) {
+                unset($rules['username']);
             }
 
             $validation = Validator::make($data, $rules);
