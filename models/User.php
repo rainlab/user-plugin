@@ -30,6 +30,13 @@ class User extends UserBase
         'password_confirmation' => 'required_with:password|between:8,255',
     ];
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->applyPasswordLengthSettings();
+    }
+
     /**
      * @var array Relations
      */
@@ -247,7 +254,10 @@ class User extends UserBase
         ) {
             $this->username = $this->email;
         }
+    }
 
+    protected function applyPasswordLengthSettings()
+    {
         /*
          * Apply Password Length Settings
          */
