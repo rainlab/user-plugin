@@ -419,7 +419,7 @@ class Account extends ComponentBase
         /*
          * Password has changed, reauthenticate the user
          */
-        if (strlen($data['password'])) {
+        if (array_key_exists('password', $data) && strlen($data['password'])) {
             Auth::login($user->reload(), true);
         }
 
