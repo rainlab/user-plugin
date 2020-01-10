@@ -72,3 +72,4 @@
     - User IP addresses are now logged. Introduce registration throttle.
     - users_add_ip_address.php
 1.5.2: Whitespace from usernames is now trimmed, allowed for username to be added to Reset Password mail templates.
+1.5.3: Fixes a bug in the user update functionality if password is not changed. Added highlighting for banned users in user list.
