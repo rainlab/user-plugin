@@ -287,12 +287,14 @@ class Account extends ComponentBase
             }
 
             $rules = (new UserModel)->rules;
+            $names = (new UserModel)->attributeNames;
+            $messages = (new UserModel)->customMessages;
 
             if ($this->loginAttribute() !== UserSettings::LOGIN_USERNAME) {
                 unset($rules['username']);
             }
 
-            $validation = Validator::make($data, $rules);
+            $validation = Validator::make($data, $rules, $messages, $names);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
