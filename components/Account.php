@@ -291,8 +291,11 @@ class Account extends ComponentBase
             if ($this->loginAttribute() !== UserSettings::LOGIN_USERNAME) {
                 unset($rules['username']);
             }
+            
+            $messages = $customAttributes = [];
+            Event::fire('rainlab.user.beforeRegisterValidation', [&$data, &$rules, &$messages, &$customAttributes]);
 
-            $validation = Validator::make($data, $rules);
+            $validation = Validator::make($data, $rules, $messages, $customAttributes);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
