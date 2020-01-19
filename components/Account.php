@@ -286,23 +286,19 @@ class Account extends ComponentBase
                 $data['password_confirmation'] = post('password');
             }
 
-            $model = new UserModel;
-
-            if ($this->loginAttribute() !== UserSettings::LOGIN_USERNAME) {
-                unset($model->rules['username']);
-            }
-
-            $validation = Validator::make($data, $model->rules, $model->customMessages, $model->attributeNames);
-            if ($validation->fails()) {
-                throw new ValidationException($validation);
-            }
-
             /*
              * Record IP address
              */
             if ($ipAddress = Request::ip()) {
                 $data['created_ip_address'] = $data['last_ip_address'] = $ipAddress;
             }
+            
+            /*
+             * Executes user model validation
+             */
+            $user = Auth::createUserModel();
+            $user->fill($data);
+            $user->validate();
 
             /*
              * Register user
