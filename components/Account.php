@@ -332,7 +332,7 @@ class Account extends ComponentBase
              */
             if ($adminActivation) {
 
-                Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active.*/'rainlab.user::lang.account.activation_by_admin'));
+                Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active and must be approved by an administrator.*/'rainlab.user::lang.account.activation_by_admin'));
             }
 
             /*
