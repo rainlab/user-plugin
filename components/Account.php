@@ -328,7 +328,7 @@ class Account extends ComponentBase
 
             /*
              * Activation is by the admin, show message
-             * For automatic email on account activation rainLab.Notify plugin is needed
+             * For automatic email on account activation RainLab.Notify plugin is needed
              */
             if ($adminActivation) {
                 Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active and must be approved by an administrator.*/'rainlab.user::lang.account.activation_by_admin'));
