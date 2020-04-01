@@ -358,6 +358,19 @@ class User extends UserBase
     }
 
     //
+    // Suspending
+    //
+
+    /**
+     * Remove the ban on this user.
+     * @return void
+     */
+    public function unsuspend()
+    {
+        Auth::findThrottleByUserId($this->id)->unsuspend();
+    }
+
+    //
     // IP Recording and Throttle
     //
 
