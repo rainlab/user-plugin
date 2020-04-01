@@ -222,6 +222,22 @@ class Users extends Controller
     }
 
     /**
+     * Unsuspend this user
+     */
+    public function preview_onUnsuspendUser($recordId)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->unsuspend();
+
+        Flash::success(Lang::get('rainlab.user::lang.users.unsuspend_success'));
+
+        if ($redirect = $this->makeRedirect('update-close', $model)) {
+            return $redirect;
+        }
+    }
+
+    /**
      * Force delete a user.
      */
     public function update_onDelete($recordId = null)
