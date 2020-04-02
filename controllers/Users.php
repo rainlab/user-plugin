@@ -1,10 +1,10 @@
 <?php namespace RainLab\User\Controllers;
 
 use Auth;
-use Redirect;
 use Lang;
 use Flash;
 use Response;
+use Redirect;
 use BackendMenu;
 use BackendAuth;
 use Backend\Classes\Controller;
@@ -233,9 +233,7 @@ class Users extends Controller
 
         Flash::success(Lang::get('rainlab.user::lang.users.unsuspend_success'));
 
-        if ($redirect = $this->makeRedirect('update-close', $model)) {
-            return $redirect;
-        }
+        return Redirect::refresh();
     }
 
     /**
@@ -249,7 +247,9 @@ class Users extends Controller
 
         Flash::success(Lang::get('backend::lang.form.delete_success'));
 
-        return Redirect::refresh();
+        if ($redirect = $this->makeRedirect('delete', $model)) {
+            return $redirect;
+        }
     }
 
     /**
