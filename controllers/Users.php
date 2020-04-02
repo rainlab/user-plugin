@@ -1,7 +1,7 @@
 <?php namespace RainLab\User\Controllers;
 
 use Auth;
-use Illuminate\Support\Facades\Redirect;
+use Redirect;
 use Lang;
 use Flash;
 use Response;
