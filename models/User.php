@@ -358,6 +358,28 @@ class User extends UserBase
     }
 
     //
+    // Suspending
+    //
+
+    /**
+     * Check if the user is suspended.
+     * @return bool
+     */
+    public function isSuspended()
+    {
+        return Auth::findThrottleByUserId($this->id)->checkSuspended();
+    }
+
+    /**
+     * Remove the suspension on this user.
+     * @return void
+     */
+    public function unsuspend()
+    {
+        Auth::findThrottleByUserId($this->id)->unsuspend();
+    }
+
+    //
     // IP Recording and Throttle
     //
 

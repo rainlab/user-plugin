@@ -63,6 +63,9 @@ return [
         'unban_selected_confirm' => 'Unban the selected users?',
         'unban_selected_empty' => 'There are no selected users to unban.',
         'unban_selected_success' => 'Successfully unbanned the selected users.',
+        'unsuspend' => 'Unsuspend',
+        'unsuspend_success' => 'User has been unsuspended.',
+        'unsuspend_confirm' => 'Unsuspend this user?'
     ],
     'settings' => [
         'users' => 'Users',
