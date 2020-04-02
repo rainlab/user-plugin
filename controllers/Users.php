@@ -1,6 +1,7 @@
 <?php namespace RainLab\User\Controllers;
 
 use Auth;
+use Illuminate\Support\Facades\Redirect;
 use Lang;
 use Flash;
 use Response;
@@ -248,9 +249,7 @@ class Users extends Controller
 
         Flash::success(Lang::get('backend::lang.form.delete_success'));
 
-        if ($redirect = $this->makeRedirect('delete', $model)) {
-            return $redirect;
-        }
+        return Redirect::refresh();
     }
 
     /**
