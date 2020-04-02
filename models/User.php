@@ -362,7 +362,16 @@ class User extends UserBase
     //
 
     /**
-     * Remove the ban on this user.
+     * Check if the user is suspended.
+     * @return bool
+     */
+    public function isSuspended()
+    {
+        return Auth::findThrottleByUserId($this->id)->checkSuspended();
+    }
+
+    /**
+     * Remove the suspension on this user.
      * @return void
      */
     public function unsuspend()
