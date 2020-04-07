@@ -70,7 +70,7 @@ return [
     'settings'       => [
         'users'                         => 'Uporabniki',
         'menu_label'                    => 'Nastavitve za uporabnike',
-        'menu_description'              => 'Upravljajte z nastavitvami za uporabnike.',
+        'menu_description'              => 'Upravljanje z nastavitvami za uporabnike.',
         'activation_tab'                => 'Aktivacija',
         'signin_tab'                    => 'Prijava',
         'registration_tab'              => 'Registracija',
