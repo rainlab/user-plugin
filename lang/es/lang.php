@@ -8,7 +8,7 @@ return [
         'access_users' => 'Administrar usuarios',
         'access_groups' => 'Administrar grupos',
         'access_settings' => 'Preferencias de usuario',
-        'impersonate_user' => 'Personificar Usuarios'
+        'impersonate_user' => 'Personificar Usuario'
     ],
     'users' => [
         'menu_label' => 'Usuarios',
@@ -30,7 +30,7 @@ return [
         'convert_guest_manually' => 'Convertir a usuario registrado',
         'convert_guest_success' => 'El usuario ha sido convertido a una cuenta registrada',
         'impersonate_user' => 'Iniciar sesión como este usuario',
-        'impersonate_confirm' => '¿Estás seguro que quieres iniciar sesión como este usuario? Puede volver a tu estado original cerrando la sesión.',
+        'impersonate_confirm' => '¿Estás seguro que quieres iniciar sesión como este usuario? Puedes volver a tu estado original cerrando la sesión.',
         'impersonate_success' => 'Has iniciado sesión como este usuario correctamente.',
         'delete_confirm' => '¿Realmente desea eliminar este usuario?',
         'unban_user' => 'Desbloquear este usuario',
