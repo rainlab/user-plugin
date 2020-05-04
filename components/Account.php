@@ -312,6 +312,7 @@ class Account extends ComponentBase
             $requireActivation = UserSettings::get('require_activation', true);
             $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
             $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
+            $adminActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_ADMIN;
             $user = Auth::register($data, $automaticActivation);
 
             Event::fire('rainlab.user.register', [$user, $data]);
@@ -323,6 +324,14 @@ class Account extends ComponentBase
                 $this->sendActivationEmail($user);
 
                 Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'rainlab.user::lang.account.activation_email_sent'));
+            }
+
+            /*
+             * Activation is by the admin, show message
+             * For automatic email on account activation RainLab.Notify plugin is needed
+             */
+            if ($adminActivation) {
+                Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active and must be approved by an administrator.*/'rainlab.user::lang.account.activation_by_admin'));
             }
 
             /*

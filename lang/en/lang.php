@@ -185,6 +185,7 @@ return [
         'login_first' => 'You must be logged in first!',
         'already_active' => 'Your account is already activated!',
         'activation_email_sent' => 'An activation email has been sent to your email address.',
+        'activation_by_admin' => 'You have successfully registered. Your account is not yet active and must be approved by an administrator.',
         'registration_disabled' => 'Registrations are currently disabled.',
         'registration_throttled' => 'Registration is throttled. Please try again later.',
         'sign_in' => 'Sign in',
