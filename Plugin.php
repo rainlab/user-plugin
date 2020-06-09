@@ -4,12 +4,14 @@ use App;
 use Auth;
 use Event;
 use Backend;
+use Cache;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Classes\UserRedirector;
 use RainLab\User\Models\MailBlocker;
 use RainLab\Notify\Classes\Notifier;
+use RainLab\User\Models\User;
 
 class Plugin extends PluginBase
 {
@@ -34,7 +36,7 @@ class Plugin extends PluginBase
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'RainLab\User\Facades\Auth');
 
-        App::singleton('user.auth', function() {
+        App::singleton('user.auth', function () {
             return \RainLab\User\Classes\AuthManager::instance();
         });
 
@@ -56,7 +58,7 @@ class Plugin extends PluginBase
         /*
          * Apply user-based mail blocking
          */
-        Event::listen('mailer.prepareSend', function($mailer, $view, $message) {
+        Event::listen('mailer.prepareSend', function ($mailer, $view, $message) {
             return MailBlocker::filterMessage($view, $message);
         });
 
@@ -99,6 +101,10 @@ class Plugin extends PluginBase
 
     public function registerNavigation()
     {
+        $counterUsers = Cache::remember('rainlab.user::users-count', now()->addMinutes(5), function () {
+            return User::all()->count();
+        });
+
         return [
             'user' => [
                 'label'       => 'rainlab.user::lang.users.menu_label',
@@ -110,8 +116,9 @@ class Plugin extends PluginBase
 
                 'sideMenu' => [
                     'users' => [
-                        'label' => 'rainlab.user::lang.users.menu_label',
+                        'label'       => 'rainlab.user::lang.users.menu_label',
                         'icon'        => 'icon-user',
+                        'counter'     => $counterUsers,
                         'url'         => Backend::url('rainlab/user/users'),
                         'permissions' => ['rainlab.users.access_users']
                     ],
