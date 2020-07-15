@@ -207,7 +207,7 @@ class Account extends ComponentBase
 
             $data['login'] = trim($data['login']);
 
-            $validation = Validator::make($data, $rules);
+            $validation = Validator::make($data, $rules, $this->getValidatorMessages(), $this->getCustomAttributes());
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
@@ -292,7 +292,7 @@ class Account extends ComponentBase
                 unset($rules['username']);
             }
 
-            $validation = Validator::make($data, $rules);
+            $validation = Validator::make($data, $rules, $this->getValidatorMessages(), $this->getCustomAttributes());
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
@@ -608,5 +608,31 @@ class Account extends ComponentBase
         }
 
         return UserModel::isRegisterThrottled(Request::ip());
+    }
+
+    /**
+     * Create validation-message on failed signin
+     *
+     * @return array
+     */
+    protected function getValidatorMessages()
+    {
+        return [];
+    }
+
+    /**
+     * Get custom field attributes
+     *
+     * @return array
+     */
+    protected function getCustomAttributes()
+    {
+        return [
+            'login' => $this->loginAttributeLabel(),
+            'password' => Lang::get('rainlab.user::lang.account.password'),
+            'email' => Lang::get('rainlab.user::lang.account.email'),
+            'username' => Lang::get('rainlab.user::lang.user.username'),
+            'name' => Lang::get('rainlab.user::lang.account.full_name'),
+        ];
     }
 }
