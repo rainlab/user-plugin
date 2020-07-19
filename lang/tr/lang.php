@@ -63,6 +63,9 @@ return [
         'unban_selected_confirm' => 'Seçilen üyelerin engeli kaldırılsın mi?',
         'unban_selected_empty' => 'Engeli kaldırmak için üye seçmelisiniz.',
         'unban_selected_success' => 'Seçilen üyelerin engeli kaldırıldı.',
+        'unsuspend' => 'Askıya alma',
+        'unsuspend_success' => 'Üye askıya alındı.',
+        'unsuspend_confirm' => 'Üye askıya alınsın mı?'
     ],
     'settings' => [
         'users' => 'Üyeler',
@@ -71,9 +74,12 @@ return [
         'activation_tab' => 'Aktivasyon',
         'signin_tab' => 'Oturum Açma',
         'registration_tab' => 'Kayıt',
+        'profile_tab' => 'Profil',
         'notifications_tab' => 'Bildirimler',
         'allow_registration' => 'Üye kaydını aktifleştir',
         'allow_registration_comment' => 'Eğer bu seçenek pasifleştirilirse sadece yöneticiler tarafından üye kaydı yapılabilecektir.',
+        'min_password_length' => 'Minimum şifre uzunluğu',
+        'min_password_length_comment' => 'Üye şifresi için gereken minimum şifre uzunluğu',
         'activate_mode' => 'Aktivasyon Modu',
         'activate_mode_comment' => 'Üyenin nasıl aktif edileceğini seçin.',
         'activate_mode_auto' => 'Otomatik',
@@ -90,6 +96,11 @@ return [
         'block_persistence_comment' => 'Etkinleştirildiğinde, kullanıcılar aynı anda birden fazla cihazda oturum açamazlar.',
         'login_attribute' => 'Oturum Açma Yöntemi',
         'login_attribute_comment' => 'Üye girişlerinde hangi üye detayının kullanılacağını seçin.',
+        'remember_login' => 'Şifre hatırlama modu',
+        'remember_login_comment' => 'Üye oturumu kalıcı olsun.',
+        'remember_always' => 'Her zaman',
+        'remember_never' => 'Hiçbir zaman',
+        'remember_ask' => 'Üye girişi sırasında sor',
     ],
     'user' => [
         'label' => 'User',
@@ -122,6 +133,8 @@ return [
         'status_guest' => 'Ziyaretçi',
         'status_activated' => 'Aktif',
         'status_registered' => 'Kayıtlı',
+        'created_ip_address' => 'Kayıt olduğu IP Adresi',
+        'last_ip_address' => 'Son IP Adresi',
     ],
     'group' => [
         'label' => 'Grup',
@@ -164,6 +177,7 @@ return [
         'force_secure_desc' => 'URL’yi her zaman HTTPS şemasına yönlendirin.',
         'invalid_user' => 'Girilen bilgilerle eşleşen bir üye yok.',
         'invalid_activation_code' => 'Geçersiz aktivasyon kodu',
+        'invalid_current_pass' => 'Mevcut şifrenizi hatalı girdiniz.',
         'invalid_deactivation_pass' => 'Girdiğiniz şifre geçersiz.',
         'success_activation' => 'Hesabınız başarıyla aktifleştirildi.',
         'success_deactivation' => 'Hesabınız pasifleştirildi. Aramıza tekrar bekleriz!',
@@ -172,6 +186,7 @@ return [
         'already_active' => 'Hesabın zaten aktifleştirildi!',
         'activation_email_sent' => 'Tanımladığınız eposta adresine aktivasyon maili gönderildi.',
         'registration_disabled' => 'Üye kaydı geçici olarak durduruldu.',
+        'registration_throttled' => 'Üye kayıt işleminiz kısıtlandı ve geçersiz oldu. Lütfen daha sonra tekrar deneyin.',
         'sign_in' => 'Oturum Aç',
         'register' => 'Kayıt Ol',
         'full_name' => 'Tam İsim',
@@ -180,6 +195,8 @@ return [
         'login' => 'Oturum Aç',
         'new_password' => 'Yeni Parola',
         'new_password_confirm' => 'Yeni Şifre Onayla',
+        'update_requires_password' => 'Güncelleme sırasında onay gereksin',
+        'update_requires_password_comment' => 'Üye bilgi güncelleme ekranında mevcut şifre zorunlu olsun.'
     ],
     'reset_password' => [
         'reset_password' => 'Parolanızı Sıfırlayın',
