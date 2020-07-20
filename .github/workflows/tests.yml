@@ -20,6 +20,11 @@ jobs:
       cacheKey: ext-cache-v1
       octoberCmsRelease: develop
     steps:
+      - name: Checkout changes
+        uses: actions/checkout@v2
+        with:
+          path: user-plugin
+
       - name: Setup cache environment
         id: extcache
         uses: shivammathur/cache-extensions@v1
@@ -35,17 +40,6 @@ jobs:
           key: ${{ steps.extcache.outputs.key }}
           restore-keys: ${{ steps.extcache.outputs.key }}
 
-      - name: Get composer cache directory
-        id: composercache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.composercache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
       - name: Install PHP and extensions
         uses: shivammathur/setup-php@v2
         with:
@@ -53,19 +47,26 @@ jobs:
           extensions: ${{ env.phpExtensions }}
           tools: composer
           coverage: none
-  
+
       - name: Install October CMS
         run: |
           wget https://github.com/octobercms/october/archive/${{ env.octoberCmsRelease }}.zip
           unzip ${{ env.octoberCmsRelease }}.zip
           mv october-${{ env.octoberCmsRelease }}/{.,}* ./
           cp config/cms.php config/testing/cms.php
-          mkdir -p plugins/rainlab/user
+          mkdir -p plugins/rainlab
+          mv user-plugin plugins/rainlab/user
 
-      - name: Checkout changes
-        uses: actions/checkout@v2
+      - name: Get Composer cache directory
+        id: composercache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"  
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
         with:
-          path: plugins/rainlab/user
+          path: ${{ steps.composercache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
         run: composer install --no-interaction --no-progress --no-suggest
