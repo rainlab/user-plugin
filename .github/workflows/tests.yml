@@ -73,6 +73,9 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-interaction --no-progress --no-suggest
 
+      - name: Run linting
+        run: ./vendor/bin/parallel-lint plugins/rainlab/user
+
       - name: Run unit tests
         run: |
           cd plugins/rainlab/user
