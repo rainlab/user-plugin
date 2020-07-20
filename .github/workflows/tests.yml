@@ -20,9 +20,6 @@ jobs:
       cacheKey: ext-cache-v1
       octoberCmsRelease: develop
     steps:
-      - name: Checkout changes
-        uses: actions/checkout@v2
-
       - name: Setup cache environment
         id: extcache
         uses: shivammathur/cache-extensions@v1
@@ -61,10 +58,14 @@ jobs:
         run: |
           wget https://github.com/octobercms/october/archive/${{ env.octoberCmsRelease }}.zip
           unzip ${{ env.octoberCmsRelease }}.zip
-          mkdir -p october-${{ env.octoberCmsRelease }}/plugins/rainlab/user
-          mv !(october-${{ env.octoberCmsRelease }}) october-${{ env.octoberCmsRelease }}/plugins/rainlab/user
           mv october-${{ env.octoberCmsRelease }}/{.,}* ./
           cp config/cms.php config/testing/cms.php
+          mkdir -p plugins/rainlab/user
+
+      - name: Checkout changes
+        uses: actions/checkout@v2
+        with:
+          path: plugins/rainlab/user
 
       - name: Install Composer dependencies
         run: composer install --no-interaction --no-progress --no-suggest
