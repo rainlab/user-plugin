@@ -52,7 +52,9 @@ jobs:
         run: |
           wget https://github.com/octobercms/october/archive/${{ env.octoberCmsRelease }}.zip
           unzip ${{ env.octoberCmsRelease }}.zip
-          mv october-${{ env.octoberCmsRelease }}/{.,}* ./
+          shopt -s dotglob
+          mv october-${{ env.octoberCmsRelease }}/* ./
+          shopt -u dotglob
           cp config/cms.php config/testing/cms.php
           mkdir -p plugins/rainlab
           mv user-plugin plugins/rainlab/user
