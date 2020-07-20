@@ -6,7 +6,7 @@ use RainLab\User\Tests\PluginTestCase;
 
 class AuthFacadeTest extends PluginTestCase
 {
-    public function test_registering_a_user()
+    public function testRegisteringAUser()
     {
         // register a user
         $user = Auth::register([
@@ -26,7 +26,7 @@ class AuthFacadeTest extends PluginTestCase
         $this->assertEquals('some@website.tld', $user->email);
     }
 
-    public function test_registering_a_user_with_auto_activation()
+    public function testRegisteringAUserWithAutoActivation()
     {
         // register a user with the auto-activate flag
         $user = Auth::register([
@@ -43,7 +43,7 @@ class AuthFacadeTest extends PluginTestCase
         $this->assertTrue(Auth::check());
     }
 
-    public function test_registering_a_guest()
+    public function testRegisteringAGuest()
     {
         // register a guest
         $guest = Auth::registerGuest(['email' => 'person@acme.tld']);
@@ -57,7 +57,7 @@ class AuthFacadeTest extends PluginTestCase
         $this->assertEquals('person@acme.tld', $guest->email);
     }
 
-    public function test_login_and_checking_authentication()
+    public function testLoginAndCheckingAuthentication()
     {
         // we should not be authenticated
         $this->assertFalse(Auth::check());

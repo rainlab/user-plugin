@@ -1,9 +1,8 @@
 <?php namespace RainLab\User\Tests;
 
 use App;
-use Artisan;
-use Illuminate\Foundation\AliasLoader;
 use PluginTestCase as BasePluginTestCase;
+use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Models\Settings;
 
 abstract class PluginTestCase extends BasePluginTestCase
@@ -17,7 +16,7 @@ abstract class PluginTestCase extends BasePluginTestCase
 
     /**
      * Perform test case set up.
-     * 
+     *
      * @return void
      */
     public function setUp()
@@ -34,7 +33,7 @@ abstract class PluginTestCase extends BasePluginTestCase
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'RainLab\User\Facades\Auth');
     
-        App::singleton('user.auth', function() {
+        App::singleton('user.auth', function () {
             return \RainLab\User\Classes\AuthManager::instance();
         });
     }
