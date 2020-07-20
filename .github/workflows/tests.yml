@@ -61,9 +61,9 @@ jobs:
         run: |
           wget https://github.com/octobercms/october/archive/${{ env.octoberCmsRelease }}.zip
           unzip ${{ env.octoberCmsRelease }}.zip
-          mkdir -p october-{{ env.octoberCmsRelease }}/plugins/rainlab/user
-          mv !(october-{{ env.octoberCmsRelease }}) october-{{ env.octoberCmsRelease }}/plugins/rainlab/user
-          mv october-{{ env.octoberCmsRelease }}/{.,}* ./
+          mkdir -p october-${{ env.octoberCmsRelease }}/plugins/rainlab/user
+          mv !(october-${{ env.octoberCmsRelease }}) october-${{ env.octoberCmsRelease }}/plugins/rainlab/user
+          mv october-${{ env.octoberCmsRelease }}/{.,}* ./
           cp config/cms.php config/testing/cms.php
 
       - name: Install Composer dependencies
