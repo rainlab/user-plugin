@@ -1,11 +1,11 @@
 <?php namespace RainLab\User\Tests;
 
 use App;
-use PluginTestCase as BasePluginTestCase;
+use PluginTestCase;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Models\Settings;
 
-abstract class PluginTestCase extends BasePluginTestCase
+abstract class UserPluginTestCase extends PluginTestCase
 {
     /**
      * @var array   Plugins to refresh between tests.
@@ -19,7 +19,7 @@ abstract class PluginTestCase extends BasePluginTestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

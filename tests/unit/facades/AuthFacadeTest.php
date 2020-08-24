@@ -2,9 +2,9 @@
 
 use Auth;
 use RainLab\User\Models\User;
-use RainLab\User\Tests\PluginTestCase;
+use RainLab\User\Tests\UserPluginTestCase;
 
-class AuthFacadeTest extends PluginTestCase
+class AuthFacadeTest extends UserPluginTestCase
 {
     public function testRegisteringAUser()
     {
