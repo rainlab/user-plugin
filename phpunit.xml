@@ -9,7 +9,7 @@
     convertWarningsToExceptions="true"
     processIsolation="false"
     stopOnFailure="false"
-    syntaxCheck="false">
+>
     <testsuites>
         <testsuite name="rainlab.user">
             <directory>./tests</directory>
