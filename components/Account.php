@@ -338,22 +338,7 @@ class Account extends ComponentBase
              * Automatically activated or not required, log the user in
              */
             if ($automaticActivation || !$requireActivation) {
-                /*
-                * Login remember mode
-                */
-                switch ($this->rememberLoginMode()) {
-                    case UserSettings::REMEMBER_ALWAYS:
-                        $remember = true;
-                        break;
-                    case UserSettings::REMEMBER_NEVER:
-                        $remember = false;
-                        break;
-                    case UserSettings::REMEMBER_ASK:
-                        $remember = (bool) array_get($data, 'remember', false);
-                        break;
-                }
-
-                Auth::login($user, $remember);
+                Auth::login($user, $this->rememberLoginMode() === UserSettings::REMEMBER_ALWAYS);
             }
 
             /*
