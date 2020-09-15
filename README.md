@@ -47,7 +47,17 @@ As a security precaution, you may restrict users from having sessions across mul
 
 #### Notifications
 
-When a user is first activated -- either by registration, email confirmation or administrator approval -- they are sent a welcome email. To disable the welcome email, select "Do not send a notification" from the **Welcome mail template** dropdown. The default message template used is `rainlab.user::mail.welcome` and you can customize this by selecting **Mail > Mail Templates** from the settings menu.
+This feature has been replaced by the Notify plugin. How to replace this feature:
+
+- Install the RainLab.Notify plugin
+- Navigate to Settings > Notification rules
+- Click New notification rule
+- Select User > Activated
+- Click Add action
+- Select Compose a mail message
+- Select User email address for the Send to field
+- Here you may select the Mail template previously defined in the user settings.
+- Click Save
 
 ## Extended features
 
