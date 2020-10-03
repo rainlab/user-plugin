@@ -64,4 +64,19 @@
         </ul>
     </div>
 
+    <?=
+        /**
+         * @event rainlab.user.extendListToolbar
+         * Fires when user list toolbar is rendered.
+         *
+         * Example usage:
+         *
+         *     Event::listen('rainlab.user.extendListToolbar', function ($controller) {
+         *         // return your HTML here
+         *     });
+         *
+         */
+        $this->fireViewEvent('rainlab.user.extendListToolbar');
+    ?>
+
 </div>
