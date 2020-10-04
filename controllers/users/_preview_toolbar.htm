@@ -57,8 +57,11 @@
      *
      * Example usage:
      *
-     *     Event::listen('rainlab.user.extendPreviewToolbar', function ($controller, $record) {
-     *         // return your HTML here
+     *     Event::listen('rainlab.user.extendPreviewToolbar', function (
+     *         (RainLab\User\Controllers\Users) $controller,
+     *         (RainLab\User\Models\User) $record
+     *     ) {
+     *         return $controller->makePartial('~/path/to/partial');
      *     });
      *
      */

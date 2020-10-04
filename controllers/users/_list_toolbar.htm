@@ -71,8 +71,10 @@
          *
          * Example usage:
          *
-         *     Event::listen('rainlab.user.extendListToolbar', function ($controller) {
-         *         // return your HTML here
+         *     Event::listen('rainlab.user.extendListToolbar', function (
+         *         (RainLab\User\Controllers\Users) $controller
+         *     ) {
+         *         return $controller->makePartial('~/path/to/partial');
          *     });
          *
          */
