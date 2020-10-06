@@ -34,7 +34,7 @@ class Plugin extends PluginBase
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'RainLab\User\Facades\Auth');
 
-        App::singleton('user.auth', function() {
+        App::singleton('user.auth', function () {
             return \RainLab\User\Classes\AuthManager::instance();
         });
 
@@ -56,7 +56,7 @@ class Plugin extends PluginBase
         /*
          * Apply user-based mail blocking
          */
-        Event::listen('mailer.prepareSend', function($mailer, $view, $message) {
+        Event::listen('mailer.prepareSend', function ($mailer, $view, $message) {
             return MailBlocker::filterMessage($view, $message);
         });
 
@@ -184,7 +184,7 @@ class Plugin extends PluginBase
             'rainlab.user.register' => \RainLab\User\NotifyRules\UserRegisteredEvent::class
         ]);
 
-        Notifier::instance()->registerCallback(function($manager) {
+        Notifier::instance()->registerCallback(function ($manager) {
             $manager->registerGlobalParams([
                 'user' => Auth::getUser()
             ]);

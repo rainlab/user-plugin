@@ -66,19 +66,19 @@
 
     <?=
         /**
-         * @event rainlab.user.extendListToolbar
+         * @event rainlab.user.view.extendListToolbar
          * Fires when user list toolbar is rendered.
          *
          * Example usage:
          *
-         *     Event::listen('rainlab.user.extendListToolbar', function (
+         *     Event::listen('rainlab.user.view.extendListToolbar', function (
          *         (RainLab\User\Controllers\Users) $controller
          *     ) {
          *         return $controller->makePartial('~/path/to/partial');
          *     });
          *
          */
-        $this->fireViewEvent('rainlab.user.extendListToolbar');
+        $this->fireViewEvent('rainlab.user.view.extendListToolbar');
     ?>
 
 </div>
