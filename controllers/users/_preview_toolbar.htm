@@ -49,3 +49,23 @@
 </div>
 */
 ?>
+
+<?=
+    /**
+     * @event rainlab.user.view.extendPreviewToolbar
+     * Fires when preview user toolbar is rendered.
+     *
+     * Example usage:
+     *
+     *     Event::listen('rainlab.user.view.extendPreviewToolbar', function (
+     *         (RainLab\User\Controllers\Users) $controller,
+     *         (RainLab\User\Models\User) $record
+     *     ) {
+     *         return $controller->makePartial('~/path/to/partial');
+     *     });
+     *
+     */
+    $this->fireViewEvent('rainlab.user.view.extendPreviewToolbar', [
+        'record' => $formModel
+    ]);
+?>
