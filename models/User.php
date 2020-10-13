@@ -69,7 +69,7 @@ class User extends UserBase
     protected $purgeable = ['password_confirmation', 'send_invite'];
 
     protected $dates = [
-        'last_seen',
+        ' ',
         'deleted_at',
         'created_at',
         'updated_at',
@@ -461,6 +461,15 @@ class User extends UserBase
     public function isOnline()
     {
         return $this->last_seen > $this->freshTimestamp()->subMinutes(5);
+    }
+
+    /**
+     * Returns the date this user was last seen.
+     * @return Carbon\Carbon
+     */
+    public function getLastSeen()
+    {
+        return $this->last_seen ?: $this->created_at;
     }
 
     //
