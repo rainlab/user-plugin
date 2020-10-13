@@ -69,7 +69,7 @@ class User extends UserBase
     protected $purgeable = ['password_confirmation', 'send_invite'];
 
     protected $dates = [
-        ' ',
+        'last_seen',
         'deleted_at',
         'created_at',
         'updated_at',
