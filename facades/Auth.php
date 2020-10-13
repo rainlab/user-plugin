@@ -2,6 +2,9 @@
 
 use October\Rain\Support\Facade;
 
+/**
+ * @see \RainLab\User\Classes\AuthManager
+ */
 class Auth extends Facade
 {
     /**
