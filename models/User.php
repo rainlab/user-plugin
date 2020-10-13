@@ -460,16 +460,7 @@ class User extends UserBase
      */
     public function isOnline()
     {
-        return $this->getLastSeen() > $this->freshTimestamp()->subMinutes(5);
-    }
-
-    /**
-     * Returns the date this user was last seen.
-     * @return Carbon\Carbon
-     */
-    public function getLastSeen()
-    {
-        return $this->last_seen ?: $this->created_at;
+        return $this->last_seen > $this->freshTimestamp()->subMinutes(5);
     }
 
     //
