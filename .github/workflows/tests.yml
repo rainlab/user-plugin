@@ -45,7 +45,7 @@ jobs:
         with:
           php-version: ${{ matrix.phpVersions }}
           extensions: ${{ env.phpExtensions }}
-          tools: composer
+          tools: composer:v1
           coverage: none
 
       - name: Install October CMS
@@ -61,7 +61,7 @@ jobs:
 
       - name: Get Composer cache directory
         id: composercache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"  
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Cache dependencies
         uses: actions/cache@v2
