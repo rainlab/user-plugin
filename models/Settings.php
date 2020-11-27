@@ -28,14 +28,14 @@ class Settings extends Model
 
     public function initSettingsData()
     {
-        $this->require_activation = true;
-        $this->activate_mode = self::ACTIVATE_AUTO;
-        $this->use_throttle = true;
-        $this->block_persistence = false;
-        $this->allow_registration = true;
-        $this->login_attribute = self::LOGIN_EMAIL;
-        $this->remember_login = self::REMEMBER_ALWAYS;
-        $this->use_register_throttle = true;
+        $this->require_activation = config('rainlab.user::requireActivation');
+        $this->activate_mode = config('rainlab.user::activateMode');
+        $this->use_throttle = config('rainlab.user::useThrottle');
+        $this->block_persistence = config('rainlab.user::blockPersistence');
+        $this->allow_registration = config('rainlab.user::allowRegistration');;
+        $this->login_attribute = config('rainlab.user::loginAttribute');
+        $this->remember_login = config('rainlab.user::rememberLogin');
+        $this->use_register_throttle = config('rainlab.user::useRegisterThrottle');
     }
 
     public function getActivateModeOptions()
