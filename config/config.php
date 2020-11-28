@@ -11,6 +11,10 @@ return [
     |
     | Select how a user account should be activated.
     |
+    | ACTIVATE_ADMIN    Only an Administrator can activate a user.
+    | ACTIVATE_AUTO     Activated automatically upon registration.
+    | ACTIVATE_USER     The user activates their own account using mail.
+    |
     */
 
     'activateMode' => Settings::ACTIVATE_AUTO,
@@ -44,6 +48,9 @@ return [
     |
     | Select what primary user detail should be used for signing in.
     |
+    | LOGIN_EMAIL       Authenticate users by email.
+    | LOGIN_USERNAME    Authenticate users by username.
+    |
     */
 
     'loginAttribute' => Settings::LOGIN_EMAIL,
@@ -65,6 +72,10 @@ return [
     |--------------------------------------------------------------------------
     |
     | Select if the user session should be persistent.
+    |
+    | REMEMBER_ALWAYS   Always persist user session.
+    | REMEMBER_ASK      Ask if session should be persistent.
+    | REMEMBER_NEVER    Never persist user session.
     |
     */
 
