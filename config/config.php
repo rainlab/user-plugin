@@ -11,9 +11,9 @@ return [
     |
     | Select how a user account should be activated.
     |
-    | ACTIVATE_ADMIN    Only an Administrator can activate a user.
-    | ACTIVATE_AUTO     Activated automatically upon registration.
-    | ACTIVATE_USER     The user activates their own account using mail.
+    | ACTIVATE_ADMIN    Administrators must activate users manually.
+    | ACTIVATE_AUTO     Users are activated automatically upon registration.
+    | ACTIVATE_USER     The user activates their own account using a link sent to them via email.
     |
     */
 
