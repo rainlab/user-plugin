@@ -460,7 +460,7 @@ class User extends UserBase
      */
     public function isOnline()
     {
-        return $this->last_seen > $this->freshTimestamp()->subMinutes(5);
+        return $this->getLastSeen() > $this->freshTimestamp()->subMinutes(5);
     }
 
     /**
