@@ -326,6 +326,8 @@ class Account extends ComponentBase
                 Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'rainlab.user::lang.account.activation_email_sent'));
             }
 
+            $intended = false;
+            
             /*
              * Activation is by the admin, show message
              * For automatic email on account activation RainLab.Notify plugin is needed
@@ -339,12 +341,13 @@ class Account extends ComponentBase
              */
             if ($automaticActivation || !$requireActivation) {
                 Auth::login($user);
+                $intended = true;
             }
 
             /*
              * Redirect to the intended page after successful sign in
              */
-            if ($redirect = $this->makeRedirection(true)) {
+            if ($redirect = $this->makeRedirection($intended)) {
                 return $redirect;
             }
         }
