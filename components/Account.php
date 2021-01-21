@@ -338,7 +338,7 @@ class Account extends ComponentBase
              * Automatically activated or not required, log the user in
              */
             if ($automaticActivation || !$requireActivation) {
-                Auth::login($user);
+                Auth::login($user, $this->rememberLoginMode() === UserSettings::REMEMBER_ALWAYS);
             }
 
             /*
