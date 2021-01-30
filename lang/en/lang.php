@@ -130,7 +130,7 @@ return [
         'details' => 'Details',
         'account' => 'Account',
         'block_mail' => 'Block all outgoing mail sent to this user.',
-        'status_text' => 'Status',
+        'status_text' => 'Status: :status',
         'status_guest' => 'Guest',
         'status_activated' => 'Activated',
         'status_registered' => 'Registered',
