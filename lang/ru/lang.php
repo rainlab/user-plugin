@@ -127,6 +127,7 @@ return [
         'details' => 'Информация',
         'account' => 'Аккаунт',
         'block_mail' => 'Отключить всю исходящую почту для этого пользователя.',
+        'status_text' => 'Статус',
         'status_guest' => 'Гость',
         'status_activated' => 'Активирован',
         'status_registered' => 'Зарегистрирован',
