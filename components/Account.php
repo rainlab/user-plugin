@@ -58,7 +58,11 @@ class Account extends ComponentBase
 
     public function getRedirectOptions()
     {
-        return [''=>'- refresh page -', '0' => '- no redirect -', 'intended' => '- intended url -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+        return [
+            '' => '- refresh page -',
+            '0' => '- no redirect -',
+            'intended' => '- intended url -'
+        ] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
     /**
