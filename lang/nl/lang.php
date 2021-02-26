@@ -8,7 +8,7 @@ return [
         'access_users' => 'Beheer Gebruikers',
         'access_groups' => 'Beheer Groepen',
         'access_settings' => 'Gebruikersinstellingen beheren',
-        'impersonate_user' => 'Gebruikers imiteren'
+        'impersonate_user' => 'Gebruikers imiteren',
     ],
     'users' => [
         'menu_label' => 'Gebruikers',
@@ -65,7 +65,7 @@ return [
         'unban_selected_success' => 'Geselecteerde gebruikers zijn succesvol gedeblokkeerd.',
         'unsuspend' => 'Blokkade opheffen',
         'unsuspend_success' => 'Blokkade voor de gebruiker is opgeheven.',
-        'unsuspend_confirm' => 'Blokkade voor deze gebruiker opheffen?'
+        'unsuspend_confirm' => 'Blokkade voor deze gebruiker opheffen?',
     ],
     'settings' => [
         'users' => 'Gebruikers',
@@ -100,7 +100,7 @@ return [
         'remember_login_comment' => 'Selecteer of de gebruikerslogin onthouden moet worden.',
         'remember_always' => 'Altijd',
         'remember_never' => 'Nooit',
-        'remember_ask' => 'Vraag de gebruiker bij het inloggen'
+        'remember_ask' => 'Vraag de gebruiker bij het inloggen',
     ],
     'user' => [
         'label' => 'Gebruiker',
@@ -111,6 +111,15 @@ return [
         'surname' => 'Achternaam',
         'email' => 'E-mailadres',
         'created_at' => 'Geregistreerd op',
+        'last_seen' => 'Laatste login',
+        'is_guest' => 'Gast',
+        'joined' => 'Geregistreerd op',
+        'is_online' => 'Momenteel online',
+        'is_offline' => 'Momenteel offline',
+        'send_invite' => 'Uitnodiging per e-mail sturen',
+        'send_invite_comment' => 'Stuurt een welkomstbericht met login en wachtwoord informatie.',
+        'create_password' => 'Wachtwoord aanmaken',
+        'create_password_comment' => 'Voer een nieuw wachtwoord in dat wordt gebruikt om in te loggen.',
         'reset_password' => 'Reset wachtwoord',
         'reset_password_comment' => 'Voer een nieuw wachtwoord in om het wachtwoord te resetten.',
         'confirm_password' => 'Herhaal wachtwoord',
@@ -120,7 +129,12 @@ return [
         'avatar' => 'Profielfoto',
         'details' => 'Details',
         'account' => 'Account',
-        'last_seen' => 'Laatste login'
+        'block_mail' => 'Blokkeert alle uitgaande mail die naar deze gebruiker wordt gestuurd.',
+        'status_guest' => 'Gast',
+        'status_activated' => 'Geactiveerd',
+        'status_registered' => 'Geregistreerd',
+        'created_ip_address' => 'Registratie IP-address',
+        'last_ip_address' => 'Laatste IP-address',
     ],
     'group' => [
         'label' => 'Groep',
@@ -130,8 +144,8 @@ return [
         'code' => 'Code',
         'code_comment' => 'Voer een unieke code in als je deze groep wilt gebruiken met de API.',
         'created_at' => 'Aangemaakt op',
+        'users_count' => 'Gebruikers',
         'is_new_user_default_field' => 'Voeg nieuwe beheerders automatisch toe aan deze groep.',
-        'users_count' => 'Gebruikers'
     ],
     'groups' => [
         'menu_label' => 'Groepen',
@@ -146,29 +160,35 @@ return [
         'return_to_users' => 'Back to users list',
         'create_title' => 'Groep aanmaken',
         'update_title' => 'Wijzig groep',
-        'preview_title' => 'Voorbeeldweergave groep'
+        'preview_title' => 'Voorbeeldweergave groep',
     ],
     'login' => [
         'attribute_email' => 'E-mailadres',
-        'attribute_username' => 'Gebruikersnaam'
+        'attribute_username' => 'Gebruikersnaam',
     ],
     'account' => [
         'account' => 'Account',
         'account_desc' => 'Gebruikersaccount formulier.',
+        'banned' => 'Sorry, deze gebruiker is momenteel niet geactiveerd. Neem contact met ons op voor verdere hulp.',
         'redirect_to' => 'Redirect naar',
         'redirect_to_desc' => 'Pagina om naar te redirecten na het bijwerken, inloggen of registreren.',
         'code_param' => 'Activatie Code parameter',
         'code_param_desc' => 'De pagina URL parameter die gebruikt wordt voor de registratie activatie code.',
-        'invalid_activation_code' => 'Onjuiste activatie code',
+        'force_secure' => 'Forceer beveiligd protocol',
+        'force_secure_desc' => 'Stuur de URL altijd door naar HTTPS.',
         'invalid_user' => 'Geen gebruiker gevonden.',
+        'invalid_activation_code' => 'Onjuiste activatie code',
         'invalid_deactivation_pass' => 'Het ingevoerde wachtwoord is ongeldig.',
         'invalid_current_pass' => 'Het ingevoerde huidige wachtwoord is ongeldig.',
         'success_activation' => 'Uw account is succesvol geactiveerd.',
+        'success_deactivation' => 'Succesvol je account gedeactiveerd. Jammer dat je weggaat!',
         'success_saved' => 'Instellingen zijn opgeslagen.',
         'login_first' => 'U moet ingelogd zijn om deze pagina te bekijken.',
         'already_active' => 'Uw gebruikersaccount is reeds geactiveerd.',
         'activation_email_sent' => 'Een e-mailbericht met een activatie link is naar uw e-mailadres verzonden.',
+        'activation_by_admin' => 'U bent succesvol geregistreerd. Uw account is nog niet actief en moet worden goedgekeurd door een beheerder.',
         'registration_disabled' => 'Registratie is momenteel uitgeschakeld.',
+        'registration_throttled' => 'Registratie is geblokkeerd. Probeer het later nog eens.',
         'sign_in' => 'Inloggen',
         'register' => 'Registreren',
         'full_name' => 'Volledige naam',
@@ -176,13 +196,15 @@ return [
         'password' => 'Wachtwoord',
         'login' => 'Inloggen',
         'new_password' => 'Nieuw wachtwoord',
-        'new_password_confirm' => 'Herhaal nieuw wachtwoord'
+        'new_password_confirm' => 'Herhaal nieuw wachtwoord',
+        'update_requires_password' => 'Bevestig wachtwoord bij update',
+        'update_requires_password_comment' => 'Vereis het huidige wachtwoord van de gebruiker wanneer hij zijn profiel wijzigt.',
     ],
     'reset_password' => [
         'reset_password' => 'Reset wachtwoord',
         'reset_password_desc' => 'Wachtwoord vergeten formulier.',
         'code_param' => 'Reset Code parameter',
-        'code_param_desc' => 'De pagina URL parameter die gebruikt wordt voor de reset code.'
+        'code_param_desc' => 'De pagina URL parameter die gebruikt wordt voor de reset code.',
     ],
     'session' => [
         'session' => 'Sessie',
@@ -192,8 +214,11 @@ return [
         'all' => 'Alle',
         'users' => 'Gebruikers',
         'guests' => 'Gasten',
+        'allowed_groups_title' => 'Toegestane groepen',
+        'allowed_groups_description' => 'Kies toegelaten groepen of geen om alle groepen toe te laten',
         'redirect_title' => 'Redirect naar',
         'redirect_desc' => 'Pagina om naar te redirecten als toegang is afgewezen.',
-        'logout' => 'U bent succesvol uitgelogd.'
-    ]
+        'logout' => 'U bent succesvol uitgelogd.',
+        'stop_impersonate_success' => 'Je doet je niet langer voor als een gebruiker.',
+    ],
 ];
