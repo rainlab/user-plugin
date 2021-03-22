@@ -18,7 +18,7 @@
             <?= $formModel->created_at->toFormattedDateString() ?>
         </p>
         <p class="description">
-            Status:
+            <?= e(trans('rainlab.user::lang.user.status_label')) ?>:
             <?php if ($formModel->is_guest): ?>
                 <?= e(trans('rainlab.user::lang.user.status_guest')) ?>
             <?php elseif ($formModel->is_activated): ?>
