@@ -298,7 +298,7 @@ class User extends UserBase
      */
     public function afterLogin()
     {
-        $this->last_login = $this->freshTimestamp();
+        $this->last_login = $this->last_seen = $this->freshTimestamp();
 
         if ($this->trashed()) {
             $this->restore();
