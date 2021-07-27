@@ -207,7 +207,9 @@ class Account extends ComponentBase
 
             $data['login'] = trim($data['login']);
 
-            $validation = Validator::make($data, $rules);
+            $messages = (new UserModel)->customMessages;
+
+            $validation = Validator::make($data, $rules, $messages);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
@@ -292,7 +294,9 @@ class Account extends ComponentBase
                 unset($rules['username']);
             }
 
-            $validation = Validator::make($data, $rules);
+            $messages = (new UserModel)->customMessages;
+
+            $validation = Validator::make($data, $rules, $messages);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
