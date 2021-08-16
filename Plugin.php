@@ -133,7 +133,7 @@ class Plugin extends PluginBase
                 'label'       => 'rainlab.user::lang.settings.menu_label',
                 'description' => 'rainlab.user::lang.settings.menu_description',
                 'category'    => SettingsManager::CATEGORY_USERS,
-                'icon'        => 'icon-cog',
+                'icon'        => 'octo-icon-user-actions-key',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
                 'permissions' => ['rainlab.users.access_settings']
