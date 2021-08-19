@@ -164,6 +164,23 @@ class Account extends ComponentBase
     }
 
     /**
+     * useRememberLogin returns true if persistent authentication should be used.
+     */
+    protected function useRememberLogin(): bool
+    {
+        switch ($this->rememberLoginMode()) {
+            case UserSettings::REMEMBER_ALWAYS:
+                return true;
+
+            case UserSettings::REMEMBER_NEVER:
+                return false;
+
+            case UserSettings::REMEMBER_ASK:
+                return (bool) post('remember', false);
+        }
+    }
+
+    /**
      * Looks for the activation code from the URL parameter. If nothing
      * is found, the GET parameter 'activate' is used instead.
      * @return string
@@ -222,24 +239,9 @@ class Account extends ComponentBase
                 'password' => array_get($data, 'password')
             ];
 
-            /*
-            * Login remember mode
-            */
-            switch ($this->rememberLoginMode()) {
-                case UserSettings::REMEMBER_ALWAYS:
-                    $remember = true;
-                    break;
-                case UserSettings::REMEMBER_NEVER:
-                    $remember = false;
-                    break;
-                case UserSettings::REMEMBER_ASK:
-                    $remember = (bool) array_get($data, 'remember', false);
-                    break;
-            }
-
             Event::fire('rainlab.user.beforeAuthenticate', [$this, $credentials]);
 
-            $user = Auth::authenticate($credentials, $remember);
+            $user = Auth::authenticate($credentials, $this->useRememberLogin());
             if ($user->isBanned()) {
                 Auth::logout();
                 throw new AuthException(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'rainlab.user::lang.account.banned');
@@ -344,7 +346,7 @@ class Account extends ComponentBase
              * Automatically activated or not required, log the user in
              */
             if ($automaticActivation || !$requireActivation) {
-                Auth::login($user);
+                Auth::login($user, $this->useRememberLogin());
                 $intended = true;
             }
 
@@ -399,7 +401,7 @@ class Account extends ComponentBase
             /*
              * Sign in the user
              */
-            Auth::login($user);
+            Auth::login($user, $this->useRememberLogin());
 
         }
         catch (Exception $ex) {
