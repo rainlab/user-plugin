@@ -50,8 +50,8 @@ class Account extends ComponentBase
                 'default'     => 'code'
             ],
             'activationPage' => [
-                'title'       => /* Activation Redirect */'rainlab.user::lang.account.activation_page',
-                'description' => /* Select a page to redirect after activating the user account */'rainlab.user::lang.account.activation_page_comment',
+                'title'       => /* Activation Page */'rainlab.user::lang.account.activation_page',
+                'description' => /* Select a page to use for activating the user account */'rainlab.user::lang.account.activation_page_comment',
                 'type'        => 'dropdown',
                 'default'     => ''
             ],
