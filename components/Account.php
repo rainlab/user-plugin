@@ -224,9 +224,13 @@ class Account extends ComponentBase
 
             $data['login'] = trim($data['login']);
 
-            $messages = (new UserModel)->customMessages;
+            $validation = Validator::make(
+                $data,
+                $rules,
+                $this->getValidatorMessages(),
+                $this->getCustomAttributes()
+            );
 
-            $validation = Validator::make($data, $rules, $messages);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
@@ -296,9 +300,13 @@ class Account extends ComponentBase
                 unset($rules['username']);
             }
 
-            $messages = (new UserModel)->customMessages;
+            $validation = Validator::make(
+                $data,
+                $rules,
+                $this->getValidatorMessages(),
+                $this->getCustomAttributes()
+            );
 
-            $validation = Validator::make($data, $rules, $messages);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
@@ -333,7 +341,7 @@ class Account extends ComponentBase
             }
 
             $intended = false;
-            
+
             /*
              * Activation is by the admin, show message
              * For automatic email on account activation RainLab.Notify plugin is needed
@@ -617,5 +625,27 @@ class Account extends ComponentBase
         }
 
         return UserModel::isRegisterThrottled(Request::ip());
+    }
+
+    /**
+     * getValidatorMessages
+     */
+    protected function getValidatorMessages(): array
+    {
+        return (array) (new UserModel)->customMessages;
+    }
+
+    /**
+     * getCustomAttributes
+     */
+    protected function getCustomAttributes(): array
+    {
+        return [
+            'login' => $this->loginAttributeLabel(),
+            'password' => Lang::get('rainlab.user::lang.account.password'),
+            'email' => Lang::get('rainlab.user::lang.account.email'),
+            'username' => Lang::get('rainlab.user::lang.user.username'),
+            'name' => Lang::get('rainlab.user::lang.account.full_name')
+        ];
     }
 }
