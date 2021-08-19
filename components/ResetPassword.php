@@ -10,7 +10,7 @@ use Cms\Classes\ComponentBase;
 use RainLab\User\Models\User as UserModel;
 
 /**
- * Password reset workflow
+ * ResetPassword controls the password reset workflow
  *
  * When a user has forgotten their password, they are able to reset it using
  * a unique token that, sent to their email address upon request.
@@ -132,6 +132,11 @@ class ResetPassword extends ComponentBase
 
         if (!$user->attemptResetPassword($code, post('password'))) {
             throw new ValidationException($errorFields);
+        }
+
+        // Check needed for compatbility with legacy systems
+        if (method_exists(\RainLab\User\Classes\AuthManager::class, 'clearThrottleForUserId')) {
+            Auth::clearThrottleForUserId($user->id);
         }
     }
 

@@ -13,7 +13,7 @@ use RainLab\User\Models\UserGroup;
 use ValidationException;
 
 /**
- * User session
+ * Session component
  *
  * This will inject the user object to every page and provide the ability for
  * the user to sign out. This can also be used to restrict access to pages.
@@ -62,11 +62,17 @@ class Session extends ComponentBase
         ];
     }
 
+    /**
+     * getRedirectOptions
+     */
     public function getRedirectOptions()
     {
         return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
+    /**
+     * getAllowedUserGroupsOptions
+     */
     public function getAllowedUserGroupsOptions()
     {
         return UserGroup::lists('name','code');
@@ -91,7 +97,7 @@ class Session extends ComponentBase
             if (empty($this->property('redirect'))) {
                 throw new \InvalidArgumentException('Redirect property is empty');
             }
-            
+
             $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
             return Redirect::guest($redirectUrl);
         }
@@ -178,7 +184,7 @@ class Session extends ComponentBase
     protected function checkUserSecurity()
     {
         $allowedGroup = $this->property('security', self::ALLOW_ALL);
-        $allowedUserGroups = $this->property('allowedUserGroups', []);
+        $allowedUserGroups = (array) $this->property('allowedUserGroups', []);
         $isAuthenticated = Auth::check();
 
         if ($isAuthenticated) {

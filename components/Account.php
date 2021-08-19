@@ -66,7 +66,10 @@ class Account extends ComponentBase
 
     public function getRedirectOptions()
     {
-        return [''=>'- refresh page -', '0' => '- no redirect -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+        return [
+            '' => '- refresh page -',
+            '0' => '- no redirect -'
+        ] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
     /**
@@ -584,6 +587,7 @@ class Account extends ComponentBase
         if ($property === '0') {
             return;
         }
+
         // Refresh page
         if ($property === '') {
             return Redirect::refresh();

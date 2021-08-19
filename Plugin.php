@@ -32,7 +32,7 @@ class Plugin extends PluginBase
     public function register()
     {
         $alias = AliasLoader::getInstance();
-        $alias->alias('Auth', 'RainLab\User\Facades\Auth');
+        $alias->alias('Auth', \RainLab\User\Facades\Auth::class);
 
         App::singleton('user.auth', function () {
             return \RainLab\User\Classes\AuthManager::instance();
