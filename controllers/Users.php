@@ -279,6 +279,7 @@ class Users extends Controller
                         break;
 
                     case 'deactivate':
+                        $user->clearPersistCode();
                         $user->delete();
                         break;
 

@@ -149,6 +149,16 @@ class User extends UserBase
     //
 
     /**
+     * clearPersistCode will forcibly sign the user out
+     */
+    public function clearPersistCode(): void
+    {
+        $this->persist_code = null;
+        $this->timestamps = false;
+        $this->save();
+    }
+
+    /**
      * Gets a code for when the user is persisted to a cookie or session which identifies the user.
      * @return string
      */
