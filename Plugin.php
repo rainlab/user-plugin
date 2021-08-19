@@ -69,8 +69,8 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            \RainLab\User\Components\Session::class       => 'session',
-            \RainLab\User\Components\Account::class       => 'account',
+            \RainLab\User\Components\Session::class => 'session',
+            \RainLab\User\Components\Account::class => 'account',
             \RainLab\User\Components\ResetPassword::class => 'resetPassword'
         ];
     }
@@ -133,7 +133,7 @@ class Plugin extends PluginBase
                 'label'       => 'rainlab.user::lang.settings.menu_label',
                 'description' => 'rainlab.user::lang.settings.menu_description',
                 'category'    => SettingsManager::CATEGORY_USERS,
-                'icon'        => 'icon-cog',
+                'icon'        => class_exists('System') ? 'octo-icon-user-actions-key' : 'icon-cog',
                 'class'       => 'RainLab\User\Models\Settings',
                 'order'       => 500,
                 'permissions' => ['rainlab.users.access_settings']

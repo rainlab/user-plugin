@@ -70,7 +70,7 @@ return [
     'settings' => [
         'users' => 'Users',
         'menu_label' => 'User settings',
-        'menu_description' => 'Manage user based settings.',
+        'menu_description' => 'Manage user authentication, registration and activation settings.',
         'activation_tab' => 'Activation',
         'signin_tab' => 'Sign in',
         'registration_tab' => 'Registration',
