@@ -198,7 +198,9 @@ return [
         'new_password' => 'New Password',
         'new_password_confirm' => 'Confirm New Password',
         'update_requires_password' => 'Confirm password on update',
-        'update_requires_password_comment' => 'Require the current password of the user when changing their profile.'
+        'update_requires_password_comment' => 'Require the current password of the user when changing their profile.',
+        'activation_page' => 'Activation Redirect',
+        'activation_page_comment' => 'Select a page to redirect when activating the user account',
     ],
     'reset_password' => [
         'reset_password' => 'Reset Password',

@@ -49,6 +49,12 @@ class Account extends ComponentBase
                 'type'        => 'string',
                 'default'     => 'code'
             ],
+            'activationPage' => [
+                'title'       => /* Activation Redirect */'rainlab.user::lang.account.activation_page',
+                'description' => /* Select a page to redirect after activating the user account */'rainlab.user::lang.account.activation_page_comment',
+                'type'        => 'dropdown',
+                'default'     => ''
+            ],
             'forceSecure' => [
                 'title'       => /*Force secure protocol*/'rainlab.user::lang.account.force_secure',
                 'description' => /*Always redirect the URL with the HTTPS schema.*/'rainlab.user::lang.account.force_secure_desc',
@@ -64,11 +70,24 @@ class Account extends ComponentBase
         ];
     }
 
+    /**
+     * getRedirectOptions
+     */
     public function getRedirectOptions()
     {
         return [
             '' => '- refresh page -',
             '0' => '- no redirect -'
+        ] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+    }
+
+    /**
+     * getActivationPageOptions
+     */
+    public function getActivationPageOptions()
+    {
+        return [
+            '' => '- current page -',
         ] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
