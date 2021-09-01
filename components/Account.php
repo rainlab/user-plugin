@@ -600,7 +600,7 @@ class Account extends ComponentBase
     {
         $method = $intended ? 'intended' : 'to';
 
-        $property = trim((string) $this->property('redirect'));
+        $property = post('redirect', $this->property('redirect'));
 
         // No redirect
         if ($property === '0') {
@@ -614,7 +614,7 @@ class Account extends ComponentBase
 
         $redirectUrl = $this->pageUrl($property) ?: $property;
 
-        if ($redirectUrl = post('redirect', $redirectUrl)) {
+        if ($redirectUrl) {
             return Redirect::$method($redirectUrl);
         }
     }
