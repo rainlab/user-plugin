@@ -151,7 +151,7 @@ class User extends UserBase
     /**
      * clearPersistCode will forcibly sign the user out
      */
-    public function clearPersistCode(): void
+    public function clearPersistCode()
     {
         $this->persist_code = null;
         $this->timestamps = false;
