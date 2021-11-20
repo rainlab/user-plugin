@@ -1,6 +1,5 @@
 <?php namespace RainLab\User\Updates;
 
-use Carbon\Carbon;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
@@ -18,9 +17,13 @@ class UsersAddIpAddress extends Migration
     public function down()
     {
         if (Schema::hasColumn('users', 'created_ip_address')) {
-            Schema::table('users', function($table)
-            {
+            Schema::table('users', function($table) {
                 $table->dropColumn('created_ip_address');
+            });
+        }
+
+        if (Schema::hasColumn('users', 'last_ip_address')) {
+            Schema::table('users', function($table) {
                 $table->dropColumn('last_ip_address');
             });
         }
