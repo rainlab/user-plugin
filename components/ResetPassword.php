@@ -134,7 +134,7 @@ class ResetPassword extends ComponentBase
             throw new ValidationException($errorFields);
         }
 
-        // Check needed for compatbility with legacy systems
+        // Check needed for compatibility with legacy systems
         if (method_exists(\RainLab\User\Classes\AuthManager::class, 'clearThrottleForUserId')) {
             Auth::clearThrottleForUserId($user->id);
         }
