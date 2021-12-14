@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit 
+<phpunit
     backupGlobals="false"
     backupStaticAttributes="false"
     bootstrap="../../../tests/bootstrap.php"
@@ -11,29 +11,32 @@
     stopOnFailure="false"
 >
     <testsuites>
-        <testsuite name="rainlab.user">
+        <testsuite name="RainLab User Plugin">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
     <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
+        <env name="APP_ENV" value="testing" />
+        <env name="APP_LOCALE" value="en" />
+        <env name="CACHE_DRIVER" value="array" />
+        <env name="SESSION_DRIVER" value="array" />
+        <env name="DB_CONNECTION" value="sqlite" />
+        <env name="DB_DATABASE" value=":memory:" />
     </php>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+    <coverage processUncoveredFiles="true">
+        <include>
             <directory suffix=".php">./classes</directory>
             <directory suffix=".php">./components</directory>
             <directory suffix=".php">./controllers</directory>
             <directory suffix=".php">./facades</directory>
             <directory suffix=".php">./models</directory>
             <directory suffix=".php">./notifyrules</directory>
-            <exclude>
-                <file>./Plugin.php</file>
-                <directory>./tests</directory>
-                <directory>./updates</directory>
-                <directory>./vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+        </include>
+        <exclude>
+            <file>./Plugin.php</file>
+            <directory>./tests</directory>
+            <directory>./updates</directory>
+            <directory>./vendor</directory>
+        </exclude>
+    </coverage>
 </phpunit>

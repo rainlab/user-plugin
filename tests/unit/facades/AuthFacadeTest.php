@@ -1,14 +1,14 @@
 <?php namespace RainLab\User\Tests\Unit\Facades;
 
 use Auth;
+use Event;
 use RainLab\User\Models\User;
 use RainLab\User\Tests\UserPluginTestCase;
 
 class AuthFacadeTest extends UserPluginTestCase
 {
-    public function testRegisteringAUser()
+    public function testRegisterUser()
     {
-        // register a user
         $user = Auth::register([
             'name' => 'Some User',
             'email' => 'some@website.tld',
@@ -16,19 +16,19 @@ class AuthFacadeTest extends UserPluginTestCase
             'password_confirmation' => 'changeme',
         ]);
 
-        // our one user should be returned
         $this->assertEquals(1, User::count());
-        $this->assertInstanceOf('RainLab\User\Models\User', $user);
-        
-        // and that user should have the following data
+        $this->assertInstanceOf(\RainLab\User\Models\User::class, $user);
+
         $this->assertFalse($user->is_activated);
         $this->assertEquals('Some User', $user->name);
         $this->assertEquals('some@website.tld', $user->email);
     }
 
-    public function testRegisteringAUserWithAutoActivation()
+    public function testRegisterUserWithAutoActivation()
     {
-        // register a user with the auto-activate flag
+        // Stop activation events from other plugins
+        Event::forget('rainlab.user.activate');
+
         $user = Auth::register([
             'name' => 'Some User',
             'email' => 'some@website.tld',
@@ -36,33 +36,26 @@ class AuthFacadeTest extends UserPluginTestCase
             'password_confirmation' => 'changeme',
         ], true);
 
-        // that user should be activated
         $this->assertTrue($user->is_activated);
 
-        // and we should now be authenticated
         $this->assertTrue(Auth::check());
     }
 
-    public function testRegisteringAGuest()
+    public function testRegisterGuest()
     {
-        // register a guest
         $guest = Auth::registerGuest(['email' => 'person@acme.tld']);
 
-        // our one guest should be returned
         $this->assertEquals(1, User::count());
-        $this->assertInstanceOf('RainLab\User\Models\User', $guest);
+        $this->assertInstanceOf(\RainLab\User\Models\User::class, $guest);
 
-        // and that guest should have the following data
         $this->assertTrue($guest->is_guest);
         $this->assertEquals('person@acme.tld', $guest->email);
     }
 
-    public function testLoginAndCheckingAuthentication()
+    public function testLoginAndCheckAuth()
     {
-        // we should not be authenticated
         $this->assertFalse(Auth::check());
 
-        // create a user
         $user = User::create([
             'name' => 'Some User',
             'email' => 'some@website.tld',
@@ -70,15 +63,12 @@ class AuthFacadeTest extends UserPluginTestCase
             'password_confirmation' => 'changeme',
         ]);
 
-        // in order to log in as this user, we must be activated
         $user->is_activated = true;
         $user->activated_at = now();
         $user->save();
 
-        // log in as a new user
         Auth::login($user);
 
-        // we should now be authenticated
         $this->assertTrue(Auth::check());
     }
 }
