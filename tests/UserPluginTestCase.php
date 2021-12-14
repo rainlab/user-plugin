@@ -11,13 +11,6 @@ use RainLab\User\Models\Settings;
 abstract class UserPluginTestCase extends PluginTestCase
 {
     /**
-     * @var array refreshPlugins between tests
-     */
-    protected $refreshPlugins = [
-        'RainLab.User',
-    ];
-
-    /**
      * setUp test case
      */
     public function setUp(): void
