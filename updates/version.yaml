@@ -76,3 +76,4 @@
 1.5.4: Multiple translation improvements. Added view events to extend user preview and user listing toolbars.
 1.5.5: Updated settings icon and description.
 1.6.0: Apply persistence settings on activation and registration. Fixes last seen touched when impersonating. Fixes user suspension not clearing.
+1.6.1: Adds component property for resetPage in ResetPassword component.
