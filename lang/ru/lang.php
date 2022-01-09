@@ -199,6 +199,10 @@ return [
         'new_password_confirm' => 'Подтверждение пароля',
         'update_requires_password' => 'Подтверждать пароль при обновлении',
         'update_requires_password_comment' => 'Запрашивать текущий пароль пользователя при редактировании его профиля.',
+        'activation_page' => 'Страница активации',
+        'activation_page_comment' => 'Выберите страницу для активации аккаунта пользователя.',
+        'reset_page' => 'Страница сброса пароля',
+        'reset_page_comment' => 'Выберите страницу для сброса проля аккаунта.',
     ],
     'reset_password' => [
         'reset_password' => 'Сброс пароля',
