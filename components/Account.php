@@ -238,7 +238,7 @@ class Account extends ComponentBase
                 ? 'required|between:2,255'
                 : 'required|email|between:6,255';
 
-            $rules['password'] = 'required|between:4,255';
+            $rules['password'] = 'required|between:' . UserModel::getMinPasswordLength() . ',255';
 
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
