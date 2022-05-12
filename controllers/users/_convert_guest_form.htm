@@ -1,7 +1,7 @@
 <?= Form::open(['id' => 'convertGuestForm']) ?>
-    <div class="modal-header">
+    <div class="modal-header flex-row-reverse">
         <button type="button" class="close" data-dismiss="popup">&times;</button>
-        <h4 class="modal-title">Convert guest user</h4>
+        <h4 class="modal-title">Convert Guest User</h4>
     </div>
     <div class="modal-body">
 
@@ -10,7 +10,7 @@
         <?php endif ?>
 
         <div class="form-group dropdown-field span-full">
-            <label>Select a new user group</label>
+            <label class="form-label">Select a new user group</label>
             <select class="form-control custom-select" name="new_group">
                 <option selected="selected" value="">- No group -</option>
                 <?php foreach ($groups as $group): ?>
