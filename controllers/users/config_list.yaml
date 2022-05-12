@@ -8,6 +8,9 @@ title: rainlab.user::lang.users.list_title
 # Model List Column configuration
 list: $/rainlab/user/models/user/columns.yaml
 
+# Filter widget configuration
+filter: $/rainlab/user/models/user/scopes.yaml
+
 # Model Class name
 modelClass: RainLab\User\Models\User
 
@@ -25,9 +28,6 @@ showCheckboxes: true
 
 # Displays the list column set up button
 showSetup: true
-
-# Filter widget configuration
-filter: config_filter.yaml
 
 # Toolbar widget configuration
 toolbar:

@@ -14,7 +14,7 @@ scopes:
         # Filter scope
         scope: filterByGroup
 
-    created_date:
+    created_at:
         label: rainlab.user::lang.user.created_at
         type: daterange
         conditions: created_at >= ':after' AND created_at <= ':before'
