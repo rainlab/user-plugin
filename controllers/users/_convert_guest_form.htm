@@ -4,7 +4,6 @@
         <h4 class="modal-title">Convert Guest User</h4>
     </div>
     <div class="modal-body">
-
         <?php if ($this->fatalError): ?>
             <p class="flash-message static error"><?= $fatalError ?></p>
         <?php endif ?>
@@ -24,8 +23,8 @@
                 <input type="hidden" class="checkbox" value="" name="send_registration_notification">
                 <input name="send_registration_notification" value="1" type="checkbox" id="sendNotification" checked="checked" />
                 <label class="storm-icon-pseudo" for="sendNotification">Send registration notification</label>
-                <p class="help-block">Use this checkbox to generate new random password for the user and send a registration notification email.</p>
             </div>
+            <p class="help-block form-text">Use this checkbox to generate new random password for the user and send a registration notification email.</p>
         </div>
 
     </div>
@@ -36,7 +35,7 @@
             class="btn btn-primary"
             data-popup-load-indicator
             data-request="onConvertGuest">
-            Convert to registered
+            Convert to Registered
         </button>
         <button
             type="button"
