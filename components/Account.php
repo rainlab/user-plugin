@@ -270,7 +270,7 @@ class Account extends ComponentBase
             $user = Auth::authenticate($credentials, $this->useRememberLogin());
             if ($user->isBanned()) {
                 Auth::logout();
-                throw new AuthException(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'rainlab.user::lang.account.banned');
+                throw new AuthException(Lang::get(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'rainlab.user::lang.account.banned'));
             }
 
             /*
