@@ -468,7 +468,7 @@ class Account extends ComponentBase
          * Password has changed, reauthenticate the user
          */
         if (array_key_exists('password', $data) && strlen($data['password'])) {
-            Auth::login($user->reload(), true);
+            Auth::login($user->reload(), $this->useRememberLogin());
         }
 
         Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'rainlab.user::lang.account.success_saved')));
