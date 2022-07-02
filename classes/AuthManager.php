@@ -53,6 +53,10 @@ class AuthManager extends RainAuthManager
      */
     public function findUserByEmail($email)
     {
+        if (!$email) {
+            return null;
+        }
+
         $query = $this->createUserModelQuery();
 
         $user = $query->where('email', $email)->first();

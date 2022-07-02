@@ -132,8 +132,8 @@ class User extends UserBase
     //
 
     /**
-     * Looks up a user by their email address.
-     * @return self
+     * @deprecated use findUserByEmail instead
+     * @see \RainLab\User\Classes\AuthManager
      */
     public static function findByEmail($email)
     {
