@@ -91,8 +91,8 @@ class ResetPassword extends ComponentBase
             throw new ValidationException($validation);
         }
 
-        $user = UserModel::findByEmail(post('email'));
-        if (!$user || $user->is_guest) {
+        $user = Auth::findUserByEmail(post('email'));
+        if (!$user || $user->is_guest || $user->trashed()) {
             throw new ApplicationException(Lang::get(/*A user was not found with the given credentials.*/'rainlab.user::lang.account.invalid_user'));
         }
 
