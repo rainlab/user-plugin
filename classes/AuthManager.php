@@ -30,6 +30,8 @@ class AuthManager extends RainAuthManager
     public function extendUserQuery($query)
     {
         $query->withTrashed();
+
+        // Extensibility
         Event::fire('rainlab.user.extendUserAuthQuery', [$query]);
     }
 
@@ -45,9 +47,9 @@ class AuthManager extends RainAuthManager
         return parent::register($credentials, $activate, $autoLogin);
     }
 
-
     /**
-     * findUserByEmail finds a user by the email value.
+     * findUserByEmail finds a user by the email value, which includes
+     * deactivated (trashed) user records.
      * @param string $email
      * @return Authenticatable|null
      */
@@ -81,10 +83,11 @@ class AuthManager extends RainAuthManager
     {
         $query = $this->createUserModelQuery();
 
-        return $user = $query
+        return $query
             ->where('email', $email)
             ->where('is_guest', 1)
-            ->first();
+            ->first()
+        ;
     }
 
     /**

@@ -132,8 +132,8 @@ class User extends UserBase
     //
 
     /**
-     * @deprecated use findUserByEmail instead
-     * @see \RainLab\User\Classes\AuthManager
+     * findByEmail looks up a user by their email address.
+     * @return self
      */
     public static function findByEmail($email)
     {
@@ -225,11 +225,17 @@ class User extends UserBase
     // Scopes
     //
 
+    /**
+     * scopeIsActivated
+     */
     public function scopeIsActivated($query)
     {
         return $query->where('is_activated', 1);
     }
 
+    /**
+     * scopeFilterByGroup
+     */
     public function scopeFilterByGroup($query, $filter)
     {
         return $query->whereHas('groups', function($group) use ($filter) {
@@ -242,7 +248,7 @@ class User extends UserBase
     //
 
     /**
-     * Before validation event
+     * beforeValidate event
      * @return void
      */
     public function beforeValidate()
@@ -273,7 +279,7 @@ class User extends UserBase
     }
 
     /**
-     * After create event
+     * afterCreate event
      * @return void
      */
     public function afterCreate()
@@ -286,7 +292,7 @@ class User extends UserBase
     }
 
     /**
-     * Before login event
+     * beforeLogin event
      * @return void
      */
     public function beforeLogin()
@@ -302,7 +308,7 @@ class User extends UserBase
     }
 
     /**
-     * After login event
+     * afterLogin event
      * @return void
      */
     public function afterLogin()
@@ -326,7 +332,7 @@ class User extends UserBase
     }
 
     /**
-     * After delete event
+     * afterDelete event
      * @return void
      */
     public function afterDelete()
@@ -497,10 +503,10 @@ class User extends UserBase
     public function getNotificationVars()
     {
         $vars = [
-            'name'     => $this->name,
-            'email'    => $this->email,
+            'name' => $this->name,
+            'email' => $this->email,
             'username' => $this->username,
-            'login'    => $this->getLogin(),
+            'login' => $this->getLogin(),
             'password' => $this->getOriginalHashValue('password')
         ];
 
@@ -516,7 +522,8 @@ class User extends UserBase
     }
 
     /**
-     * Sends an invitation to the user using template "rainlab.user::mail.invite".
+     * sendInvitation sends an invitation to the user using template
+     * "rainlab.user::mail.invite"
      * @return void
      */
     protected function sendInvitation()
@@ -525,7 +532,7 @@ class User extends UserBase
     }
 
     /**
-     * Assigns this user with a random password.
+     * generatePassword assigns this user with a random password.
      * @return void
      */
     protected function generatePassword()
