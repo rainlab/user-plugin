@@ -55,7 +55,7 @@ class AuthManager extends RainAuthManager
     {
         $query = $this->createUserModelQuery();
 
-        $user = $query->where('email', $email);
+        $user = $query->where('email', $email)->first();
 
         return $this->validateUserModel($user) ? $user : null;
     }
