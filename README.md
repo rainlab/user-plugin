@@ -6,6 +6,20 @@ Front-end user management for October CMS.
 
 This plugin requires the [Ajax Framework](https://octobercms.com/docs/cms/ajax) to be included in your layout/page in order to handle form requests.
 
+## Installation Instructions
+
+Run the following to install this plugin:
+
+```bash
+php artisan plugin:install RainLab.User
+```
+
+To uninstall this plugin:
+
+```bash
+php artisan plugin:remove RainLab.User
+```
+
 ## Managing users
 
 Users are managed on the Users tab found in the back-end. Each user provides minimal data fields - **Name**, **Surname**, **Email** and **Password**. The Name can represent either the person's first name or their full name, making the Surname field optional, depending on the complexity of your site.
