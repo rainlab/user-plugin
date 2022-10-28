@@ -208,7 +208,7 @@ class MailBlocker extends Model
     }
 
     /**
-     * Checks if an email address has blocked a given template,
+     * checkForEmail checks if an email address has blocked a given template,
      * returns an array of blocked emails.
      * @param  string $template
      * @param  string $email
@@ -238,7 +238,7 @@ class MailBlocker extends Model
     }
 
     /**
-     * Filters a Illuminate\Mail\Message and removes blocked recipients.
+     * filterMessage filters a Illuminate\Mail\Message and removes blocked recipients.
      * If no recipients remain, false is returned. Returns null if mailing
      * should proceed.
      * @param  string $template
@@ -254,13 +254,25 @@ class MailBlocker extends Model
             return null;
         }
 
-        foreach ($recipients as $address => $name) {
-            if (in_array($address, $blockedAddresses)) {
-                unset($recipients[$address]);
+        foreach ($recipients as $index => $address) {
+            // October v2
+            if ($address instanceof \Symfony\Component\Mime\Address) {
+                if (in_array($address->getAddress(), $blockedAddresses)) {
+                    unset($recipients[$index]);
+                }
+            }
+            // October v1
+            else {
+                // Swift message, index is address
+                if (in_array($index, $blockedAddresses)) {
+                    unset($recipients[$index]);
+                }
             }
         }
 
-        $message->setTo($recipients);
+        // Override recipients
+        $message->to($recipients, null, true);
+
         return count($recipients) ? null : false;
     }
 }
