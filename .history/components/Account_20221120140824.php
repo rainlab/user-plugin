@@ -353,15 +353,7 @@ class Account extends ComponentBase
 
             Event::fire('rainlab.user.register', [$user, $data]);
 
-            /**
-             * Update Upload the Avatar on Register
-             */
-            if (Input::hasFile('avatar')) {
-                $user->avatar = Input::file('avatar');
-            }
-    
-            $user->fill($data);
-            $user->save();
+            https://github.com/Thulaa123/user-plugin-octobercms-.git
 
             /*
              * Activation is by the user, send the email
