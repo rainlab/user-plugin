@@ -479,9 +479,8 @@ class Account extends ComponentBase
             Auth::login($user->reload(), $this->useRememberLogin());
         }
         /**
-         * Update Event to hook into the plugins function
+         * Event to hook i
          */
-        Event::fire('rainlab.user.update', [$user, $data]);
 
         Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'rainlab.user::lang.account.success_saved')));
 
