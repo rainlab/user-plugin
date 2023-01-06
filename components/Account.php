@@ -478,6 +478,10 @@ class Account extends ComponentBase
         if (array_key_exists('password', $data) && strlen($data['password'])) {
             Auth::login($user->reload(), $this->useRememberLogin());
         }
+        /**
+         * Update Event to hook into the plugins function
+         */
+        Event::fire('rainlab.user.update', [$user, $data]);
 
         Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'rainlab.user::lang.account.success_saved')));
 
