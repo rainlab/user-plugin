@@ -1,6 +1,6 @@
 /*
  * Bulk actions plugin
- * 
+ *
  * Data attributes:
  * - data-control="bulk-actions" - enables the plugin on an element
  *
@@ -53,12 +53,12 @@
     }
 
     BulkActions.prototype.setActiveItem = function($el) {
-        this.$toggleBtn.blur()
-        this.activeAction = $el.data('action')
-        this.$primaryBtn.text($el.text())
-        this.$primaryBtn.attr('class', this.baseCss)
-        this.$primaryBtn.addClass($el.attr('class'))
-        this.$primaryBtn.data('request-confirm', $el.data('confirm'))
+        this.$toggleBtn.blur();
+        this.activeAction = $el.data('action');
+        this.$primaryBtn.text($el.text());
+        this.$primaryBtn.attr('class', this.baseCss);
+        this.$primaryBtn.addClass($el.attr('class')).removeClass('dropdown-item');
+        this.$primaryBtn.data('request-confirm', $el.data('confirm'));
     }
 
     // BULK ACTIONS PLUGIN DEFINITION
