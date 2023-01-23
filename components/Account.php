@@ -354,14 +354,6 @@ class Account extends ComponentBase
             Event::fire('rainlab.user.register', [$user, $data]);
 
             /*
-             * Upload Avatar
-             */
-            if (Input::hasFile('avatar')) {
-                $user->avatar = Input::file('avatar');
-                $user->save();
-            }
-
-            /*
              * Activation is by the user, send the email
              */
             if ($userActivation) {
