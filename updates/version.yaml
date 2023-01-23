@@ -79,3 +79,4 @@ v1.6.0: Apply persistence settings on activation and registration. Fixes last se
 v1.6.1: Adds component property for resetPage in ResetPassword component.
 v1.6.2: Improve support with October v3
 v1.6.3: Fixes mail blocker logic
+v1.6.4: Fixes bulk action button with October v3
