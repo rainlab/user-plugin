@@ -296,8 +296,6 @@ class User extends UserBase
             $this->addValidationRule('password', "regex:/[!@#$%^&*()_+-=\[\]{}|']/");
             $this->addValidationRule('password_confirmation', "regex:/[!@#$%^&*()_+-=\[\]{}|']/");
         }
-
-        Event::fire('rainlab.user.beforeValidate');
     }
 
     /**
