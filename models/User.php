@@ -271,11 +271,31 @@ class User extends UserBase
         }
 
         /*
-         * Apply Password Length Settings
+         * Apply rules Settings
          */
-        $minPasswordLength = static::getMinPasswordLength();
-        $this->rules['password'] = "required:create|between:$minPasswordLength,255|confirmed";
-        $this->rules['password_confirmation'] = "required_with:password|between:$minPasswordLength,255";
+        $minPasswordLength = Settings::get('min_password_length') ?? static::getMinPasswordLength();
+        $this->addValidationRule('password', 'between:' . $minPasswordLength . ',255');
+        $this->addValidationRule('password_confirmation', 'between:' . $minPasswordLength . ',255');
+
+        if (Settings::get('required_lowercase_letter')) {
+            $this->addValidationRule('password', 'regex:/[a-z]/');
+            $this->addValidationRule('password_confirmation', 'regex:/[a-z]/');
+        }
+
+        if (Settings::get('required_uppercase_letter')) {
+            $this->addValidationRule('password', 'regex:/[A-Z]/');
+            $this->addValidationRule('password_confirmation', 'regex:/[A-Z]/');
+        }
+
+        if (Settings::get('require_number')) {
+            $this->addValidationRule('password', 'regex:/[0-9]/');
+            $this->addValidationRule('password_confirmation', 'regex:/[0-9]/');
+        }
+
+        if (Settings::get('required_require_nonalpha')) {
+            $this->addValidationRule('password', "regex:/[!@#$%^&*()_+-=\[\]{}|']/");
+            $this->addValidationRule('password_confirmation', "regex:/[!@#$%^&*()_+-=\[\]{}|']/");
+        }
     }
 
     /**
