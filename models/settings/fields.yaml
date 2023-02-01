@@ -69,28 +69,24 @@ tabs:
             tab: rainlab.user::lang.settings.activation_tab
 
         # Min Password Length
-        required_lowercase_letter:
+        require_mixed_case:
             span: left
-            commentAbove: rainlab.user::lang.settings.min_password_length_comment
-            label: rainlab.user::lang.settings.required_lowercase_letter
+            label: rainlab.user::lang.settings.require_mixed_case
             type: checkbox
             tab: rainlab.user::lang.settings.password_policy_tab
-        required_uppercase_letter:
+        require_uncompromised:
             span: right
-            commentAbove: rainlab.user::lang.settings.min_password_length_comment
-            label: rainlab.user::lang.settings.required_uppercase_letter
+            label: rainlab.user::lang.settings.require_uncompromised
             type: checkbox
             tab: rainlab.user::lang.settings.password_policy_tab
         require_number:
             span: left
-            commentAbove: rainlab.user::lang.settings.min_password_length_comment
             label: rainlab.user::lang.settings.require_number
             type: checkbox
             tab: rainlab.user::lang.settings.password_policy_tab
-        required_require_nonalpha:
+        require_symbol:
             span: right
-            commentAbove: rainlab.user::lang.settings.min_password_length_comment
-            label: rainlab.user::lang.settings.required_require_nonalpha
+            label: rainlab.user::lang.settings.require_symbol
             type: checkbox
             tab: rainlab.user::lang.settings.password_policy_tab
         min_password_length:

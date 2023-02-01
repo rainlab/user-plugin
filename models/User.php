@@ -6,6 +6,7 @@ use Mail;
 use Event;
 use Config;
 use Carbon\Carbon;
+use Illuminate\Validation\Rules\Password;
 use October\Rain\Auth\Models\User as UserBase;
 use RainLab\User\Models\Settings as UserSettings;
 use October\Rain\Auth\AuthException;
@@ -274,28 +275,26 @@ class User extends UserBase
          * Apply rules Settings
          */
         $minPasswordLength = Settings::get('min_password_length') ?? static::getMinPasswordLength();
-        $this->addValidationRule('password', 'between:' . $minPasswordLength . ',255');
-        $this->addValidationRule('password_confirmation', 'between:' . $minPasswordLength . ',255');
+        $passwordRule = Password::min($minPasswordLength);
 
-        if (Settings::get('required_lowercase_letter')) {
-            $this->addValidationRule('password', 'regex:/[a-z]/');
-            $this->addValidationRule('password_confirmation', 'regex:/[a-z]/');
+        if (Settings::get('require_mixed_case')) {
+            $passwordRule->mixedCase();
         }
 
-        if (Settings::get('required_uppercase_letter')) {
-            $this->addValidationRule('password', 'regex:/[A-Z]/');
-            $this->addValidationRule('password_confirmation', 'regex:/[A-Z]/');
+        if (Settings::get('require_uncompromised')) {
+            $passwordRule->uncompromised();
         }
 
         if (Settings::get('require_number')) {
-            $this->addValidationRule('password', 'regex:/[0-9]/');
-            $this->addValidationRule('password_confirmation', 'regex:/[0-9]/');
+            $passwordRule->numbers();
         }
 
-        if (Settings::get('required_require_nonalpha')) {
-            $this->addValidationRule('password', "regex:/[!@#$%^&*()_+-=\[\]{}|']/");
-            $this->addValidationRule('password_confirmation', "regex:/[!@#$%^&*()_+-=\[\]{}|']/");
+        if (Settings::get('require_symbol')) {
+            $passwordRule->symbols();
         }
+
+        $this->addValidationRule('password', $passwordRule);
+        $this->addValidationRule('password_confirmation', $passwordRule);
     }
 
     /**

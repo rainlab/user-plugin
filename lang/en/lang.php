@@ -104,10 +104,10 @@ return [
         'remember_ask' => 'Ask the user on login',
         'min_password_length' => 'Min password length',
         'min_password_length_comment' => 'Password length required for users',
-        'required_uppercase_letter' => 'Required uppercase letter',
+        'require_mixed_case' => 'Require mixed case',
         'require_number' =>  'Require number',
-        'required_require_nonalpha' => 'Required require nonalpha',
-        'required_lowercase_letter' => 'Required lowercase letter',
+        'require_symbol' => 'Require special character',
+        'require_uncompromised' => 'Require uncompromised',
     ],
     'user' => [
         'label' => 'User',
