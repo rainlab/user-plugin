@@ -273,7 +273,7 @@ class User extends UserBase
         /*
          * Apply rules Settings
          */
-        $minPasswordLength = Settings::get('min_password_length') ?? static::getMinPasswordLength();
+        $minPasswordLength = Settings::get('min_password_length', static::getMinPasswordLength());
         if (class_exists('\Illuminate\Validation\Rules\Password')) {
             $passwordRule = \Illuminate\Validation\Rules\Password::min($minPasswordLength);
             if (Settings::get('require_mixed_case')) {
@@ -294,7 +294,8 @@ class User extends UserBase
 
             $this->addValidationRule('password', $passwordRule);
             $this->addValidationRule('password_confirmation', $passwordRule);
-        } else {
+        }
+        else {
             $this->addValidationRule('password', 'between:' . $minPasswordLength .',255');
             $this->addValidationRule('password_confirmation', 'between:' . $minPasswordLength . ',255');
         }

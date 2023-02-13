@@ -71,7 +71,6 @@ tabs:
         # Min Password Length
         min_password_length:
             span: left
-            # commentAbove: rainlab.user::lang.settings.min_password_length_comment
             label: rainlab.user::lang.settings.min_password_length
             type: number
             comment: rainlab.user::lang.settings.min_password_length_comment
