@@ -76,13 +76,6 @@ tabs:
             comment: rainlab.user::lang.settings.min_password_length_comment
             tab: rainlab.user::lang.settings.password_policy_tab
 
-        _october_cms_3:
-            type: hint
-            mode: warning
-            label: rainlab.user::lang.settings.password_policy_hint_warning
-            comment: rainlab.user::lang.settings.password_policy_hint_warning_comment
-            tab: rainlab.user::lang.settings.password_policy_tab
-
         # Require Mixed Case
         require_mixed_case:
             span: left
