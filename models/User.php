@@ -271,11 +271,33 @@ class User extends UserBase
         }
 
         /*
-         * Apply Password Length Settings
+         * Apply rules Settings
          */
-        $minPasswordLength = static::getMinPasswordLength();
-        $this->rules['password'] = "required:create|between:$minPasswordLength,255|confirmed";
-        $this->rules['password_confirmation'] = "required_with:password|between:$minPasswordLength,255";
+        $minPasswordLength = Settings::get('min_password_length') ?? static::getMinPasswordLength();
+        if (class_exists('\Illuminate\Validation\Rules\Password')) {
+            $passwordRule = \Illuminate\Validation\Rules\Password::min($minPasswordLength);
+            if (Settings::get('require_mixed_case')) {
+                $passwordRule->mixedCase();
+            }
+
+            if (Settings::get('require_uncompromised')) {
+                $passwordRule->uncompromised();
+            }
+
+            if (Settings::get('require_number')) {
+                $passwordRule->numbers();
+            }
+
+            if (Settings::get('require_symbol')) {
+                $passwordRule->symbols();
+            }
+
+            $this->addValidationRule('password', $passwordRule);
+            $this->addValidationRule('password_confirmation', $passwordRule);
+        } else {
+            $this->addValidationRule('password', 'between:' . $minPasswordLength .',255');
+            $this->addValidationRule('password_confirmation', 'between:' . $minPasswordLength . ',255');
+        }
     }
 
     /**
