@@ -296,8 +296,8 @@ class User extends UserBase
             $this->addValidationRule('password_confirmation', $passwordRule);
         }
         else {
-            $this->addValidationRule('password', 'between:' . $minPasswordLength .',255');
-            $this->addValidationRule('password_confirmation', 'between:' . $minPasswordLength . ',255');
+            $this->rules['password'] = "required:create|between:$minPasswordLength,255|confirmed";
+            $this->rules['password_confirmation'] = "required_with:password|between:$minPasswordLength,255";
         }
     }
 
