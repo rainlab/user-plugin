@@ -82,3 +82,4 @@ v1.6.3: Fixes mail blocker logic
 v1.6.4: Fixes bulk action button with October v3
 v1.7.0: Add password policy
 v1.7.1: Fixes compatibility with legacy sites
+v1.7.2: Stability fixes
