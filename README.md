@@ -4,7 +4,8 @@ Front-end user management for October CMS.
 
 ## Requirements
 
-This plugin requires the [Ajax Framework](https://octobercms.com/docs/cms/ajax) to be included in your layout/page in order to handle form requests.
+- October CMS 3.0 or above
+- The [AJAX Framework](https://octobercms.com/docs/cms/ajax) to be included in your layout/page
 
 ## Installation Instructions
 
@@ -18,6 +19,12 @@ To uninstall this plugin:
 
 ```bash
 php artisan plugin:remove RainLab.User
+```
+
+If you are using October CMS v1 or v2, install v1.7 with the following commands:
+
+```bash
+composer require rainlab/user-plugin "^1.7"
 ```
 
 ## Managing users
