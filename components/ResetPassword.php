@@ -18,28 +18,34 @@ use RainLab\User\Models\User as UserModel;
  */
 class ResetPassword extends ComponentBase
 {
+    /**
+     * componentDetails
+     */
     public function componentDetails()
     {
         return [
-            'name'        => /*Reset Password*/'rainlab.user::lang.reset_password.reset_password',
+            'name' => /*Reset Password*/'rainlab.user::lang.reset_password.reset_password',
             'description' => /*Forgotten password form.*/'rainlab.user::lang.reset_password.reset_password_desc'
         ];
     }
 
+    /**
+     * defineProperties
+     */
     public function defineProperties()
     {
         return [
             'paramCode' => [
-                'title'       => /*Reset Code Param*/'rainlab.user::lang.reset_password.code_param',
+                'title' => /*Reset Code Param*/'rainlab.user::lang.reset_password.code_param',
                 'description' => /*The page URL parameter used for the reset code*/'rainlab.user::lang.reset_password.code_param_desc',
-                'type'        => 'string',
-                'default'     => 'code'
+                'type' => 'string',
+                'default' => 'code'
             ],
             'resetPage' => [
-                'title'       => /* Reset Page */'rainlab.user::lang.account.reset_page',
+                'title' => /* Reset Page */'rainlab.user::lang.account.reset_page',
                 'description' => /* Select a page to use for resetting the account password */'rainlab.user::lang.account.reset_page_comment',
-                'type'        => 'dropdown',
-                'default'     => ''
+                'type' => 'dropdown',
+                'default' => ''
             ],
         ];
     }
@@ -118,7 +124,7 @@ class ResetPassword extends ComponentBase
     public function onResetPassword()
     {
         $rules = [
-            'code'     => 'required',
+            'code' => 'required',
             'password' => 'required|between:' . UserModel::getMinPasswordLength() . ',255'
         ];
 
@@ -129,9 +135,7 @@ class ResetPassword extends ComponentBase
 
         $errorFields = ['code' => Lang::get(/*Invalid activation code supplied.*/'rainlab.user::lang.account.invalid_activation_code')];
 
-        /*
-         * Break up the code parts
-         */
+        // Break up the code parts
         $parts = explode('!', post('code'));
         if (count($parts) != 2) {
             throw new ValidationException($errorFields);

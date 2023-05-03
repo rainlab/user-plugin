@@ -23,6 +23,9 @@ class Session extends ComponentBase
     const ALLOW_GUEST = 'guest';
     const ALLOW_USER = 'user';
 
+    /**
+     * componentDetails
+     */
     public function componentDetails()
     {
         return [
@@ -31,32 +34,35 @@ class Session extends ComponentBase
         ];
     }
 
+    /**
+     * defineProperties
+     */
     public function defineProperties()
     {
         return [
             'security' => [
-                'title'       => 'rainlab.user::lang.session.security_title',
+                'title' => 'rainlab.user::lang.session.security_title',
                 'description' => 'rainlab.user::lang.session.security_desc',
-                'type'        => 'dropdown',
-                'default'     => 'all',
-                'options'     => [
-                    'all'   => 'rainlab.user::lang.session.all',
-                    'user'  => 'rainlab.user::lang.session.users',
+                'type' => 'dropdown',
+                'default' => 'all',
+                'options' => [
+                    'all' => 'rainlab.user::lang.session.all',
+                    'user' => 'rainlab.user::lang.session.users',
                     'guest' => 'rainlab.user::lang.session.guests'
                 ]
             ],
             'allowedUserGroups' => [
-                'title'       => 'rainlab.user::lang.session.allowed_groups_title',
+                'title' => 'rainlab.user::lang.session.allowed_groups_title',
                 'description' => 'rainlab.user::lang.session.allowed_groups_description',
                 'placeholder' => '*',
-                'type'        => 'set',
-                'default'     => []
+                'type' => 'set',
+                'default' => []
             ],
             'redirect' => [
-                'title'       => 'rainlab.user::lang.session.redirect_title',
+                'title' => 'rainlab.user::lang.session.redirect_title',
                 'description' => 'rainlab.user::lang.session.redirect_desc',
-                'type'        => 'dropdown',
-                'default'     => ''
+                'type' => 'dropdown',
+                'default' => ''
             ]
         ];
     }
