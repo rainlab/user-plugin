@@ -26,6 +26,9 @@ use Exception;
  */
 class Account extends ComponentBase
 {
+    /**
+     * componentDetails
+     */
     public function componentDetails()
     {
         return [
@@ -34,6 +37,9 @@ class Account extends ComponentBase
         ];
     }
 
+    /**
+     * defineProperties
+     */
     public function defineProperties()
     {
         return [
@@ -109,16 +115,12 @@ class Account extends ComponentBase
      */
     public function onRun()
     {
-        /*
-         * Redirect to HTTPS checker
-         */
+        // Redirect to HTTPS checker
         if ($redirect = $this->redirectForceSecure()) {
             return $redirect;
         }
 
-        /*
-         * Activation code supplied
-         */
+        // Activation code supplied
         if ($code = $this->activationCode()) {
             $this->onActivate($code);
         }
@@ -228,10 +230,8 @@ class Account extends ComponentBase
     public function onSignin()
     {
         try {
-            /*
-             * Validate input
-             */
-            $data = post();
+            // Validate input
+            $data = (array) post();
             $rules = [];
 
             $rules['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
@@ -257,11 +257,9 @@ class Account extends ComponentBase
                 throw new ValidationException($validation);
             }
 
-            /*
-             * Authenticate user
-             */
+            // Authenticate user
             $credentials = [
-                'login'    => array_get($data, 'login'),
+                'login' => array_get($data, 'login'),
                 'password' => array_get($data, 'password')
             ];
 
@@ -273,16 +271,12 @@ class Account extends ComponentBase
                 throw new AuthException(Lang::get(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'rainlab.user::lang.account.banned'));
             }
 
-            /*
-             * Record IP address
-             */
+            // Record IP address
             if ($ipAddress = Request::ip()) {
                 $user->touchIpAddress($ipAddress);
             }
 
-            /*
-             * Redirect
-             */
+            // Redirect
             if ($redirect = $this->makeRedirection(true)) {
                 return $redirect;
             }
@@ -307,10 +301,8 @@ class Account extends ComponentBase
                 throw new ApplicationException(Lang::get(/*Registration is throttled. Please try again later.*/'rainlab.user::lang.account.registration_throttled'));
             }
 
-            /*
-             * Validate input
-             */
-            $data = post();
+            // Validate input
+            $data = (array) post();
 
             if (!array_key_exists('password_confirmation', $data)) {
                 $data['password_confirmation'] = post('password');
@@ -333,16 +325,12 @@ class Account extends ComponentBase
                 throw new ValidationException($validation);
             }
 
-            /*
-             * Record IP address
-             */
+            // Record IP address
             if ($ipAddress = Request::ip()) {
                 $data['created_ip_address'] = $data['last_ip_address'] = $ipAddress;
             }
 
-            /*
-             * Register user
-             */
+            // Register user
             Event::fire('rainlab.user.beforeRegister', [&$data]);
 
             $requireActivation = UserSettings::get('require_activation', true);
@@ -353,9 +341,7 @@ class Account extends ComponentBase
 
             Event::fire('rainlab.user.register', [$user, $data]);
 
-            /*
-             * Activation is by the user, send the email
-             */
+            // Activation is by the user, send the email
             if ($userActivation) {
                 $this->sendActivationEmail($user);
 
@@ -364,25 +350,19 @@ class Account extends ComponentBase
 
             $intended = false;
 
-            /*
-             * Activation is by the admin, show message
-             * For automatic email on account activation RainLab.Notify plugin is needed
-             */
+            // Activation is by the admin, show message
+            // For automatic email on account activation RainLab.Notify plugin is needed
             if ($adminActivation) {
                 Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active and must be approved by an administrator.*/'rainlab.user::lang.account.activation_by_admin'));
             }
 
-            /*
-             * Automatically activated or not required, log the user in
-             */
+            // Automatically activated or not required, log the user in
             if ($automaticActivation || !$requireActivation) {
                 Auth::login($user, $this->useRememberLogin());
                 $intended = true;
             }
 
-            /*
-             * Redirect to the intended page after successful sign in
-             */
+            // Redirect to the intended page after successful sign in
             if ($redirect = $this->makeRedirection($intended)) {
                 return $redirect;
             }
@@ -404,9 +384,7 @@ class Account extends ComponentBase
 
             $errorFields = ['code' => Lang::get(/*Invalid activation code supplied.*/'rainlab.user::lang.account.invalid_activation_code')];
 
-            /*
-             * Break up the code parts
-             */
+            // Break up the code parts
             $parts = explode('!', $code);
             if (count($parts) != 2) {
                 throw new ValidationException($errorFields);
@@ -428,9 +406,7 @@ class Account extends ComponentBase
 
             Flash::success(Lang::get(/*Successfully activated your account.*/'rainlab.user::lang.account.success_activation'));
 
-            /*
-             * Sign in the user
-             */
+            // Sign in the user
             Auth::login($user, $this->useRememberLogin());
 
         }
@@ -449,7 +425,7 @@ class Account extends ComponentBase
             return;
         }
 
-        $data = post();
+        $data = (array) post();
 
         if ($this->updateRequiresPassword()) {
             if (!$user->checkHashValue('password', $data['password_current'])) {
@@ -464,23 +440,17 @@ class Account extends ComponentBase
         $user->fill($data);
         $user->save();
 
-        /*
-         * Password has changed, reauthenticate the user
-         */
+        // Password has changed, reauthenticate the user
         if (array_key_exists('password', $data) && strlen($data['password'])) {
             Auth::login($user->reload(), $this->useRememberLogin());
         }
 
-        /*
-         * Update Event to hook into the plugins function
-         */
+        // Update Event to hook into the plugins function
         Event::fire('rainlab.user.update', [$user, $data]);
 
         Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'rainlab.user::lang.account.success_saved')));
 
-        /*
-         * Redirect
-         */
+        // Redirect
         if ($redirect = $this->makeRedirection()) {
             return $redirect;
         }
@@ -506,9 +476,7 @@ class Account extends ComponentBase
 
         Flash::success(post('flash', Lang::get(/*Successfully deactivated your account. Sorry to see you go!*/'rainlab.user::lang.account.success_deactivation')));
 
-        /*
-         * Redirect
-         */
+        // Redirect
         if ($redirect = $this->makeRedirection()) {
             return $redirect;
         }
@@ -538,9 +506,7 @@ class Account extends ComponentBase
             else Flash::error($ex->getMessage());
         }
 
-        /*
-         * Redirect
-         */
+        // Redirect
         if ($redirect = $this->makeRedirection()) {
             return $redirect;
         }

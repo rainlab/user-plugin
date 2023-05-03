@@ -10,7 +10,7 @@ The User plugin has been split apart in to smaller more manageable plugins. Thes
 
 Country and State models have been removed and can be replaced by installing the plugin **RainLab.Location**. The remaining profiles fields can be replaced by installing the plugin **RainLab.UserPlus**.
 
-In short, to retain the old functionaliy simply install the following plugins:
+In short, to retain the old functionality simply install the following plugins:
 
 - RainLab.Location
 - RainLab.UserPlus
