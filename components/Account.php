@@ -32,7 +32,7 @@ class Account extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => /*Account*/'rainlab.user::lang.account.account',
+            'name' => /*Account*/'rainlab.user::lang.account.account',
             'description' => /*User management form.*/'rainlab.user::lang.account.account_desc'
         ];
     }
@@ -44,34 +44,34 @@ class Account extends ComponentBase
     {
         return [
             'redirect' => [
-                'title'       => /*Redirect to*/'rainlab.user::lang.account.redirect_to',
+                'title' => /*Redirect to*/'rainlab.user::lang.account.redirect_to',
                 'description' => /*Page name to redirect to after update, sign in or registration.*/'rainlab.user::lang.account.redirect_to_desc',
-                'type'        => 'dropdown',
-                'default'     => ''
+                'type' => 'dropdown',
+                'default' => ''
             ],
             'paramCode' => [
-                'title'       => /*Activation Code Param*/'rainlab.user::lang.account.code_param',
+                'title' => /*Activation Code Param*/'rainlab.user::lang.account.code_param',
                 'description' => /*The page URL parameter used for the registration activation code*/ 'rainlab.user::lang.account.code_param_desc',
-                'type'        => 'string',
-                'default'     => 'code'
+                'type' => 'string',
+                'default' => 'code'
             ],
             'activationPage' => [
-                'title'       => /* Activation Page */'rainlab.user::lang.account.activation_page',
+                'title' => /* Activation Page */'rainlab.user::lang.account.activation_page',
                 'description' => /* Select a page to use for activating the user account */'rainlab.user::lang.account.activation_page_comment',
-                'type'        => 'dropdown',
-                'default'     => ''
+                'type' => 'dropdown',
+                'default' => ''
             ],
             'forceSecure' => [
-                'title'       => /*Force secure protocol*/'rainlab.user::lang.account.force_secure',
+                'title' => /*Force secure protocol*/'rainlab.user::lang.account.force_secure',
                 'description' => /*Always redirect the URL with the HTTPS schema.*/'rainlab.user::lang.account.force_secure_desc',
-                'type'        => 'checkbox',
-                'default'     => 0
+                'type' => 'checkbox',
+                'default' => 0
             ],
             'requirePassword' => [
-                'title'       => /*Confirm password on update*/'rainlab.user::lang.account.update_requires_password',
+                'title' => /*Confirm password on update*/'rainlab.user::lang.account.update_requires_password',
                 'description' => /*Require the current password of the user when changing their profile.*/'rainlab.user::lang.account.update_requires_password_comment',
-                'type'        => 'checkbox',
-                'default'     => 0
+                'type' => 'checkbox',
+                'default' => 0
             ],
         ];
     }
