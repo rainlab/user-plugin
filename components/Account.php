@@ -171,7 +171,7 @@ class Account extends ComponentBase
     }
 
     /**
-     * Returns the update requires password setting
+     * updateRequiresPassword returns the update requires password setting
      */
     public function updateRequiresPassword()
     {
@@ -179,7 +179,7 @@ class Account extends ComponentBase
     }
 
     /**
-     * Returns the login remember mode.
+     * rememberLoginMode returns the login remember mode.
      */
     public function rememberLoginMode()
     {
@@ -204,7 +204,7 @@ class Account extends ComponentBase
     }
 
     /**
-     * Looks for the activation code from the URL parameter. If nothing
+     * activationCode looks for the activation code from the URL parameter. If nothing
      * is found, the GET parameter 'activate' is used instead.
      * @return string
      */
@@ -224,7 +224,7 @@ class Account extends ComponentBase
     //
 
     /**
-     * Sign in the user
+     * onSignin signs in the user
      */
     public function onSignin()
     {
@@ -278,11 +278,10 @@ class Account extends ComponentBase
         if ($redirect = $this->makeRedirection(true)) {
             return $redirect;
         }
-
     }
 
     /**
-     * Register the user
+     * onRegister registers the user
      */
     public function onRegister()
     {
@@ -359,11 +358,10 @@ class Account extends ComponentBase
         if ($redirect = $this->makeRedirection($intended)) {
             return $redirect;
         }
-
     }
 
     /**
-     * Activate the user
+     * onActivate activates the user
      * @param  string $code Activation code
      */
     public function onActivate($code = null)

@@ -11,24 +11,28 @@ use RainLab\User\Classes\UserRedirector;
 use RainLab\User\Models\MailBlocker;
 use RainLab\Notify\Classes\Notifier;
 
+/**
+ * Plugin base class
+ */
 class Plugin extends PluginBase
 {
     /**
-     * @var boolean Determine if this plugin should have elevated privileges.
+     * pluginDetails
      */
-    public $elevated = true;
-
     public function pluginDetails()
     {
         return [
-            'name'        => 'rainlab.user::lang.plugin.name',
+            'name' => 'rainlab.user::lang.plugin.name',
             'description' => 'rainlab.user::lang.plugin.description',
-            'author'      => 'Alexey Bobkov, Samuel Georges',
-            'icon'        => 'icon-user',
-            'homepage'    => 'https://github.com/rainlab/user-plugin'
+            'author' => 'Alexey Bobkov, Samuel Georges',
+            'icon' => 'icon-user',
+            'homepage' => 'https://github.com/rainlab/user-plugin'
         ];
     }
 
+    /**
+     * register
+     */
     public function register()
     {
         $alias = AliasLoader::getInstance();
@@ -38,9 +42,9 @@ class Plugin extends PluginBase
             return \RainLab\User\Classes\AuthManager::instance();
         });
 
+        // Overrides with our own extended version of Redirector to support
+        // separate url.intended session variable for frontend
         App::singleton('redirect', function ($app) {
-            // overrides with our own extended version of Redirector to support
-            // seperate url.intended session variable for frontend
             $redirector = new UserRedirector($app['url']);
 
             // If the session is set on the application instance, we'll inject it into
@@ -53,19 +57,18 @@ class Plugin extends PluginBase
             return $redirector;
         });
 
-        /*
-         * Apply user-based mail blocking
-         */
+        // Apply user-based mail blocking
         Event::listen('mailer.prepareSend', function ($mailer, $view, $message) {
             return MailBlocker::filterMessage($view, $message);
         });
 
-        /*
-         * Compatability with RainLab.Notify
-         */
+        // Compatibility with RainLab.Notify
         $this->bindNotificationEvents();
     }
 
+    /**
+     * registerComponents
+     */
     public function registerComponents()
     {
         return [
@@ -75,28 +78,34 @@ class Plugin extends PluginBase
         ];
     }
 
+    /**
+     * registerPermissions
+     */
     public function registerPermissions()
     {
         return [
             'rainlab.users.access_users' => [
-                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'tab' => 'rainlab.user::lang.plugin.tab',
                 'label' => 'rainlab.user::lang.plugin.access_users'
             ],
             'rainlab.users.access_groups' => [
-                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'tab' => 'rainlab.user::lang.plugin.tab',
                 'label' => 'rainlab.user::lang.plugin.access_groups'
             ],
             'rainlab.users.access_settings' => [
-                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'tab' => 'rainlab.user::lang.plugin.tab',
                 'label' => 'rainlab.user::lang.plugin.access_settings'
             ],
             'rainlab.users.impersonate_user' => [
-                'tab'   => 'rainlab.user::lang.plugin.tab',
+                'tab' => 'rainlab.user::lang.plugin.tab',
                 'label' => 'rainlab.user::lang.plugin.impersonate_user'
             ],
         ];
     }
 
+    /**
+     * registerNavigation
+     */
     public function registerNavigation()
     {
         return [
@@ -126,6 +135,9 @@ class Plugin extends PluginBase
         ];
     }
 
+    /**
+     * registerSettings
+     */
     public function registerSettings()
     {
         return [
@@ -141,6 +153,9 @@ class Plugin extends PluginBase
         ];
     }
 
+    /**
+     * registerMailTemplates
+     */
     public function registerMailTemplates()
     {
         return [
@@ -153,6 +168,9 @@ class Plugin extends PluginBase
         ];
     }
 
+    /**
+     * registerNotificationRules
+     */
     public function registerNotificationRules()
     {
         return [
@@ -173,6 +191,9 @@ class Plugin extends PluginBase
         ];
     }
 
+    /**
+     * bindNotificationEvents
+     */
     protected function bindNotificationEvents()
     {
         if (!class_exists(Notifier::class)) {
