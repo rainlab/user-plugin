@@ -84,7 +84,7 @@ class Session extends ComponentBase
     }
 
     /**
-     * Component is initialized.
+     * init component
      */
     public function init()
     {

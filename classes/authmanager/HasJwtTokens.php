@@ -36,7 +36,7 @@ trait HasJwtTokens
         // Prepare metadata
         $tokenId = base64_encode(Str::random(16));
         $issuedAt = Carbon::now();
-        $expire = $issuedAt->addMinutes(6)->getTimestamp();
+        $expireAt = Carbon::now()->addMinutes(60);
         $serverName = Request::getHost();
 
         // Prepare payload
@@ -52,7 +52,7 @@ trait HasJwtTokens
             'jti' => $tokenId,
             'iss' => $serverName,
             'nbf' => $issuedAt->getTimestamp(),
-            'exp' => $expire,
+            'exp' => $expireAt->getTimestamp(),
             'data' => $data
         ];
 
@@ -96,8 +96,8 @@ trait HasJwtTokens
         }
 
         // Locate payload
-        $login = $token->data['login'] ?? null;
-        $hash = $token->data['hash'] ?? null;
+        $login = $token->data->login ?? null;
+        $hash = $token->data->hash ?? null;
         if (!$login || !$hash) {
             return false;
         }
@@ -109,7 +109,7 @@ trait HasJwtTokens
         }
 
         // Persist code check failed
-        if ($hash !== Hash::make($user->persist_code)) {
+        if (!Hash::check($user->persist_code, $hash)) {
             return false;
         }
 
