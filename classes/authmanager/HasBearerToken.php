@@ -15,7 +15,7 @@ use Exception;
  * @package october\auth
  * @author Alexey Bobkov, Samuel Georges
  */
-trait HasJwtTokens
+trait HasBearerToken
 {
     /**
      * getBearerToken

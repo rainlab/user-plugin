@@ -94,13 +94,13 @@ class Session extends ComponentBase
      */
     public function init()
     {
-        $this->controller->bindEvent('page.init', function() {
-            // Login with token
-            if ($this->property('useToken', false) && ($jwtToken = Request::bearerToken())) {
-                Auth::checkBearerToken($jwtToken);
-            }
+        // Login with token
+        if ($this->property('useToken', false)) {
+            $this->authenticateWithBearerToken();
+        }
 
-            // Inject security logic pre-AJAX
+        // Inject security logic pre-AJAX
+        $this->controller->bindEvent('page.init', function() {
             if (Request::ajax() && ($redirect = $this->checkUserSecurityRedirect())) {
                 return ['X_OCTOBER_REDIRECT' => $redirect->getTargetUrl()];
             }
@@ -246,5 +246,15 @@ class Session extends ComponentBase
         }
 
         return true;
+    }
+
+    /**
+     * authenticateWithBearerToken
+     */
+    protected function authenticateWithBearerToken()
+    {
+        if ($jwtToken = Request::bearerToken()) {
+            Auth::checkBearerToken($jwtToken);
+        }
     }
 }

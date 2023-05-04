@@ -10,7 +10,7 @@ use RainLab\User\Models\UserGroup as UserGroupModel;
  */
 class AuthManager extends RainAuthManager
 {
-    use \RainLab\User\Classes\AuthManager\HasJwtTokens;
+    use \RainLab\User\Classes\AuthManager\HasBearerToken;
 
     /**
      * @var static instance
