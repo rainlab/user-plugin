@@ -233,5 +233,7 @@ return [
         'redirect_desc' => 'Page name to redirect if access is denied.',
         'logout' => 'You have been successfully logged out!',
         'stop_impersonate_success' => 'You are no longer impersonating a user.',
+        'use_token' => 'Use token authentication',
+        'use_token_desc' => 'Check this box to allow authentication using a bearer token.',
     ]
 ];

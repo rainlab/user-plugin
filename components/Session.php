@@ -63,7 +63,13 @@ class Session extends ComponentBase
                 'description' => 'rainlab.user::lang.session.redirect_desc',
                 'type' => 'dropdown',
                 'default' => ''
-            ]
+            ],
+            'useToken' => [
+                'title' => /*Use token authentication*/'rainlab.user::lang.session.use_token',
+                'description' => /*Check this box to allow authentication using a bearer token.*/'rainlab.user::lang.session.use_token_desc',
+                'type' => 'checkbox',
+                'default' => 0
+            ],
         ];
     }
 
@@ -88,13 +94,13 @@ class Session extends ComponentBase
      */
     public function init()
     {
-        // Login with token
-        if ($jwtToken = Request::bearerToken()) {
-            Auth::checkBearerToken($jwtToken);
-        }
-
-        // Inject security logic pre-AJAX
         $this->controller->bindEvent('page.init', function() {
+            // Login with token
+            if ($this->property('useToken', false) && ($jwtToken = Request::bearerToken())) {
+                Auth::checkBearerToken($jwtToken);
+            }
+
+            // Inject security logic pre-AJAX
             if (Request::ajax() && ($redirect = $this->checkUserSecurityRedirect())) {
                 return ['X_OCTOBER_REDIRECT' => $redirect->getTargetUrl()];
             }
