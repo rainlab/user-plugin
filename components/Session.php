@@ -64,9 +64,9 @@ class Session extends ComponentBase
                 'type' => 'dropdown',
                 'default' => ''
             ],
-            'useToken' => [
-                'title' => /*Use token authentication*/'rainlab.user::lang.session.use_token',
-                'description' => /*Check this box to allow authentication using a bearer token.*/'rainlab.user::lang.session.use_token_desc',
+            'verifyToken' => [
+                'title' => /*Use token authentication*/'rainlab.user::lang.session.verify_token',
+                'description' => /*Check authentication using a verified bearer token.*/'rainlab.user::lang.session.verify_token_desc',
                 'type' => 'checkbox',
                 'default' => 0
             ],
@@ -95,7 +95,7 @@ class Session extends ComponentBase
     public function init()
     {
         // Login with token
-        if ($this->property('useToken', false)) {
+        if ($this->property('verifyToken', false)) {
             $this->authenticateWithBearerToken();
         }
 
