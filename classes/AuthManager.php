@@ -5,22 +5,47 @@ use October\Rain\Auth\Manager as RainAuthManager;
 use RainLab\User\Models\Settings as UserSettings;
 use RainLab\User\Models\UserGroup as UserGroupModel;
 
+/**
+ * AuthManager
+ */
 class AuthManager extends RainAuthManager
 {
+    use \RainLab\User\Classes\AuthManager\HasJwtTokens;
+
+    /**
+     * @var static instance
+     */
     protected static $instance;
 
+    /**
+     * @var string sessionKey
+     */
     protected $sessionKey = 'user_auth';
 
-    protected $userModel = 'RainLab\User\Models\User';
+    /**
+     * @var string userModel
+     */
+    protected $userModel = \RainLab\User\Models\User::class;
 
-    protected $groupModel = 'RainLab\User\Models\UserGroup';
+    /**
+     * @var string groupModel
+     */
+    protected $groupModel = \RainLab\User\Models\UserGroup::class;
 
-    protected $throttleModel = 'RainLab\User\Models\Throttle';
+    /**
+     * @var string throttleModel
+     */
+    protected $throttleModel = \RainLab\User\Models\Throttle::class;
 
+    /**
+     * init
+     */
     public function init()
     {
         $this->useThrottle = UserSettings::get('use_throttle', $this->useThrottle);
+
         $this->requireActivation = UserSettings::get('require_activation', $this->requireActivation);
+
         parent::init();
     }
 
@@ -70,6 +95,9 @@ class AuthManager extends RainAuthManager
     // Guest users
     //
 
+    /**
+     * findGuestUserByCredentials
+     */
     public function findGuestUserByCredentials(array $credentials)
     {
         if ($email = array_get($credentials, 'email')) {
@@ -79,6 +107,9 @@ class AuthManager extends RainAuthManager
         return null;
     }
 
+    /**
+     * findGuestUser
+     */
     public function findGuestUser($email)
     {
         $query = $this->createUserModelQuery();
@@ -91,7 +122,7 @@ class AuthManager extends RainAuthManager
     }
 
     /**
-     * Registers a guest user by giving the required credentials.
+     * registerGuest a guest user by giving the required credentials.
      *
      * @param array $credentials
      * @return Models\User
@@ -123,7 +154,7 @@ class AuthManager extends RainAuthManager
     }
 
     /**
-     * Converts a guest user to a registered user.
+     * convertGuestToUser converts a guest user to a registered user.
      *
      * @param Models\User $user
      * @param array $credentials

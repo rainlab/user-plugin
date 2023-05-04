@@ -29,7 +29,7 @@ class Session extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'rainlab.user::lang.session.session',
+            'name' => 'rainlab.user::lang.session.session',
             'description' => 'rainlab.user::lang.session.session_desc'
         ];
     }
@@ -88,6 +88,11 @@ class Session extends ComponentBase
      */
     public function init()
     {
+        // Login with token
+        if ($jwtToken = Request::bearerToken()) {
+            Auth::checkBearerToken($jwtToken);
+        }
+
         // Inject security logic pre-AJAX
         $this->controller->bindEvent('page.init', function() {
             if (Request::ajax() && ($redirect = $this->checkUserSecurityRedirect())) {
@@ -109,7 +114,7 @@ class Session extends ComponentBase
     }
 
     /**
-     * Returns the logged in user, if available, and touches
+     * user returns the logged in user, if available, and touches
      * the last seen timestamp.
      * @return RainLab\User\Models\User
      */
@@ -127,6 +132,14 @@ class Session extends ComponentBase
     }
 
     /**
+     * token returns an authentication token
+     */
+    public function token()
+    {
+        return Auth::getBearerToken();
+    }
+
+    /**
      * Returns the previously signed in user when impersonating.
      */
     public function impersonator()
@@ -135,7 +148,7 @@ class Session extends ComponentBase
     }
 
     /**
-     * Log out the user
+     * onLogout logs out the user
      *
      * Usage:
      *   <a data-request="onLogout">Sign out</a>
