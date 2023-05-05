@@ -341,6 +341,20 @@ You may look up a user by their login name using the `Auth::findUserByLogin` met
 $user = Auth::findUserByLogin('some@email.tld');
 ```
 
+When working with authentication via bearer tokens, the `Auth::getBearerToken` method can be used to obtain a bearer token (JWT) for the current user. It expires after 1 hour by default.
+
+```php
+$token = Auth::getBearerToken();
+```
+
+The `Auth::checkBearerToken` method is used to verify a supplied token and authenticate the user. The method returns `true` if the verification was successful.
+
+```php
+if ($jwtToken = Request::bearerToken()) {
+    Auth::checkBearerToken($jwtToken);
+}
+```
+
 ## Guest Users
 
 Creating a guest user allows the registration process to be deferred. For example, making a purchase without needing to register first. Guest users are not able to sign in and will be added to the user group with the code `guest`.
@@ -376,6 +390,58 @@ To disable the notification and password reset, pass the first argument as false
 $user->convertToRegistered(false);
 ```
 
+## Working with APIs
+
+When [building API endpoints using CMS pages](https://docs.octobercms.com/3.x/cms/resources/building-apis.html) it can be useful to use a page for handling the authentication logic. The following is a simple example that includes various API endpoints.
+
+```twig
+title = "User API Page"
+url = "/api/user/:action"
+
+[resetPassword]
+[account]
+[session]
+verifyToken = 1
+==
+{% if this.param.action == 'signin' %}
+    {% do response(
+        ajaxHandler('onSignin').withVars({
+            token: session.token()
+        })
+    ) %}
+{% endif %}
+
+{% if this.param.action == 'register' %}
+    {% do response(ajaxHandler('onRegister')) %}
+{% endif %}
+
+{% if this.param.action == 'logout' %}
+    {% do response(ajaxHandler('onLogout')) %}
+{% endif %}
+
+{% if this.param.action == 'refresh' %}
+    {% do response({ data: {
+        token: session.token()
+    }}) %}
+{% endif %}
+```
+
+An API layout to verify the user can be used for other API endpoints.
+
+```twig
+description = "Auth API Layout"
+is_priority = 1
+
+[session]
+verifyToken = 1
+==
+{% if session.user %}
+    {% page %}
+{% else %}
+    {% do abort(403, 'Access Denied') %}
+{% endif %}
+```
+
 ## Events
 
 This plugin will fire some global events that can be useful for interacting with other plugins.
@@ -406,18 +472,14 @@ Event::listen('rainlab.user.beforeAuthenticate', function($component, $credentia
     $login = array_get($credentials, 'login');
     $password = array_get($credentials, 'password');
 
-    /*
-        * No such user exists
-        */
+    // No such user exists
     if (!$user = Auth::findUserByLogin($login)) {
         return;
     }
 
-    /*
-        * The user is logging in with their old WordPress account
-        * for the first time. Rehash their password using the new
-        * October system.
-        */
+    // The user is logging in with their old WordPress account
+    // for the first time. Rehash their password using the new
+    // October system.
     if (WordPressLogin::check($user->password, $password)) {
         $user->password = $user->password_confirmation = $password;
         $user->forceSave();
