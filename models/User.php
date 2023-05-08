@@ -24,8 +24,8 @@ class User extends UserBase
      * Validation rules
      */
     public $rules = [
-        'email'    => 'required|between:6,255|email|unique:users',
-        'avatar'   => 'nullable|image|max:4000',
+        'email' => 'required|between:6,255|email|unique:users',
+        'avatar' => 'nullable|image|max:4000',
         'username' => 'required|between:2,255|unique:users',
         'password' => 'required:create|between:8,255|confirmed',
         'password_confirmation' => 'required_with:password|between:8,255',
@@ -68,6 +68,9 @@ class User extends UserBase
      */
     protected $purgeable = ['password_confirmation', 'send_invite'];
 
+    /**
+     * @var array dates
+     */
     protected $dates = [
         'last_seen',
         'deleted_at',
@@ -77,6 +80,9 @@ class User extends UserBase
         'last_login'
     ];
 
+    /**
+     * @var string|null loginAttribute
+     */
     public static $loginAttribute = null;
 
     /**

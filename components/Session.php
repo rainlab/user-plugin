@@ -29,7 +29,7 @@ class Session extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'rainlab.user::lang.session.session',
+            'name' => 'rainlab.user::lang.session.session',
             'description' => 'rainlab.user::lang.session.session_desc'
         ];
     }
@@ -63,7 +63,13 @@ class Session extends ComponentBase
                 'description' => 'rainlab.user::lang.session.redirect_desc',
                 'type' => 'dropdown',
                 'default' => ''
-            ]
+            ],
+            'verifyToken' => [
+                'title' => /*Use token authentication*/'rainlab.user::lang.session.verify_token',
+                'description' => /*Check authentication using a verified bearer token.*/'rainlab.user::lang.session.verify_token_desc',
+                'type' => 'checkbox',
+                'default' => 0
+            ],
         ];
     }
 
@@ -84,10 +90,15 @@ class Session extends ComponentBase
     }
 
     /**
-     * Component is initialized.
+     * init component
      */
     public function init()
     {
+        // Login with token
+        if ($this->property('verifyToken', false)) {
+            $this->authenticateWithBearerToken();
+        }
+
         // Inject security logic pre-AJAX
         $this->controller->bindEvent('page.init', function() {
             if (Request::ajax() && ($redirect = $this->checkUserSecurityRedirect())) {
@@ -109,7 +120,7 @@ class Session extends ComponentBase
     }
 
     /**
-     * Returns the logged in user, if available, and touches
+     * user returns the logged in user, if available, and touches
      * the last seen timestamp.
      * @return RainLab\User\Models\User
      */
@@ -127,6 +138,14 @@ class Session extends ComponentBase
     }
 
     /**
+     * token returns an authentication token
+     */
+    public function token()
+    {
+        return Auth::getBearerToken();
+    }
+
+    /**
      * Returns the previously signed in user when impersonating.
      */
     public function impersonator()
@@ -135,7 +154,7 @@ class Session extends ComponentBase
     }
 
     /**
-     * Log out the user
+     * onLogout logs out the user
      *
      * Usage:
      *   <a data-request="onLogout">Sign out</a>
@@ -227,5 +246,15 @@ class Session extends ComponentBase
         }
 
         return true;
+    }
+
+    /**
+     * authenticateWithBearerToken
+     */
+    protected function authenticateWithBearerToken()
+    {
+        if ($jwtToken = Request::bearerToken()) {
+            Auth::checkBearerToken($jwtToken);
+        }
     }
 }
