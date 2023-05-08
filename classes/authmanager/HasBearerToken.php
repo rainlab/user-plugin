@@ -7,6 +7,7 @@ use Request;
 use Carbon\Carbon;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use SystemException;
 use Exception;
 
 /**
@@ -22,6 +23,10 @@ trait HasBearerToken
      */
     public function getBearerToken(): ?string
     {
+        if (!class_exists(JWT::class)) {
+            throw new SystemException("Missing package. Please install 'firebase/php-jwt' via composer.");
+        }
+
         $user = $this->getUser();
         if (!$user) {
             return null;
@@ -65,6 +70,10 @@ trait HasBearerToken
      */
     public function checkBearerToken(string $jwtToken)
     {
+        if (!class_exists(JWT::class)) {
+            throw new SystemException("Missing package. Please install 'firebase/php-jwt' via composer.");
+        }
+
         if (!strlen(trim($jwtToken))) {
             return false;
         }
