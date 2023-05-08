@@ -401,7 +401,7 @@ url = "/api/user/:action"
 [resetPassword]
 [account]
 [session]
-verifyToken = 1
+checkToken = 1
 ==
 {% if this.param.action == 'signin' %}
     {% do response(
@@ -433,7 +433,7 @@ description = "Auth API Layout"
 is_priority = 1
 
 [session]
-verifyToken = 1
+checkToken = 1
 ==
 {% if session.user %}
     {% page %}
