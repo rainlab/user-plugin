@@ -84,3 +84,4 @@ v1.7.0: Add password policy
 v1.7.1: Fixes compatibility with legacy sites
 v1.7.2: Stability fixes
 v2.0.0: Drops compatibility with October v1 and v2
+v2.1.0: Adds bearer token (JWT) support to session component
