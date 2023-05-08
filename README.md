@@ -130,6 +130,25 @@ Route::group(['middleware' => \RainLab\User\Classes\AuthMiddleware::class], func
 });
 ```
 
+### Token Variable
+
+The `token` Twig variable can be used for generating a new bearer token for the signed in user.
+
+```twig
+{% do response(
+    ajaxHandler('onSignin').withVars({
+        token: session.token()
+    })
+) %}
+```
+
+The `checkToken` property of the component is used to verify a supplied token in the request headers `(Authorization: Bearer <TOKEN>)`.
+
+```ini
+[session]
+checkToken = 1
+```
+
 ## Account Component
 
 The account component provides a user sign in form, registration form, activation form and update form. To display the form:
