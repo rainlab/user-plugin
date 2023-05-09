@@ -137,12 +137,12 @@ The `token` Twig variable can be used for generating a new bearer token for the 
 ```twig
 {% do response(
     ajaxHandler('onSignin').withVars({
-        token: session.token()
+        token: session.token
     })
 ) %}
 ```
 
-The `checkToken` property of the component is used to verify a supplied token in the request headers `(Authorization: Bearer <TOKEN>)`.
+The `checkToken` property of the component is used to verify a supplied token in the request headers `(Authorization: Bearer TOKEN)`.
 
 ```ini
 [session]
