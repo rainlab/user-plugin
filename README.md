@@ -206,9 +206,20 @@ By default the User plugin will use the email address as the login name. To swit
 
 We can add any other additional fields here too, such as `phone`, `company`, etc.
 
-## Password Length Requirements
+## Password Requirements
+
+### Password Length
 
 By default, the User plugin requires a minimum password length of 8 characters for all users when registering or changing their password. You can change this length requirement by going to backend and navigating to System > Users > User Settings. Inside the Registration tab, a **Minimum password length** field is provided, allowing you to increase or decrease this limit to your preferred length.
+
+### Password Confirmation
+
+The `password_confirmation` field can be used to prompt the user to enter their password a second time. This input name is optional, if it is found in the postback data, then it will be validated. The following is an example.
+
+```twig
+<input name="password" type="password" placeholder="Choose a password" />
+<input name="password_confirmation" type="password" placeholder="Repeat password" />
+```
 
 ## Error Handling
 
