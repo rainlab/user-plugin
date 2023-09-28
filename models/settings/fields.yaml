@@ -68,40 +68,40 @@ tabs:
             type: radio
             tab: rainlab.user::lang.settings.activation_tab
 
-        # Min Password Length
-        min_password_length:
-            span: left
-            label: rainlab.user::lang.settings.min_password_length
-            type: number
-            comment: rainlab.user::lang.settings.min_password_length_comment
-            tab: rainlab.user::lang.settings.password_policy_tab
+        # # Min Password Length
+        # min_password_length:
+        #     span: left
+        #     label: rainlab.user::lang.settings.min_password_length
+        #     type: number
+        #     comment: rainlab.user::lang.settings.min_password_length_comment
+        #     tab: rainlab.user::lang.settings.password_policy_tab
 
-        # Require Mixed Case
-        require_mixed_case:
-            span: left
-            label: rainlab.user::lang.settings.require_mixed_case
-            type: switch
-            comment: rainlab.user::lang.settings.require_mixed_case_comment
-            tab: rainlab.user::lang.settings.password_policy_tab
+        # # Require Mixed Case
+        # require_mixed_case:
+        #     span: left
+        #     label: rainlab.user::lang.settings.require_mixed_case
+        #     type: switch
+        #     comment: rainlab.user::lang.settings.require_mixed_case_comment
+        #     tab: rainlab.user::lang.settings.password_policy_tab
 
-        # Require Uncompromised
-        require_uncompromised:
-            span: right
-            label: rainlab.user::lang.settings.require_uncompromised
-            type: switch
-            comment: rainlab.user::lang.settings.require_uncompromised_comment
-            tab: rainlab.user::lang.settings.password_policy_tab
+        # # Require Uncompromised
+        # require_uncompromised:
+        #     span: right
+        #     label: rainlab.user::lang.settings.require_uncompromised
+        #     type: switch
+        #     comment: rainlab.user::lang.settings.require_uncompromised_comment
+        #     tab: rainlab.user::lang.settings.password_policy_tab
 
-        # Require number
-        require_number:
-            span: left
-            label: rainlab.user::lang.settings.require_number
-            type: switch
-            tab: rainlab.user::lang.settings.password_policy_tab
+        # # Require number
+        # require_number:
+        #     span: left
+        #     label: rainlab.user::lang.settings.require_number
+        #     type: switch
+        #     tab: rainlab.user::lang.settings.password_policy_tab
 
-        # Require symbol
-        require_symbol:
-            span: right
-            label: rainlab.user::lang.settings.require_symbol
-            type: switch
-            tab: rainlab.user::lang.settings.password_policy_tab
+        # # Require symbol
+        # require_symbol:
+        #     span: right
+        #     label: rainlab.user::lang.settings.require_symbol
+        #     type: switch
+        #     tab: rainlab.user::lang.settings.password_policy_tab

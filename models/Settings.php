@@ -1,7 +1,11 @@
 <?php namespace RainLab\User\Models;
 
 use Model;
+use Config;
 
+/**
+ * Settings configuration
+ */
 class Settings extends Model
 {
     /**
@@ -13,7 +17,6 @@ class Settings extends Model
 
     public $settingsCode = 'user_settings';
     public $settingsFields = 'fields.yaml';
-
 
     const ACTIVATE_AUTO = 'auto';
     const ACTIVATE_USER = 'user';
@@ -28,14 +31,14 @@ class Settings extends Model
 
     public function initSettingsData()
     {
-        $this->require_activation = config('rainlab.user::requireActivation', true);
-        $this->activate_mode = config('rainlab.user::activateMode', self::ACTIVATE_AUTO);
-        $this->use_throttle = config('rainlab.user::useThrottle', true);
-        $this->block_persistence = config('rainlab.user::blockPersistence', false);
-        $this->allow_registration = config('rainlab.user::allowRegistration', true);
-        $this->login_attribute = config('rainlab.user::loginAttribute', self::LOGIN_EMAIL);
-        $this->remember_login = config('rainlab.user::rememberLogin', self::REMEMBER_ALWAYS);
-        $this->use_register_throttle = config('rainlab.user::useRegisterThrottle', true);
+        $this->require_activation = Config::get('rainlab.user::requireActivation', true);
+        $this->activate_mode = Config::get('rainlab.user::activateMode', self::ACTIVATE_AUTO);
+        $this->use_throttle = Config::get('rainlab.user::useThrottle', true);
+        $this->block_persistence = Config::get('rainlab.user::blockPersistence', false);
+        $this->allow_registration = Config::get('rainlab.user::allowRegistration', true);
+        $this->login_attribute = Config::get('rainlab.user::loginAttribute', self::LOGIN_EMAIL);
+        $this->remember_login = Config::get('rainlab.user::rememberLogin', self::REMEMBER_ALWAYS);
+        $this->use_register_throttle = Config::get('rainlab.user::useRegisterThrottle', true);
     }
 
     public function getActivateModeOptions()
