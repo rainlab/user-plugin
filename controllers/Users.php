@@ -102,13 +102,11 @@ class Users extends Controller
     }
 
     /**
-     * Display username field if settings permit
+     * formExtendFields displays username field if settings permit
      */
     public function formExtendFields($form)
     {
-        /*
-         * Show the username field if it is configured for use
-         */
+        // Show the username field if it is configured for use
         if (
             UserSettings::get('login_attribute') == UserSettings::LOGIN_USERNAME &&
             array_key_exists('username', $form->getFields())
@@ -117,6 +115,19 @@ class Users extends Controller
         }
     }
 
+    /**
+     * formAfterCreate automatically activates a user, if needed
+     */
+    public function formAfterCreate($model)
+    {
+        if (UserSettings::get('activate_mode') === UserSettings::ACTIVATE_AUTO) {
+            $model->attemptActivation($model->getActivationCode());
+        }
+    }
+
+    /**
+     * formAfterUpdate
+     */
     public function formAfterUpdate($model)
     {
         $blockMail = post('User[block_mail]', false);
@@ -125,6 +136,9 @@ class Users extends Controller
         }
     }
 
+    /**
+     * formExtendModel
+     */
     public function formExtendModel($model)
     {
         $model->block_mail = MailBlocker::isBlockAll($model);
