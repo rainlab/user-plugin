@@ -113,4 +113,27 @@ return [
     */
 
     'useThrottle' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | JWT Config
+    |--------------------------------------------------------------------------
+    |
+    | The token might be consumed in other systems. perhaps we could have a
+    | few variables here and there to have control over the token variables.
+    | Setting the value to null will leave it as the internal default value.
+    |
+    | - algorithm: see https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-algorithms-40
+    | - key: to be used instead of the app.key value
+    | - ttl: in minutes
+    | - leeway: in seconds
+    |
+    */
+
+    'bearerToken' => [
+        'algorithm' => null,
+        'key' => null,
+        'ttl' => null,
+        'leeway' => null,
+    ]
 ];
