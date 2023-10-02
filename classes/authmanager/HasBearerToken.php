@@ -53,6 +53,7 @@ trait HasBearerToken
 
         // Create the token as an array
         $data = [
+            'sub' => $user->getKey(),
             'iat' => $issuedAt->getTimestamp(),
             'jti' => $tokenId,
             'iss' => $serverName,
