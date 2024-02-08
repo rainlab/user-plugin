@@ -4,7 +4,7 @@
     "description": "User plugin for October CMS",
     "homepage": "https://octobercms.com/plugin/rainlab-user",
     "keywords": ["october", "octobercms", "user"],
-    "license": "MIT",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Alexey Bobkov",

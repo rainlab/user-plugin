@@ -22,8 +22,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'rainlab.user::lang.plugin.name',
-            'description' => 'rainlab.user::lang.plugin.description',
+            'name' => "User",
+            'description' => "User management features",
             'author' => 'Alexey Bobkov, Samuel Georges',
             'icon' => 'icon-user',
             'homepage' => 'https://github.com/rainlab/user-plugin'
