@@ -10,7 +10,6 @@ class CreateUserGroupsTable extends Migration
     {
         Schema::create('user_groups', function($table)
         {
-            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
             $table->string('code')->nullable()->index();
@@ -20,7 +19,6 @@ class CreateUserGroupsTable extends Migration
 
         Schema::create('users_groups', function($table)
         {
-            $table->engine = 'InnoDB';
             $table->integer('user_id')->unsigned();
             $table->integer('user_group_id')->unsigned();
             $table->primary(['user_id', 'user_group_id'], 'rainlab_user_group');

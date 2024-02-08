@@ -1,31 +1,31 @@
-# Upgrade guide
+# Upgrading from User v2 to v3
 
-- [Upgrading to 1.1 from 1.0](#upgrade-1.1)
-- [Upgrading to 1.4 from 1.3](#upgrade-1.4)
+This guide can be used to help migrate from RainLab.User v2 to v3. Some theme changes are required to since there are new components.
 
-<a name="upgrade-1.1"></a>
-## Upgrading To 1.1
+## Upgrade Instructions
 
-The User plugin has been split apart in to smaller more manageable plugins. These fields are no longer provided by the User plugin: `company`, `phone`, `street_addr`, `city`, `zip`, `country`, `state`. This is a non-destructive upgrade so the columns will remain in the database untouched.
+1. Run `php artisan plugin:install rainlab.user` to request the latest version (you do not need to uninstall v2 first).
 
-Country and State models have been removed and can be replaced by installing the plugin **RainLab.Location**. The remaining profiles fields can be replaced by installing the plugin **RainLab.UserPlus**.
+1. Migrate user data using `php artisan user:migratev1` (non destructive).
 
-In short, to retain the old functionality simply install the following plugins:
+1. Continue using this plugin as normal.
 
-- RainLab.Location
-- RainLab.UserPlus
+## Key Differences
 
-<a name="upgrade-1.4"></a>
-## Upgrading To 1.4
+- The plugin now uses Laravel's authentication system as the underlying technology.
 
-The Notifications tab in User settings has been removed. This feature has been replaced by the [Notify plugin](https://octobercms.com/plugin/rainlab-notify). How to replace this feature:
+- Two-Factor authentication is provided out of the box.
 
-1. Install the `RainLab.Notify` plugin
-1. Navigate to Settings > Notification rules
-1. Click **New notification** rule
-1. Select User > **Activated**
-1. Click **Add action**
-1. Select **Compose a mail message**
-1. Select **User email address** for the **Send to field**
-1. Here you may select the **Mail template** previously defined in the user settings.
-1. Click **Save**
+## Key Similarities
+
+- ...
+
+## Breaking Changes
+
+### ...
+
+...
+
+### Events Updated
+
+...

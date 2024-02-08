@@ -10,7 +10,6 @@ class CreateMailBlockersTable extends Migration
     {
         Schema::create('rainlab_user_mail_blockers', function($table)
         {
-            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('email')->index()->nullable();
             $table->string('template')->index()->nullable();

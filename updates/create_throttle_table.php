@@ -10,7 +10,6 @@ class CreateThrottleTable extends Migration
     {
         Schema::create('user_throttle', function($table)
         {
-            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable()->index();
             $table->string('ip_address')->nullable()->index();
