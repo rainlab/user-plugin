@@ -1,15 +1,13 @@
-<?php namespace RainLab\User\Updates;
+<?php
 
-use Schema;
+use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 
-class CreateUsersTable extends Migration
+return new class extends Migration
 {
-
     public function up()
     {
-        Schema::create('users', function($table)
-        {
+        Schema::create('users', function(Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
@@ -36,5 +34,4 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
-
-}
+};

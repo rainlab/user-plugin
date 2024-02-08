@@ -1,11 +1,14 @@
-v1.0.1:
-    - Initialize plugin.
-    - create_users_table.php
-    - create_throttle_table.php
-    - create_mail_blockers_table.php
-    - create_user_groups_table.php
-v1.0.2: Seed tables.
-    - seed_user_groups_table.php
+v1.0.1: First version of User
+v1.0.2:
+    - Set up database tables
+    - 000001_create_users.php
+    - 000002_create_password_resets.php
+    - 000003_create_user_roles.php
+    - 000004_create_user_groups.php
+    - 000004_create_mail_blockers.php
+v1.0.3:
+    - Seed all database tables
+    - seed_tables.php
 v1.1.0: Profile fields and Locations have been removed.
 v1.2.0: Users can now deactivate their own accounts.
 v1.3.0: Introduced guest user accounts.
@@ -16,3 +19,6 @@ v1.7.0: Add password policy
 v1.7.1: Fixes compatibility with legacy sites
 v2.0.0: Compatibility with October v3 only
 v2.1.0: Adds bearer token (JWT) support to session component
+v3.0.0:
+    - Major Upgrade to User Plugin
+    - migrate_from_version1.php

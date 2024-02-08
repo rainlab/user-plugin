@@ -1,14 +1,13 @@
-<?php namespace RainLab\User\Updates;
+<?php
 
-use Schema;
+use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 
-class CreateUserGroupsTable extends Migration
+return new class extends Migration
 {
-
     public function up()
     {
-        Schema::create('user_groups', function($table)
+        Schema::create('user_groups', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('name');
@@ -17,7 +16,7 @@ class CreateUserGroupsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('users_groups', function($table)
+        Schema::create('users_groups', function(Blueprint $table)
         {
             $table->integer('user_id')->unsigned();
             $table->integer('user_group_id')->unsigned();
@@ -30,5 +29,4 @@ class CreateUserGroupsTable extends Migration
         Schema::dropIfExists('user_groups');
         Schema::dropIfExists('users_groups');
     }
-
-}
+};

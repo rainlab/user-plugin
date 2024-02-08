@@ -1,14 +1,13 @@
-<?php namespace RainLab\User\Updates;
+<?php
 
-use Schema;
+use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 
-class CreateMailBlockersTable extends Migration
+return new class extends Migration
 {
-
     public function up()
     {
-        Schema::create('rainlab_user_mail_blockers', function($table)
+        Schema::create('rainlab_user_mail_blockers', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('email')->index()->nullable();
@@ -22,5 +21,4 @@ class CreateMailBlockersTable extends Migration
     {
         Schema::dropIfExists('rainlab_user_mail_blockers');
     }
-
-}
+};
