@@ -1,4 +1,4 @@
-<?php namespace RainLab\User\Classes\AuthManager;
+<?php namespace RainLab\User\Classes\SessionGuard;
 
 use Str;
 use Hash;
@@ -46,7 +46,7 @@ trait HasBearerToken
         $serverName = Request::getHost();
 
         // Prepare payload
-        $persistCode = $user->persist_code ?: $user->getPersistCode();
+        $persistCode = $user->remember_token ?: $user->getPersistCode();
         $data = [
             'login' => $user->getLogin(),
             'hash' => Hash::make($persistCode)
@@ -115,12 +115,12 @@ trait HasBearerToken
 
         // Locate user
         $user = $this->findUserByLogin($login);
-        if (!$user || !$user->persist_code) {
+        if (!$user || !$user->remember_token) {
             return false;
         }
 
         // Persist code check failed
-        if (!Hash::check($user->persist_code, $hash)) {
+        if (!Hash::check($user->remember_token, $hash)) {
             return false;
         }
 

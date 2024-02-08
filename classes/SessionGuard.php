@@ -13,6 +13,8 @@ use InvalidArgumentException;
  */
 class SessionGuard extends SessionGuardBase
 {
+    use \RainLab\User\Classes\SessionGuard\HasBearerToken;
+
     /**
      * rehashUserPassword for the current user, overrides parent logic
      * to remove the second hash since it is covered by Hashable during
