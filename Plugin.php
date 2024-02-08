@@ -22,8 +22,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'rainlab.user::lang.plugin.name',
-            'description' => 'rainlab.user::lang.plugin.description',
+            'name' => "User",
+            'description' => "Front-end user management.",
             'author' => 'Alexey Bobkov, Samuel Georges',
             'icon' => 'icon-user',
             'homepage' => 'https://github.com/rainlab/user-plugin'
@@ -142,12 +142,12 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label'       => 'rainlab.user::lang.settings.menu_label',
+                'label' => 'rainlab.user::lang.settings.menu_label',
                 'description' => 'rainlab.user::lang.settings.menu_description',
-                'category'    => SettingsManager::CATEGORY_USERS,
-                'icon'        => class_exists('System') ? 'octo-icon-user-actions-key' : 'icon-cog',
-                'class'       => 'RainLab\User\Models\Settings',
-                'order'       => 500,
+                'category' => SettingsManager::CATEGORY_USERS,
+                'icon' => class_exists('System') ? 'octo-icon-user-actions-key' : 'icon-cog',
+                'class' => 'RainLab\User\Models\Settings',
+                'order' => 500,
                 'permissions' => ['rainlab.users.access_settings']
             ]
         ];

@@ -1,9 +1,5 @@
-<?php
-
-return [
+<?php return [
   'plugin' => [
-    'name' => 'Benutzer',
-    'description' => 'Frontend-Benutzer-Verwaltung.',
     'tab' => 'Benutzer',
     'access_users' => 'Benutzer verwalten',
     'access_groups' => 'Benutzergruppen verwalten',
