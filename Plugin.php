@@ -1,15 +1,15 @@
 <?php namespace RainLab\User;
 
 use App;
-use Auth;
 use Event;
+use Config;
 use Backend;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Classes\UserRedirector;
 use RainLab\User\Models\MailBlocker;
-use RainLab\Notify\Classes\Notifier;
+use RainLab\User\Classes\UserProvider;
 
 /**
  * Plugin base class
@@ -35,13 +35,59 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        $alias = AliasLoader::getInstance();
-        $alias->alias('Auth', \RainLab\User\Facades\Auth::class);
+        $this->registerAuthConfiguration();
+        $this->registerSingletons();
+        $this->registerAuthProvider();
+        $this->registerCustomRedirector();
 
-        App::singleton('user.auth', function () {
-            return \RainLab\User\Classes\AuthManager::instance();
+        // Apply user-based mail blocking
+        Event::listen('mailer.prepareSend', function ($mailer, $view, $message) {
+            return MailBlocker::filterMessage($view, $message);
         });
+    }
 
+    /**
+     * registerAuthConfiguration
+     */
+    protected function registerAuthConfiguration()
+    {
+        if (!Config::get('auth.defaults')) {
+            Config::set('auth', Config::get('rainlab.user::auth'));
+        }
+    }
+
+    /**
+     * registerSingletons
+     */
+    protected function registerSingletons()
+    {
+        $this->app->singleton('user.twofactor', \RainLab\User\Classes\TwoFactorManager::class);
+
+        // Laravel services
+        $this->app->alias('auth', \RainLab\User\Classes\AuthManager::class);
+        $this->app->alias('auth', \Illuminate\Contracts\Auth\Factory::class);
+        $this->app->alias('auth.driver', \Illuminate\Contracts\Auth\Guard::class);
+
+        $this->app->singleton('auth', fn ($app) => new \RainLab\User\Classes\AuthManager($app));
+        $this->app->singleton('auth.driver', fn ($app) => $app['auth']->guard());
+    }
+
+    /**
+     * registerAuthProvider extends the auth manager to include a custom provider
+     */
+    protected function registerAuthProvider()
+    {
+        $this->app->auth->provider('user', function ($app, array $config) {
+            return new UserProvider($app['hash'], $config['model']);
+        });
+    }
+
+    /**
+     * registerCustomRedirector extends the redirector session state to use
+     * a unique key for the frontend
+     */
+    protected function registerCustomRedirector()
+    {
         // Overrides with our own extended version of Redirector to support
         // separate url.intended session variable for frontend
         App::singleton('redirect', function ($app) {
@@ -55,11 +101,6 @@ class Plugin extends PluginBase
             }
 
             return $redirector;
-        });
-
-        // Apply user-based mail blocking
-        Event::listen('mailer.prepareSend', function ($mailer, $view, $message) {
-            return MailBlocker::filterMessage($view, $message);
         });
     }
 

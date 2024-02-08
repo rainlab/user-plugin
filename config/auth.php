@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'customers',
+        'passwords' => 'users',
     ],
 
     /*
@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'customers',
+            'provider' => 'users',
         ],
     ],
 
@@ -60,15 +60,10 @@ return [
     */
 
     'providers' => [
-        'customers' => [
-            'driver' => 'customer',
-            'model' => Responsiv\User\Models\Customer::class,
+        'users' => [
+            'driver' => 'user',
+            'model' => RainLab\User\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -91,8 +86,8 @@ return [
     */
 
     'passwords' => [
-        'customers' => [
-            'provider' => 'customers',
+        'users' => [
+            'provider' => 'users',
             'table' => 'user_password_resets',
             'expire' => 60,
             'throttle' => 60,
