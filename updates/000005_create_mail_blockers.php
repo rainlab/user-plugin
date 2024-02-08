@@ -7,12 +7,11 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('rainlab_user_mail_blockers', function(Blueprint $table)
-        {
-            $table->increments('id');
+        Schema::create('rainlab_user_mail_blockers', function(Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('email')->index()->nullable();
             $table->string('template')->index()->nullable();
-            $table->integer('user_id')->unsigned()->nullable()->index();
+            $table->bigInteger('user_id')->unsigned()->nullable()->index();
             $table->timestamps();
         });
     }

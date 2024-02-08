@@ -8,21 +8,23 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function(Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('surname')->nullable();
+            $table->bigIncrements('id');
+            $table->boolean('is_guest')->default(false);
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('username')->nullable()->index();
             $table->string('email')->unique();
+            $table->mediumText('notes')->nullable();
+            $table->integer('role_id')->nullable()->unsigned();
             $table->string('password');
-            $table->string('activation_code')->nullable()->index();
-            $table->string('persist_code')->nullable();
-            $table->string('reset_password_code')->nullable()->index();
-            $table->text('permissions')->nullable();
+            $table->string('remember_token')->nullable();
+            $table->text('two_factor_secret')->nullable();
+            $table->text('two_factor_recovery_codes')->nullable();
             $table->string('created_ip_address')->nullable();
             $table->string('last_ip_address')->nullable();
             $table->boolean('is_activated')->default(0);
-            $table->boolean('is_guest')->default(false);
-            $table->timestamp('activated_at')->nullable();
+            $table->timestamp('activated_at')->nullable(); // email_verified_at
+            $table->timestamp('two_factor_confirmed_at')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->timestamp('last_seen')->nullable();
             $table->timestamp('deleted_at')->nullable();
