@@ -61,9 +61,6 @@ class Plugin extends PluginBase
         Event::listen('mailer.prepareSend', function ($mailer, $view, $message) {
             return MailBlocker::filterMessage($view, $message);
         });
-
-        // Compatibility with RainLab.Notify
-        $this->bindNotificationEvents();
     }
 
     /**
@@ -166,49 +163,5 @@ class Plugin extends PluginBase
             'rainlab.user::mail.reactivate',
             'rainlab.user::mail.invite',
         ];
-    }
-
-    /**
-     * registerNotificationRules
-     */
-    public function registerNotificationRules()
-    {
-        return [
-            'groups' => [
-                'user' => [
-                    'label' => 'User',
-                    'icon' => 'icon-user'
-                ],
-            ],
-            'events' => [
-                \RainLab\User\NotifyRules\UserActivatedEvent::class,
-                \RainLab\User\NotifyRules\UserRegisteredEvent::class,
-            ],
-            'actions' => [],
-            'conditions' => [
-                \RainLab\User\NotifyRules\UserAttributeCondition::class
-            ],
-        ];
-    }
-
-    /**
-     * bindNotificationEvents
-     */
-    protected function bindNotificationEvents()
-    {
-        if (!class_exists(Notifier::class)) {
-            return;
-        }
-
-        Notifier::bindEvents([
-            'rainlab.user.activate' => \RainLab\User\NotifyRules\UserActivatedEvent::class,
-            'rainlab.user.register' => \RainLab\User\NotifyRules\UserRegisteredEvent::class
-        ]);
-
-        Notifier::instance()->registerCallback(function ($manager) {
-            $manager->registerGlobalParams([
-                'user' => Auth::getUser()
-            ]);
-        });
     }
 }
