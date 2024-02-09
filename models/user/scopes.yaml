@@ -26,5 +26,5 @@ scopes:
         type: switch
         # SQL conditions
         conditions:
-            - is_activated = '0'
-            - is_activated = '1'
+            - activated_at = null
+            - is_activated <> null

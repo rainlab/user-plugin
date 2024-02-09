@@ -15,6 +15,7 @@ return new class extends Migration
             'reset_password_code',
             'permissions',
             'is_superuser',
+            'is_activated',
         ];
 
         foreach ($columnsToPrune as $column) {

@@ -35,9 +35,7 @@ use October\Rain\Auth\AuthException;
  * @property int $primary_group_id
  * @property string $created_ip_address
  * @property string $last_ip_address
- * @property bool $is_banned
  * @property string $banned_reason
- * @property bool $is_activated
  * @property \Illuminate\Support\Carbon $banned_at
  * @property \Illuminate\Support\Carbon $activated_at
  * @property \Illuminate\Support\Carbon $two_factor_confirmed_at
@@ -54,6 +52,7 @@ class User extends Model implements Authenticatable, CanResetPassword
     use \RainLab\User\Models\User\HasPasswordReset;
     use \RainLab\User\Models\User\HasAuthenticatable;
     use \RainLab\User\Models\User\HasEmailVerification;
+    use \RainLab\User\Models\User\HasModelAttributes;
     use \October\Rain\Database\Traits\SoftDelete;
 
     /**
@@ -278,7 +277,7 @@ class User extends Model implements Authenticatable, CanResetPassword
      */
     public function scopeIsActivated($query)
     {
-        return $query->where('is_activated', 1);
+        return $query->whereNotNull('activated_at');
     }
 
     /**
