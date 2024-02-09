@@ -9,5 +9,20 @@
   "Users": "Usuarios",
   "Groups": "Grupos",
   "User settings": "Ajustes de Usuario",
-  "Manage user authentication, registration and activation settings.": "Administrar los ajustes de usuario."
+  "Manage user authentication, registration and activation settings.": "Administrar los ajustes de usuario.",
+  "Name": "Nombre",
+  "Last Name": "Apellido",
+  "Email": "Email",
+  "Account": "Cuenta",
+  "Create Password": "Crear Contraseña",
+  "Enter a new password used for signing in.": "Ingrese una nueva contraseña.",
+  "Reset Password": "Reiniciar contraseña ",
+  "To reset this users password, enter a new password here.": "Para reiniciar esta contraseña, ingrese un nueva aquí.",
+  "Password Confirmation": "Confirmar contraseña",
+  "Enter the password again to confirm it.": "Ingrese nuevamente la contraseña para confirmarla.",
+  "Username": "Nombre de Usuario",
+  "ID": "ID",
+  "There are no user groups available.": "No hay grupos de usuarios disponibles.",
+  "Avatar": "Avatar",
+  "Registered": "Registrado"
 }

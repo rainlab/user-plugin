@@ -633,7 +633,7 @@ class Account extends ComponentBase
             'login' => $this->loginAttributeLabel(),
             'password' => Lang::get('rainlab.user::lang.account.password'),
             'email' => Lang::get('rainlab.user::lang.account.email'),
-            'username' => Lang::get('rainlab.user::lang.user.username'),
+            'username' => __("Username"),
             'name' => Lang::get('rainlab.user::lang.account.full_name')
         ];
     }
