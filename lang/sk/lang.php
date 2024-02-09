@@ -7,10 +7,8 @@
     'impersonate_user' => 'Zosobniť používateľov',
   ],
   'users' => [
-    'menu_label' => 'Používatelia',
     'all_users' => 'Všetci používatelia',
     'new_user' => 'Nový používateľ',
-    'list_title' => 'Správa používateľov',
     'trashed_hint_title' => 'Používateľ deaktivoval svoj účet',
     'trashed_hint_desc' => 'Tento používateľ deaktivoval svoj účet a už nechce byť zobrazovaný na webe. Môže kedykoľvek obnoviť svoj účet, keď sa prihlási späť.',
     'banned_hint_title' => 'Používateľ bol zakázaný',
@@ -61,8 +59,6 @@
   ],
   'settings' => [
     'users' => 'Používatelia',
-    'menu_label' => 'Nastavenie používateľov',
-    'menu_description' => 'Správa nastavení používateľov.',
     'activation_tab' => 'Aktivácia',
     'signin_tab' => 'Prihlásenie',
     'registration_tab' => 'Registrácia',
@@ -87,7 +83,6 @@
     'login_attribute_comment' => 'Vyberte, aké základný údaj používateľa sa má použiť pri prihlasovaní.',
   ],
   'user' => [
-    'label' => 'Používateľ',
     'id' => 'ID',
     'username' => 'Užívateľské meno',
     'name' => 'Meno',
@@ -119,7 +114,6 @@
     'status_registered' => 'Registrovaný',
   ],
   'group' => [
-    'label' => 'Skupina',
     'id' => 'ID',
     'name' => 'Meno',
     'description_field' => 'Popis',
@@ -129,18 +123,14 @@
     'users_count' => 'Používatelia',
   ],
   'groups' => [
-    'menu_label' => 'Skupiny',
     'all_groups' => 'Skupiny používateľov',
     'new_group' => 'Nová skupina',
     'delete_selected_confirm' => 'Naozaj chcete odstrániť vybrané skupiny?',
-    'list_title' => 'Správa skupín',
     'delete_confirm' => 'Naozaj chcete odstrániť túto skupinu?',
     'delete_selected_success' => 'Vybrané skupiny boli úspešne odstránené.',
     'delete_selected_empty' => 'Nie sú vybrané žiadne skupiny na odstránenie.',
     'return_to_list' => 'Späť na zoznam skupín',
     'return_to_users' => 'Späť na zoznam používateľov',
-    'create_title' => 'Vytvoriť skupinu používateľov',
-    'update_title' => 'Upraviť skupinu používateľov',
     'preview_title' => 'Ukážka skupiny používateľov',
   ],
   'login' => [

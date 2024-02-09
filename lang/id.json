@@ -2,5 +2,14 @@
   "User": "Pengguna",
   "Front-end user management.": "Manajemen pengguna front-end",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Maaf, pengguna saat ini tidak diaktifkan. Silakan hubungi kami untuk bantuan lebih lanjut.",
-  "Bulk actions": "Aksi masal"
+  "Bulk actions": "Aksi masal",
+  "Group": "Grup",
+  "Create User Group": "Buat Grup Pengguna",
+  "Edit User Group": "Edit Grup Pengguna",
+  "Manage Groups": "Kelola Grup",
+  "Manage Users": "Kelola Pengguna",
+  "Users": "Pengguna",
+  "Groups": "Grup",
+  "User settings": "Pengaturan pengguna",
+  "Manage user authentication, registration and activation settings.": "Kelola pengaturan berbasis pengguna"
 }

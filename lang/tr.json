@@ -1,6 +1,15 @@
 {
-  "User": "Üye",
+  "User": "User",
   "Front-end user management.": "Ön-yüz üye yönetimi.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Maalesef, bu kullanıcı şu anda etkin değil. Daha fazla yardım için lütfen bizimle iletişime geçin.",
-  "Bulk actions": "Toplu işlemler"
+  "Bulk actions": "Toplu işlemler",
+  "Group": "Grup",
+  "Create User Group": "Üye grubu oluştur",
+  "Edit User Group": "Üye grubunu düzenle",
+  "Manage Groups": "Grupları Yönet",
+  "Manage Users": "Üyeleri Yönet",
+  "Users": "Üyeler",
+  "Groups": "Gruplar",
+  "User settings": "Üye ayarları",
+  "Manage user authentication, registration and activation settings.": "Üye bazlı ayarları yönetin."
 }

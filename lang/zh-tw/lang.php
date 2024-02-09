@@ -7,10 +7,8 @@
     'impersonate_user' => '以指定會員登入',
   ],
   'users' => [
-    'menu_label' => '會員',
     'all_users' => '所有會員',
     'new_user' => '新會員',
-    'list_title' => '管理會員',
     'trashed_hint_title' => '會員帳號已停用',
     'trashed_hint_desc' => '此會員已主動停用帳號，且不會在網站上出現。會員可隨時登入號以恢復其帳號。',
     'banned_hint_title' => '會員已封鎖',
@@ -64,8 +62,6 @@
   ],
   'settings' => [
     'users' => '會員',
-    'menu_label' => '會員設定',
-    'menu_description' => '管理會員基本設定。',
     'activation_tab' => '啟用',
     'signin_tab' => '登入',
     'registration_tab' => '註冊',
@@ -98,7 +94,6 @@
     'remember_ask' => '會員登入時決定',
   ],
   'user' => [
-    'label' => '會員',
     'id' => 'ID',
     'username' => '會員名稱',
     'name' => '名',
@@ -132,7 +127,6 @@
     'last_ip_address' => '最後位置',
   ],
   'group' => [
-    'label' => '群組',
     'id' => 'ID',
     'name' => '名稱',
     'description_field' => '描述',
@@ -142,18 +136,14 @@
     'users_count' => '會員數',
   ],
   'groups' => [
-    'menu_label' => '群組',
     'all_groups' => '會員群組',
     'new_group' => '新增群組',
     'delete_selected_confirm' => '是否刪除所選的群組？',
-    'list_title' => '管理群組',
     'delete_confirm' => '是否刪除此群組？',
     'delete_selected_success' => '已成功刪除群組。',
     'delete_selected_empty' => '沒有會員被選取。',
     'return_to_list' => '回到群組列表',
     'return_to_users' => '回到會員列表',
-    'create_title' => '建立群組',
-    'update_title' => '編輯群組',
     'preview_title' => '預覽群組',
   ],
   'login' => [

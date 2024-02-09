@@ -2,5 +2,14 @@
   "User": "Gebruiker",
   "Front-end user management.": "Gebruikersbeheer voor de front-end.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Sorry, deze gebruiker is momenteel niet geactiveerd. Neem contact met ons op voor verdere hulp.",
-  "Bulk actions": "Bulk acties"
+  "Bulk actions": "Bulk acties",
+  "Group": "Groep",
+  "Create User Group": "Groep aanmaken",
+  "Edit User Group": "Wijzig groep",
+  "Manage Groups": "Beheer groepen",
+  "Manage Users": "Beheer gebruikers",
+  "Users": "Gebruikers",
+  "Groups": "Groepen",
+  "User settings": "Instellingen",
+  "Manage user authentication, registration and activation settings.": "Beheer de instellingen voor gebruikers."
 }

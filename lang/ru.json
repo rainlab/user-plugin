@@ -1,6 +1,15 @@
 {
-  "User": "Пользователи",
+  "User": "Пользователь",
   "Front-end user management.": "Фронтенд управление пользователями.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Извините, этот пользователь заблокирован. Обратитесь к администратору за помощью.",
-  "Bulk actions": "Массовые действия"
+  "Bulk actions": "Массовые действия",
+  "Group": "Группа",
+  "Create User Group": "Создание группы",
+  "Edit User Group": "Редактирование группы",
+  "Manage Groups": "Управление группами",
+  "Manage Users": "Управление пользователями",
+  "Users": "Пользователи",
+  "Groups": "Группы",
+  "User settings": "Настройки пользователя",
+  "Manage user authentication, registration and activation settings.": "Управления параметрами пользователя."
 }

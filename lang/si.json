@@ -2,5 +2,14 @@
   "User": "පරිශීලක",
   "Front-end user management.": "ඉදිරිපස පරිශීලක කළමනාකරණය.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "සමාවන්න, මෙම පරිශීලකයා දැනට සක්‍රිය කර නැත. වැඩිදුර සහාය සඳහා කරුණාකර අප හා සම්බන්ධ වන්න.",
-  "Bulk actions": "තොග ක්රියාවන්"
+  "Bulk actions": "තොග ක්රියාවන්",
+  "Group": "සමූහය",
+  "Create User Group": "පරිශීලක කණ්ඩායමක් සාදන්න",
+  "Edit User Group": "පරිශීලක කණ්ඩායම සංස්කරණය කරන්න",
+  "Manage Groups": "කණ්ඩායම් කළමනාකරණය කරන්න",
+  "Manage Users": "පරිශීලකයන් කළමනාකරණය කරන්න",
+  "Users": "පරිශීලකයන්",
+  "Groups": "කණ්ඩායම්",
+  "User settings": "පරිශීලක සැකසුම්",
+  "Manage user authentication, registration and activation settings.": "පරිශීලක සත්‍යාපනය, ලියාපදිංචිය සහ සක්‍රිය කිරීමේ සැකසුම් කළමනාකරණය කරන්න."
 }

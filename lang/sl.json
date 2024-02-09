@@ -1,6 +1,15 @@
 {
-  "User": "Uporabniki",
+  "User": "Uporabnik",
   "Front-end user management.": "Upravljanje uporabnikov spletne strani.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Oprostite, ta uporabnik trenutno ni aktiviran. Prosimo, kontaktirajte nas za nadaljnjo pomoč.",
-  "Bulk actions": "Skupna dejanja"
+  "Bulk actions": "Skupna dejanja",
+  "Group": "Skupina",
+  "Create User Group": "Ustvari skupino uporabnikov",
+  "Edit User Group": "Uredi skupino uporabnikov",
+  "Manage Groups": "Upravljanje skupin",
+  "Manage Users": "Upravljanje uporabnikov",
+  "Users": "Uporabniki",
+  "Groups": "Skupine",
+  "User settings": "Nastavitve za uporabnike",
+  "Manage user authentication, registration and activation settings.": "Upravljanje z nastavitvami za uporabnike."
 }

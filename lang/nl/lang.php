@@ -7,10 +7,8 @@
     'impersonate_user' => 'Inloggen als gebruikers',
   ],
   'users' => [
-    'menu_label' => 'Gebruikers',
     'all_users' => 'Alle gebruikers',
     'new_user' => 'Nieuwe gebruiker',
-    'list_title' => 'Beheer gebruikers',
     'trashed_hint_title' => 'Gebruiker heeft zijn account gedeactiveerd',
     'trashed_hint_desc' => 'Deze gebruiker heeft zijn account gedeactiveerd en wil niet meer op de site verschijnen. Hij kan zijn account op elk moment herstellen door opnieuw in te loggen.',
     'banned_hint_title' => 'Gebruiker is verbannen',
@@ -64,8 +62,6 @@
   ],
   'settings' => [
     'users' => 'Gebruikers',
-    'menu_label' => 'Instellingen',
-    'menu_description' => 'Beheer de instellingen voor gebruikers.',
     'activation_tab' => 'Activatie',
     'signin_tab' => 'Inloggen',
     'registration_tab' => 'Registratie',
@@ -98,7 +94,6 @@
     'remember_ask' => 'Vraag de gebruiker bij het inloggen',
   ],
   'user' => [
-    'label' => 'Gebruiker',
     'id' => 'ID',
     'username' => 'Gebruikersnaam',
     'name' => 'Voornaam',
@@ -132,7 +127,6 @@
     'last_ip_address' => 'Laatste IP-address',
   ],
   'group' => [
-    'label' => 'Groep',
     'id' => 'ID',
     'name' => 'Naam',
     'description_field' => 'Omschrijving',
@@ -143,18 +137,14 @@
     'is_new_user_default_field' => 'Voeg nieuwe beheerders automatisch toe aan deze groep.',
   ],
   'groups' => [
-    'menu_label' => 'Groepen',
     'all_groups' => 'Groepen',
     'new_group' => 'Nieuwe groep',
     'delete_selected_confirm' => 'Weet u zeker dat u de geselecteerde groepen wilt verwijderen?',
-    'list_title' => 'Beheer groepen',
     'delete_confirm' => 'Weet u zeker dat u deze groep wilt verwijderen?',
     'delete_selected_success' => 'De geselecteerde groepen zijn verwijderd.',
     'delete_selected_empty' => 'Er zijn geen groepen geselecteerd om te verwijderen.',
     'return_to_list' => 'Terug naar overzicht',
     'return_to_users' => 'Back to users list',
-    'create_title' => 'Groep aanmaken',
-    'update_title' => 'Wijzig groep',
     'preview_title' => 'Voorbeeldweergave groep',
   ],
   'login' => [

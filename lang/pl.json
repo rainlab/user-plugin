@@ -2,5 +2,14 @@
   "User": "Użytkownik",
   "Front-end user management.": "Zarządzanie użytkownikami.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Przepraszamy, ten użytkownik jest obecnie nieaktywny. Skontaktuj się z nami, aby uzyskać dalszą pomoc.",
-  "Bulk actions": "Działania masowe"
+  "Bulk actions": "Działania masowe",
+  "Group": "Grupa",
+  "Create User Group": "Utwórz grupę użytkowników",
+  "Edit User Group": "Edytuj grupę użytkowników",
+  "Manage Groups": "Zarządzaj grupami",
+  "Manage Users": "Zarządzaj użytkownikami",
+  "Users": "Użytkownicy",
+  "Groups": "Grupy",
+  "User settings": "Ustawienia użytkownika",
+  "Manage user authentication, registration and activation settings.": "Zarządzaj ogólnymi ustawieniami dla użytkowników."
 }

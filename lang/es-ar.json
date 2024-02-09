@@ -1,4 +1,13 @@
 {
-  "User": "User",
-  "Front-end user management.": "Front-end user management."
+  "User": "Usuario",
+  "Front-end user management.": "Front-end user management.",
+  "Group": "Grupo",
+  "Create User Group": "Crear Grupo",
+  "Edit User Group": "Editar Grupo",
+  "Manage Groups": "Administrar Grupos",
+  "Manage Users": "Administrar Usuarios",
+  "Users": "Usuarios",
+  "Groups": "Grupos",
+  "User settings": "Ajustes de Usuario",
+  "Manage user authentication, registration and activation settings.": "Administrar los ajustes de usuario."
 }

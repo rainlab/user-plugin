@@ -5,13 +5,9 @@
 scopes:
 
     groups:
-        # Filter name
-        label: rainlab.user::lang.group.label
-        # Model Class name
+        label: Group
         modelClass: RainLab\User\Models\UserGroup
-        # Model attribute to display for the name
         nameFrom: name
-        # Filter scope
         scope: filterByGroup
 
     created_at:
@@ -20,11 +16,8 @@ scopes:
         conditions: created_at >= ':after' AND created_at <= ':before'
 
     activated:
-        # Filter name
         label: rainlab.user::lang.user.status_activated
-        # Filter type
         type: switch
-        # SQL conditions
         conditions:
             - activated_at = null
             - is_activated <> null

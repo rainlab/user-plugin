@@ -7,10 +7,8 @@
     'impersonate_user' => 'Átjelentkezett felhasználók',
   ],
   'users' => [
-    'menu_label' => 'Felhasználók',
     'all_users' => 'Felhasználók',
     'new_user' => 'Új felhasználó',
-    'list_title' => 'Felhasználók kezelése',
     'trashed_hint_title' => 'A felhasználók felfüggeszthetik a saját fiókjukat',
     'trashed_hint_desc' => 'Amennyiben nem akarnak megjelenni a weboldalon, úgy deaktiválhatják a saját fiókjukat. Bármikor újra engedélyezhetik, ha újra sikeresen bejelentkeznek a weboldalra.',
     'banned_hint_title' => 'A felhasználó tiltva van',
@@ -64,8 +62,6 @@
   ],
   'settings' => [
     'users' => 'Felhasználók',
-    'menu_label' => 'Beállítások',
-    'menu_description' => 'A felhasználókhoz tartozó beállítások kezelése.',
     'activation_tab' => 'Aktiválás',
     'signin_tab' => 'Bejelentkezés',
     'registration_tab' => 'Regisztráció',
@@ -98,7 +94,6 @@
     'remember_ask' => 'Kérdezzen rá',
   ],
   'user' => [
-    'label' => 'Felhasználó',
     'id' => 'Azonosító',
     'username' => 'Felhasználónév',
     'name' => 'Név',
@@ -132,7 +127,6 @@
     'last_ip_address' => 'Legutóbbi IP cím',
   ],
   'group' => [
-    'label' => 'Csoport',
     'id' => 'Azonosító',
     'name' => 'Név',
     'description_field' => 'Leírás',
@@ -142,18 +136,14 @@
     'users_count' => 'Felhasználók',
   ],
   'groups' => [
-    'menu_label' => 'Csoportok',
     'all_groups' => 'Csoportok',
     'new_group' => 'Új csoport',
     'delete_selected_confirm' => 'Valóban törölni akarja a kijelölt csoportokat?',
-    'list_title' => 'Csoportok kezelése',
     'delete_confirm' => 'Valóban törölni akarja ezt a csoportot?',
     'delete_selected_success' => 'A csoportok sikeresen eltávolításra kerültek.',
     'delete_selected_empty' => 'A törléshez előbb ki kell választania legalább egy csoportot.',
     'return_to_list' => 'Vissza a csoportokhoz',
     'return_to_users' => 'Vissza a felhasználókhoz',
-    'create_title' => 'Csoport létrehozása',
-    'update_title' => 'Csoport szerkesztése',
     'preview_title' => 'Csoport előnézete',
   ],
   'login' => [

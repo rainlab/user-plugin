@@ -30,10 +30,8 @@
     'return_to_list' => 'Zurück zur Standortliste',
   ],
   'users' => [
-    'menu_label' => 'Benutzer',
     'all_users' => 'Alle Benutzer',
     'new_user' => 'Neuer Benutzer',
-    'list_title' => 'Benutzer verwalten',
     'trashed_hint_title' => 'Benutzer hat sein Konto deaktiviert.',
     'trashed_hint_desc' => 'Dieser Benutzer hat sein Konto deaktiviert und möchte nicht mehr auf der Seite erscheinen. Er kann sein Konto jederzeit durch eine Anmeldung reaktivieren.',
     'banned_hint_title' => 'Benutzer wurde gesperrt.',
@@ -85,8 +83,6 @@
   ],
   'settings' => [
     'users' => 'Benutzer',
-    'menu_label' => 'Benutzer-Einstellungen',
-    'menu_description' => 'Benutzer-Einstellungen verwalten.',
     'activation_tab' => 'Aktivierung',
     'signin_tab' => 'Einloggen',
     'registration_tab' => 'Registrierungen',
@@ -130,7 +126,6 @@
     'enabled' => 'Aktiv',
   ],
   'user' => [
-    'label' => 'Benutzer',
     'id' => 'ID',
     'username' => 'Benutzername',
     'name' => 'Name',
@@ -215,7 +210,6 @@
     'stop_impersonate_success' => 'Sie sind nicht mehr als diesen Benutzer angemeldet.',
   ],
   'group' => [
-    'label' => 'Gruppe',
     'id' => 'ID',
     'name' => 'Name',
     'description_field' => 'Beschreibung',
@@ -225,18 +219,14 @@
     'users_count' => 'Benutzer',
   ],
   'groups' => [
-    'menu_label' => 'Gruppen',
     'all_groups' => 'Benutzergruppen',
     'new_group' => 'Neue Gruppe',
     'delete_selected_confirm' => 'Willst du die ausgewählten Gruppen wirklich löschen?',
-    'list_title' => 'Gruppen verwalten',
     'delete_confirm' => 'Willst du diese Gruppe wirklich löschen?',
     'delete_selected_success' => 'Ausgewählte Gruppen erfolgreich gelöscht.',
     'delete_selected_empty' => 'Es wurden keine Gruppen zum Löschen ausgewählt.',
     'return_to_list' => 'Zurück zur Gruppenliste',
     'return_to_users' => 'Zurück zur Benutzerliste',
-    'create_title' => 'Benutzergruppe erstellen',
-    'update_title' => 'Benutzergruppe bearbeiten',
     'preview_title' => 'Vorschau der Benutzergruppe',
   ],
 ];

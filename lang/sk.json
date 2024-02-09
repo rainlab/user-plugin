@@ -1,6 +1,15 @@
 {
-  "User": "Požívateľ",
+  "User": "Používateľ",
   "Front-end user management.": "Správa front-end používateľov.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Ospravedlňujeme sa, tento používateľ momentálne nie je aktivovaný. Kontaktujte nás pre ďalšiu pomoc.",
-  "Bulk actions": "Hromadné akcie"
+  "Bulk actions": "Hromadné akcie",
+  "Group": "Skupina",
+  "Create User Group": "Vytvoriť skupinu používateľov",
+  "Edit User Group": "Upraviť skupinu používateľov",
+  "Manage Groups": "Správa skupín",
+  "Manage Users": "Správa používateľov",
+  "Users": "Používatelia",
+  "Groups": "Skupiny",
+  "User settings": "Nastavenie používateľov",
+  "Manage user authentication, registration and activation settings.": "Správa nastavení používateľov."
 }

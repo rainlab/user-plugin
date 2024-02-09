@@ -6,10 +6,8 @@
     'access_settings' => 'Gestisci Impostazioni Utenti',
   ],
   'users' => [
-    'menu_label' => 'Utenti',
     'all_users' => 'Tutti gli utenti',
     'new_user' => 'Nuovo Utente',
-    'list_title' => 'Gestisci Utenti',
     'trashed_hint_title' => 'L\'utente ha disabilitato il suo account',
     'trashed_hint_desc' => 'Questo utente ha disattivato il suo account and e non vuole più apparire sul sito. Possono riattivarsi in qualsiasi momento effettuando l\'accesso.',
     'banned_hint_title' => 'Questo utente è stato bannato',
@@ -53,8 +51,6 @@
   ],
   'settings' => [
     'users' => 'Utenti',
-    'menu_label' => 'Impostazioni Utenti',
-    'menu_description' => 'Gestisci impostazioni degli utenti',
     'activation_tab' => 'Attivazione',
     'signin_tab' => 'Accesso',
     'registration_tab' => 'Registrazione',
@@ -79,7 +75,6 @@
     'login_attribute_comment' => 'Seleziona che attributo gli utenti useranno per effettuare il login.',
   ],
   'user' => [
-    'label' => 'Utente',
     'id' => 'ID',
     'username' => 'Username',
     'name' => 'Nome',
@@ -111,7 +106,6 @@
     'status_registered' => 'Registrato',
   ],
   'group' => [
-    'label' => 'Gruppo',
     'id' => 'ID',
     'name' => 'Nome',
     'description_field' => 'Descrizione',
@@ -121,18 +115,14 @@
     'users_count' => 'Utenti',
   ],
   'groups' => [
-    'menu_label' => 'Gruppi',
     'all_groups' => 'Gruppi di Utenti',
     'new_group' => 'Nuovo gruppo',
     'delete_selected_confirm' => 'Vuoi veramente cancellare i gruppi selezionati?',
-    'list_title' => 'Gestisci Gruppi',
     'delete_confirm' => 'Vuoi veramente cancellare questo gruppo?',
     'delete_selected_success' => 'Gruppi selezionati cancellati con successo.',
     'delete_selected_empty' => 'Non ci sono gruppi selezionati da cancellare.',
     'return_to_list' => 'Torna all\'elenco dei gruppi',
     'return_to_users' => 'Torna alla lista utenti',
-    'create_title' => 'Crea Gruppo di Utenti',
-    'update_title' => 'Modifica Gruppo di Utenti',
     'preview_title' => 'Anteprima Gruppo',
   ],
   'login' => [

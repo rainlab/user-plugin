@@ -1,6 +1,15 @@
 {
-  "User": "Felhasználók",
+  "User": "Felhasználó",
   "Front-end user management.": "Felhasználók menedzselése a weboldalon.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Sajnáljuk, ez a felhasználói fiók nincs aktiválva. Kérjük vegye fel a kapcsolatot a weboldal üzemeltetőjével.",
-  "Bulk actions": "Műveletek"
+  "Bulk actions": "Műveletek",
+  "Group": "Csoport",
+  "Create User Group": "Csoport létrehozása",
+  "Edit User Group": "Csoport szerkesztése",
+  "Manage Groups": "Csoportok kezelése",
+  "Manage Users": "Felhasználók kezelése",
+  "Users": "Felhasználók",
+  "Groups": "Csoportok",
+  "User settings": "Beállítások",
+  "Manage user authentication, registration and activation settings.": "A felhasználókhoz tartozó beállítások kezelése."
 }

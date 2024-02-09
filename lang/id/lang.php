@@ -7,10 +7,8 @@
     'impersonate_user' => 'Menyamar Sebagai Pengguna',
   ],
   'users' => [
-    'menu_label' => 'Pengguna',
     'all_users' => 'Semua Pengguna',
     'new_user' => 'Pengguna Baru',
-    'list_title' => 'Kelola Pengguna',
     'trashed_hint_title' => 'Pengguna telah menonaktifkan akunnya',
     'trashed_hint_desc' => 'Pengguna ini telah menonaktifkan akunnya dan tidak ingin terlihat lagi di situs ini. Mereka dapat memulihkan akun mereka kapan saja dengan login kembali.',
     'banned_hint_title' => 'Pengguna telah diblokir',
@@ -61,8 +59,6 @@
   ],
   'settings' => [
     'users' => 'Pengguna',
-    'menu_label' => 'Pengaturan pengguna',
-    'menu_description' => 'Kelola pengaturan berbasis pengguna',
     'activation_tab' => 'Aktivasi',
     'signin_tab' => 'Login',
     'registration_tab' => 'Pendaftaran',
@@ -95,7 +91,6 @@
     'remember_ask' => 'Tanyakan saat login',
   ],
   'user' => [
-    'label' => 'Pengguna',
     'id' => 'ID',
     'username' => 'Nama pengguna',
     'name' => 'Nama',
@@ -129,7 +124,6 @@
     'last_ip_address' => 'Alamat IP Terakhir',
   ],
   'group' => [
-    'label' => 'Grup',
     'id' => 'ID',
     'name' => 'Nama',
     'description_field' => 'Deskripsi',
@@ -139,18 +133,14 @@
     'users_count' => 'Pengguna',
   ],
   'groups' => [
-    'menu_label' => 'Grup',
     'all_groups' => 'Grup Pengguna',
     'new_group' => 'Grup Baru',
     'delete_selected_confirm' => 'Apakah Anda benar-benar ingin menghapus grup yang dipilih?',
-    'list_title' => 'Kelola Grup',
     'delete_confirm' => 'Apakah Anda benar-benar ingin menghapus grup ini?',
     'delete_selected_success' => 'Berhasil menghapus grup yang dipilih.',
     'delete_selected_empty' => 'Tidak ada grup yang dipilih untuk dihapus.',
     'return_to_list' => 'Kembali ke daftar grup',
     'return_to_users' => 'Kembali ke daftar pengguna',
-    'create_title' => 'Buat Grup Pengguna',
-    'update_title' => 'Edit Grup Pengguna',
     'preview_title' => 'Pratinjau Grup Pengguna',
   ],
   'login' => [

@@ -2,5 +2,14 @@
   "User": "User",
   "Front-end user management.": "Front-end user management.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Sorry, this user is currently not activated. Please contact us for further assistance.",
-  "Bulk actions": "Bulk actions"
+  "Bulk actions": "Bulk actions",
+  "Group": "Group",
+  "Create User Group": "Create User Group",
+  "Edit User Group": "Edit User Group",
+  "Manage Groups": "Manage Groups",
+  "Manage Users": "Manage Users",
+  "Users": "Users",
+  "Groups": "Groups",
+  "User settings": "User settings",
+  "Manage user authentication, registration and activation settings.": "Manage user authentication, registration and activation settings."
 }

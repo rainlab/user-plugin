@@ -149,7 +149,7 @@ class Plugin extends PluginBase
     {
         return [
             'user' => [
-                'label' => 'rainlab.user::lang.users.menu_label',
+                'label' => "Users",
                 'url' => Backend::url('rainlab/user/users'),
                 'icon' => 'icon-user',
                 'iconSvg' => 'plugins/rainlab/user/assets/images/user-icon.svg',
@@ -158,13 +158,13 @@ class Plugin extends PluginBase
 
                 'sideMenu' => [
                     'users' => [
-                        'label' => 'rainlab.user::lang.users.menu_label',
+                        'label' => "Users",
                         'icon' => 'icon-user',
                         'url' => Backend::url('rainlab/user/users'),
                         'permissions' => ['rainlab.users.access_users']
                     ],
                     'usergroups' => [
-                        'label' => 'rainlab.user::lang.groups.menu_label',
+                        'label' => "Groups",
                         'icon' => 'icon-users',
                         'url' => Backend::url('rainlab/user/usergroups'),
                         'permissions' => ['rainlab.users.access_groups']
@@ -181,11 +181,11 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label' => 'rainlab.user::lang.settings.menu_label',
-                'description' => 'rainlab.user::lang.settings.menu_description',
+                'label' => "User settings",
+                'description' => "Manage user authentication, registration and activation settings.",
                 'category' => SettingsManager::CATEGORY_USERS,
-                'icon' => class_exists('System') ? 'octo-icon-user-actions-key' : 'icon-cog',
-                'class' => 'RainLab\User\Models\Settings',
+                'icon' => 'icon-user-actions-key',
+                'class' => \RainLab\User\Models\Settings::class,
                 'order' => 500,
                 'permissions' => ['rainlab.users.access_settings']
             ]

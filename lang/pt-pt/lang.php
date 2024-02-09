@@ -6,10 +6,8 @@
     'access_settings' => 'Gerir definições de utilizador',
   ],
   'users' => [
-    'menu_label' => 'Utilizadores',
     'all_users' => 'Todos os utilizadores',
     'new_user' => 'Novo Utilizador',
-    'list_title' => 'Gerir utilizadores',
     'trashed_hint_title' => 'O utilizador desactivou esta conta.',
     'trashed_hint_desc' => 'O utilizador desactivou esta conta e não pretende aceder ao site. O mesmo pode restaurar a conta em qualquer altura fazendo novamente a entrada.',
     'banned_hint_title' => 'O utilizador foi banido.',
@@ -53,8 +51,6 @@
   ],
   'settings' => [
     'users' => 'Utilizadores',
-    'menu_label' => 'Configurações de Utilizador',
-    'menu_description' => 'Gerir configurações relacionadas a Utilizadores.',
     'activation_tab' => 'Activação',
     'signin_tab' => 'Entrar',
     'registration_tab' => 'Registo',
@@ -77,7 +73,6 @@
     'login_attribute_comment' => 'Selecione qual atributo do utilizador deve ser usado para entrar.',
   ],
   'user' => [
-    'label' => 'Utilizador',
     'id' => 'ID',
     'username' => 'Nome de utilizador',
     'name' => 'Nome',
@@ -109,7 +104,6 @@
     'status_registered' => 'Registado',
   ],
   'group' => [
-    'label' => 'Grupo',
     'id' => 'ID',
     'name' => 'Nome',
     'description_field' => 'Descrição',
@@ -119,18 +113,14 @@
     'users_count' => 'Utilizadores',
   ],
   'groups' => [
-    'menu_label' => 'Grupos',
     'all_groups' => 'Grupos de utilizador',
     'new_group' => 'Novo grupo',
     'delete_selected_confirm' => 'Pretende eliminar os grupos seleccionados?',
-    'list_title' => 'Gerir grupos',
     'delete_confirm' => 'Pretende eliminar este grupo?',
     'delete_selected_success' => 'Grupos seleccionados eliminados com sucesso.',
     'delete_selected_empty' => 'Não existem grupos seleccionados para elimianr.',
     'return_to_list' => 'Regressar à lista de grupos',
     'return_to_users' => 'Regressar à lista de utilizadores',
-    'create_title' => 'Criar Grupo de utilizadores',
-    'update_title' => 'Editar grupo de utilizadores',
     'preview_title' => 'Previsão de grupo de utilizadores',
   ],
   'login' => [

@@ -7,10 +7,8 @@
     'impersonate_user' => 'Impersonacija uporabnikov',
   ],
   'users' => [
-    'menu_label' => 'Uporabniki',
     'all_users' => 'Vsi uporabniki',
     'new_user' => 'Nov uporabnik',
-    'list_title' => 'Upravljanje uporabnikov',
     'trashed_hint_title' => 'Uporabnik je deaktiviral svoj račun',
     'trashed_hint_desc' => 'Ta uporabnik je deaktiviral svoj račun in se ne želi več pojavljati na spletni strani. Svoj račun lahko kadarkoli obnovi s prijavo.',
     'banned_hint_title' => 'Uporabnik je bil blokiran',
@@ -64,8 +62,6 @@
   ],
   'settings' => [
     'users' => 'Uporabniki',
-    'menu_label' => 'Nastavitve za uporabnike',
-    'menu_description' => 'Upravljanje z nastavitvami za uporabnike.',
     'activation_tab' => 'Aktivacija',
     'signin_tab' => 'Prijava',
     'registration_tab' => 'Registracija',
@@ -98,7 +94,6 @@
     'remember_ask' => 'Vprašaj uporabnika ob prijavi',
   ],
   'user' => [
-    'label' => 'Uporabnik',
     'id' => 'ID',
     'username' => 'Uporabniško ime',
     'name' => 'Ime',
@@ -133,7 +128,6 @@
     'last_ip_address' => 'Zadnji IP naslov',
   ],
   'group' => [
-    'label' => 'Skupina',
     'id' => 'ID',
     'name' => 'Ime',
     'description_field' => 'Opis',
@@ -143,18 +137,14 @@
     'users_count' => 'Uporabniki',
   ],
   'groups' => [
-    'menu_label' => 'Skupine',
     'all_groups' => 'Skupine uporabnikov',
     'new_group' => 'Nova skupina',
     'delete_selected_confirm' => 'Ali ste prepričani, da želite izbrisati izbrane skupine?',
-    'list_title' => 'Upravljanje skupin',
     'delete_confirm' => 'Ali ste prepričani, da želite izbrisati to skupino?',
     'delete_selected_success' => 'Izbrane skupine so uspešno izbrisane.',
     'delete_selected_empty' => 'Ni izbranih skupin za izbris.',
     'return_to_list' => 'Nazaj na seznam skupin',
     'return_to_users' => 'Nazaj na seznam uporabnikov',
-    'create_title' => 'Ustvari skupino uporabnikov',
-    'update_title' => 'Uredi skupino uporabnikov',
     'preview_title' => 'Predogled skupine uporabnikov',
   ],
   'login' => [

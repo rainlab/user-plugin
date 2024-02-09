@@ -6,10 +6,8 @@
     'access_settings' => 'Gerenciar configurações do usuário',
   ],
   'users' => [
-    'menu_label' => 'Usuários',
     'all_users' => 'Todos os Usuários',
     'new_user' => 'Novo Usuário',
-    'list_title' => 'Gerenciar Usuários',
     'trashed_hint_title' => 'O usuário desativou sua conta',
     'trashed_hint_desc' => 'Este usuário desativou sua conta e não quer mais aparecer no site. Eles podem restaurar sua conta a qualquer momento, fazendo login novamente.',
     'banned_hint_title' => 'O usuário foi banido',
@@ -53,8 +51,6 @@
   ],
   'settings' => [
     'users' => 'Usuários',
-    'menu_label' => 'Configurações de usuário',
-    'menu_description' => 'Gerenciar configurações relacionadas a usuários.',
     'activation_tab' => 'Ativação',
     'signin_tab' => 'Login',
     'registration_tab' => 'Registração',
@@ -77,7 +73,6 @@
     'login_attribute_comment' => 'Selecione qual atributo do usuário deve ser usado para logar.',
   ],
   'user' => [
-    'label' => 'Usuário',
     'id' => 'ID',
     'username' => 'Nome de usuário',
     'name' => 'Nome',
@@ -109,7 +104,6 @@
     'status_registered' => 'Registrado',
   ],
   'group' => [
-    'label' => 'Grupo',
     'id' => 'ID',
     'name' => 'Nome',
     'description_field' => 'Descrição',
@@ -119,18 +113,14 @@
     'users_count' => 'Usuários',
   ],
   'groups' => [
-    'menu_label' => 'Grupos',
     'all_groups' => 'Grupos de Usuários',
     'new_group' => 'Novo grupo',
     'delete_selected_confirm' => 'Deseja realmente excluir grupos selecionados?',
-    'list_title' => 'Gerenciar grupos',
     'delete_confirm' => 'Deseja realmente excluir este grupo?',
     'delete_selected_success' => 'Os grupos selecionados foram excluídos com êxito.',
     'delete_selected_empty' => 'Não há grupos selecionados para excluir.',
     'return_to_list' => 'Voltar à lista de grupos',
     'return_to_users' => 'Voltar à lista de usuários',
-    'create_title' => 'Criar grupo de Usuários',
-    'update_title' => 'Editar grupo de usuários',
     'preview_title' => 'Visualização de grupo de usuário',
   ],
   'login' => [

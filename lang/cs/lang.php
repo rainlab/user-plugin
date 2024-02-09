@@ -6,10 +6,8 @@
     'access_settings' => 'Správa nastavení uživatelů',
   ],
   'users' => [
-    'menu_label' => 'Uživatelé',
     'all_users' => 'Seznam uživatelů',
     'new_user' => 'Vytvořit uživatele',
-    'list_title' => 'Správa uživatelů',
     'activating' => 'Povoluji...',
     'trashed_hint_title' => 'Uživatel deaktivoval svůj účet',
     'trashed_hint_desc' => 'Uživatel zablokoval svůj účet a nechce se dále objevovat na stránkách. Může však svůj účet kdykoli obnovit přihlášením se zpět.',
@@ -54,8 +52,6 @@
   ],
   'settings' => [
     'users' => 'Uživatelé',
-    'menu_label' => 'Správa uživatelů',
-    'menu_description' => 'Správa nastavení uživatelů',
     'activation_tab' => 'Aktivace',
     'signin_tab' => 'Přihlášení',
     'registration_tab' => 'Registrace',
@@ -78,7 +74,6 @@
     'login_attribute_comment' => 'Zvolte, jaký atribut bude použitý k přihlášení uživatele.',
   ],
   'user' => [
-    'label' => 'Uživatel',
     'id' => 'ID',
     'username' => 'Uživatelské jméno',
     'name' => 'Jméno',
@@ -110,7 +105,6 @@
     'status_registered' => 'Registrován',
   ],
   'group' => [
-    'label' => 'Skupina',
     'id' => 'ID',
     'name' => 'Název',
     'description_field' => 'Popis skupiny',
@@ -120,18 +114,14 @@
     'users_count' => 'Počet uživatelů',
   ],
   'groups' => [
-    'menu_label' => 'Skupiny',
     'all_groups' => 'Uživatelské skupiny',
     'new_group' => 'Nová skupina',
     'delete_selected_confirm' => 'Opravdu chcete smazat vybrané skupiny?',
-    'list_title' => 'Správa skupin',
     'delete_confirm' => 'Opravdu chcete odstranit tuto skupinu?',
     'delete_selected_success' => 'Vybrané skupiny byly úspěšně odstraněny.',
     'delete_selected_empty' => 'Musíte nejdřív vybrat skupiny které chcete smazat.',
     'return_to_list' => 'Zpět na seznam skupin',
     'return_to_users' => 'Zpět na seznam uživatelů',
-    'create_title' => 'Vytvořit skupinu',
-    'update_title' => 'Upravit skupinu',
     'preview_title' => 'Náhled skupiny',
   ],
   'login' => [

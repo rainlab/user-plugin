@@ -2,5 +2,14 @@
   "User": "Användare",
   "Front-end user management.": "Hantera front-end användare.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "Tyvärr, den här användaren är för närvarande inte aktiverad. Vänligen kontakta oss för ytterligare hjälp. ",
-  "Bulk actions": "Massåtgärder"
+  "Bulk actions": "Massåtgärder",
+  "Group": "Grupp",
+  "Create User Group": "Skapa användargrupp",
+  "Edit User Group": "Redigera användargrupp",
+  "Manage Groups": "Hantera grupper",
+  "Manage Users": "Hantera användare",
+  "Users": "Användare",
+  "Groups": "Grupper",
+  "User settings": "Användarinställningar",
+  "Manage user authentication, registration and activation settings.": "Hantera användarbaserade inställningar."
 }

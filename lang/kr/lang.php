@@ -7,10 +7,8 @@
     'impersonate_user' => '위장 로그인',
   ],
   'users' => [
-    'menu_label' => '계정',
     'all_users' => '전체계정',
     'new_user' => '신규계정',
-    'list_title' => '계정관리',
     'trashed_hint_title' => '사용자가 계정을 비활성화했습니다.',
     'trashed_hint_desc' => '이 사용자는 자신의 계정을 비활성화했으며 더 이상 사이트에 나타나길 원치 않습니다. 다시 로그인하면 언제든지 계정을 복원 할 수 있습니다.',
     'banned_hint_title' => '차단된 계정입니다.',
@@ -61,8 +59,6 @@
   ],
   'settings' => [
     'users' => '사용자',
-    'menu_label' => '사용자 설정',
-    'menu_description' => '사용자 기본 설정을 관리합니다.',
     'activation_tab' => '활성화',
     'signin_tab' => '로그인',
     'registration_tab' => '등록.',
@@ -87,7 +83,6 @@
     'login_attribute_comment' => '로그인에 사용할 기본 사용자 세부 정보를 선택합니다.',
   ],
   'user' => [
-    'label' => '사용자',
     'id' => '아이디',
     'username' => '사용자 이름',
     'name' => '이름',
@@ -119,7 +114,6 @@
     'status_registered' => '등록한',
   ],
   'group' => [
-    'label' => '그룹',
     'id' => '아이디',
     'name' => '이름',
     'description_field' => '설명',
@@ -129,18 +123,14 @@
     'users_count' => '사용자 수',
   ],
   'groups' => [
-    'menu_label' => '그룹 목록',
     'all_groups' => '회원 그룹 목록',
     'new_group' => '새로운 그룹',
     'delete_selected_confirm' => '선택한 그룹을 삭제하시겠습니까?',
-    'list_title' => '그룹 관리',
     'delete_confirm' => '이 그룹을 삭제하시겠습니까?',
     'delete_selected_success' => '선택한 그룹을 성공적으로 삭제했습니다.',
     'delete_selected_empty' => '선택된 그룹이 없습니다.',
     'return_to_list' => '그룹 목록으로 돌아가기',
     'return_to_users' => '사용자 목록으로 돌아가기',
-    'create_title' => '사용자 그룹 생성',
-    'update_title' => '사용자 그룹 수정',
     'preview_title' => '사용자 그룹 미리 보기',
   ],
   'login' => [

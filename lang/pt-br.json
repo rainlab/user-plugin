@@ -1,5 +1,14 @@
 {
   "User": "Usuário",
   "Front-end user management.": "Gerenciamento de usuários de front-end.",
-  "Bulk actions": "Ações em massa"
+  "Bulk actions": "Ações em massa",
+  "Group": "Grupo",
+  "Create User Group": "Criar grupo de Usuários",
+  "Edit User Group": "Editar grupo de usuários",
+  "Manage Groups": "Gerenciar grupos",
+  "Manage Users": "Gerenciar Usuários",
+  "Users": "Usuários",
+  "Groups": "Grupos",
+  "User settings": "Configurações de usuário",
+  "Manage user authentication, registration and activation settings.": "Gerenciar configurações relacionadas a usuários."
 }

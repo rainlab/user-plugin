@@ -7,10 +7,8 @@
     'impersonate_user' => '模拟用户',
   ],
   'users' => [
-    'menu_label' => '用户',
     'all_users' => '所有用户',
     'new_user' => '添加新用户',
-    'list_title' => '管理用户',
     'trashed_hint_title' => '用户已停用其帐户',
     'trashed_hint_desc' => '此用户已停用其帐户，不再希望出现在网站上。他们可以在任何时候通过重新登录来恢复帐户。',
     'banned_hint_title' => '用户已被禁止',
@@ -65,8 +63,6 @@
   ],
   'settings' => [
     'users' => '用户',
-    'menu_label' => '用户选项',
-    'menu_description' => '管理用户选项.',
     'activation_tab' => '激活',
     'signin_tab' => '登录',
     'registration_tab' => '注册',
@@ -103,7 +99,6 @@
     'hint_templates' => '你可以通过管理面板 邮件 > 邮件模版 设置邮件正文模版.',
   ],
   'user' => [
-    'label' => '用户',
     'id' => 'ID',
     'username' => '用户名',
     'name' => '名',
@@ -138,7 +133,6 @@
     'last_ip_address' => '最后一个 IP 地址',
   ],
   'group' => [
-    'label' => '群组',
     'id' => 'ID',
     'name' => '姓名',
     'description_field' => '描述',
@@ -148,18 +142,14 @@
     'users_count' => '用户',
   ],
   'groups' => [
-    'menu_label' => '群组',
     'all_groups' => '用户群组',
     'new_group' => '新的用户组',
     'delete_selected_confirm' => '确定清空选中用户组么？',
-    'list_title' => '管理群组',
     'delete_confirm' => '确定要删除该群组吗？',
     'delete_selected_success' => '成功删除选中的群组。',
     'delete_selected_empty' => '没有选中的要删除的群组。',
     'return_to_list' => '返回群组列表',
     'return_to_users' => '返回用户列表',
-    'create_title' => '创建群组',
-    'update_title' => '编辑群组',
     'preview_title' => '上一个群组',
   ],
   'login' => [

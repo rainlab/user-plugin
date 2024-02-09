@@ -7,10 +7,8 @@
     'impersonate_user' => 'Personifiera Användare',
   ],
   'users' => [
-    'menu_label' => 'Användare',
     'all_users' => 'Alla användare',
     'new_user' => 'Ny användare',
-    'list_title' => 'Hantera användare',
     'trashed_hint_title' => 'Användaren har avaktiverat sitt konto',
     'trashed_hint_desc' => 'Den här användaren har inaktiverat sitt konto och vill inte längre visas på webbplatsen. De kan återställa sitt konto när som helst genom att logga in igen. ',
     'banned_hint_title' => 'Användaren har blivit bannad',
@@ -61,8 +59,6 @@
   ],
   'settings' => [
     'users' => 'Användare',
-    'menu_label' => 'Användarinställningar',
-    'menu_description' => 'Hantera användarbaserade inställningar.',
     'activation_tab' => 'Aktivering',
     'signin_tab' => 'Logga in',
     'registration_tab' => 'Registrering',
@@ -87,7 +83,6 @@
     'login_attribute_comment' => 'Välj vilken primär användarinfo som ska användas för inloggning.',
   ],
   'user' => [
-    'label' => 'Användare',
     'id' => 'ID',
     'username' => 'Användarnamn',
     'name' => 'Namn',
@@ -119,7 +114,6 @@
     'status_registered' => 'Registrerad',
   ],
   'group' => [
-    'label' => 'Grupp',
     'id' => 'ID',
     'name' => 'Namn',
     'description_field' => 'Beskrivning',
@@ -129,18 +123,14 @@
     'users_count' => 'Användare',
   ],
   'groups' => [
-    'menu_label' => 'Grupper',
     'all_groups' => 'Användargrupper',
     'new_group' => 'Ny grupp',
     'delete_selected_confirm' => 'Vill du verkligen radera valda grupper?',
-    'list_title' => 'Hantera grupper',
     'delete_confirm' => 'Vill du verkligen radera den här gruppen?',
     'delete_selected_success' => 'Tog bort de valda grupperna framgångsrikt',
     'delete_selected_empty' => 'Det finns inga valda grupper att radera.',
     'return_to_list' => 'Tillbaka till grupplista',
     'return_to_users' => 'Tillbaka till användarlistan',
-    'create_title' => 'Skapa användargrupp',
-    'update_title' => 'Redigera användargrupp',
     'preview_title' => 'Förhandsgranska användargrupp',
   ],
   'login' => [

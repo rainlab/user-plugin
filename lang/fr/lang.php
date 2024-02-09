@@ -7,10 +7,8 @@
     'impersonate_user' => 'Usurper l\'identité des utilisateurs',
   ],
   'users' => [
-    'menu_label' => 'Utilisateurs',
     'all_users' => 'Tous les utilisateurs',
     'new_user' => 'Nouvel utilisateur',
-    'list_title' => 'Gestion des utilisateurs',
     'trashed_hint_title' => 'L’utilisateur a désactivé son compte',
     'trashed_hint_desc' => 'Cet utilisateur a désactivé son compte ou ne souhaite plus apparaître sur le site. Il peut réactiver son compte à tout moment en se réinscrivant.',
     'banned_hint_title' => 'L’utilisateur a été banni',
@@ -64,8 +62,6 @@
   ],
   'settings' => [
     'users' => 'Utilisateurs',
-    'menu_label' => 'Paramètres utilisateurs',
-    'menu_description' => 'Gérer les paramètres liés aux utilisateurs.',
     'activation_tab' => 'Activation',
     'signin_tab' => 'Connexion',
     'registration_tab' => 'Enregistrement',
@@ -107,7 +103,6 @@
     'require_uncompromised_comment' => 'Vérifier que le mot de passe n\'est pas compromis',
   ],
   'user' => [
-    'label' => 'Utilisateur',
     'id' => 'ID',
     'username' => 'Identifiant',
     'name' => 'Prénom',
@@ -142,7 +137,6 @@
     'last_ip_address' => 'Dernière adresse IP',
   ],
   'group' => [
-    'label' => 'Groupe d’utilisateurs',
     'id' => 'ID',
     'name' => 'Nom',
     'description_field' => 'Description',
@@ -152,18 +146,14 @@
     'users_count' => 'Nombre d’utilisateurs',
   ],
   'groups' => [
-    'menu_label' => 'Groupes',
     'all_groups' => 'Tous les groupes',
     'new_group' => 'Nouveau groupe',
     'delete_selected_confirm' => 'Confirmez-vous la suppression des groupes sélectionnés ?',
-    'list_title' => 'Groupes d’utilisateurs',
     'delete_confirm' => 'Confirmez-vous la suppression de ce groupe d’utilisateurs ?',
     'delete_selected_success' => 'Les groupes d’utilisateurs sélectionnés ont été supprimés avec succès.',
     'delete_selected_empty' => 'Il n’a aucun groupe d’utilisateurs sélectionné à supprimer.',
     'return_to_list' => 'Retour à la liste des groupes',
     'return_to_users' => 'Retour à la liste des utilisateurs',
-    'create_title' => 'Nouveau groupe d’utilisateurs',
-    'update_title' => 'Modifier un groupe d’utilisateurs',
     'preview_title' => 'Visualiser le groupe d\'utilisateurs',
   ],
   'login' => [

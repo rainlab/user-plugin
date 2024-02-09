@@ -1,5 +1,14 @@
 {
   "User": "کاربر",
   "Front-end user management.": "مدیریت کاربران",
-  "Bulk actions": "اعمال گروهی"
+  "Bulk actions": "اعمال گروهی",
+  "Group": "گروه",
+  "Create User Group": "ایجاد گروه کاربری جدید",
+  "Edit User Group": "ویرایش گروه کاربری",
+  "Manage Groups": "مدیریت گروه ها",
+  "Manage Users": "مدیریت کاربران",
+  "Users": "کاربران",
+  "Groups": "گروه ها",
+  "User settings": "تنظیمات کاربران",
+  "Manage user authentication, registration and activation settings.": "مدیریت تنظیمات مربوط به کاربر."
 }

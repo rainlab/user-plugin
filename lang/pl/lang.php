@@ -7,10 +7,8 @@
     'impersonate_user' => 'Wcielaj się w użytkowników',
   ],
   'users' => [
-    'menu_label' => 'Użytkownicy',
     'all_users' => 'Wszyscy użytkownicy',
     'new_user' => 'Nowy użytkownik',
-    'list_title' => 'Zarządzaj użytkownikami',
     'trashed_hint_title' => 'Użytkownik dezaktywował swoje konto',
     'trashed_hint_desc' => 'Ten użytkownik dezaktywował swoje konto i nie chce już wyświetlać się na stronie. Może przywrócić konto w dowolnym momencie, logując się z powrotem.',
     'banned_hint_title' => 'Użytkownik został zbanowany',
@@ -61,8 +59,6 @@
   ],
   'settings' => [
     'users' => 'Użytkownicy',
-    'menu_label' => 'Ustawienia użytkownika',
-    'menu_description' => 'Zarządzaj ogólnymi ustawieniami dla użytkowników.',
     'activation_tab' => 'Aktywacja',
     'signin_tab' => 'Zaloguj się',
     'registration_tab' => 'Rejestracja',
@@ -87,7 +83,6 @@
     'login_attribute_comment' => 'Wybierz, jakie podstawowe dane użytkownika mają być używane do logowania.',
   ],
   'user' => [
-    'label' => 'Użytkownik',
     'id' => 'ID',
     'username' => 'Nazwa użytkownika',
     'name' => 'Imię / nick',
@@ -119,7 +114,6 @@
     'status_registered' => 'Zarejestrowany',
   ],
   'group' => [
-    'label' => 'Grupa',
     'id' => 'ID',
     'name' => 'Nazwa',
     'description_field' => 'Opis',
@@ -129,18 +123,14 @@
     'users_count' => 'Użytkownicy',
   ],
   'groups' => [
-    'menu_label' => 'Grupy',
     'all_groups' => 'Grupy użytkowników',
     'new_group' => 'Nowa grupa',
     'delete_selected_confirm' => 'Czy na pewno chcesz usunąć wybrane grupy?',
-    'list_title' => 'Zarządzaj grupami',
     'delete_confirm' => 'Czy na pewno chcesz usunąć tę grupę?',
     'delete_selected_success' => 'Pomyślnie usunięto wybrane grupy.',
     'delete_selected_empty' => 'Brak wybranych grup do usunięcia.',
     'return_to_list' => 'Powrót do listy grup',
     'return_to_users' => 'Powrót do listy użytkowników',
-    'create_title' => 'Utwórz grupę użytkowników',
-    'update_title' => 'Edytuj grupę użytkowników',
     'preview_title' => 'Podejrzyj grupę użytkowników',
   ],
   'login' => [

@@ -6,10 +6,8 @@
     'access_settings' => 'Administrar Ajustes de Usuario',
   ],
   'users' => [
-    'menu_label' => 'Usuarios',
     'all_users' => 'Todos los Usuarios',
     'new_user' => 'Nuevo Usuario',
-    'list_title' => 'Administrar Usuarios',
     'activating' => 'Activando...',
     'trashed_hint_title' => 'El usuario ha desactivado su cuenta',
     'trashed_hint_desc' => 'Éste usuario ha desactivado su cuenta y no quiere volver a aparecer en el sitio. Ellos pueden restaurar su cuenta en cualquier momento al re-ingresar.',
@@ -45,8 +43,6 @@
   ],
   'settings' => [
     'users' => 'Usuarios',
-    'menu_label' => 'Ajustes de Usuario',
-    'menu_description' => 'Administrar los ajustes de usuario.',
     'activation_tab' => 'Activación',
     'signin_tab' => 'Ingreso',
     'registration_tab' => 'Registración',
@@ -69,7 +65,6 @@
     'login_attribute_comment' => 'Seleccione que atributo sera utilizado para el ingreso.',
   ],
   'user' => [
-    'label' => 'Usuario',
     'id' => 'ID',
     'username' => 'Nombre de Usuario',
     'name' => 'Nombre',
@@ -89,7 +84,6 @@
     'account' => 'Cuenta',
   ],
   'group' => [
-    'label' => 'Grupo',
     'id' => 'ID',
     'name' => 'Nombre',
     'description_field' => 'Descripción',
@@ -99,18 +93,14 @@
     'users_count' => 'Usuarios',
   ],
   'groups' => [
-    'menu_label' => 'Grupos',
     'all_groups' => 'Grupos de Usuario',
     'new_group' => 'Nuevo Grupo',
     'delete_selected_confirm' => 'Realmente quiere eliminar los grupos seleccionados?',
-    'list_title' => 'Administrar Grupos',
     'delete_confirm' => 'Realmente quiere eliminar este grupo?',
     'delete_selected_success' => 'Los grupos seleccionados se eliminaron con éxito.',
     'delete_selected_empty' => 'No hay grupos seleccionados para eliminar.',
     'return_to_list' => 'Volver a la lista de grupos',
     'return_to_users' => 'Volver a la lista de usuarios',
-    'create_title' => 'Crear Grupo',
-    'update_title' => 'Editar Grupo',
     'preview_title' => 'Ver Grupo',
   ],
   'login' => [

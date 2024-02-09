@@ -7,10 +7,8 @@
     'impersonate_user' => 'Impersonate Users',
   ],
   'users' => [
-    'menu_label' => 'Users',
     'all_users' => 'All Users',
     'new_user' => 'New User',
-    'list_title' => 'Manage Users',
     'trashed_hint_title' => 'User has deactivated their account',
     'trashed_hint_desc' => 'This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.',
     'banned_hint_title' => 'User has been banned',
@@ -64,8 +62,6 @@
   ],
   'settings' => [
     'users' => 'Users',
-    'menu_label' => 'User settings',
-    'menu_description' => 'Manage user authentication, registration and activation settings.',
     'activation_tab' => 'Activation',
     'signin_tab' => 'Sign in',
     'registration_tab' => 'Registration',
@@ -107,7 +103,6 @@
     'require_uncompromised_comment' => 'Require non-leaked password',
   ],
   'user' => [
-    'label' => 'User',
     'id' => 'ID',
     'username' => 'Username',
     'name' => 'Name',
@@ -142,7 +137,6 @@
     'last_ip_address' => 'Last IP Address',
   ],
   'group' => [
-    'label' => 'Group',
     'id' => 'ID',
     'name' => 'Name',
     'description_field' => 'Description',
@@ -152,18 +146,14 @@
     'users_count' => 'Users',
   ],
   'groups' => [
-    'menu_label' => 'Groups',
     'all_groups' => 'User Groups',
     'new_group' => 'New Group',
     'delete_selected_confirm' => 'Do you really want to delete selected groups?',
-    'list_title' => 'Manage Groups',
     'delete_confirm' => 'Do you really want to delete this group?',
     'delete_selected_success' => 'Successfully deleted the selected groups.',
     'delete_selected_empty' => 'There are no selected groups to delete.',
     'return_to_list' => 'Back to groups list',
     'return_to_users' => 'Back to users list',
-    'create_title' => 'Create User Group',
-    'update_title' => 'Edit User Group',
     'preview_title' => 'Preview User Group',
   ],
   'login' => [

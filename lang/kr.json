@@ -1,6 +1,15 @@
 {
-  "User": "계정",
+  "User": "사용자",
   "Front-end user management.": "프론트 엔드 회원관리",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "죄송합니다. 이 사용자는 현재 활성화되어 있지 않습니다. 도움이 필요하시면 저희에게 연락 주십시오.",
-  "Bulk actions": "대량 작업"
+  "Bulk actions": "대량 작업",
+  "Group": "그룹",
+  "Create User Group": "사용자 그룹 생성",
+  "Edit User Group": "사용자 그룹 수정",
+  "Manage Groups": "그룹 관리",
+  "Manage Users": "계정관리",
+  "Users": "계정",
+  "Groups": "그룹 목록",
+  "User settings": "사용자 설정",
+  "Manage user authentication, registration and activation settings.": "사용자 기본 설정을 관리합니다."
 }

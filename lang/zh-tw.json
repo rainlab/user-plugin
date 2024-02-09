@@ -2,5 +2,14 @@
   "User": "會員",
   "Front-end user management.": "前台會員管理系統。",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "很抱歉，此會員尚未啟動，請聯繫我們以取得協助。",
-  "Bulk actions": "批次處理"
+  "Bulk actions": "批次處理",
+  "Group": "群組",
+  "Create User Group": "建立群組",
+  "Edit User Group": "編輯群組",
+  "Manage Groups": "管理群組",
+  "Manage Users": "管理會員",
+  "Users": "會員",
+  "Groups": "群組",
+  "User settings": "會員設定",
+  "Manage user authentication, registration and activation settings.": "管理會員基本設定。"
 }

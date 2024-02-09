@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: rainlab.user::lang.user.label
+name: User
 
 # Model Form Field configuration
 form: $/rainlab/user/models/user/fields.yaml

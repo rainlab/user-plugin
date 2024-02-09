@@ -7,10 +7,8 @@
     'impersonate_user' => 'Üye Gibi Gezin',
   ],
   'users' => [
-    'menu_label' => 'Üyeler',
     'all_users' => 'Bütün Üyeler',
     'new_user' => 'Yeni Üye',
-    'list_title' => 'Üyeleri Yönet',
     'trashed_hint_title' => 'Üye hesabını pasifleştirmiş',
     'trashed_hint_desc' => 'Üye hesabını pasifleştirmiş ve bu sitede görünmek istemiyor. Tekrar hesabına giriş yaparak hesabını istediği zaman aktifleştirebilir.',
     'banned_hint_title' => 'Üye engellendi.',
@@ -64,8 +62,6 @@
   ],
   'settings' => [
     'users' => 'Üyeler',
-    'menu_label' => 'Üye ayarları',
-    'menu_description' => 'Üye bazlı ayarları yönetin.',
     'activation_tab' => 'Aktivasyon',
     'signin_tab' => 'Oturum Açma',
     'registration_tab' => 'Kayıt',
@@ -98,7 +94,6 @@
     'remember_ask' => 'Üye girişi sırasında sor',
   ],
   'user' => [
-    'label' => 'User',
     'id' => 'ID',
     'username' => 'Üye Adı',
     'name' => 'Adı',
@@ -132,7 +127,6 @@
     'last_ip_address' => 'Son IP Adresi',
   ],
   'group' => [
-    'label' => 'Grup',
     'id' => 'No',
     'name' => 'İsim',
     'description_field' => 'Açıklama',
@@ -142,18 +136,14 @@
     'users_count' => 'Üyeler',
   ],
   'groups' => [
-    'menu_label' => 'Gruplar',
     'all_groups' => 'Üye Grupları',
     'new_group' => 'Yeni Grup',
     'delete_selected_confirm' => 'Seçilen grupları silmek istediğinize emin misiniz?',
-    'list_title' => 'Grupları Yönet',
     'delete_confirm' => 'Bu grubu silmek istediğinize emin misiniz?',
     'delete_selected_success' => 'Seçilen gruplar silindi.',
     'delete_selected_empty' => 'Silinecek grup seçmelisiniz.',
     'return_to_list' => 'Grup listesine dön',
     'return_to_users' => 'Üye listesine dön',
-    'create_title' => 'Üye grubu oluştur',
-    'update_title' => 'Üye grubunu düzenle',
     'preview_title' => 'Grubu önizle',
   ],
   'login' => [

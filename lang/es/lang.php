@@ -7,10 +7,8 @@
     'impersonate_user' => 'Personificar Usuario',
   ],
   'users' => [
-    'menu_label' => 'Usuarios',
     'all_users' => 'Todos los usuarios',
     'new_user' => 'Nuevo usuario',
-    'list_title' => 'Administrar usuarios',
     'trashed_hint_title' => 'El usuario tiene su perfil desactivado',
     'trashed_hint_desc' => 'Este usuario tiene desactivado su perfil y  no quiere aparecer en el sitio. Los usuarios pueden reactivar su perfil en cualquier momento iniciando sesión nuevamente.',
     'banned_hint_title' => 'El Usuario ha sido bloqueado',
@@ -61,8 +59,6 @@
   ],
   'settings' => [
     'users' => 'Usuarios',
-    'menu_label' => 'Preferencias de usuario',
-    'menu_description' => 'Administra las preferencias de los usuarios.',
     'activation_tab' => 'Activación',
     'signin_tab' => 'Iniciar sesión',
     'registration_tab' => 'Registro',
@@ -94,7 +90,6 @@
     'remember_ask' => 'Preguntar al usuario al iniciar sesión',
   ],
   'user' => [
-    'label' => 'Usuario',
     'id' => 'ID',
     'username' => 'Nombre de usuario',
     'name' => 'Nombres',
@@ -126,7 +121,6 @@
     'status_registered' => 'Registrado',
   ],
   'group' => [
-    'label' => 'Grupo',
     'id' => 'ID',
     'name' => 'Nombre',
     'description_field' => 'Descripción',
@@ -136,18 +130,14 @@
     'users_count' => 'Usuarios',
   ],
   'groups' => [
-    'menu_label' => 'Grupos',
     'all_groups' => 'Grupos de usuarios',
     'new_group' => 'Nuevo grupo',
     'delete_selected_confirm' => '¿Realmente quiere eliminar todos los grupos seleccionados?',
-    'list_title' => 'Administrar grupos',
     'delete_confirm' => '¿Realmente desea eliminar este grupo?',
     'delete_selected_success' => 'Los grupos seleccionados fueron eliminados exitosamente.',
     'delete_selected_empty' => 'No hay grupos seleccionados para eliminar.',
     'return_to_list' => 'Volver a la lista de grupos',
     'return_to_users' => 'Volver a la lista de usuarios',
-    'create_title' => 'Añadir grupo',
-    'update_title' => 'Editar grupo',
     'preview_title' => 'Vista previa de grupo',
   ],
   'login' => [

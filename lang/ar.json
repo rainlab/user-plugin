@@ -2,5 +2,14 @@
   "User": "المستخدم",
   "Front-end user management.": "إدارة المستخدم الأمامية.",
   "Sorry, this user is currently not activated. Please contact us for further assistance.": "عذرا ، هذا المستخدم غير مفعل حاليا. يرجى الاتصال بنا للحصول على مزيد من المساعدة.",
-  "Bulk actions": "إجراءات "
+  "Bulk actions": "إجراءات ",
+  "Group": "مجموعة",
+  "Create User Group": "إنشاء مجموعة مستخدمين",
+  "Edit User Group": "تحرير مجموعة المستخدمين",
+  "Manage Groups": "إدارة المجموعات",
+  "Manage Users": "ادارة المستخدمين",
+  "Users": "المستخدمون",
+  "Groups": "مجموعات",
+  "User settings": "إعدادات المستخدم",
+  "Manage user authentication, registration and activation settings.": "إدارة مصادقة المستخدم والتسجيل وإعدادات التنشيط."
 }

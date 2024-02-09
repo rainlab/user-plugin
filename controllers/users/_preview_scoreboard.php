@@ -1,5 +1,5 @@
 <div class="scoreboard-item title-value">
-    <h4><?= e(trans('rainlab.user::lang.user.label')) ?></h4>
+    <h4><?= __("User") ?></h4>
     <?php if ($formModel->name): ?>
         <p><?= e($formModel->name) ?></p>
     <?php else: ?>
