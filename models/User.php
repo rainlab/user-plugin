@@ -378,10 +378,12 @@ class User extends UserBase
     /**
      * ban this user, preventing them from signing in.
      */
-    public function ban()
+    public function ban($reason = null)
     {
         if (!$this->is_banned) {
             $this->is_banned = true;
+            $this->banned_reason = $reason;
+            $this->banned_at = $this->freshTimestamp();
             $this->save(['force' => true]);
         }
     }
@@ -393,6 +395,8 @@ class User extends UserBase
     {
         if ($this->is_banned) {
             $this->is_banned = false;
+            $this->banned_reason = null;
+            $this->banned_at = null;
             $this->save(['force' => true]);
         }
     }
