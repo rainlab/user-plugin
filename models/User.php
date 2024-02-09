@@ -376,53 +376,25 @@ class User extends UserBase
     //
 
     /**
-     * Ban this user, preventing them from signing in.
-     * @return void
+     * ban this user, preventing them from signing in.
      */
     public function ban()
     {
-        Auth::findThrottleByUserId($this->id)->ban();
+        if (!$this->is_banned) {
+            $this->is_banned = true;
+            $this->save(['force' => true]);
+        }
     }
 
     /**
-     * Remove the ban on this user.
-     * @return void
+     * unban removes the ban on this user.
      */
     public function unban()
     {
-        Auth::findThrottleByUserId($this->id)->unban();
-    }
-
-    /**
-     * Check if the user is banned.
-     * @return bool
-     */
-    public function isBanned()
-    {
-        $throttle = Auth::createThrottleModel()->where('user_id', $this->id)->first();
-        return $throttle ? $throttle->is_banned : false;
-    }
-
-    //
-    // Suspending
-    //
-
-    /**
-     * Check if the user is suspended.
-     * @return bool
-     */
-    public function isSuspended()
-    {
-        return Auth::findThrottleByUserId($this->id)->checkSuspended();
-    }
-
-    /**
-     * Remove the suspension on this user.
-     * @return void
-     */
-    public function unsuspend()
-    {
-        Auth::findThrottleByUserId($this->id)->unsuspend();
+        if ($this->is_banned) {
+            $this->is_banned = false;
+            $this->save(['force' => true]);
+        }
     }
 
     //

@@ -170,7 +170,6 @@
   'account' => [
     'account' => '帐号',
     'account_desc' => '用户信息.',
-    'banned' => '抱歉，此用户当前未激活。 请联系我们以获得进一步的帮助。',
     'redirect_to' => '跳转至',
     'redirect_to_desc' => '登录或注册成功后跳转页面.',
     'code_param' => '激活码参数。',

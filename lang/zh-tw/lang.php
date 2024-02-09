@@ -164,7 +164,6 @@
   'account' => [
     'account' => '帳號',
     'account_desc' => '會員管理表單。',
-    'banned' => '很抱歉，此會員尚未啟動，請聯繫我們以取得協助。',
     'redirect_to' => '重新導向',
     'redirect_to_desc' => '成功登入、更新或註冊後重新導向的頁面。',
     'code_param' => '啟動碼參數名稱',

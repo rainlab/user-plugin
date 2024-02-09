@@ -164,7 +164,6 @@
   'account' => [
     'account' => 'Fiók',
     'account_desc' => 'Felhasználó kezelési űrlap.',
-    'banned' => 'Sajnáljuk, ez a felhasználói fiók nincs aktiválva. Kérjük vegye fel a kapcsolatot a weboldal üzemeltetőjével.',
     'redirect_to' => 'Átirányítás',
     'redirect_to_desc' => 'Az oldal neve az átirányításhoz frissítés, bejelentkezés vagy regisztrálás után.',
     'code_param' => 'Aktiválási kód',

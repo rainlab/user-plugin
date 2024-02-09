@@ -161,7 +161,6 @@
   'account' => [
     'account' => 'Akun',
     'account_desc' => 'Formulir manajemen pengguna.',
-    'banned' => 'Maaf, pengguna saat ini tidak diaktifkan. Silakan hubungi kami untuk bantuan lebih lanjut.',
     'redirect_to' => 'Alihkan ke',
     'redirect_to_desc' => 'Nama halaman untuk dialihkan setelah pembaruan, masuk atau registrasi.',
     'code_param' => 'Parameter Kode Aktivasi',

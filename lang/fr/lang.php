@@ -174,7 +174,6 @@
   'account' => [
     'account' => 'Compte',
     'account_desc' => 'Gestion du compte utilisateur.',
-    'banned' => 'Désolé, cet utilisateur n\'est actuellement pas activé. S\'il vous plaît, contactez-nous pour plus d\'aide.',
     'redirect_to' => 'Rediriger vers',
     'redirect_to_desc' => 'Nom de la page de redirection après la mise à jour, la connexion ou l’enregistrement.',
     'code_param' => 'Paramètre code d’activation',

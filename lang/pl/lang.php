@@ -151,7 +151,6 @@
   'account' => [
     'account' => 'Konto',
     'account_desc' => 'Formularz zarządzania użytkownikiem.',
-    'banned' => 'Przepraszamy, ten użytkownik jest obecnie nieaktywny. Skontaktuj się z nami, aby uzyskać dalszą pomoc.',
     'redirect_to' => 'Przekieruj do',
     'redirect_to_desc' => 'Nazwa strony do przekierowania po aktualizacji, zalogowaniu lub rejestracji.',
     'code_param' => 'Kod aktywacyjny - parametr',

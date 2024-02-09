@@ -151,7 +151,6 @@
   'account' => [
     'account' => 'Účet',
     'account_desc' => 'Formulár správy používateľov.',
-    'banned' => 'Ospravedlňujeme sa, tento používateľ momentálne nie je aktivovaný. Kontaktujte nás pre ďalšiu pomoc.',
     'redirect_to' => 'Presmerovať na',
     'redirect_to_desc' => 'Názov stránky na presmerovanie po aktualizácii, prihlásení alebo registrácii.',
     'code_param' => 'Aktivačný kód Parameter',

@@ -267,9 +267,9 @@ class Account extends ComponentBase
             Event::fire('rainlab.user.beforeAuthenticate', [$this, $credentials]);
 
             $user = Auth::authenticate($credentials, $this->useRememberLogin());
-            if ($user->isBanned()) {
+            if ($user->is_banned) {
                 Auth::logout();
-                throw new AuthException(Lang::get(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'rainlab.user::lang.account.banned'));
+                throw new AuthException(__("Sorry, this user is currently not activated. Please contact us for further assistance."));
             }
 
             // Record IP address

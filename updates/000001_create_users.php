@@ -22,7 +22,8 @@ return new class extends Migration
             $table->text('two_factor_recovery_codes')->nullable();
             $table->string('created_ip_address')->nullable();
             $table->string('last_ip_address')->nullable();
-            $table->boolean('is_activated')->default(0);
+            $table->boolean('is_banned')->default(false);
+            $table->boolean('is_activated')->default(false);
             $table->timestamp('activated_at')->nullable(); // email_verified_at
             $table->timestamp('two_factor_confirmed_at')->nullable();
             $table->timestamp('last_login')->nullable();

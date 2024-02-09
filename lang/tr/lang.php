@@ -164,7 +164,6 @@
   'account' => [
     'account' => 'Hesap',
     'account_desc' => 'Üye yönetimi formu.',
-    'banned' => 'Maalesef, bu kullanıcı şu anda etkin değil. Daha fazla yardım için lütfen bizimle iletişime geçin.',
     'redirect_to' => 'Yönlendir',
     'redirect_to_desc' => 'Güncellemeden sonra yönlendirilecek sayfanın adı, oturum aç ya da kayıt ol.',
     'code_param' => 'Aktivasyon Kodu Parametresi',

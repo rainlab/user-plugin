@@ -18,16 +18,6 @@
     </a>
 <?php endif ?>
 
-<?php if ($formModel->isSuspended()): ?>
-    <a
-        href="javascript:;"
-        data-request="onUnsuspendUser"
-        data-request-confirm="<?= e(trans('rainlab.user::lang.users.unsuspend_confirm')) ?>"
-        class="btn btn-default oc-icon-unlock-alt">
-        <?= e(trans('rainlab.user::lang.users.unsuspend')) ?>
-    </a>
-<?php endif ?>
-
 <?php
 /* @todo
 <div class="btn-group">

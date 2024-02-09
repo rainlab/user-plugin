@@ -82,7 +82,7 @@ class Users extends Controller
             $classes[] = 'strike';
         }
 
-        if ($record->isBanned()) {
+        if ($record->is_banned) {
             $classes[] = 'negative';
         }
 

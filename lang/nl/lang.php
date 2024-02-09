@@ -165,7 +165,6 @@
   'account' => [
     'account' => 'Account',
     'account_desc' => 'Gebruikersaccount formulier.',
-    'banned' => 'Sorry, deze gebruiker is momenteel niet geactiveerd. Neem contact met ons op voor verdere hulp.',
     'redirect_to' => 'Redirect naar',
     'redirect_to_desc' => 'Pagina om naar te redirecten na het bijwerken, inloggen of registreren.',
     'code_param' => 'Activatie Code parameter',

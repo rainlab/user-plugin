@@ -165,7 +165,6 @@
   'account' => [
     'account' => 'Račun',
     'account_desc' => 'Upravljanje uporabnika.',
-    'banned' => 'Oprostite, ta uporabnik trenutno ni aktiviran. Prosimo, kontaktirajte nas za nadaljnjo pomoč.',
     'redirect_to' => 'Preusmeritev na',
     'redirect_to_desc' => 'Stran, na katero bo uporabnik preusmerjen po posodobitvi profila, po prijavi ali po registraciji.',
     'code_param' => 'Parameter aktivacijske kode',

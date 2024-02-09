@@ -11,7 +11,7 @@
 
         <?php if ($formModel->is_guest): ?>
             <?= $this->makePartial('hint_guest') ?>
-        <?php elseif ($formModel->isBanned()): ?>
+        <?php elseif ($formModel->is_banned): ?>
             <?= $this->makePartial('hint_banned') ?>
         <?php elseif ($formModel->trashed()): ?>
             <?= $this->makePartial('hint_trashed') ?>

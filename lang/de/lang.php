@@ -169,7 +169,6 @@
   'account' => [
     'account' => 'Benutzerkonto',
     'account_desc' => 'Benutzerkontoverwaltung.',
-    'banned' => 'Sorry, dieser Benutzer ist momentan nicht aktiviert. Kontaktieren Sie uns für weitere Unterstützung.',
     'redirect_to' => 'Weiterleiten nach',
     'redirect_to_desc' => 'Seitenname zum Weiterleiten nach Update, Anmeldung oder Registrierung.',
     'code_param' => 'Aktivierungscode Parameter',

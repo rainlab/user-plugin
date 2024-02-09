@@ -151,7 +151,6 @@
   'account' => [
     'account' => 'Konto',
     'account_desc' => 'Användarhanteringsformulär.',
-    'banned' => 'Tyvärr, den här användaren är för närvarande inte aktiverad. Vänligen kontakta oss för ytterligare hjälp. ',
     'redirect_to' => 'Omdirigera till',
     'redirect_to_desc' => 'Sidnamn för att omdirigera till efter uppdatering, logga in eller registrera.',
     'code_param' => 'Aktiveringskod Param',
