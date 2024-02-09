@@ -28,7 +28,12 @@
   "ID": "ID",
   "There are no user groups available.": "Não há grupos disponíveis.",
   "Avatar": "Avatar",
-  "Registered": "Registado em",
+  "Registered": "Registado",
   "Last seen": "Visto por último",
-  "Guest": "Convidado"
+  "Guest": "Convidado",
+  "Activated": "Activado",
+  "Joined": "Registou-se a",
+  "Anonymous": "Anonymous",
+  "Online now": "Online agora",
+  "Currently offline": "Desligado"
 }

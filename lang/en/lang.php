@@ -103,15 +103,7 @@
     'require_uncompromised_comment' => 'Require non-leaked password',
   ],
   'user' => [
-    'name_empty' => 'Anonymous',
-    'joined' => 'Joined',
-    'is_online' => 'Online now',
-    'is_offline' => 'Currently offline',
     'details' => 'Details',
-    'status_label' => 'Status',
-    'status_guest' => 'Guest',
-    'status_activated' => 'Activated',
-    'status_registered' => 'Registered',
   ],
   'group' => [
     'id' => 'ID',

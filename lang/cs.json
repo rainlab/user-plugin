@@ -28,7 +28,12 @@
   "ID": "ID",
   "There are no user groups available.": "V této skupině nejsou žádní uživatelé.",
   "Avatar": "Obrázek",
-  "Registered": "Datum registrace",
+  "Registered": "Registrován",
   "Last seen": "Poslední přihlášení",
-  "Guest": "Host"
+  "Guest": "Host",
+  "Activated": "Aktivován",
+  "Joined": "Registrován",
+  "Anonymous": "Anonym",
+  "Online now": "Nyní on-line",
+  "Currently offline": "Nyní offline"
 }

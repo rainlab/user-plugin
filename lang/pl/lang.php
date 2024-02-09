@@ -83,14 +83,7 @@
     'login_attribute_comment' => 'Wybierz, jakie podstawowe dane użytkownika mają być używane do logowania.',
   ],
   'user' => [
-    'name_empty' => 'Anonimowy',
-    'joined' => 'Dołączył',
-    'is_online' => 'Online',
-    'is_offline' => 'Offline',
     'details' => 'Szczegóły',
-    'status_guest' => 'Gość',
-    'status_activated' => 'Aktywowany',
-    'status_registered' => 'Zarejestrowany',
   ],
   'group' => [
     'id' => 'ID',

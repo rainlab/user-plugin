@@ -83,14 +83,7 @@
     'login_attribute_comment' => 'Vyberte, aké základný údaj používateľa sa má použiť pri prihlasovaní.',
   ],
   'user' => [
-    'name_empty' => 'Anonym',
-    'joined' => 'Pridaný',
-    'is_online' => 'Teraz online',
-    'is_offline' => 'Momentálne je offline',
     'details' => 'Detaily',
-    'status_guest' => 'Hosť',
-    'status_activated' => 'Aktivovaný',
-    'status_registered' => 'Registrovaný',
   ],
   'group' => [
     'id' => 'ID',

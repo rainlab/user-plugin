@@ -33,5 +33,10 @@
   "Avatar": "Avatar",
   "Registered": "Kayıtlı",
   "Last seen": "Son görülme",
-  "Guest": "Ziyaretçi"
+  "Guest": "Ziyaretçi",
+  "Activated": "Aktif",
+  "Joined": "Katılım Tarihi",
+  "Anonymous": "-İsimsiz-",
+  "Online now": "Şuan çevrimiçi",
+  "Currently offline": "Şuan çevrimdışı"
 }

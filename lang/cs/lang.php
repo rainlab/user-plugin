@@ -74,14 +74,7 @@
     'login_attribute_comment' => 'Zvolte, jaký atribut bude použitý k přihlášení uživatele.',
   ],
   'user' => [
-    'name_empty' => 'Anonym',
-    'joined' => 'Registrován',
-    'is_online' => 'Nyní on-line',
-    'is_offline' => 'Nyní offline',
     'details' => 'Detaily',
-    'status_guest' => 'Host',
-    'status_activated' => 'Aktivován',
-    'status_registered' => 'Registrován',
   ],
   'group' => [
     'id' => 'ID',

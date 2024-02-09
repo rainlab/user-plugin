@@ -94,14 +94,7 @@
     'remember_ask' => 'Üye girişi sırasında sor',
   ],
   'user' => [
-    'name_empty' => '-İsimsiz-',
-    'joined' => 'Katılım Tarihi',
-    'is_online' => 'Şuan çevrimiçi',
-    'is_offline' => 'Şuan çevrimdışı',
     'details' => 'Detaylar',
-    'status_guest' => 'Ziyaretçi',
-    'status_activated' => 'Aktif',
-    'status_registered' => 'Kayıtlı',
   ],
   'group' => [
     'id' => 'No',

@@ -94,14 +94,7 @@
     'remember_ask' => '會員登入時決定',
   ],
   'user' => [
-    'name_empty' => 'Anonymous',
-    'joined' => '加入時間',
-    'is_online' => '線上',
-    'is_offline' => '已離線',
     'details' => '資訊',
-    'status_guest' => '遊客',
-    'status_activated' => '已啟用',
-    'status_registered' => '已註冊',
   ],
   'group' => [
     'id' => 'ID',

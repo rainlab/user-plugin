@@ -31,7 +31,12 @@
   "Created IP Address": "註冊位置",
   "Last IP Address": "最後位置",
   "Avatar": "頭像",
-  "Registered": "註冊日期",
+  "Registered": "已註冊",
   "Last seen": "最後上線",
-  "Guest": "遊客"
+  "Guest": "遊客",
+  "Activated": "已啟用",
+  "Joined": "加入時間",
+  "Anonymous": "Anonymous",
+  "Online now": "線上",
+  "Currently offline": "已離線"
 }

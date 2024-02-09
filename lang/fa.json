@@ -28,7 +28,12 @@
   "ID": "مشخصه",
   "There are no user groups available.": "گروه کاربری موجود نیست",
   "Avatar": "نمایه",
-  "Registered": "تاریخ ثبت نام",
+  "Registered": "عضو شده",
   "Last seen": "آخرین بازدید",
-  "Guest": "مهمان"
+  "Guest": "مهمان",
+  "Activated": "فعال",
+  "Joined": "عضو شده",
+  "Anonymous": "ناشناس",
+  "Online now": "آنلاین",
+  "Currently offline": "هم اکنون آفلاین"
 }

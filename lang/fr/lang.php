@@ -103,15 +103,7 @@
     'require_uncompromised_comment' => 'Vérifier que le mot de passe n\'est pas compromis',
   ],
   'user' => [
-    'name_empty' => 'Anonyme',
-    'joined' => 'Inscrit le',
-    'is_online' => 'Est actuellement connecté',
-    'is_offline' => 'N’est pas connecté',
     'details' => 'Détails',
-    'status_label' => 'Statut',
-    'status_guest' => 'Invité',
-    'status_activated' => 'Activé',
-    'status_registered' => 'Enregistré',
   ],
   'group' => [
     'id' => 'ID',

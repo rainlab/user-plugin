@@ -90,14 +90,7 @@
     'remember_ask' => 'Preguntar al usuario al iniciar sesión',
   ],
   'user' => [
-    'name_empty' => 'Anónimo',
-    'joined' => 'Incorporado',
-    'is_online' => 'En línea ahora',
-    'is_offline' => 'Actualmente desconectado',
     'details' => 'Detalles',
-    'status_guest' => 'Invitado',
-    'status_activated' => 'Activado',
-    'status_registered' => 'Registrado',
   ],
   'group' => [
     'id' => 'ID',

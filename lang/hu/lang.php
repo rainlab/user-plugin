@@ -94,14 +94,7 @@
     'remember_ask' => 'Kérdezzen rá',
   ],
   'user' => [
-    'name_empty' => 'Ismeretlen',
-    'joined' => 'Csatlakozva',
-    'is_online' => 'Elérhető',
-    'is_offline' => 'Nem elérhető',
     'details' => 'Adatok',
-    'status_guest' => 'Vendég',
-    'status_activated' => 'Aktivált',
-    'status_registered' => 'Regisztrált',
   ],
   'group' => [
     'id' => 'Azonosító',

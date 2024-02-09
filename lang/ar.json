@@ -33,5 +33,11 @@
   "Avatar": "الصورة الرمزية",
   "Registered": "مسجل",
   "Last seen": "اخر ظهور",
-  "Guest": "زائر"
+  "Guest": "زائر",
+  "Activated": "مفعل",
+  "Status": "حالة",
+  "Joined": "انضم",
+  "Anonymous": "مجهول",
+  "Online now": "متواجد حاليا",
+  "Currently offline": "حاليا غير متصل"
 }

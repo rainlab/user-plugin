@@ -31,5 +31,10 @@
   "Avatar": "Avatar",
   "Registered": "Registrovaný",
   "Last seen": "Naposledy videný",
-  "Guest": "Hosť"
+  "Guest": "Hosť",
+  "Activated": "Aktivovaný",
+  "Joined": "Pridaný",
+  "Anonymous": "Anonym",
+  "Online now": "Teraz online",
+  "Currently offline": "Momentálne je offline"
 }

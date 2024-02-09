@@ -94,15 +94,7 @@
     'remember_ask' => 'Vprašaj uporabnika ob prijavi',
   ],
   'user' => [
-    'name_empty' => 'Anonimni uporabnik',
-    'joined' => 'Prijavljen',
-    'is_online' => 'Trenutno na spletu',
-    'is_offline' => 'Trenutno ni na spletu',
     'details' => 'Podrobnosti',
-    'status_label' => 'Status',
-    'status_guest' => 'Gost',
-    'status_activated' => 'Aktiviran',
-    'status_registered' => 'Registriran',
   ],
   'group' => [
     'id' => 'ID',

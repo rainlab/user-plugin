@@ -94,15 +94,7 @@
     'remember_ask' => 'Спросить пользователя при входе',
   ],
   'user' => [
-    'name_empty' => 'Аноним',
-    'joined' => 'Зарегистрирован',
-    'is_online' => 'В сети',
-    'is_offline' => 'Не в сети',
     'details' => 'Информация',
-    'status_label' => 'Статус',
-    'status_guest' => 'Гость',
-    'status_activated' => 'Активирован',
-    'status_registered' => 'Зарегистрирован',
   ],
   'group' => [
     'id' => 'ID',

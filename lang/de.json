@@ -29,7 +29,12 @@
   "ID": "ID",
   "There are no user groups available.": "Es gibt keine Benutzer-Gruppen.",
   "Avatar": "Avatar",
-  "Registered": "Registriert am",
+  "Registered": "Registriert",
   "Last seen": "Zuletzt gesehen",
-  "Guest": "Gast"
+  "Guest": "Gast",
+  "Activated": "Aktiviert",
+  "Joined": "Registriert",
+  "Anonymous": "Anonym",
+  "Online now": "Jetzt online",
+  "Currently offline": "Momentan offline"
 }

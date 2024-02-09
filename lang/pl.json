@@ -31,5 +31,10 @@
   "Avatar": "Avatar",
   "Registered": "Zarejestrowany",
   "Last seen": "Ostatnio widziany",
-  "Guest": "Gość"
+  "Guest": "Gość",
+  "Activated": "Aktywowany",
+  "Joined": "Dołączył",
+  "Anonymous": "Anonimowy",
+  "Online now": "Online",
+  "Currently offline": "Offline"
 }

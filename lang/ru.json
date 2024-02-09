@@ -31,7 +31,13 @@
   "Created IP Address": "Создан с IP-адреса",
   "Last IP Address": "Последний IP-адрес",
   "Avatar": "Аватар",
-  "Registered": "Дата регистрации",
+  "Registered": "Зарегистрирован",
   "Last seen": "Последняя активность",
-  "Guest": "Гость"
+  "Guest": "Гость",
+  "Activated": "Активирован",
+  "Status": "Статус",
+  "Joined": "Зарегистрирован",
+  "Anonymous": "Аноним",
+  "Online now": "В сети",
+  "Currently offline": "Не в сети"
 }

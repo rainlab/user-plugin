@@ -94,14 +94,7 @@
     'remember_ask' => 'Vraag de gebruiker bij het inloggen',
   ],
   'user' => [
-    'name_empty' => 'Anoniem',
-    'joined' => 'Geregistreerd op',
-    'is_online' => 'Momenteel online',
-    'is_offline' => 'Momenteel offline',
     'details' => 'Details',
-    'status_guest' => 'Gast',
-    'status_activated' => 'Geactiveerd',
-    'status_registered' => 'Geregistreerd',
   ],
   'group' => [
     'id' => 'ID',

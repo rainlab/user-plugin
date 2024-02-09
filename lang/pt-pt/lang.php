@@ -73,14 +73,7 @@
     'login_attribute_comment' => 'Selecione qual atributo do utilizador deve ser usado para entrar.',
   ],
   'user' => [
-    'name_empty' => 'Anonymous',
-    'joined' => 'Registou-se a',
-    'is_online' => 'Online agora',
-    'is_offline' => 'Desligado',
     'details' => 'Detalhes',
-    'status_guest' => 'Convidado',
-    'status_activated' => 'Activado',
-    'status_registered' => 'Registado',
   ],
   'group' => [
     'id' => 'ID',

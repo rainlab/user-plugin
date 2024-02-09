@@ -94,15 +94,7 @@
     'remember_ask' => 'اسأل المستخدم عند تسجيل الدخول',
   ],
   'user' => [
-    'name_empty' => 'مجهول',
-    'joined' => 'انضم',
-    'is_online' => 'متواجد حاليا',
-    'is_offline' => 'حاليا غير متصل',
     'details' => 'تفاصيل',
-    'status_label' => 'حالة',
-    'status_guest' => 'زائر',
-    'status_activated' => 'مفعل',
-    'status_registered' => 'مسجل',
   ],
   'group' => [
     'id' => 'ID',

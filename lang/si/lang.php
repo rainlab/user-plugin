@@ -94,15 +94,7 @@
     'remember_ask' => 'පුරනය වීමේදී පරිශීලකයාගෙන් විමසන්න',
   ],
   'user' => [
-    'name_empty' => 'නිර්නාමික',
-    'joined' => 'එකතු වුණා',
-    'is_online' => 'දැන් ඔන්ලයින්',
-    'is_offline' => 'දැනට නොබැඳි',
     'details' => 'විස්තර',
-    'status_label' => 'තත්ත්වය',
-    'status_guest' => 'අමුත්තන්ගේ',
-    'status_activated' => 'සක්රිය කර ඇත',
-    'status_registered' => 'ලියාපදිංචි',
   ],
   'group' => [
     'id' => 'හැඳුනුම්පත',

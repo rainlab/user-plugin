@@ -126,14 +126,7 @@
     'enabled' => 'Aktiv',
   ],
   'user' => [
-    'name_empty' => 'Anonym',
-    'joined' => 'Registriert',
-    'is_online' => 'Jetzt online',
-    'is_offline' => 'Momentan offline',
     'details' => 'Details',
-    'status_guest' => 'Gast',
-    'status_activated' => 'Aktiviert',
-    'status_registered' => 'Registriert',
   ],
   'login' => [
     'attribute_email' => 'E-Mail',

@@ -91,14 +91,7 @@
     'remember_ask' => 'Tanyakan saat login',
   ],
   'user' => [
-    'name_empty' => 'Anonim',
-    'joined' => 'Bergabung',
-    'is_online' => 'Sedang online',
-    'is_offline' => 'Sedang offline',
     'details' => 'Detail',
-    'status_guest' => 'Tamu',
-    'status_activated' => 'Diaktifkan',
-    'status_registered' => 'Terdaftar',
   ],
   'group' => [
     'id' => 'ID',

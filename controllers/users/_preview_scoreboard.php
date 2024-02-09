@@ -3,7 +3,7 @@
     <?php if ($formModel->name): ?>
         <p><?= e($formModel->name) ?></p>
     <?php else: ?>
-        <p><em><?= e(trans('rainlab.user::lang.user.name_empty')) ?></em></p>
+        <p><em><?= __("Anonymous") ?></em></p>
     <?php endif ?>
     <p class="description">
         <a href="mailto:<?= e($formModel->email) ?>">
@@ -13,18 +13,18 @@
 </div>
 <?php if ($formModel->created_at): ?>
     <div class="scoreboard-item title-value">
-        <h4><?= e(trans('rainlab.user::lang.user.joined')) ?></h4>
+        <h4><?= __("Joined") ?></h4>
         <p title="<?= $formModel->created_at->diffForHumans() ?>">
             <?= $formModel->created_at->toFormattedDateString() ?>
         </p>
         <p class="description">
-            <?= e(trans('rainlab.user::lang.user.status_label')) ?>:
+            <?= __("Status") ?>
             <?php if ($formModel->is_guest): ?>
-                <?= e(trans('rainlab.user::lang.user.status_guest')) ?>
+                <?= __("Guest") ?>
             <?php elseif ($formModel->is_activated): ?>
-                <?= e(trans('rainlab.user::lang.user.status_activated')) ?>
+                <?= __("Activated") ?>
             <?php else: ?>
-                <?= e(trans('rainlab.user::lang.user.status_registered')) ?>
+                <?= __("Registered") ?>
             <?php endif ?>
         </p>
     </div>
@@ -34,7 +34,7 @@
         <h4><?= __("Last seen") ?></h4>
         <p><?= $formModel->last_seen->diffForHumans() ?></p>
         <p class="description">
-            <?= $formModel->isOnline() ? e(trans('rainlab.user::lang.user.is_online')) : e(trans('rainlab.user::lang.user.is_offline')) ?>
+            <?= $formModel->isOnline() ? __("Online now") : __("Currently offline") ?>
         </p>
     </div>
 <?php endif ?>

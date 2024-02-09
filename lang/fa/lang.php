@@ -75,14 +75,7 @@
     'login_attribute_comment' => 'مشخصه ای را که کاربر برای ورود باید وارد نماید انتخاب نمایید.',
   ],
   'user' => [
-    'name_empty' => 'ناشناس',
-    'joined' => 'عضو شده',
-    'is_online' => 'آنلاین',
-    'is_offline' => 'هم اکنون آفلاین',
     'details' => 'جزییات',
-    'status_guest' => 'مهمان',
-    'status_activated' => 'فعال',
-    'status_registered' => 'عضو شده',
     'user' => 'user',
   ],
   'group' => [

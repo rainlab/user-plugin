@@ -83,14 +83,7 @@
     'login_attribute_comment' => '로그인에 사용할 기본 사용자 세부 정보를 선택합니다.',
   ],
   'user' => [
-    'name_empty' => '익명',
-    'joined' => '가입된',
-    'is_online' => '지금 온라인',
-    'is_offline' => '현재 오프라인 상태',
     'details' => '세부 사항',
-    'status_guest' => '손님',
-    'status_activated' => '활성화 상태',
-    'status_registered' => '등록한',
   ],
   'group' => [
     'id' => '아이디',

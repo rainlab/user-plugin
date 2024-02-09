@@ -75,14 +75,7 @@
     'login_attribute_comment' => 'Seleziona che attributo gli utenti useranno per effettuare il login.',
   ],
   'user' => [
-    'name_empty' => 'Anonimo',
-    'joined' => 'Joined',
-    'is_online' => 'Online adesso',
-    'is_offline' => 'Al momento non collegato',
     'details' => 'Dettagli',
-    'status_guest' => 'Anonimo',
-    'status_activated' => 'Attivato',
-    'status_registered' => 'Registrato',
   ],
   'group' => [
     'id' => 'ID',

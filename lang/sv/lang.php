@@ -83,14 +83,7 @@
     'login_attribute_comment' => 'Välj vilken primär användarinfo som ska användas för inloggning.',
   ],
   'user' => [
-    'name_empty' => 'Anonym',
-    'joined' => 'Anställd',
-    'is_online' => 'Online nu',
-    'is_offline' => 'För närvarande offline',
     'details' => 'Detaljer',
-    'status_guest' => 'Gäst',
-    'status_activated' => 'Aktiverad',
-    'status_registered' => 'Registrerad',
   ],
   'group' => [
     'id' => 'ID',

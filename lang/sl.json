@@ -31,7 +31,13 @@
   "Created IP Address": "Ustvarjen IP naslov",
   "Last IP Address": "Zadnji IP naslov",
   "Avatar": "Avatar",
-  "Registered": "Registriran dne",
+  "Registered": "Registriran",
   "Last seen": "Zadnjič viden",
-  "Guest": "Gost"
+  "Guest": "Gost",
+  "Activated": "Aktiviran",
+  "Status": "Status",
+  "Joined": "Prijavljen",
+  "Anonymous": "Anonimni uporabnik",
+  "Online now": "Trenutno na spletu",
+  "Currently offline": "Trenutno ni na spletu"
 }

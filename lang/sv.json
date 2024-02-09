@@ -31,5 +31,10 @@
   "Avatar": "Avatar",
   "Registered": "Registrerad",
   "Last seen": "Senast sett",
-  "Guest": "Gäst"
+  "Guest": "Gäst",
+  "Activated": "Aktiverad",
+  "Joined": "Anställd",
+  "Anonymous": "Anonym",
+  "Online now": "Online nu",
+  "Currently offline": "För närvarande offline"
 }

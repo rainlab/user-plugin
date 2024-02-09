@@ -11,12 +11,12 @@ scopes:
         scope: filterByGroup
 
     created_at:
-        label: rainlab.user::lang.user.created_at
+        label: Registered
         type: daterange
         conditions: created_at >= ':after' AND created_at <= ':before'
 
     activated:
-        label: rainlab.user::lang.user.status_activated
+        label: Activated
         type: switch
         conditions:
             - activated_at = null

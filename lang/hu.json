@@ -33,5 +33,10 @@
   "Avatar": "Profilkép",
   "Registered": "Regisztrált",
   "Last seen": "Belépve",
-  "Guest": "Vendég"
+  "Guest": "Vendég",
+  "Activated": "Aktivált",
+  "Joined": "Csatlakozva",
+  "Anonymous": "Ismeretlen",
+  "Online now": "Elérhető",
+  "Currently offline": "Nem elérhető"
 }

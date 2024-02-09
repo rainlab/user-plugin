@@ -31,7 +31,12 @@
   "Created IP Address": "Registratie IP-address",
   "Last IP Address": "Laatste IP-address",
   "Avatar": "Profielfoto",
-  "Registered": "Geregistreerd op",
+  "Registered": "Geregistreerd",
   "Last seen": "Laatste login",
-  "Guest": "Gast"
+  "Guest": "Gast",
+  "Activated": "Geactiveerd",
+  "Joined": "Geregistreerd op",
+  "Anonymous": "Anoniem",
+  "Online now": "Momenteel online",
+  "Currently offline": "Momenteel offline"
 }

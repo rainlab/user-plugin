@@ -31,7 +31,13 @@
   "Created IP Address": "Adresse IP de création",
   "Last IP Address": "Dernière adresse IP",
   "Avatar": "Avatar",
-  "Registered": "Enregistré le",
+  "Registered": "Enregistré",
   "Last seen": "Dernière connexion",
-  "Guest": "Invité"
+  "Guest": "Invité",
+  "Activated": "Activé",
+  "Status": "Statut",
+  "Joined": "Inscrit le",
+  "Anonymous": "Anonyme",
+  "Online now": "Est actuellement connecté",
+  "Currently offline": "N’est pas connecté"
 }

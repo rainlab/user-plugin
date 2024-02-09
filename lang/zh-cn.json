@@ -31,7 +31,13 @@
   "Created IP Address": "创建的 IP 地址",
   "Last IP Address": "最后一个 IP 地址",
   "Avatar": "头像",
-  "Registered": "注册时间",
+  "Registered": "在册的",
   "Last seen": "上次登录时间",
-  "Guest": "访客"
+  "Guest": "访客",
+  "Activated": "活跃的",
+  "Status": "Status",
+  "Joined": "加入",
+  "Anonymous": "匿名的",
+  "Online now": "当前在线",
+  "Currently offline": "当前离线"
 }

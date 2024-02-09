@@ -99,15 +99,7 @@
     'hint_templates' => '你可以通过管理面板 邮件 > 邮件模版 设置邮件正文模版.',
   ],
   'user' => [
-    'name_empty' => '匿名的',
-    'joined' => '加入',
-    'is_online' => '当前在线',
-    'is_offline' => '当前离线',
     'details' => '描述',
-    'status_label' => 'Status',
-    'status_guest' => '访客',
-    'status_activated' => '活跃的',
-    'status_registered' => '在册的',
   ],
   'group' => [
     'id' => 'ID',

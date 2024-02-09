@@ -33,5 +33,10 @@
   "Avatar": "Avatar",
   "Registered": "Terdaftar",
   "Last seen": "Terakhir dilihat",
-  "Guest": "Tamu"
+  "Guest": "Tamu",
+  "Activated": "Diaktifkan",
+  "Joined": "Bergabung",
+  "Anonymous": "Anonim",
+  "Online now": "Sedang online",
+  "Currently offline": "Sedang offline"
 }
