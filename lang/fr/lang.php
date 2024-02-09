@@ -105,18 +105,8 @@
   'user' => [
     'details' => 'Détails',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => 'Nom',
-    'description_field' => 'Description',
-    'code' => 'Code',
-    'code_comment' => 'Entrez un code unique pour y accéder via l’API',
-    'created_at' => 'Créé le',
-    'users_count' => 'Nombre d’utilisateurs',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'Tous les groupes',
-    'new_group' => 'Nouveau groupe',
     'delete_selected_confirm' => 'Confirmez-vous la suppression des groupes sélectionnés ?',
     'delete_confirm' => 'Confirmez-vous la suppression de ce groupe d’utilisateurs ?',
     'delete_selected_success' => 'Les groupes d’utilisateurs sélectionnés ont été supprimés avec succès.',

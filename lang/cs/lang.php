@@ -76,18 +76,8 @@
   'user' => [
     'details' => 'Detaily',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => 'Název',
-    'description_field' => 'Popis skupiny',
-    'code' => 'Kód',
-    'code_comment' => 'Zadejte unikátní kód pro jednoznačnou identifikaci této skupiny.',
-    'created_at' => 'Vytvořeno',
-    'users_count' => 'Počet uživatelů',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'Uživatelské skupiny',
-    'new_group' => 'Nová skupina',
     'delete_selected_confirm' => 'Opravdu chcete smazat vybrané skupiny?',
     'delete_confirm' => 'Opravdu chcete odstranit tuto skupinu?',
     'delete_selected_success' => 'Vybrané skupiny byly úspěšně odstraněny.',

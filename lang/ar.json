@@ -12,7 +12,7 @@
   "Groups": "مجموعات",
   "User settings": "إعدادات المستخدم",
   "Manage user authentication, registration and activation settings.": "إدارة مصادقة المستخدم والتسجيل وإعدادات التنشيط.",
-  "Name": "اسم",
+  "Name": "الاسم",
   "Last Name": "اسم العائلة",
   "Email": "البريد الإلكتروني",
   "Account": "الحساب",
@@ -39,5 +39,11 @@
   "Joined": "انضم",
   "Anonymous": "مجهول",
   "Online now": "متواجد حاليا",
-  "Currently offline": "حاليا غير متصل"
+  "Currently offline": "حاليا غير متصل",
+  "New Group": "مجموعة جديدة",
+  "Code": "رمز",
+  "Enter a unique code used to identify this group.": "أدخل رمزًا فريدًا يستخدم لتعريف هذه المجموعة.",
+  "Description": "الوصف",
+  "Created": "أنشئت",
+  "User Groups": "مجموعات الاعضاء"
 }

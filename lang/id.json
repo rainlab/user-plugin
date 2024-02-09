@@ -38,5 +38,11 @@
   "Joined": "Bergabung",
   "Anonymous": "Anonim",
   "Online now": "Sedang online",
-  "Currently offline": "Sedang offline"
+  "Currently offline": "Sedang offline",
+  "New Group": "Grup Baru",
+  "Code": "Kode",
+  "Enter a unique code used to identify this group.": "Masukkan kode unik untuk mengidentifikasi grup ini.",
+  "Description": "Deskripsi",
+  "Created": "Dibuat",
+  "User Groups": "Grup Pengguna"
 }

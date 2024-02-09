@@ -12,7 +12,7 @@
   "Groups": "Grupos",
   "User settings": "Preferencias de usuario",
   "Manage user authentication, registration and activation settings.": "Administra las preferencias de los usuarios.",
-  "Name": "Nombres",
+  "Name": "Nombre",
   "Last Name": "Apellidos",
   "Email": "E-mail",
   "Account": "Perfil",
@@ -36,5 +36,11 @@
   "Joined": "Incorporado",
   "Anonymous": "Anónimo",
   "Online now": "En línea ahora",
-  "Currently offline": "Actualmente desconectado"
+  "Currently offline": "Actualmente desconectado",
+  "New Group": "Nuevo grupo",
+  "Code": "Código",
+  "Enter a unique code used to identify this group.": "Ingrese un código único para identificar este grupo.",
+  "Description": "Descripción",
+  "Created": "Creado",
+  "User Groups": "Grupos de usuarios"
 }

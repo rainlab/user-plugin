@@ -12,7 +12,7 @@
   "Groups": "群组",
   "User settings": "用户选项",
   "Manage user authentication, registration and activation settings.": "管理用户选项.",
-  "Name": "名",
+  "Name": "姓名",
   "Last Name": "姓",
   "Email": "邮箱",
   "Account": "帐号",
@@ -39,5 +39,11 @@
   "Joined": "加入",
   "Anonymous": "匿名的",
   "Online now": "当前在线",
-  "Currently offline": "当前离线"
+  "Currently offline": "当前离线",
+  "New Group": "新的用户组",
+  "Code": "编码",
+  "Enter a unique code used to identify this group.": "输入一个唯一编码来标志当前用户组",
+  "Description": "描述",
+  "Created": "创建",
+  "User Groups": "用户群组"
 }

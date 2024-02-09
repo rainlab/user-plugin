@@ -7,11 +7,11 @@
   "Edit User Group": "Upravit skupinu",
   "Manage Groups": "Správa skupin",
   "Manage Users": "Správa uživatelů",
-  "Users": "Uživatelé",
+  "Users": "Počet uživatelů",
   "Groups": "Skupiny",
   "User settings": "Správa uživatelů",
   "Manage user authentication, registration and activation settings.": "Správa nastavení uživatelů",
-  "Name": "Jméno",
+  "Name": "Název",
   "Last Name": "Příjmení",
   "Email": "E-mail",
   "Account": "Účet",
@@ -35,5 +35,11 @@
   "Joined": "Registrován",
   "Anonymous": "Anonym",
   "Online now": "Nyní on-line",
-  "Currently offline": "Nyní offline"
+  "Currently offline": "Nyní offline",
+  "New Group": "Nová skupina",
+  "Code": "Kód",
+  "Enter a unique code used to identify this group.": "Zadejte unikátní kód pro jednoznačnou identifikaci této skupiny.",
+  "Description": "Popis skupiny",
+  "Created": "Vytvořeno",
+  "User Groups": "Uživatelské skupiny"
 }

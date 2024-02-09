@@ -92,18 +92,8 @@
   'user' => [
     'details' => 'Detalles',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => 'Nombre',
-    'description_field' => 'Descripción',
-    'code' => 'Código',
-    'code_comment' => 'Ingrese un código único para identificar este grupo.',
-    'created_at' => 'Creado',
-    'users_count' => 'Usuarios',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'Grupos de usuarios',
-    'new_group' => 'Nuevo grupo',
     'delete_selected_confirm' => '¿Realmente quiere eliminar todos los grupos seleccionados?',
     'delete_confirm' => '¿Realmente desea eliminar este grupo?',
     'delete_selected_success' => 'Los grupos seleccionados fueron eliminados exitosamente.',

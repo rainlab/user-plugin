@@ -85,18 +85,8 @@
   'user' => [
     'details' => 'Detaily',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => 'Meno',
-    'description_field' => 'Popis',
-    'code' => 'Kód',
-    'code_comment' => 'Zadajte jedinečný kód použitý na identifikáciu tejto skupiny.',
-    'created_at' => 'Vytvorená',
-    'users_count' => 'Používatelia',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'Skupiny používateľov',
-    'new_group' => 'Nová skupina',
     'delete_selected_confirm' => 'Naozaj chcete odstrániť vybrané skupiny?',
     'delete_confirm' => 'Naozaj chcete odstrániť túto skupinu?',
     'delete_selected_success' => 'Vybrané skupiny boli úspešne odstránené.',

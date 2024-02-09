@@ -93,18 +93,8 @@
   'user' => [
     'details' => 'Detail',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => 'Nama',
-    'description_field' => 'Deskripsi',
-    'code' => 'Kode',
-    'code_comment' => 'Masukkan kode unik untuk mengidentifikasi grup ini.',
-    'created_at' => 'Dibuat',
-    'users_count' => 'Pengguna',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'Grup Pengguna',
-    'new_group' => 'Grup Baru',
     'delete_selected_confirm' => 'Apakah Anda benar-benar ingin menghapus grup yang dipilih?',
     'delete_confirm' => 'Apakah Anda benar-benar ingin menghapus grup ini?',
     'delete_selected_success' => 'Berhasil menghapus grup yang dipilih.',

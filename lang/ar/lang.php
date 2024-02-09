@@ -96,18 +96,8 @@
   'user' => [
     'details' => 'تفاصيل',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => 'الاسم',
-    'description_field' => 'الوصف',
-    'code' => 'رمز',
-    'code_comment' => 'أدخل رمزًا فريدًا يستخدم لتعريف هذه المجموعة.',
-    'created_at' => 'أنشئت',
-    'users_count' => 'المستخدمون',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'مجموعات الاعضاء',
-    'new_group' => 'مجموعة جديدة',
     'delete_selected_confirm' => 'هل تريد حقًا حذف المجموعات المختارة؟',
     'delete_confirm' => 'هل تريد حقًا حذف هذه المجموعة؟',
     'delete_selected_success' => 'تم حذف المجموعات المحددة بنجاح.',

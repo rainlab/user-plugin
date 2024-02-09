@@ -96,18 +96,8 @@
   'user' => [
     'details' => 'Detaylar',
   ],
-  'group' => [
-    'id' => 'No',
-    'name' => 'İsim',
-    'description_field' => 'Açıklama',
-    'code' => 'Kod',
-    'code_comment' => 'Bu grubu tanımlayan eşsiz bir kod girin.',
-    'created_at' => 'Oluşturulma',
-    'users_count' => 'Üyeler',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'Üye Grupları',
-    'new_group' => 'Yeni Grup',
     'delete_selected_confirm' => 'Seçilen grupları silmek istediğinize emin misiniz?',
     'delete_confirm' => 'Bu grubu silmek istediğinize emin misiniz?',
     'delete_selected_success' => 'Seçilen gruplar silindi.',

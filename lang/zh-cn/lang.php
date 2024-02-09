@@ -101,18 +101,8 @@
   'user' => [
     'details' => '描述',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => '姓名',
-    'description_field' => '描述',
-    'code' => '编码',
-    'code_comment' => '输入一个唯一编码来标志当前用户组',
-    'created_at' => '创建',
-    'users_count' => '用户',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => '用户群组',
-    'new_group' => '新的用户组',
     'delete_selected_confirm' => '确定清空选中用户组么？',
     'delete_confirm' => '确定要删除该群组吗？',
     'delete_selected_success' => '成功删除选中的群组。',

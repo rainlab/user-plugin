@@ -96,18 +96,8 @@
   'user' => [
     'details' => 'Podrobnosti',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => 'Ime',
-    'description_field' => 'Opis',
-    'code' => 'Koda',
-    'code_comment' => 'Vnesite unikatno kodo za identifikacijo te skupine.',
-    'created_at' => 'Ustvarjeno',
-    'users_count' => 'Uporabniki',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'Skupine uporabnikov',
-    'new_group' => 'Nova skupina',
     'delete_selected_confirm' => 'Ali ste prepričani, da želite izbrisati izbrane skupine?',
     'delete_confirm' => 'Ali ste prepričani, da želite izbrisati to skupino?',
     'delete_selected_success' => 'Izbrane skupine so uspešno izbrisane.',

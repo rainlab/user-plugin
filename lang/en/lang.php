@@ -105,18 +105,8 @@
   'user' => [
     'details' => 'Details',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => 'Name',
-    'description_field' => 'Description',
-    'code' => 'Code',
-    'code_comment' => 'Enter a unique code used to identify this group.',
-    'created_at' => 'Created',
-    'users_count' => 'Users',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'User Groups',
-    'new_group' => 'New Group',
     'delete_selected_confirm' => 'Do you really want to delete selected groups?',
     'delete_confirm' => 'Do you really want to delete this group?',
     'delete_selected_success' => 'Successfully deleted the selected groups.',

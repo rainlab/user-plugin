@@ -39,5 +39,11 @@
   "Joined": "Joined",
   "Anonymous": "Anonymous",
   "Online now": "Online now",
-  "Currently offline": "Currently offline"
+  "Currently offline": "Currently offline",
+  "New Group": "New Group",
+  "Code": "Code",
+  "Enter a unique code used to identify this group.": "Enter a unique code used to identify this group.",
+  "Description": "Description",
+  "Created": "Created",
+  "User Groups": "User Groups"
 }

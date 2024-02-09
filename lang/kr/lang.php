@@ -85,18 +85,8 @@
   'user' => [
     'details' => '세부 사항',
   ],
-  'group' => [
-    'id' => '아이디',
-    'name' => '이름',
-    'description_field' => '설명',
-    'code' => '코드',
-    'code_comment' => '이 그룹을 식별하는 데 사용되는 고유 한 코드를 입력하십시오.',
-    'created_at' => '생성날짜',
-    'users_count' => '사용자 수',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => '회원 그룹 목록',
-    'new_group' => '새로운 그룹',
     'delete_selected_confirm' => '선택한 그룹을 삭제하시겠습니까?',
     'delete_confirm' => '이 그룹을 삭제하시겠습니까?',
     'delete_selected_success' => '선택한 그룹을 성공적으로 삭제했습니다.',

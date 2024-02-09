@@ -12,7 +12,7 @@
   "Groups": "Grupy",
   "User settings": "Ustawienia użytkownika",
   "Manage user authentication, registration and activation settings.": "Zarządzaj ogólnymi ustawieniami dla użytkowników.",
-  "Name": "Imię / nick",
+  "Name": "Nazwa",
   "Last Name": "Nazwisko",
   "Email": "Email",
   "Account": "Konto",
@@ -36,5 +36,11 @@
   "Joined": "Dołączył",
   "Anonymous": "Anonimowy",
   "Online now": "Online",
-  "Currently offline": "Offline"
+  "Currently offline": "Offline",
+  "New Group": "Nowa grupa",
+  "Code": "Kod",
+  "Enter a unique code used to identify this group.": "Wpisz unikalny kod służący do identyfikacji tej grupy.",
+  "Description": "Opis",
+  "Created": "Utworzona",
+  "User Groups": "Grupy użytkowników"
 }

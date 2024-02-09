@@ -24,5 +24,11 @@
   "ID": "ID",
   "There are no user groups available.": "No hay grupos de usuarios disponibles.",
   "Avatar": "Avatar",
-  "Registered": "Registrado"
+  "Registered": "Registrado",
+  "New Group": "Nuevo Grupo",
+  "Code": "Código",
+  "Enter a unique code used to identify this group.": "Ingrese un código único para identificar a este grupo.",
+  "Description": "Descripción",
+  "Created": "Creado",
+  "User Groups": "Grupos de Usuario"
 }

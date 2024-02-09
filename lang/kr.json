@@ -8,7 +8,7 @@
   "Edit User Group": "사용자 그룹 수정",
   "Manage Groups": "그룹 관리",
   "Manage Users": "계정관리",
-  "Users": "계정",
+  "Users": "사용자 수",
   "Groups": "그룹",
   "User settings": "사용자 설정",
   "Manage user authentication, registration and activation settings.": "사용자 기본 설정을 관리합니다.",
@@ -36,5 +36,11 @@
   "Joined": "가입된",
   "Anonymous": "익명",
   "Online now": "지금 온라인",
-  "Currently offline": "현재 오프라인 상태"
+  "Currently offline": "현재 오프라인 상태",
+  "New Group": "새로운 그룹",
+  "Code": "코드",
+  "Enter a unique code used to identify this group.": "이 그룹을 식별하는 데 사용되는 고유 한 코드를 입력하십시오.",
+  "Description": "설명",
+  "Created": "생성날짜",
+  "User Groups": "회원 그룹 목록"
 }

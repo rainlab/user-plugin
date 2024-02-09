@@ -96,18 +96,8 @@
   'user' => [
     'details' => '資訊',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => '名稱',
-    'description_field' => '描述',
-    'code' => '代碼',
-    'code_comment' => '輸入識別此群組用的唯一代碼。',
-    'created_at' => '創建日期',
-    'users_count' => '會員數',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => '會員群組',
-    'new_group' => '新增群組',
     'delete_selected_confirm' => '是否刪除所選的群組？',
     'delete_confirm' => '是否刪除此群組？',
     'delete_selected_success' => '已成功刪除群組。',

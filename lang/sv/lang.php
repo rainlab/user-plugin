@@ -85,18 +85,8 @@
   'user' => [
     'details' => 'Detaljer',
   ],
-  'group' => [
-    'id' => 'ID',
-    'name' => 'Namn',
-    'description_field' => 'Beskrivning',
-    'code' => 'Kod',
-    'code_comment' => 'Ange en unik kod som används för att identifiera den här gruppen.',
-    'created_at' => 'Skapat',
-    'users_count' => 'Användare',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'Användargrupper',
-    'new_group' => 'Ny grupp',
     'delete_selected_confirm' => 'Vill du verkligen radera valda grupper?',
     'delete_confirm' => 'Vill du verkligen radera den här gruppen?',
     'delete_selected_success' => 'Tog bort de valda grupperna framgångsrikt',

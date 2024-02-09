@@ -35,5 +35,11 @@
   "Joined": "عضو شده",
   "Anonymous": "ناشناس",
   "Online now": "آنلاین",
-  "Currently offline": "هم اکنون آفلاین"
+  "Currently offline": "هم اکنون آفلاین",
+  "New Group": "گروه جدید",
+  "Code": "کد یکتا",
+  "Enter a unique code used to identify this group.": "کد یکتایی را جهت دسترسی به این گروه وارد نمایید",
+  "Description": "توضیحات",
+  "Created": "تاریخ ایجاد",
+  "User Groups": "گروه های کاربر"
 }

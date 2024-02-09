@@ -36,5 +36,11 @@
   "Joined": "Anställd",
   "Anonymous": "Anonym",
   "Online now": "Online nu",
-  "Currently offline": "För närvarande offline"
+  "Currently offline": "För närvarande offline",
+  "New Group": "Ny grupp",
+  "Code": "Kod",
+  "Enter a unique code used to identify this group.": "Ange en unik kod som används för att identifiera den här gruppen.",
+  "Description": "Beskrivning",
+  "Created": "Skapat",
+  "User Groups": "Användargrupper"
 }

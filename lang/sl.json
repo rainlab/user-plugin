@@ -39,5 +39,11 @@
   "Joined": "Prijavljen",
   "Anonymous": "Anonimni uporabnik",
   "Online now": "Trenutno na spletu",
-  "Currently offline": "Trenutno ni na spletu"
+  "Currently offline": "Trenutno ni na spletu",
+  "New Group": "Nova skupina",
+  "Code": "Koda",
+  "Enter a unique code used to identify this group.": "Vnesite unikatno kodo za identifikacijo te skupine.",
+  "Description": "Opis",
+  "Created": "Ustvarjeno",
+  "User Groups": "Skupine uporabnikov"
 }

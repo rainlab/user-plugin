@@ -10,6 +10,12 @@
         ->secondary()
         ->confirmMessage("Are you sure?") ?>
 
+    <div class="toolbar-divider"></div>
+
+    <?= Ui::button("User Groups", 'user/usergroups')
+        ->icon('icon-group')
+        ->secondary() ?>
+
     <?=
         /**
          * @event rainlab.user.view.extendListToolbar

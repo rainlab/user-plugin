@@ -96,18 +96,8 @@
   'user' => [
     'details' => 'Adatok',
   ],
-  'group' => [
-    'id' => 'Azonosító',
-    'name' => 'Név',
-    'description_field' => 'Leírás',
-    'code' => 'Kód',
-    'code_comment' => 'Egyedi azonosító az API eléréshez.',
-    'created_at' => 'Létrehozva',
-    'users_count' => 'Felhasználók',
-  ],
+  'group' => [],
   'groups' => [
-    'all_groups' => 'Csoportok',
-    'new_group' => 'Új csoport',
     'delete_selected_confirm' => 'Valóban törölni akarja a kijelölt csoportokat?',
     'delete_confirm' => 'Valóban törölni akarja ezt a csoportot?',
     'delete_selected_success' => 'A csoportok sikeresen eltávolításra kerültek.',

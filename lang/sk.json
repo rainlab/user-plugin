@@ -36,5 +36,11 @@
   "Joined": "Pridaný",
   "Anonymous": "Anonym",
   "Online now": "Teraz online",
-  "Currently offline": "Momentálne je offline"
+  "Currently offline": "Momentálne je offline",
+  "New Group": "Nová skupina",
+  "Code": "Kód",
+  "Enter a unique code used to identify this group.": "Zadajte jedinečný kód použitý na identifikáciu tejto skupiny.",
+  "Description": "Popis",
+  "Created": "Vytvorená",
+  "User Groups": "Skupiny používateľov"
 }

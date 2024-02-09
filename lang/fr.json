@@ -8,11 +8,11 @@
   "Edit User Group": "Modifier un groupe d’utilisateurs",
   "Manage Groups": "Groupes d’utilisateurs",
   "Manage Users": "Gestion des utilisateurs",
-  "Users": "Utilisateurs",
+  "Users": "Nombre d’utilisateurs",
   "Groups": "Groupes",
   "User settings": "Paramètres utilisateurs",
   "Manage user authentication, registration and activation settings.": "Gérer les paramètres liés aux utilisateurs.",
-  "Name": "Prénom",
+  "Name": "Nom",
   "Last Name": "Nom",
   "Email": "E-mail",
   "Account": "Compte",
@@ -39,5 +39,11 @@
   "Joined": "Inscrit le",
   "Anonymous": "Anonyme",
   "Online now": "Est actuellement connecté",
-  "Currently offline": "N’est pas connecté"
+  "Currently offline": "N’est pas connecté",
+  "New Group": "Nouveau groupe",
+  "Code": "Code",
+  "Enter a unique code used to identify this group.": "Entrez un code unique pour y accéder via l’API",
+  "Description": "Description",
+  "Created": "Créé le",
+  "User Groups": "Tous les groupes"
 }

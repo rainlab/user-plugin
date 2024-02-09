@@ -38,5 +38,11 @@
   "Joined": "Csatlakozva",
   "Anonymous": "Ismeretlen",
   "Online now": "Elérhető",
-  "Currently offline": "Nem elérhető"
+  "Currently offline": "Nem elérhető",
+  "New Group": "Új csoport",
+  "Code": "Kód",
+  "Enter a unique code used to identify this group.": "Egyedi azonosító az API eléréshez.",
+  "Description": "Leírás",
+  "Created": "Létrehozva",
+  "User Groups": "Csoportok"
 }

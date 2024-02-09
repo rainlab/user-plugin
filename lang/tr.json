@@ -12,7 +12,7 @@
   "Groups": "Gruplar",
   "User settings": "Üye ayarları",
   "Manage user authentication, registration and activation settings.": "Üye bazlı ayarları yönetin.",
-  "Name": "Adı",
+  "Name": "İsim",
   "Last Name": "Soyadı",
   "Email": "Eposta",
   "Account": "Hesap",
@@ -26,7 +26,7 @@
   "Password Confirmation": "Parola tekrar",
   "Enter the password again to confirm it.": "Sıfırlamayı onaylamak için şifreyi tekrar girin.",
   "Username": "Üye Adı",
-  "ID": "ID",
+  "ID": "No",
   "There are no user groups available.": "Gösterilecek grup yok.",
   "Created IP Address": "Kayıt olduğu IP Adresi",
   "Last IP Address": "Son IP Adresi",
@@ -38,5 +38,11 @@
   "Joined": "Katılım Tarihi",
   "Anonymous": "-İsimsiz-",
   "Online now": "Şuan çevrimiçi",
-  "Currently offline": "Şuan çevrimdışı"
+  "Currently offline": "Şuan çevrimdışı",
+  "New Group": "Yeni Grup",
+  "Code": "Kod",
+  "Enter a unique code used to identify this group.": "Bu grubu tanımlayan eşsiz bir kod girin.",
+  "Description": "Açıklama",
+  "Created": "Oluşturulma",
+  "User Groups": "Üye Grupları"
 }

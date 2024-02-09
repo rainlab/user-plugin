@@ -8,7 +8,7 @@
   "Edit User Group": "Редактирование группы",
   "Manage Groups": "Управление группами",
   "Manage Users": "Управление пользователями",
-  "Users": "Пользователи",
+  "Users": "Пользователей",
   "Groups": "Группы",
   "User settings": "Настройки пользователя",
   "Manage user authentication, registration and activation settings.": "Управления параметрами пользователя.",
@@ -39,5 +39,11 @@
   "Joined": "Зарегистрирован",
   "Anonymous": "Аноним",
   "Online now": "В сети",
-  "Currently offline": "Не в сети"
+  "Currently offline": "Не в сети",
+  "New Group": "Новая группа",
+  "Code": "Код",
+  "Enter a unique code used to identify this group.": "Введите уникальный код для идентификации этой группы.",
+  "Description": "Описание",
+  "Created": "Дата создания",
+  "User Groups": "Группы пользователей"
 }

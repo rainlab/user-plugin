@@ -97,18 +97,9 @@
     'details' => 'Details',
   ],
   'group' => [
-    'id' => 'ID',
-    'name' => 'Naam',
-    'description_field' => 'Omschrijving',
-    'code' => 'Code',
-    'code_comment' => 'Voer een unieke code in als je deze groep wilt gebruiken met de API.',
-    'created_at' => 'Aangemaakt op',
-    'users_count' => 'Gebruikers',
     'is_new_user_default_field' => 'Voeg nieuwe beheerders automatisch toe aan deze groep.',
   ],
   'groups' => [
-    'all_groups' => 'Groepen',
-    'new_group' => 'Nieuwe groep',
     'delete_selected_confirm' => 'Weet u zeker dat u de geselecteerde groepen wilt verwijderen?',
     'delete_confirm' => 'Weet u zeker dat u deze groep wilt verwijderen?',
     'delete_selected_success' => 'De geselecteerde groepen zijn verwijderd.',

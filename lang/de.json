@@ -36,5 +36,11 @@
   "Joined": "Registriert",
   "Anonymous": "Anonym",
   "Online now": "Jetzt online",
-  "Currently offline": "Momentan offline"
+  "Currently offline": "Momentan offline",
+  "New Group": "Neue Gruppe",
+  "Code": "Code",
+  "Enter a unique code used to identify this group.": "Gebe einen eindeutigen Code ein, der die Gruppe identifiziert.",
+  "Description": "Beschreibung",
+  "Created": "Erstellt am",
+  "User Groups": "Benutzergruppen"
 }

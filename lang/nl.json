@@ -12,7 +12,7 @@
   "Groups": "Groep",
   "User settings": "Instellingen",
   "Manage user authentication, registration and activation settings.": "Beheer de instellingen voor gebruikers.",
-  "Name": "Voornaam",
+  "Name": "Naam",
   "Last Name": "Achternaam",
   "Email": "E-mailadres",
   "Account": "Account",
@@ -38,5 +38,11 @@
   "Joined": "Geregistreerd op",
   "Anonymous": "Anoniem",
   "Online now": "Momenteel online",
-  "Currently offline": "Momenteel offline"
+  "Currently offline": "Momenteel offline",
+  "New Group": "Nieuwe groep",
+  "Code": "Code",
+  "Enter a unique code used to identify this group.": "Voer een unieke code in als je deze groep wilt gebruiken met de API.",
+  "Description": "Omschrijving",
+  "Created": "Aangemaakt op",
+  "User Groups": "Groepen"
 }
