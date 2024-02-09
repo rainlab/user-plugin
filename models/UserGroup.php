@@ -1,10 +1,9 @@
 <?php namespace RainLab\User\Models;
 
 use October\Rain\Auth\Models\Group as GroupBase;
-use ApplicationException;
 
 /**
- * User Group Model
+ * UserGroup Model
  */
 class UserGroup extends GroupBase
 {
@@ -28,7 +27,7 @@ class UserGroup extends GroupBase
      * @var array Relations
      */
     public $belongsToMany = [
-        'users'       => [User::class, 'table' => 'users_groups'],
+        'users' => [User::class, 'table' => 'users_groups'],
         'users_count' => [User::class, 'table' => 'users_groups', 'count' => true]
     ];
 
@@ -41,20 +40,22 @@ class UserGroup extends GroupBase
         'description'
     ];
 
-    protected static $guestGroup = null;
+    /**
+     * @var object|null guestGroupCache
+     */
+    protected static $guestGroupCache = null;
 
     /**
-     * Returns the guest user group.
-     * @return RainLab\User\Models\UserGroup
+     * getGuestGroup returns the guest user group.
      */
-    public static function getGuestGroup()
+    public static function getGuestGroup(): ?static
     {
-        if (self::$guestGroup !== null) {
-            return self::$guestGroup;
+        if (self::$guestGroupCache !== null) {
+            return self::$guestGroupCache;
         }
 
-        $group = self::where('code', self::GROUP_GUEST)->first() ?: false;
+        $group = self::where('code', self::GROUP_GUEST)->first();
 
-        return self::$guestGroup = $group;
+        return self::$guestGroupCache = $group;
     }
 }
