@@ -103,7 +103,7 @@
     'username' => 'Gebruikersnaam',
     'name' => 'Voornaam',
     'name_empty' => 'Anoniem',
-    'surname' => 'Achternaam',
+    'last_name' => 'Achternaam',
     'email' => 'E-mailadres',
     'created_at' => 'Geregistreerd op',
     'last_seen' => 'Laatste login',

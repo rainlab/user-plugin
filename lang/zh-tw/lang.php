@@ -103,7 +103,7 @@
     'username' => '會員名稱',
     'name' => '名',
     'name_empty' => 'Anonymous',
-    'surname' => '姓',
+    'last_name' => '姓',
     'email' => '信箱',
     'created_at' => '註冊日期',
     'last_seen' => '最後上線',

@@ -4,12 +4,12 @@
 
 fields:
 
-    name:
+    first_name:
         label: rainlab.user::lang.user.name
         span: auto
 
-    surname:
-        label: rainlab.user::lang.user.surname
+    last_name:
+        label: rainlab.user::lang.user.last_name
         span: auto
 
 tabs:

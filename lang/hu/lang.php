@@ -103,7 +103,7 @@
     'username' => 'Felhasználónév',
     'name' => 'Név',
     'name_empty' => 'Ismeretlen',
-    'surname' => 'Családnév',
+    'last_name' => 'Családnév',
     'email' => 'E-mail cím',
     'created_at' => 'Regisztrált',
     'last_seen' => 'Belépve',

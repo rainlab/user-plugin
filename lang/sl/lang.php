@@ -103,7 +103,7 @@
     'username' => 'Uporabniško ime',
     'name' => 'Ime',
     'name_empty' => 'Anonimni uporabnik',
-    'surname' => 'Priimek',
+    'last_name' => 'Priimek',
     'email' => 'E-pošta',
     'created_at' => 'Registriran dne',
     'last_seen' => 'Zadnjič viden',

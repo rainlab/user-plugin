@@ -13,12 +13,12 @@ columns:
         searchable: true
         invisible: true
 
-    name:
+    first_name:
         label: rainlab.user::lang.user.name
         searchable: true
 
-    surname:
-        label: rainlab.user::lang.user.surname
+    last_name:
+        label: rainlab.user::lang.user.last_name
         searchable: true
         invisible: true
 

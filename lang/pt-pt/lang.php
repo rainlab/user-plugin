@@ -82,7 +82,7 @@
     'username' => 'Nome de utilizador',
     'name' => 'Nome',
     'name_empty' => 'Anonymous',
-    'surname' => 'Último nome',
+    'last_name' => 'Último nome',
     'email' => 'E-mail',
     'created_at' => 'Registado em',
     'last_seen' => 'Visto por último',

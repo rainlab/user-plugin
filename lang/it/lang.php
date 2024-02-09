@@ -84,7 +84,7 @@
     'username' => 'Username',
     'name' => 'Nome',
     'name_empty' => 'Anonimo',
-    'surname' => 'Cognome',
+    'last_name' => 'Cognome',
     'email' => 'Email',
     'created_at' => 'Registrato',
     'last_seen' => 'Ultimo accesso',

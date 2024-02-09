@@ -99,7 +99,7 @@
     'username' => 'Nombre de usuario',
     'name' => 'Nombres',
     'name_empty' => 'Anónimo',
-    'surname' => 'Apellidos',
+    'last_name' => 'Apellidos',
     'email' => 'E-mail',
     'created_at' => 'Registrado',
     'last_seen' => 'Última vez visto',

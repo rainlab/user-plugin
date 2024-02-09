@@ -92,7 +92,7 @@
     'username' => 'Användarnamn',
     'name' => 'Namn',
     'name_empty' => 'Anonym',
-    'surname' => 'Efternamn',
+    'last_name' => 'Efternamn',
     'email' => 'Email',
     'created_at' => 'Registrerad',
     'last_seen' => 'Senast sett',

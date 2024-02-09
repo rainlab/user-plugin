@@ -108,7 +108,7 @@
     'username' => '用户名',
     'name' => '名',
     'name_empty' => '匿名的',
-    'surname' => '姓',
+    'last_name' => '姓',
     'email' => '邮箱',
     'created_at' => '注册时间',
     'last_seen' => '上次登录时间',

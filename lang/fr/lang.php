@@ -112,7 +112,7 @@
     'username' => 'Identifiant',
     'name' => 'Prénom',
     'name_empty' => 'Anonyme',
-    'surname' => 'Nom',
+    'last_name' => 'Nom',
     'email' => 'E-mail',
     'created_at' => 'Enregistré le',
     'last_seen' => 'Dernière connexion',

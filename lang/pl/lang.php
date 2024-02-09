@@ -92,7 +92,7 @@
     'username' => 'Nazwa użytkownika',
     'name' => 'Imię / nick',
     'name_empty' => 'Anonimowy',
-    'surname' => 'Nazwisko',
+    'last_name' => 'Nazwisko',
     'email' => 'Email',
     'created_at' => 'Zarejestrowany',
     'last_seen' => 'Ostatnio widziany',

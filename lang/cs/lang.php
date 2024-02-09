@@ -83,7 +83,7 @@
     'username' => 'Uživatelské jméno',
     'name' => 'Jméno',
     'name_empty' => 'Anonym',
-    'surname' => 'Příjmení',
+    'last_name' => 'Příjmení',
     'email' => 'E-mail',
     'created_at' => 'Datum registrace',
     'last_seen' => 'Poslední přihlášení',

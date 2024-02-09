@@ -86,15 +86,13 @@ class User extends Model implements Authenticatable, CanResetPassword
      * @var array The attributes that are mass assignable.
      */
     protected $fillable = [
-        'name',
-        'surname',
+        'first_name',
+        'last_name',
         'login',
         'username',
         'email',
         'password',
         'password_confirmation',
-        'created_ip_address',
-        'last_ip_address'
     ];
 
     /**
@@ -383,7 +381,7 @@ class User extends Model implements Authenticatable, CanResetPassword
             $this->restore();
 
             Mail::sendTo($this, 'rainlab.user::mail.reactivate', [
-                'name' => $this->name
+                'name' => $this->first_name
             ]);
 
             Event::fire('rainlab.user.reactivate', [$this]);

@@ -73,7 +73,7 @@
     'id' => 'ID',
     'username' => 'Nombre de Usuario',
     'name' => 'Nombre',
-    'surname' => 'Apellido',
+    'last_name' => 'Apellido',
     'email' => 'Email',
     'created_at' => 'Registrado',
     'create_password' => 'Crear Contraseña',

@@ -92,7 +92,7 @@
     'username' => '사용자 이름',
     'name' => '이름',
     'name_empty' => '익명',
-    'surname' => '성',
+    'last_name' => '성',
     'email' => '이메일',
     'created_at' => '등록일',
     'last_seen' => '마지막 활동',

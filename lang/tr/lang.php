@@ -103,7 +103,7 @@
     'username' => 'Üye Adı',
     'name' => 'Adı',
     'name_empty' => '-İsimsiz-',
-    'surname' => 'Soyadı',
+    'last_name' => 'Soyadı',
     'email' => 'Eposta',
     'created_at' => 'Kayıtlı',
     'last_seen' => 'Son görülme',

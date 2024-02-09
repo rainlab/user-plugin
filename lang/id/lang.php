@@ -100,7 +100,7 @@
     'username' => 'Nama pengguna',
     'name' => 'Nama',
     'name_empty' => 'Anonim',
-    'surname' => 'Nama keluarga',
+    'last_name' => 'Nama keluarga',
     'email' => 'Email',
     'created_at' => 'Terdaftar',
     'last_seen' => 'Terakhir dilihat',

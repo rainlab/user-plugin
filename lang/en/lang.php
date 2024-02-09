@@ -112,7 +112,7 @@
     'username' => 'Username',
     'name' => 'Name',
     'name_empty' => 'Anonymous',
-    'surname' => 'Surname',
+    'last_name' => 'last_name',
     'email' => 'Email',
     'created_at' => 'Registered',
     'last_seen' => 'Last seen',

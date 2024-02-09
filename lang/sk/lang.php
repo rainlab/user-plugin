@@ -92,7 +92,7 @@
     'username' => 'Užívateľské meno',
     'name' => 'Meno',
     'name_empty' => 'Anonym',
-    'surname' => 'Priezvisko',
+    'last_name' => 'Priezvisko',
     'email' => 'E-mail',
     'created_at' => 'Registrovaný',
     'last_seen' => 'Naposledy videný',

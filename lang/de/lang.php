@@ -135,7 +135,7 @@
     'username' => 'Benutzername',
     'name' => 'Name',
     'name_empty' => 'Anonym',
-    'surname' => 'Nachname',
+    'last_name' => 'Nachname',
     'email' => 'E-Mail',
     'created_at' => 'Registriert am',
     'last_seen' => 'Zuletzt gesehen',

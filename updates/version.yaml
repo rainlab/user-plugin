@@ -3,8 +3,7 @@ v1.0.2:
     - Set up database tables
     - 000001_create_users.php
     - 000002_create_password_resets.php
-    - 000003_create_user_roles.php
-    - 000004_create_user_groups.php
+    - 000003_create_user_groups.php
     - 000004_create_mail_blockers.php
 v1.0.3:
     - Seed all database tables
