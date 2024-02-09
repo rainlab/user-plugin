@@ -14,50 +14,54 @@ use RainLab\User\Models\UserGroup;
 use RainLab\User\Models\MailBlocker;
 use RainLab\User\Models\Settings as UserSettings;
 
+/**
+ * Users controller
+ */
 class Users extends Controller
 {
     /**
-     * @var array Extensions implemented by this controller.
+     * @var array implement extensions
      */
     public $implement = [
         \Backend\Behaviors\FormController::class,
-        \Backend\Behaviors\ListController::class
+        \Backend\Behaviors\ListController::class,
+        \Backend\Behaviors\RelationController::class,
+        \Backend\Behaviors\ImportExportController::class
     ];
 
     /**
-     * @var array `FormController` configuration.
+     * @var array formConfig configuration.
      */
     public $formConfig = 'config_form.yaml';
 
     /**
-     * @var array `ListController` configuration.
+     * @var array listConfig configuration.
      */
     public $listConfig = 'config_list.yaml';
 
     /**
-     * @var array `RelationController` configuration, by extension.
+     * @var array relationConfig for extensions.
      */
     public $relationConfig;
 
     /**
-     * @var array Permissions required to view this page.
+     * @var array importExportConfig configuration.
+     */
+    public $importExportConfig = 'config_import_export.yaml';
+
+    /**
+     * @var array requiredPermissions to view this page.
      */
     public $requiredPermissions = ['rainlab.users.access_users'];
 
     /**
-     * @var string HTML body tag class
-     */
-    public $bodyClass = 'compact-container';
-
-    /**
-     * Constructor.
+     * __construct
      */
     public function __construct()
     {
         parent::__construct();
 
         BackendMenu::setContext('RainLab.User', 'user', 'users');
-        SettingsManager::setContext('RainLab.User', 'settings');
     }
 
     public function index()
@@ -91,11 +95,17 @@ class Users extends Controller
         }
     }
 
+    /**
+     * listExtendQuery
+     */
     public function listExtendQuery($query)
     {
         $query->withTrashed();
     }
 
+    /**
+     * formExtendQuery
+     */
     public function formExtendQuery($query)
     {
         $query->withTrashed();
