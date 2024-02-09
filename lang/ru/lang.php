@@ -34,7 +34,6 @@
     'unbanned_success' => 'Пользователь разблокирован',
     'return_to_list' => 'Вернуться к списку пользователей',
     'update_details' => 'Изменить данные',
-    'bulk_actions' => 'Массовые действия',
     'delete_selected' => 'Удалить выбранные',
     'delete_selected_confirm' => 'Удалить выбранных пользователей?',
     'delete_selected_empty' => 'Нет выбранных пользователей для удаления.',

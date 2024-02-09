@@ -34,7 +34,6 @@
     'unbanned_success' => 'පරිශීලක තහනම ඉවත් කර ඇත',
     'return_to_list' => 'පරිශීලක ලැයිස්තුව වෙත ආපසු යන්න',
     'update_details' => 'යාවත්කාලීන විස්තර',
-    'bulk_actions' => 'තොග ක්රියාවන්',
     'delete_selected' => 'තෝරාගත් මකන්න',
     'delete_selected_confirm' => 'තෝරාගත් පරිශීලකයින් මකන්නද?',
     'delete_selected_empty' => 'මකා දැමීමට තෝරාගත් පරිශීලකයන් නැත.',

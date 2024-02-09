@@ -34,7 +34,6 @@
     'unbanned_success' => 'Uporabnik je bil odblokiran.',
     'return_to_list' => 'Vrni se na seznam uporabnikov',
     'update_details' => 'Posodobite podrobnosti',
-    'bulk_actions' => 'Skupna dejanja',
     'delete_selected' => 'Izbriši izbrane',
     'delete_selected_confirm' => 'Izbrišem izbrane uporabnike?',
     'delete_selected_empty' => 'Ni izbranih uporabnikov za izbris.',

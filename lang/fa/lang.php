@@ -31,7 +31,6 @@
     'unbanned_success' => 'حساب کاربری رفع انسداد شد',
     'return_to_list' => 'بازگشت به لیست کاربران',
     'update_details' => 'ویرایش جزئیات',
-    'bulk_actions' => 'اعمال گروهی',
     'delete_selected' => 'حذف انتخاب شده',
     'delete_selected_confirm' => 'آیا از حذف کاربران انتخاب شده اطمینان داری؟',
     'delete_selected_empty' => 'کاربری جهت حذف انتخاب نشده است.',

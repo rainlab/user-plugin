@@ -34,7 +34,6 @@
     'unbanned_success' => 'Użytkownik został odbanowany',
     'return_to_list' => 'Wróć do listy użytkowników',
     'update_details' => 'Zaktualizuj szczegóły',
-    'bulk_actions' => 'Działania masowe',
     'delete_selected' => 'Usuń wybrane',
     'delete_selected_confirm' => 'Usunąć wybranych użytkowników?',
     'delete_selected_empty' => 'Nie ma wybranych użytkowników do usunięcia.',

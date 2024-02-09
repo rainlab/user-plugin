@@ -1,68 +1,14 @@
 <div data-control="toolbar">
-    <a
-        href="<?= Backend::url('rainlab/user/users/create') ?>"
-        class="btn btn-primary oc-icon-plus">
-        <?= e(trans('rainlab.user::lang.users.new_user')) ?>
-    </a>
+    <?= Ui::button("New User", 'user/users/create')
+        ->icon('icon-plus')
+        ->primary() ?>
 
-    <div class="btn-group dropdown dropdown-fixed" data-control="bulk-actions">
-        <button
-            data-primary-button
-            type="button"
-            class="btn btn-default"
-            data-request="onBulkAction"
-            data-trigger-action="enable"
-            data-trigger=".control-list input[type=checkbox]"
-            data-trigger-condition="checked"
-            data-request-success="$(this).prop('disabled', true).next().prop('disabled', true)"
-            data-stripe-load-indicator>
-            <?= e(trans('rainlab.user::lang.users.bulk_actions')) ?>
-        </button>
-        <button
-            type="button"
-            class="btn btn-default dropdown-toggle dropdown-toggle-split"
-            data-trigger-action="enable"
-            data-trigger=".control-list input[type=checkbox]"
-            data-trigger-condition="checked"
-            data-toggle="dropdown">
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" data-dropdown-title="<?= e(trans('rainlab.user::lang.users.bulk_actions')) ?>">
-            <li>
-                <a href="javascript:;" class="oc-icon-trash-o" data-action="delete" data-confirm="<?= e(trans('rainlab.user::lang.users.delete_selected_confirm')) ?>">
-                    <?= e(trans('rainlab.user::lang.users.delete_selected')) ?>
-                </a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-                <a href="javascript:;" class="oc-icon-user-plus" data-action="activate" data-confirm="<?= e(trans('rainlab.user::lang.users.activate_selected_confirm')) ?>">
-                    <?= e(trans('rainlab.user::lang.users.activate_selected')) ?>
-                </a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-                <a href="javascript:;" class="oc-icon-user-times" data-action="deactivate" data-confirm="<?= e(trans('rainlab.user::lang.users.deactivate_selected_confirm')) ?>">
-                    <?= e(trans('rainlab.user::lang.users.deactivate_selected')) ?>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:;" class="oc-icon-user-plus" data-action="restore" data-confirm="<?= e(trans('rainlab.user::lang.users.restore_selected_confirm')) ?>">
-                    <?= e(trans('rainlab.user::lang.users.restore_selected')) ?>
-                </a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-                <a href="javascript:;" class="oc-icon-ban" data-action="ban" data-confirm="<?= e(trans('rainlab.user::lang.users.ban_selected_confirm')) ?>">
-                    <?= e(trans('rainlab.user::lang.users.ban_selected')) ?>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:;" class="oc-icon-circle-o-notch" data-action="unban" data-confirm="<?= e(trans('rainlab.user::lang.users.unban_selected_confirm')) ?>">
-                    <?= e(trans('rainlab.user::lang.users.unban_selected')) ?>
-                </a>
-            </li>
-        </ul>
-    </div>
+    <?= Ui::ajaxButton("Delete", 'onDeleteSelected')
+        ->listCheckedTrigger()
+        ->listCheckedRequest()
+        ->icon('icon-delete')
+        ->secondary()
+        ->confirmMessage("Are you sure?") ?>
 
     <?=
         /**
@@ -78,7 +24,64 @@
          *     });
          *
          */
-        $this->fireViewEvent('rainlab.user.view.extendListToolbar');
+        $this->fireViewEvent('users.view.extendListToolbar');
     ?>
 
+    <div class="dropdown dropdown-fixed">
+        <?= Ui::button("More Actions")
+            ->attributes(['data-toggle' => 'dropdown'])
+            ->circleIcon('icon-ellipsis-v')
+            ->secondary()
+        ?>
+        <ul class="dropdown-menu">
+            <li>
+                <?= Ui::ajaxButton("Activate", 'onActivateSelected')
+                    ->replaceCssClass('dropdown-item')
+                    ->listCheckedTrigger()
+                    ->listCheckedRequest()
+                    ->icon('icon-user-plus')
+                    ->secondary()
+                    ->confirmMessage("Are you sure?") ?>
+            </li>
+            <li>
+                <?= Ui::ajaxButton("Restore", 'onRestoreSelected')
+                    ->replaceCssClass('dropdown-item')
+                    ->listCheckedTrigger()
+                    ->listCheckedRequest()
+                    ->icon('icon-star')
+                    ->secondary()
+                    ->confirmMessage("Are you sure?") ?>
+            </li>
+            <li role="separator" class="dropdown-divider"></li>
+            <li>
+                <?= Ui::ajaxButton("Ban", 'onBanSelected')
+                    ->replaceCssClass('dropdown-item')
+                    ->listCheckedTrigger()
+                    ->listCheckedRequest()
+                    ->icon('icon-ban')
+                    ->secondary()
+                    ->confirmMessage("Are you sure?") ?>
+            </li>
+            <li>
+                <?= Ui::ajaxButton("Unban", 'onUnbanSelected')
+                    ->replaceCssClass('dropdown-item')
+                    ->listCheckedTrigger()
+                    ->listCheckedRequest()
+                    ->icon('icon-circle-o-notch')
+                    ->secondary()
+                    ->confirmMessage("Are you sure?") ?>
+            </li>
+            <li role="separator" class="dropdown-divider"></li>
+            <li>
+                <?= Ui::button("Import", 'rainlab/user/users/import')
+                    ->replaceCssClass('dropdown-item')
+                    ->icon('icon-upload') ?>
+            </li>
+            <li>
+                <?= Ui::button("Export", 'rainlab/user/users/export')
+                    ->replaceCssClass('dropdown-item')
+                    ->icon('icon-download') ?>
+            </li>
+        </ul>
+    </div>
 </div>

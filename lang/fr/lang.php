@@ -34,7 +34,6 @@
     'unbanned_success' => 'L’utilisateur n’est plus banni',
     'return_to_list' => 'Retour à la liste des utilisateurs',
     'update_details' => 'Mettre à jour les informations',
-    'bulk_actions' => 'Actions groupées',
     'delete_selected' => 'Supprimer la sélection',
     'delete_selected_confirm' => 'Supprimer les utilisateurs sélectionnés ?',
     'delete_selected_empty' => 'Aucun utilisateur n’a été sélectionné pour la suppression.',

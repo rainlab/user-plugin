@@ -1,18 +1,59 @@
 <?php namespace RainLab\User\Models;
 
 use Str;
-use Auth;
 use Mail;
 use Event;
 use Config;
+use Model;
 use Carbon\Carbon;
-use October\Rain\Auth\Models\User as UserBase;
 use RainLab\User\Models\Settings as UserSettings;
 use Illuminate\Validation\Rules\Password as PasswordRule;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use October\Rain\Auth\AuthException;
 
-class User extends UserBase
+/**
+ * User record
+ *
+ * @property int $id
+ * @property bool $is_guest
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $username
+ * @property string $email
+ * @property string $company
+ * @property string $phone
+ * @property string $city
+ * @property string $zip
+ * @property int $state_id
+ * @property int $country_id
+ * @property string $notes
+ * @property string $password
+ * @property string $remember_token
+ * @property string $two_factor_secret
+ * @property string $two_factor_recovery_codes
+ * @property int $primary_group_id
+ * @property string $created_ip_address
+ * @property string $last_ip_address
+ * @property bool $is_banned
+ * @property string $banned_reason
+ * @property bool $is_activated
+ * @property \Illuminate\Support\Carbon $banned_at
+ * @property \Illuminate\Support\Carbon $activated_at
+ * @property \Illuminate\Support\Carbon $two_factor_confirmed_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ *
+ * @package rainlab\user
+ * @author Alexey Bobkov, Samuel Georges
+ */
+class User extends Model implements Authenticatable, CanResetPassword
 {
+    use \RainLab\User\Models\User\HasTwoFactor;
+    use \RainLab\User\Models\User\HasPasswordReset;
+    use \RainLab\User\Models\User\HasAuthenticatable;
+    use \RainLab\User\Models\User\HasEmailVerification;
     use \October\Rain\Database\Traits\SoftDelete;
 
     /**

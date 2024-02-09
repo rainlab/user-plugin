@@ -34,7 +34,6 @@
     'unbanned_success' => 'A felhasználó sikeresen engedélyezve lett.',
     'return_to_list' => 'Vissza a felhasználó listához',
     'update_details' => 'Adatok módosítása',
-    'bulk_actions' => 'Műveletek',
     'delete_selected' => 'Eltávolítás',
     'delete_selected_confirm' => 'Valóban törölni akarja a kiválasztott felhasználókat?',
     'delete_selected_empty' => 'Nincs kiválasztva felhasználó a törléshez.',

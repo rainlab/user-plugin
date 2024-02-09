@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->string('first_name')->nullable();
                 $table->string('last_name')->nullable();
                 $table->mediumText('notes')->nullable();
-                $table->integer('role_id')->nullable()->unsigned();
+                $table->integer('primary_group_id')->nullable()->unsigned();
                 $table->string('remember_token')->nullable();
                 $table->boolean('is_banned')->default(false);
                 $table->text('two_factor_secret')->nullable();

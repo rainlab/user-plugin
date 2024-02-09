@@ -57,7 +57,6 @@
     'unbanned_success' => 'Der Benutzer wurde entsperrt',
     'return_to_list' => 'Zurück zur Benutzerliste',
     'update_details' => 'Update details',
-    'bulk_actions' => 'Stapelbearbeitung',
     'delete_selected' => 'Ausgewählte löschen',
     'delete_selected_confirm' => 'Ausgewählte Benutzer löschen?',
     'delete_selected_empty' => 'Keine Benutzer zum Löschen ausgewählt.',

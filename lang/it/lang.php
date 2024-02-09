@@ -30,7 +30,6 @@
     'unbanned_success' => 'L\'utente è stato sbloccato',
     'return_to_list' => 'Ritorna alla lista utenti',
     'update_details' => 'Aggiorna dettagli',
-    'bulk_actions' => 'Azioni multiple',
     'delete_selected' => 'Elimina selezionati',
     'delete_selected_confirm' => 'Eliminare gli utenti selezionati?',
     'delete_selected_empty' => 'Non ci sono utenti selezionati da cancellare.',

@@ -26,7 +26,8 @@ class Plugin extends PluginBase
             'description' => "Front-end user management.",
             'author' => 'Alexey Bobkov, Samuel Georges',
             'icon' => 'icon-user',
-            'homepage' => 'https://github.com/rainlab/user-plugin'
+            'homepage' => 'https://github.com/rainlab/user-plugin',
+            'hint' => 'user'
         ];
     }
 

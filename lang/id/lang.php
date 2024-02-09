@@ -34,7 +34,6 @@
     'unbanned_success' => 'Pengguna tidak lagi diblokir',
     'return_to_list' => 'Kembali ke list pengguna',
     'update_details' => 'Perbarui detail',
-    'bulk_actions' => 'Aksi masal',
     'delete_selected' => 'Hapus yang dipilih',
     'delete_selected_confirm' => 'Hapus pengguna yang dipilih?',
     'delete_selected_empty' => 'Tidak ada pengguna yang dipilih untuk dihapus.',

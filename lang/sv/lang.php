@@ -34,7 +34,6 @@
     'unbanned_success' => 'Användaren har blivit unbanned',
     'return_to_list' => 'Återvänd till användarlistan',
     'update_details' => 'Uppdatera detaljer',
-    'bulk_actions' => 'Massåtgärder',
     'delete_selected' => 'Radera vald',
     'delete_selected_confirm' => 'Ta bort de valda användarna?',
     'delete_selected_empty' => 'Det finns inga utvalda användare att ta bort.',

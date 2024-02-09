@@ -34,7 +34,6 @@
     'unbanned_success' => 'El usuario ha sido desbloqueado',
     'return_to_list' => 'Volver a la lista de usuarios',
     'update_details' => 'Actualizar detalles',
-    'bulk_actions' => 'Acciones en masa',
     'delete_selected' => 'Eliminar usuarios seleccionados',
     'delete_selected_confirm' => '¿Eliminar los usuarios seleccionados?',
     'delete_selected_empty' => 'No hay usuarios seleccionados a eliminar.',

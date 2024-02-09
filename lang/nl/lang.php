@@ -34,7 +34,6 @@
     'unbanned_success' => 'Gebruiker is gedeblokkeerd',
     'return_to_list' => 'Terug naar overzicht',
     'update_details' => 'Details bijwerken',
-    'bulk_actions' => 'Bulk acties',
     'delete_selected' => 'Geselecteerde verwijderen',
     'delete_selected_confirm' => 'Verwijder geselecteerde gebruikers?',
     'delete_selected_empty' => 'Er zijn geen geselecteerde gebruikers om te verwijderen.',

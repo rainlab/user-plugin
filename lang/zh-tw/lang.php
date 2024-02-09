@@ -34,7 +34,6 @@
     'unbanned_success' => '使用者已解除封鎖。',
     'return_to_list' => '返回會員列表',
     'update_details' => '更新資訊',
-    'bulk_actions' => '批次處理',
     'delete_selected' => '刪除選取',
     'delete_selected_confirm' => '是否刪除所選的會員？',
     'delete_selected_empty' => '沒有會員被選取。',

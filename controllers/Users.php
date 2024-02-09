@@ -19,6 +19,8 @@ use RainLab\User\Models\Settings as UserSettings;
  */
 class Users extends Controller
 {
+    use \RainLab\User\Controllers\Users\HasBulkActions;
+
     /**
      * @var array implement extensions
      */
@@ -274,59 +276,5 @@ class Users extends Controller
         if ($redirect = $this->makeRedirect('delete', $model)) {
             return $redirect;
         }
-    }
-
-    /**
-     * Perform bulk action on selected users
-     */
-    public function index_onBulkAction()
-    {
-        if (
-            ($bulkAction = post('action')) &&
-            ($checkedIds = post('checked')) &&
-            is_array($checkedIds) &&
-            count($checkedIds)
-        ) {
-
-            foreach ($checkedIds as $userId) {
-                if (!$user = User::withTrashed()->find($userId)) {
-                    continue;
-                }
-
-                switch ($bulkAction) {
-                    case 'delete':
-                        $user->forceDelete();
-                        break;
-
-                    case 'activate':
-                        $user->attemptActivation($user->activation_code);
-                        break;
-
-                    case 'deactivate':
-                        $user->clearPersistCode();
-                        $user->delete();
-                        break;
-
-                    case 'restore':
-                        $user->restore();
-                        break;
-
-                    case 'ban':
-                        $user->ban();
-                        break;
-
-                    case 'unban':
-                        $user->unban();
-                        break;
-                }
-            }
-
-            Flash::success(Lang::get('rainlab.user::lang.users.'.$bulkAction.'_selected_success'));
-        }
-        else {
-            Flash::error(Lang::get('rainlab.user::lang.users.'.$bulkAction.'_selected_empty'));
-        }
-
-        return $this->listRefresh();
     }
 }

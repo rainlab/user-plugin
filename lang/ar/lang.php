@@ -34,7 +34,6 @@
     'unbanned_success' => 'تم إلغاء حظر المستخدم',
     'return_to_list' => 'العودة إلى قائمة المستخدمين',
     'update_details' => 'تحديث التفاصيل',
-    'bulk_actions' => 'إجراءات ',
     'delete_selected' => 'احذف المختار',
     'delete_selected_confirm' => 'حذف المستخدمين المختارين؟',
     'delete_selected_empty' => 'لا يوجد مستخدمون محددون لحذفهم.',

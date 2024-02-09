@@ -34,7 +34,6 @@
     'unbanned_success' => 'Üyenin engeli kaldırıldı',
     'return_to_list' => 'Üye listesine geri dön',
     'update_details' => 'Detayları değiştir',
-    'bulk_actions' => 'Toplu işlemler',
     'delete_selected' => 'Seçileni sil',
     'delete_selected_confirm' => 'Seçili üyeleri sil?',
     'delete_selected_empty' => 'Silmek için seçili üye yok.',

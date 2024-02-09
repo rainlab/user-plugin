@@ -34,7 +34,6 @@
     'unbanned_success' => '用户已经解禁',
     'return_to_list' => '返回用户列表',
     'update_details' => '更新详细信息',
-    'bulk_actions' => '批量操作',
     'delete_selected' => '删除选中',
     'delete_selected_confirm' => '删除所选用户?',
     'delete_selected_empty' => '未选择任何用户.',

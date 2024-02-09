@@ -30,7 +30,6 @@
     'unbanned_success' => 'Foi removido banimento deste utilizador',
     'return_to_list' => 'Regressar à lista de Utilizadores',
     'update_details' => 'Actualizar detalhes',
-    'bulk_actions' => 'Acções em bloco',
     'delete_selected' => 'Eliminar seleccionados',
     'delete_selected_confirm' => 'Eliminar os utilizadores selecionados?',
     'delete_selected_empty' => 'Não há utilizadores selecionados para eliminar.',

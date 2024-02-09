@@ -34,7 +34,6 @@
     'unbanned_success' => 'User has been unbanned',
     'return_to_list' => 'Return to users list',
     'update_details' => 'Update details',
-    'bulk_actions' => 'Bulk actions',
     'delete_selected' => 'Delete selected',
     'delete_selected_confirm' => 'Delete the selected users?',
     'delete_selected_empty' => 'There are no selected users to delete.',

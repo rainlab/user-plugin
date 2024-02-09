@@ -34,7 +34,6 @@
     'unbanned_success' => 'Zákaz používateľa bol zrušený',
     'return_to_list' => 'Vrátiť sa na zoznam používateľov',
     'update_details' => 'Aktualizujte detaily',
-    'bulk_actions' => 'Hromadné akcie',
     'delete_selected' => 'Zmazať označené',
     'delete_selected_confirm' => 'Zmazať vybraných používateľov?',
     'delete_selected_empty' => 'Nie sú vybraní žiadni používatelia na odstránenie.',

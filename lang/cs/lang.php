@@ -31,7 +31,6 @@
     'unbanned_success' => 'Uživateli byl zrušen ban',
     'return_to_list' => 'Zpět na seznam uživatelů',
     'update_details' => 'Upravit detaily',
-    'bulk_actions' => 'Hromadné akce',
     'delete_selected' => 'Odstranit vybrané',
     'delete_selected_confirm' => 'Chcete smazat vybrané uživatele?',
     'delete_selected_empty' => 'Nejdříve vyberte uživatele, které chcete smazat.',

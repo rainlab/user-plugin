@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('user/customers') ?>"><?= __("Customers") ?></a></li>
+        <li><a href="<?= Backend::url('user/users') ?>"><?= __("Users") ?></a></li>
         <li><?= e(trans($this->pageTitle)) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="form-buttons">
-        <?= Ui::popupButton("Import Customers", 'onImportLoadForm')->keyboard(false)->primary()->icon('icon-cloud-upload') ?>
+        <?= Ui::popupButton("Import Users", 'onImportLoadForm')->keyboard(false)->primary()->icon('icon-cloud-upload') ?>
     </div>
 
 <?= Form::close() ?>

@@ -30,7 +30,6 @@
     'unbanned_success' => 'O usuário foi desbanido',
     'return_to_list' => 'Voltar à lista de usuários',
     'update_details' => 'Atualizar detalhes',
-    'bulk_actions' => 'Ações em massa',
     'delete_selected' => 'Excluir selecionado',
     'delete_selected_confirm' => 'Excluir os usuários selecionados?',
     'delete_selected_empty' => 'Não há usuários selecionados a serem excluídos.',

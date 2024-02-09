@@ -34,7 +34,6 @@
     'unbanned_success' => '사용자의 차단이 해제되었습니다.',
     'return_to_list' => '사용자 목록으로 돌아가기',
     'update_details' => '세부 정보 수정',
-    'bulk_actions' => '대량 작업',
     'delete_selected' => '선택 항목 삭제',
     'delete_selected_confirm' => '선택한 사용자를 삭제하시겠습니까?',
     'delete_selected_empty' => '삭제할 대상이 없습니다.',
