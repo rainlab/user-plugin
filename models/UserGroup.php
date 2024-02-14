@@ -1,12 +1,24 @@
 <?php namespace RainLab\User\Models;
 
-use October\Rain\Auth\Models\Group as GroupBase;
+use Model;
 
 /**
  * UserGroup Model
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $code
+ * @property string $description
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ *
+ * @package rainlab\user
+ * @author Alexey Bobkov, Samuel Georges
  */
-class UserGroup extends GroupBase
+class UserGroup extends Model
 {
+    use \October\Rain\Database\Traits\Validation;
+
     const GROUP_GUEST = 'guest';
     const GROUP_REGISTERED = 'registered';
 
@@ -27,8 +39,15 @@ class UserGroup extends GroupBase
      * @var array Relations
      */
     public $belongsToMany = [
-        'users' => [User::class, 'table' => 'users_groups'],
-        'users_count' => [User::class, 'table' => 'users_groups', 'count' => true]
+        'users' => [
+            User::class,
+            'table' => 'users_groups'
+        ],
+        'users_count' => [
+            User::class,
+            'table' => 'users_groups',
+            'count' => true
+        ]
     ];
 
     /**
@@ -57,5 +76,13 @@ class UserGroup extends GroupBase
         $group = self::where('code', self::GROUP_GUEST)->first();
 
         return self::$guestGroupCache = $group;
+    }
+
+    /**
+     * scopeWithoutGuest
+     */
+    public function scopeWithoutGuest($query)
+    {
+        return $query->where('code', '<>', self::GROUP_GUEST);
     }
 }
