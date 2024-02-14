@@ -192,7 +192,7 @@ class Plugin extends PluginBase
                 'description' => "Manage user authentication, registration and activation settings.",
                 'category' => SettingsManager::CATEGORY_USERS,
                 'icon' => 'icon-user-actions-key',
-                'class' => \RainLab\User\Models\Settings::class,
+                'class' => \RainLab\User\Models\Setting::class,
                 'order' => 500,
                 'permissions' => ['rainlab.users.access_settings']
             ]

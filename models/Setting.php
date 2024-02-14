@@ -4,9 +4,9 @@ use Model;
 use Config;
 
 /**
- * Settings configuration
+ * Setting configuration
  */
-class Settings extends Model
+class Setting extends Model
 {
     /**
      * @var array Behaviors implemented by this model.

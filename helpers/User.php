@@ -1,6 +1,6 @@
 <?php namespace RainLab\User\Helpers;
 
-use RainLab\User\Models\Settings as UserSettings;
+use RainLab\User\Models\Setting as UserSetting;
 use RainLab\User\Classes\Validation\PasswordRule;
 
 /**
@@ -17,7 +17,7 @@ class User
     public static function username()
     {
         // @todo config
-        // UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL)
+        // UserSetting::get('login_attribute', UserSetting::LOGIN_EMAIL)
         return 'email';
     }
 

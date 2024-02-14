@@ -1,6 +1,6 @@
 <?php
 
-use RainLab\User\Models\Settings;
+use RainLab\User\Models\Setting;
 
 return [
 
@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'activateMode' => Settings::ACTIVATE_AUTO,
+    'activateMode' => Setting::ACTIVATE_AUTO,
 
     /*
     |--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return [
     |
     */
 
-    'loginAttribute' => Settings::LOGIN_EMAIL,
+    'loginAttribute' => Setting::LOGIN_EMAIL,
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return [
     |
     */
 
-    'rememberLogin' => Settings::REMEMBER_ALWAYS,
+    'rememberLogin' => Setting::REMEMBER_ALWAYS,
 
     /*
     |--------------------------------------------------------------------------
