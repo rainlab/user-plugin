@@ -128,7 +128,6 @@
     'new_password_confirm' => 'Bekräfta nytt lösenord',
   ],
   'reset_password' => [
-    'reset_password' => 'Återställ lösenord',
     'reset_password_desc' => 'Glömt lösenordsformulär.',
     'code_param' => 'Återställ kodparam',
     'code_param_desc' => 'Sidadressparametern som används för återställningskoden',

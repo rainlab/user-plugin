@@ -128,7 +128,6 @@
     'new_password_confirm' => 'Potvrďte nové heslo',
   ],
   'reset_password' => [
-    'reset_password' => 'Obnoviť heslo',
     'reset_password_desc' => 'Formulár pre zabudnuté heslo.',
     'code_param' => 'Obnovovací kód Parameter',
     'code_param_desc' => 'Parameter URL stránky použitý pre obnovovací kód',

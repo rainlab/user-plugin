@@ -143,7 +143,6 @@
     'update_requires_password_comment' => '修改會員資料時須輸入目前的密碼。',
   ],
   'reset_password' => [
-    'reset_password' => '重設密碼',
     'reset_password_desc' => '忘記密碼表單。',
     'code_param' => '重設參數名稱',
     'code_param_desc' => '用於重設密碼的網址參數名稱。',

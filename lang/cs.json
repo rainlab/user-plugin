@@ -20,7 +20,7 @@
   "Block all outgoing mail sent to this user.": "Zablokovat všechny odchozí e-maily pro tohoto uživatele.",
   "Create Password": "Vytvořit heslo",
   "Enter a new password used for signing in.": "Zadejte heslo které se bude používat k přihlašování.",
-  "Reset Password": "Nové heslo",
+  "Reset Password": "Obnova hesla",
   "To reset this users password, enter a new password here.": "Pro změnu hesla, zadejte nové heslo.",
   "Password Confirmation": "Nové heslo znovu pro kontrolu",
   "Enter the password again to confirm it.": "Zadejte heslo znovu pro kontrolu správnosti.",

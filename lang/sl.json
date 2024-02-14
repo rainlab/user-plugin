@@ -21,7 +21,7 @@
   "Block all outgoing mail sent to this user.": "Blokiraj vso odhodno pošto, poslano temu uporabniku.",
   "Create Password": "Geslo",
   "Enter a new password used for signing in.": "Ustvarite novo geslo, ki se bo uporabljalo za prijavo.",
-  "Reset Password": "Ponastavi geslo",
+  "Reset Password": "Ponastavitev gesla",
   "To reset this users password, enter a new password here.": "Če želite ponastaviti geslo tega uporabnika, vnesite tukaj novo geslo.",
   "Password Confirmation": "Potrditev gesla",
   "Enter the password again to confirm it.": "Za potrditev ponovno vnesite geslo.",

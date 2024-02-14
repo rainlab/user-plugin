@@ -143,7 +143,6 @@
     'update_requires_password_comment' => 'Üye bilgi güncelleme ekranında mevcut şifre zorunlu olsun.',
   ],
   'reset_password' => [
-    'reset_password' => 'Parolanızı Sıfırlayın',
     'reset_password_desc' => 'Unutulan şifreyi sıfırlama formu.',
     'code_param' => 'Sıfırlama Kodu Parametresi',
     'code_param_desc' => 'Sıfırlama kodu için sayfanın URL parametresi kullanılır.',

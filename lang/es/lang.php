@@ -135,7 +135,6 @@
     'new_password_confirm' => 'Confirme su nueva contraseña',
   ],
   'reset_password' => [
-    'reset_password' => 'Restablecer contraseña',
     'reset_password_desc' => 'Formulario de contraseña olvidada.',
     'code_param' => 'Parámetro para el código de restablecimiento',
     'code_param_desc' => 'El parámetro de URL de la página usado para el código de restablecimiento.e',

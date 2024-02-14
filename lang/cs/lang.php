@@ -117,7 +117,6 @@
     'new_password_confirm' => 'Potvrzení nového hesla',
   ],
   'reset_password' => [
-    'reset_password' => 'Obnova hesla',
     'reset_password_desc' => 'Formulář obnovy hesla',
     'code_param' => 'Parametr kódu pro obnovu hesla',
     'code_param_desc' => 'Parametr URL použitý pro obnovu hesla',

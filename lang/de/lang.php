@@ -161,7 +161,6 @@
     'new_password_confirm' => 'Neues Passwort bestätigen',
   ],
   'reset_password' => [
-    'reset_password' => 'Passwort zurücksetzen',
     'reset_password_desc' => 'Formular zum Zurücksetzen des Passworts.',
     'code_param' => 'Reset-Code-Parameter',
     'code_param_desc' => 'URL-Parameter, der für den Reset-Code verwendet wird',

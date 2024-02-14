@@ -157,7 +157,6 @@
     'reset_page_comment' => 'Sélectionnez la page à utiliser pour réinitialiser le mot de passe du compte',
   ],
   'reset_password' => [
-    'reset_password' => 'Réinitialiser le mot de passe',
     'reset_password_desc' => 'Formulaire de récupération du mot de passe.',
     'code_param' => 'Code de réinitialisation',
     'code_param_desc' => 'URL de la page utilisée pour le code de réinitialisation',

@@ -147,7 +147,6 @@
     'reset_page_comment' => 'Izberite stran za ponastavitev gesla računa.',
   ],
   'reset_password' => [
-    'reset_password' => 'Ponastavitev gesla',
     'reset_password_desc' => 'Obrazec za pozabljeno geslo.',
     'code_param' => 'Parameter za ponastavitev',
     'code_param_desc' => 'Parameter v URL-ju strani, ki se uporablja za ponastavitev gesla.',

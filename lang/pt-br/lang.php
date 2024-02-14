@@ -116,7 +116,6 @@
     'new_password_confirm' => 'Confirmar Nova Senha',
   ],
   'reset_password' => [
-    'reset_password' => 'Resetar Senha',
     'reset_password_desc' => 'Formulário de resetar senha.',
     'code_param' => 'Parâmetro de código para resetar senha ',
     'code_param_desc' => 'O parâmetro de URL da página usado para o código',

@@ -128,7 +128,6 @@
     'new_password_confirm' => '암호 재확인',
   ],
   'reset_password' => [
-    'reset_password' => '비밀번호 재설정',
     'reset_password_desc' => '암호 형식을 잊어 버렸습니다.',
     'code_param' => '코드 매개 변수 재설정',
     'code_param_desc' => '재설정 코드에 사용되는 페이지 URL매개 변수',

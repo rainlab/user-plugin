@@ -144,7 +144,6 @@
     'update_requires_password_comment' => 'A profil megváltoztatásakor a rendszer elkéri a felhasználó jelenlegi jelszavát.',
   ],
   'reset_password' => [
-    'reset_password' => 'Új jelszó megadása',
     'reset_password_desc' => 'Elfelejtett jelszó űrlap.',
     'code_param' => 'Visszaállító kód',
     'code_param_desc' => 'A visszaállító kódhoz használt oldal webcíme.',

@@ -1,7 +1,81 @@
-<div id="partialUserResetForm">
-    {% if __SELF__.code == null %}
-        {% partial __SELF__ ~ '::restore' %}
+{# User invited to set a password via an invite link#}
+{% if __SELF__.hasInvite %}
+    {% set redirectPage = 'account/index' %}
+    {% set passwordHandler = 'onConfirmPassword' %}
+
+{# User has a valid token to reset their password#}
+{% elseif __SELF__.hasToken %}
+    {% set redirectPage = 'account/login' %}
+    {% set passwordHandler = 'onResetPassword' %}
+
+{# User is changing their password normally #}
+{% else %}
+    {% set redirectPage = 'account/index' %}
+    {% set passwordHandler = 'onChangePassword' %}
+{% endif %}
+
+<form method="post" data-request="{{ passwordHandler }}" data-request-flash>
+    <input type="hidden" name="redirect" value="{{ redirectPage|page }}" />
+
+    <div class="text-center pb-3">
+        {% if __SELF__.hasInvite %}
+            <h1 class="h2 mb-3">Welcome!</h1>
+        {% elseif __SELF__.hasToken %}
+            <h1 class="h2 mb-3">Reset password</h1>
+        {% else %}
+            <h1 class="h2 mb-3">Change password</h1>
+        {% endif %}
+        <h2 class="h5 fw-normal">Enter a new password.</h2>
+    </div>
+
+    {% if __SELF__.hasToken %}
+        <input type="hidden" name="token" value="{{ __SELF__.token }}" />
+        <input type="hidden" name="email" value="{{ __SELF__.email }}" />
     {% else %}
-        {% partial __SELF__ ~ '::reset' %}
+        <div class="form-floating my-3">
+            <input
+                name="current_password"
+                type="password"
+                class="form-control"
+                id="inputCurrentPassword"
+                placeholder="Current Password"
+            />
+            <label for="inputPassword">Current password</label>
+        </div>
     {% endif %}
-</div>
+
+    <div class="form-floating my-3">
+        <input
+            name="password"
+            type="password"
+            class="form-control"
+            id="inputPassword"
+            placeholder="Password"
+            autocomplete="new-password"
+        />
+        <label for="inputPassword">Password</label>
+    </div>
+
+    <div class="form-floating my-3">
+        <input
+            name="password_confirmation"
+            type="password"
+            class="form-control"
+            id="inputPasswordConfirmation"
+            placeholder="Confirm Password"
+            autocomplete="new-password"
+        />
+        <label for="inputPasswordConfirmation">Confirm password</label>
+    </div>
+
+    <button
+        class="btn btn-primary btn-lg w-100 py-2"
+        data-attach-loading
+        type="submit">
+        {% if __SELF__.hasInvite %}
+            Set password
+        {% else %}
+            Reset password
+        {% endif  %}
+    </button>
+</form>

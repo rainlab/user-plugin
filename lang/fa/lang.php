@@ -119,7 +119,6 @@
     'new_password_confirm' => 'تایید کلمه عبور',
   ],
   'reset_password' => [
-    'reset_password' => 'بازنشانی کلمه عبور',
     'reset_password_desc' => 'فرم کلمه عبور فراموش شده.',
     'code_param' => 'پارامتر کد بازنشانی',
     'code_param_desc' => 'پارامتر آدرس صفحه ای که جهت کد بازنشانی استفاده خوهد شد',

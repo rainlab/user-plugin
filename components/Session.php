@@ -1,4 +1,4 @@
-<?php namespace Responsiv\User\Components;
+<?php namespace RainLab\User\Components;
 
 use Cms;
 use Auth;

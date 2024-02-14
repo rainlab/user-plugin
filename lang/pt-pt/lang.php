@@ -116,7 +116,6 @@
     'new_password_confirm' => 'Confirmar nova password',
   ],
   'reset_password' => [
-    'reset_password' => 'Redefinir password',
     'reset_password_desc' => 'Formulário de redefinição de password .',
     'code_param' => 'Parâmetro de código para redefinir password ',
     'code_param_desc' => 'O parâmetro de URL da página usado para o código',

@@ -157,7 +157,6 @@
     'reset_page_comment' => 'Select a page to use for resetting the account password',
   ],
   'reset_password' => [
-    'reset_password' => 'Reset Password',
     'reset_password_desc' => 'Forgotten password form.',
     'code_param' => 'Reset Code Param',
     'code_param_desc' => 'The page URL parameter used for the reset code',

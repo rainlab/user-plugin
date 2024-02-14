@@ -140,7 +140,6 @@
     'update_requires_password_comment' => 'Kata sandi diperlukan saat mengubah profil.',
   ],
   'reset_password' => [
-    'reset_password' => 'Setel Ulang Kata Sandi',
     'reset_password_desc' => 'Formulir lupa kata sandi.',
     'code_param' => 'Parameter Penyetelan Ulang Kata Sandi',
     'code_param_desc' => 'Parameter URL pada halaman yang digunakan untuk kode reset',

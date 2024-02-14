@@ -20,7 +20,7 @@
   "Block all outgoing mail sent to this user.": "هیچ ایمیلی به این کاربر ارسال نشود",
   "Create Password": "ساخت رمزعبور",
   "Enter a new password used for signing in.": "رمز جدید برای استفاده کاربر در زمان ورود را وارد کنید",
-  "Reset Password": "تنظیم مجدد کلمه عبور",
+  "Reset Password": "بازنشانی کلمه عبور",
   "To reset this users password, enter a new password here.": "جهت تنظیم مجدد کلمه عبور کاربر ، کلمه عبور جدید را وارد نمایید.",
   "Password Confirmation": "تایید کلمه عبور",
   "Enter the password again to confirm it.": "جهت تایید کلمه عبور را مجددا وارد نمایید.",

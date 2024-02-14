@@ -153,7 +153,6 @@
     'reset_page_comment' => '选择用于重置帐户密码的页面',
   ],
   'reset_password' => [
-    'reset_password' => '重置密码',
     'reset_password_desc' => '找回密码.',
     'code_param' => '重置验证码参数',
     'code_param_desc' => '重置密码的验证码页面URL参数',

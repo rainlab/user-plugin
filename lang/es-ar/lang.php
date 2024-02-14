@@ -108,7 +108,6 @@
     'new_password_confirm' => 'Confirmar Nueva Contraseña',
   ],
   'reset_password' => [
-    'reset_password' => 'Reiniciar Contraseña',
     'reset_password_desc' => 'Formulario de olvido de contraseña.',
     'code_param' => 'Parámetro del Código de Reinicio',
     'code_param_desc' => 'El parámetro de URL utilizado para el código de reinicio.',

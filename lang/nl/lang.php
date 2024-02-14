@@ -146,7 +146,6 @@
     'update_requires_password_comment' => 'Vereis het huidige wachtwoord van de gebruiker wanneer hij zijn profiel wijzigt.',
   ],
   'reset_password' => [
-    'reset_password' => 'Reset wachtwoord',
     'reset_password_desc' => 'Wachtwoord vergeten formulier.',
     'code_param' => 'Reset Code parameter',
     'code_param_desc' => 'De pagina URL parameter die gebruikt wordt voor de reset code.',

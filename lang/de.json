@@ -21,7 +21,7 @@
   "Block all outgoing mail sent to this user.": "Blockiere alle ausgehenden E-Mails an diesen Benutzer.",
   "Create Password": "Passwort erstellen",
   "Enter a new password used for signing in.": "Gib ein neues Passwort ein, das zum Anmelden verwendet wird.",
-  "Reset Password": "Passwort setzen",
+  "Reset Password": "Passwort zurücksetzen",
   "To reset this users password, enter a new password here.": "Geben Sie hier ein Passwort ein, um das aktuelle Benutzerpasswort zu überschreiben.",
   "Password Confirmation": "Passwort bestätigen",
   "Enter the password again to confirm it.": "Passwort zur Bestätigung erneut eingeben.",

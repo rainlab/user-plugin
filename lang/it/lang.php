@@ -119,7 +119,6 @@
     'new_password_confirm' => 'Conferma Nuova Password',
   ],
   'reset_password' => [
-    'reset_password' => 'Ripristina Password',
     'reset_password_desc' => 'Form password dimenticata.',
     'code_param' => 'Parametro codice di ripristino',
     'code_param_desc' => 'Parametro dell\'URL usato per il codice di ripristino',

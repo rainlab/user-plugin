@@ -128,7 +128,6 @@
     'new_password_confirm' => 'Potwierdź nowe hasło',
   ],
   'reset_password' => [
-    'reset_password' => 'Zresetuj hasło',
     'reset_password_desc' => 'Formularz zapomnianego hasła.',
     'code_param' => 'Kod do resetu hasła - parametr',
     'code_param_desc' => 'Parametr URL strony używany do resetu hasła',
