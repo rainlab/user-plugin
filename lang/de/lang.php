@@ -174,12 +174,9 @@
     'all' => 'Jeder',
     'users' => 'Benutzer',
     'guests' => 'Gäste',
-    'allowed_groups_title' => 'Gruppen zulassen',
-    'allowed_groups_description' => 'Wählen Sie zugelassene Gruppen aus. Wird keine Gruppe ausgewhält sind alle zugelassen.',
     'redirect_title' => 'Weiterleiten nach',
     'redirect_desc' => 'Seitenname zum Weiterleiten bei verweigertem Zugriff.',
     'logout' => 'Sie haben sich erfolgreich ausgeloggt!',
-    'stop_impersonate_success' => 'Sie sind nicht mehr als diesen Benutzer angemeldet.',
   ],
   'group' => [],
   'groups' => [

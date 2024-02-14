@@ -148,11 +148,8 @@
     'all' => 'Todos',
     'users' => 'Usuarios',
     'guests' => 'Invitados',
-    'allowed_groups_title' => 'Permitir grupos',
-    'allowed_groups_description' => 'Selecciona los grupos permitidos o ninguno para permitir todos los grupos',
     'redirect_title' => 'redirigir a',
     'redirect_desc' => 'Página a la cual redirigir si el acceso es denegado.',
     'logout' => '¡Ha terminado exitosamente su sesión!',
-    'stop_impersonate_success' => 'Has dejado de personificar al usuario.',
   ],
 ];

@@ -157,11 +157,8 @@
     'all' => 'Mindenki',
     'users' => 'Felhasználók',
     'guests' => 'Vendégek',
-    'allowed_groups_title' => 'Csoportok engedélyezése',
-    'allowed_groups_description' => 'Válassza ki az engedélyezni kívánt csoportokat vagy egyiket sem az összes elfogadásához.',
     'redirect_title' => 'Átirányítás',
     'redirect_desc' => 'Az átirányítandó oldal neve, ha a hozzáférés meg van tagadva.',
     'logout' => 'Sikeresen kijelentkezett!',
-    'stop_impersonate_success' => 'Sikeresen visszajelentkezett az eredeti profiljába.',
   ],
 ];

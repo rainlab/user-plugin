@@ -44,5 +44,8 @@
   "Enter a unique code used to identify this group.": "Masukkan kode unik untuk mengidentifikasi grup ini.",
   "Description": "Deskripsi",
   "Created": "Dibuat",
-  "User Groups": "Grup Pengguna"
+  "User Groups": "Grup Pengguna",
+  "Allow Groups": "Izinkan grup",
+  "Choose allowed groups or none to allow all groups": "Pilih grup yang diizinkan, atau pilih tidak ada untuk mengizinkan semua grup",
+  "You are no longer impersonating a user.": "Anda tidak lagi bertidak sebagai pengguna."
 }

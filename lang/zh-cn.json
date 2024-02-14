@@ -45,5 +45,8 @@
   "Enter a unique code used to identify this group.": "输入一个唯一编码来标志当前用户组",
   "Description": "描述",
   "Created": "创建",
-  "User Groups": "用户群组"
+  "User Groups": "用户群组",
+  "Allow Groups": "允许组",
+  "Choose allowed groups or none to allow all groups": "选择允许的组或无以允许所有组",
+  "You are no longer impersonating a user.": "您不再模拟用户。"
 }

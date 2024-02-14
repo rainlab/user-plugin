@@ -42,5 +42,8 @@
   "Enter a unique code used to identify this group.": "Ingrese un código único para identificar este grupo.",
   "Description": "Descripción",
   "Created": "Creado",
-  "User Groups": "Grupos de usuarios"
+  "User Groups": "Grupos de usuarios",
+  "Allow Groups": "Permitir grupos",
+  "Choose allowed groups or none to allow all groups": "Selecciona los grupos permitidos o ninguno para permitir todos los grupos",
+  "You are no longer impersonating a user.": "Has dejado de personificar al usuario."
 }

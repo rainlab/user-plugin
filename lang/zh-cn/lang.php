@@ -166,11 +166,8 @@
     'all' => '所有人',
     'users' => '注册用户',
     'guests' => '游客',
-    'allowed_groups_title' => '允许组',
-    'allowed_groups_description' => '选择允许的组或无以允许所有组',
     'redirect_title' => '跳转至',
     'redirect_desc' => '拒绝访问时重定向到页面的名字。',
     'logout' => '你已经成功退出登陆！',
-    'stop_impersonate_success' => '您不再模拟用户。',
   ],
 ];

@@ -153,11 +153,8 @@
     'all' => 'Semua',
     'users' => 'Pengguna',
     'guests' => 'Tamu',
-    'allowed_groups_title' => 'Izinkan grup',
-    'allowed_groups_description' => 'Pilih grup yang diizinkan, atau pilih tidak ada untuk mengizinkan semua grup',
     'redirect_title' => 'Alihkan ke',
     'redirect_desc' => 'Nama halaman untuk dialihkan jika akses ditolak.',
     'logout' => 'Anda telah berhasil keluar!',
-    'stop_impersonate_success' => 'Anda tidak lagi bertidak sebagai pengguna.',
   ],
 ];

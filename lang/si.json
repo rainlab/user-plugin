@@ -45,5 +45,8 @@
   "Enter a unique code used to identify this group.": "මෙම කණ්ඩායම හඳුනා ගැනීමට භාවිතා කරන අද්විතීය කේතයක් ඇතුළත් කරන්න.",
   "Description": "විස්තර",
   "Created": "නිර්මාණය කළා",
-  "User Groups": "පරිශීලක කණ්ඩායම්"
+  "User Groups": "පරිශීලක කණ්ඩායම්",
+  "Allow Groups": "කණ්ඩායම් වලට ඉඩ දෙන්න",
+  "Choose allowed groups or none to allow all groups": "සියලුම කණ්ඩායම්වලට ඉඩ දීමට අවසර දී ඇති කණ්ඩායම් හෝ කිසිවෙකුට ඉඩ නොදෙන්න",
+  "You are no longer impersonating a user.": "ඔබ තවදුරටත් පරිශීලකයෙකු ලෙස පෙනී සිටින්නේ නැත."
 }

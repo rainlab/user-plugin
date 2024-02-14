@@ -160,11 +160,8 @@
     'all' => 'Vsi',
     'users' => 'Uporabniki',
     'guests' => 'Gosti',
-    'allowed_groups_title' => 'Dovoljenje za skupine',
-    'allowed_groups_description' => 'Določite, katere skupine lahko dostopajo do te strani. Če ne izberete nobene, imajo dovoljenje vse skupine.',
     'redirect_title' => 'Preusmeritev na stran',
     'redirect_desc' => 'Določite stran, na katero je preusmerjen uporabnik, če je dostop onemogočen.',
     'logout' => 'Uspešno ste se odjavili.',
-    'stop_impersonate_success' => 'Uporabnika ne impersonirate več.',
   ],
 ];

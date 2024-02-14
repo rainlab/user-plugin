@@ -44,5 +44,8 @@
   "Enter a unique code used to identify this group.": "輸入識別此群組用的唯一代碼。",
   "Description": "描述",
   "Created": "創建日期",
-  "User Groups": "會員群組"
+  "User Groups": "會員群組",
+  "Allow Groups": "允許群組",
+  "Choose allowed groups or none to allow all groups": "選擇允許的群組，留白允許全部。",
+  "You are no longer impersonating a user.": "以停止模仿該會員登入狀態。"
 }

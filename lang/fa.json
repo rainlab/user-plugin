@@ -41,5 +41,6 @@
   "Enter a unique code used to identify this group.": "کد یکتایی را جهت دسترسی به این گروه وارد نمایید",
   "Description": "توضیحات",
   "Created": "تاریخ ایجاد",
-  "User Groups": "گروه های کاربر"
+  "User Groups": "گروه های کاربر",
+  "You are no longer impersonating a user.": "دیگر در نقشِ سایر کاربران نیستید."
 }

@@ -141,11 +141,8 @@
     'all' => 'Alla',
     'users' => 'Användare',
     'guests' => 'Gäster',
-    'allowed_groups_title' => 'Tillåt grupper',
-    'allowed_groups_description' => 'Välj tillåtna grupper eller ingen för att tillåta alla grupper',
     'redirect_title' => 'Omdirigera till',
     'redirect_desc' => 'Sidnamn att omdirigera om åtkomst nekas.',
     'logout' => 'Du har blivit framgångsrik utloggad!',
-    'stop_impersonate_success' => 'Du personifierar inte längre en användare.',
   ],
 ];

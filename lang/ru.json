@@ -45,5 +45,8 @@
   "Enter a unique code used to identify this group.": "Введите уникальный код для идентификации этой группы.",
   "Description": "Описание",
   "Created": "Дата создания",
-  "User Groups": "Группы пользователей"
+  "User Groups": "Группы пользователей",
+  "Allow Groups": "Разрешённые группы",
+  "Choose allowed groups or none to allow all groups": "Выберите разрешённые группы или ничего, чтобы разрешить все",
+  "You are no longer impersonating a user.": "Вы больше не представлены как другой пользователь."
 }

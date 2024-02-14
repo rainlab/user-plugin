@@ -156,11 +156,8 @@
     'all' => '全部',
     'users' => '會員',
     'guests' => '遊客',
-    'allowed_groups_title' => '允許群組',
-    'allowed_groups_description' => '選擇允許的群組，留白允許全部。',
     'redirect_title' => '重新導向',
     'redirect_desc' => '無法存取的頁面將重新導向至所選的頁面。',
     'logout' => '您已成功登出！',
-    'stop_impersonate_success' => '以停止模仿該會員登入狀態。',
   ],
 ];

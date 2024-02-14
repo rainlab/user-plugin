@@ -44,5 +44,8 @@
   "Enter a unique code used to identify this group.": "Bu grubu tanımlayan eşsiz bir kod girin.",
   "Description": "Açıklama",
   "Created": "Oluşturulma",
-  "User Groups": "Üye Grupları"
+  "User Groups": "Üye Grupları",
+  "Allow Groups": "Gruplara izin ver",
+  "Choose allowed groups or none to allow all groups": "İzin verilecek grupları seçin, veya \"hiçbiri\" seçerek tüm gruplara izin verin.",
+  "You are no longer impersonating a user.": "Artık üye gibi gezinmiyorsunuz. Kendi hesabınızı kullanabilirsiniz."
 }

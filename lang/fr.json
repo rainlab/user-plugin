@@ -45,5 +45,8 @@
   "Enter a unique code used to identify this group.": "Entrez un code unique pour y accéder via l’API",
   "Description": "Description",
   "Created": "Créé le",
-  "User Groups": "Tous les groupes"
+  "User Groups": "Tous les groupes",
+  "Allow Groups": "Autoriser les groupes",
+  "Choose allowed groups or none to allow all groups": "Choisissez les groupes autorisés ou aucun pour autoriser tous les groupes",
+  "You are no longer impersonating a user.": "Vous n'êtes plus en train d'usurper l'identité d'un utilisateur"
 }

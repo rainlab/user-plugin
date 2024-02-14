@@ -42,5 +42,8 @@
   "Enter a unique code used to identify this group.": "Zadajte jedinečný kód použitý na identifikáciu tejto skupiny.",
   "Description": "Popis",
   "Created": "Vytvorená",
-  "User Groups": "Skupiny používateľov"
+  "User Groups": "Skupiny používateľov",
+  "Allow Groups": "Povoliť skupiny",
+  "Choose allowed groups or none to allow all groups": "Vyberte povolené skupiny alebo žiadne, aby ste povolili všetky skupiny",
+  "You are no longer impersonating a user.": "Už sa nezosobňujete používateľa."
 }

@@ -141,11 +141,8 @@
     'all' => 'Wszyscy',
     'users' => 'Użytkownicy',
     'guests' => 'Goście',
-    'allowed_groups_title' => 'Zezwól grupom',
-    'allowed_groups_description' => 'Wybierz dozwolone grupy lub brak grup, aby umożliwić wszystkim grupom',
     'redirect_title' => 'Przekieruj do',
     'redirect_desc' => 'Nazwa strony do przekierowania w przypadku odmowy dostępu.',
     'logout' => 'Wylogowałeś się poprawnie!',
-    'stop_impersonate_success' => 'Nie wcielasz się już w użytkownika.',
   ],
 ];

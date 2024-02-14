@@ -44,5 +44,8 @@
   "Enter a unique code used to identify this group.": "Voer een unieke code in als je deze groep wilt gebruiken met de API.",
   "Description": "Omschrijving",
   "Created": "Aangemaakt op",
-  "User Groups": "Groepen"
+  "User Groups": "Groepen",
+  "Allow Groups": "Toegestane groepen",
+  "Choose allowed groups or none to allow all groups": "Kies toegelaten groepen of geen om alle groepen toe te laten",
+  "You are no longer impersonating a user.": "Je doet je niet langer voor als een gebruiker."
 }

@@ -156,11 +156,8 @@
     'all' => 'Hepsi',
     'users' => 'Üyeler',
     'guests' => 'Misafirler',
-    'allowed_groups_title' => 'Gruplara izin ver',
-    'allowed_groups_description' => 'İzin verilecek grupları seçin, veya "hiçbiri" seçerek tüm gruplara izin verin.',
     'redirect_title' => 'Yönlendir ',
     'redirect_desc' => 'Erişimi engelliyse yönlendirilecek sayfa.',
     'logout' => 'Başarıyla çıkış yaptınız!',
-    'stop_impersonate_success' => 'Artık üye gibi gezinmiyorsunuz. Kendi hesabınızı kullanabilirsiniz.',
   ],
 ];

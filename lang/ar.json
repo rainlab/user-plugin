@@ -45,5 +45,8 @@
   "Enter a unique code used to identify this group.": "أدخل رمزًا فريدًا يستخدم لتعريف هذه المجموعة.",
   "Description": "الوصف",
   "Created": "أنشئت",
-  "User Groups": "مجموعات الاعضاء"
+  "User Groups": "مجموعات الاعضاء",
+  "Allow Groups": "السماح للمجموعات",
+  "Choose allowed groups or none to allow all groups": "اختر المجموعات المسموح بها أو لا تختارها للسماح لجميع المجموعات",
+  "You are no longer impersonating a user.": "لم تعد تنتحل شخصية مستخدم."
 }

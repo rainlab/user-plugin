@@ -45,5 +45,8 @@
   "Enter a unique code used to identify this group.": "Vnesite unikatno kodo za identifikacijo te skupine.",
   "Description": "Opis",
   "Created": "Ustvarjeno",
-  "User Groups": "Skupine uporabnikov"
+  "User Groups": "Skupine uporabnikov",
+  "Allow Groups": "Dovoljenje za skupine",
+  "Choose allowed groups or none to allow all groups": "Določite, katere skupine lahko dostopajo do te strani. Če ne izberete nobene, imajo dovoljenje vse skupine.",
+  "You are no longer impersonating a user.": "Uporabnika ne impersonirate več."
 }

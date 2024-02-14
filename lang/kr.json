@@ -42,5 +42,8 @@
   "Enter a unique code used to identify this group.": "이 그룹을 식별하는 데 사용되는 고유 한 코드를 입력하십시오.",
   "Description": "설명",
   "Created": "생성날짜",
-  "User Groups": "회원 그룹 목록"
+  "User Groups": "회원 그룹 목록",
+  "Allow Groups": "그룹 허용",
+  "Choose allowed groups or none to allow all groups": "허용되는 그룹을 선택하거나, 모든 그룹을 허용할 그룹이 없도록 선택하십시오.",
+  "You are no longer impersonating a user.": "더 이상 사용자를 가장하지 않습니다."
 }

@@ -141,11 +141,8 @@
     'all' => '모든.',
     'users' => '사용자',
     'guests' => '방문자',
-    'allowed_groups_title' => '그룹 허용',
-    'allowed_groups_description' => '허용되는 그룹을 선택하거나, 모든 그룹을 허용할 그룹이 없도록 선택하십시오.',
     'redirect_title' => '리디렉션',
     'redirect_desc' => '액세스가 거부된 경우 리디렉션 할 페이지 이름입니다.',
     'logout' => '성공적으로 로그아웃되었습니다!',
-    'stop_impersonate_success' => '더 이상 사용자를 가장하지 않습니다.',
   ],
 ];

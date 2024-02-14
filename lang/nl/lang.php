@@ -159,11 +159,8 @@
     'all' => 'Alle',
     'users' => 'Gebruikers',
     'guests' => 'Gasten',
-    'allowed_groups_title' => 'Toegestane groepen',
-    'allowed_groups_description' => 'Kies toegelaten groepen of geen om alle groepen toe te laten',
     'redirect_title' => 'Redirect naar',
     'redirect_desc' => 'Pagina om naar te redirecten als toegang is afgewezen.',
     'logout' => 'U bent succesvol uitgelogd.',
-    'stop_impersonate_success' => 'Je doet je niet langer voor als een gebruiker.',
   ],
 ];

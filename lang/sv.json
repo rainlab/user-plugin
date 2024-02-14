@@ -42,5 +42,8 @@
   "Enter a unique code used to identify this group.": "Ange en unik kod som används för att identifiera den här gruppen.",
   "Description": "Beskrivning",
   "Created": "Skapat",
-  "User Groups": "Användargrupper"
+  "User Groups": "Användargrupper",
+  "Allow Groups": "Tillåt grupper",
+  "Choose allowed groups or none to allow all groups": "Välj tillåtna grupper eller ingen för att tillåta alla grupper",
+  "You are no longer impersonating a user.": "Du personifierar inte längre en användare."
 }

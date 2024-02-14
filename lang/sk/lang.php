@@ -141,11 +141,8 @@
     'all' => 'Všetci',
     'users' => 'Užívatelia',
     'guests' => 'Hostia',
-    'allowed_groups_title' => 'Povoliť skupiny',
-    'allowed_groups_description' => 'Vyberte povolené skupiny alebo žiadne, aby ste povolili všetky skupiny',
     'redirect_title' => 'Presmerovať na',
     'redirect_desc' => 'Názov stránky pre presmerovanie, ak je prístup zamietnutý.',
     'logout' => 'Úspešne ste sa odhlásili!',
-    'stop_impersonate_success' => 'Už sa nezosobňujete používateľa.',
   ],
 ];
