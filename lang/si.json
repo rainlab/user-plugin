@@ -48,5 +48,6 @@
   "User Groups": "පරිශීලක කණ්ඩායම්",
   "Allow Groups": "කණ්ඩායම් වලට ඉඩ දෙන්න",
   "Choose allowed groups or none to allow all groups": "සියලුම කණ්ඩායම්වලට ඉඩ දීමට අවසර දී ඇති කණ්ඩායම් හෝ කිසිවෙකුට ඉඩ නොදෙන්න",
-  "You are no longer impersonating a user.": "ඔබ තවදුරටත් පරිශීලකයෙකු ලෙස පෙනී සිටින්නේ නැත."
+  "You are no longer impersonating a user.": "ඔබ තවදුරටත් පරිශීලකයෙකු ලෙස පෙනී සිටින්නේ නැත.",
+  "User management form.": "පරිශීලක කළමනාකරණ පෝරමය."
 }

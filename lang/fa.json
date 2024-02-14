@@ -42,5 +42,6 @@
   "Description": "توضیحات",
   "Created": "تاریخ ایجاد",
   "User Groups": "گروه های کاربر",
-  "You are no longer impersonating a user.": "دیگر در نقشِ سایر کاربران نیستید."
+  "You are no longer impersonating a user.": "دیگر در نقشِ سایر کاربران نیستید.",
+  "User management form.": "فرم مدیریت کاربران."
 }

@@ -111,8 +111,6 @@
     'attribute_username' => 'Üye Adı',
   ],
   'account' => [
-    'account' => 'Hesap',
-    'account_desc' => 'Üye yönetimi formu.',
     'redirect_to' => 'Yönlendir',
     'redirect_to_desc' => 'Güncellemeden sonra yönlendirilecek sayfanın adı, oturum aç ya da kayıt ol.',
     'code_param' => 'Aktivasyon Kodu Parametresi',

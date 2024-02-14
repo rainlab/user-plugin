@@ -8,7 +8,7 @@ use InvalidArgumentException;
 /**
  * SessionGuard
  *
- * @package october\user
+ * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
  */
 class SessionGuard extends SessionGuardBase

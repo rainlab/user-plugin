@@ -91,8 +91,6 @@
     'attribute_username' => 'Uživatelské jméno',
   ],
   'account' => [
-    'account' => 'Správa účtu',
-    'account_desc' => 'Formuláře správy účtu a přihlášení',
     'redirect_to' => 'Přesměrovat na',
     'redirect_to_desc' => 'Název stránky pro přesměrování po úpravě údajů, přihlášení nebo registraci.',
     'code_param' => 'Parametr aktivačního kódu',

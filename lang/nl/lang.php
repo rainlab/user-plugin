@@ -113,8 +113,6 @@
     'attribute_username' => 'Gebruikersnaam',
   ],
   'account' => [
-    'account' => 'Account',
-    'account_desc' => 'Gebruikersaccount formulier.',
     'redirect_to' => 'Redirect naar',
     'redirect_to_desc' => 'Pagina om naar te redirecten na het bijwerken, inloggen of registreren.',
     'code_param' => 'Activatie Code parameter',

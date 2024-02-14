@@ -41,5 +41,6 @@
   "Enter a unique code used to identify this group.": "Inserisci un codice univoco per identificare il gruppo.",
   "Description": "Descrizione",
   "Created": "Creato",
-  "User Groups": "Gruppi di Utenti"
+  "User Groups": "Gruppi di Utenti",
+  "User management form.": "Form di gestione account."
 }

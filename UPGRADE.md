@@ -22,11 +22,17 @@ This guide can be used to help migrate from RainLab.User v2 to v3. Some theme ch
 
 ## Breaking Changes
 
-### ...
-
-...
+### Methods
 
 - User::findByEmail → Auth::retrieveByCredentials
+
+### Account Component Split Up
+
+The functionality of the Account component has been broken up in to three components
+
+- Account: update user details, enable two factor, delete sessions, delete the user account
+- Authentication: authenticate a user
+- Registration: register a new user
 
 
 ### Events Updated

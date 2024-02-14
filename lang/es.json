@@ -45,5 +45,6 @@
   "User Groups": "Grupos de usuarios",
   "Allow Groups": "Permitir grupos",
   "Choose allowed groups or none to allow all groups": "Selecciona los grupos permitidos o ninguno para permitir todos los grupos",
-  "You are no longer impersonating a user.": "Has dejado de personificar al usuario."
+  "You are no longer impersonating a user.": "Has dejado de personificar al usuario.",
+  "User management form.": "Formulario para gestionar datos del usuario."
 }

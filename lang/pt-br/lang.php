@@ -90,8 +90,6 @@
     'attribute_username' => 'Nome de usuário',
   ],
   'account' => [
-    'account' => 'Conta',
-    'account_desc' => 'Formulário de gerenciamento de usuário.',
     'redirect_to' => 'Redirecionar para',
     'redirect_to_desc' => 'Nome da página para a qual redirecionar após atualização, login ou cadastro.',
     'code_param' => 'Parâmetro de Código de Ativação',

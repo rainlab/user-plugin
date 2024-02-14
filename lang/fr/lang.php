@@ -120,8 +120,6 @@
     'attribute_username' => 'Pseudo',
   ],
   'account' => [
-    'account' => 'Compte',
-    'account_desc' => 'Gestion du compte utilisateur.',
     'redirect_to' => 'Rediriger vers',
     'redirect_to_desc' => 'Nom de la page de redirection après la mise à jour, la connexion ou l’enregistrement.',
     'code_param' => 'Paramètre code d’activation',

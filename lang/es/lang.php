@@ -107,8 +107,6 @@
     'attribute_username' => 'Nombre de usuario',
   ],
   'account' => [
-    'account' => 'Perfil',
-    'account_desc' => 'Formulario para gestionar datos del usuario.',
     'redirect_to' => 'redirigir a',
     'redirect_to_desc' => 'Página hacia la cual redirigir despues de una actualización, inicio de sesión o registro.',
     'code_param' => 'Parámetro para el código de activación',

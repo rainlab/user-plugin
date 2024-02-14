@@ -47,5 +47,6 @@
   "User Groups": "Üye Grupları",
   "Allow Groups": "Gruplara izin ver",
   "Choose allowed groups or none to allow all groups": "İzin verilecek grupları seçin, veya \"hiçbiri\" seçerek tüm gruplara izin verin.",
-  "You are no longer impersonating a user.": "Artık üye gibi gezinmiyorsunuz. Kendi hesabınızı kullanabilirsiniz."
+  "You are no longer impersonating a user.": "Artık üye gibi gezinmiyorsunuz. Kendi hesabınızı kullanabilirsiniz.",
+  "User management form.": "Üye yönetimi formu."
 }

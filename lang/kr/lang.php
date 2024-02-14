@@ -100,8 +100,6 @@
     'attribute_username' => '회원명',
   ],
   'account' => [
-    'account' => '계정',
-    'account_desc' => '사용자 관리 폼',
     'redirect_to' => '리디렉션',
     'redirect_to_desc' => '로그인, 등록, 업데이트 후 리디렉션 할 페이지 이름.',
     'code_param' => '활성화 코드 값',

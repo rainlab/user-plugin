@@ -48,5 +48,6 @@
   "User Groups": "用户群组",
   "Allow Groups": "允许组",
   "Choose allowed groups or none to allow all groups": "选择允许的组或无以允许所有组",
-  "You are no longer impersonating a user.": "您不再模拟用户。"
+  "You are no longer impersonating a user.": "您不再模拟用户。",
+  "User management form.": "用户信息."
 }

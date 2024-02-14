@@ -48,5 +48,6 @@
   "User Groups": "Группы пользователей",
   "Allow Groups": "Разрешённые группы",
   "Choose allowed groups or none to allow all groups": "Выберите разрешённые группы или ничего, чтобы разрешить все",
-  "You are no longer impersonating a user.": "Вы больше не представлены как другой пользователь."
+  "You are no longer impersonating a user.": "Вы больше не представлены как другой пользователь.",
+  "User management form.": "Управление формой."
 }

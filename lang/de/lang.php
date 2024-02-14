@@ -133,8 +133,6 @@
     'attribute_username' => 'Benutzername',
   ],
   'account' => [
-    'account' => 'Benutzerkonto',
-    'account_desc' => 'Benutzerkontoverwaltung.',
     'redirect_to' => 'Weiterleiten nach',
     'redirect_to_desc' => 'Seitenname zum Weiterleiten nach Update, Anmeldung oder Registrierung.',
     'code_param' => 'Aktivierungscode Parameter',

@@ -82,8 +82,6 @@
     'attribute_username' => 'Nombre de Usuario',
   ],
   'account' => [
-    'account' => 'Cuenta',
-    'account_desc' => 'Formulario de administración de usuario.',
     'redirect_to' => 'Redirigir a',
     'redirect_to_desc' => 'Nombre de la página a redirigir luego de una actualización, ingreso o registro.',
     'code_param' => 'Parámetro del Código de Activación',

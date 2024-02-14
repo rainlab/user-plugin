@@ -6,7 +6,7 @@ use RainLab\User\Classes\Validation\PasswordRule;
 /**
  * User defines some helpers for the user module
  *
- * @package october\user
+ * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
  */
 class User

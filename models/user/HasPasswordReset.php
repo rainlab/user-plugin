@@ -25,7 +25,7 @@ trait HasPasswordReset
      */
     public function sendPasswordResetNotification($token)
     {
-        $url = Cms::entryUrl('newPassword') . '?' . http_build_query([
+        $url = Cms::entryUrl('resetPassword') . '?' . http_build_query([
             'reset' => $token,
             'email' => $this->getEmailForPasswordReset()
         ]);
@@ -50,7 +50,7 @@ trait HasPasswordReset
     {
         $token = Password::createToken($this);
 
-        $url = Cms::entryUrl('newPassword') . '?' . http_build_query([
+        $url = Cms::entryUrl('resetPassword') . '?' . http_build_query([
             'reset' => $token,
             'email' => $this->getEmailForPasswordReset(),
             'new' => true

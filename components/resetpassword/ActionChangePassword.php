@@ -9,7 +9,7 @@ use RainLab\User\Helpers\User as UserHelper;
 /**
  * ActionChangePassword
  *
- * @package october\user
+ * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
  */
 trait ActionChangePassword

@@ -14,7 +14,7 @@
   "Name": "Název",
   "Last Name": "Příjmení",
   "Email": "E-mail",
-  "Account": "Účet",
+  "Account": "Správa účtu",
   "Send invitation by email": "Poslat pozvánku e-mailem",
   "Sends a welcome message containing login and password information.": "Poslat uvítací e-mail obsahující přihlašovací jméno a heslo.",
   "Block all outgoing mail sent to this user.": "Zablokovat všechny odchozí e-maily pro tohoto uživatele.",
@@ -41,5 +41,6 @@
   "Enter a unique code used to identify this group.": "Zadejte unikátní kód pro jednoznačnou identifikaci této skupiny.",
   "Description": "Popis skupiny",
   "Created": "Vytvořeno",
-  "User Groups": "Uživatelské skupiny"
+  "User Groups": "Uživatelské skupiny",
+  "User management form.": "Formuláře správy účtu a přihlášení"
 }

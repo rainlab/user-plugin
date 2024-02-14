@@ -111,8 +111,6 @@
     'attribute_username' => '使用者名稱',
   ],
   'account' => [
-    'account' => '帳號',
-    'account_desc' => '會員管理表單。',
     'redirect_to' => '重新導向',
     'redirect_to_desc' => '成功登入、更新或註冊後重新導向的頁面。',
     'code_param' => '啟動碼參數名稱',

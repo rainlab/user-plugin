@@ -111,8 +111,6 @@
     'attribute_username' => 'Uporabniško ime',
   ],
   'account' => [
-    'account' => 'Račun',
-    'account_desc' => 'Upravljanje uporabnika.',
     'redirect_to' => 'Preusmeritev na',
     'redirect_to_desc' => 'Stran, na katero bo uporabnik preusmerjen po posodobitvi profila, po prijavi ali po registraciji.',
     'code_param' => 'Parameter aktivacijske kode',

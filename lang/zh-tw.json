@@ -47,5 +47,6 @@
   "User Groups": "會員群組",
   "Allow Groups": "允許群組",
   "Choose allowed groups or none to allow all groups": "選擇允許的群組，留白允許全部。",
-  "You are no longer impersonating a user.": "以停止模仿該會員登入狀態。"
+  "You are no longer impersonating a user.": "以停止模仿該會員登入狀態。",
+  "User management form.": "會員管理表單。"
 }

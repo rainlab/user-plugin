@@ -48,5 +48,6 @@
   "User Groups": "مجموعات الاعضاء",
   "Allow Groups": "السماح للمجموعات",
   "Choose allowed groups or none to allow all groups": "اختر المجموعات المسموح بها أو لا تختارها للسماح لجميع المجموعات",
-  "You are no longer impersonating a user.": "لم تعد تنتحل شخصية مستخدم."
+  "You are no longer impersonating a user.": "لم تعد تنتحل شخصية مستخدم.",
+  "User management form.": "نموذج إدارة المستخدم."
 }

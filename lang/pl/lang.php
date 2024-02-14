@@ -100,8 +100,6 @@
     'attribute_username' => 'Nazwa użytkownika',
   ],
   'account' => [
-    'account' => 'Konto',
-    'account_desc' => 'Formularz zarządzania użytkownikiem.',
     'redirect_to' => 'Przekieruj do',
     'redirect_to_desc' => 'Nazwa strony do przekierowania po aktualizacji, zalogowaniu lub rejestracji.',
     'code_param' => 'Kod aktywacyjny - parametr',

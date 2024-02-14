@@ -111,8 +111,6 @@
     'attribute_username' => 'Felhasználónév',
   ],
   'account' => [
-    'account' => 'Fiók',
-    'account_desc' => 'Felhasználó kezelési űrlap.',
     'redirect_to' => 'Átirányítás',
     'redirect_to_desc' => 'Az oldal neve az átirányításhoz frissítés, bejelentkezés vagy regisztrálás után.',
     'code_param' => 'Aktiválási kód',

@@ -47,5 +47,6 @@
   "User Groups": "Csoportok",
   "Allow Groups": "Csoportok engedélyezése",
   "Choose allowed groups or none to allow all groups": "Válassza ki az engedélyezni kívánt csoportokat vagy egyiket sem az összes elfogadásához.",
-  "You are no longer impersonating a user.": "Sikeresen visszajelentkezett az eredeti profiljába."
+  "You are no longer impersonating a user.": "Sikeresen visszajelentkezett az eredeti profiljába.",
+  "User management form.": "Felhasználó kezelési űrlap."
 }

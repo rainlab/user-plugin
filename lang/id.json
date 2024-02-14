@@ -47,5 +47,6 @@
   "User Groups": "Grup Pengguna",
   "Allow Groups": "Izinkan grup",
   "Choose allowed groups or none to allow all groups": "Pilih grup yang diizinkan, atau pilih tidak ada untuk mengizinkan semua grup",
-  "You are no longer impersonating a user.": "Anda tidak lagi bertidak sebagai pengguna."
+  "You are no longer impersonating a user.": "Anda tidak lagi bertidak sebagai pengguna.",
+  "User management form.": "Formulir manajemen pengguna."
 }

@@ -33,8 +33,8 @@ class Account extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => /*Account*/'rainlab.user::lang.account.account',
-            'description' => /*User management form.*/'rainlab.user::lang.account.account_desc'
+            'name' => "Account",
+            'description' => "User management form."
         ];
     }
 

@@ -1,9 +1,9 @@
-{# User invited to set a password via an invite link#}
+{# User invited to set a password via an invite link #}
 {% if __SELF__.hasInvite %}
     {% set redirectPage = 'account/index' %}
     {% set passwordHandler = 'onConfirmPassword' %}
 
-{# User has a valid token to reset their password#}
+{# User has a valid token to reset their password #}
 {% elseif __SELF__.hasToken %}
     {% set redirectPage = 'account/login' %}
     {% set passwordHandler = 'onResetPassword' %}

@@ -48,5 +48,6 @@
   "User Groups": "User Groups",
   "Allow Groups": "Allow Groups",
   "Choose allowed groups or none to allow all groups": "Choose allowed groups or none to allow all groups",
-  "You are no longer impersonating a user.": "You are no longer impersonating a user."
+  "You are no longer impersonating a user.": "You are no longer impersonating a user.",
+  "User management form.": "User management form."
 }

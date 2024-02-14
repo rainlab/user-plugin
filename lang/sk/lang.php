@@ -100,8 +100,6 @@
     'attribute_username' => 'Užívateľské meno',
   ],
   'account' => [
-    'account' => 'Účet',
-    'account_desc' => 'Formulár správy používateľov.',
     'redirect_to' => 'Presmerovať na',
     'redirect_to_desc' => 'Názov stránky na presmerovanie po aktualizácii, prihlásení alebo registrácii.',
     'code_param' => 'Aktivačný kód Parameter',

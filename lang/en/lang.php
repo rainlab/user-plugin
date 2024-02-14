@@ -120,8 +120,6 @@
     'attribute_username' => 'Username',
   ],
   'account' => [
-    'account' => 'Account',
-    'account_desc' => 'User management form.',
     'redirect_to' => 'Redirect to',
     'redirect_to_desc' => 'Page name to redirect to after update, sign in or registration.',
     'code_param' => 'Activation Code Param',

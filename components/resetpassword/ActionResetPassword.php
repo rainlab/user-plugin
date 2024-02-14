@@ -12,7 +12,7 @@ use ValidationException;
 /**
  * ActionResetPassword
  *
- * @package october\user
+ * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
  */
 trait ActionResetPassword

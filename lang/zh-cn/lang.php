@@ -116,8 +116,6 @@
     'attribute_username' => '用户名',
   ],
   'account' => [
-    'account' => '帐号',
-    'account_desc' => '用户信息.',
     'redirect_to' => '跳转至',
     'redirect_to_desc' => '登录或注册成功后跳转页面.',
     'code_param' => '激活码参数。',

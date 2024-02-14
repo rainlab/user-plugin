@@ -45,5 +45,6 @@
   "User Groups": "Benutzergruppen",
   "Allow Groups": "Gruppen zulassen",
   "Choose allowed groups or none to allow all groups": "Wählen Sie zugelassene Gruppen aus. Wird keine Gruppe ausgewhält sind alle zugelassen.",
-  "You are no longer impersonating a user.": "Sie sind nicht mehr als diesen Benutzer angemeldet."
+  "You are no longer impersonating a user.": "Sie sind nicht mehr als diesen Benutzer angemeldet.",
+  "User management form.": "Benutzerkontoverwaltung."
 }

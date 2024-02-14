@@ -48,5 +48,6 @@
   "User Groups": "Tous les groupes",
   "Allow Groups": "Autoriser les groupes",
   "Choose allowed groups or none to allow all groups": "Choisissez les groupes autorisés ou aucun pour autoriser tous les groupes",
-  "You are no longer impersonating a user.": "Vous n'êtes plus en train d'usurper l'identité d'un utilisateur"
+  "You are no longer impersonating a user.": "Vous n'êtes plus en train d'usurper l'identité d'un utilisateur",
+  "User management form.": "Gestion du compte utilisateur."
 }

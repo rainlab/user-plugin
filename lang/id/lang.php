@@ -108,8 +108,6 @@
     'attribute_username' => 'Nama Pengguna',
   ],
   'account' => [
-    'account' => 'Akun',
-    'account_desc' => 'Formulir manajemen pengguna.',
     'redirect_to' => 'Alihkan ke',
     'redirect_to_desc' => 'Nama halaman untuk dialihkan setelah pembaruan, masuk atau registrasi.',
     'code_param' => 'Parameter Kode Aktivasi',

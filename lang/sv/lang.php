@@ -100,8 +100,6 @@
     'attribute_username' => 'Användarnamn',
   ],
   'account' => [
-    'account' => 'Konto',
-    'account_desc' => 'Användarhanteringsformulär.',
     'redirect_to' => 'Omdirigera till',
     'redirect_to_desc' => 'Sidnamn för att omdirigera till efter uppdatering, logga in eller registrera.',
     'code_param' => 'Aktiveringskod Param',

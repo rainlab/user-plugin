@@ -92,8 +92,6 @@
     'attribute_username' => 'Username',
   ],
   'account' => [
-    'account' => 'Account',
-    'account_desc' => 'Form di gestione account.',
     'redirect_to' => 'Reindirizza A',
     'redirect_to_desc' => 'Pagina verso cui essere reindirizzati dopo modifica, accesso o registrazione.',
     'code_param' => 'Parametro codice di attivazione',
