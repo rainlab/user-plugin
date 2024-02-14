@@ -14,7 +14,7 @@ use ValidationException;
  *
  * @mixin \RainLab\User\Components\Authentication\ActionLogin
  *
- * @package october\user
+ * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
  */
 trait ActionTwoFactorLogin

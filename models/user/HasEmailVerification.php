@@ -41,7 +41,7 @@ trait HasEmailVerification
     {
         $expiration = Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60));
 
-        $url = Cms::entryUrl('profileDetails', [
+        $url = Cms::entryUrl('account', [
             'id' => $this->getKey(),
             'verify' => sha1($this->getEmailForVerification())
         ]);

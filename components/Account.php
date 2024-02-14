@@ -1,32 +1,31 @@
 <?php namespace RainLab\User\Components;
 
-use Lang;
+use Cms;
 use Auth;
-use Mail;
-use Event;
 use Flash;
-use Input;
-use System;
 use Request;
 use Redirect;
-use Validator;
-use October\Rain\Auth\AuthException;
-use Cms\Classes\Page;
+use RainLab\User\Models\User;
 use Cms\Classes\ComponentBase;
-use RainLab\User\Models\User as UserModel;
-use RainLab\User\Models\Settings as UserSettings;
 use ApplicationException;
-use ValidationException;
-use Exception;
+use ForbiddenException;
 
 /**
  * Account component
  *
- * Allows users to register, sign in and update their account. They can also
- * deactivate their account and resend the account verification email.
+ * Allows users to update their account. They can also deactivate their account,
+ * enable two-factor and resend the account verification email.
+ *
+ * @package rainlab\user
+ * @author Alexey Bobkov, Samuel Georges
  */
 class Account extends ComponentBase
 {
+    use \RainLab\User\Traits\ConfirmsPassword;
+    use \RainLab\User\Components\Account\ActionTwoFactor;
+    use \RainLab\User\Components\Account\ActionDeleteUser;
+    use \RainLab\User\Components\Account\ActionBrowserSessions;
+
     /**
      * componentDetails
      */
@@ -44,618 +43,236 @@ class Account extends ComponentBase
     public function defineProperties()
     {
         return [
-            'redirect' => [
-                'title' => /*Redirect to*/'rainlab.user::lang.account.redirect_to',
-                'description' => /*Page name to redirect to after update, sign in or registration.*/'rainlab.user::lang.account.redirect_to_desc',
-                'type' => 'dropdown',
-                'default' => ''
-            ],
-            'paramCode' => [
-                'title' => /*Activation Code Param*/'rainlab.user::lang.account.code_param',
-                'description' => /*The page URL parameter used for the registration activation code*/ 'rainlab.user::lang.account.code_param_desc',
-                'type' => 'string',
-                'default' => 'code'
-            ],
-            'activationPage' => [
-                'title' => /* Activation Page */'rainlab.user::lang.account.activation_page',
-                'description' => /* Select a page to use for activating the user account */'rainlab.user::lang.account.activation_page_comment',
-                'type' => 'dropdown',
-                'default' => ''
-            ],
-            'forceSecure' => [
-                'title' => /*Force secure protocol*/'rainlab.user::lang.account.force_secure',
-                'description' => /*Always redirect the URL with the HTTPS schema.*/'rainlab.user::lang.account.force_secure_desc',
+            'isDefault' => [
+                'title' => 'Default View',
                 'type' => 'checkbox',
-                'default' => 0
-            ],
-            'requirePassword' => [
-                'title' => /*Confirm password on update*/'rainlab.user::lang.account.update_requires_password',
-                'description' => /*Require the current password of the user when changing their profile.*/'rainlab.user::lang.account.update_requires_password_comment',
-                'type' => 'checkbox',
-                'default' => 0
+                'description' => 'Used as default entry point when confirming an email address.',
+                'showExternalParam' => false
             ],
         ];
     }
 
     /**
-     * getRedirectOptions
-     */
-    public function getRedirectOptions()
-    {
-        return [
-            '' => '- refresh page -',
-            '0' => '- no redirect -'
-        ] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
-    }
-
-    /**
-     * getActivationPageOptions
-     */
-    public function getActivationPageOptions()
-    {
-        return [
-            '' => '- current page -',
-        ] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
-    }
-
-    /**
-     * Executed when this component is initialized
-     */
-    public function prepareVars()
-    {
-        $this->page['user'] = $this->user();
-        $this->page['canRegister'] = $this->canRegister();
-        $this->page['loginAttribute'] = $this->loginAttribute();
-        $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
-        $this->page['updateRequiresPassword'] = $this->updateRequiresPassword();
-        $this->page['rememberLoginMode'] = $this->rememberLoginMode();
-    }
-
-    /**
-     * Executed when this component is bound to a page or layout.
+     * onRun
      */
     public function onRun()
     {
-        // Redirect to HTTPS checker
-        if ($redirect = $this->redirectForceSecure()) {
-            return $redirect;
-        }
-
-        // Activation code supplied
-        if ($code = $this->activationCode()) {
-            $this->onActivate($code);
-        }
-
-        $this->prepareVars();
-    }
-
-    //
-    // Properties
-    //
-
-    /**
-     * Returns the logged in user, if available
-     */
-    public function user()
-    {
-        if (!Auth::check()) {
-            return null;
-        }
-
-        return Auth::getUser();
-    }
-
-    /**
-     * Flag for allowing registration, pulled from UserSettings
-     */
-    public function canRegister()
-    {
-        return UserSettings::get('allow_registration', true);
-    }
-
-    /**
-     * Returns the login model attribute.
-     */
-    public function loginAttribute()
-    {
-        return UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
-    }
-
-    /**
-     * Returns the login label as a word.
-     */
-    public function loginAttributeLabel()
-    {
-        return Lang::get($this->loginAttribute() == UserSettings::LOGIN_EMAIL
-            ? /*Email*/'rainlab.user::lang.login.attribute_email'
-            : /*Username*/'rainlab.user::lang.login.attribute_username'
-        );
-    }
-
-    /**
-     * updateRequiresPassword returns the update requires password setting
-     */
-    public function updateRequiresPassword()
-    {
-        return $this->property('requirePassword', false);
-    }
-
-    /**
-     * rememberLoginMode returns the login remember mode.
-     */
-    public function rememberLoginMode()
-    {
-        return UserSettings::get('remember_login', UserSettings::REMEMBER_ALWAYS);
-    }
-
-    /**
-     * useRememberLogin returns true if persistent authentication should be used.
-     */
-    protected function useRememberLogin(): bool
-    {
-        switch ($this->rememberLoginMode()) {
-            case UserSettings::REMEMBER_ALWAYS:
-                return true;
-
-            case UserSettings::REMEMBER_NEVER:
-                return false;
-
-            case UserSettings::REMEMBER_ASK:
-                return (bool) post('remember', false);
-        }
-    }
-
-    /**
-     * activationCode looks for the activation code from the URL parameter. If nothing
-     * is found, the GET parameter 'activate' is used instead.
-     * @return string
-     */
-    public function activationCode()
-    {
-        $routeParameter = $this->property('paramCode');
-
-        if ($code = $this->param($routeParameter)) {
-            return $code;
-        }
-
-        return get('activate');
-    }
-
-    //
-    // AJAX
-    //
-
-    /**
-     * onSignin signs in the user
-     */
-    public function onSignin()
-    {
-        try {
-            // Validate input
-            $data = (array) post();
-            $rules = [];
-
-            $rules['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
-                ? 'required|between:2,255'
-                : 'required|email|between:6,255';
-
-            $rules['password'] = 'required|between:' . UserModel::getMinPasswordLength() . ',255';
-
-            if (!array_key_exists('login', $data)) {
-                $data['login'] = post('username', post('email'));
-            }
-
-            $data['login'] = trim($data['login']);
-
-            $validation = Validator::make(
-                $data,
-                $rules,
-                $this->getValidatorMessages(),
-                $this->getCustomAttributes()
-            );
-
-            if ($validation->fails()) {
-                throw new ValidationException($validation);
-            }
-
-            // Authenticate user
-            $credentials = [
-                'login' => array_get($data, 'login'),
-                'password' => array_get($data, 'password')
-            ];
-
-            Event::fire('rainlab.user.beforeAuthenticate', [$this, $credentials]);
-
-            $user = Auth::authenticate($credentials, $this->useRememberLogin());
-            if ($user->is_banned) {
-                Auth::logout();
-                throw new AuthException(__("Sorry, this user is currently not activated. Please contact us for further assistance."));
-            }
-
-            // Record IP address
-            if ($ipAddress = Request::ip()) {
-                $user->touchIpAddress($ipAddress);
-            }
-
-            // Redirect
-            if ($redirect = $this->makeRedirection(true)) {
-                return $redirect;
-            }
-        }
-        catch (Exception $ex) {
-            $this->throwOrFlashError($ex);
-        }
-    }
-
-    /**
-     * onRegister registers the user
-     */
-    public function onRegister()
-    {
-        try {
-            if (!$this->canRegister()) {
-                throw new ApplicationException(Lang::get(/*Registrations are currently disabled.*/'rainlab.user::lang.account.registration_disabled'));
-            }
-
-            if ($this->isRegisterThrottled()) {
-                throw new ApplicationException(Lang::get(/*Registration is throttled. Please try again later.*/'rainlab.user::lang.account.registration_throttled'));
-            }
-
-            // Validate input
-            $data = (array) post();
-
-            if (!array_key_exists('password_confirmation', $data)) {
-                $data['password_confirmation'] = post('password');
-            }
-
-            $rules = (new UserModel)->rules;
-
-            if ($this->loginAttribute() !== UserSettings::LOGIN_USERNAME) {
-                unset($rules['username']);
-            }
-
-            $validation = Validator::make(
-                $data,
-                $rules,
-                $this->getValidatorMessages(),
-                $this->getCustomAttributes()
-            );
-
-            if ($validation->fails()) {
-                throw new ValidationException($validation);
-            }
-
-            // Record IP address
-            if ($ipAddress = Request::ip()) {
-                $data['created_ip_address'] = $data['last_ip_address'] = $ipAddress;
-            }
-
-            // Register user
-            Event::fire('rainlab.user.beforeRegister', [&$data]);
-
-            $requireActivation = UserSettings::get('require_activation', true);
-            $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
-            $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
-            $adminActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_ADMIN;
-            $user = Auth::register($data, $automaticActivation);
-
-            Event::fire('rainlab.user.register', [$user, $data]);
-
-            // Activation is by the user, send the email
-            if ($userActivation) {
-                $this->sendActivationEmail($user);
-
-                Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'rainlab.user::lang.account.activation_email_sent'));
-            }
-
-            $intended = false;
-
-            // Activation is by the admin, show message
-            // For automatic email on account activation RainLab.Notify plugin is needed
-            if ($adminActivation) {
-                Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active and must be approved by an administrator.*/'rainlab.user::lang.account.activation_by_admin'));
-            }
-
-            // Automatically activated or not required, log the user in
-            if ($automaticActivation || !$requireActivation) {
-                Auth::login($user, $this->useRememberLogin());
-                $intended = true;
-            }
-
-            // Redirect to the intended page after successful sign in
-            if ($redirect = $this->makeRedirection($intended)) {
-                return $redirect;
-            }
-        }
-        catch (Exception $ex) {
-            $this->throwOrFlashError($ex);
-        }
-    }
-
-    /**
-     * onActivate activates the user
-     * @param  string $code Activation code
-     */
-    public function onActivate($code = null)
-    {
-        try {
-            $code = post('code', $code);
-
-            $errorFields = ['code' => Lang::get(/*Invalid activation code supplied.*/'rainlab.user::lang.account.invalid_activation_code')];
-
-            // Break up the code parts
-            $parts = explode('!', $code);
-            if (count($parts) != 2) {
-                throw new ValidationException($errorFields);
-            }
-
-            list($userId, $code) = $parts;
-
-            if (!strlen(trim($userId)) || !strlen(trim($code))) {
-                throw new ValidationException($errorFields);
-            }
-
-            if (!$user = Auth::findUserById($userId)) {
-                throw new ValidationException($errorFields);
-            }
-
-            if (!$user->attemptActivation($code)) {
-                throw new ValidationException($errorFields);
-            }
-
-            Flash::success(Lang::get(/*Successfully activated your account.*/'rainlab.user::lang.account.success_activation'));
-
-            // Sign in the user
-            Auth::login($user, $this->useRememberLogin());
-        }
-        catch (Exception $ex) {
-            $this->throwOrFlashError($ex);
-        }
-    }
-
-    /**
-     * Update the user
-     */
-    public function onUpdate()
-    {
-        if (!$user = $this->user()) {
-            return;
-        }
-
-        $data = (array) post();
-
-        if ($this->updateRequiresPassword()) {
-            if (!$user->checkHashValue('password', $data['password_current'])) {
-                throw new ValidationException(['password_current' => Lang::get('rainlab.user::lang.account.invalid_current_pass')]);
-            }
-        }
-
-        if (Input::hasFile('avatar')) {
-            $user->avatar = Input::file('avatar');
-        }
-
-        $user->fill($data);
-        $user->save();
-
-        // Password has changed, reauthenticate the user
-        if (array_key_exists('password', $data) && strlen($data['password'])) {
-            Auth::login($user->reload(), $this->useRememberLogin());
-        }
-
-        // Update Event to hook into the plugins function
-        Event::fire('rainlab.user.update', [$user, $data]);
-
-        Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'rainlab.user::lang.account.success_saved')));
-
-        // Redirect
-        if ($redirect = $this->makeRedirection()) {
-            return $redirect;
-        }
-
-        $this->prepareVars();
-    }
-
-    /**
-     * Deactivate user
-     */
-    public function onDeactivate()
-    {
-        if (!$user = $this->user()) {
-            return;
-        }
-
-        if (!$user->checkHashValue('password', post('password'))) {
-            throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_deactivation_pass')]);
-        }
-
-        Auth::logout();
-        $user->delete();
-
-        Flash::success(post('flash', Lang::get(/*Successfully deactivated your account. Sorry to see you go!*/'rainlab.user::lang.account.success_deactivation')));
-
-        // Redirect
-        if ($redirect = $this->makeRedirection()) {
+        if ($redirect = $this->checkVerifyEmailRedirect()) {
             return $redirect;
         }
     }
 
     /**
-     * Trigger a subsequent activation email
+     * onUpdateProfile information
      */
-    public function onSendActivationEmail()
+    public function onUpdateProfile()
     {
-        try {
-            if (!$user = $this->user()) {
-                throw new ApplicationException(Lang::get(/*You must be logged in first!*/'rainlab.user::lang.account.login_first'));
-            }
-
-            if ($user->is_activated) {
-                throw new ApplicationException(Lang::get(/*Your account is already activated!*/'rainlab.user::lang.account.already_active'));
-            }
-
-            Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'rainlab.user::lang.account.activation_email_sent'));
-
-            $this->sendActivationEmail($user);
-        }
-        catch (Exception $ex) {
-            $this->throwOrFlashError($ex);
+        $customer = $this->user();
+        if (!$customer) {
+            throw new ForbiddenException;
         }
 
-        // Redirect
-        if ($redirect = $this->makeRedirection()) {
+        // Password update requires old password, use RainLab\User\Components\ResetPassword instead
+        $data = array_except((array) post(), ['password']);
+
+        if ($avatarFile = files('avatar')) {
+            $customer->avatar = $avatarFile;
+        }
+
+        $customer->fill($data);
+        $customer->save();
+
+        if ($event = $this->fireSystemEvent('user.profile.update', [$customer])) {
+            return $event;
+        }
+
+        if ($flash = Cms::flashFromPost(__("Your profile has been updated."))) {
+            Flash::success($flash);
+        }
+
+        if ($redirect = Cms::redirectFromPost()) {
             return $redirect;
         }
     }
 
-    //
-    // Helpers
-    //
-
     /**
-     * Returns a link used to activate the user account.
-     * @return string
+     * onVerifyEmail
      */
-    protected function makeActivationUrl($code)
+    public function onVerifyEmail()
     {
-        $params = [
-            $this->property('paramCode') => $code
-        ];
-
-        if ($pageName = $this->property('activationPage')) {
-            $url = $this->pageUrl($pageName, $params);
-        }
-        else {
-            $url = $this->currentPageUrl($params);
+        $customer = $this->user();
+        if (!$customer) {
+            throw new ForbiddenException;
         }
 
-        if (strpos($url, $code) === false) {
-            $url .= '?activate=' . $code;
+        $limiter = $this->makeVerifyRateLimiter();
+
+        if ($limiter->tooManyAttempts(1)) {
+            $seconds = $limiter->availableIn();
+
+            throw new ApplicationException(__("Too many verification attempts. Please try again in :seconds seconds.", [
+                'seconds' => $seconds,
+                'minutes' => ceil($seconds / 60),
+            ]));
         }
 
-        return $url;
+        $limiter->increment();
+
+        $customer->sendEmailVerificationNotification();
+
+        if ($flash = Cms::flashFromPost(__("Please check your email for instructions."))) {
+            Flash::success($flash);
+        }
+
+        $this->page['showLinkSent'] = true;
     }
 
     /**
-     * Sends the activation email to a user
-     * @param  User $user
-     * @return void
+     * onEnableTwoFactor
      */
-    protected function sendActivationEmail($user)
+    public function onEnableTwoFactor()
     {
-        $code = implode('!', [$user->id, $user->getActivationCode()]);
+        if ($result = $this->checkConfirmedPassword()) {
+            return $result;
+        }
 
-        $link = $this->makeActivationUrl($code);
+        $this->actionEnableTwoFactor();
 
-        $data = [
-            'name' => $user->name,
-            'link' => $link,
-            'code' => $code
-        ];
-
-        Mail::send('rainlab.user::mail.activate', $data, function($message) use ($user) {
-            $message->to($user->email, $user->name);
-        });
+        $this->page['showConfirmation'] = true;
     }
 
     /**
-     * Redirect to the intended page after successful update, sign in or registration.
-     * The URL can come from the "redirect" property or the "redirect" postback value.
-     * @return mixed
+     * onConfirmTwoFactor
      */
-    protected function makeRedirection($intended = false)
+    public function onConfirmTwoFactor()
     {
-        $method = $intended ? 'intended' : 'to';
+        $this->actionConfirmTwoFactor();
 
-        $property = post('redirect', $this->property('redirect'));
+        $this->page['showRecoveryCodes'] = true;
+    }
 
-        // No redirect
-        if ($property === '0') {
+    /**
+     * onShowTwoFactorRecoveryCodes
+     */
+    public function onShowTwoFactorRecoveryCodes()
+    {
+        if ($result = $this->checkConfirmedPassword()) {
+            return $result;
+        }
+
+        $this->page['showRecoveryCodes'] = true;
+    }
+
+    /**
+     * onRegenerateTwoFactorRecoveryCodes
+     */
+    public function onRegenerateTwoFactorRecoveryCodes()
+    {
+        $this->actionRegenerateTwoFactorRecoveryCodes();
+
+        $this->page['showRecoveryCodes'] = true;
+    }
+
+    /**
+     * onDisableTwoFactor
+     */
+    public function onDisableTwoFactor()
+    {
+        if ($result = $this->checkConfirmedPassword()) {
+            return $result;
+        }
+
+        $this->actionDisableTwoFactor();
+    }
+
+    /**
+     * onDeleteOtherSessions from storage.
+     */
+    protected function onDeleteOtherSessions()
+    {
+        $this->actionDeleteOtherSessions();
+
+        if ($flash = Cms::flashFromPost(__("Your other browser sessions have been logged out."))) {
+            Flash::success($flash);
+        }
+
+        if ($redirect = Cms::redirectFromPost()) {
+            return $redirect;
+        }
+    }
+
+    /**
+     * onDeleteCustomer
+     */
+    protected function onDeleteCustomer()
+    {
+        $this->actionDeleteCustomer();
+
+        if ($redirect = Cms::redirectFromPost()) {
+            return $redirect;
+        }
+    }
+
+    /**
+     * checkVerifyEmailRedirect
+     */
+    protected function checkVerifyEmailRedirect()
+    {
+        if (!get('verify') || !get('id') || !Request::hasValidSignature()) {
             return;
         }
 
-        // Refresh page
-        if ($property === '') {
-            return Redirect::refresh();
-        }
-
-        $redirectUrl = $this->pageUrl($property) ?: $property;
-
-        if ($redirectUrl) {
-            return Redirect::$method($redirectUrl);
-        }
-    }
-
-    /**
-     * Checks if the force secure property is enabled and if so
-     * returns a redirect object.
-     * @return mixed
-     */
-    protected function redirectForceSecure()
-    {
-        if (
-            Request::secure() ||
-            Request::ajax() ||
-            !$this->property('forceSecure')
-        ) {
+        $customer = $this->user();
+        if (!$customer) {
             return;
         }
 
-        return Redirect::secure(Request::path());
-    }
-
-    /**
-     * Returns true if user is throttled.
-     * @return bool
-     */
-    protected function isRegisterThrottled()
-    {
-        if (!UserSettings::get('use_register_throttle', false)) {
-            return false;
+        if (!$customer->hasVerifiedEmail()) {
+            $customer->markEmailAsVerified();
         }
 
-        return UserModel::isRegisterThrottled(Request::ip());
+        Flash::success(__("Thank you for verifying your email."));
+
+        return Redirect::to(Request::url(['verify', 'id', 'signature', 'expires']));
     }
 
     /**
-     * getValidatorMessages
+     * makeVerifyRateLimiter
      */
-    protected function getValidatorMessages(): array
+    protected function makeVerifyRateLimiter()
     {
-        return (array) (new UserModel)->customMessages;
+        return new \System\Classes\RateLimiter('verify:'.$this->user()->getKey());
     }
 
     /**
-     * getCustomAttributes
+     * user returns the logged in user
      */
-    protected function getCustomAttributes(): array
+    public function user(): ?User
     {
-        return [
-            'login' => $this->loginAttributeLabel(),
-            'password' => Lang::get('rainlab.user::lang.account.password'),
-            'email' => Lang::get('rainlab.user::lang.account.email'),
-            'username' => __("Username"),
-            'name' => Lang::get('rainlab.user::lang.account.full_name')
-        ];
+        return Auth::user();
     }
 
     /**
-     * throwOrFlashError is error logic used by older versions before postback
-     * handlers internally supported flash messages for safe exceptions.
+     * sessions returns browser sessions for the user
      */
-    protected function throwOrFlashError($ex)
+    public function sessions(): array
     {
-        // v3.4 handles postback flash logic internally and more accurately
-        // so just throw the exception when using v3.4 or above
-        if (version_compare(System::VERSION, '3.4', '>=')) {
-            throw $ex;
-        }
+        return $this->fetchSessions();
+    }
 
-        // AJAX request or ajaxHandler twig call
-        if (Request::ajax() || !post('_handler')) {
-            throw $ex;
-        }
+    /**
+     * twoFactorEnabled returns true if the user has two factor enabled
+     */
+    public function twoFactorEnabled(): bool
+    {
+        return $this->fetchTwoFactorEnabled();
+    }
 
-        // Assumed postback handler, exception ignored
-        Flash::error($ex->getMessage());
+    /**
+     * twoFactorRecoveryCodes returns an array of recovery codes, if available
+     */
+    public function twoFactorRecoveryCodes(): array
+    {
+        return $this->fetchTwoFactorRecoveryCodes();
     }
 }

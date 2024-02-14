@@ -14,7 +14,7 @@ use ValidationException;
  *
  * @see RainLab\User\Components\ResetPassword
  *
- * @package october\user
+ * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
  */
 trait ActionRecoverPassword
