@@ -65,6 +65,17 @@ class UserGroup extends Model
     protected static $guestGroupCache = null;
 
     /**
+     * delete the group
+     * @return bool
+     */
+    public function delete()
+    {
+        $this->users()->detach();
+
+        return parent::delete();
+    }
+
+    /**
      * getGuestGroup returns the guest user group.
      */
     public static function getGuestGroup(): ?static

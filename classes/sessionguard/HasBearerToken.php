@@ -12,9 +12,9 @@ use SystemException;
 use Exception;
 
 /**
- * HasJwtTokens
+ * HasBearerToken
  *
- * @package october\auth
+ * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
  */
 trait HasBearerToken

@@ -440,15 +440,13 @@ class User extends Model implements Authenticatable, CanResetPassword
     }
 
     //
-    // IP Recording and Throttle
+    // Last Seen
     //
 
     /**
-     * Records the last_ip_address to reflect the last known IP for this user.
-     * @param string|null $ipAddress
-     * @return void
+     * touchIpAddress records the last_ip_address to reflect the last known IP for this user.
      */
-    public function touchIpAddress($ipAddress)
+    public function touchIpAddress(?string $ipAddress)
     {
         $this
             ->newQuery()
@@ -458,35 +456,8 @@ class User extends Model implements Authenticatable, CanResetPassword
     }
 
     /**
-     * Returns true if IP address is throttled and cannot register
-     * again. Maximum 3 registrations every 60 minutes.
-     * @param string|null $ipAddress
-     * @return bool
-     */
-    public static function isRegisterThrottled($ipAddress)
-    {
-        if (!$ipAddress) {
-            return false;
-        }
-
-        $timeLimit = Carbon::now()->subMinutes(60);
-        $count = static::make()
-            ->where('created_ip_address', $ipAddress)
-            ->where('created_at', '>', $timeLimit)
-            ->count()
-        ;
-
-        return $count > 2;
-    }
-
-    //
-    // Last Seen
-    //
-
-    /**
-     * Checks if the user has been seen in the last 5 minutes, and if not,
+     * touchLastSeen checks if the user has been seen in the last 5 minutes, and if not,
      * updates the last_seen timestamp to reflect their online status.
-     * @return void
      */
     public function touchLastSeen()
     {
@@ -508,10 +479,9 @@ class User extends Model implements Authenticatable, CanResetPassword
     }
 
     /**
-     * Returns true if the user has been active within the last 5 minutes.
-     * @return bool
+     * isOnline returns true if the user has been active within the last 5 minutes.
      */
-    public function isOnline()
+    public function isOnline(): bool
     {
         if (!$this->last_seen) {
             return false;
@@ -521,7 +491,7 @@ class User extends Model implements Authenticatable, CanResetPassword
     }
 
     /**
-     * Returns the date this user was last seen.
+     * getLastSeen returns the date this user was last seen.
      * @deprecated use last_seen attribute
      * @return Carbon\Carbon
      */
@@ -535,10 +505,9 @@ class User extends Model implements Authenticatable, CanResetPassword
     //
 
     /**
-     * Returns the variables available when sending a user notification.
-     * @return array
+     * getNotificationVars returns the variables available when sending a user notification.
      */
-    public function getNotificationVars()
+    public function getNotificationVars(): array
     {
         $vars = [
             'name' => $this->name,
@@ -562,7 +531,6 @@ class User extends Model implements Authenticatable, CanResetPassword
     /**
      * sendInvitation sends an invitation to the user using template
      * "rainlab.user::mail.invite"
-     * @return void
      */
     protected function sendInvitation()
     {
@@ -571,7 +539,6 @@ class User extends Model implements Authenticatable, CanResetPassword
 
     /**
      * generatePassword assigns this user with a random password.
-     * @return void
      */
     protected function generatePassword()
     {
