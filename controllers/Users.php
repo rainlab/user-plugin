@@ -64,13 +64,6 @@ class Users extends Controller
         BackendMenu::setContext('RainLab.User', 'user', 'users');
     }
 
-    public function index()
-    {
-        $this->addJs('/plugins/rainlab/user/assets/js/bulk-actions.js');
-
-        $this->asExtension('ListController')->index();
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -131,7 +124,7 @@ class Users extends Controller
     public function formAfterCreate($model)
     {
         if (UserSetting::get('activate_mode') === UserSetting::ACTIVATE_AUTO) {
-            $model->attemptActivation($model->getActivationCode());
+            $model->markEmailAsVerified();
         }
     }
 
@@ -165,7 +158,7 @@ class Users extends Controller
     {
         $model = $this->formFindModelObject($recordId);
 
-        $model->attemptActivation($model->activation_code);
+        $model->markEmailAsVerified();
 
         Flash::success(__("User has been activated"));
 

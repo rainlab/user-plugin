@@ -31,7 +31,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * register
+     * register the service provider.
      */
     public function register()
     {
@@ -40,6 +40,13 @@ class Plugin extends PluginBase
         $this->registerAuthProvider();
         $this->registerCustomRedirector();
         $this->registerMailBlocker();
+    }
+
+    /**
+     * boot the module events.
+     */
+    public function boot()
+    {
     }
 
     /**
