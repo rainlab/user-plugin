@@ -3,6 +3,7 @@
 use Url;
 use Cms;
 use Mail;
+use Event;
 use Config;
 use Carbon\Carbon;
 
@@ -27,6 +28,8 @@ trait HasEmailVerification
         $this->forceFill([
             'activated_at' => $this->freshTimestamp()
         ]);
+
+        Event::fire('user.activate', [$this]);
 
         return $this->save();
     }

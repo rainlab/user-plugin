@@ -8,7 +8,7 @@ scopes:
         label: Group
         modelClass: RainLab\User\Models\UserGroup
         nameFrom: name
-        scope: filterByGroup
+        scope: applyGroups
 
     created_at:
         label: Registered

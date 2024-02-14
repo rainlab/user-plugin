@@ -26,6 +26,9 @@ This guide can be used to help migrate from RainLab.User v2 to v3. Some theme ch
 
 ...
 
+- User::findByEmail → Auth::retrieveByCredentials
+
+
 ### Events Updated
 
 ...

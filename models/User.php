@@ -3,10 +3,8 @@
 use Str;
 use Mail;
 use Event;
-use Config;
 use Model;
 use Carbon\Carbon;
-use RainLab\User\Models\Settings as UserSettings;
 use Illuminate\Validation\Rules\Password as PasswordRule;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
@@ -53,37 +51,46 @@ class User extends Model implements Authenticatable, CanResetPassword
     use \RainLab\User\Models\User\HasAuthenticatable;
     use \RainLab\User\Models\User\HasEmailVerification;
     use \RainLab\User\Models\User\HasModelAttributes;
+    use \RainLab\User\Models\User\HasModelScopes;
     use \October\Rain\Database\Traits\SoftDelete;
+    use \October\Rain\Database\Traits\Validation;
+    use \October\Rain\Database\Traits\Encryptable;
+    use \October\Rain\Database\Traits\Purgeable;
+    use \October\Rain\Database\Traits\Hashable;
 
     /**
-     * @var string The database table used by the model.
+     * @var string table associated with the model
      */
     protected $table = 'users';
 
     /**
-     * Validation rules
+     * @var array rules
      */
     public $rules = [
-        'email' => 'required|between:6,255|email|unique:users',
+        'first_name' => ['required', 'string', 'max:255'],
+        'last_name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'between:3,255', 'email', 'unique:users,email,NULL,id,is_guest,false'],
+        'password' => ['required:create', 'min:8'],
+        'password_confirmation' => ['required_with:password'],
         'avatar' => 'nullable|image|max:4000',
-        'username' => 'required|between:2,255|unique:users',
-        'password' => 'required:create|between:8,255|confirmed',
-        'password_confirmation' => 'required_with:password|between:8,255',
     ];
 
     /**
-     * @var array Relations
+     * @var array dates
      */
-    public $belongsToMany = [
-        'groups' => [UserGroup::class, 'table' => 'users_groups']
-    ];
-
-    public $attachOne = [
-        'avatar' => \System\Models\File::class
+    protected $dates = [
+        'last_seen',
+        'last_login',
+        'banned_at',
+        'deleted_at',
+        'created_at',
+        'updated_at',
+        'activated_at',
+        'two_factor_confirmed_at',
     ];
 
     /**
-     * @var array The attributes that are mass assignable.
+     * @var array fillable attributes
      */
     protected $fillable = [
         'first_name',
@@ -96,58 +103,70 @@ class User extends Model implements Authenticatable, CanResetPassword
     ];
 
     /**
-     * Reset guarded fields, because we use $fillable instead.
-     * @var array The attributes that aren't mass assignable.
+     * hidden attributes
      */
-    protected $guarded = ['*'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret'
+    ];
 
     /**
-     * Purge attributes from data set.
+     * @var array purgeable attribute names which should not be saved to the database.
      */
-    protected $purgeable = ['password_confirmation', 'send_invite'];
+    protected $purgeable = [
+        'password_confirmation',
+        'send_invite'
+    ];
 
     /**
-     * @var array dates
+     * @var array hashable list of attribute names which should be hashed using the Bcrypt hashing algorithm
      */
-    protected $dates = [
-        'last_seen',
-        'deleted_at',
-        'created_at',
-        'updated_at',
-        'activated_at',
-        'last_login'
+    protected $hashable = [
+        'password'
+    ];
+
+    /**
+     * @var array encryptable is a list of attribute names which should be encrypted
+     */
+    protected $encryptable = ['two_factor_secret', 'two_factor_recovery_codes'];
+
+    /**
+     * appends accessors to the model's array form.
+     */
+    protected $appends = [
+        'avatar_url'
+    ];
+
+    /**
+     * @var array belongsToMany
+     */
+    public $belongsToMany = [
+        'groups' => [
+            UserGroup::class,
+            'table' => 'users_groups'
+        ]
+    ];
+
+    /**
+     * @var array belongsTo
+     */
+    public $belongsTo = [
+        'primary_group' => UserGroup::class
+    ];
+
+    /**
+     * @var array attachOne
+     */
+    public $attachOne = [
+        'avatar' => \System\Models\File::class
     ];
 
     /**
      * @var string|null loginAttribute
      */
     public static $loginAttribute = null;
-
-    /**
-     * Sends the confirmation email to a user, after activating.
-     * @param  string $code
-     * @return bool
-     */
-    public function attemptActivation($code)
-    {
-        if ($this->trashed()) {
-            if ($code === $this->activation_code) {
-                $this->restore();
-            } else {
-                return false;
-            }
-        } else {
-            $result = parent::attemptActivation($code);
-
-            if ($result === false) {
-                return false;
-            }
-        }
-
-        Event::fire('rainlab.user.activate', [$this]);
-
-        return true;
-    }
 
     /**
      * Converts a guest user to a registered one and sends an invitation notification.
@@ -170,52 +189,6 @@ class User extends Model implements Authenticatable, CanResetPassword
         if ($sendNotification) {
             $this->sendInvitation();
         }
-    }
-
-    //
-    // Constructors
-    //
-
-    /**
-     * findByEmail looks up a user by their email address.
-     * @return self
-     */
-    public static function findByEmail($email)
-    {
-        if (!$email) {
-            return;
-        }
-
-        return self::where('email', $email)->first();
-    }
-
-    //
-    // Getters
-    //
-
-    /**
-     * clearPersistCode will forcibly sign the user out
-     */
-    public function clearPersistCode()
-    {
-        $this->persist_code = null;
-        $this->timestamps = false;
-        $this->save();
-    }
-
-    /**
-     * Gets a code for when the user is persisted to a cookie or session which identifies the user.
-     * @return string
-     */
-    public function getPersistCode()
-    {
-        $block = UserSettings::get('block_persistence', false);
-
-        if ($block || !$this->persist_code) {
-            return parent::getPersistCode();
-        }
-
-        return $this->persist_code;
     }
 
     /**
@@ -244,53 +217,37 @@ class User extends Model implements Authenticatable, CanResetPassword
         }
     }
 
-    /**
-     * Returns the name for the user's login.
-     * @return string
-     */
-    public function getLoginName()
-    {
-        if (static::$loginAttribute !== null) {
-            return static::$loginAttribute;
-        }
-
-        return static::$loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
-    }
-
-    /**
-     * Returns the minimum length for a new password from settings.
-     * @return int
-     */
-    public static function getMinPasswordLength()
-    {
-        return Config::get('rainlab.user::minPasswordLength', 8);
-    }
-
-    //
-    // Scopes
-    //
-
-    /**
-     * scopeIsActivated
-     */
-    public function scopeIsActivated($query)
-    {
-        return $query->whereNotNull('activated_at');
-    }
-
-    /**
-     * scopeFilterByGroup
-     */
-    public function scopeFilterByGroup($query, $filter)
-    {
-        return $query->whereHas('groups', function($group) use ($filter) {
-            $group->whereIn('id', $filter);
-        });
-    }
-
     //
     // Events
     //
+
+    /**
+     * smartDelete will only delete a user if the user.canDeleteUser event
+     * allows it to happen.
+     */
+    public function smartDelete()
+    {
+        /**
+         * @event user.canDeleteUser
+         * Triggered before a user is deleted. This event should return true if the
+         * user has dependencies and should be soft deleted to retain those relationships
+         * and allow the user to be restored. Otherwise, it will be deleted forever.
+         *
+         * Example usage:
+         *
+         *     Event::listen('user.canDeleteUser', function($user) {
+         *         if ($user->orders->count()) {
+         *             return true;
+         *         }
+         *     });
+         *
+         */
+        if (Event::fire('user.canDeleteUser', [$this], true) === false) {
+            return $this->delete();
+        }
+
+        return $this->forceDelete();
+    }
 
     /**
      * beforeValidate event
@@ -298,16 +255,21 @@ class User extends Model implements Authenticatable, CanResetPassword
      */
     public function beforeValidate()
     {
-        /*
-         * Guests are special
-         */
+        // Guests are special
+        if ($this->is_guest) {
+            $this->removeValidationRule('email', 'unique');
+        }
+
         if ($this->is_guest && !$this->password) {
             $this->generatePassword();
         }
 
-        /*
-         * When the username is not used, the email is substituted.
-         */
+        // Confirmation would be an empty string if provided by a form
+        if ($this->password && $this->password_confirmation === null) {
+            $this->password_confirmation = $this->password;
+        }
+
+        // When the username is not used, the email is substituted.
         if (
             (!$this->username) ||
             ($this->isDirty('email') && $this->getOriginal('email') == $this->username)
@@ -315,9 +277,7 @@ class User extends Model implements Authenticatable, CanResetPassword
             $this->username = $this->email;
         }
 
-        /*
-         * Apply rules Settings
-         */
+        // Apply rules Settings
         $minPasswordLength = Settings::get('min_password_length', static::getMinPasswordLength());
         $passwordRule = PasswordRule::min($minPasswordLength);
         if (Settings::get('require_mixed_case')) {
@@ -540,8 +500,8 @@ class User extends Model implements Authenticatable, CanResetPassword
     /**
      * generatePassword assigns this user with a random password.
      */
-    protected function generatePassword()
+    public function generatePassword()
     {
-        $this->password = $this->password_confirmation = Str::random(static::getMinPasswordLength());
+        $this->password = $this->password_confirmation = Str::random(12);
     }
 }

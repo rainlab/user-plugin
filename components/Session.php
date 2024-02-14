@@ -130,7 +130,7 @@ class Session extends ComponentBase
      */
     public function onLogout()
     {
-        $customer = Auth::user();
+        $user = Auth::user();
 
         Auth::logout();
 
@@ -138,25 +138,25 @@ class Session extends ComponentBase
 
         Request::session()->regenerateToken();
 
-        if ($customer) {
+        if ($user) {
             /**
              * @event user.session.logout
              * Provides custom logic for logging out a user.
              *
              * Example usage:
              *
-             *     Event::listen('user.session.logout', function ($customer) {
+             *     Event::listen('user.session.logout', function ($user) {
              *         // Fire logic
              *     });
              *
              * Or
              *
-             *     $component->bindEvent('session.logout', function ($customer) {
+             *     $component->bindEvent('session.logout', function ($user) {
              *         // Fire logic
              *     });
              *
              */
-            if ($event = $this->fireSystemEvent('user.session.logout', [$customer])) {
+            if ($event = $this->fireSystemEvent('user.session.logout', [$user])) {
                 return $event;
             }
         }
