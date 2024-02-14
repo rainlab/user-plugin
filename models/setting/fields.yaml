@@ -4,104 +4,91 @@
 
 tabs:
     fields:
-        # Throttle Sign In
         use_throttle:
             span: left
-            label: rainlab.user::lang.settings.use_throttle
-            comment: rainlab.user::lang.settings.use_throttle_comment
+            label: Throttle attempts
+            comment: Repeat failed sign in attempts will temporarily suspend the user.
             type: switch
-            tab: rainlab.user::lang.settings.signin_tab
+            tab: Sign in
 
-        # Prevent concurrent sessions
         block_persistence:
             span: right
-            label: rainlab.user::lang.settings.block_persistence
-            comment: rainlab.user::lang.settings.block_persistence_comment
+            label: Prevent concurrent sessions
+            comment: When enabled users cannot sign in to multiple devices at the same time.
             type: switch
-            tab: rainlab.user::lang.settings.signin_tab
+            tab: Sign in
 
-        # Login Attribute
         login_attribute:
             span: left
-            label: rainlab.user::lang.settings.login_attribute
-            commentAbove: rainlab.user::lang.settings.login_attribute_comment
+            label: Login attribute
+            commentAbove: Select what primary user detail should be used for signing in.
             type: radio
-            tab: rainlab.user::lang.settings.signin_tab
+            tab: Sign in
 
-        # Remeber Login Mode
         remember_login:
             span: right
-            label: rainlab.user::lang.settings.remember_login
-            commentAbove: rainlab.user::lang.settings.remember_login_comment
+            label: Remember login mode
+            commentAbove: Select if the user session should be persistent.
             type: radio
-            tab: rainlab.user::lang.settings.signin_tab
+            tab: Sign in
 
-        # Require Activation
         allow_registration:
             span: left
-            label: rainlab.user::lang.settings.allow_registration
-            comment: rainlab.user::lang.settings.allow_registration_comment
+            label: Allow user registration
+            comment: If this is disabled users can only be created by administrators.
             type: switch
-            tab: rainlab.user::lang.settings.registration_tab
+            tab: Registration
 
-        # Enable registration throttling
         use_register_throttle:
             span: right
-            label: rainlab.user::lang.settings.use_register_throttle
-            comment: rainlab.user::lang.settings.use_register_throttle_comment
+            label: Throttle registration
+            comment: Prevent multiple registrations from the same IP in short succession.
             type: switch
-            tab: rainlab.user::lang.settings.registration_tab
+            tab: Registration
 
-        # Require Activation
         require_activation:
             span: left
-            label: rainlab.user::lang.settings.require_activation
-            comment: rainlab.user::lang.settings.require_activation_comment
+            label: Sign in requires activation
+            comment: Users must have an activated account to sign in.
             type: switch
-            tab: rainlab.user::lang.settings.activation_tab
+            tab: Activation
 
-        # Activation Mode
         activate_mode:
             span: left
-            commentAbove: rainlab.user::lang.settings.activate_mode_comment
-            label: rainlab.user::lang.settings.activate_mode
+            label: Activation mode
+            commentAbove: Select how a user account should be activated.
             type: radio
-            tab: rainlab.user::lang.settings.activation_tab
+            tab: Activation
 
-        # # Min Password Length
-        # min_password_length:
-        #     span: left
-        #     label: rainlab.user::lang.settings.min_password_length
-        #     type: number
-        #     comment: rainlab.user::lang.settings.min_password_length_comment
-        #     tab: rainlab.user::lang.settings.password_policy_tab
+        min_password_length:
+            span: left
+            label: Min password length
+            type: number
+            comment: Password length required for users
+            tab: Password Policy
 
-        # # Require Mixed Case
-        # require_mixed_case:
-        #     span: left
-        #     label: rainlab.user::lang.settings.require_mixed_case
-        #     type: switch
-        #     comment: rainlab.user::lang.settings.require_mixed_case_comment
-        #     tab: rainlab.user::lang.settings.password_policy_tab
+        require_mixed_case:
+            span: left
+            label: Require mixed case
+            type: switch
+            comment: Require uppercase and lowercase letters
+            tab: Password Policy
 
-        # # Require Uncompromised
-        # require_uncompromised:
-        #     span: right
-        #     label: rainlab.user::lang.settings.require_uncompromised
-        #     type: switch
-        #     comment: rainlab.user::lang.settings.require_uncompromised_comment
-        #     tab: rainlab.user::lang.settings.password_policy_tab
+        require_uncompromised:
+            span: right
+            label: Require uncompromised
+            type: switch
+            comment: Require non-leaked password
+            tab: Password Policy
 
-        # # Require number
-        # require_number:
-        #     span: left
-        #     label: rainlab.user::lang.settings.require_number
-        #     type: switch
-        #     tab: rainlab.user::lang.settings.password_policy_tab
+        require_number:
+            span: left
+            label: Require number
+            type: switch
+            tab: Password Policy
 
-        # # Require symbol
-        # require_symbol:
-        #     span: right
-        #     label: rainlab.user::lang.settings.require_symbol
-        #     type: switch
-        #     tab: rainlab.user::lang.settings.password_policy_tab
+        require_symbol:
+            span: right
+            label: Require special character
+            type: switch
+            tab: Password Policy

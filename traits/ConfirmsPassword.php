@@ -1,4 +1,4 @@
-<?php namespace Rainlab\User\Traits;
+<?php namespace RainLab\User\Traits;
 
 use Auth;
 use Config;

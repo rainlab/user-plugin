@@ -131,20 +131,20 @@ class Plugin extends PluginBase
     {
         return [
             'rainlab.users.access_users' => [
-                'tab' => 'rainlab.user::lang.plugin.tab',
-                'label' => 'rainlab.user::lang.plugin.access_users'
+                'tab' => "Users",
+                'label' => "Manage Users"
             ],
             'rainlab.users.access_groups' => [
-                'tab' => 'rainlab.user::lang.plugin.tab',
-                'label' => 'rainlab.user::lang.plugin.access_groups'
+                'tab' => "Users",
+                'label' => "Manage User Groups"
             ],
             'rainlab.users.access_settings' => [
-                'tab' => 'rainlab.user::lang.plugin.tab',
-                'label' => 'rainlab.user::lang.plugin.access_settings'
+                'tab' => "Users",
+                'label' => "Manage User Settings"
             ],
             'rainlab.users.impersonate_user' => [
-                'tab' => 'rainlab.user::lang.plugin.tab',
-                'label' => 'rainlab.user::lang.plugin.impersonate_user'
+                'tab' => "Users",
+                'label' => "Impersonate Users"
             ],
         ];
     }

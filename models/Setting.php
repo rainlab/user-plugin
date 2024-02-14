@@ -29,6 +29,9 @@ class Setting extends Model
     const REMEMBER_NEVER = 'never';
     const REMEMBER_ASK = 'ask';
 
+    /**
+     * initSettingsData
+     */
     public function initSettingsData()
     {
         $this->require_activation = Config::get('rainlab.user::requireActivation', true);
@@ -41,24 +44,30 @@ class Setting extends Model
         $this->use_register_throttle = Config::get('rainlab.user::useRegisterThrottle', true);
     }
 
+    /**
+     * getActivateModeOptions
+     */
     public function getActivateModeOptions()
     {
         return [
             self::ACTIVATE_AUTO => [
-                'rainlab.user::lang.settings.activate_mode_auto',
-                'rainlab.user::lang.settings.activate_mode_auto_comment'
+                "Automatic",
+                "Activated automatically upon registration."
             ],
             self::ACTIVATE_USER => [
-                'rainlab.user::lang.settings.activate_mode_user',
-                'rainlab.user::lang.settings.activate_mode_user_comment'
+                "User",
+                "The user activates their own account using mail."
             ],
             self::ACTIVATE_ADMIN => [
-                'rainlab.user::lang.settings.activate_mode_admin',
-                'rainlab.user::lang.settings.activate_mode_admin_comment'
+                "Administrator",
+                "Only an Administrator can activate a user."
             ]
         ];
     }
 
+    /**
+     * getActivateModeAttribute
+     */
     public function getActivateModeAttribute($value)
     {
         if (!$value) {
@@ -68,29 +77,38 @@ class Setting extends Model
         return $value;
     }
 
+    /**
+     * getLoginAttributeOptions
+     */
     public function getLoginAttributeOptions()
     {
         return [
-            self::LOGIN_EMAIL => ['rainlab.user::lang.login.attribute_email'],
-            self::LOGIN_USERNAME => ['rainlab.user::lang.login.attribute_username']
+            self::LOGIN_EMAIL => ["Email"],
+            self::LOGIN_USERNAME => ["Username"]
         ];
     }
 
+    /**
+     * getRememberLoginOptions
+     */
     public function getRememberLoginOptions()
     {
         return [
             self::REMEMBER_ALWAYS => [
-                'rainlab.user::lang.settings.remember_always',
+                "Always",
             ],
             self::REMEMBER_NEVER => [
-                'rainlab.user::lang.settings.remember_never',
+                "Never",
             ],
             self::REMEMBER_ASK => [
-                'rainlab.user::lang.settings.remember_ask',
+                "Ask the user on login",
             ]
         ];
     }
 
+    /**
+     * getRememberLoginAttribute
+     */
     public function getRememberLoginAttribute($value)
     {
         if (!$value) {

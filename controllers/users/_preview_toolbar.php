@@ -1,20 +1,20 @@
 <a
     href="<?= Backend::url('rainlab/user/users') ?>"
     class="btn btn-default oc-icon-chevron-left">
-    <?= e(trans('rainlab.user::lang.groups.return_to_users')) ?>
+    <?= __("Back to users list") ?>
 </a>
 <a
     href="<?= Backend::url('rainlab/user/users/update/'.$formModel->id) ?>"
     class="btn btn-primary oc-icon-pencil">
-    <?= e(trans('rainlab.user::lang.users.update_details')) ?>
+    <?= __("Update details") ?>
 </a>
 <?php if ($this->user->hasAccess('rainlab.users.impersonate_user')): ?>
     <a
         href="javascript:;"
         data-request="onImpersonateUser"
-        data-request-confirm="<?= e(trans('rainlab.user::lang.users.impersonate_confirm')) ?>"
+        data-request-confirm="<?= __("Impersonate this user? You can revert to your original state by logging out.") ?>"
         class="btn btn-default oc-icon-user-secret">
-        <?= e(trans('rainlab.user::lang.users.impersonate_user')) ?>
+        <?= __("Impersonate user") ?>
     </a>
 <?php endif ?>
 

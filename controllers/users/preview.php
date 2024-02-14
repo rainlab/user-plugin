@@ -55,7 +55,7 @@
 
     <div class="padded-container container-flush">
         <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-        <p><a href="<?= Backend::url('rainlab/user/users') ?>" class="btn btn-default"><?= e(trans('rainlab.user::lang.users.return_to_list')) ?></a></p>
+        <p><a href="<?= Backend::url('rainlab/user/users') ?>" class="btn btn-default"><?= __("Return to users list") ?></a></p>
     </div>
 
 <?php endif ?>

@@ -2,13 +2,13 @@
     <div class="callout callout-info">
         <div class="header">
             <i class="icon-info"></i>
-            <h3><?= e(trans('rainlab.user::lang.users.guest_hint_title')) ?></h3>
+            <h3><?= __("This is a guest user") ?></h3>
             <p>
-                <?= e(trans('rainlab.user::lang.users.guest_hint_desc')) ?>
+                <?= __("This user is stored for reference purposes only and needs to register before signing in.") ?>
                 <a href="javascript:;"
                     data-control="popup"
                     data-handler="onLoadConvertGuestForm"
-                ><?= e(trans('rainlab.user::lang.users.convert_guest_manually')) ?></a>.
+                ><?= __("Convert to registered user") ?></a>.
             </p>
         </div>
     </div>

@@ -2,14 +2,14 @@
     <div class="callout callout-warning">
         <div class="header">
             <i class="icon-warning"></i>
-            <h3><?= e(trans('rainlab.user::lang.users.activate_warning_title')) ?></h3>
+            <h3><?= __("User not activated!") ?></h3>
             <p>
-                <?= e(trans('rainlab.user::lang.users.activate_warning_desc')) ?>
+                <?= __("This user has not been activated and may be unable to sign in.") ?>
                 <a href="javascript:;"
                     data-request="onActivate"
-                    data-request-confirm="<?= e(trans('rainlab.user::lang.users.activate_confirm')) ?>"
+                    data-request-confirm="<?= __("Do you really want to activate this user?") ?>"
                     data-stripe-load-indicator
-                ><?= e(trans('rainlab.user::lang.users.activate_manually')) ?></a>.
+                ><?= __("Activate this user manually") ?></a>.
             </p>
         </div>
     </div>

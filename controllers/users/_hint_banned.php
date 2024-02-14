@@ -2,14 +2,14 @@
     <div class="callout callout-danger">
         <div class="header">
             <i class="icon-ban"></i>
-            <h3><?= e(trans('rainlab.user::lang.users.banned_hint_title')) ?></h3>
+            <h3><?= __("User has been banned") ?></h3>
             <p>
-                <?= e(trans('rainlab.user::lang.users.banned_hint_desc')) ?>
+                <?= __("This user has been banned by an administrator and will be unable to sign in.") ?>
                 <a href="javascript:;"
                     data-request="onUnban"
-                    data-request-confirm="<?= e(trans('rainlab.user::lang.users.unban_confirm')) ?>"
+                    data-request-confirm="<?= __("Do you really want to unban this user?") ?>"
                     data-stripe-load-indicator
-                ><?= e(trans('rainlab.user::lang.users.unban_user')) ?></a>.
+                ><?= __("Unban this user") ?></a>.
             </p>
         </div>
     </div>

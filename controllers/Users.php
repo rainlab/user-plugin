@@ -167,7 +167,7 @@ class Users extends Controller
 
         $model->attemptActivation($model->activation_code);
 
-        Flash::success(Lang::get('rainlab.user::lang.users.activated_success'));
+        Flash::success(__("User has been activated"));
 
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
@@ -183,7 +183,7 @@ class Users extends Controller
 
         $model->unban();
 
-        Flash::success(Lang::get('rainlab.user::lang.users.unbanned_success'));
+        Flash::success(__("User has been unbanned"));
 
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
@@ -223,7 +223,7 @@ class Users extends Controller
             $model->groups()->add($group);
         }
 
-        Flash::success(Lang::get('rainlab.user::lang.users.convert_guest_success'));
+        Flash::success(__("User has been converted to a registered account"));
 
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
@@ -243,7 +243,7 @@ class Users extends Controller
 
         Auth::impersonate($model);
 
-        Flash::success(Lang::get('rainlab.user::lang.users.impersonate_success'));
+        Flash::success(__("You are now impersonating this user"));
     }
 
     /**
@@ -255,7 +255,7 @@ class Users extends Controller
 
         $model->unsuspend();
 
-        Flash::success(Lang::get('rainlab.user::lang.users.unsuspend_success'));
+        Flash::success(__("User has been unsuspended."));
 
         return Redirect::refresh();
     }

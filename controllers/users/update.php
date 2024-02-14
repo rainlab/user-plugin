@@ -44,7 +44,7 @@
                     class="oc-icon-trash-o btn-icon danger pull-right"
                     data-request="onDelete"
                     data-load-indicator="<?= e(trans('backend::lang.form.deleting_name', ['name'=>$formRecordName])) ?>"
-                    data-request-confirm="<?= e(trans('rainlab.user::lang.users.delete_confirm')) ?>">
+                    data-request-confirm="<?= __("Do you really want to delete this user?") ?>">
                 </button>
             </div>
         </div>
@@ -67,6 +67,6 @@
     </div>
     <div class="padded-container">
         <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
-        <p><a href="<?= Backend::url('rainlab/user/users') ?>" class="btn btn-default"><?= e(trans('rainlab.user::lang.users.return_to_list')) ?></a></p>
+        <p><a href="<?= Backend::url('rainlab/user/users') ?>" class="btn btn-default"><?= __("Return to users list") ?></a></p>
     </div>
 <?php endif ?>
