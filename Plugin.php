@@ -6,7 +6,6 @@ use Config;
 use Backend;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
-use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Classes\UserRedirector;
 use RainLab\User\Models\MailBlocker;
 use RainLab\User\Classes\UserProvider;
@@ -40,11 +39,7 @@ class Plugin extends PluginBase
         $this->registerSingletons();
         $this->registerAuthProvider();
         $this->registerCustomRedirector();
-
-        // Apply user-based mail blocking
-        Event::listen('mailer.prepareSend', function ($mailer, $view, $message) {
-            return MailBlocker::filterMessage($view, $message);
-        });
+        $this->registerMailBlocker();
     }
 
     /**
@@ -102,6 +97,16 @@ class Plugin extends PluginBase
             }
 
             return $redirector;
+        });
+    }
+
+    /**
+     * registerMailBlocker applies user-based mail blocking
+     */
+    protected function registerMailBlocker()
+    {
+        Event::listen('mailer.prepareSend', function ($mailer, $view, $message) {
+            return MailBlocker::filterMessage($view, $message);
         });
     }
 
@@ -165,12 +170,12 @@ class Plugin extends PluginBase
                         'url' => Backend::url('rainlab/user/users'),
                         'permissions' => ['rainlab.users.access_users']
                     ],
-                    'usergroups' => [
-                        'label' => "Groups",
-                        'icon' => 'icon-users',
-                        'url' => Backend::url('rainlab/user/usergroups'),
-                        'permissions' => ['rainlab.users.access_groups']
-                    ]
+                    // 'timelines' => [
+                    //     'label' => "Timeline",
+                    //     'icon' => 'icon-bars',
+                    //     'url' => Backend::url('user/timelines'),
+                    //     'permissions' => []
+                    // ]
                 ]
             ]
         ];
@@ -200,12 +205,10 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'rainlab.user::mail.activate',
-            'rainlab.user::mail.welcome',
-            'rainlab.user::mail.restore',
-            'rainlab.user::mail.new_user',
-            'rainlab.user::mail.reactivate',
-            'rainlab.user::mail.invite',
+            'user:invite_email' => 'rainlab.user::mail.invite_email',
+            'user:recover_password' => 'rainlab.user::mail.recover_password',
+            'user:verify_email' => 'rainlab.user::mail.verify_email',
+            'user:new_user' => 'rainlab.user::mail.new_user',
         ];
     }
 }

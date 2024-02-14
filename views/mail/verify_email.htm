@@ -1,0 +1,16 @@
+subject = "Confirm your email address"
+description = "Verification for a user email address"
+==
+# Hello {{ first_name }}
+
+Please click the button below to verify your email address. If you did not create this account, no further action is required.
+
+{% partial 'button' url=url body %}
+Confirm Email Address
+{% endpartial %}
+
+{% partial 'subcopy' body %}
+If you're having trouble clicking the button, copy the URL below into your browser.
+
+<span class="break-all">{{ url|raw }}</span>
+{% endpartial %}
