@@ -2,11 +2,14 @@
 
 use Url;
 use Cms;
+use Log;
 use Mail;
 use Event;
 use Config;
+use System\Models\MailTemplate;
 use RainLab\User\Models\Setting as UserSetting;
 use Carbon\Carbon;
+use Exception;
 
 /**
  * HasEmailVerification contract
@@ -38,11 +41,11 @@ trait HasEmailVerification
     }
 
     /**
-     * sendEmailConfirmationNotification sends a mail message when the user is verified
+     * getEmailForVerification
      */
-    public function sendEmailConfirmationNotification()
+    public function getEmailForVerification(): string
     {
-        // @todo
+        return $this->email;
     }
 
     /**
@@ -59,9 +62,7 @@ trait HasEmailVerification
 
         $url = Url::toSigned($url, $expiration);
 
-        $data = [
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
+        $data = $this->getNotificationVars() + [
             'url' => $url
         ];
 
@@ -71,10 +72,41 @@ trait HasEmailVerification
     }
 
     /**
-     * getEmailForVerification
+     * sendEmailConfirmationNotification sends a mail message when the user is verified
      */
-    public function getEmailForVerification(): string
+    public function sendEmailConfirmationNotification()
     {
-        return $this->email;
+        $setting = UserSetting::instance();
+        $notificationVars = $this->getNotificationVars();
+
+        // Notify user
+        if ($setting->notify_user) {
+            if (MailTemplate::canSendTemplate($setting->user_message_template)) {
+                try {
+                    Mail::send($setting->user_message_template, $notificationVars, function($message) {
+                        $message->to($this->email, $this->full_name);
+                    });
+                }
+                catch (Exception $ex) {
+                    Log::error($ex);
+                }
+            }
+        }
+
+        // Notify admins
+        if ($setting->notify_system && $setting->admin_group) {
+            if (MailTemplate::canSendTemplate($setting->system_message_template)) {
+                try {
+                    Mail::sendTo($setting->system_message_template, $notificationVars, function($message) use ($setting) {
+                        foreach ($setting->admin_group->users as $admin) {
+                            $message->to($admin->email, $admin->full_name);
+                        }
+                    });
+                }
+                catch (Exception $ex) {
+                    Log::error($ex);
+                }
+            }
+        }
     }
 }

@@ -48,7 +48,7 @@ trait HasBearerToken
         // Prepare payload
         $persistCode = $user->remember_token ?: $user->getPersistCode();
         $data = [
-            'login' => $user->getLogin(),
+            'login' => $user->login,
             'hash' => Hash::make($persistCode)
         ];
 

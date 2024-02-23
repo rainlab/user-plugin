@@ -8,15 +8,15 @@ tabs:
         # Sign In tab
 
         remember_login:
-            span: auto
             label: Remember Login Mode
+            span: auto
             commentAbove: Select if the user session should be persistent.
             type: radio
             tab: Sign In
 
         login_attribute:
-            span: auto
             label: Login Attribute
+            span: auto
             commentAbove: Select what primary user detail should be used for signing in.
             type: radio
             tab: Sign In
@@ -26,22 +26,22 @@ tabs:
             tab: Sign In
 
         block_persistence:
-            span: full
             label: Prevent Concurrent Sessions
+            span: full
             comment: When enabled users cannot sign in to multiple devices at the same time.
             type: checkbox
             tab: Sign In
 
         require_activation:
-            span: full
             label: Sign In Requires Activation
+            span: full
             comment: Users must have an activated account to sign in.
             type: checkbox
             tab: Sign In
 
         activate_mode:
-            span: full
             type: radio
+            span: full
             tab: Sign In
             cssClass: field-indent
             trigger:
@@ -52,8 +52,8 @@ tabs:
         # Registration tab
 
         allow_registration:
-            span: full
             label: Allow User Registration
+            span: full
             comment: If this is disabled users can only be created by administrators.
             type: switch
             tab: Registration
@@ -63,39 +63,39 @@ tabs:
             tab: Registration
 
         min_password_length:
-            span: left
             label: Min Password Length
+            span: left
             type: number
             default: 8
             comment: Password length required for users
             tab: Registration
 
         require_mixed_case:
-            span: left
             label: Require Mixed Case
+            span: left
             type: checkbox
             default: true
             comment: Require uppercase and lowercase letters
             tab: Registration
 
         require_uncompromised:
-            span: right
             label: Require Uncompromised
+            span: right
             type: checkbox
             default: true
             comment: Require non-leaked password
             tab: Registration
 
         require_number:
-            span: left
             label: Require Number
+            span: left
             type: checkbox
             default: true
             tab: Registration
 
         require_symbol:
-            span: right
             label: Require Special Character
+            span: right
             type: checkbox
             default: true
             tab: Registration

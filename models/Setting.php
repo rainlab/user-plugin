@@ -1,22 +1,42 @@
 <?php namespace RainLab\User\Models;
 
-use Model;
 use Config;
 use Backend\Models\UserGroup as AdminGroup;
+use System\Models\SettingModel;
 
 /**
  * Setting configuration
+ *
+ * @property string remember_login
+ * @property string login_attribute
+ * @property bool block_persistence
+ * @property bool require_activation
+ * @property string activate_mode
+ * @property bool allow_registration
+ * @property int min_password_length
+ * @property bool require_mixed_case
+ * @property bool require_uncompromised
+ * @property bool require_number
+ * @property bool require_symbol
+ * @property bool notify_user
+ * @property string user_message_template
+ * @property bool notify_system
+ * @property string system_message_template
+ * @property \Backend\Models\UserGroup|null admin_group
+ *
+ * @package rainlab\user
+ * @author Alexey Bobkov, Samuel Georges
  */
-class Setting extends Model
+class Setting extends SettingModel
 {
     /**
-     * @var array Behaviors implemented by this model.
+     * @var string settingsCode is a unique code for this object
      */
-    public $implement = [
-        \System\Behaviors\SettingsModel::class
-    ];
-
     public $settingsCode = 'user_settings';
+
+    /**
+     * @var mixed settingsFields definition file
+     */
     public $settingsFields = 'fields.yaml';
 
     const ACTIVATE_AUTO = 'auto';
@@ -48,6 +68,8 @@ class Setting extends Model
         $this->allow_registration = Config::get('rainlab.user::allowRegistration', true);
         $this->login_attribute = Config::get('rainlab.user::loginAttribute', self::LOGIN_EMAIL);
         $this->remember_login = Config::get('rainlab.user::rememberLogin', self::REMEMBER_ALWAYS);
+        $this->user_message_template = 'user:welcome_email';
+        $this->system_message_template = 'user:new_user_internal';
     }
 
     /**

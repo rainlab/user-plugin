@@ -213,9 +213,10 @@ class Plugin extends PluginBase
     {
         return [
             'user:invite_email' => 'rainlab.user::mail.invite_email',
+            'user:welcome_email' => 'rainlab.user::mail.welcome_email',
             'user:recover_password' => 'rainlab.user::mail.recover_password',
             'user:verify_email' => 'rainlab.user::mail.verify_email',
-            'user:new_user' => 'rainlab.user::mail.new_user',
+            'user:new_user_internal' => 'rainlab.user::mail.new_user_internal',
         ];
     }
 }

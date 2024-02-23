@@ -319,7 +319,7 @@ class User extends Model implements Authenticatable, CanResetPassword
     public function beforeLogin()
     {
         if ($this->is_guest) {
-            $login = $this->getLogin();
+            $login = $this->login;
             throw new AuthException(sprintf(
                 'Cannot login user "%s" as they are not registered.', $login
             ));
@@ -469,17 +469,16 @@ class User extends Model implements Authenticatable, CanResetPassword
     public function getNotificationVars(): array
     {
         $vars = [
-            'name' => $this->name,
+            'full_name' => $this->full_name,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'login' => $this->login,
             'email' => $this->email,
             'username' => $this->username,
-            'login' => $this->getLogin(),
-            'password' => $this->getOriginalHashValue('password')
         ];
 
-        /*
-         * Extensibility
-         */
-        $result = Event::fire('rainlab.user.getNotificationVars', [$this]);
+        // Extensibility
+        $result = Event::fire('user.getNotificationVars', [$this]);
         if ($result && is_array($result)) {
             $vars = call_user_func_array('array_merge', $result) + $vars;
         }
