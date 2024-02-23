@@ -47,8 +47,6 @@
   "Manage User Groups": "مدیریت گروه‌های کاربران",
   "Manage User Settings": "مدیریت تنطیمات کاربران",
   "Impersonate Users": "از دید کاربران",
-  "Throttle Attempts": "جلو گیری از ورود",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "تکرار ورود نا موفق کاربر را به طور موقت غیر فعال میکند.",
   "Sign In": "ورود",
   "Login Attribute": "مشخصه ی ورود",
   "Select what primary user detail should be used for signing in.": "مشخصه ای را که کاربر برای ورود باید وارد نماید انتخاب نمایید.",

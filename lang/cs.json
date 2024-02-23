@@ -45,8 +45,6 @@
   "User management form.": "Formuláře správy účtu a přihlášení",
   "Manage User Groups": "Správa uživatelských skupin",
   "Manage User Settings": "Správa nastavení uživatelů",
-  "Throttle Attempts": "Omezit opakované pokusy o přihlášení",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "Při opakovaném pokusu o přihlášení dojde k suspendování uživatele.",
   "Sign In": "Přihlášení",
   "Login Attribute": "Přihlašovací atribut",
   "Select what primary user detail should be used for signing in.": "Zvolte, jaký atribut bude použitý k přihlášení uživatele.",

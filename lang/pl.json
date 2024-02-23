@@ -50,8 +50,6 @@
   "Manage User Groups": "Zarządzaj grupami użytkowników",
   "Manage User Settings": "Zarządzaj ustawieniami użytkownika",
   "Impersonate Users": "Wcielaj się w użytkowników",
-  "Throttle Attempts": "Blokada prób logowania",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "Powtórne nieudane próby zalogowania tymczasowo zawieszają użytkownika.",
   "Sign In": "Zaloguj się",
   "Prevent Concurrent Sessions": "Zapobiegaj równoległym sesjom",
   "When enabled users cannot sign in to multiple devices at the same time.": "Aktywni użytkownicy nie mogą zalogować się na wielu urządzeniach w tym samym czasie.",

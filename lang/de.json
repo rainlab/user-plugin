@@ -50,8 +50,6 @@
   "Manage User Groups": "Benutzergruppen verwalten",
   "Manage User Settings": "Benutzereinstellungen verwalten",
   "Impersonate Users": "Als Benutzer einloggen",
-  "Throttle Attempts": "Anmeldeversuche begrenzen",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "Bei wiederholten Anmelde-Fehlversuchen wird der Benutzer temporär gesperrt.",
   "Sign In": "Einloggen",
   "Prevent Concurrent Sessions": "Gleichzeitige Anmeldung unterbinden",
   "When enabled users cannot sign in to multiple devices at the same time.": "Wird diese Option aktiviert kann sich ein Benutzer nicht an mehreren Geräten gleichzeitig anmelden.",

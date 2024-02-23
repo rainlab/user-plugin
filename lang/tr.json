@@ -52,8 +52,6 @@
   "Manage User Groups": "Üye Gruplarını Yönet",
   "Manage User Settings": "Üye Ayarlarını Yönet",
   "Impersonate Users": "Üye Gibi Gezin",
-  "Throttle Attempts": "Boğma Girişimleri",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "Tekrarlayan hatalı girişlerde kısa süreliğine üyeyi askıya al.",
   "Sign In": "Oturum Açma",
   "Prevent Concurrent Sessions": "Eşzamanlı oturumları engelle",
   "When enabled users cannot sign in to multiple devices at the same time.": "Etkinleştirildiğinde, kullanıcılar aynı anda birden fazla cihazda oturum açamazlar.",

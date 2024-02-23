@@ -50,8 +50,6 @@
   "Manage User Groups": "Administrar grupos",
   "Manage User Settings": "Preferencias de usuario",
   "Impersonate Users": "Personificar Usuario",
-  "Throttle Attempts": "Límite de intentos",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "Intentos de inicios de sesión seguidos que provocaran la suspensión temporal del perfil de usuario.",
   "Sign In": "Iniciar sesión",
   "Prevent Concurrent Sessions": "Prevenir sesiones concurrentes",
   "When enabled users cannot sign in to multiple devices at the same time.": "Prevenir que los usuarios habilitados puedan iniciar sesión desde múltiples dispositivos.",

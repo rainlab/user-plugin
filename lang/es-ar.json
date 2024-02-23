@@ -34,8 +34,6 @@
   "User management form.": "Formulario de administración de usuario.",
   "Manage User Groups": "Administrar Grupos de Usuarios",
   "Manage User Settings": "Administrar Ajustes de Usuario",
-  "Throttle Attempts": "Regular intentos fallidos",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "Repetidos intentos fallidos de ingreso suspenderán temporalmente al usuario.",
   "Sign In": "Ingreso",
   "Login Attribute": "Atributo para ingreso",
   "Select what primary user detail should be used for signing in.": "Seleccione que atributo sera utilizado para el ingreso.",

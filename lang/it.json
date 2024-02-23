@@ -45,8 +45,6 @@
   "User management form.": "Form di gestione account.",
   "Manage User Groups": "Gestisci Gruppi di Utenti",
   "Manage User Settings": "Gestisci Impostazioni Utenti",
-  "Throttle Attempts": "Limita tentativi",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "Ripetuti tentativi errati di accesso porteranno alla sospensione temporanea dell'utente.",
   "Sign In": "Accesso",
   "Prevent Concurrent Sessions": "Previeni sessioni concorrenti",
   "When enabled users cannot sign in to multiple devices at the same time.": "Quando abilitato gli utenti non possono effettuare il log-in da diversi dispositivi contemporaneamente",

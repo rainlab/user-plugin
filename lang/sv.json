@@ -50,8 +50,6 @@
   "Manage User Groups": "Hantera användargrupper",
   "Manage User Settings": "Hantera användarinställningar",
   "Impersonate Users": "Personifiera Användare",
-  "Throttle Attempts": "Upprepningsförsök",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "Upprepade misslyckade inloggningsförsök kommer tillfälligt att stoppa användaren.",
   "Sign In": "Logga in",
   "Prevent Concurrent Sessions": "Förhindra samtidiga sessioner",
   "When enabled users cannot sign in to multiple devices at the same time.": "När aktiverade användare inte kan logga in på flera enheter samtidigt.",

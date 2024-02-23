@@ -50,8 +50,6 @@
   "Manage User Groups": "Správa skupín používateľov",
   "Manage User Settings": "Správa používateľských nastavení",
   "Impersonate Users": "Zosobniť používateľov",
-  "Throttle Attempts": "Obmedziť pokusy",
-  "Repeat failed sign in attempts will temporarily suspend the user.": "Opakované neúspešné pokusy o prihlásenie používateľov dočasne zablokuje.",
   "Sign In": "Prihlásenie",
   "Prevent Concurrent Sessions": "Zabrániť súbežným reláciám",
   "When enabled users cannot sign in to multiple devices at the same time.": "Po zapnutí sa používatelia nemôžu prihlásiť do viacerých zariadení súčasne.",
