@@ -55,7 +55,7 @@ trait HasEmailVerification
     {
         $expiration = Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60));
 
-        $url = Cms::entryUrl('account', [
+        $url = Cms::entryUrl('account') . '?' . http_build_query([
             'id' => $this->getKey(),
             'verify' => sha1($this->getEmailForVerification())
         ]);

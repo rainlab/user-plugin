@@ -208,6 +208,10 @@ class Account extends ComponentBase
     {
         $this->actionDeleteUser();
 
+        if ($flash = Cms::flashFromPost(__("Your account has been removed from our system."))) {
+            Flash::success($flash);
+        }
+
         if ($redirect = Cms::redirectFromPost()) {
             return $redirect;
         }
