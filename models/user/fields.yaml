@@ -70,24 +70,16 @@ tabs:
             type: relation
 
         groups:
-            label: Groups
+            label: Secondary Groups
             tab: Account
             type: relation
             emptyOption: There are no user groups available.
 
-        created_ip_address:
-            label: Created IP Address
-            span: auto
-            disabled: true
-            tab: Account
-            context: preview
-
-        last_ip_address:
-            label: Last IP Address
-            span: auto
-            disabled: true
-            tab: Account
-            context: preview
+        notes:
+            label: Notes
+            tab: Notes
+            type: textarea
+            size: large
 
 secondaryTabs:
     fields:

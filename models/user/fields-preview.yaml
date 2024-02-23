@@ -34,65 +34,18 @@ tabs:
             tab: User
             type: relation
 
+        created_ip_address:
+            label: Created IP Address
+            span: auto
+            tab: User
+
+        last_ip_address:
+            label: Last IP Address
+            span: auto
+            tab: User
+
         notes:
             label: Notes
             tab: Details
             type: textarea
             size: large
-
-        primary_address[first_name]:
-            label: First Name
-            tab: Primary Address
-            span: auto
-
-        primary_address[last_name]:
-            label: Last Name
-            tab: Primary Address
-            span: auto
-
-        primary_address[company]:
-            label: Company
-            tab: Primary Address
-            span: auto
-
-        primary_address[phone]:
-            label: Phone
-            tab: Primary Address
-            span: auto
-
-        primary_address[address_line1]:
-            label: Address
-            tab: Primary Address
-            span: full
-            type: textarea
-            size: tiny
-            cssClass: pb-2
-
-        primary_address[is_business]:
-            label: Location is a business address
-            tab: Primary Address
-            type: checkbox
-            cssClass: pb-2
-
-        primary_address[city]:
-            label: City
-            tab: Primary Address
-            span: auto
-
-        primary_address[zip]:
-            label: Zip / Postal Code
-            tab: Primary Address
-            span: auto
-
-        primary_address[country]:
-            label: Country
-            tab: Primary Address
-            type: dropdown
-            span: auto
-            dependsOn: country
-
-        primary_address[state]:
-            label: State
-            tab: Primary Address
-            type: dropdown
-            span: auto

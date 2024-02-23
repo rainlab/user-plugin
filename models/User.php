@@ -68,7 +68,6 @@ class User extends Model implements Authenticatable, CanResetPassword
      */
     public $rules = [
         'first_name' => ['required', 'string', 'max:255'],
-        'last_name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'between:3,255', 'email', 'unique:users,email,NULL,id,is_guest,false'],
         'password' => ['required:create', 'min:8'],
         'password_confirmation' => ['required_with:password'],
@@ -277,22 +276,22 @@ class User extends Model implements Authenticatable, CanResetPassword
             $this->username = $this->email;
         }
 
-        // Apply rules Settings
-        $minPasswordLength = Settings::get('min_password_length', static::getMinPasswordLength());
+        // Apply rules Setting
+        $minPasswordLength = Setting::get('min_password_length', 8);
         $passwordRule = PasswordRule::min($minPasswordLength);
-        if (Settings::get('require_mixed_case')) {
+        if (Setting::get('require_mixed_case')) {
             $passwordRule->mixedCase();
         }
 
-        if (Settings::get('require_uncompromised')) {
+        if (Setting::get('require_uncompromised')) {
             $passwordRule->uncompromised();
         }
 
-        if (Settings::get('require_number')) {
+        if (Setting::get('require_number')) {
             $passwordRule->numbers();
         }
 
-        if (Settings::get('require_symbol')) {
+        if (Setting::get('require_symbol')) {
             $passwordRule->symbols();
         }
 

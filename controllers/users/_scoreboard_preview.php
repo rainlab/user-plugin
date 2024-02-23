@@ -1,4 +1,16 @@
 <div data-control="toolbar">
+    <?php if ($avatarUrl = $formModel->getAvatarThumb(144)): ?>
+        <div class="scoreboard-item thumbnail-value me-3">
+            <img
+                src="<?= $avatarUrl ?>"
+                class="img-thumbnail object-fit-cover"
+                alt="<?= e($formModel->full_name) ?>"
+                width="72"
+                height="72"
+            />
+        </div>
+    <?php endif ?>
+
     <div class="scoreboard-item title-value">
         <h4><?= __("User") ?></h4>
         <?php if ($formModel->name): ?>

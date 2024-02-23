@@ -14,6 +14,7 @@ use InvalidArgumentException;
 class SessionGuard extends SessionGuardBase
 {
     use \RainLab\User\Classes\SessionGuard\HasBearerToken;
+    use \RainLab\User\Classes\SessionGuard\HasImpersonation;
 
     /**
      * rehashUserPassword for the current user, overrides parent logic
