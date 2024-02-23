@@ -19,12 +19,6 @@ scopes:
         emptyOption: Status
         modelScope: applyStatusCode
         options:
-            active: Active
-            deleted: Deleted
-
-    activated:
-        label: Activated
-        type: switch
-        conditions:
-            - activated_at = null
-            - is_activated <> null
+            active: [Activated, 'var(--bs-green)']
+            inactive: [Inactivated, 'var(--bs-orange)']
+            deleted: [Deleted, 'var(--bs-red)']

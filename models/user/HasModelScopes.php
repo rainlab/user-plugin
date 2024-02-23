@@ -25,13 +25,19 @@ trait HasModelScopes
             $value = $value->value;
         }
 
-        if ($value === 'active') {
-            return $query->withoutTrashed();
-        }
-
         if ($value === 'deleted') {
             return $query->onlyTrashed();
         }
+
+        if ($value === 'active') {
+            return $query->withoutTrashed()->whereNotNull('activated_at');
+        }
+
+        if ($value === 'inactive') {
+            return $query->withoutTrashed()->whereNull('activated_at');
+        }
+
+        return $query->withoutTrashed();
     }
 
     /**

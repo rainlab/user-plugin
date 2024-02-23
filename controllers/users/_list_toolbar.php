@@ -77,6 +77,7 @@
                     ->secondary()
                     ->confirmMessage("Are you sure?") ?>
             </li>
+            <?php /*
             <li role="separator" class="dropdown-divider"></li>
             <li>
                 <?= Ui::button("Import", 'rainlab/user/users/import')
@@ -88,6 +89,7 @@
                     ->replaceCssClass('dropdown-item')
                     ->icon('icon-download') ?>
             </li>
+            */ ?>
         </ul>
     </div>
 </div>
