@@ -35,7 +35,7 @@ Below the **Email** field is an checkbox to block all outgoing mail sent to the 
 
 ## Plugin Settings
 
-This plugin creates a Settings menu item, found by navigating to **Settings > Users > User settings**. This page allows the setting of common features, described in more detail below.
+This plugin creates a Settings menu item, found by navigating to **Settings > Users > User Settings**. This page allows the setting of common features, described in more detail below.
 
 #### Registration
 

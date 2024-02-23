@@ -195,7 +195,7 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label' => "User settings",
+                'label' => "User Settings",
                 'description' => "Manage user authentication, registration and activation settings.",
                 'category' => SettingsManager::CATEGORY_USERS,
                 'icon' => 'icon-user-actions-key',

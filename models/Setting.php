@@ -2,6 +2,7 @@
 
 use Model;
 use Config;
+use Backend\Models\UserGroup as AdminGroup;
 
 /**
  * Setting configuration
@@ -28,6 +29,13 @@ class Setting extends Model
     const REMEMBER_ALWAYS = 'always';
     const REMEMBER_NEVER = 'never';
     const REMEMBER_ASK = 'ask';
+
+    /**
+     * @var array belongsTo relations
+     */
+    public $belongsTo = [
+        'admin_group' => AdminGroup::class,
+    ];
 
     /**
      * initSettingsData

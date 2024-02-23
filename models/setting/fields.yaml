@@ -4,6 +4,9 @@
 
 tabs:
     fields:
+
+        # Sign In tab
+
         remember_login:
             span: auto
             label: Remember Login Mode
@@ -45,6 +48,8 @@ tabs:
                 action: show
                 field: require_activation
                 condition: checked
+
+        # Registration tab
 
         allow_registration:
             span: full
@@ -94,3 +99,58 @@ tabs:
             type: checkbox
             default: true
             tab: Registration
+
+        # Notifications tab
+
+        _template_hint:
+            type: hint
+            comment: You can customize mail templates by selecting Mail → Mail Templates from the settings menu.
+            tab: Notifications
+
+        notify_user:
+            label: Notify User
+            type: checkbox
+            tab: Notifications
+            comment: Send a welcome message to the user when they confirm their email address.
+
+        user_message_template:
+            label: User Message Template
+            commentAbove: Select the mail template to send to the user.
+            type: dropdown
+            optionsMethod: System\Models\MailTemplate::listAllTemplates
+            tab: Notifications
+            cssClass: field-indent
+            trigger:
+                action: enable
+                field: notify_user
+                condition: checked
+
+        notify_system:
+            label: Notify Administrators
+            type: checkbox
+            tab: Notifications
+            comment: Notify administrators when a new user confirms their email.
+
+        system_message_template:
+            label: System Message Template
+            commentAbove: Select the mail template to send to the admins.
+            type: dropdown
+            optionsMethod: System\Models\MailTemplate::listAllTemplates
+            tab: Notifications
+            cssClass: field-indent
+            trigger:
+                action: enable
+                field: notify_system
+                condition: checked
+
+        admin_group:
+            label: Notify Admin Group
+            commentAbove: Specify the administrator group that should receive a notification when a new user joins.
+            type: relation
+            tab: Notifications
+            span: full
+            cssClass: field-indent
+            trigger:
+                action: enable
+                field: notify_system
+                condition: checked

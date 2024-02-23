@@ -11,7 +11,7 @@ v1.0.3:
 v1.1.0: Profile fields and Locations have been removed.
 v1.2.0: Users can now deactivate their own accounts.
 v1.3.0: Introduced guest user accounts.
-v1.4.0: The Notifications tab in User settings has been removed.
+v1.4.0: The Notifications tab in User Settings has been removed.
 v1.5.0: Required password length is now a minimum of 8 characters. Previous passwords will not be affected until the next password change.
 v1.6.0: Apply persistence settings on activation and registration. Fixes last seen touched when impersonating. Fixes user suspension not clearing.
 v1.7.0: Add password policy

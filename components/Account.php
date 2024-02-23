@@ -67,8 +67,8 @@ class Account extends ComponentBase
      */
     public function onUpdateProfile()
     {
-        $customer = $this->user();
-        if (!$customer) {
+        $user = $this->user();
+        if (!$user) {
             throw new ForbiddenException;
         }
 
@@ -76,13 +76,13 @@ class Account extends ComponentBase
         $data = array_except((array) post(), ['password']);
 
         if ($avatarFile = files('avatar')) {
-            $customer->avatar = $avatarFile;
+            $user->avatar = $avatarFile;
         }
 
-        $customer->fill($data);
-        $customer->save();
+        $user->fill($data);
+        $user->save();
 
-        if ($event = $this->fireSystemEvent('user.profile.update', [$customer])) {
+        if ($event = $this->fireSystemEvent('user.profile.update', [$user])) {
             return $event;
         }
 
@@ -100,8 +100,8 @@ class Account extends ComponentBase
      */
     public function onVerifyEmail()
     {
-        $customer = $this->user();
-        if (!$customer) {
+        $user = $this->user();
+        if (!$user) {
             throw new ForbiddenException;
         }
 
@@ -118,7 +118,7 @@ class Account extends ComponentBase
 
         $limiter->increment();
 
-        $customer->sendEmailVerificationNotification();
+        $user->sendEmailVerificationNotification();
 
         if ($flash = Cms::flashFromPost(__("Please check your email for instructions."))) {
             Flash::success($flash);
@@ -202,11 +202,11 @@ class Account extends ComponentBase
     }
 
     /**
-     * onDeleteCustomer
+     * onDeleteUser
      */
-    protected function onDeleteCustomer()
+    protected function onDeleteUser()
     {
-        $this->actionDeleteCustomer();
+        $this->actionDeleteUser();
 
         if ($redirect = Cms::redirectFromPost()) {
             return $redirect;
@@ -222,13 +222,13 @@ class Account extends ComponentBase
             return;
         }
 
-        $customer = $this->user();
-        if (!$customer) {
+        $user = $this->user();
+        if (!$user) {
             return;
         }
 
-        if (!$customer->hasVerifiedEmail()) {
-            $customer->markEmailAsVerified();
+        if (!$user->hasVerifiedEmail()) {
+            $user->markEmailAsVerified();
         }
 
         Flash::success(__("Thank you for verifying your email."));

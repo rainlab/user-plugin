@@ -5,6 +5,7 @@ use Cms;
 use Mail;
 use Event;
 use Config;
+use RainLab\User\Models\Setting as UserSetting;
 use Carbon\Carbon;
 
 /**
@@ -29,13 +30,23 @@ trait HasEmailVerification
             'activated_at' => $this->freshTimestamp()
         ]);
 
+        $this->sendEmailConfirmationNotification();
+
         Event::fire('user.activate', [$this]);
 
         return $this->save();
     }
 
     /**
-     * sendEmailVerificationNotification mail message
+     * sendEmailConfirmationNotification sends a mail message when the user is verified
+     */
+    public function sendEmailConfirmationNotification()
+    {
+        // @todo
+    }
+
+    /**
+     * sendEmailVerificationNotification sends the mail message used to verify an account
      */
     public function sendEmailVerificationNotification()
     {
