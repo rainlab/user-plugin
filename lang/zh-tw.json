@@ -65,8 +65,6 @@
   "Sign In Requires Activation": "需啟動後登入",
   "Users must have an activated account to sign in.": "會員在首次登入前須先啟動帳號。",
   "Activation": "啟用",
-  "Select how a user account should be activated.": "選擇會員如何啟用帳號。",
-  "Activation Mode": "啟用模式",
   "Automatic": "自動",
   "Activated automatically upon registration.": "註冊後自動啟用。",
   "The user activates their own account using mail.": "會員使用電子郵件啟用帳號。",

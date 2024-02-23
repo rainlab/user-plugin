@@ -75,8 +75,6 @@
   "Require non-leaked password": "Vérifier que le mot de passe n'est pas compromis",
   "Require Number": "Rendre obligatoire l'utilisation de nombres",
   "Require Special Character": "Rendre obligatoire l'utilisation de caractères spéciaux",
-  "Select how a user account should be activated.": "Choisissez la méthode d’activation des comptes d’utilisateurs.",
-  "Activation Mode": "Mode d’activation",
   "Automatic": "Automatique",
   "Activated automatically upon registration.": "Activation automatique après inscription.",
   "The user activates their own account using mail.": "L’utilisateur active son compte par email.",

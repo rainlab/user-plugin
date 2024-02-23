@@ -66,8 +66,6 @@
   "Sign In Requires Activation": "选项",
   "Users must have an activated account to sign in.": "用户必须激活后才能登录.",
   "Activation": "激活",
-  "Select how a user account should be activated.": "选择激活方式.",
-  "Activation Mode": "激活模式",
   "Automatic": "自动",
   "Activated automatically upon registration.": "注册成功后自动激活.",
   "The user activates their own account using mail.": "邮件激活.",

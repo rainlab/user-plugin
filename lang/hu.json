@@ -65,8 +65,6 @@
   "Sign In Requires Activation": "A bejelentkezéshez aktiválás szükséges",
   "Users must have an activated account to sign in.": "A felhasználóknak aktivált fiókkal kell rendelkezniük a bejelentkezéshez.",
   "Activation": "Aktiválás",
-  "Select how a user account should be activated.": "Válassza ki, hogyan kell aktiválni egy felhasználói fiókot.",
-  "Activation Mode": "Aktiválási mód",
   "Automatic": "Automatikus",
   "Activated automatically upon registration.": "Regisztráláskor automatikusan aktiválva.",
   "The user activates their own account using mail.": "A felhasználó levéllel aktiválja a saját fiókját.",

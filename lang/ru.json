@@ -66,8 +66,6 @@
   "Sign In Requires Activation": "Обязательная активация аккаунта",
   "Users must have an activated account to sign in.": "Пользователи должны иметь активированный аккаунт для входа.",
   "Activation": "Активация",
-  "Select how a user account should be activated.": "Активация пользователя.",
-  "Activation Mode": "Активация",
   "Automatic": "Автоматическая",
   "Activated automatically upon registration.": "Автоматическая активация при регистрации.",
   "The user activates their own account using mail.": "Активация при помощи электронной почты.",

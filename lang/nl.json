@@ -65,8 +65,6 @@
   "Sign In Requires Activation": "Inloggen vereist activatie",
   "Users must have an activated account to sign in.": "Gebruikers moeten een geactiveerd account hebben.",
   "Activation": "Activatie",
-  "Select how a user account should be activated.": "Selecteer de wijze waarop een gebruikersaccount geactiveerd moet te worden.",
-  "Activation Mode": "Activatie modus",
   "Automatic": "Automatisch",
   "Activated automatically upon registration.": "Het gebruikersaccount wordt meteen geactiveerd na registratie.",
   "The user activates their own account using mail.": "De gebruiker activeert het account d.m.v. e-mail.",

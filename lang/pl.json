@@ -61,8 +61,6 @@
   "Sign In Requires Activation": "Logowanie wymaga aktywacji konta",
   "Users must have an activated account to sign in.": "Użytkownicy muszą mieć aktywne konto, aby się zalogować.",
   "Activation": "Aktywacja",
-  "Select how a user account should be activated.": "Wybierz sposób aktywacji konta użytkownika.",
-  "Activation Mode": "Tryb aktywacji",
   "Automatic": "Automatyczny",
   "Activated automatically upon registration.": "Aktywowani automatycznie po rejestracji.",
   "The user activates their own account using mail.": "Użytkownik aktywuje własne konto za pomocą poczty e-mail.",

@@ -75,8 +75,6 @@
   "Require non-leaked password": "Require non-leaked password",
   "Require Number": "Require Number",
   "Require Special Character": "Require Special Character",
-  "Select how a user account should be activated.": "Select how a user account should be activated.",
-  "Activation Mode": "Activation Mode",
   "Automatic": "Automatic",
   "Activated automatically upon registration.": "Activated automatically upon registration.",
   "The user activates their own account using mail.": "The user activates their own account using mail.",
