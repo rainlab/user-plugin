@@ -2,7 +2,6 @@
 
 use Flash;
 use RainLab\User\Models\User;
-use RainLab\User\Models\UserGroup;
 use Exception;
 
 /**

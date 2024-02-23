@@ -6,7 +6,6 @@ use Flash;
 use Response;
 use Redirect;
 use BackendMenu;
-use BackendAuth;
 use Backend\Classes\Controller;
 use RainLab\User\Models\UserGroup;
 use RainLab\User\Models\MailBlocker;
