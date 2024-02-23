@@ -90,29 +90,7 @@ return [
     |
     */
 
-    'requireActivation' => true,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Throttle registration
-    |--------------------------------------------------------------------------
-    |
-    | Prevent multiple registrations from the same IP in short succession.
-    |
-    */
-
-    'useRegisterThrottle' => true,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Throttle attempts
-    |--------------------------------------------------------------------------
-    |
-    | Repeat failed sign in attempts will temporarily suspend the user.
-    |
-    */
-
-    'useThrottle' => true,
+    'requireActivation' => false,
 
     /*
     |--------------------------------------------------------------------------

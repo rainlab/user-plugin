@@ -4,91 +4,93 @@
 
 tabs:
     fields:
-        use_throttle:
-            span: left
-            label: Throttle attempts
-            comment: Repeat failed sign in attempts will temporarily suspend the user.
-            type: switch
-            tab: Sign in
-
-        block_persistence:
-            span: right
-            label: Prevent concurrent sessions
-            comment: When enabled users cannot sign in to multiple devices at the same time.
-            type: switch
-            tab: Sign in
-
-        login_attribute:
-            span: left
-            label: Login attribute
-            commentAbove: Select what primary user detail should be used for signing in.
-            type: radio
-            tab: Sign in
-
         remember_login:
-            span: right
-            label: Remember login mode
+            span: auto
+            label: Remember Login Mode
             commentAbove: Select if the user session should be persistent.
             type: radio
-            tab: Sign in
+            tab: Sign In
+
+        login_attribute:
+            span: auto
+            label: Login Attribute
+            commentAbove: Select what primary user detail should be used for signing in.
+            type: radio
+            tab: Sign In
+
+        _login_ruler:
+            type: ruler
+            tab: Sign In
+
+        block_persistence:
+            span: full
+            label: Prevent Concurrent Sessions
+            comment: When enabled users cannot sign in to multiple devices at the same time.
+            type: checkbox
+            tab: Sign In
+
+        require_activation:
+            span: full
+            label: Sign In Requires Activation
+            comment: Users must have an activated account to sign in.
+            type: checkbox
+            tab: Sign In
+
+        activate_mode:
+            span: full
+            type: radio
+            tab: Sign In
+            cssClass: field-indent
+            trigger:
+                action: show
+                field: require_activation
+                condition: checked
 
         allow_registration:
-            span: left
-            label: Allow user registration
+            span: full
+            label: Allow User Registration
             comment: If this is disabled users can only be created by administrators.
             type: switch
             tab: Registration
 
-        use_register_throttle:
-            span: right
-            label: Throttle registration
-            comment: Prevent multiple registrations from the same IP in short succession.
-            type: switch
+        _registration_ruler:
+            type: ruler
             tab: Registration
-
-        require_activation:
-            span: left
-            label: Sign in requires activation
-            comment: Users must have an activated account to sign in.
-            type: switch
-            tab: Activation
-
-        activate_mode:
-            span: left
-            label: Activation mode
-            commentAbove: Select how a user account should be activated.
-            type: radio
-            tab: Activation
 
         min_password_length:
             span: left
-            label: Min password length
+            label: Min Password Length
             type: number
+            default: 8
             comment: Password length required for users
-            tab: Password Policy
+            tab: Registration
 
         require_mixed_case:
             span: left
-            label: Require mixed case
-            type: switch
+            label: Require Mixed Case
+            type: checkbox
+            default: true
             comment: Require uppercase and lowercase letters
-            tab: Password Policy
+            tab: Registration
 
         require_uncompromised:
             span: right
-            label: Require uncompromised
-            type: switch
+            label: Require Uncompromised
+            type: checkbox
+            default: true
             comment: Require non-leaked password
-            tab: Password Policy
+            tab: Registration
 
         require_number:
             span: left
-            label: Require number
-            type: switch
-            tab: Password Policy
+            label: Require Number
+            type: checkbox
+            default: true
+            tab: Registration
 
         require_symbol:
             span: right
-            label: Require special character
-            type: switch
-            tab: Password Policy
+            label: Require Special Character
+            type: checkbox
+            default: true
+            tab: Registration

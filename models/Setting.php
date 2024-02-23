@@ -34,14 +34,12 @@ class Setting extends Model
      */
     public function initSettingsData()
     {
-        $this->require_activation = Config::get('rainlab.user::requireActivation', true);
+        $this->require_activation = Config::get('rainlab.user::requireActivation', false);
         $this->activate_mode = Config::get('rainlab.user::activateMode', self::ACTIVATE_AUTO);
-        $this->use_throttle = Config::get('rainlab.user::useThrottle', true);
         $this->block_persistence = Config::get('rainlab.user::blockPersistence', false);
         $this->allow_registration = Config::get('rainlab.user::allowRegistration', true);
         $this->login_attribute = Config::get('rainlab.user::loginAttribute', self::LOGIN_EMAIL);
         $this->remember_login = Config::get('rainlab.user::rememberLogin', self::REMEMBER_ALWAYS);
-        $this->use_register_throttle = Config::get('rainlab.user::useRegisterThrottle', true);
     }
 
     /**
