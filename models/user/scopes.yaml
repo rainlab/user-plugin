@@ -3,6 +3,9 @@
 # ===================================
 
 scopes:
+    created_at:
+        label: Join Date
+        type: date
 
     groups:
         label: Group
@@ -10,10 +13,14 @@ scopes:
         nameFrom: name
         scope: applyGroups
 
-    created_at:
-        label: Registered
-        type: daterange
-        conditions: created_at >= ':after' AND created_at <= ':before'
+    status:
+        label: Status
+        type: dropdown
+        emptyOption: Status
+        modelScope: applyStatusCode
+        options:
+            active: Active
+            deleted: Deleted
 
     activated:
         label: Activated

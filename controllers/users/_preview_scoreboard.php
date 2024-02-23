@@ -31,7 +31,7 @@
 <?php endif ?>
 <?php if ($formModel->last_seen): ?>
     <div class="scoreboard-item title-value">
-        <h4><?= __("Last seen") ?></h4>
+        <h4><?= __("Last Seen") ?></h4>
         <p><?= $formModel->last_seen->diffForHumans() ?></p>
         <p class="description">
             <?= $formModel->isOnline() ? __("Online now") : __("Currently offline") ?>

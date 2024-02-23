@@ -14,37 +14,57 @@ columns:
         invisible: true
 
     first_name:
-        label: Name
+        label: First Name
         searchable: true
 
     last_name:
         label: Last Name
         searchable: true
-        invisible: true
 
     email:
         label: Email
         searchable: true
 
-    created_at:
-        label: Registered
-        type: timetense
-
-    last_seen:
-        label: Last seen
-        type: timetense
-
     is_guest:
         label: Guest
         type: switch
+
+    primary_group:
+        label: Primary Group
+        relation: primary_group
+        select: name
+
+    deleted_at:
+        label: Deleted
+        type: switch
+        invisible: true
+
+    notes:
+        label: Notes
+        searchable: true
+        invisible: true
+
+    created_at:
+        label: Created At
+        type: timetense
+        invisible: true
+
+    updated_at:
+        label: Updated At
+        type: timetense
+        invisible: true
+
+    last_seen:
+        label: Last Seen
+        type: timetense
         invisible: true
 
     created_ip_address:
-        label: Created IP Address
+        label: Created IP
         searchable: true
         invisible: true
 
     last_ip_address:
-        label: Last IP Address
+        label: Last IP
         searchable: true
         invisible: true
