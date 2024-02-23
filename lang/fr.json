@@ -110,7 +110,7 @@
   "Back to users list": "Retour à la liste des utilisateurs",
   "Update details": "Mettre à jour les informations",
   "Impersonate this user? You can revert to your original state by logging out.": "Usurper l'identité de cet utilisateur? Vous pouvez revenir à votre état d'origine en vous déconnectant.",
-  "Impersonate user": "Usurper l'identité d'un utilisateur",
+  "Impersonate User": "Usurper l'identité d'un utilisateur",
   "Return to users list": "Retour à la liste des utilisateurs",
   "Do you really want to delete this user?": "Confirmez-vous la suppression de cet utilisateur ?"
 }

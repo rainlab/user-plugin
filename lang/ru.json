@@ -101,7 +101,7 @@
   "Back to users list": "Вернутся к списку пользователей",
   "Update details": "Изменить данные",
   "Impersonate this user? You can revert to your original state by logging out.": "Войти как этот пользователь? Вы сможете вернуться в исходное состояние после разлогинивания.",
-  "Impersonate user": "Войти как этот пользователь",
+  "Impersonate User": "Войти как этот пользователь",
   "Return to users list": "Вернуться к списку пользователей",
   "Do you really want to delete this user?": "Вы действительно хотите удалить этого пользователя?"
 }

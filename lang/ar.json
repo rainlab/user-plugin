@@ -101,7 +101,7 @@
   "Back to users list": "رجوع إلى قائمة المستخدمين",
   "Update details": "تحديث التفاصيل",
   "Impersonate this user? You can revert to your original state by logging out.": "انتحال شخصية هذا المستخدم؟ يمكنك العودة إلى حالتك الأصلية بتسجيل الخروج.",
-  "Impersonate user": "انتحال شخصية المستخدم",
+  "Impersonate User": "انتحال شخصية المستخدم",
   "Return to users list": "العودة إلى قائمة المستخدمين",
   "Do you really want to delete this user?": "هل تريد حقًا حذف هذا المستخدم؟"
 }

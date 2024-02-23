@@ -90,7 +90,7 @@
   "Back to users list": "Zurück zur Benutzerliste",
   "Update details": "Update details",
   "Impersonate this user? You can revert to your original state by logging out.": "Soll die Anmeldung mit diesem Benutzerkonto erfolgen? Nach der Abmeldung wird die bestehende Sitzung wiederhergestellt.",
-  "Impersonate user": "Als Benutzer einloggen",
+  "Impersonate User": "Als Benutzer einloggen",
   "Return to users list": "Zurück zur Benutzerliste",
   "Do you really want to delete this user?": "Möchten Sie diesen Benutzer wirklich löschen?"
 }

@@ -100,7 +100,7 @@
   "Back to users list": "Vissza a felhasználókhoz",
   "Update details": "Adatok módosítása",
   "Impersonate this user? You can revert to your original state by logging out.": "Biztos benne, hogy átjelentkezik a felhasználó saját fiókjába? Ezáltal a jelenlegi munkamenetből ki lesz jelentkeztetve.",
-  "Impersonate user": "Átjelentkezés a fiókba",
+  "Impersonate User": "Átjelentkezés a fiókba",
   "Return to users list": "Vissza a felhasználó listához",
   "Do you really want to delete this user?": "Valóban törölni akarja ezt a felhasználót?"
 }

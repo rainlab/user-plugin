@@ -1,61 +1,112 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('rainlab/user/users') ?>"><?= __("Users") ?></a></li>
+        <li><a href="<?= Backend::url('user/users') ?>"><?= __("Users") ?></a></li>
         <li><?= e(trans($this->pageTitle)) ?></li>
     </ul>
 <?php Block::endPut() ?>
 
-<?php if (!$this->fatalError): ?>
-
-    <?php Block::put('form-contents') ?>
-
-        <?php if ($formModel->is_guest): ?>
-            <?= $this->makePartial('hint_guest') ?>
-        <?php elseif ($formModel->is_banned): ?>
-            <?= $this->makePartial('hint_banned') ?>
-        <?php elseif ($formModel->trashed()): ?>
-            <?= $this->makePartial('hint_trashed') ?>
-        <?php elseif (!$formModel->is_activated): ?>
-            <?= $this->makePartial('hint_activate') ?>
-        <?php endif ?>
-
-        <div class="scoreboard">
-            <div data-control="toolbar">
-                <?= $this->makePartial('preview_scoreboard') ?>
-            </div>
-        </div>
-
-        <div class="form-buttons">
-            <div class="loading-indicator-container">
-                <?= $this->makePartial('preview_toolbar') ?>
-            </div>
-        </div>
-
-        <div class="layout-row min-size">
-            <?= $this->formRender(['preview' => true, 'section' => 'outside']) ?>
-        </div>
-
-        <div class="layout-row">
-            <?= $this->formRender(['preview' => true, 'section' => 'primary']) ?>
-        </div>
-
-    <?php Block::endPut() ?>
-
-    <?php Block::put('form-sidebar') ?>
-        <div class="hide-tabs"><?= $this->formRender(['preview' => true, 'section' => 'secondary']) ?></div>
-    <?php Block::endPut() ?>
-
-    <?php Block::put('body') ?>
-        <?= Form::open(['class'=>'layout stretch']) ?>
-            <?= $this->makeLayout('form-with-sidebar') ?>
-        <?= Form::close() ?>
-    <?php Block::endPut() ?>
-
+<?php if ($this->fatalError): ?>
+    <?= $this->formRenderDesign() ?>
 <?php else: ?>
 
-    <div class="padded-container container-flush">
-        <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-        <p><a href="<?= Backend::url('rainlab/user/users') ?>" class="btn btn-default"><?= __("Return to users list") ?></a></p>
+<div class="scoreboard" id="<?= $this->getId('scoreboard') ?>">
+    <?= $this->makePartial('scoreboard_preview') ?>
+</div>
+
+<div class="loading-indicator-container mb-3">
+    <div class="control-toolbar form-toolbar" data-control="toolbar">
+        <?= Ui::button("Back", 'user/users')->icon('icon-arrow-left')->outline() ?>
+        <?php if ($this->user->hasAccess('rainlab.users.impersonate_user')): ?>
+            <div class="toolbar-divider"></div>
+            <?= Ui::ajaxButton("Impersonate", 'onImpersonateUser')->icon('icon-user-secret')->outline()->danger()
+                ->confirmMessage("Impersonate this user? You can revert to your original state by logging out.") ?>
+        <?php endif ?>
+        <div class="toolbar-divider"></div>
+        <?= Ui::button("Edit", 'user/users/update/'.$formModel->id)->icon('icon-pencil')->outline()->primary() ?>
+        <?= Ui::ajaxButton("Delete", 'onDelete')->icon('icon-delete')->outline()->danger() ?>
+        <?=
+            /**
+             * @event user.users.extendPreviewToolbar
+             * Fires when preview user toolbar is rendered.
+             *
+             * Example usage:
+             *
+             *     Event::listen('user.users.extendPreviewToolbar', function (
+             *         (RainLab\User\Controllers\Users) $controller,
+             *         (RainLab\User\Models\User) $record
+             *     ) {
+             *         return $controller->makePartial('~/path/to/partial');
+             *     });
+             *
+             */
+            $this->fireViewEvent('user.users.extendPreviewToolbar', [
+                'record' => $formModel
+            ]);
+        ?>
     </div>
+</div>
+
+<?php if ($formModel->is_guest): ?>
+    <?= $this->makePartial('hint_guest') ?>
+<?php elseif ($formModel->is_banned): ?>
+    <?= $this->makePartial('hint_banned') ?>
+<?php elseif ($formModel->trashed()): ?>
+    <?= $this->makePartial('hint_trashed') ?>
+<?php elseif (!$formModel->is_activated): ?>
+    <?= $this->makePartial('hint_activate') ?>
+<?php endif ?>
+
+<?php
+    /**
+     * @event user.users.extendPreviewTabs
+     * Provides an opportunity to add tabs to the user preview page in the admin panel.
+     * The event should return an array of `[Tab Name => ~/path/to/partial.php]`
+     *
+     * Example usage:
+     *
+     *   Event::listen('user.users.extendPreviewTabs', function() {
+     *       return [
+     *           "Orders" => '$/acme/shop/partials/_user_orders.php',
+     *       ];
+     *   });
+     *
+     */
+    $customTabs = array_collapse(Event::fire('user.users.extendPreviewTabs'));
+?>
+<div class="control-tabs content-tabs tabs-inset" data-control="tab">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#user">
+                <?= __("User") ?>
+            </a>
+        </li>
+        <?php foreach ($customTabs as $tabName => $tabPartial): ?>
+            <li>
+                <a href="#<?= Str::slug(__($tabName)) ?>">
+                    <?= e(__($tabName)) ?>
+                </a>
+            </li>
+        <?php endforeach ?>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <div class="row">
+                <div class="col">
+                    <h4 class="my-3 fw-normal"><?= __("User") ?></h4>
+                    <?= $this->formRenderPrimaryTab('User') ?>
+                </div>
+                <div class="col border-start">
+                    <h4 class="my-3 fw-normal"><?= __("Details") ?></h4>
+                    <?= $this->formRenderPrimaryTab('Details') ?>
+                </div>
+            </div>
+        </div>
+        <?php foreach ($customTabs as $tabName => $tabPartial): ?>
+            <div class="tab-pane">
+                <?= $this->makePartial($tabPartial) ?>
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
 
 <?php endif ?>

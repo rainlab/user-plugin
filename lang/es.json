@@ -97,7 +97,7 @@
   "Back to users list": "Volver a la lista de usuarios",
   "Update details": "Actualizar detalles",
   "Impersonate this user? You can revert to your original state by logging out.": "¿Estás seguro que quieres iniciar sesión como este usuario? Puedes volver a tu estado original cerrando la sesión.",
-  "Impersonate user": "Iniciar sesión como este usuario",
+  "Impersonate User": "Iniciar sesión como este usuario",
   "Return to users list": "Volver a la lista de usuarios",
   "Do you really want to delete this user?": "¿Realmente desea eliminar este usuario?"
 }

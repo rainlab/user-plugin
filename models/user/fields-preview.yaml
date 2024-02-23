@@ -29,8 +29,8 @@ tabs:
             span: auto
             tab: User
 
-        group:
-            label: User Group
+        primary_group:
+            label: Group
             tab: User
             type: relation
 

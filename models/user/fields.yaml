@@ -64,6 +64,11 @@ tabs:
             hidden: true
             span: left
 
+        primary_group:
+            label: Primary Group
+            tab: Account
+            type: relation
+
         groups:
             label: Groups
             tab: Account
