@@ -1,13 +1,7 @@
 <?php namespace RainLab\User\Controllers;
 
-use Auth;
-use Lang;
-use Flash;
-use Response;
-use Redirect;
 use BackendMenu;
 use Backend\Classes\Controller;
-use RainLab\User\Models\UserGroup;
 use RainLab\User\Models\MailBlocker;
 use RainLab\User\Models\Setting as UserSetting;
 
@@ -16,6 +10,7 @@ use RainLab\User\Models\Setting as UserSetting;
  */
 class Users extends Controller
 {
+    use \RainLab\User\Controllers\Users\HasEditActions;
     use \RainLab\User\Controllers\Users\HasBulkActions;
 
     /**
@@ -148,123 +143,5 @@ class Users extends Controller
         $model->bindEvent('model.saveInternal', function() use ($model) {
             unset($model->attributes['block_mail']);
         });
-    }
-
-    /**
-     * Manually activate a user
-     */
-    public function preview_onActivate($recordId = null)
-    {
-        $model = $this->formFindModelObject($recordId);
-
-        $model->markEmailAsVerified();
-
-        Flash::success(__("User has been activated"));
-
-        if ($redirect = $this->makeRedirect('update-close', $model)) {
-            return $redirect;
-        }
-    }
-
-    /**
-     * Manually unban a user
-     */
-    public function preview_onUnban($recordId = null)
-    {
-        $model = $this->formFindModelObject($recordId);
-
-        $model->unban();
-
-        Flash::success(__("User has been unbanned"));
-
-        if ($redirect = $this->makeRedirect('update-close', $model)) {
-            return $redirect;
-        }
-    }
-
-    /**
-     * Display the convert to registered user popup
-     */
-    public function preview_onLoadConvertGuestForm($recordId)
-    {
-        $this->vars['groups'] = UserGroup::where('code', '!=', UserGroup::GROUP_GUEST)->get();
-
-        return $this->makePartial('convert_guest_form');
-    }
-
-    /**
-     * Manually convert a guest user to a registered one
-     */
-    public function preview_onConvertGuest($recordId)
-    {
-        $model = $this->formFindModelObject($recordId);
-
-        // Convert user and send notification
-        $model->convertToRegistered(post('send_registration_notification', false));
-
-        // Remove user from guest group
-        if ($group = UserGroup::getGuestGroup()) {
-            $model->groups()->remove($group);
-        }
-
-        // Add user to new group
-        if (
-            ($groupId = post('new_group')) &&
-            ($group = UserGroup::find($groupId))
-        ) {
-            $model->groups()->add($group);
-        }
-
-        Flash::success(__("User has been converted to a registered account"));
-
-        if ($redirect = $this->makeRedirect('update-close', $model)) {
-            return $redirect;
-        }
-    }
-
-    /**
-     * Impersonate this user
-     */
-    public function preview_onImpersonateUser($recordId)
-    {
-        if (!$this->user->hasAccess('rainlab.users.impersonate_user')) {
-            return Response::make(Lang::get('backend::lang.page.access_denied.label'), 403);
-        }
-
-        $model = $this->formFindModelObject($recordId);
-
-        Auth::impersonate($model);
-
-        Flash::success(__("You are now impersonating this user"));
-    }
-
-    /**
-     * Unsuspend this user
-     */
-    public function preview_onUnsuspendUser($recordId)
-    {
-        $model = $this->formFindModelObject($recordId);
-
-        $model->unsuspend();
-
-        Flash::success(__("User has been unsuspended."));
-
-        return Redirect::refresh();
-    }
-
-    /**
-     * Force delete a user.
-     */
-    public function update_onDelete($recordId = null)
-    {
-        $model = $this->formFindModelObject($recordId);
-
-        $model->forceDelete();
-
-        Flash::success(Lang::get('backend::lang.form.delete_success'));
-
-        if ($redirect = $this->makeRedirect('delete', $model)) {
-            return $redirect;
-        }
     }
 }

@@ -45,7 +45,12 @@
         <div class="scoreboard-item title-value">
             <h4><?= __("Marked as Deleted") ?></h4>
             <p><?= $formModel->deleted_at->toFormattedDateString() ?></p>
-            <p class="description"><a href="#"><?= __("Restore Account") ?></a></p>
+            <p class="description"><a
+                href="javascript:;"
+                data-request="onRestoreUser"
+                data-request-confirm="<?= __("Are you sure?") ?>"
+                ><?= __("Restore Account") ?>
+            </a></p>
         </div>
     <?php endif ?>
 </div>
