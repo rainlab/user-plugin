@@ -17,7 +17,8 @@ return new class extends Migration
                 $table->mediumText('notes')->nullable();
                 $table->integer('primary_group_id')->nullable()->unsigned();
                 $table->string('remember_token')->nullable();
-                $table->boolean('is_banned')->default(false);
+                $table->text('banned_reason')->nullable();
+                $table->timestamp('banned_at')->nullable();
                 $table->text('two_factor_secret')->nullable();
                 $table->text('two_factor_recovery_codes')->nullable();
                 $table->timestamp('two_factor_confirmed_at')->nullable();

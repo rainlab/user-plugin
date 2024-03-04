@@ -4,6 +4,7 @@ use Hash;
 use RainLab\User\Models\User;
 use Illuminate\Auth\SessionGuard as SessionGuardBase;
 use InvalidArgumentException;
+use ValidationException;
 
 /**
  * SessionGuard
@@ -40,11 +41,33 @@ class SessionGuard extends SessionGuardBase
         return $user;
     }
 
+
+    /**
+     * login user to the application.
+     *
+     * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
+     * @param  bool  $remember
+     */
+    public function login($user, $remember = false)
+    {
+        if ($user->is_banned) {
+            throw new ValidationException(['password' => __("Your account is locked. Please contact the site administrator.")]);
+        }
+
+        return parent::login($user, $remember);
+    }
+
     /**
      * user gets the currently authenticated user.
      */
     public function user(): ?User
     {
-        return parent::user();
+        $user = parent::user();
+
+        if ($user->is_banned) {
+            return null;
+        }
+
+        return $user;
     }
 }

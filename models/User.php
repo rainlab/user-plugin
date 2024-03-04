@@ -378,7 +378,6 @@ class User extends Model implements Authenticatable, CanResetPassword
     public function ban($reason = null)
     {
         if (!$this->is_banned) {
-            $this->is_banned = true;
             $this->banned_reason = $reason;
             $this->banned_at = $this->freshTimestamp();
             $this->save(['force' => true]);
@@ -391,7 +390,6 @@ class User extends Model implements Authenticatable, CanResetPassword
     public function unban()
     {
         if ($this->is_banned) {
-            $this->is_banned = false;
             $this->banned_reason = null;
             $this->banned_at = null;
             $this->save(['force' => true]);

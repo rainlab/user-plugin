@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('primary_group_id')->nullable()->unsigned();
             $table->string('created_ip_address')->nullable();
             $table->string('last_ip_address')->nullable();
-            $table->text('banned_reason')->default(false);
+            $table->text('banned_reason')->nullable();
             $table->timestamp('banned_at')->nullable();
             $table->timestamp('activated_at')->nullable();
             $table->timestamp('two_factor_confirmed_at')->nullable();

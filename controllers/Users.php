@@ -103,12 +103,20 @@ class Users extends Controller
      */
     public function formExtendFields($form)
     {
+        $model = $form->getModel();
+
         // Show the username field if it is configured for use
         if (
             UserSetting::get('login_attribute') == UserSetting::LOGIN_USERNAME &&
             array_key_exists('username', $form->getFields())
         ) {
             $form->getField('username')->hidden = false;
+        }
+
+        // Hide group fields for guests
+        if ($model->is_guest) {
+            $form->removeField('groups');
+            $form->removeField('primary_group');
         }
     }
 
