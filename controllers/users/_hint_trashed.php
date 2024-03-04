@@ -6,7 +6,7 @@
             <p>
                 <?= __("This user account has been deactivated can no longer be used.") ?>
                 <?= __("This account cannot be deleted since it contains internal references.") ?>
-                <?= __("To remove any personal data for this account, click the Anonymize Data button.") ?>
+                <!-- <?= __("To remove any personal data for this account, click the Anonymize Data button.") ?> -->
             </p>
         </div>
     </div>

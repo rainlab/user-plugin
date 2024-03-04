@@ -30,9 +30,25 @@ trait HasEditActions
     }
 
     /**
-     * Manually unban a user
+     * preview_onBan manually bans a user
      */
-    public function preview_onUnban($recordId = null)
+    public function preview_onBanUser($recordId = null)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->ban();
+
+        Flash::success(__("User has been banned"));
+
+        if ($redirect = $this->makeRedirect('update-close', $model)) {
+            return $redirect;
+        }
+    }
+
+    /**
+     * preview_onUnban manually unbans a user
+     */
+    public function preview_onUnbanUser($recordId = null)
     {
         $model = $this->formFindModelObject($recordId);
 

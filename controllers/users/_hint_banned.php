@@ -6,7 +6,7 @@
             <p>
                 <?= __("This user has been banned by an administrator and will be unable to sign in.") ?>
                 <a href="javascript:;"
-                    data-request="onUnban"
+                    data-request="onUnbanUser"
                     data-request-confirm="<?= __("Do you really want to unban this user?") ?>"
                     data-stripe-load-indicator
                 ><?= __("Unban this user") ?></a>.

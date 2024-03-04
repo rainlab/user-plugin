@@ -13,17 +13,27 @@
     <?= $this->makePartial('scoreboard_preview') ?>
 </div>
 
+<?php
+    $canDoGeneralActions = !$formModel->is_guest && !$formModel->is_banned && !$formModel->trashed();
+?>
 <div class="loading-indicator-container mb-3">
     <div class="control-toolbar form-toolbar" data-control="toolbar">
         <?= Ui::button("Back", 'user/users')->icon('icon-arrow-left')->outline() ?>
-        <?php if ($this->user->hasAccess('rainlab.users.impersonate_user')): ?>
+        <?php if ($canDoGeneralActions): ?>
+            <?php if ($this->user->hasAccess('rainlab.users.impersonate_user')): ?>
+                <div class="toolbar-divider"></div>
+                <?= Ui::ajaxButton("Impersonate", 'onImpersonateUser')->icon('icon-user-secret')->outline()
+                    ->confirmMessage("Impersonate this user? You can revert to your original state by logging out.") ?>
+            <?php endif ?>
             <div class="toolbar-divider"></div>
-            <?= Ui::ajaxButton("Impersonate", 'onImpersonateUser')->icon('icon-user-secret')->outline()->danger()
-                ->confirmMessage("Impersonate this user? You can revert to your original state by logging out.") ?>
+            <?= Ui::ajaxButton("Ban", 'onBanUser')->icon('icon-ban')->outline()->danger()
+                ->confirmMessage("Ban this user? It will prevent them from logging in and holding an active session.") ?>
         <?php endif ?>
         <div class="toolbar-divider"></div>
         <?= Ui::button("Edit", 'user/users/update/'.$formModel->id)->icon('icon-pencil')->outline()->primary() ?>
-        <?= Ui::ajaxButton("Delete", 'onDelete')->icon('icon-delete')->outline()->danger() ?>
+        <?php if (!$formModel->trashed()): ?> ?>
+            <?= Ui::ajaxButton("Delete", 'onDelete')->icon('icon-delete')->outline()->danger() ?>
+        <?php endif ?>
         <?=
             /**
              * @event user.users.extendPreviewToolbar
