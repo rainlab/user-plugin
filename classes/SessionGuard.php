@@ -41,7 +41,6 @@ class SessionGuard extends SessionGuardBase
         return $user;
     }
 
-
     /**
      * login user to the application.
      *
@@ -64,7 +63,7 @@ class SessionGuard extends SessionGuardBase
     {
         $user = parent::user();
 
-        if ($user->is_banned) {
+        if ($user && $user->is_banned) {
             return null;
         }
 

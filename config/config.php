@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'activateMode' => Setting::ACTIVATE_AUTO,
+    'activate_mode' => Setting::ACTIVATE_AUTO,
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'allowRegistration' => true,
+    'allow_registration' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'blockPersistence' => false,
+    'block_persistence' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return [
     |
     */
 
-    'loginAttribute' => Setting::LOGIN_EMAIL,
+    'login_attribute' => Setting::LOGIN_EMAIL,
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return [
     |
     */
 
-    'rememberLogin' => Setting::REMEMBER_ALWAYS,
+    'remember_login' => Setting::REMEMBER_ALWAYS,
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +90,7 @@ return [
     |
     */
 
-    'requireActivation' => false,
+    'require_activation' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'bearerToken' => [
+    'bearer_token' => [
         'algorithm' => null,
         'key' => null,
         'ttl' => null,

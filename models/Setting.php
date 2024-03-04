@@ -62,12 +62,12 @@ class Setting extends SettingModel
      */
     public function initSettingsData()
     {
-        $this->require_activation = Config::get('rainlab.user::requireActivation', false);
-        $this->activate_mode = Config::get('rainlab.user::activateMode', self::ACTIVATE_AUTO);
-        $this->block_persistence = Config::get('rainlab.user::blockPersistence', false);
-        $this->allow_registration = Config::get('rainlab.user::allowRegistration', true);
-        $this->login_attribute = Config::get('rainlab.user::loginAttribute', self::LOGIN_EMAIL);
-        $this->remember_login = Config::get('rainlab.user::rememberLogin', self::REMEMBER_ALWAYS);
+        $this->require_activation = Config::get('rainlab.user::require_activation', false);
+        $this->activate_mode = Config::get('rainlab.user::activate_mode', self::ACTIVATE_AUTO);
+        $this->block_persistence = Config::get('rainlab.user::block_persistence', false);
+        $this->allow_registration = Config::get('rainlab.user::allow_registration', true);
+        $this->login_attribute = Config::get('rainlab.user::login_attribute', self::LOGIN_EMAIL);
+        $this->remember_login = Config::get('rainlab.user::remember_login', self::REMEMBER_ALWAYS);
         $this->user_message_template = 'user:welcome_email';
         $this->system_message_template = 'user:new_user_internal';
     }

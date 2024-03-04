@@ -34,7 +34,7 @@ trait HasBearerToken
         }
 
         // Secret key
-        $secretKey = Config::get('rainlab.user::bearerToken.key') ?? Crypt::getKey();
+        $secretKey = Config::get('rainlab.user::bearer_token.key') ?? Crypt::getKey();
         if (!$secretKey) {
             throw new \Illuminate\Encryption\MissingAppKeyException;
         }
@@ -42,7 +42,7 @@ trait HasBearerToken
         // Prepare metadata
         $tokenId = base64_encode(Str::random(16));
         $issuedAt = Carbon::now();
-        $expireAt = Carbon::now()->addMinutes(Config::get('rainlab.user::bearerToken.ttl') ?? 60);
+        $expireAt = Carbon::now()->addMinutes(Config::get('rainlab.user::bearer_token.ttl') ?? 60);
         $serverName = Request::getHost();
 
         // Prepare payload
@@ -64,7 +64,7 @@ trait HasBearerToken
         ];
 
         // Encode the array to a JWT string.
-        return JWT::encode($data, $secretKey, Config::get('rainlab.user::bearerToken.algorithm') ?? 'HS512');
+        return JWT::encode($data, $secretKey, Config::get('rainlab.user::bearer_token.algorithm') ?? 'HS512');
     }
 
     /**
@@ -81,14 +81,14 @@ trait HasBearerToken
         }
 
         // Secret key
-        $secretKey = Config::get('rainlab.user::bearerToken.key') ?? Crypt::getKey();
+        $secretKey = Config::get('rainlab.user::bearer_token.key') ?? Crypt::getKey();
         if (!$secretKey) {
             throw new \Illuminate\Encryption\MissingAppKeyException;
         }
 
         // Decode token
         try {
-            JWT::$leeway = Config::get('rainlab.user::bearerToken.leeway') ?? 60;
+            JWT::$leeway = Config::get('rainlab.user::bearer_token.leeway') ?? 60;
             $token = JWT::decode($jwtToken, new Key($secretKey, 'HS512'));
         }
         catch (Exception $ex) {
