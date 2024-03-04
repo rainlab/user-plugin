@@ -4,6 +4,7 @@ use BackendMenu;
 use Backend\Classes\Controller;
 use RainLab\User\Models\MailBlocker;
 use RainLab\User\Models\Setting as UserSetting;
+use RainLab\User\Helpers\User as UserHelper;
 
 /**
  * Users controller
@@ -106,11 +107,8 @@ class Users extends Controller
         $model = $form->getModel();
 
         // Show the username field if it is configured for use
-        if (
-            UserSetting::get('login_attribute') == UserSetting::LOGIN_USERNAME &&
-            array_key_exists('username', $form->getFields())
-        ) {
-            $form->getField('username')->hidden = false;
+        if (UserHelper::showUsername()) {
+            $form->getField('username')?->hidden(false);
         }
 
         // Hide group fields for guests

@@ -12,13 +12,19 @@ use RainLab\User\Classes\Validation\PasswordRule;
 class User
 {
     /**
+     * showUsername
+     */
+    public static function showUsername()
+    {
+        return static::username() === UserSetting::LOGIN_USERNAME;
+    }
+
+    /**
      * username returns the login attribute to use for logging in.
      */
     public static function username()
     {
-        // @todo config
-        // UserSetting::get('login_attribute', UserSetting::LOGIN_EMAIL)
-        return 'email';
+        return UserSetting::get('login_attribute', UserSetting::LOGIN_EMAIL);
     }
 
     /**

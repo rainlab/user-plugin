@@ -4,6 +4,7 @@ use Cms;
 use Flash;
 use Config;
 use Cms\Classes\ComponentBase;
+use RainLab\User\Helpers\User as UserHelper;
 use NotFoundException;
 
 /**
@@ -164,5 +165,13 @@ class Authentication extends ComponentBase
     public function useRememberMe(): bool
     {
         return (bool) $this->property('rememberMe', false);
+    }
+
+    /**
+     * showUsernameField
+     */
+    public function showUsernameField()
+    {
+        return UserHelper::showUsername();
     }
 }

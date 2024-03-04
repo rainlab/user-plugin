@@ -19,6 +19,12 @@ tabs:
             tab: User
             span: full
 
+        username:
+            label: Username
+            tab: User
+            hidden: true
+            span: left
+
         company:
             label: Company
             span: auto

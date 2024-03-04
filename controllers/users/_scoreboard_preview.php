@@ -13,7 +13,7 @@
 
     <div class="scoreboard-item title-value">
         <h4><?= __("User") ?></h4>
-        <?php if ($formModel->name): ?>
+        <?php if ($formModel->full_name): ?>
             <p><?= e($formModel->full_name) ?></p>
         <?php else: ?>
             <p><em><?= __("Anonymous") ?></em></p>

@@ -8,17 +8,29 @@
                 <h2 class="h5 fw-normal">Enter your email address and password</h2>
             </div>
 
-            <div class="form-floating my-3">
-                <input
-                    name="email"
-                    type="email"
-                    class="form-control"
-                    id="inputEmail"
-                    placeholder="name@example.com"
-                    oninput="document.getElementById('inputRecoverEmail').value = this.value"
-                />
-                <label for="inputEmail">Email address</label>
-            </div>
+            {% if __SELF__.showUsernameField %}
+                <div class="form-floating my-3">
+                    <input
+                        name="username"
+                        type="text"
+                        class="form-control"
+                        id="inputUsername"
+                    />
+                    <label for="inputEmail">Username</label>
+                </div>
+            {% else %}
+                <div class="form-floating my-3">
+                    <input
+                        name="email"
+                        type="email"
+                        class="form-control"
+                        id="inputEmail"
+                        placeholder="name@example.com"
+                        oninput="document.getElementById('inputRecoverEmail').value = this.value"
+                    />
+                    <label for="inputEmail">Email address</label>
+                </div>
+            {% endif %}
 
             <div class="form-floating my-3">
                 <input
