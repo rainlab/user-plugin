@@ -27,7 +27,6 @@ trait ActionDeleteUser
         $this->deleteUser($this->user()->fresh());
 
         Auth::logout();
-
         Request::session()->invalidate();
         Request::session()->regenerateToken();
     }

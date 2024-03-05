@@ -3,6 +3,7 @@
 use Hash;
 use RainLab\User\Models\User;
 use Illuminate\Auth\SessionGuard as SessionGuardBase;
+use Illuminate\Contracts\Auth\Authenticatable;
 use InvalidArgumentException;
 use ValidationException;
 
@@ -47,13 +48,23 @@ class SessionGuard extends SessionGuardBase
      * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
      * @param  bool  $remember
      */
-    public function login($user, $remember = false)
+    public function login(Authenticatable $user, $remember = false)
     {
         if ($user->is_banned) {
             throw new ValidationException(['password' => __("Your account is locked. Please contact the site administrator.")]);
         }
 
         return parent::login($user, $remember);
+    }
+
+    /**
+     * loginQuietly logs a user into the application without firing the Login event.
+     */
+    public function loginQuietly(Authenticatable $user)
+    {
+        $this->updateSession($user->getAuthIdentifier());
+
+        $this->setUser($user);
     }
 
     /**
@@ -68,5 +79,34 @@ class SessionGuard extends SessionGuardBase
         }
 
         return $user;
+    }
+
+    /**
+     * logoutQuietly logs out the user without updating remember_token and
+     * without firing the Logout event.
+     */
+    public function logoutQuietly()
+    {
+        $this->clearUserDataFromStorage();
+
+        $this->user = null;
+
+        $this->loggedOut = true;
+    }
+
+    /**
+     * getName as a unique identifier for the auth session value.
+     */
+    public function getName()
+    {
+        return 'user_login';
+    }
+
+    /**
+     * getRecallerName of the cookie used to store the "recaller".
+     */
+    public function getRecallerName()
+    {
+        return 'user_auth';
     }
 }

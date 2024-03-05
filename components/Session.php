@@ -132,11 +132,14 @@ class Session extends ComponentBase
     {
         $user = Auth::user();
 
-        Auth::logout();
-
-        Request::session()->invalidate();
-
-        Request::session()->regenerateToken();
+        if (Auth::isImpersonator()) {
+            Auth::stopImpersonate();
+        }
+        else {
+            Auth::logout();
+            Request::session()->invalidate();
+            Request::session()->regenerateToken();
+        }
 
         if ($user) {
             /**
