@@ -36,8 +36,8 @@ class SessionGuard extends SessionGuardBase
         }
 
         // Hashed by Hashable trait
-        $user->forceFill([$attribute => $password]);
-        $user->save();
+        $user->{$attribute} = $password;
+        $user->save(['force' => true]);
 
         return $user;
     }

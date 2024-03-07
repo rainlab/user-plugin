@@ -1,7 +1,6 @@
 <?php namespace RainLab\User\Components\Authentication;
 
 use Auth;
-use Request;
 use Validator;
 use RainLab\User\Helpers\User as UserHelper;
 use ValidationException;
@@ -51,6 +50,7 @@ trait ActionLogin
             $this->throwFailedAuthenticationException();
         }
 
+        $this->prepareOtherUserSessions();
         $this->prepareAuthenticatedSession();
 
         /**
@@ -73,18 +73,6 @@ trait ActionLogin
         if ($event = $this->fireSystemEvent('user.authentication.response')) {
             return $event;
         }
-    }
-
-    /**
-     * useRememberMe checks if the remember me checkbox is shown, otherwise defaults to true
-     */
-    protected function useRememberMe(): bool
-    {
-        if ($this->showRememberMe()) {
-            return (bool) input('remember');
-        }
-
-        return $this->useRememberMe();
     }
 
     /**
@@ -140,16 +128,6 @@ trait ActionLogin
         ])->validate();
 
         return Auth::attempt($credentials, $this->useRememberMe());
-    }
-
-    /**
-     * prepareAuthenticatedSession
-     */
-    protected function prepareAuthenticatedSession()
-    {
-        if (Request::hasSession()) {
-            Request::session()->regenerate();
-        }
     }
 
     /**
