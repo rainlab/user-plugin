@@ -127,7 +127,7 @@ class Setting extends SettingModel
         $rule = PasswordRule::default();
 
         if ($setting->password_min_length) {
-            $rule->length($setting->min_password_length);
+            $rule->length($setting->password_min_length);
         }
 
         if ($setting->password_require_mixed_case) {
