@@ -32,7 +32,6 @@ class User
      */
     public static function passwordRules()
     {
-        // @todo config
-        return ['required', 'string', new PasswordRule, 'confirmed'];
+        return ['required', 'string', UserSetting::makePasswordRule(), 'confirmed'];
     }
 }

@@ -5,7 +5,6 @@ use Mail;
 use Event;
 use Model;
 use Carbon\Carbon;
-use Illuminate\Validation\Rules\Password as PasswordRule;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use October\Rain\Auth\AuthException;
@@ -71,8 +70,7 @@ class User extends Model implements Authenticatable, CanResetPassword
         'first_name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'between:3,255', 'email', 'unique:users,email,NULL,id,is_guest,false'],
         'username' => ['required', 'between:2,255', 'unique:users,username,NULL,id,is_guest,false'],
-        'password' => ['required:create', 'min:8'],
-        'password_confirmation' => ['required_with:password'],
+        'password' => ['required:create', 'string', 'confirmed'],
         'avatar' => 'nullable|image|max:4000',
     ];
 
@@ -271,34 +269,12 @@ class User extends Model implements Authenticatable, CanResetPassword
         }
 
         // When the username is not used, the email is substituted.
-        if (
-            (!$this->username) ||
-            ($this->isDirty('email') && $this->getOriginal('email') == $this->username)
-        ) {
+        if (!$this->username || ($this->isDirty('email') && $this->getOriginal('email') == $this->username)) {
             $this->username = $this->email;
         }
 
         // Apply rules Setting
-        $minPasswordLength = Setting::get('min_password_length', 8);
-        $passwordRule = PasswordRule::min($minPasswordLength);
-        if (Setting::get('require_mixed_case')) {
-            $passwordRule->mixedCase();
-        }
-
-        if (Setting::get('require_uncompromised')) {
-            $passwordRule->uncompromised();
-        }
-
-        if (Setting::get('require_number')) {
-            $passwordRule->numbers();
-        }
-
-        if (Setting::get('require_symbol')) {
-            $passwordRule->symbols();
-        }
-
-        $this->addValidationRule('password', $passwordRule);
-        $this->addValidationRule('password_confirmation', $passwordRule);
+        $this->addValidationRule('password', Setting::makePasswordRule());
     }
 
     /**

@@ -57,14 +57,26 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Minimum Password Length
+    | Password Policy
     |--------------------------------------------------------------------------
     |
-    | The minimum length of characters required for user passwords.
+    | Specify the password policy for backend administrators.
+    |
+    | min_length            - Password minimum length between 4 - 128 chars
+    | require_mixed_case    - Require at least one uppercase and lowercase letter
+    | require_uncompromised - Require a password not found in a leaked password database
+    | require_number        - Require at least one number
+    | require_symbol        - Require at least one non-alphanumeric character
     |
     */
 
-    'minPasswordLength' => 8,
+    'password_policy' => [
+        'min_length' => 8,
+        'require_mixed_case' => false,
+        'require_uncompromised' => false,
+        'require_number' => true,
+        'require_symbol' => false,
+    ],
 
     /*
     |--------------------------------------------------------------------------

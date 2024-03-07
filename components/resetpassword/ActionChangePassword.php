@@ -39,8 +39,8 @@ trait ActionChangePassword
             'current_password.current_password' => __("The provided password does not match your current password."),
         ])->validate();
 
-        $user->forceFill([
-            'password' => $input['password'],
-        ])->save();
+        $user->password = $input['password'];
+        $user->password_confirmation = $input['password_confirmation'] ?? null;
+        $user->save();
     }
 }
