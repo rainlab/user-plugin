@@ -69,7 +69,7 @@ trait HasImpersonation
             $this->logoutQuietly();
         }
 
-        $this->session->forget($this->getImpersonateName());
+        $this->session->remove($this->getImpersonateName());
     }
 
     /**
@@ -111,7 +111,7 @@ trait HasImpersonation
     }
 
     /**
-     * getImpersonationName gets the name of the cookie used to store the "recaller".
+     * getImpersonationName gets the name of the session used to store the impersonator.
      */
     public function getImpersonateName()
     {

@@ -1,12 +1,10 @@
 <?php namespace RainLab\User\Components;
 
 use Cms;
-use Auth;
 use Flash;
 use Config;
 use Request;
 use Cms\Classes\ComponentBase;
-use RainLab\User\Models\Setting as UserSetting;
 use RainLab\User\Helpers\User as UserHelper;
 use NotFoundException;
 
@@ -197,20 +195,6 @@ class Authentication extends ComponentBase
     public function showUsernameField()
     {
         return UserHelper::showUsername();
-    }
-
-    /**
-     * prepareOtherUserSessions will log out other sessions, if set by configuration
-     */
-    protected function prepareOtherUserSessions()
-    {
-        if (!UserSetting::get('block_persistence', false)) {
-            return;
-        }
-
-        if ($password = post('password')) {
-            Auth::logoutOtherDevices($password);
-        }
     }
 
     /**

@@ -50,7 +50,6 @@ trait ActionLogin
             $this->throwFailedAuthenticationException();
         }
 
-        $this->prepareOtherUserSessions();
         $this->prepareAuthenticatedSession();
 
         /**

@@ -46,7 +46,7 @@ trait HasBearerToken
         $serverName = Request::getHost();
 
         // Prepare payload
-        $persistCode = $user->remember_token ?: $user->getPersistCode();
+        $persistCode = $user->getPersistCode();
         $data = [
             'login' => $user->login,
             'hash' => Hash::make($persistCode)
@@ -115,12 +115,12 @@ trait HasBearerToken
 
         // Locate user
         $user = $this->findUserByLogin($login);
-        if (!$user || !$user->remember_token) {
+        if (!$user || !$user->persist_code) {
             return false;
         }
 
         // Persist code check failed
-        if (!Hash::check($user->remember_token, $hash)) {
+        if (!Hash::check($user->persist_code, $hash)) {
             return false;
         }
 

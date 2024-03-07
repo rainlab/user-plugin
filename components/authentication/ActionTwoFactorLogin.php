@@ -45,10 +45,6 @@ trait ActionTwoFactorLogin
             return $this->actionLogin();
         }
 
-        // Needed for Auth::logoutOtherDevices
-        Auth::setUser($user);
-        $this->prepareOtherUserSessions();
-
         Session::put('login.id', $user->getKey());
         Session::put('login.remember', $this->useRememberMe());
 

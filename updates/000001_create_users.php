@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->mediumText('notes')->nullable();
             $table->string('password');
+            $table->string('persist_code')->nullable();
             $table->string('remember_token')->nullable();
             $table->text('two_factor_secret')->nullable();
             $table->text('two_factor_recovery_codes')->nullable();

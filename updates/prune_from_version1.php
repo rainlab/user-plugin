@@ -11,7 +11,6 @@ return new class extends Migration
             'name',
             'last_name',
             'activation_code',
-            'persist_code',
             'reset_password_code',
             'permissions',
             'is_superuser',

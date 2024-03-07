@@ -16,6 +16,7 @@ use ValidationException;
 class SessionGuard extends SessionGuardBase
 {
     use \RainLab\User\Classes\SessionGuard\HasBearerToken;
+    use \RainLab\User\Classes\SessionGuard\HasPersistence;
     use \RainLab\User\Classes\SessionGuard\HasImpersonation;
 
     /**
@@ -54,7 +55,24 @@ class SessionGuard extends SessionGuardBase
             throw new ValidationException(['password' => __("Your account is locked. Please contact the site administrator.")]);
         }
 
+        $this->preventConcurrentSessions($user);
+
         return parent::login($user, $remember);
+    }
+
+    /**
+     * Update the session with the given ID.
+     *
+     * @param  string  $id
+     * @return void
+     */
+    protected function updateSession($id)
+    {
+        if ($this->viaRemember && $this->user) {
+            $this->updatePersistSession($this->user);
+        }
+
+        parent::updateSession($id);
     }
 
     /**
@@ -62,6 +80,8 @@ class SessionGuard extends SessionGuardBase
      */
     public function loginQuietly(Authenticatable $user)
     {
+        $this->updatePersistSession($user);
+
         $this->updateSession($user->getAuthIdentifier());
 
         $this->setUser($user);
@@ -75,6 +95,10 @@ class SessionGuard extends SessionGuardBase
         $user = parent::user();
 
         if ($user && $user->is_banned) {
+            return null;
+        }
+
+        if ($user && !$this->hasValidPersistCode($user)) {
             return null;
         }
 
@@ -92,6 +116,16 @@ class SessionGuard extends SessionGuardBase
         $this->user = null;
 
         $this->loggedOut = true;
+    }
+
+    /**
+     * clearUserDataFromStorage removes the user data from the session and cookies.
+     */
+    protected function clearUserDataFromStorage()
+    {
+        $this->session->remove($this->getPersistCodeName());
+
+        parent::clearUserDataFromStorage();
     }
 
     /**

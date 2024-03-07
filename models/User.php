@@ -47,6 +47,7 @@ use October\Rain\Auth\AuthException;
 class User extends Model implements Authenticatable, CanResetPassword
 {
     use \RainLab\User\Models\User\HasTwoFactor;
+    use \RainLab\User\Models\User\HasPersistCode;
     use \RainLab\User\Models\User\HasPasswordReset;
     use \RainLab\User\Models\User\HasAuthenticatable;
     use \RainLab\User\Models\User\HasEmailVerification;
