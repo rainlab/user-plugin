@@ -7,13 +7,6 @@ tabs:
 
         # Sign In tab
 
-        remember_login:
-            label: Remember Login Mode
-            span: auto
-            commentAbove: Select if the user session should be persistent.
-            type: radio
-            tab: Sign In
-
         login_attribute:
             label: Login Attribute
             span: auto

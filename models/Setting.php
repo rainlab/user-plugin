@@ -28,6 +28,13 @@ use System\Models\SettingModel;
  */
 class Setting extends SettingModel
 {
+    const ACTIVATE_AUTO = 'auto';
+    const ACTIVATE_USER = 'user';
+    const ACTIVATE_ADMIN = 'admin';
+
+    const LOGIN_EMAIL = 'email';
+    const LOGIN_USERNAME = 'username';
+
     /**
      * @var string settingsCode is a unique code for this object
      */
@@ -37,13 +44,6 @@ class Setting extends SettingModel
      * @var mixed settingsFields definition file
      */
     public $settingsFields = 'fields.yaml';
-
-    const ACTIVATE_AUTO = 'auto';
-    const ACTIVATE_USER = 'user';
-    const ACTIVATE_ADMIN = 'admin';
-
-    const LOGIN_EMAIL = 'email';
-    const LOGIN_USERNAME = 'username';
 
     /**
      * @var array belongsTo relations
@@ -108,35 +108,5 @@ class Setting extends SettingModel
             self::LOGIN_EMAIL => ["Email"],
             self::LOGIN_USERNAME => ["Username"]
         ];
-    }
-
-    /**
-     * getRememberLoginOptions
-     */
-    public function getRememberLoginOptions()
-    {
-        return [
-            self::REMEMBER_ALWAYS => [
-                "Always",
-            ],
-            self::REMEMBER_NEVER => [
-                "Never",
-            ],
-            self::REMEMBER_ASK => [
-                "Ask the user on login",
-            ]
-        ];
-    }
-
-    /**
-     * getRememberLoginAttribute
-     */
-    public function getRememberLoginAttribute($value)
-    {
-        if (!$value) {
-            return self::REMEMBER_ALWAYS;
-        }
-
-        return $value;
     }
 }
