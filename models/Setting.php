@@ -7,7 +7,6 @@ use System\Models\SettingModel;
 /**
  * Setting configuration
  *
- * @property string remember_login
  * @property string login_attribute
  * @property bool block_persistence
  * @property bool require_activation
@@ -46,10 +45,6 @@ class Setting extends SettingModel
     const LOGIN_EMAIL = 'email';
     const LOGIN_USERNAME = 'username';
 
-    const REMEMBER_ALWAYS = 'always';
-    const REMEMBER_NEVER = 'never';
-    const REMEMBER_ASK = 'ask';
-
     /**
      * @var array belongsTo relations
      */
@@ -67,7 +62,6 @@ class Setting extends SettingModel
         $this->block_persistence = Config::get('rainlab.user::block_persistence', false);
         $this->allow_registration = Config::get('rainlab.user::allow_registration', true);
         $this->login_attribute = Config::get('rainlab.user::login_attribute', self::LOGIN_EMAIL);
-        $this->remember_login = Config::get('rainlab.user::remember_login', self::REMEMBER_ALWAYS);
         $this->user_message_template = 'user:welcome_email';
         $this->system_message_template = 'user:new_user_internal';
     }

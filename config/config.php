@@ -68,21 +68,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Remember login mode
-    |--------------------------------------------------------------------------
-    |
-    | Select if the user session should be persistent.
-    |
-    | REMEMBER_ALWAYS   Always persist user session.
-    | REMEMBER_ASK      Ask if session should be persistent.
-    | REMEMBER_NEVER    Never persist user session.
-    |
-    */
-
-    'remember_login' => Setting::REMEMBER_ALWAYS,
-
-    /*
-    |--------------------------------------------------------------------------
     | Sign in requires activation
     |--------------------------------------------------------------------------
     |

@@ -80,11 +80,11 @@ trait ActionLogin
      */
     protected function useRememberMe(): bool
     {
-        if ($this->useRememberMe()) {
+        if ($this->showRememberMe()) {
             return (bool) input('remember');
         }
 
-        return true;
+        return $this->useRememberMe();
     }
 
     /**

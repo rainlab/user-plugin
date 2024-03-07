@@ -16,6 +16,10 @@ class Authentication extends ComponentBase
     use \RainLab\User\Components\Authentication\ActionTwoFactorLogin;
     use \RainLab\User\Components\Authentication\ActionRecoverPassword;
 
+    const REMEMBER_ALWAYS = 'always';
+    const REMEMBER_NEVER = 'never';
+    const REMEMBER_ASK = 'ask';
+
     /**
      * componentDetails
      */
@@ -36,8 +40,13 @@ class Authentication extends ComponentBase
             'rememberMe' => [
                 'title' => "Remember Me",
                 'description' => "Ask the user if they want to stay logged in after the browser is closed.",
-                'type' => 'checkbox',
-                'default' => false
+                'type' => 'dropdown',
+                'default' => static::REMEMBER_NEVER,
+                'options' => [
+                    self::REMEMBER_ALWAYS => "Always",
+                    self::REMEMBER_NEVER => "Never",
+                    self::REMEMBER_ASK => "Ask"
+                ]
             ],
             'twoFactorAuth' => [
                 'title' => "Two-Factor Authentication",
@@ -160,11 +169,19 @@ class Authentication extends ComponentBase
     }
 
     /**
-     * useRememberMe returns true if the user can opt to trust the device or not
+     * useRememberMe returns true if the user session should be persisted with a cookie
      */
     public function useRememberMe(): bool
     {
-        return (bool) $this->property('rememberMe', false);
+        return $this->property('rememberMe') !== self::REMEMBER_NEVER;
+    }
+
+    /**
+     * showRememberMe gives the user the option to trust the device or not
+     */
+    public function showRememberMe(): bool
+    {
+        return $this->property('rememberMe') === self::REMEMBER_ASK;
     }
 
     /**
