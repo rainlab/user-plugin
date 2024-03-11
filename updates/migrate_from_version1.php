@@ -8,7 +8,9 @@ return new class extends Migration
     public function up()
     {
         $updater = App::make('db.updater');
-        $updater->setUp(__DIR__.'/000002_create_password_resets.php');
+        if (!Schema::hasTable('user_password_resets')) {
+            $updater->setUp(__DIR__.'/000002_create_password_resets.php');
+        }
 
         if (!Schema::hasColumn('users', 'first_name')) {
             Schema::table('users', function(Blueprint $table) {
