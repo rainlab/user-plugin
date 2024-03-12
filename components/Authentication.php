@@ -154,7 +154,7 @@ class Authentication extends ComponentBase
      */
     public function useTwoFactorAuth(): bool
     {
-        if (($config = Config::get('user.force_two_factor_auth')) !== null) {
+        if (($config = Config::get('rainlab.user::force_two_factor_auth')) !== null) {
             return (bool) $config;
         }
 
