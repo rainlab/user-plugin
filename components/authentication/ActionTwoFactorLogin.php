@@ -31,6 +31,11 @@ trait ActionTwoFactorLogin
     {
         $this->ensureLoginIsNotThrottled();
 
+        Request::validate([
+            UserHelper::username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+
         $user = $this->getUserModel()
             ->where(UserHelper::username(), post(UserHelper::username()))
             ->first()

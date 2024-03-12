@@ -106,6 +106,7 @@ class Registration extends ComponentBase
             'last_name' => $input['last_name'],
             'email' => $input['email'],
             'password' => $input['password'],
+            'password_confirmation' => $input['password_confirmation'],
         ]);
     }
 }
