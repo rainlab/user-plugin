@@ -1,9 +1,6 @@
 <?php
 
-use RainLab\User\Models\Setting;
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Activation mode
@@ -11,13 +8,13 @@ return [
     |
     | Select how a user account should be activated.
     |
-    | ACTIVATE_ADMIN    Administrators must activate users manually.
-    | ACTIVATE_AUTO     Users are activated automatically upon registration.
-    | ACTIVATE_USER     The user activates their own account using a link sent to them via email.
+    | auto     Users are activated automatically upon registration.
+    | user     The user activates their own account using a link sent to them via email.
+    | admin    Administrators must activate users manually.
     |
     */
 
-    'activate_mode' => Setting::ACTIVATE_AUTO,
+    'activate_mode' => 'auto',
 
     /*
     |--------------------------------------------------------------------------
@@ -58,12 +55,12 @@ return [
     |
     | Select what primary user detail should be used for signing in.
     |
-    | LOGIN_EMAIL       Authenticate users by email.
-    | LOGIN_USERNAME    Authenticate users by username.
+    | email       Authenticate users by email.
+    | username    Authenticate users by username.
     |
     */
 
-    'login_attribute' => Setting::LOGIN_EMAIL,
+    'login_attribute' => 'email',
 
     /*
     |--------------------------------------------------------------------------
