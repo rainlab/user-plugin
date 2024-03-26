@@ -37,7 +37,7 @@ trait HasModelAttributes
     /**
      * getAvatarUrl
      */
-    public function getAvatarUrl()
+    public function getAvatarUrlAttribute()
     {
         return $this->getAvatarThumb();
     }
