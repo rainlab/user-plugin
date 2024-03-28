@@ -4,8 +4,14 @@ use Auth;
 use Closure;
 use Response;
 
+/**
+ * AuthMiddleware
+ */
 class AuthMiddleware
 {
+    /**
+     * handle the request
+     */
     public function handle($request, Closure $next)
     {
         if (!Auth::check()) {

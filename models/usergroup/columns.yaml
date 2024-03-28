@@ -3,24 +3,28 @@
 # ===================================
 
 columns:
-
     id:
-        label: rainlab.user::lang.group.id
+        label: ID
         invisible: true
 
     name:
-        label: rainlab.user::lang.group.name
+        label: Name
         searchable: true
 
-    code:
-        label: rainlab.user::lang.group.code
-
-    created_at:
-        label: rainlab.user::lang.group.created_at
+    description:
+        label: Description
+        searchable: true
 
     users_count:
-        label: rainlab.user::lang.group.users_count
+        label: Users
         relation: users_count
         valueFrom: count
         default: 0
         sortable: false
+
+    code:
+        label: Code
+
+    created_at:
+        label: Created
+        type: datetime

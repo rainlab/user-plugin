@@ -5,46 +5,66 @@
 columns:
 
     id:
-        label: rainlab.user::lang.user.id
+        label: ID
         invisible: true
 
     username:
-        label: rainlab.user::lang.user.username
+        label: Username
         searchable: true
         invisible: true
 
-    name:
-        label: rainlab.user::lang.user.name
+    first_name:
+        label: First Name
         searchable: true
 
-    surname:
-        label: rainlab.user::lang.user.surname
+    last_name:
+        label: Last Name
         searchable: true
-        invisible: true
 
     email:
-        label: rainlab.user::lang.user.email
+        label: Email
         searchable: true
 
-    created_at:
-        label: rainlab.user::lang.user.created_at
-        type: timetense
-
-    last_seen:
-        label: rainlab.user::lang.user.last_seen
-        type: timetense
-
     is_guest:
-        label: rainlab.user::lang.user.is_guest
+        label: Guest
+        type: switch
+
+    primary_group:
+        label: Primary Group
+        relation: primary_group
+        select: name
+
+    deleted_at:
+        label: Deleted
         type: switch
         invisible: true
 
+    notes:
+        label: Notes
+        searchable: true
+        invisible: true
+
+    created_at:
+        label: Created At
+        type: timetense
+        invisible: true
+
+    updated_at:
+        label: Updated At
+        type: timetense
+        invisible: true
+
+    last_seen:
+        label: Last Seen
+        type: timetense
+        invisible: true
+
     created_ip_address:
-        label: rainlab.user::lang.user.created_ip_address
+        label: Created IP
         searchable: true
         invisible: true
 
     last_ip_address:
-        label: rainlab.user::lang.user.last_ip_address
+        label: Last IP
         searchable: true
         invisible: true

@@ -3,7 +3,7 @@
 use App;
 use PluginTestCase;
 use Illuminate\Foundation\AliasLoader;
-use RainLab\User\Models\Settings;
+use RainLab\User\Models\Setting;
 
 /**
  * UserPluginTestCase
@@ -18,7 +18,7 @@ abstract class UserPluginTestCase extends PluginTestCase
         parent::setUp();
 
         // Reset any modified settings
-        Settings::resetDefault();
+        Setting::resetDefault();
 
         // Log out after each test
         \RainLab\User\Classes\AuthManager::instance()->logout();

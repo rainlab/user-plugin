@@ -1,0 +1,57 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+tabs:
+    fields:
+        first_name:
+            label: First Name
+            span: auto
+            tab: User
+
+        last_name:
+            label: Last Name
+            span: auto
+            tab: User
+
+        email:
+            label: Email
+            tab: User
+            span: full
+
+        username:
+            label: Username
+            tab: User
+            hidden: true
+            span: left
+
+        company:
+            label: Company
+            span: auto
+            tab: User
+
+        phone:
+            label: Phone
+            span: auto
+            tab: User
+
+        primary_group:
+            label: Group
+            tab: User
+            type: relation
+
+        created_ip_address:
+            label: Created IP Address
+            span: auto
+            tab: User
+
+        last_ip_address:
+            label: Last IP Address
+            span: auto
+            tab: User
+
+        notes:
+            label: Notes
+            tab: Details
+            type: textarea
+            size: large

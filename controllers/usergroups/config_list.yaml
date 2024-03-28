@@ -12,7 +12,7 @@ modelClass: RainLab\User\Models\UserGroup
 filter: $/rainlab/user/models/usergroup/scopes.yaml
 
 # List Title
-title: rainlab.user::lang.groups.list_title
+title: Manage Groups
 
 # Link URL for each record
 recordUrl: rainlab/user/usergroups/update/:id

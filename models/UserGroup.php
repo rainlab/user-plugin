@@ -1,13 +1,24 @@
 <?php namespace RainLab\User\Models;
 
-use October\Rain\Auth\Models\Group as GroupBase;
-use ApplicationException;
+use Model;
 
 /**
- * User Group Model
+ * UserGroup Model
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $code
+ * @property string $description
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ *
+ * @package rainlab\user
+ * @author Alexey Bobkov, Samuel Georges
  */
-class UserGroup extends GroupBase
+class UserGroup extends Model
 {
+    use \October\Rain\Database\Traits\Validation;
+
     const GROUP_GUEST = 'guest';
     const GROUP_REGISTERED = 'registered';
 
@@ -28,8 +39,15 @@ class UserGroup extends GroupBase
      * @var array Relations
      */
     public $belongsToMany = [
-        'users'       => [User::class, 'table' => 'users_groups'],
-        'users_count' => [User::class, 'table' => 'users_groups', 'count' => true]
+        'users' => [
+            User::class,
+            'table' => 'users_groups'
+        ],
+        'users_count' => [
+            User::class,
+            'table' => 'users_groups',
+            'count' => true
+        ]
     ];
 
     /**
@@ -41,20 +59,41 @@ class UserGroup extends GroupBase
         'description'
     ];
 
-    protected static $guestGroup = null;
+    /**
+     * @var object|null guestGroupCache
+     */
+    protected static $guestGroupCache = null;
 
     /**
-     * Returns the guest user group.
-     * @return RainLab\User\Models\UserGroup
+     * delete the group
+     * @return bool
      */
-    public static function getGuestGroup()
+    public function delete()
     {
-        if (self::$guestGroup !== null) {
-            return self::$guestGroup;
+        $this->users()->detach();
+
+        return parent::delete();
+    }
+
+    /**
+     * getGuestGroup returns the guest user group.
+     */
+    public static function getGuestGroup(): ?static
+    {
+        if (self::$guestGroupCache !== null) {
+            return self::$guestGroupCache;
         }
 
-        $group = self::where('code', self::GROUP_GUEST)->first() ?: false;
+        $group = self::where('code', self::GROUP_GUEST)->first();
 
-        return self::$guestGroup = $group;
+        return self::$guestGroupCache = $group;
+    }
+
+    /**
+     * scopeWithoutGuest
+     */
+    public function scopeWithoutGuest($query)
+    {
+        return $query->where('code', '<>', self::GROUP_GUEST);
     }
 }
