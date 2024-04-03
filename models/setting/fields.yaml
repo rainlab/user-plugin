@@ -14,10 +14,6 @@ tabs:
             type: radio
             tab: Sign In
 
-        _login_ruler:
-            type: ruler
-            tab: Sign In
-
         block_persistence:
             label: Prevent Concurrent Sessions
             span: full

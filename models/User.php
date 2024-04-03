@@ -71,7 +71,7 @@ class User extends Model implements Authenticatable, CanResetPassword
         'email' => ['required', 'between:3,255', 'email', 'unique:users,email,NULL,id,is_guest,false'],
         'username' => ['required', 'between:2,255', 'unique:users,username,NULL,id,is_guest,false'],
         'password' => ['required:create', 'string', 'confirmed'],
-        'avatar' => 'nullable|image|max:4000',
+        'avatar' => ['nullable', 'image', 'max:4000'],
     ];
 
     /**
@@ -193,7 +193,7 @@ class User extends Model implements Authenticatable, CanResetPassword
     /**
      * Returns the public image file path to this user's avatar.
      */
-    public function getAvatarThumb($size = 25, $options = null)
+    public function getAvatarThumb($size = 64, $options = null)
     {
         if (is_string($options)) {
             $options = ['default' => $options];
