@@ -5,6 +5,7 @@ v1.0.2:
     - 000002_create_password_resets.php
     - 000003_create_user_groups.php
     - 000004_create_mail_blockers.php
+    - 000005_create_user_logs.php
 v1.0.3:
     - Seed all database tables
     - seed_tables.php

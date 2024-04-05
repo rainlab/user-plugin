@@ -1,0 +1,23 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    detail:
+        label: Detail
+        type: partial
+        searchable: false
+        sortable: false
+
+    user_full_name:
+        label: User
+        relation: user
+        valueFrom: fullname
+        type: linkage
+        displayFrom: user_backend_linkage
+
+    created_at:
+        label: Created
+        type: timetense
+        sortable: true
+        searchable: false

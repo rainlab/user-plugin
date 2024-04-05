@@ -177,12 +177,12 @@ class Plugin extends PluginBase
                         'url' => Backend::url('rainlab/user/users'),
                         'permissions' => ['rainlab.users.access_users']
                     ],
-                    // 'timelines' => [
-                    //     'label' => "Timeline",
-                    //     'icon' => 'icon-bars',
-                    //     'url' => Backend::url('user/timelines'),
-                    //     'permissions' => []
-                    // ]
+                    'timelines' => [
+                        'label' => "Timeline",
+                        'icon' => 'icon-bars',
+                        'url' => Backend::url('user/timelines'),
+                        'permissions' => []
+                    ]
                 ]
             ]
         ];

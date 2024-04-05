@@ -10,6 +10,7 @@ return new class extends Migration
         $updater = App::make('db.updater');
         if (!Schema::hasTable('user_password_resets')) {
             $updater->setUp(__DIR__.'/000002_create_password_resets.php');
+            $updater->setUp(__DIR__.'/000005_create_user_logs.php');
         }
 
         if (!Schema::hasColumn('users', 'first_name')) {
