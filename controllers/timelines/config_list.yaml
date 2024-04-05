@@ -3,7 +3,7 @@
 # ===================================
 
 # Model List Column configuration
-list: $/rainlab/user/models/userlog/columns.yaml
+list: $/rainlab/user/models/userlog/columns-global.yaml
 
 # Model Class name
 modelClass: RainLab\User\Models\UserLog

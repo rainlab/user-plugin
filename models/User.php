@@ -149,6 +149,13 @@ class User extends Model implements Authenticatable, CanResetPassword
     ];
 
     /**
+     * @var array hasMany relations
+     */
+    public $hasMany = [
+        'activity_log' => [UserLog::class, 'delete' => true],
+    ];
+
+    /**
      * @var array belongsTo
      */
     public $belongsTo = [

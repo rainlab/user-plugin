@@ -38,7 +38,7 @@ class Users extends Controller
     /**
      * @var array relationConfig for extensions.
      */
-    public $relationConfig;
+    public $relationConfig = 'config_relation.yaml';
 
     /**
      * @var array importExportConfig configuration.

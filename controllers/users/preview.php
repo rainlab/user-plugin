@@ -90,6 +90,11 @@
                 <?= __("User") ?>
             </a>
         </li>
+        <li>
+            <a href="#history">
+                <?= __("History") ?>
+            </a>
+        </li>
         <?php foreach ($customTabs as $tabName => $tabPartial): ?>
             <li>
                 <a href="#<?= Str::slug(__($tabName)) ?>">
@@ -110,6 +115,10 @@
                     <?= $this->formRenderPrimaryTab('Details') ?>
                 </div>
             </div>
+        </div>
+        <div class="tab-pane">
+            <h4 class="my-3 fw-normal">Activity Log</h4>
+            <?= $this->relationRender('activity_log') ?>
         </div>
         <?php foreach ($customTabs as $tabName => $tabPartial): ?>
             <div class="tab-pane">
