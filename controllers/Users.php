@@ -4,6 +4,7 @@ use BackendMenu;
 use Backend\Classes\Controller;
 use RainLab\User\Models\MailBlocker;
 use RainLab\User\Models\Setting as UserSetting;
+use RainLab\User\Models\UserLog;
 use RainLab\User\Helpers\User as UserHelper;
 
 /**
@@ -125,6 +126,29 @@ class Users extends Controller
     {
         if (UserSetting::get('activate_mode') === UserSetting::ACTIVATE_AUTO) {
             $model->markEmailAsVerified();
+        }
+    }
+
+    /**
+     * formBeforeUpdate uses model events since dirty attributes are not available
+     * after the form controller finishes saving
+     */
+    public function formBeforeUpdate($model)
+    {
+        $model->bindEvent('model.afterUpdate', fn() => $this->modelAfterUpdate($model));
+    }
+
+    /**
+     * modelAfterUpdate
+     */
+    protected function modelAfterUpdate($model)
+    {
+        if ($model->isDirty('email')) {
+            UserLog::createSystemRecord($model->getKey(), UserLog::TYPE_SET_EMAIL, [
+                'user_full_name' => $model->full_name,
+                'old_value' => $model->getOriginal('email'),
+                'new_value' => $model->email,
+            ]);
         }
     }
 

@@ -74,6 +74,7 @@ class UserLog extends ExpandoModel
         $obj->data = $data;
         $obj->is_comment = false;
         $obj->is_system = false;
+        $obj->setExpandoAttributes($data);
         $obj->save();
 
         return $obj;
@@ -87,9 +88,9 @@ class UserLog extends ExpandoModel
         $obj = new static;
         $obj->user_id = $userId;
         $obj->type = $type;
-        $obj->data = $data;
         $obj->is_comment = false;
         $obj->is_system = true;
+        $obj->setExpandoAttributes($data);
         $obj->save();
 
         return $obj;
