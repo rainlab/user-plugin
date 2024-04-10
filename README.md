@@ -102,7 +102,7 @@ You can check the logged in user by accessing the **{{ user }}** Twig variable:
 The Session component allows a user to sign out of their session.
 
 ```html
-<a data-request="onLogout" data-request-data="redirect: '/good-bye'">Sign out</a>
+<a data-request="onLogout" data-request-data="{ redirect: '/good-bye' }">Sign out</a>
 ```
 
 ### Page Restriction

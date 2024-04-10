@@ -24,6 +24,8 @@ return new class extends Migration
                 });
             }
         }
+
+        Schema::dropIfExists('rainlab_user_mail_blockers');
     }
 
     public function down()

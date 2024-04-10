@@ -2,7 +2,6 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
-use RainLab\User\Models\MailBlocker;
 use RainLab\User\Models\Setting as UserSetting;
 use RainLab\User\Models\UserLog;
 use RainLab\User\Helpers\User as UserHelper;
@@ -150,28 +149,5 @@ class Users extends Controller
                 'new_value' => $model->email,
             ]);
         }
-    }
-
-    /**
-     * formAfterUpdate
-     */
-    public function formAfterUpdate($model)
-    {
-        $blockMail = post('User[block_mail]', false);
-        if ($blockMail !== false) {
-            $blockMail ? MailBlocker::blockAll($model) : MailBlocker::unblockAll($model);
-        }
-    }
-
-    /**
-     * formExtendModel
-     */
-    public function formExtendModel($model)
-    {
-        $model->block_mail = MailBlocker::isBlockAll($model);
-
-        $model->bindEvent('model.saveInternal', function() use ($model) {
-            unset($model->attributes['block_mail']);
-        });
     }
 }

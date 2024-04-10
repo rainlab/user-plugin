@@ -7,17 +7,17 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('rainlab_user_mail_blockers', function(Blueprint $table) {
+        Schema::create('rainlab_user_preferences', function(Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('email')->index()->nullable();
-            $table->string('template')->index()->nullable();
             $table->bigInteger('user_id')->unsigned()->nullable()->index();
+            $table->string('item')->index()->nullable();
+            $table->mediumText('value')->nullable();
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('rainlab_user_mail_blockers');
+        Schema::dropIfExists('rainlab_user_preferences');
     }
 };

@@ -14,6 +14,7 @@ use October\Rain\Auth\AuthException;
  *
  * @property int $id
  * @property bool $is_guest
+ * @property bool $is_mail_blocked
  * @property string $first_name
  * @property string $last_name
  * @property string $username

@@ -28,7 +28,7 @@ tabs:
             default: true
             context: create
 
-        block_mail:
+        is_mail_blocked:
             label: Block all outgoing mail sent to this user.
             tab: Account
             type: checkbox

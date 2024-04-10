@@ -7,7 +7,6 @@ use Backend;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use RainLab\User\Classes\UserRedirector;
-use RainLab\User\Models\MailBlocker;
 use RainLab\User\Classes\UserProvider;
 
 /**
@@ -113,7 +112,7 @@ class Plugin extends PluginBase
     protected function registerMailBlocker()
     {
         Event::listen('mailer.prepareSend', function ($mailer, $view, $message) {
-            return MailBlocker::filterMessage($view, $message);
+            return \RainLab\User\Models\UserPreference::filterMailMessage($view, $message);
         });
     }
 
