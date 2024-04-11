@@ -37,6 +37,10 @@ The functionality of the Account component has been broken up in to three compon
 - Registration: register a new user
 
 
+### MailBlocker model replaced by UserPreference
+
+The `RainLab\User\Models\MailBlocker` model has been replaced by `RainLab\User\Models\UserPreference`. The classes function differently and `UserPreference` is more generic for controlling user preferences.
+
 ### Events Updated
 
 ...

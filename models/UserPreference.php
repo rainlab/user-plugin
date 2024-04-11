@@ -45,7 +45,7 @@ class UserPreference extends Model
     /**
      * setPreferences for a user. Eg:
      *
-     *     UserPreference::setPreferences($user, [send_promotional_emails => 0])
+     *     UserPreference::setPreferences($user, ['send_promotional_emails' => 0, ...]);
      *
      * @param  string $userId
      * @param  array $preferences
