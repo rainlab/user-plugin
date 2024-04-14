@@ -1,8 +1,10 @@
 <?php namespace RainLab\User\Components;
 
+use App;
 use Cms;
 use Auth;
 use Flash;
+use Cookie;
 use Request;
 use Redirect;
 use Cms\Classes\Page;
@@ -101,6 +103,9 @@ class Session extends ComponentBase
         if ($this->property('checkToken', false)) {
             $this->authenticateWithBearerToken();
         }
+
+        // Authenticate session
+        $this->authenticateSession();
 
         // Inject security logic pre-AJAX
         $this->registerAjaxSecurity();
@@ -301,5 +306,54 @@ class Session extends ComponentBase
     public function impersonator()
     {
         return Auth::getImpersonator();
+    }
+
+    /**
+     * authenticateSession is an adaptation of the AuthenticateSession middleware.
+     * It checks if the password hash has changed and logs out the user. This is
+     * an extra redundancy check and is already covered by the persist code.
+     *
+     * @see \Illuminate\Session\Middleware\AuthenticateSession
+     */
+    protected function authenticateSession()
+    {
+        if (!Request::hasSession() || !$this->user()) {
+            return;
+        }
+
+        $logoutFunc = function() {
+            Auth::logoutCurrentDevice();
+            Request::session()->flush();
+        };
+
+        $user = Auth::getRealUser();
+        $driver = Auth::getDefaultDriver();
+
+        if (Auth::viaRemember()) {
+            $passwordHash = explode('|', Cookie::get(Auth::getRecallerName()))[2] ?? null;
+            if (!$passwordHash || $passwordHash != $user->getAuthPassword()) {
+                $logoutFunc();
+                return;
+            }
+        }
+
+        if (!Request::session()->has("password_hash_{$driver}")) {
+            Request::session()->put([
+                "password_hash_{$driver}" => $user->getAuthPassword(),
+            ]);
+        }
+
+        if (Request::session()->get("password_hash_{$driver}") !== $user->getAuthPassword()) {
+            $logoutFunc();
+            return;
+        }
+
+        App::after(function() use ($driver) {
+            if ($user = Auth::getRealUser()) {
+                Request::session()->put([
+                    "password_hash_{$driver}" => $user->getAuthPassword(),
+                ]);
+            }
+        });
     }
 }

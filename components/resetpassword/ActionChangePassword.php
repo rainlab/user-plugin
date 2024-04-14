@@ -1,8 +1,9 @@
 <?php namespace RainLab\User\Components\ResetPassword;
 
 use Auth;
-use ForbiddenException;
+use Request;
 use Validator;
+use ForbiddenException;
 use RainLab\User\Models\User;
 use RainLab\User\Helpers\User as UserHelper;
 
@@ -25,6 +26,12 @@ trait ActionChangePassword
         }
 
         $this->updateUserPassword($user, input());
+
+        if (Request::hasSession()) {
+            Request::session()->put([
+                'password_hash_'.Auth::getDefaultDriver() => $user->getAuthPassword(),
+            ]);
+        }
     }
 
     /**

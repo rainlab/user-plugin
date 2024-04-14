@@ -52,10 +52,6 @@ trait ActionBrowserSessions
      */
     protected function actionDeleteOtherSessions()
     {
-        if (config('session.driver') !== 'database') {
-            return;
-        }
-
         $password = (string) post('password');
 
         if (!$this->isUserPasswordValid($password)) {
@@ -66,10 +62,11 @@ trait ActionBrowserSessions
 
         Auth::logoutOtherDevices($password);
 
-        Db::connection(config('session.connection'))->table(config('session.table', 'sessions'))
-            ->where('user_id', Auth::user()->getAuthIdentifier())
-            ->where('id', '!=', Request::session()->getId())
-            ->delete();
+        $this->deleteOtherSessionRecords();
+
+        Request::session()->put([
+            'password_hash_'.Auth::getDefaultDriver() => Auth::user()->getAuthPassword(),
+        ]);
     }
 
     /**
@@ -80,5 +77,20 @@ trait ActionBrowserSessions
         $agent = new Agent;
         $agent->setUserAgent($session->user_agent);
         return $agent;
+    }
+
+    /**
+     * deleteOtherSessionRecords deletes the other browser session records from storage.
+     */
+    protected function deleteOtherSessionRecords()
+    {
+        if (Config::get('session.driver') !== 'database') {
+            return;
+        }
+
+        Db::connection(config('session.connection'))->table(config('session.table', 'sessions'))
+            ->where('user_id', Auth::user()->getAuthIdentifier())
+            ->where('id', '!=', Request::session()->getId())
+            ->delete();
     }
 }
