@@ -149,5 +149,11 @@ class Users extends Controller
                 'new_value' => $model->email,
             ]);
         }
+
+        if ($model->isDirty('password')) {
+            UserLog::createSystemRecord($model->getKey(), UserLog::TYPE_SET_PASSWORD, [
+                'user_full_name' => $model->full_name
+            ]);
+        }
     }
 }

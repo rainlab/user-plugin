@@ -1,12 +1,12 @@
 <?php namespace RainLab\User\Components;
 
 use Cms;
-use Date;
 use Auth;
 use Flash;
 use Request;
 use Redirect;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserLog;
 use RainLab\User\Models\UserPreference;
 use Cms\Classes\ComponentBase;
 use ApplicationException;
@@ -88,6 +88,17 @@ class Account extends ComponentBase
         // Preference upload
         if (($preferences = post('Preference')) && is_array($preferences)) {
             UserPreference::setPreferencesSafe($user->id, $preferences);
+        }
+
+        // Email changed
+        if (isset($data['email']) && $user->email !== trim($data['email'])) {
+            $user->forceFill(['activated_at' => null]);
+
+            UserLog::createRecord($user->getKey(), UserLog::TYPE_SET_EMAIL, [
+                'user_full_name' => $user->full_name,
+                'old_value' => $user->email,
+                'new_value' => $data['email']
+            ]);
         }
 
         $user->fill($data);
@@ -244,6 +255,11 @@ class Account extends ComponentBase
 
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
+
+            UserLog::createRecord($user->getKey(), UserLog::TYPE_VERIFY_EMAIL, [
+                'user_full_name' => $user->full_name,
+                'user_email' => $user->email,
+            ]);
         }
 
         Flash::success(__("Thank you for verifying your email."));

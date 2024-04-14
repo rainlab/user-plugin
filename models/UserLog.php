@@ -27,6 +27,8 @@ class UserLog extends ExpandoModel
 
     const TYPE_NEW_USER = 'new-user';
     const TYPE_SET_EMAIL = 'set-email';
+    const TYPE_SET_PASSWORD = 'set-password';
+    const TYPE_VERIFY_EMAIL = 'verify-email';
     const TYPE_SELF_DELETE = 'self-delete';
     const TYPE_INTERNAL_COMMENT = 'internal-comment';
 
