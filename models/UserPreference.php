@@ -65,7 +65,10 @@ class UserPreference extends Model
     public static function setPreferencesSafe($userId, $preferences)
     {
         array_walk_recursive($preferences, function(&$value, $key) {
-            if ($value === 'true') {
+            if ($value === 'null') {
+                $value = null;
+            }
+            elseif ($value === 'true') {
                 $value = true;
             }
             elseif ($value === 'false') {

@@ -94,11 +94,15 @@ class SessionGuard extends SessionGuardBase
     {
         $user = parent::user();
 
-        if ($user && $user->is_banned) {
+        if (!$user) {
             return null;
         }
 
-        if ($user && !$this->hasValidPersistCode($user)) {
+        if ($user->is_banned) {
+            return null;
+        }
+
+        if (!$this->hasValidPersistCode($user)) {
             return null;
         }
 

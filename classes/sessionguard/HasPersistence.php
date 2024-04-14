@@ -13,7 +13,7 @@ use RainLab\User\Models\Setting as UserSetting;
 trait HasPersistence
 {
     /**
-     * logoutOtherDevicesForcefully
+     * logoutOtherDevicesForcefully is like logoutOtherDevices except it resets the cookie
      */
     public function logoutOtherDevicesForcefully(User $user)
     {

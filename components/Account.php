@@ -1,11 +1,13 @@
 <?php namespace RainLab\User\Components;
 
 use Cms;
+use Date;
 use Auth;
 use Flash;
 use Request;
 use Redirect;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserPreference;
 use Cms\Classes\ComponentBase;
 use ApplicationException;
 use ForbiddenException;
@@ -73,10 +75,19 @@ class Account extends ComponentBase
         }
 
         // Password update requires old password, use RainLab\User\Components\ResetPassword instead
-        $data = array_except((array) post(), ['password']);
+        $data = array_except((array) post(), ['password', 'remove_avatar']);
 
+        // Avatar upload
         if ($avatarFile = files('avatar')) {
             $user->avatar = $avatarFile;
+        }
+        elseif (post('remove_avatar')) {
+            $user->avatar = null;
+        }
+
+        // Preference upload
+        if (($preferences = post('Preference')) && is_array($preferences)) {
+            UserPreference::setPreferencesSafe($user->id, $preferences);
         }
 
         $user->fill($data);

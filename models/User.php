@@ -486,4 +486,16 @@ class User extends Model implements Authenticatable, CanResetPassword
     {
         $this->password = $this->password_confirmation = Str::random(12);
     }
+
+    /**
+     * getPreference for this user
+     */
+    public function getPreference($item, $default = null)
+    {
+        if ($userId = $this->getKey()) {
+            return UserPreference::getPreference($userId, $item, $default);
+        }
+
+        return $default;
+    }
 }
