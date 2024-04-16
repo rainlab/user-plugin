@@ -66,8 +66,6 @@
   "Sign In Requires Activation": "Prijava zahteva aktiviranje",
   "Users must have an activated account to sign in.": "Uporabniki potrebujejo za prijavo aktiviran račun.",
   "Activation": "Aktivacija",
-  "Automatic": "Avtomatski",
-  "Activated automatically upon registration.": "Aktiviranje je avtomatsko in se zgodi takoj po registraciji.",
   "The user activates their own account using mail.": "Uporabnik sam aktivira svoj račun z uporabo e-pošte.",
   "Administrator": "Administratorski",
   "Only an Administrator can activate a user.": "Uporabnika lahko aktivira le administrator.",

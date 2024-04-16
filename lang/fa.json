@@ -56,8 +56,6 @@
   "Sign In Requires Activation": "ورود نیاز مند فعال سازی حساب کاربری می باشد",
   "Users must have an activated account to sign in.": "کاربران باید دارای حساب کاربری فعال جهت ورود باشند.",
   "Activation": "فعال سازی",
-  "Automatic": "خودکار",
-  "Activated automatically upon registration.": "بهنگام ثبت نام حساب کاربری به صورت خودکار فعال شود.",
   "The user activates their own account using mail.": "کاربران حساب خود را از طریق ایمیل فعال نمایند.",
   "Administrator": "مدیریت",
   "Only an Administrator can activate a user.": "فقط مدیران حساب کاربری را فعال نمایید.",

@@ -61,8 +61,6 @@
   "Sign In Requires Activation": "Prihlásenie vyžaduje aktiváciu",
   "Users must have an activated account to sign in.": "Používatelia musia mať aktivovaný účet na prihlásenie.",
   "Activation": "Aktivácia",
-  "Automatic": "Automatický",
-  "Activated automatically upon registration.": "Automaticky sa aktivuje pri registrácii.",
   "The user activates their own account using mail.": "Používateľ aktivuje svoj vlastný účet emailom.",
   "Administrator": "Administrátor",
   "Only an Administrator can activate a user.": "Iba Administrátor môže aktivovať používateľa.",

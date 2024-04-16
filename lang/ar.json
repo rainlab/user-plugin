@@ -66,8 +66,6 @@
   "Sign In Requires Activation": "يتطلب تسجيل الدخول التنشيط",
   "Users must have an activated account to sign in.": "يجب أن يكون لدى المستخدمين حساب نشط لتسجيل الدخول.",
   "Activation": "التنشيط",
-  "Automatic": "تلقائي",
-  "Activated automatically upon registration.": "يتم تفعيله تلقائيًا عند التسجيل.",
   "The user activates their own account using mail.": "يقوم المستخدم بتنشيط حسابه الخاص باستخدام البريد.",
   "Administrator": "مدير",
   "Only an Administrator can activate a user.": "يمكن للمسؤول فقط تنشيط المستخدم.",

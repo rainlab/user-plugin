@@ -65,8 +65,6 @@
   "Sign In Requires Activation": "Login memerlukan aktivasi",
   "Users must have an activated account to sign in.": "Pengguna harus aktif sebelum bisa login.",
   "Activation": "Aktivasi",
-  "Automatic": "Otomatis",
-  "Activated automatically upon registration.": "Diaktifkan secara otomatis setelah pendaftaran.",
   "The user activates their own account using mail.": "Pengguna mengaktifkan akun mereka menggunakan email.",
   "Administrator": "Administrator",
   "Only an Administrator can activate a user.": "Hanya administrator yang bisa mengaktifkan pengguna.",

@@ -54,8 +54,6 @@
   "Sign In Requires Activation": "Permissão para entrar requer ativação",
   "Users must have an activated account to sign in.": "Utilizadores precisam ter uma conta activada para entrar.",
   "Activation": "Activação",
-  "Automatic": "Automático",
-  "Activated automatically upon registration.": "Activada automaticamente mediante o registo.",
   "The user activates their own account using mail.": "O utilizador activa a própria conta usando o e-mail.",
   "Administrator": "Administrador",
   "Only an Administrator can activate a user.": "Apenas um Administrador pode activar um utilizador.",

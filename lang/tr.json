@@ -67,8 +67,6 @@
   "Activation": "Aktivasyon",
   "Password Length": "Minimum şifre uzunluğu",
   "Minimum password length required for users": "Üye şifresi için gereken minimum şifre uzunluğu",
-  "Automatic": "Otomatik",
-  "Activated automatically upon registration.": "Üye olduğu an aktif edilsin.",
   "The user activates their own account using mail.": "Eposta adresini kullanarak aktif etsin.",
   "Administrator": "Yönetici",
   "Only an Administrator can activate a user.": "Sadece yöneticiler aktif edebilsin.",

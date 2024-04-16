@@ -75,8 +75,6 @@
   "Require a password not found in a leaked password database": "Vérifier que le mot de passe n'est pas compromis",
   "Require Number": "Rendre obligatoire l'utilisation de nombres",
   "Require Special Character": "Rendre obligatoire l'utilisation de caractères spéciaux",
-  "Automatic": "Automatique",
-  "Activated automatically upon registration.": "Activation automatique après inscription.",
   "The user activates their own account using mail.": "L’utilisateur active son compte par email.",
   "Administrator": "Administrateur",
   "Only an Administrator can activate a user.": "Seul un administrateur peut activer un utilisateur.",

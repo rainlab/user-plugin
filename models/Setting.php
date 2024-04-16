@@ -29,7 +29,6 @@ use System\Models\SettingModel;
  */
 class Setting extends SettingModel
 {
-    const ACTIVATE_AUTO = 'auto';
     const ACTIVATE_USER = 'user';
     const ACTIVATE_ADMIN = 'admin';
 
@@ -59,7 +58,7 @@ class Setting extends SettingModel
     public function initSettingsData()
     {
         $this->require_activation = Config::get('rainlab.user::require_activation', false);
-        $this->activate_mode = Config::get('rainlab.user::activate_mode', self::ACTIVATE_AUTO);
+        $this->activate_mode = Config::get('rainlab.user::activate_mode', self::ACTIVATE_USER);
         $this->block_persistence = Config::get('rainlab.user::block_persistence', false);
         $this->allow_registration = Config::get('rainlab.user::allow_registration', true);
         $this->login_attribute = Config::get('rainlab.user::login_attribute', self::LOGIN_EMAIL);
@@ -80,10 +79,6 @@ class Setting extends SettingModel
     public function getActivateModeOptions()
     {
         return [
-            self::ACTIVATE_AUTO => [
-                "Automatic",
-                "Activated automatically upon registration."
-            ],
             self::ACTIVATE_USER => [
                 "User",
                 "The user activates their own account using mail."
@@ -101,7 +96,7 @@ class Setting extends SettingModel
     public function getActivateModeAttribute($value)
     {
         if (!$value) {
-            return self::ACTIVATE_AUTO;
+            return self::ACTIVATE_USER;
         }
 
         return $value;

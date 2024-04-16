@@ -65,8 +65,6 @@
   "Activation": "Activación",
   "Password Length": "Largo mínimo de la contraseña",
   "Minimum password length required for users": "La cantidad mínima de caracteres requerida para contraseñas.",
-  "Automatic": "Automática",
-  "Activated automatically upon registration.": "Activada automáticamente al registrarse.",
   "The user activates their own account using mail.": "El usuario activa su perfil usando su e-mail.",
   "Administrator": "Administrador",
   "Only an Administrator can activate a user.": "Sólo un administrador puede activar un usuario.",
