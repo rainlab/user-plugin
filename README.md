@@ -1,8 +1,6 @@
 # Front-end user plugin
 
-Front-end user management for October CMS.
-
-View this plugin on the October CMS marketplace:
+Front-end user management for October CMS. View this plugin on the October CMS marketplace:
 
 - https://octobercms.com/plugin/rainlab-user
 
@@ -47,7 +45,7 @@ We recommend installing this plugin with the `RainLab.Vanilla` theme to demonstr
 
 For extra functionality, consider also installing the `RainLab.UserPlus` plugin.
 
-- http://octobercms.com/plugin/rainlab-userplus
+- https://octobercms.com/plugin/rainlab-userplus
 
 ## Managing Users
 

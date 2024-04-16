@@ -45,7 +45,7 @@ The `password_confirmation` field can be used to prompt the user to enter their 
 
 ### Flash Messages
 
-This plugin makes use of October's [`Flash API`](http://octobercms.com/docs/markup/tag-flash). In order to display the error messages, you need to place the following snippet in your layout or page.
+This plugin makes use of October's [`Flash API`](https://octobercms.com/docs/markup/tag-flash). In order to display the error messages, you need to place the following snippet in your layout or page.
 
 ```twig
 {% flash %}

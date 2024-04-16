@@ -12,6 +12,13 @@ This guide can be used to help migrate from RainLab.User v1-v2 to v3. Some theme
 
 1. Clean up unused table data using `php artisan user:migratev1` (optional).
 
+## Compatible Plugins
+
+If you are using the following plugins, please upgrade them to v2.0 at the same time as this plugin:
+
+- https://github.com/rainlab/location-plugin
+- https://github.com/rainlab/userplus-plugin
+
 ## Key Differences
 
 - The plugin now uses Laravel's authentication system as the underlying technology.
