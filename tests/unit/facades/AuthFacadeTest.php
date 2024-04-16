@@ -27,7 +27,7 @@ class AuthFacadeTest extends UserPluginTestCase
     public function testRegisterUserWithAutoActivation()
     {
         // Stop activation events from other plugins
-        Event::forget('user.activate');
+        Event::forget('rainlab.user.activate');
 
         $user = Auth::register([
             'name' => 'Some User',

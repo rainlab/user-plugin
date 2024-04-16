@@ -242,14 +242,14 @@ class User extends Model implements Authenticatable, CanResetPassword
          *
          * Example usage:
          *
-         *     Event::listen('user.canDeleteUser', function($user) {
+         *     Event::listen('rainlab.user.canDeleteUser', function($user) {
          *         if ($user->orders->count()) {
          *             return true;
          *         }
          *     });
          *
          */
-        if (Event::fire('user.canDeleteUser', [$this], true) === false) {
+        if (Event::fire('rainlab.user.canDeleteUser', [$this], true) === false) {
             return $this->delete();
         }
 
@@ -462,7 +462,7 @@ class User extends Model implements Authenticatable, CanResetPassword
         ];
 
         // Extensibility
-        $result = Event::fire('user.getNotificationVars', [$this]);
+        $result = Event::fire('rainlab.user.getNotificationVars', [$this]);
         if ($result && is_array($result)) {
             $vars = call_user_func_array('array_merge', $result) + $vars;
         }

@@ -68,23 +68,23 @@ trait ActionResetPassword
         $user->save();
 
         /**
-         * @event user.password.reset
+         * @event rainlab.user.passwordReset
          * Provides custom logic for resetting a user password.
          *
          * Example usage:
          *
-         *     Event::listen('user.password.reset', function ($user) {
+         *     Event::listen('rainlab.user.passwordReset', function ($user) {
          *         // Fire logic
          *     });
          *
          * Or
          *
-         *     $component->bindEvent('password.reset', function ($user) {
+         *     $component->bindEvent('user.passwordReset', function ($user) {
          *         // Fire logic
          *     });
          *
          */
-        $this->fireSystemEvent('user.password.reset', [$user]);
+        $this->fireSystemEvent('rainlab.user.passwordReset', [$user]);
     }
 
     /**

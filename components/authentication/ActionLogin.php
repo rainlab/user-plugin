@@ -1,6 +1,7 @@
 <?php namespace RainLab\User\Components\Authentication;
 
 use Auth;
+use Event;
 use Validator;
 use RainLab\User\Helpers\User as UserHelper;
 use ValidationException;
@@ -22,24 +23,26 @@ trait ActionLogin
 
         $input = post();
 
+        Event::fire('rainlab.user.beforeAuthenticate', [$this, $input]);
+
         /**
-         * @event user.authentication.login
+         * @event rainlab.user.authenticateUser
          * Provides custom logic for logging in a user during authentication.
          *
          * Example usage:
          *
-         *     Event::listen('user.authentication.login', function ($input) {
+         *     Event::listen('rainlab.user.authenticateUser', function ($input) {
          *         return User::find(...);
          *     });
          *
          * Or
          *
-         *     $component->bindEvent('authentication.login', function ($input) {
+         *     $component->bindEvent('user.authenticateUser', function ($input) {
          *         return User::find(...);
          *     });
          *
          */
-        if ($event = $this->fireSystemEvent('user.authentication.login', [&$input])) {
+        if ($event = $this->fireSystemEvent('rainlab.user.authenticateUser', [&$input])) {
             if ($event === false) {
                 $this->throwFailedAuthenticationException();
             }
@@ -53,23 +56,23 @@ trait ActionLogin
         $this->prepareAuthenticatedSession();
 
         /**
-         * @event user.registration.response
-         * Provides custom logic for creating a new user during registration.
+         * @event rainlab.user.authenticationResponse
+         * Provides custom response logic after authentication
          *
          * Example usage:
          *
-         *     Event::listen('user.registration.response', function () {
+         *     Event::listen('rainlab.user.authenticationResponse', function () {
          *         // Fire logic
          *     });
          *
          * Or
          *
-         *     $component->bindEvent('registration.response', function () {
+         *     $component->bindEvent('user.authenticationResponse', function () {
          *         // Fire logic
          *     });
          *
          */
-        if ($event = $this->fireSystemEvent('user.authentication.response')) {
+        if ($event = $this->fireSystemEvent('rainlab.user.authenticationResponse')) {
             return $event;
         }
     }
@@ -86,23 +89,23 @@ trait ActionLogin
         }
 
         /**
-         * @event user.authentication.lockout
+         * @event rainlab.user.authenticationLockout
          * Provides custom logic when a login attempt has been rate limited.
          *
          * Example usage:
          *
-         *     Event::listen('user.authentication.lockout', function () {
+         *     Event::listen('rainlab.user.authenticationLockout', function () {
          *         // ...
          *     });
          *
          * Or
          *
-         *     $component->bindEvent('authentication.lockout', function () {
+         *     $component->bindEvent('user.authenticationLockout', function () {
          *         // ...
          *     });
          *
          */
-        $this->fireSystemEvent('user.authentication.lockout');
+        $this->fireSystemEvent('rainlab.user.authenticationLockout');
 
         $seconds = $limiter->availableIn();
 

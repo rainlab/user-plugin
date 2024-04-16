@@ -76,4 +76,6 @@ It is possible to require administration approval by creating an "Approved User"
 
 ### Events Updated
 
-...
+The following event names have changed:
+
+- Removed **rainlab.user.reactivate** event, since users can no longer reactivate their account without help from an administrator.

@@ -2,6 +2,7 @@
 
 use Cms;
 use Auth;
+use Event;
 use Validator;
 use RainLab\User\Models\User;
 use RainLab\User\Helpers\User as UserHelper;
@@ -30,24 +31,26 @@ class Registration extends ComponentBase
     {
         $input = post();
 
+        Event::fire('rainlab.user.beforeRegister', [&$input]);
+
         /**
-         * @event user.registration.create
+         * @event rainlab.user.registerNewUser
          * Provides custom logic for creating a new user during registration.
          *
          * Example usage:
          *
-         *     Event::listen('user.registration.create', function ($input) {
+         *     Event::listen('rainlab.user.registerNewUser', function ($input) {
          *         return User::create(...);
          *     });
          *
          * Or
          *
-         *     $component->bindEvent('registration.create', function ($input) {
+         *     $component->bindEvent('user.registerNewUser', function ($input) {
          *         return User::create(...);
          *     });
          *
          */
-        if ($event = $this->fireSystemEvent('user.registration.create', [&$input])) {
+        if ($event = $this->fireSystemEvent('rainlab.user.registerNewUser', [&$input])) {
             $user = $event;
         }
         else {
@@ -57,23 +60,23 @@ class Registration extends ComponentBase
         Auth::login($user);
 
         /**
-         * @event user.registration.response
-         * Provides custom logic for creating a new user during registration.
+         * @event rainlab.user.registrationResponse
+         * Modify the return response after registration.
          *
          * Example usage:
          *
-         *     Event::listen('user.registration.response', function ($user) {
+         *     Event::listen('rainlab.user.registrationResponse', function ($user) {
          *         // Fire logic
          *     });
          *
          * Or
          *
-         *     $component->bindEvent('registration.response', function ($user) {
+         *     $component->bindEvent('user.registrationResponse', function ($user) {
          *         // Fire logic
          *     });
          *
          */
-        if ($event = $this->fireSystemEvent('user.registration.response', [$user])) {
+        if ($event = $this->fireSystemEvent('rainlab.user.registrationResponse', [$user])) {
             return $event;
         }
 

@@ -37,12 +37,12 @@
         <?php endif ?>
         <?=
             /**
-             * @event user.users.extendPreviewToolbar
+             * @event rainlab.user.view.extendPreviewToolbar
              * Fires when preview user toolbar is rendered.
              *
              * Example usage:
              *
-             *     Event::listen('user.users.extendPreviewToolbar', function (
+             *     Event::listen('rainlab.user.view.extendPreviewToolbar', function (
              *         (RainLab\User\Controllers\Users) $controller,
              *         (RainLab\User\Models\User) $record
              *     ) {
@@ -50,7 +50,7 @@
              *     });
              *
              */
-            $this->fireViewEvent('user.users.extendPreviewToolbar', [
+            $this->fireViewEvent('rainlab.user.view.extendPreviewToolbar', [
                 'record' => $formModel
             ]);
         ?>
@@ -69,20 +69,20 @@
 
 <?php
     /**
-     * @event user.users.extendPreviewTabs
+     * @event rainlab.user.view.extendPreviewTabs
      * Provides an opportunity to add tabs to the user preview page in the admin panel.
      * The event should return an array of `[Tab Name => ~/path/to/partial.php]`
      *
      * Example usage:
      *
-     *   Event::listen('user.users.extendPreviewTabs', function() {
+     *   Event::listen('rainlab.user.view.extendPreviewTabs', function() {
      *       return [
      *           "Orders" => '$/acme/shop/partials/_user_orders.php',
      *       ];
      *   });
      *
      */
-    $customTabs = array_collapse(Event::fire('user.users.extendPreviewTabs'));
+    $customTabs = array_collapse(Event::fire('rainlab.user.view.extendPreviewTabs'));
 ?>
 <div class="control-tabs content-tabs tabs-inset" data-control="tab">
     <ul class="nav nav-tabs">
