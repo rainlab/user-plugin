@@ -39,6 +39,8 @@ class Plugin extends PluginBase
         $this->registerAuthProvider();
         $this->registerCustomRedirector();
         $this->registerMailBlocker();
+
+        $this->registerConsoleCommand('user.migratev1', \Rainlab\User\Console\MigrateV1Command::class);
     }
 
     /**

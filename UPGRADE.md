@@ -1,14 +1,16 @@
 # Upgrading from User v2 to v3
 
-This guide can be used to help migrate from RainLab.User v2 to v3. Some theme changes are required to since there are new components.
+This guide can be used to help migrate from RainLab.User v1-v2 to v3. Some theme changes are required to since there are new components.
 
 ## Upgrade Instructions
 
+1. **Make sure you are running October CMS v3.6 or greater.**
+
 1. Run `php artisan plugin:install rainlab.user` to request the latest version (you do not need to uninstall v2 first).
 
-1. Migrate user data using `php artisan user:migratev1` (non destructive).
-
 1. Continue using this plugin as normal.
+
+1. Clean up unused table data using `php artisan user:migratev1` (optional).
 
 ## Key Differences
 
@@ -18,19 +20,15 @@ This guide can be used to help migrate from RainLab.User v2 to v3. Some theme ch
 
 - A User Log has been implemented to track and audit user actions, such as changing email address.
 
-## Key Similarities
-
-- ...
-
 ## Breaking Changes
 
-### Methods
+### Renamed Settings Model
 
-- User::findByEmail → Auth::retrieveByCredentials
+The `RainLab\User\Models\Settings` model has been renamed to `RainLab\User\Models\Setting` for consistency with the core system design.,
 
-- RainLab\User\Models\Settings → RainLab\User\Models\Setting
+### Renamed JWT Auth Method
 
-- Auth::checkBearerToken → Auth::loginUsingBearerToken
+The `Auth::checkBearerToken` has been renamed to `Auth::loginUsingBearerToken` to be more descriptive of its outcome.
 
 ### Account Component Split Up
 
