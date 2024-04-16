@@ -24,11 +24,11 @@ This guide can be used to help migrate from RainLab.User v1-v2 to v3. Some theme
 
 ### Renamed Settings Model
 
-The `RainLab\User\Models\Settings` model has been renamed to `RainLab\User\Models\Setting` for consistency with the core system design.,
+The `RainLab\User\Models\Settings` model has been renamed to `RainLab\User\Models\Setting` for consistency with the core system design.
 
 ### Renamed JWT Auth Method
 
-The `Auth::checkBearerToken` has been renamed to `Auth::loginUsingBearerToken` to be more descriptive of its outcome.
+The `Auth::checkBearerToken` has been renamed to `Auth::loginUsingBearerToken` to be more descriptive of its outcome. The `Auth::checkBearerToken` method still exists and will return the user or `false`, instead of logging in the user internally.
 
 ### Account Component Split Up
 
@@ -54,7 +54,7 @@ The `RainLab\User\Models\MailBlocker` model has been replaced by `RainLab\User\M
 
 ### Require Activation is Removed
 
-The Require Activation functionality has been removed for simplicity. This approach is more flexible, since custom pages or banners can be used based on the requirements.
+The Require Activation functionality has been removed for simplicity. The replacement approach below is more flexible, since custom pages or banners can be used based on the requirements.
 
 A user can be checked if they are verified using Twig:
 

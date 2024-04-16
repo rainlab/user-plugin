@@ -79,8 +79,8 @@ The same applies for notifying the system administrators when a new user joins, 
 
 ### Getting Started
 
-- [Introduction](./introduction.md)
-- [Events](./events.md)
+- [Introduction](./docs/introduction.md)
+- [Events](./docs/events.md)
 
 ### Components
 
