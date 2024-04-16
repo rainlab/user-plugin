@@ -8,6 +8,7 @@ use Request;
 use Carbon\Carbon;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use RainLab\User\Models\User;
 use SystemException;
 use Exception;
 
@@ -22,13 +23,16 @@ trait HasBearerToken
     /**
      * getBearerToken
      */
-    public function getBearerToken(): ?string
+    public function getBearerToken(?User $user = null): ?string
     {
         if (!class_exists(JWT::class)) {
             throw new SystemException("Missing package. Please install 'firebase/php-jwt' via composer.");
         }
 
-        $user = $this->getUser();
+        if (!$user) {
+            $user = $this->getUser();
+        }
+
         if (!$user) {
             return null;
         }
@@ -68,9 +72,24 @@ trait HasBearerToken
     }
 
     /**
+     * loginUsingBearerToken
+     */
+    public function loginUsingBearerToken(string $jwtToken)
+    {
+        $user = $this->checkBearerToken($jwtToken);
+
+        if (!$user || !$user instanceof User) {
+            return false;
+        }
+
+        // Pass
+        $this->setUser($user);
+    }
+
+    /**
      * checkBearerToken
      */
-    public function checkBearerToken(string $jwtToken)
+    public function checkBearerToken(string $jwtToken): ?User
     {
         if (!class_exists(JWT::class)) {
             throw new SystemException("Missing package. Please install 'firebase/php-jwt' via composer.");
@@ -125,11 +144,6 @@ trait HasBearerToken
         }
 
         // Pass
-        $this->user = $user;
-
-        // Check and reset
-        if (!$this->check()) {
-            $this->user = null;
-        }
+        return $user;
     }
 }

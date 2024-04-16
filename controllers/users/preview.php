@@ -32,7 +32,8 @@
             ->confirmMessage("Ban this user? It will prevent them from logging in and holding an active session.") ?>
 
         <?php if (!$formModel->trashed()): ?> ?>
-            <?= Ui::ajaxButton("Delete", 'onDelete')->icon('icon-delete')->outline()->danger() ?>
+            <?= Ui::ajaxButton("Delete", 'onDelete')->icon('icon-delete')->outline()->danger()
+                ->confirmMessage("Are you sure?") ?>
         <?php endif ?>
         <?=
             /**

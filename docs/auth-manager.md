@@ -2,7 +2,7 @@
 
 There is an `Auth` facade you may use for common tasks, it primarily inherits the `October\Rain\Auth\Manager` class for functionality.
 
-You may use `Auth::register` to register an account:
+You may use `register` method to register an account.
 
 ```php
 $user = Auth::register([
