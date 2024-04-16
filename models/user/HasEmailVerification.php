@@ -35,7 +35,7 @@ trait HasEmailVerification
 
         $this->sendEmailConfirmationNotification();
 
-        Event::fire('user.activate', [$this]);
+        Event::fire('rainlab.user.activate', [$this]);
 
         return $this->save();
     }

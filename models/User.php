@@ -80,7 +80,6 @@ class User extends Model implements Authenticatable, CanResetPassword
      */
     protected $dates = [
         'last_seen',
-        'last_login',
         'banned_at',
         'deleted_at',
         'created_at',
@@ -299,46 +298,6 @@ class User extends Model implements Authenticatable, CanResetPassword
     }
 
     /**
-     * beforeLogin event
-     * @return void
-     */
-    public function beforeLogin()
-    {
-        if ($this->is_guest) {
-            $login = $this->login;
-            throw new AuthException(sprintf(
-                'Cannot login user "%s" as they are not registered.', $login
-            ));
-        }
-
-        parent::beforeLogin();
-    }
-
-    /**
-     * afterLogin event
-     * @return void
-     */
-    public function afterLogin()
-    {
-        $this->last_login = $this->freshTimestamp();
-
-        if ($this->trashed()) {
-            $this->restore();
-
-            Mail::sendTo($this, 'rainlab.user::mail.reactivate', [
-                'name' => $this->first_name
-            ]);
-
-            Event::fire('rainlab.user.reactivate', [$this]);
-        }
-        else {
-            parent::afterLogin();
-        }
-
-        Event::fire('rainlab.user.login', [$this]);
-    }
-
-    /**
      * afterDelete event
      * @return void
      */
@@ -346,12 +305,7 @@ class User extends Model implements Authenticatable, CanResetPassword
     {
         if ($this->isSoftDelete()) {
             Event::fire('rainlab.user.deactivate', [$this]);
-            return;
         }
-
-        $this->avatar && $this->avatar->delete();
-
-        parent::afterDelete();
     }
 
     //

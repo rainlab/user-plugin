@@ -15,6 +15,7 @@ return new class extends Migration
             'permissions',
             'is_superuser',
             'is_activated',
+            'last_login',
         ];
 
         foreach ($columnsToPrune as $column) {

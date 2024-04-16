@@ -58,7 +58,7 @@ class SessionGuard extends SessionGuardBase
 
         $this->preventConcurrentSessions($user);
 
-        return parent::login($user, $remember);
+        parent::login($user, $remember);
     }
 
     /**

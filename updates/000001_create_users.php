@@ -28,7 +28,6 @@ return new class extends Migration
             $table->timestamp('banned_at')->nullable();
             $table->timestamp('activated_at')->nullable();
             $table->timestamp('two_factor_confirmed_at')->nullable();
-            $table->timestamp('last_login')->nullable();
             $table->timestamp('last_seen')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

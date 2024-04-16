@@ -55,6 +55,11 @@ trait ActionLogin
 
         $this->prepareAuthenticatedSession();
 
+        // Trigger login event
+        if ($user = Auth::getUser()) {
+            Event::fire('rainlab.user.login', [$user]);
+        }
+
         /**
          * @event rainlab.user.authenticationResponse
          * Provides custom response logic after authentication
