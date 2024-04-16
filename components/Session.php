@@ -11,7 +11,6 @@ use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserGroup;
-use SystemException;
 
 /**
  * Session management component
@@ -24,6 +23,8 @@ use SystemException;
  */
 class Session extends ComponentBase
 {
+    use \RainLab\User\Components\Session\HasSecurityChecks;
+
     const ALLOW_ALL = 'all';
     const ALLOW_GUEST = 'guest';
     const ALLOW_USER = 'user';
@@ -56,7 +57,7 @@ class Session extends ComponentBase
                     'guest' => "Guests"
                 ]
             ],
-            'allowedUserGroups' => [
+            'allowUserGroups' => [
                 'title' => "Allow Groups",
                 'description' => "Choose allowed groups or none to allow all groups",
                 'placeholder' => '*',
@@ -64,16 +65,34 @@ class Session extends ComponentBase
                 'default' => []
             ],
             'redirect' => [
-                'title' => "Redirect Page",
+                'title' => "Default Redirect",
                 'description' => "When access is denied, redirect to this CMS page.",
                 'type' => 'dropdown',
+                'group' => "Redirects",
+                'default' => ''
+            ],
+            'redirectGroup' => [
+                'title' => "Redirect Group",
+                'description' => "When user is not in a valid group, redirect to this CMS page.",
+                'type' => 'dropdown',
+                'group' => "Redirects",
+                'optionsMethod' => 'getOtherRedirectOptions',
+                'default' => ''
+            ],
+            'redirectVerify' => [
+                'title' => "Redirect Unverified",
+                'description' => "When user has an unverified account, redirect to this CMS page.",
+                'type' => 'dropdown',
+                'group' => "Redirects",
+                'optionsMethod' => 'getOtherRedirectOptions',
                 'default' => ''
             ],
             'checkToken' => [
-                'title' => "Use token authentication (JWT)",
+                'title' => "Check Bearer Token (JWT)",
                 'description' => "Check authentication using a verified bearer token.",
                 'type' => 'checkbox',
-                'default' => 0
+                'default' => 0,
+                'showExternalParam' => false
             ],
         ];
     }
@@ -84,6 +103,14 @@ class Session extends ComponentBase
     public function getRedirectOptions()
     {
         return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+    }
+
+    /**
+     * getOtherRedirectOptions
+     */
+    public function getOtherRedirectOptions()
+    {
+        return [''=>'- default -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
     /**
@@ -190,67 +217,6 @@ class Session extends ComponentBase
         }
 
         return $user;
-    }
-
-    /**
-     * registerAjaxSecurity injects security logic before AJAX
-     */
-    protected function registerAjaxSecurity()
-    {
-        $this->controller->bindEvent('page.init', function() {
-            if (Request::ajax() && ($redirect = $this->checkUserSecurityRedirect())) {
-                return ['X_OCTOBER_REDIRECT' => $redirect->getTargetUrl()];
-            }
-        });
-    }
-
-    /**
-     * checkUserSecurityRedirect will return a redirect if the user cannot access the page.
-     */
-    protected function checkUserSecurityRedirect()
-    {
-        // No security layer enabled
-        if ($this->checkUserSecurity()) {
-            return;
-        }
-
-        if (!$this->property('redirect')) {
-            throw new SystemException("The redirect property is empty on Session component.");
-        }
-
-        return Redirect::guest(
-            Cms::pageUrl($this->property('redirect'))
-        );
-    }
-
-    /**
-     * checkUserSecurity checks if the user can access this page based on the security rules.
-     */
-    protected function checkUserSecurity(): bool
-    {
-        $allowedGroup = $this->property('security', self::ALLOW_ALL);
-        $isAuthenticated = Auth::check();
-        $allowedUserGroups = (array) $this->property('allowedUserGroups', []);
-
-        if ($isAuthenticated) {
-            if ($allowedGroup == self::ALLOW_GUEST) {
-                return false;
-            }
-
-            if ($allowedUserGroups) {
-                $userGroups = $this->user()?->groups?->lists('code') ?? [];
-                if (!count(array_intersect($allowedUserGroups, $userGroups))) {
-                    return false;
-                }
-            }
-        }
-        else {
-            if ($allowedGroup == self::ALLOW_USER) {
-                return false;
-            }
-        }
-
-        return true;
     }
 
     //

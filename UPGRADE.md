@@ -16,6 +16,8 @@ This guide can be used to help migrate from RainLab.User v2 to v3. Some theme ch
 
 - Two-Factor authentication is provided out of the box.
 
+- A User Log has been implemented to track and audit user actions, such as changing email address.
+
 ## Key Similarities
 
 - ...
@@ -38,10 +40,15 @@ The functionality of the Account component has been broken up in to three compon
 - Authentication: authenticate a user
 - Registration: register a new user
 
+### Session Component
+
+The `allowedUserGroups` property has been renamed to `allowUserGroups`.
 
 ### MailBlocker model replaced by UserPreference
 
 The `RainLab\User\Models\MailBlocker` model has been replaced by `RainLab\User\Models\UserPreference`. The classes function differently and `UserPreference` is more generic for controlling user preferences.
+
+
 
 ### Events Updated
 
