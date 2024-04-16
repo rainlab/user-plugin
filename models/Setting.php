@@ -10,8 +10,6 @@ use System\Models\SettingModel;
  *
  * @property string login_attribute
  * @property bool block_persistence
- * @property bool require_activation
- * @property string activate_mode
  * @property bool allow_registration
  * @property int password_min_length
  * @property bool password_require_mixed_case
@@ -57,8 +55,6 @@ class Setting extends SettingModel
      */
     public function initSettingsData()
     {
-        $this->require_activation = Config::get('rainlab.user::require_activation', false);
-        $this->activate_mode = Config::get('rainlab.user::activate_mode', self::ACTIVATE_USER);
         $this->block_persistence = Config::get('rainlab.user::block_persistence', false);
         $this->allow_registration = Config::get('rainlab.user::allow_registration', true);
         $this->login_attribute = Config::get('rainlab.user::login_attribute', self::LOGIN_EMAIL);
@@ -71,35 +67,6 @@ class Setting extends SettingModel
 
         $this->user_message_template = 'user:welcome_email';
         $this->system_message_template = 'user:new_user_internal';
-    }
-
-    /**
-     * getActivateModeOptions
-     */
-    public function getActivateModeOptions()
-    {
-        return [
-            self::ACTIVATE_USER => [
-                "User",
-                "The user activates their own account using mail."
-            ],
-            self::ACTIVATE_ADMIN => [
-                "Administrator",
-                "Only an Administrator can activate a user."
-            ]
-        ];
-    }
-
-    /**
-     * getActivateModeAttribute
-     */
-    public function getActivateModeAttribute($value)
-    {
-        if (!$value) {
-            return self::ACTIVATE_USER;
-        }
-
-        return $value;
     }
 
     /**

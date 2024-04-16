@@ -21,23 +21,6 @@ tabs:
             type: checkbox
             tab: Sign In
 
-        require_activation:
-            label: Sign In Requires Activation
-            span: full
-            comment: Users must have an activated account to sign in.
-            type: checkbox
-            tab: Sign In
-
-        activate_mode:
-            type: radio
-            span: full
-            tab: Sign In
-            cssClass: field-indent
-            trigger:
-                action: show
-                field: require_activation
-                condition: checked
-
         # Registration tab
 
         allow_registration:

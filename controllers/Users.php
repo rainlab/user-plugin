@@ -119,16 +119,6 @@ class Users extends Controller
     }
 
     /**
-     * formAfterCreate automatically activates a user, if needed
-     */
-    public function formAfterCreate($model)
-    {
-        if (UserSetting::get('activate_mode') === UserSetting::ACTIVATE_AUTO) {
-            $model->markEmailAsVerified();
-        }
-    }
-
-    /**
      * formBeforeUpdate uses model events since dirty attributes are not available
      * after the form controller finishes saving
      */

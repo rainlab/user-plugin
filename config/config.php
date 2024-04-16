@@ -3,21 +3,6 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Activation mode
-    |--------------------------------------------------------------------------
-    |
-    | Select how a user account should be activated.
-    |
-    | auto     Users are activated automatically upon registration.
-    | user     The user activates their own account using a link sent to them via email.
-    | admin    Administrators must activate users manually.
-    |
-    */
-
-    'activate_mode' => 'auto',
-
-    /*
-    |--------------------------------------------------------------------------
     | Force Two-Factor Authentication
     |--------------------------------------------------------------------------
     |
@@ -84,17 +69,6 @@ return [
         'require_number' => true,
         'require_symbol' => false,
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Sign in requires activation
-    |--------------------------------------------------------------------------
-    |
-    | Users must have an activated account to sign in.
-    |
-    */
-
-    'require_activation' => false,
 
     /*
     |--------------------------------------------------------------------------
