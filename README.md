@@ -71,17 +71,9 @@ Registration to the site is allowed by default. If you are running a closed site
 
 #### Notifications
 
-This feature is implemented by the Notify plugin. How to use this feature:
+When a user is first activated, they can be sent a welcome email. To activate the welcome email, select "Notify User" and an email template from the **User Message Template** dropdown. The default message template used is `user:welcome_email` and you can customize this by selecting **Mail > Mail Templates** from the settings menu.
 
-- Install the **RainLab.Notify** plugin
-- Navigate to **Settings > Notification** rules
-- Click **New notification rule**
-- Select **User > Activated**
-- Click **Add action**
-- Select **Compose a mail message**
-- Select **User email address** for the **Send to** field
-- Here you may select the Mail template previously defined in the user settings.
-- Click **Save**
+The same applies for notifying the system administrators when a new user joins, with the "Notify Administrators" checkbox. The administrators to notify are selected using **Notify Admin Group** dropdown.
 
 ## Documentation
 
