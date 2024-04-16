@@ -65,26 +65,9 @@ By default a User will sign in to the site using their email address as a unique
 
 As a security precaution, you may restrict users from having sessions across multiple devices at the same time. Enable the **Prevent Concurrent Sessions** setting to use this feature. When a user signs in to their account, it will automatically sign out the user for all other sessions.
 
-#### Activation
-
-Activation is a process of vetting a user who joins the site. By default, users are activated automatically when they register and an activated account is required to sign in.
-
-You can allow users to sign in without activating by unchecking **Sign in Requires Activation**. This is useful for minimizing friction when registering, however with this approach it is often a good idea to disable any "identity sensitive" features until the user has been activated, such as posting content. Alternatively, you could implement a grace period that deletes users (with sufficient warning!) who have not activated within a given period of time.
-
-The **Activation mode** specifies the activation workflow:
-
-- **Automatic**: This mode will automatically activate a user when they first register. This is the same as disabling activation entirely.
-
-- **User**: The user can activate their account by responding to a confirmation message sent to their nominated email address and is the default setting.
-
-- **Administrator**: The user can only be activated by an administrator via the admin panel area.
-
-Users have the ability to resend the activation email by clicking **Send the verification email again** found in the Account component.
-
 #### Registration
 
 Registration to the site is allowed by default. If you are running a closed site, or need to temporarily disable registration, you may disable this feature by switching **Allow user registration** to the OFF setting.
-
 
 #### Notifications
 

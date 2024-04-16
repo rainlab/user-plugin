@@ -54,7 +54,25 @@ The `allowedUserGroups` property has been removed from the `Session` component. 
 
 The `RainLab\User\Models\MailBlocker` model has been replaced by `RainLab\User\Models\UserPreference`. The classes function differently and `UserPreference` is more generic for controlling user preferences.
 
+### Require Activation is Removed
 
+The Require Activation functionality has been removed for simplicity. This approach is more flexible, since custom pages or banners can be used based on the requirements.
+
+A user can be checked if they are verified using Twig:
+
+```twig
+{% if not user.hasVerifiedEmail %}
+    {% do redirect('account/login') %}
+{% endif %}
+```
+
+It is possible to require administration approval by creating an "Approved User" user group, or by extending the users database table with a `is_approved` field. Then check in Twig:
+
+```twig
+{% if not user.is_approved %}
+    {% do redirect('account/login') %}
+{% endif %}
+```
 
 ### Events Updated
 
