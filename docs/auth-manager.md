@@ -64,24 +64,10 @@ The second argument is the same.
 Auth::login($user, true);
 ```
 
-You may look up a user by their login name using the `Auth::findUserByLogin` method.
+You may look up a user by their login name using the `retrieveByCredentials` method.
 
 ```php
-$user = Auth::findUserByLogin('some@email.tld');
-```
-
-When working with authentication via bearer tokens, the `Auth::getBearerToken` method can be used to obtain a bearer token (JWT) for the current user. It expires after 1 hour by default.
-
-```php
-$token = Auth::getBearerToken();
-```
-
-The `Auth::checkBearerToken` method is used to verify a supplied token and authenticate the user. The method returns `true` if the verification was successful.
-
-```php
-if ($jwtToken = Request::bearerToken()) {
-    Auth::checkBearerToken($jwtToken);
-}
+$user = Auth::retrieveByCredentials(['email' => 'some@email.tld']);
 ```
 
 ## Guest Users

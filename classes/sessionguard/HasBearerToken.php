@@ -68,7 +68,11 @@ trait HasBearerToken
         ];
 
         // Encode the array to a JWT string.
-        return JWT::encode($data, $secretKey, Config::get('rainlab.user::bearer_token.algorithm') ?? 'HS512');
+        return JWT::encode(
+            $data,
+            $secretKey,
+            Config::get('rainlab.user::bearer_token.algorithm') ?? 'HS512'
+        );
     }
 
     /**
@@ -89,7 +93,7 @@ trait HasBearerToken
     /**
      * checkBearerToken
      */
-    public function checkBearerToken(string $jwtToken): ?User
+    public function checkBearerToken(string $jwtToken)
     {
         if (!class_exists(JWT::class)) {
             throw new SystemException("Missing package. Please install 'firebase/php-jwt' via composer.");
@@ -133,7 +137,7 @@ trait HasBearerToken
         }
 
         // Locate user
-        $user = $this->findUserByLogin($login);
+        $user = $this->provider->retrieveByCredentials(['login' => $login]);
         if (!$user || !$user->persist_code) {
             return false;
         }

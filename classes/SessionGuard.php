@@ -18,6 +18,7 @@ class SessionGuard extends SessionGuardBase
     use \RainLab\User\Classes\SessionGuard\HasBearerToken;
     use \RainLab\User\Classes\SessionGuard\HasPersistence;
     use \RainLab\User\Classes\SessionGuard\HasImpersonation;
+    use \RainLab\User\Classes\SessionGuard\HasLegacyApi;
 
     /**
      * rehashUserPassword for the current user, overrides parent logic

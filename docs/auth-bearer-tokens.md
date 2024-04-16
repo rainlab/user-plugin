@@ -1,6 +1,10 @@
 # Auth Bearer Tokens
 
-The `Auth` implements a native bearer token implementation (JWT). Use the `getBearerToken` method to return a usable token for the user currently logged in.
+The `Auth` implements a native bearer token implementation (JWT).
+
+## Generating a Token
+
+When working with authentication via bearer tokens, the `getBearerToken` method can be used to obtain a bearer token (JWT) for the current user. It expires after 1 hour by default.
 
 ```php
 $token = Auth::getBearerToken();
@@ -12,16 +16,26 @@ You may also pass a user to this method to get a token for a specified user.
 $token = Auth::getBearerToken($user);
 ```
 
-When verifying a token, use the `checkBearerToken` method that will return a valid user who is associated token, or null if the token is invalid or that user is no longer found.
+When using the [Session component](./component-session.md), the `token` variable is available on this object.
+
+```twig
+{{ session.key}}
+```
+
+## Verifying a Token
+
+When verifying a token, use the `checkBearerToken` method that will return a valid user who is associated token, or false if the token is invalid or that user is no longer found.
 
 ```php
 $user = Auth::checkBearerToken($token);
 ```
 
-The `loginUsingBearerToken` can be used to authenticate the user for the current session using the supplied bearer token. It will returns a user object or false if the user is not found.
+The `loginUsingBearerToken` method is used to verify a supplied token and authenticate the user. The method returns the user if the verification was successful.
 
 ```php
-$user = Auth::loginUsingBearerToken($token);
+if ($jwtToken = Request::bearerToken()) {
+    Auth::loginUsingBearerToken($jwtToken);
+}
 ```
 
 > **Note**: Further configuration for this functionality can be found in the **rainlab.user::config.bearer_token** configuration value.

@@ -78,7 +78,7 @@ Here is a simple example of how you can quickly check if an email address / user
 ```php
 public function onCheckEmail()
 {
-    return ['isTaken' => Auth::findUserByLogin(post('email')) ? 1 : 0];
+    return ['isTaken' => Auth::retrieveByCredentials(['email' => post('email')]) ? 1 : 0];
 }
 ```
 

@@ -271,7 +271,7 @@ class Session extends ComponentBase
     protected function authenticateWithBearerToken()
     {
         if ($jwtToken = Request::bearerToken()) {
-            Auth::checkBearerToken($jwtToken);
+            Auth::loginUsingBearerToken($jwtToken);
         }
     }
 

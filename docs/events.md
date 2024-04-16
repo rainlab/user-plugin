@@ -29,7 +29,7 @@ Event::listen('rainlab.user.beforeAuthenticate', function($component, $credentia
     $password = array_get($credentials, 'password');
 
     // No such user exists
-    if (!$user = Auth::findUserByLogin($login)) {
+    if (!$user = Auth::retrieveByCredentials(['login' => $login])) {
         return;
     }
 

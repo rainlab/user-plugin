@@ -28,6 +28,8 @@ This guide can be used to help migrate from RainLab.User v2 to v3. Some theme ch
 
 - RainLab\User\Models\Settings → RainLab\User\Models\Setting
 
+- Auth::checkBearerToken → Auth::loginUsingBearerToken
+
 ### Account Component Split Up
 
 The functionality of the Account component has been broken up in to three components
