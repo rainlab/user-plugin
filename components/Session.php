@@ -10,7 +10,7 @@ use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\User;
-use RainLab\User\Models\UserGroup;
+use SystemException;
 
 /**
  * Session management component
@@ -23,8 +23,6 @@ use RainLab\User\Models\UserGroup;
  */
 class Session extends ComponentBase
 {
-    use \RainLab\User\Components\Session\HasSecurityChecks;
-
     const ALLOW_ALL = 'all';
     const ALLOW_GUEST = 'guest';
     const ALLOW_USER = 'user';
@@ -57,34 +55,11 @@ class Session extends ComponentBase
                     'guest' => "Guests"
                 ]
             ],
-            'allowUserGroups' => [
-                'title' => "Allow Groups",
-                'description' => "Choose allowed groups or none to allow all groups",
-                'placeholder' => '*',
-                'type' => 'set',
-                'default' => []
-            ],
             'redirect' => [
                 'title' => "Default Redirect",
                 'description' => "When access is denied, redirect to this CMS page.",
                 'type' => 'dropdown',
                 'group' => "Redirects",
-                'default' => ''
-            ],
-            'redirectGroup' => [
-                'title' => "Redirect Group",
-                'description' => "When user is not in a valid group, redirect to this CMS page.",
-                'type' => 'dropdown',
-                'group' => "Redirects",
-                'optionsMethod' => 'getOtherRedirectOptions',
-                'default' => ''
-            ],
-            'redirectVerify' => [
-                'title' => "Redirect Unverified",
-                'description' => "When user has an unverified account, redirect to this CMS page.",
-                'type' => 'dropdown',
-                'group' => "Redirects",
-                'optionsMethod' => 'getOtherRedirectOptions',
                 'default' => ''
             ],
             'checkToken' => [
@@ -103,22 +78,6 @@ class Session extends ComponentBase
     public function getRedirectOptions()
     {
         return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
-    }
-
-    /**
-     * getOtherRedirectOptions
-     */
-    public function getOtherRedirectOptions()
-    {
-        return [''=>'- default -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
-    }
-
-    /**
-     * getAllowedUserGroupsOptions
-     */
-    public function getAllowedUserGroupsOptions()
-    {
-        return UserGroup::lists('name', 'code');
     }
 
     /**
@@ -217,6 +176,58 @@ class Session extends ComponentBase
         }
 
         return $user;
+    }
+
+    /**
+     * registerAjaxSecurity injects security logic before AJAX
+     */
+    protected function registerAjaxSecurity()
+    {
+        $this->controller->bindEvent('page.init', function() {
+            if (Request::ajax() && ($redirect = $this->checkUserSecurityRedirect())) {
+                return ['X_OCTOBER_REDIRECT' => $redirect->getTargetUrl()];
+            }
+        });
+    }
+
+    /**
+     * checkUserSecurityRedirect will return a redirect if the user cannot access the page.
+     */
+    protected function checkUserSecurityRedirect()
+    {
+        // No security layer enabled
+        if ($this->checkUserSecurity()) {
+            return;
+        }
+
+        if (!$this->property('redirect')) {
+            throw new SystemException("The redirect property is empty on Session component.");
+        }
+
+        return Redirect::guest(
+            Cms::pageUrl($this->property('redirect'))
+        );
+    }
+
+    /**
+     * checkUserSecurity checks if the user can access this page based on the security rules.
+     */
+    protected function checkUserSecurity(): bool
+    {
+        $allowedGroup = $this->property('security', self::ALLOW_ALL);
+
+        if (Auth::check()) {
+            if ($allowedGroup == self::ALLOW_GUEST) {
+                return false;
+            }
+        }
+        else {
+            if ($allowedGroup == self::ALLOW_USER) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     //

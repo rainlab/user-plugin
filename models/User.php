@@ -498,4 +498,67 @@ class User extends Model implements Authenticatable, CanResetPassword
 
         return $default;
     }
+
+    /**
+     * addGroup adds the user to the given group
+     * @param Group|string $group
+     */
+    public function addGroup($group)
+    {
+        if (is_string($group)) {
+            $group = UserGroup::findByCode($group);
+        }
+
+        if (!$group) {
+            return;
+        }
+
+        if (!$this->inGroup($group)) {
+            $this->groups()->attach($group);
+            $this->unsetRelation('groups');
+        }
+    }
+
+    /**
+     * removeGroup removes the user from the given group
+     * @param Group|string $group
+     */
+    public function removeGroup($group)
+    {
+        if (is_string($group)) {
+            $group = UserGroup::findByCode($group);
+        }
+
+        if (!$group) {
+            return;
+        }
+
+        if ($this->inGroup($group)) {
+            $this->groups()->detach($group);
+            $this->unsetRelation('groups');
+        }
+    }
+
+    /**
+     * inGroup see if the user is in the given group
+     * @param Group|string $group
+     */
+    public function inGroup($group): bool
+    {
+        if (is_string($group)) {
+            $group = UserGroup::findByCode($group);
+        }
+
+        if (!$group) {
+            return false;
+        }
+
+        foreach ($this->groups as $inGroup) {
+            if ($inGroup->getKey() === $group->getKey()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

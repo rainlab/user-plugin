@@ -42,7 +42,13 @@ The functionality of the Account component has been broken up in to three compon
 
 ### Session Component
 
-The `allowedUserGroups` property has been renamed to `allowUserGroups`.
+The `allowedUserGroups` property has been removed from the `Session` component. This can be supplemented by some Twig code:
+
+```twig
+{% if not user.inGroup('premium-users') %}
+    {% do redirect('account/login') %}
+{% endif }
+```
 
 ### MailBlocker model replaced by UserPreference
 

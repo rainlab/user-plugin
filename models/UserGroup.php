@@ -17,6 +17,7 @@ use Model;
  */
 class UserGroup extends Model
 {
+    use \System\Traits\KeyCodeModel;
     use \October\Rain\Database\Traits\Validation;
 
     const GROUP_GUEST = 'guest';
@@ -60,11 +61,6 @@ class UserGroup extends Model
     ];
 
     /**
-     * @var object|null guestGroupCache
-     */
-    protected static $guestGroupCache = null;
-
-    /**
      * delete the group
      * @return bool
      */
@@ -80,13 +76,7 @@ class UserGroup extends Model
      */
     public static function getGuestGroup(): ?static
     {
-        if (self::$guestGroupCache !== null) {
-            return self::$guestGroupCache;
-        }
-
-        $group = self::where('code', self::GROUP_GUEST)->first();
-
-        return self::$guestGroupCache = $group;
+        return static::findByCode(self::GROUP_GUEST);
     }
 
     /**
