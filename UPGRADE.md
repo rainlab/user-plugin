@@ -18,6 +18,7 @@ If you are using the following plugins, please upgrade them to v2.0 at the same 
 
 - https://github.com/rainlab/location-plugin
 - https://github.com/rainlab/userplus-plugin
+- https://github.com/rainlab/forum-plugin
 
 ## Key Differences
 
