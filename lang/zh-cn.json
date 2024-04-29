@@ -18,7 +18,7 @@
   "Account": "帐号",
   "Send invitation by email": "用邮件发送邀请",
   "Sends a welcome message containing login and password information.": "发送一个包含用户名和密码的欢迎消息",
-  "Block all outgoing mail sent to this user.": "阻止向该用户发送邮件",
+  "Block all outgoing mail sent to this user": "阻止向该用户发送邮件",
   "Create Password": "创建密码",
   "Enter a new password used for signing in.": "输入登陆新密码",
   "Reset Password": "重置密码",

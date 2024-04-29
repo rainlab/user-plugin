@@ -17,7 +17,7 @@
   "Account": "Account",
   "Send invitation by email": "Invia invito via mail",
   "Sends a welcome message containing login and password information.": "Invia un messaggio di benvenuto contenente le informazioni per l'accesso",
-  "Block all outgoing mail sent to this user.": "Blocca tutte le mail verso questo utente.",
+  "Block all outgoing mail sent to this user": "Blocca tutte le mail verso questo utente.",
   "Create Password": "Crea Password",
   "Enter a new password used for signing in.": "Inserisci una nuova password per l'accesso.",
   "Reset Password": "Ripristina Password",

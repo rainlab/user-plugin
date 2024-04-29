@@ -18,7 +18,7 @@
   "Account": "Konto",
   "Send invitation by email": "Skicka inbjudan via e-post",
   "Sends a welcome message containing login and password information.": "Skickar ett välkomstmeddelande som innehåller inloggnings- och lösenordsinformation.",
-  "Block all outgoing mail sent to this user.": "Blockera alla utgående mail som skickas till den här användaren.",
+  "Block all outgoing mail sent to this user": "Blockera alla utgående mail som skickas till den här användaren.",
   "Create Password": "Skapa lösenord",
   "Enter a new password used for signing in.": "Ange ett nytt lösenord som används för inloggning.",
   "Reset Password": "Återställ lösenord",

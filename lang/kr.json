@@ -18,7 +18,7 @@
   "Account": "계정",
   "Send invitation by email": "이메일로 초대 메일 보내기",
   "Sends a welcome message containing login and password information.": "로그인 및 비밀번호 정보가 포함된 환영 메시지를 보냅니다.",
-  "Block all outgoing mail sent to this user.": "이 사용자에게 보내는 보내는 메일을 모두 차단합니다.",
+  "Block all outgoing mail sent to this user": "이 사용자에게 보내는 보내는 메일을 모두 차단합니다.",
   "Create Password": "비밀번호 생성",
   "Enter a new password used for signing in.": "로그인에 사용되는 새 비밀번호를 입력합니다.",
   "Reset Password": "비밀번호 재설정",

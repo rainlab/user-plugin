@@ -18,7 +18,7 @@
   "Account": "Konto",
   "Send invitation by email": "Wyślij zaproszenie pocztą e-mail",
   "Sends a welcome message containing login and password information.": "Wysyła wiadomość powitalną zawierającą dane logowania i hasło.",
-  "Block all outgoing mail sent to this user.": "Zablokuj wszystkie wiadomości wychodzące wysyłane do tego użytkownika.",
+  "Block all outgoing mail sent to this user": "Zablokuj wszystkie wiadomości wychodzące wysyłane do tego użytkownika.",
   "Create Password": "Stwórz hasło",
   "Enter a new password used for signing in.": "Wprowadź nowe hasło używane do logowania.",
   "Reset Password": "Zresetuj hasło",

@@ -18,7 +18,7 @@
   "Account": "ගිණුම",
   "Send invitation by email": "විද්‍යුත් තැපෑලෙන් ආරාධනාවක් යවන්න",
   "Sends a welcome message containing login and password information.": "පිවිසුම් සහ මුරපද තොරතුරු අඩංගු පිළිගැනීමේ පණිවිඩයක් යවයි.",
-  "Block all outgoing mail sent to this user.": "මෙම පරිශීලකයාට යවන සියලුම පිටතට යන තැපැල් අවහිර කරන්න.",
+  "Block all outgoing mail sent to this user": "මෙම පරිශීලකයාට යවන සියලුම පිටතට යන තැපැල් අවහිර කරන්න.",
   "Create Password": "මුරපදය සාදන්න",
   "Enter a new password used for signing in.": "පුරනය වීමට භාවිතා කරන නව මුරපදයක් ඇතුලත් කරන්න.",
   "Reset Password": "මුරපදය නැවත සකසන්න",

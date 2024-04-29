@@ -10,6 +10,7 @@ use RainLab\User\Helpers\User as UserHelper;
  * @property string $avatar_url
  * @property bool $is_banned
  * @property bool $is_activated
+ * @property bool $is_two_factor_enabled
  *
  * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
@@ -56,6 +57,28 @@ trait HasModelAttributes
     public function getIsActivatedAttribute()
     {
         return $this->activated_at !== null;
+    }
+
+    /**
+     * getIsTwoFactorEnabledAttribute
+     */
+    public function getIsTwoFactorEnabledAttribute()
+    {
+        return $this->two_factor_confirmed_at !== null;
+    }
+
+    /**
+     * setIsTwoFactorEnabledAttribute
+     */
+    public function setIsTwoFactorEnabledAttribute($value)
+    {
+        if ($value && !$this->two_factor_confirmed_at) {
+            $this->two_factor_confirmed_at = $this->freshTimestamp();
+        }
+
+        if (!$value) {
+            $this->two_factor_confirmed_at = null;
+        }
     }
 
     /**

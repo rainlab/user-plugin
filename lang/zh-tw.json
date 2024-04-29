@@ -18,7 +18,7 @@
   "Account": "帳號",
   "Send invitation by email": "寄送邀請函",
   "Sends a welcome message containing login and password information.": "寄送一封含有帳號密碼的邀請函。",
-  "Block all outgoing mail sent to this user.": "取消所有寄送至此帳號的郵件。",
+  "Block all outgoing mail sent to this user": "取消所有寄送至此帳號的郵件。",
   "Create Password": "設定密碼",
   "Enter a new password used for signing in.": "請出入登入用密碼。",
   "Reset Password": "重設密碼",

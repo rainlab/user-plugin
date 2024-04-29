@@ -18,7 +18,7 @@
   "Account": "Akun",
   "Send invitation by email": "Kirim undangan via email",
   "Sends a welcome message containing login and password information.": "Kirim pesan selamat datang dengan menyertakan informasi login dan kata sandi.",
-  "Block all outgoing mail sent to this user.": "Blokir semua pesan keluar yang dikirim ke pengguna ini.",
+  "Block all outgoing mail sent to this user": "Blokir semua pesan keluar yang dikirim ke pengguna ini.",
   "Create Password": "Buat Sandi",
   "Enter a new password used for signing in.": "Buat kata sandi baru untuk masuk.",
   "Reset Password": "Setel Ulang Kata Sandi",

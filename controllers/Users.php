@@ -116,6 +116,10 @@ class Users extends Controller
             $form->removeField('groups');
             $form->removeField('primary_group');
         }
+
+        if (!$model->is_two_factor_enabled) {
+            $form->getField('is_two_factor_enabled')?->disabled();
+        }
     }
 
     /**

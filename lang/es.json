@@ -18,7 +18,7 @@
   "Account": "Perfil",
   "Send invitation by email": "Enviar invitación por email",
   "Sends a welcome message containing login and password information.": "Envía un mensaje de bienvenida con información de inicio de sesión y contraseña.",
-  "Block all outgoing mail sent to this user.": "Bloquear todos los envios de e-mail para este usuario.",
+  "Block all outgoing mail sent to this user": "Bloquear todos los envios de e-mail para este usuario.",
   "Create Password": "Crear contraseña",
   "Enter a new password used for signing in.": "Ingrese nueva contraseña para iniciar sesión",
   "Reset Password": "Restablecer contraseña",

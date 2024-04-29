@@ -17,7 +17,7 @@
   "Account": "Conta",
   "Send invitation by email": "Enviar convite por e-mail",
   "Sends a welcome message containing login and password information.": "Envia uma mensagem de boas-vindas contendo informações de login e senha.",
-  "Block all outgoing mail sent to this user.": "Bloquear todos os envios de e-mail para este usuário.",
+  "Block all outgoing mail sent to this user": "Bloquear todos os envios de e-mail para este usuário.",
   "Create Password": "Criar Senha",
   "Enter a new password used for signing in.": "Informe uma senha para login do usuário.",
   "Reset Password": "Resetar Senha",

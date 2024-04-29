@@ -17,7 +17,7 @@
   "Account": "حساب کاربری",
   "Send invitation by email": "ارسال دعوت نامه با ایمیل",
   "Sends a welcome message containing login and password information.": "ارسال ایمیل خوش آمد شامل رمز عبور و نام کاربری",
-  "Block all outgoing mail sent to this user.": "هیچ ایمیلی به این کاربر ارسال نشود",
+  "Block all outgoing mail sent to this user": "هیچ ایمیلی به این کاربر ارسال نشود",
   "Create Password": "ساخت رمزعبور",
   "Enter a new password used for signing in.": "رمز جدید برای استفاده کاربر در زمان ورود را وارد کنید",
   "Reset Password": "بازنشانی کلمه عبور",

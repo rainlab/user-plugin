@@ -18,7 +18,7 @@
   "Account": "Račun",
   "Send invitation by email": "Pošlji povabilo prek e-pošte",
   "Sends a welcome message containing login and password information.": "Pošlje pozdravno sporočilo, ki vsebuje podatke za prijavo.",
-  "Block all outgoing mail sent to this user.": "Blokiraj vso odhodno pošto, poslano temu uporabniku.",
+  "Block all outgoing mail sent to this user": "Blokiraj vso odhodno pošto, poslano temu uporabniku.",
   "Create Password": "Geslo",
   "Enter a new password used for signing in.": "Ustvarite novo geslo, ki se bo uporabljalo za prijavo.",
   "Reset Password": "Ponastavitev gesla",

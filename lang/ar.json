@@ -18,7 +18,7 @@
   "Account": "الحساب",
   "Send invitation by email": "إرسال دعوة عبر البريد الإلكتروني",
   "Sends a welcome message containing login and password information.": "يرسل رسالة ترحيب تحتوي على معلومات تسجيل الدخول وكلمة المرور.",
-  "Block all outgoing mail sent to this user.": "حظر كل البريد الصادر المرسل إلى هذا المستخدم.",
+  "Block all outgoing mail sent to this user": "حظر كل البريد الصادر المرسل إلى هذا المستخدم.",
   "Create Password": "أنشئ كلمة مرور",
   "Enter a new password used for signing in.": "أدخل كلمة مرور جديدة مستخدمة لتسجيل الدخول.",
   "Reset Password": "إعادة تعيين كلمة المرور",

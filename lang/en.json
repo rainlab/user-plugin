@@ -18,7 +18,7 @@
   "Account": "Account",
   "Send invitation by email": "Send invitation by email",
   "Sends a welcome message containing login and password information.": "Sends a welcome message containing login and password information.",
-  "Block all outgoing mail sent to this user.": "Block all outgoing mail sent to this user.",
+  "Block all outgoing mail sent to this user": "Block all outgoing mail sent to this user",
   "Create Password": "Create Password",
   "Enter a new password used for signing in.": "Enter a new password used for signing in.",
   "Reset Password": "Reset Password",

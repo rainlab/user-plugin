@@ -18,7 +18,7 @@
   "Account": "Hesap",
   "Send invitation by email": "E-mail ile davet gönder",
   "Sends a welcome message containing login and password information.": "Giriş bilgilerinin bulunduğu bir e-mail gönder.",
-  "Block all outgoing mail sent to this user.": "Bu üyenin mail göndermesini engelle.",
+  "Block all outgoing mail sent to this user": "Bu üyenin mail göndermesini engelle.",
   "Create Password": "Şifre oluştur",
   "Enter a new password used for signing in.": "Giriş için bir şifre oluşturun.",
   "Reset Password": "Parolanızı Sıfırlayın",

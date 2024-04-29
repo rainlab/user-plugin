@@ -17,7 +17,7 @@
   "Account": "Správa účtu",
   "Send invitation by email": "Poslat pozvánku e-mailem",
   "Sends a welcome message containing login and password information.": "Poslat uvítací e-mail obsahující přihlašovací jméno a heslo.",
-  "Block all outgoing mail sent to this user.": "Zablokovat všechny odchozí e-maily pro tohoto uživatele.",
+  "Block all outgoing mail sent to this user": "Zablokovat všechny odchozí e-maily pro tohoto uživatele.",
   "Create Password": "Vytvořit heslo",
   "Enter a new password used for signing in.": "Zadejte heslo které se bude používat k přihlašování.",
   "Reset Password": "Obnova hesla",

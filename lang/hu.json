@@ -18,7 +18,7 @@
   "Account": "Fiók",
   "Send invitation by email": "Üdvözlés küldése e-mailben",
   "Sends a welcome message containing login and password information.": "A kimenő levél tartalmazza a felhasználónevet és jelszót.",
-  "Block all outgoing mail sent to this user.": "Az összes kimenő levél tiltása ennél a felhasználónál.",
+  "Block all outgoing mail sent to this user": "Az összes kimenő levél tiltása ennél a felhasználónál.",
   "Create Password": "Jelszó megadása",
   "Enter a new password used for signing in.": "Kérjük használjon egyedi és erős jelszót.",
   "Reset Password": "Új jelszó megadása",

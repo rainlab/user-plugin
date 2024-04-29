@@ -18,7 +18,7 @@
   "Account": "Аккаунт",
   "Send invitation by email": "Отправить приглашение по почте",
   "Sends a welcome message containing login and password information.": "Отправляет приветственнное сообщение на почту с логином и паролем для входа.",
-  "Block all outgoing mail sent to this user.": "Отключить всю исходящую почту для этого пользователя.",
+  "Block all outgoing mail sent to this user": "Отключить всю исходящую почту для этого пользователя.",
   "Create Password": "Создать пароль",
   "Enter a new password used for signing in.": "Введите новый пароль для пользователя.",
   "Reset Password": "Сброс пароля",

@@ -17,7 +17,7 @@ defaultRedirect: rainlab/user/users
 # Form Design
 design:
     displayMode: sidebar
-    size: 1100
+    sidebarSize: 500
 
 # Create page
 create:

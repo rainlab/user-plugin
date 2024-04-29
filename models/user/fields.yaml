@@ -29,34 +29,52 @@ tabs:
             context: create
 
         is_mail_blocked:
-            label: Block all outgoing mail sent to this user.
+            label: Block all outgoing mail sent to this user
             tab: Account
             type: checkbox
             span: full
             cssClass: field-align-above
             context: update
 
+        _account_ruler1:
+            type: ruler
+            tab: Account
+            cssClass: pb-3 my-2
+
         password@create:
             label: Create Password
-            comment: Enter a new password used for signing in.
+            commentAbove: Enter a new password used for signing in.
             tab: Account
             type: password
             span: left
 
         password@update:
             label: Reset Password
-            comment: To reset this users password, enter a new password here.
+            commentAbove: To reset this users password, enter a new password here.
             tab: Account
             type: password
             span: left
 
         password_confirmation:
             label: Password Confirmation
-            comment: Enter the password again to confirm it.
+            commentAbove: Enter the password again to confirm it.
             tab: Account
             type: password
             span: right
             context: [create, update]
+
+        is_two_factor_enabled:
+            label: Two-factor authentication is enabled
+            tab: Account
+            type: checkbox
+            span: full
+            cssClass: field-align-above
+            context: update
+
+        _account_ruler2:
+            type: ruler
+            tab: Account
+            cssClass: pb-3 my-2
 
         username:
             label: Username
@@ -75,12 +93,6 @@ tabs:
             type: relation
             emptyOption: There are no user groups available.
 
-        notes:
-            label: Notes
-            tab: Notes
-            type: textarea
-            size: large
-
 secondaryTabs:
     fields:
 
@@ -90,3 +102,8 @@ secondaryTabs:
             mode: image
             imageHeight: 260
             imageWidth: 260
+
+        notes:
+            label: Notes
+            type: textarea
+            size: small
