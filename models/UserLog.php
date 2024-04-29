@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Models;
 
+use Request;
 use October\Rain\Database\ExpandoModel;
 
 /**
@@ -28,6 +29,7 @@ class UserLog extends ExpandoModel
     const TYPE_NEW_USER = 'new-user';
     const TYPE_SET_EMAIL = 'set-email';
     const TYPE_SET_PASSWORD = 'set-password';
+    const TYPE_SET_TWO_FACTOR = 'set-two-factor';
     const TYPE_SELF_VERIFY = 'self-verify';
     const TYPE_SELF_LOGIN = 'self-login';
     const TYPE_SELF_DELETE = 'self-delete';
@@ -63,7 +65,10 @@ class UserLog extends ExpandoModel
      * @var array Relations
      */
     public $belongsTo = [
-        'user' => User::class
+        'user' => [
+            User::class,
+            'scope' => 'withTrashed'
+        ]
     ];
 
     /**
@@ -71,6 +76,8 @@ class UserLog extends ExpandoModel
      */
     public static function createRecord($userId, $type, $data = [])
     {
+        $data['ip_address'] = Request::ip();
+
         $obj = new static;
         $obj->user_id = $userId;
         $obj->type = $type;
@@ -88,6 +95,8 @@ class UserLog extends ExpandoModel
      */
     public static function createSystemRecord($userId, $type, $data = [])
     {
+        $data['ip_address'] = Request::ip();
+
         $obj = new static;
         $obj->user_id = $userId;
         $obj->type = $type;
@@ -105,12 +114,16 @@ class UserLog extends ExpandoModel
      */
     public static function createSystemComment($userId, $comment)
     {
+        $data = [];
+        $data['ip_address'] = Request::ip();
+
         $obj = new static;
         $obj->user_id = $userId;
         $obj->type = self::TYPE_INTERNAL_COMMENT;
         $obj->comment = $comment;
         $obj->is_comment = true;
         $obj->is_system = true;
+        $obj->data = $data;
         $obj->save();
 
         return $obj;

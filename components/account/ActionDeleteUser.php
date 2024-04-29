@@ -3,6 +3,7 @@
 use Auth;
 use Request;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserLog;
 use ValidationException;
 
 /**
@@ -36,6 +37,10 @@ trait ActionDeleteUser
      */
     protected function deleteUser(User $user)
     {
+        UserLog::createRecord($user->getKey(), UserLog::TYPE_SELF_DELETE, [
+            'user_full_name' => $user->full_name,
+        ]);
+
         $user->smartDelete();
     }
 }

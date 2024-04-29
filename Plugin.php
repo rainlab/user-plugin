@@ -172,18 +172,18 @@ class Plugin extends PluginBase
                 'order' => 500,
 
                 'sideMenu' => [
+                    'timelines' => [
+                        'label' => "Activity",
+                        'icon' => 'icon-bars',
+                        'url' => Backend::url('user/timelines'),
+                        'permissions' => []
+                    ],
                     'users' => [
                         'label' => "Users",
                         'icon' => 'icon-user',
                         'url' => Backend::url('rainlab/user/users'),
                         'permissions' => ['rainlab.users.access_users']
                     ],
-                    'timelines' => [
-                        'label' => "Timeline",
-                        'icon' => 'icon-bars',
-                        'url' => Backend::url('user/timelines'),
-                        'permissions' => []
-                    ]
                 ]
             ]
         ];

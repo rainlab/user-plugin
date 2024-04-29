@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use RainLab\User\Classes\TwoFactorManager;
+use RainLab\User\Models\UserLog;
 use ValidationException;
 use ApplicationException;
 
@@ -89,6 +90,11 @@ trait ActionTwoFactor
         ]);
 
         $user->save();
+
+        UserLog::createRecord($user->getKey(), UserLog::TYPE_SET_TWO_FACTOR, [
+            'user_full_name' => $user->full_name,
+            'is_two_factor_enabled' => true
+        ]);
     }
 
     /**
@@ -103,5 +109,10 @@ trait ActionTwoFactor
         }
 
         $user->disableTwoFactorAuthentication();
+
+        UserLog::createRecord($user->getKey(), UserLog::TYPE_SET_TWO_FACTOR, [
+            'user_full_name' => $user->full_name,
+            'is_two_factor_enabled' => false
+        ]);
     }
 }
