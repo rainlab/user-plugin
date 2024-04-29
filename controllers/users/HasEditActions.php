@@ -4,9 +4,7 @@ use Auth;
 use Lang;
 use Flash;
 use Response;
-use RainLab\User\Models\User;
 use RainLab\User\Models\UserGroup;
-use Exception;
 
 /**
  * HasEditActions
@@ -66,7 +64,7 @@ trait HasEditActions
      */
     public function preview_onLoadConvertGuestForm($recordId)
     {
-        $this->vars['groups'] = UserGroup::where('code', '!=', UserGroup::GROUP_GUEST)->get();
+        $this->vars['groups'] = UserGroup::withoutGuest()->get();
 
         return $this->makePartial('convert_guest_form');
     }
@@ -81,17 +79,12 @@ trait HasEditActions
         // Convert user and send notification
         $model->convertToRegistered(post('send_registration_notification', false));
 
-        // Remove user from guest group
-        if ($group = UserGroup::getGuestGroup()) {
-            $model->groups()->remove($group);
+        // Add user to new group, or remove from guest group
+        if (($groupId = post('new_group')) && ($group = UserGroup::find($groupId))) {
+            $model->primary_group = $group;
         }
-
-        // Add user to new group
-        if (
-            ($groupId = post('new_group')) &&
-            ($group = UserGroup::find($groupId))
-        ) {
-            $model->groups()->add($group);
+        else {
+            $model->primary_group = UserGroup::getRegisteredGroup();
         }
 
         Flash::success(__("User has been converted to a registered account"));

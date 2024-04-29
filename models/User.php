@@ -256,7 +256,6 @@ class User extends Model implements Authenticatable, CanResetPassword
 
     /**
      * beforeValidate event
-     * @return void
      */
     public function beforeValidate()
     {
@@ -284,8 +283,20 @@ class User extends Model implements Authenticatable, CanResetPassword
     }
 
     /**
+     * beforeCreate event
+     */
+    public function beforeCreate()
+    {
+        if ($this->is_guest) {
+            $this->primary_group = UserGroup::getGuestGroup();
+        }
+        elseif (!$this->primary_group_id) {
+            $this->primary_group = UserGroup::getRegisteredGroup();
+        }
+    }
+
+    /**
      * afterCreate event
-     * @return void
      */
     public function afterCreate()
     {
@@ -298,7 +309,6 @@ class User extends Model implements Authenticatable, CanResetPassword
 
     /**
      * afterDelete event
-     * @return void
      */
     public function afterDelete()
     {

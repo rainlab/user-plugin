@@ -72,11 +72,19 @@ class UserGroup extends Model
     }
 
     /**
-     * getGuestGroup returns the guest user group.
+     * getGuestGroup returns the default guest user group.
      */
     public static function getGuestGroup(): ?static
     {
         return static::findByCode(self::GROUP_GUEST);
+    }
+
+    /**
+     * getRegisteredGroup returns the default registered user group.
+     */
+    public static function getRegisteredGroup(): ?static
+    {
+        return static::findByCode(self::GROUP_REGISTERED);
     }
 
     /**
