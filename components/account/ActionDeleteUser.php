@@ -36,6 +36,6 @@ trait ActionDeleteUser
      */
     protected function deleteUser(User $user)
     {
-        $user->delete();
+        $user->smartDelete();
     }
 }
