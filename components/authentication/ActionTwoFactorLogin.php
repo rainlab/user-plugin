@@ -1,6 +1,7 @@
 <?php namespace RainLab\User\Components\Authentication;
 
 use Auth;
+use Event;
 use Session;
 use Request;
 use Redirect;
@@ -75,6 +76,10 @@ trait ActionTwoFactorLogin
         Auth::login($user, $this->useRememberMe());
 
         $this->prepareAuthenticatedSession();
+
+        Event::fire('rainlab.user.login', [$user]);
+
+        $this->recordUserLogAuthenticated($user, true);
     }
 
     /**

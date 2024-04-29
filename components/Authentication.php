@@ -5,6 +5,7 @@ use Flash;
 use Config;
 use Request;
 use Cms\Classes\ComponentBase;
+use RainLab\User\Models\UserLog;
 use RainLab\User\Helpers\User as UserHelper;
 use NotFoundException;
 
@@ -195,6 +196,17 @@ class Authentication extends ComponentBase
     public function showUsernameField()
     {
         return UserHelper::showUsername();
+    }
+
+    /**
+     * recordUserLogAuthenticated
+     */
+    protected function recordUserLogAuthenticated($user, $twoFactor = false)
+    {
+        UserLog::createRecord($user->getKey(), UserLog::TYPE_SELF_LOGIN, [
+            'user_full_name' => $user->full_name,
+            'is_two_factor' => $twoFactor
+        ]);
     }
 
     /**

@@ -28,7 +28,8 @@ class UserLog extends ExpandoModel
     const TYPE_NEW_USER = 'new-user';
     const TYPE_SET_EMAIL = 'set-email';
     const TYPE_SET_PASSWORD = 'set-password';
-    const TYPE_VERIFY_EMAIL = 'verify-email';
+    const TYPE_SELF_VERIFY = 'self-verify';
+    const TYPE_SELF_LOGIN = 'self-login';
     const TYPE_SELF_DELETE = 'self-delete';
     const TYPE_INTERNAL_COMMENT = 'internal-comment';
 
@@ -90,6 +91,7 @@ class UserLog extends ExpandoModel
         $obj = new static;
         $obj->user_id = $userId;
         $obj->type = $type;
+        $obj->data = $data;
         $obj->is_comment = false;
         $obj->is_system = true;
         $obj->setExpandoAttributes($data);

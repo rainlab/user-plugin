@@ -256,7 +256,7 @@ class Account extends ComponentBase
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
 
-            UserLog::createRecord($user->getKey(), UserLog::TYPE_VERIFY_EMAIL, [
+            UserLog::createRecord($user->getKey(), UserLog::TYPE_SELF_VERIFY, [
                 'user_full_name' => $user->full_name,
                 'user_email' => $user->email,
             ]);
