@@ -9,7 +9,7 @@ return [
     | Force enable two-factor authentication when logging in, if the user has it set up.
     |
     */
-    'force_two_factor_auth' => false,
+    'force_two_factor_auth' => null,
 
     /*
     |--------------------------------------------------------------------------
