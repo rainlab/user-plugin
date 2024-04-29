@@ -216,10 +216,9 @@ class User extends Model implements Authenticatable, CanResetPassword
             return $this->avatar->getThumb($size, $size, $options);
         }
         else {
-            return '//www.gravatar.com/avatar/'.
-                md5(strtolower(trim($this->email))).
-                '?s='.$size.
-                '&d='.urlencode($default);
+            $emailHash = md5(strtolower(trim($this->email)));
+            $defaultUrl = urlencode($default);
+            return "//www.gravatar.com/avatar/{$emailHash}?s={$size}&d={$defaultUrl}";
         }
     }
 
