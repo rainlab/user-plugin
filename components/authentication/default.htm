@@ -1,7 +1,7 @@
 {% if __SELF__.showLoginForm %}
     <div class="collapse show login-collapse">
         <form method="post" data-request="onLogin" data-request-flash>
-            <input type="hidden" name="redirect" value="account/index" />
+            <input type="hidden" name="redirect" value="true" />
 
             <div class="text-center pb-3">
                 <h1 class="h2 mb-3">Sign in to your account</h1>
@@ -94,7 +94,7 @@
 {% if __SELF__.usePasswordRecovery %}
     <div class="collapse login-collapse">
         <form method="post" data-request="onRecoverPassword" data-request-flash>
-            <input type="hidden" name="redirect" value="account/login" />
+            <input type="hidden" name="redirect" value="true" />
 
             <div class="text-center pb-3">
                 <h1 class="h2 mb-3">Recover password</h1>
@@ -137,7 +137,7 @@
 {% if __SELF__.showTwoFactorChallenge %}
     <div class="collapse show two-factor-collapse">
         <form method="post" data-request="onTwoFactorChallenge" data-request-flash>
-            <input type="hidden" name="redirect" value="account/index" />
+            <input type="hidden" name="redirect" value="true" />
 
             <div class="text-center pb-2">
                 <h1 class="h2 mb-3">Enter the code found in your authenticator app</h1>
@@ -177,7 +177,7 @@
 
     <div class="collapse two-factor-collapse">
         <form method="post" data-request="onTwoFactorChallenge" data-request-flash>
-            <input type="hidden" name="redirect" value="account/index" />
+            <input type="hidden" name="redirect" value="true" />
 
             <div class="text-center pb-2">
                 <h1 class="h2 mb-3">Enter one of your emergency recovery codes</h1>
