@@ -2,6 +2,7 @@
 
 use App;
 use View;
+use Event;
 use Backend;
 
 /**
@@ -25,6 +26,10 @@ trait HasModelAttributes
         $typeName = snake_case(studly_case($this->type));
 
         $path = plugins_path("rainlab/user/models/userlog/_detail_{$typeName}.php");
+
+        if ($event = Event::fire('rainlab.user.extendLogDetailViewPath', [$this, $this->type], true)) {
+            $path = $event;
+        }
 
         return file_exists($path) ? View::file($path, ['record' => $this]) : '';
     }
