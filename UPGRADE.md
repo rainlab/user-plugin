@@ -12,21 +12,36 @@ This guide can be used to help migrate from RainLab.User v1-v2 to v3. Some theme
 
 1. Clean up unused table data using `php artisan user:migratev1` (optional).
 
+## Previewing Changes
+
+We recommend installing the `RainLab.Vanilla` theme to demonstrate the latest functionality.
+
+- https://github.com/rainlab/vanilla-theme
+
 ## Compatible Plugins
 
 If you are using the following plugins, please upgrade them to v2.0 at the same time as this plugin:
 
-- https://github.com/rainlab/location-plugin
-- https://github.com/rainlab/userplus-plugin
-- https://github.com/rainlab/forum-plugin
+Package | New Version
+------- | -----------
+`rainlab/forum-plugin` | ^2.0
+`rainlab/location-plugin` | ^2.0
+`rainlab/userplus-plugin` | ^2.0
+`rainlab/notify-plugin` | Optional
+
+If you are using the `rainlab/notify-plugin` for sending the new user notifications, you may uninstall this plugin since these notifications are included in the user settings.
 
 ## Key Differences
 
-- The plugin now uses Laravel's authentication system as the underlying technology.
+- Laravel's authentication system is used as the underlying technology.
 
 - Two-Factor authentication is provided out of the box.
 
 - A User Log has been implemented to track and audit user actions, such as changing email address.
+
+- An Address Book component has been added to the UserPlus plugin.
+
+- The Forum plugin has the ability to "Poke" users to demonstrate the `notifications` component.
 
 ## Breaking Changes
 
@@ -40,11 +55,13 @@ The `Auth::checkBearerToken` has been renamed to `Auth::loginUsingBearerToken` t
 
 ### Account Component Split Up
 
-The functionality of the Account component has been broken up in to three components
+The functionality of the `Account` component has been spliut up in to three components:
 
-- Account: update user details, enable two factor, delete sessions, delete the user account
-- Authentication: authenticate a user
-- Registration: register a new user
+Component | Purpose
+--------- | ---------
+`Account` | Update user details, enable two factor, delete sessions, delete the user account
+`Authentication` | Authenticate a user
+`Registration` | Register a new user
 
 ### Session Component
 
@@ -56,13 +73,9 @@ The `allowedUserGroups` property has been removed from the `Session` component. 
 {% endif }
 ```
 
-### MailBlocker model replaced by UserPreference
-
-The `RainLab\User\Models\MailBlocker` model has been replaced by `RainLab\User\Models\UserPreference`. The classes function differently and `UserPreference` is more generic for controlling user preferences.
-
 ### Require Activation is Removed
 
-The Require Activation functionality has been removed for simplicity. The replacement approach below is more flexible, since custom pages or banners can be used based on the requirements.
+The "Require Activation" functionality has been removed from the settings page for simplicity. The replacement approach below is more flexible, since custom pages or banners can be used based on the requirements.
 
 A user can be checked if they are verified using Twig:
 
@@ -80,8 +93,13 @@ It is possible to require administration approval by creating an "Approved User"
 {% endif %}
 ```
 
+### MailBlocker model replaced by UserPreference
+
+The `RainLab\User\Models\MailBlocker` model has been replaced by `RainLab\User\Models\UserPreference`. The classes function differently and `UserPreference` is more generic for controlling user preferences.
+
 ### Events Updated
 
 The following event names have changed:
 
+- New events added to [the events documentation](./docs/events.md).
 - Removed **rainlab.user.reactivate** event, since users can no longer reactivate their account without help from an administrator.

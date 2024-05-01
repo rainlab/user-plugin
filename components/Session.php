@@ -134,23 +134,23 @@ class Session extends ComponentBase
 
         if ($user) {
             /**
-             * @event rainlab.user.logoutResponse
+             * @event rainlab.user.logout
              * Provides custom response logic for logging out a user.
              *
              * Example usage:
              *
-             *     Event::listen('rainlab.user.logoutResponse', function ($user) {
+             *     Event::listen('rainlab.user.logout', function ($component, $user) {
              *         // Fire logic
              *     });
              *
              * Or
              *
-             *     $component->bindEvent('user.logoutResponse', function ($user) {
+             *     $component->bindEvent('user.logout', function ($user) {
              *         // Fire logic
              *     });
              *
              */
-            if ($event = $this->fireSystemEvent('rainlab.user.logoutResponse', [$user])) {
+            if ($event = $this->fireSystemEvent('rainlab.user.logout', [$user])) {
                 return $event;
             }
         }

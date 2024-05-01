@@ -31,26 +31,24 @@ class Registration extends ComponentBase
     {
         $input = post();
 
-        Event::fire('rainlab.user.beforeRegister', [&$input]);
-
         /**
-         * @event rainlab.user.registerNewUser
+         * @event rainlab.user.beforeRegister
          * Provides custom logic for creating a new user during registration.
          *
          * Example usage:
          *
-         *     Event::listen('rainlab.user.registerNewUser', function ($input) {
+         *     Event::listen('rainlab.user.beforeRegister', function ($component, $input) {
          *         return User::create(...);
          *     });
          *
          * Or
          *
-         *     $component->bindEvent('user.registerNewUser', function ($input) {
+         *     $component->bindEvent('user.beforeRegister', function ($input) {
          *         return User::create(...);
          *     });
          *
          */
-        if ($event = $this->fireSystemEvent('rainlab.user.registerNewUser', [&$input])) {
+        if ($event = $this->fireSystemEvent('rainlab.user.beforeRegister', [&$input])) {
             $user = $event;
         }
         else {
@@ -60,23 +58,23 @@ class Registration extends ComponentBase
         Auth::login($user);
 
         /**
-         * @event rainlab.user.registrationResponse
+         * @event rainlab.user.register
          * Modify the return response after registration.
          *
          * Example usage:
          *
-         *     Event::listen('rainlab.user.registrationResponse', function ($user) {
+         *     Event::listen('rainlab.user.register', function ($component, $user) {
          *         // Fire logic
          *     });
          *
          * Or
          *
-         *     $component->bindEvent('user.registrationResponse', function ($user) {
+         *     $component->bindEvent('user.register', function ($user) {
          *         // Fire logic
          *     });
          *
          */
-        if ($event = $this->fireSystemEvent('rainlab.user.registrationResponse', [$user])) {
+        if ($event = $this->fireSystemEvent('rainlab.user.register', [$user])) {
             return $event;
         }
 

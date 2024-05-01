@@ -75,7 +75,7 @@ class Account extends ComponentBase
         }
 
         // Password update requires old password, use RainLab\User\Components\ResetPassword instead
-        $data = array_except((array) post(), ['password', 'remove_avatar']);
+        $input = array_except((array) post(), ['password', 'remove_avatar']);
 
         // Avatar upload
         if ($avatarFile = files('avatar')) {
@@ -91,20 +91,37 @@ class Account extends ComponentBase
         }
 
         // Email changed
-        if (isset($data['email']) && $user->email !== trim($data['email'])) {
+        if (isset($input['email']) && $user->email !== trim($input['email'])) {
             $user->forceFill(['activated_at' => null]);
 
             UserLog::createRecord($user->getKey(), UserLog::TYPE_SET_EMAIL, [
                 'user_full_name' => $user->full_name,
                 'old_value' => $user->email,
-                'new_value' => $data['email']
+                'new_value' => $input['email']
             ]);
         }
 
-        $user->fill($data);
+        $user->fill($input);
         $user->save();
 
-        if ($event = $this->fireSystemEvent('user.profile.update', [$user])) {
+        /**
+         * @event rainlab.user.update
+         * Provides custom logic when a login attempt has been rate limited.
+         *
+         * Example usage:
+         *
+         *     Event::listen('rainlab.user.update', function ($component, $user, $input) {
+         *         // ...
+         *     });
+         *
+         * Or
+         *
+         *     $component->bindEvent('user.update', function ($user, $input) {
+         *         // ...
+         *     });
+         *
+         */
+        if ($event = $this->fireSystemEvent('rainlab.user.update', [$user, $input])) {
             return $event;
         }
 

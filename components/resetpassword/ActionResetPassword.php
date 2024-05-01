@@ -73,7 +73,7 @@ trait ActionResetPassword
          *
          * Example usage:
          *
-         *     Event::listen('rainlab.user.passwordReset', function ($user) {
+         *     Event::listen('rainlab.user.passwordReset', function ($component, $user) {
          *         // Fire logic
          *     });
          *
