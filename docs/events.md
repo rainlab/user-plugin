@@ -6,16 +6,17 @@ Events | Description
 ------ | ---------------
 **rainlab.user.beforeAuthenticate** | Before the user is attempting to authenticate using the Account component.
 **rainlab.user.authenticate** | Provides custom response logic after authentication.
+**rainlab.user.login** | The user has successfully signed in.
+**rainlab.user.logout** | The user has successfully signed out.
 **rainlab.user.lockout** | Provides custom logic when a login attempt has been rate limited.
+**rainlab.user.activate** | The user has verified their email address.
+**rainlab.user.deactivate** | The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
 **rainlab.user.beforeRegister** | Before the user's registration is processed. Passed the `$input` variable by reference to enable direct modifications to the user input.
 **rainlab.user.register** | Provides custom response logic after registration.
 **rainlab.user.passwordReset** | Provides custom logic for resetting a user password.
-**rainlab.user.canDeleteUser** | Triggered before a user is deleted. This event should return true if the user has dependencies and should be soft deleted to retain those relationships and allow the user to be restored. Otherwise, it will be deleted forever.
-**rainlab.user.login** | The user has successfully signed in.
-**rainlab.user.logout** | The user has successfully signed out.
+**rainlab.user.beforeUpdate** | Before the user updates their profile from the Account component.
 **rainlab.user.update** | The user has updated their profile information.
-**rainlab.user.activate** | The user has verified their email address.
-**rainlab.user.deactivate** | The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
+**rainlab.user.canDeleteUser** | Triggered before a user is deleted. This event should return true if the user has dependencies and should be soft deleted to retain those relationships and allow the user to be restored. Otherwise, it will be deleted forever.
 **rainlab.user.getNotificationVars** | Fires when sending a user notification to enable passing more variables to the email templates. Passes the `$user` model the template will be for.
 **rainlab.user.view.extendListToolbar** | Fires when the user listing page's toolbar is rendered.
 **rainlab.user.view.extendPreviewToolbar** | Fires when the user preview page's toolbar is rendered.

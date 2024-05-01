@@ -37,13 +37,13 @@ class Registration extends ComponentBase
          *
          * Example usage:
          *
-         *     Event::listen('rainlab.user.beforeRegister', function ($component, $input) {
+         *     Event::listen('rainlab.user.beforeRegister', function ($component, &$input) {
          *         return User::create(...);
          *     });
          *
          * Or
          *
-         *     $component->bindEvent('user.beforeRegister', function ($input) {
+         *     $component->bindEvent('user.beforeRegister', function (&$input) {
          *         return User::create(...);
          *     });
          *

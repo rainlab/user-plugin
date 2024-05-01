@@ -77,6 +77,25 @@ class Account extends ComponentBase
         // Password update requires old password, use RainLab\User\Components\ResetPassword instead
         $input = array_except((array) post(), ['password', 'remove_avatar']);
 
+        /**
+         * @event rainlab.user.beforeUpdate
+         * Provides custom logic for updating a user profile.
+         *
+         * Example usage:
+         *
+         *     Event::listen('rainlab.user.beforeUpdate', function ($component, $user, &$input) {
+         *         $input['some_field'] = post('to_save');
+         *     });
+         *
+         * Or
+         *
+         *     $component->bindEvent('user.beforeUpdate', function ($user, &$input) {
+         *         $input['some_field'] = post('to_save');
+         *     });
+         *
+         */
+        $this->fireSystemEvent('rainlab.user.beforeUpdate', [$user, &$input]);
+
         // Avatar upload
         if ($avatarFile = files('avatar')) {
             $user->avatar = $avatarFile;
