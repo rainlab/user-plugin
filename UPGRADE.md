@@ -2,6 +2,8 @@
 
 This guide can be used to help migrate from RainLab.User v1-v2 to v3. Some theme changes are required to since there are new components.
 
+**Please make sure you have a database and website backup before performing the upgrade.**
+
 ## Upgrade Instructions
 
 1. **Make sure you are running October CMS v3.6 or greater.**
