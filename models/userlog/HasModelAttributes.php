@@ -31,7 +31,7 @@ trait HasModelAttributes
             $path = $event;
         }
 
-        return file_exists($path) ? View::file($path, ['record' => $this]) : '';
+        return file_exists($path) ? View::file($path, ['record' => $this]) : "{$this->type} event";
     }
 
     /**
