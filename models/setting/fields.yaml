@@ -1,0 +1,125 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+tabs:
+    fields:
+
+        # Sign In tab
+
+        login_attribute:
+            label: Login Attribute
+            span: auto
+            commentAbove: Select what primary user detail should be used for signing in.
+            type: radio
+            tab: Sign In
+
+        block_persistence:
+            label: Prevent Concurrent Sessions
+            span: full
+            comment: When enabled users cannot sign in to multiple devices at the same time.
+            type: checkbox
+            tab: Sign In
+
+        # Registration tab
+
+        allow_registration:
+            label: Allow User Registration
+            span: full
+            comment: If this is disabled users can only be created by administrators.
+            type: switch
+            tab: Registration
+
+        _registration_ruler:
+            type: ruler
+            tab: Registration
+
+        password_min_length:
+            label: Password Length
+            span: left
+            type: number
+            commentAbove: Minimum password length required for users
+            tab: Registration
+
+        password_require_mixed_case:
+            label: Require Mixed Case
+            span: left
+            type: checkbox
+            comment: Require at least one uppercase and lowercase letter
+            tab: Registration
+
+        password_require_uncompromised:
+            label: Require Uncompromised
+            span: right
+            type: checkbox
+            comment: Require a password not found in a leaked password database
+            tab: Registration
+
+        password_require_number:
+            label: Require Number
+            span: left
+            type: checkbox
+            comment: Require at least one number
+            tab: Registration
+
+        password_require_symbol:
+            label: Require Special Character
+            span: right
+            type: checkbox
+            comment: Require at least one non-alphanumeric character
+            tab: Registration
+
+        # Notifications tab
+
+        _template_hint:
+            type: hint
+            comment: You can customize mail templates by selecting Mail → Mail Templates from the settings menu.
+            tab: Notifications
+
+        notify_user:
+            label: Notify User
+            type: checkbox
+            tab: Notifications
+            comment: Send a welcome message to the user when they confirm their email address.
+
+        user_message_template:
+            label: User Message Template
+            commentAbove: Select the mail template to send to the user.
+            type: dropdown
+            optionsMethod: System\Models\MailTemplate::listAllTemplates
+            tab: Notifications
+            cssClass: field-indent
+            trigger:
+                action: enable
+                field: notify_user
+                condition: checked
+
+        notify_system:
+            label: Notify Administrators
+            type: checkbox
+            tab: Notifications
+            comment: Notify administrators when a new user confirms their email.
+
+        system_message_template:
+            label: System Message Template
+            commentAbove: Select the mail template to send to the admins.
+            type: dropdown
+            optionsMethod: System\Models\MailTemplate::listAllTemplates
+            tab: Notifications
+            cssClass: field-indent
+            trigger:
+                action: enable
+                field: notify_system
+                condition: checked
+
+        admin_group:
+            label: Notify Admin Group
+            commentAbove: Specify the administrator group that should receive a notification when a new user joins.
+            type: relation
+            tab: Notifications
+            span: full
+            cssClass: field-indent
+            trigger:
+                action: enable
+                field: notify_system
+                condition: checked

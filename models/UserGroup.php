@@ -1,13 +1,25 @@
 <?php namespace RainLab\User\Models;
 
-use October\Rain\Auth\Models\Group as GroupBase;
-use ApplicationException;
+use Model;
 
 /**
- * User Group Model
+ * UserGroup Model
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $code
+ * @property string $description
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ *
+ * @package rainlab\user
+ * @author Alexey Bobkov, Samuel Georges
  */
-class UserGroup extends GroupBase
+class UserGroup extends Model
 {
+    use \System\Traits\KeyCodeModel;
+    use \October\Rain\Database\Traits\Validation;
+
     const GROUP_GUEST = 'guest';
     const GROUP_REGISTERED = 'registered';
 
@@ -28,8 +40,15 @@ class UserGroup extends GroupBase
      * @var array Relations
      */
     public $belongsToMany = [
-        'users'       => [User::class, 'table' => 'users_groups'],
-        'users_count' => [User::class, 'table' => 'users_groups', 'count' => true]
+        'users' => [
+            User::class,
+            'table' => 'users_groups'
+        ],
+        'users_count' => [
+            User::class,
+            'table' => 'users_groups',
+            'count' => true
+        ]
     ];
 
     /**
@@ -41,20 +60,38 @@ class UserGroup extends GroupBase
         'description'
     ];
 
-    protected static $guestGroup = null;
+    /**
+     * delete the group
+     * @return bool
+     */
+    public function delete()
+    {
+        $this->users()->detach();
+
+        return parent::delete();
+    }
 
     /**
-     * Returns the guest user group.
-     * @return RainLab\User\Models\UserGroup
+     * getGuestGroup returns the default guest user group.
      */
-    public static function getGuestGroup()
+    public static function getGuestGroup(): ?static
     {
-        if (self::$guestGroup !== null) {
-            return self::$guestGroup;
-        }
+        return static::findByCode(self::GROUP_GUEST);
+    }
 
-        $group = self::where('code', self::GROUP_GUEST)->first() ?: false;
+    /**
+     * getRegisteredGroup returns the default registered user group.
+     */
+    public static function getRegisteredGroup(): ?static
+    {
+        return static::findByCode(self::GROUP_REGISTERED);
+    }
 
-        return self::$guestGroup = $group;
+    /**
+     * scopeWithoutGuest
+     */
+    public function scopeWithoutGuest($query)
+    {
+        return $query->where('code', '<>', self::GROUP_GUEST);
     }
 }

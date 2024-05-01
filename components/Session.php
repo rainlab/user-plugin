@@ -1,21 +1,25 @@
 <?php namespace RainLab\User\Components;
 
-use Lang;
+use App;
+use Cms;
 use Auth;
-use Event;
 use Flash;
+use Cookie;
 use Request;
 use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use RainLab\User\Models\UserGroup;
+use RainLab\User\Models\User;
 use SystemException;
 
 /**
- * Session component
+ * Session management component
  *
  * This will inject the user object to every page and provide the ability for
  * the user to sign out. This can also be used to restrict access to pages.
+ *
+ * @package rainlab\user
+ * @author Alexey Bobkov, Samuel Georges
  */
 class Session extends ComponentBase
 {
@@ -29,8 +33,8 @@ class Session extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'rainlab.user::lang.session.session',
-            'description' => 'rainlab.user::lang.session.session_desc'
+            'name' => "Session",
+            'description' => "Provides services for registering a user."
         ];
     }
 
@@ -41,34 +45,29 @@ class Session extends ComponentBase
     {
         return [
             'security' => [
-                'title' => 'rainlab.user::lang.session.security_title',
-                'description' => 'rainlab.user::lang.session.security_desc',
+                'title' => "Security Mode",
+                'description' => "Restricts access this page to either all users, logged in users, or logged out guests.",
                 'type' => 'dropdown',
                 'default' => 'all',
                 'options' => [
-                    'all' => 'rainlab.user::lang.session.all',
-                    'user' => 'rainlab.user::lang.session.users',
-                    'guest' => 'rainlab.user::lang.session.guests'
+                    'all' => "All",
+                    'user' => "Users",
+                    'guest' => "Guests"
                 ]
             ],
-            'allowedUserGroups' => [
-                'title' => 'rainlab.user::lang.session.allowed_groups_title',
-                'description' => 'rainlab.user::lang.session.allowed_groups_description',
-                'placeholder' => '*',
-                'type' => 'set',
-                'default' => []
-            ],
             'redirect' => [
-                'title' => 'rainlab.user::lang.session.redirect_title',
-                'description' => 'rainlab.user::lang.session.redirect_desc',
+                'title' => "Default Redirect",
+                'description' => "When access is denied, redirect to this CMS page.",
                 'type' => 'dropdown',
+                'group' => "Redirects",
                 'default' => ''
             ],
             'checkToken' => [
-                'title' => /*Use token authentication*/'rainlab.user::lang.session.check_token',
-                'description' => /*Check authentication using a verified bearer token.*/'rainlab.user::lang.session.check_token_desc',
+                'title' => "Check Bearer Token (JWT)",
+                'description' => "Check authentication using a verified bearer token.",
                 'type' => 'checkbox',
-                'default' => 0
+                'default' => 0,
+                'showExternalParam' => false
             ],
         ];
     }
@@ -82,14 +81,6 @@ class Session extends ComponentBase
     }
 
     /**
-     * getAllowedUserGroupsOptions
-     */
-    public function getAllowedUserGroupsOptions()
-    {
-        return UserGroup::lists('name','code');
-    }
-
-    /**
      * init component
      */
     public function init()
@@ -99,16 +90,15 @@ class Session extends ComponentBase
             $this->authenticateWithBearerToken();
         }
 
+        // Authenticate session
+        $this->authenticateSession();
+
         // Inject security logic pre-AJAX
-        $this->controller->bindEvent('page.init', function() {
-            if (Request::ajax() && ($redirect = $this->checkUserSecurityRedirect())) {
-                return ['X_OCTOBER_REDIRECT' => $redirect->getTargetUrl()];
-            }
-        });
+        $this->registerAjaxSecurity();
     }
 
     /**
-     * Executed when this component is bound to a page or layout.
+     * onRun executed when this component is bound to a page or layout.
      */
     public function onRun()
     {
@@ -117,40 +107,6 @@ class Session extends ComponentBase
         }
 
         $this->page['user'] = $this->user();
-    }
-
-    /**
-     * user returns the logged in user, if available, and touches
-     * the last seen timestamp.
-     * @return RainLab\User\Models\User
-     */
-    public function user()
-    {
-        if (!$user = Auth::getUser()) {
-            return null;
-        }
-
-        if (!Auth::isImpersonator()) {
-            $user->touchLastSeen();
-        }
-
-        return $user;
-    }
-
-    /**
-     * token returns an authentication token
-     */
-    public function token()
-    {
-        return Auth::getBearerToken();
-    }
-
-    /**
-     * Returns the previously signed in user when impersonating.
-     */
-    public function impersonator()
-    {
-        return Auth::getImpersonator();
     }
 
     /**
@@ -165,38 +121,73 @@ class Session extends ComponentBase
      */
     public function onLogout()
     {
-        $user = Auth::getUser();
+        $user = Auth::user();
 
-        Auth::logout();
-
-        if ($user) {
-            Event::fire('rainlab.user.logout', [$user]);
+        if (Auth::isImpersonator()) {
+            Auth::stopImpersonate();
+        }
+        else {
+            Auth::logout();
+            Request::session()->invalidate();
+            Request::session()->regenerateToken();
         }
 
-        $url = post('redirect', Request::fullUrl());
+        if ($user) {
+            /**
+             * @event rainlab.user.logout
+             * Provides custom response logic for logging out a user.
+             *
+             * Example usage:
+             *
+             *     Event::listen('rainlab.user.logout', function ($component, $user) {
+             *         // Fire logic
+             *     });
+             *
+             * Or
+             *
+             *     $component->bindEvent('user.logout', function ($user) {
+             *         // Fire logic
+             *     });
+             *
+             */
+            if ($event = $this->fireSystemEvent('rainlab.user.logout', [$user])) {
+                return $event;
+            }
+        }
 
-        Flash::success(Lang::get('rainlab.user::lang.session.logout'));
+        if ($flash = Cms::flashFromPost(__("You have been successfully logged out!"))) {
+            Flash::success($flash);
+        }
 
-        return Redirect::to($url);
+        if ($redirectUrl = post('redirect', Request::fullUrl())) {
+            return Redirect::to($redirectUrl);
+        }
     }
 
     /**
-     * If impersonating, revert back to the previously signed in user.
-     * @return Redirect
+     * user returns the logged in user
      */
-    public function onStopImpersonating()
+    public function user(): ?User
     {
-        if (!Auth::isImpersonator()) {
-            return $this->onLogout();
+        $user = Auth::user();
+
+        if ($user && !$this->impersonator()) {
+            $user->touchLastSeen();
         }
 
-        Auth::stopImpersonate();
+        return $user;
+    }
 
-        $url = post('redirect', Request::fullUrl());
-
-        Flash::success(Lang::get('rainlab.user::lang.session.stop_impersonate_success'));
-
-        return Redirect::to($url);
+    /**
+     * registerAjaxSecurity injects security logic before AJAX
+     */
+    protected function registerAjaxSecurity()
+    {
+        $this->controller->bindEvent('page.init', function() {
+            if (Request::ajax() && ($redirect = $this->checkUserSecurityRedirect())) {
+                return ['X_OCTOBER_REDIRECT' => $redirect->getTargetUrl()];
+            }
+        });
     }
 
     /**
@@ -210,12 +201,12 @@ class Session extends ComponentBase
         }
 
         if (!$this->property('redirect')) {
-            throw new SystemException('Redirect property is empty on Session component.');
+            throw new SystemException("The redirect property is empty on Session component.");
         }
 
-        $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
-
-        return Redirect::guest($redirectUrl);
+        return Redirect::guest(
+            Cms::pageUrl($this->property('redirect'))
+        );
     }
 
     /**
@@ -224,19 +215,10 @@ class Session extends ComponentBase
     protected function checkUserSecurity(): bool
     {
         $allowedGroup = $this->property('security', self::ALLOW_ALL);
-        $allowedUserGroups = (array) $this->property('allowedUserGroups', []);
-        $isAuthenticated = Auth::check();
 
-        if ($isAuthenticated) {
+        if (Auth::check()) {
             if ($allowedGroup == self::ALLOW_GUEST) {
                 return false;
-            }
-
-            if (!empty($allowedUserGroups)) {
-                $userGroups = Auth::getUser()->groups->lists('code');
-                if (!count(array_intersect($allowedUserGroups, $userGroups))) {
-                    return false;
-                }
             }
         }
         else {
@@ -248,13 +230,107 @@ class Session extends ComponentBase
         return true;
     }
 
+    //
+    // JWT
+    //
+
+    /**
+     * token returns an authentication token
+     */
+    public function token()
+    {
+        return Auth::getBearerToken();
+    }
+
     /**
      * authenticateWithBearerToken
      */
     protected function authenticateWithBearerToken()
     {
         if ($jwtToken = Request::bearerToken()) {
-            Auth::checkBearerToken($jwtToken);
+            Auth::loginUsingBearerToken($jwtToken);
         }
+    }
+
+    //
+    // Impersonation
+    //
+
+    /**
+     * onStopImpersonating if impersonating, revert back to the previously signed in user.
+     * @return Redirect
+     */
+    public function onStopImpersonating()
+    {
+        if (!$this->impersonator()) {
+            return $this->onLogout();
+        }
+
+        Auth::stopImpersonate();
+
+        $url = post('redirect', Request::fullUrl());
+
+        if ($flash = Cms::flashFromPost(__("You are no longer impersonating a user."))) {
+            Flash::success($flash);
+        }
+
+        return Redirect::to($url);
+    }
+
+    /**
+     * impersonator returns the previously signed in user when impersonating.
+     */
+    public function impersonator()
+    {
+        return Auth::getImpersonator();
+    }
+
+    /**
+     * authenticateSession is an adaptation of the AuthenticateSession middleware.
+     * It checks if the password hash has changed and logs out the user. This is
+     * an extra redundancy check and is already covered by the persist code.
+     *
+     * @see \Illuminate\Session\Middleware\AuthenticateSession
+     */
+    protected function authenticateSession()
+    {
+        if (!Request::hasSession() || !$this->user()) {
+            return;
+        }
+
+        $logoutFunc = function() {
+            Auth::logoutCurrentDevice();
+            Request::session()->flush();
+        };
+
+        $user = Auth::getRealUser();
+        $driver = Auth::getDefaultDriver();
+
+        if (Auth::viaRemember()) {
+            $passwordHash = explode('|', Cookie::get(Auth::getRecallerName()))[2] ?? null;
+            if (!$passwordHash || $passwordHash != $user->getAuthPassword()) {
+                $logoutFunc();
+                return;
+            }
+        }
+
+        if (!Request::session()->has("password_hash_{$driver}")) {
+            Request::session()->put([
+                "password_hash_{$driver}" => $user->getAuthPassword(),
+            ]);
+        }
+
+        if (Request::session()->get("password_hash_{$driver}") !== $user->getAuthPassword()) {
+            $logoutFunc();
+            return;
+        }
+
+        App::after(function() use ($driver) {
+            if ($user = Auth::getRealUser()) {
+                Request::session()->put([
+                    "password_hash_{$driver}" => $user->getAuthPassword(),
+                ]);
+            }
+        });
     }
 }

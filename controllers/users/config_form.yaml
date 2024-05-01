@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: rainlab.user::lang.user.label
+name: User
 
 # Model Form Field configuration
 form: $/rainlab/user/models/user/fields.yaml
@@ -14,6 +14,11 @@ modelClass: RainLab\User\Models\User
 # Default redirect location
 defaultRedirect: rainlab/user/users
 
+# Form Design
+design:
+    displayMode: sidebar
+    sidebarSize: 500
+
 # Create page
 create:
     redirect: rainlab/user/users/preview/:id
@@ -23,3 +28,11 @@ create:
 update:
     redirect: rainlab/user/users/update/:id
     redirectClose: rainlab/user/users/preview/:id
+
+# Preview Page
+preview:
+    title: View User
+    form: $/rainlab/user/models/user/fields-preview.yaml
+    design:
+        displayMode: basic
+        size: auto

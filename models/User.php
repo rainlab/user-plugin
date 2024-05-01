@@ -1,115 +1,178 @@
 <?php namespace RainLab\User\Models;
 
 use Str;
-use Auth;
 use Mail;
 use Event;
-use Config;
+use Model;
 use Carbon\Carbon;
-use October\Rain\Auth\Models\User as UserBase;
-use RainLab\User\Models\Settings as UserSettings;
-use Illuminate\Validation\Rules\Password as PasswordRule;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use October\Rain\Auth\AuthException;
 
-class User extends UserBase
+/**
+ * User record
+ *
+ * @property int $id
+ * @property bool $is_guest
+ * @property bool $is_mail_blocked
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $username
+ * @property string $email
+ * @property string $company
+ * @property string $phone
+ * @property string $city
+ * @property string $zip
+ * @property int $state_id
+ * @property int $country_id
+ * @property string $notes
+ * @property string $password
+ * @property string $remember_token
+ * @property string $two_factor_secret
+ * @property string $two_factor_recovery_codes
+ * @property int $primary_group_id
+ * @property string $created_ip_address
+ * @property string $last_ip_address
+ * @property string $banned_reason
+ * @property \Illuminate\Support\Carbon $banned_at
+ * @property \Illuminate\Support\Carbon $activated_at
+ * @property \Illuminate\Support\Carbon $two_factor_confirmed_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ *
+ * @package rainlab\user
+ * @author Alexey Bobkov, Samuel Georges
+ */
+class User extends Model implements Authenticatable, CanResetPassword
 {
+    use \RainLab\User\Models\User\HasTwoFactor;
+    use \RainLab\User\Models\User\HasPersistCode;
+    use \RainLab\User\Models\User\HasPasswordReset;
+    use \RainLab\User\Models\User\HasAuthenticatable;
+    use \RainLab\User\Models\User\HasEmailVerification;
+    use \RainLab\User\Models\User\HasModelAttributes;
+    use \RainLab\User\Models\User\HasModelScopes;
     use \October\Rain\Database\Traits\SoftDelete;
+    use \October\Rain\Database\Traits\Validation;
+    use \October\Rain\Database\Traits\Encryptable;
+    use \October\Rain\Database\Traits\Purgeable;
+    use \October\Rain\Database\Traits\Hashable;
 
     /**
-     * @var string The database table used by the model.
+     * @var string table associated with the model
      */
     protected $table = 'users';
 
     /**
-     * Validation rules
+     * @var array rules
      */
     public $rules = [
-        'email' => 'required|between:6,255|email|unique:users',
-        'avatar' => 'nullable|image|max:4000',
-        'username' => 'required|between:2,255|unique:users',
-        'password' => 'required:create|between:8,255|confirmed',
-        'password_confirmation' => 'required_with:password|between:8,255',
+        'first_name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'between:3,255', 'email', 'unique:users,email,NULL,id,is_guest,false'],
+        'username' => ['required', 'between:2,255', 'unique:users,username,NULL,id,is_guest,false'],
+        'password' => ['required:create', 'string', 'confirmed'],
+        'avatar' => ['nullable', 'image', 'max:4000'],
     ];
-
-    /**
-     * @var array Relations
-     */
-    public $belongsToMany = [
-        'groups' => [UserGroup::class, 'table' => 'users_groups']
-    ];
-
-    public $attachOne = [
-        'avatar' => \System\Models\File::class
-    ];
-
-    /**
-     * @var array The attributes that are mass assignable.
-     */
-    protected $fillable = [
-        'name',
-        'surname',
-        'login',
-        'username',
-        'email',
-        'password',
-        'password_confirmation',
-        'created_ip_address',
-        'last_ip_address'
-    ];
-
-    /**
-     * Reset guarded fields, because we use $fillable instead.
-     * @var array The attributes that aren't mass assignable.
-     */
-    protected $guarded = ['*'];
-
-    /**
-     * Purge attributes from data set.
-     */
-    protected $purgeable = ['password_confirmation', 'send_invite'];
 
     /**
      * @var array dates
      */
     protected $dates = [
         'last_seen',
+        'banned_at',
         'deleted_at',
         'created_at',
         'updated_at',
         'activated_at',
-        'last_login'
+        'two_factor_confirmed_at',
+    ];
+
+    /**
+     * @var array fillable attributes
+     */
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'login',
+        'username',
+        'email',
+        'password',
+        'password_confirmation',
+    ];
+
+    /**
+     * hidden attributes
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret'
+    ];
+
+    /**
+     * @var array purgeable attribute names which should not be saved to the database.
+     */
+    protected $purgeable = [
+        'password_confirmation',
+        'send_invite'
+    ];
+
+    /**
+     * @var array hashable list of attribute names which should be hashed using the Bcrypt hashing algorithm
+     */
+    protected $hashable = [
+        'password'
+    ];
+
+    /**
+     * @var array encryptable is a list of attribute names which should be encrypted
+     */
+    protected $encryptable = ['two_factor_secret', 'two_factor_recovery_codes'];
+
+    /**
+     * appends accessors to the model's array form.
+     */
+    protected $appends = [
+        'avatar_url'
+    ];
+
+    /**
+     * @var array belongsToMany
+     */
+    public $belongsToMany = [
+        'groups' => [
+            UserGroup::class,
+            'table' => 'users_groups'
+        ]
+    ];
+
+    /**
+     * @var array hasMany relations
+     */
+    public $hasMany = [
+        'activity_log' => [UserLog::class, 'delete' => true],
+    ];
+
+    /**
+     * @var array belongsTo
+     */
+    public $belongsTo = [
+        'primary_group' => UserGroup::class
+    ];
+
+    /**
+     * @var array attachOne
+     */
+    public $attachOne = [
+        'avatar' => \System\Models\File::class
     ];
 
     /**
      * @var string|null loginAttribute
      */
     public static $loginAttribute = null;
-
-    /**
-     * Sends the confirmation email to a user, after activating.
-     * @param  string $code
-     * @return bool
-     */
-    public function attemptActivation($code)
-    {
-        if ($this->trashed()) {
-            if ($code === $this->activation_code) {
-                $this->restore();
-            } else {
-                return false;
-            }
-        } else {
-            $result = parent::attemptActivation($code);
-
-            if ($result === false) {
-                return false;
-            }
-        }
-
-        Event::fire('rainlab.user.activate', [$this]);
-
-        return true;
-    }
 
     /**
      * Converts a guest user to a registered one and sends an invitation notification.
@@ -134,56 +197,10 @@ class User extends UserBase
         }
     }
 
-    //
-    // Constructors
-    //
-
-    /**
-     * findByEmail looks up a user by their email address.
-     * @return self
-     */
-    public static function findByEmail($email)
-    {
-        if (!$email) {
-            return;
-        }
-
-        return self::where('email', $email)->first();
-    }
-
-    //
-    // Getters
-    //
-
-    /**
-     * clearPersistCode will forcibly sign the user out
-     */
-    public function clearPersistCode()
-    {
-        $this->persist_code = null;
-        $this->timestamps = false;
-        $this->save();
-    }
-
-    /**
-     * Gets a code for when the user is persisted to a cookie or session which identifies the user.
-     * @return string
-     */
-    public function getPersistCode()
-    {
-        $block = UserSettings::get('block_persistence', false);
-
-        if ($block || !$this->persist_code) {
-            return parent::getPersistCode();
-        }
-
-        return $this->persist_code;
-    }
-
     /**
      * Returns the public image file path to this user's avatar.
      */
-    public function getAvatarThumb($size = 25, $options = null)
+    public function getAvatarThumb($size = 64, $options = null)
     {
         if (is_string($options)) {
             $options = ['default' => $options];
@@ -199,55 +216,10 @@ class User extends UserBase
             return $this->avatar->getThumb($size, $size, $options);
         }
         else {
-            return '//www.gravatar.com/avatar/'.
-                md5(strtolower(trim($this->email))).
-                '?s='.$size.
-                '&d='.urlencode($default);
+            $emailHash = md5(strtolower(trim($this->email)));
+            $defaultUrl = urlencode($default);
+            return "//www.gravatar.com/avatar/{$emailHash}?s={$size}&d={$defaultUrl}";
         }
-    }
-
-    /**
-     * Returns the name for the user's login.
-     * @return string
-     */
-    public function getLoginName()
-    {
-        if (static::$loginAttribute !== null) {
-            return static::$loginAttribute;
-        }
-
-        return static::$loginAttribute = UserSettings::get('login_attribute', UserSettings::LOGIN_EMAIL);
-    }
-
-    /**
-     * Returns the minimum length for a new password from settings.
-     * @return int
-     */
-    public static function getMinPasswordLength()
-    {
-        return Config::get('rainlab.user::minPasswordLength', 8);
-    }
-
-    //
-    // Scopes
-    //
-
-    /**
-     * scopeIsActivated
-     */
-    public function scopeIsActivated($query)
-    {
-        return $query->where('is_activated', 1);
-    }
-
-    /**
-     * scopeFilterByGroup
-     */
-    public function scopeFilterByGroup($query, $filter)
-    {
-        return $query->whereHas('groups', function($group) use ($filter) {
-            $group->whereIn('id', $filter);
-        });
     }
 
     //
@@ -255,56 +227,76 @@ class User extends UserBase
     //
 
     /**
+     * smartDelete will only delete a user if the user.canDeleteUser event
+     * allows it to happen.
+     */
+    public function smartDelete()
+    {
+        /**
+         * @event user.canDeleteUser
+         * Triggered before a user is deleted. This event should return true if the
+         * user has dependencies and should be soft deleted to retain those relationships
+         * and allow the user to be restored. Otherwise, it will be deleted forever.
+         *
+         * Example usage:
+         *
+         *     Event::listen('rainlab.user.canDeleteUser', function($user) {
+         *         if ($user->orders->count()) {
+         *             return true;
+         *         }
+         *     });
+         *
+         */
+        if (Event::fire('rainlab.user.canDeleteUser', [$this], true) === false) {
+            return $this->delete();
+        }
+
+        return $this->forceDelete();
+    }
+
+    /**
      * beforeValidate event
-     * @return void
      */
     public function beforeValidate()
     {
-        /*
-         * Guests are special
-         */
+        // Guests are special
+        if ($this->is_guest) {
+            $this->removeValidationRule('email', 'unique');
+        }
+
         if ($this->is_guest && !$this->password) {
             $this->generatePassword();
         }
 
-        /*
-         * When the username is not used, the email is substituted.
-         */
-        if (
-            (!$this->username) ||
-            ($this->isDirty('email') && $this->getOriginal('email') == $this->username)
-        ) {
+        // Confirmation would be an empty string if provided by a form
+        if ($this->password && $this->password_confirmation === null) {
+            $this->password_confirmation = $this->password;
+        }
+
+        // When the username is not used, the email is substituted.
+        if (!$this->username || ($this->isDirty('email') && $this->getOriginal('email') == $this->username)) {
             $this->username = $this->email;
         }
 
-        /*
-         * Apply rules Settings
-         */
-        $minPasswordLength = Settings::get('min_password_length', static::getMinPasswordLength());
-        $passwordRule = PasswordRule::min($minPasswordLength);
-        if (Settings::get('require_mixed_case')) {
-            $passwordRule->mixedCase();
-        }
+        // Apply rules Setting
+        $this->addValidationRule('password', Setting::makePasswordRule());
+    }
 
-        if (Settings::get('require_uncompromised')) {
-            $passwordRule->uncompromised();
+    /**
+     * beforeCreate event
+     */
+    public function beforeCreate()
+    {
+        if ($this->is_guest) {
+            $this->primary_group = UserGroup::getGuestGroup();
         }
-
-        if (Settings::get('require_number')) {
-            $passwordRule->numbers();
+        elseif (!$this->primary_group_id) {
+            $this->primary_group = UserGroup::getRegisteredGroup();
         }
-
-        if (Settings::get('require_symbol')) {
-            $passwordRule->symbols();
-        }
-
-        $this->addValidationRule('password', $passwordRule);
-        $this->addValidationRule('password_confirmation', $passwordRule);
     }
 
     /**
      * afterCreate event
-     * @return void
      */
     public function afterCreate()
     {
@@ -316,59 +308,13 @@ class User extends UserBase
     }
 
     /**
-     * beforeLogin event
-     * @return void
-     */
-    public function beforeLogin()
-    {
-        if ($this->is_guest) {
-            $login = $this->getLogin();
-            throw new AuthException(sprintf(
-                'Cannot login user "%s" as they are not registered.', $login
-            ));
-        }
-
-        parent::beforeLogin();
-    }
-
-    /**
-     * afterLogin event
-     * @return void
-     */
-    public function afterLogin()
-    {
-        $this->last_login = $this->freshTimestamp();
-
-        if ($this->trashed()) {
-            $this->restore();
-
-            Mail::sendTo($this, 'rainlab.user::mail.reactivate', [
-                'name' => $this->name
-            ]);
-
-            Event::fire('rainlab.user.reactivate', [$this]);
-        }
-        else {
-            parent::afterLogin();
-        }
-
-        Event::fire('rainlab.user.login', [$this]);
-    }
-
-    /**
      * afterDelete event
-     * @return void
      */
     public function afterDelete()
     {
         if ($this->isSoftDelete()) {
             Event::fire('rainlab.user.deactivate', [$this]);
-            return;
         }
-
-        $this->avatar && $this->avatar->delete();
-
-        parent::afterDelete();
     }
 
     //
@@ -376,65 +322,37 @@ class User extends UserBase
     //
 
     /**
-     * Ban this user, preventing them from signing in.
-     * @return void
+     * ban this user, preventing them from signing in.
      */
-    public function ban()
+    public function ban($reason = null)
     {
-        Auth::findThrottleByUserId($this->id)->ban();
+        if (!$this->is_banned) {
+            $this->banned_reason = $reason;
+            $this->banned_at = $this->freshTimestamp();
+            $this->save(['force' => true]);
+        }
     }
 
     /**
-     * Remove the ban on this user.
-     * @return void
+     * unban removes the ban on this user.
      */
     public function unban()
     {
-        Auth::findThrottleByUserId($this->id)->unban();
-    }
-
-    /**
-     * Check if the user is banned.
-     * @return bool
-     */
-    public function isBanned()
-    {
-        $throttle = Auth::createThrottleModel()->where('user_id', $this->id)->first();
-        return $throttle ? $throttle->is_banned : false;
+        if ($this->is_banned) {
+            $this->banned_reason = null;
+            $this->banned_at = null;
+            $this->save(['force' => true]);
+        }
     }
 
     //
-    // Suspending
+    // Last Seen
     //
 
     /**
-     * Check if the user is suspended.
-     * @return bool
+     * touchIpAddress records the last_ip_address to reflect the last known IP for this user.
      */
-    public function isSuspended()
-    {
-        return Auth::findThrottleByUserId($this->id)->checkSuspended();
-    }
-
-    /**
-     * Remove the suspension on this user.
-     * @return void
-     */
-    public function unsuspend()
-    {
-        Auth::findThrottleByUserId($this->id)->unsuspend();
-    }
-
-    //
-    // IP Recording and Throttle
-    //
-
-    /**
-     * Records the last_ip_address to reflect the last known IP for this user.
-     * @param string|null $ipAddress
-     * @return void
-     */
-    public function touchIpAddress($ipAddress)
+    public function touchIpAddress(?string $ipAddress)
     {
         $this
             ->newQuery()
@@ -444,35 +362,8 @@ class User extends UserBase
     }
 
     /**
-     * Returns true if IP address is throttled and cannot register
-     * again. Maximum 3 registrations every 60 minutes.
-     * @param string|null $ipAddress
-     * @return bool
-     */
-    public static function isRegisterThrottled($ipAddress)
-    {
-        if (!$ipAddress) {
-            return false;
-        }
-
-        $timeLimit = Carbon::now()->subMinutes(60);
-        $count = static::make()
-            ->where('created_ip_address', $ipAddress)
-            ->where('created_at', '>', $timeLimit)
-            ->count()
-        ;
-
-        return $count > 2;
-    }
-
-    //
-    // Last Seen
-    //
-
-    /**
-     * Checks if the user has been seen in the last 5 minutes, and if not,
+     * touchLastSeen checks if the user has been seen in the last 5 minutes, and if not,
      * updates the last_seen timestamp to reflect their online status.
-     * @return void
      */
     public function touchLastSeen()
     {
@@ -494,10 +385,9 @@ class User extends UserBase
     }
 
     /**
-     * Returns true if the user has been active within the last 5 minutes.
-     * @return bool
+     * isOnline returns true if the user has been active within the last 5 minutes.
      */
-    public function isOnline()
+    public function isOnline(): bool
     {
         if (!$this->last_seen) {
             return false;
@@ -507,7 +397,7 @@ class User extends UserBase
     }
 
     /**
-     * Returns the date this user was last seen.
+     * getLastSeen returns the date this user was last seen.
      * @deprecated use last_seen attribute
      * @return Carbon\Carbon
      */
@@ -521,22 +411,20 @@ class User extends UserBase
     //
 
     /**
-     * Returns the variables available when sending a user notification.
-     * @return array
+     * getNotificationVars returns the variables available when sending a user notification.
      */
-    public function getNotificationVars()
+    public function getNotificationVars(): array
     {
         $vars = [
-            'name' => $this->name,
+            'full_name' => $this->full_name,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'login' => $this->login,
             'email' => $this->email,
             'username' => $this->username,
-            'login' => $this->getLogin(),
-            'password' => $this->getOriginalHashValue('password')
         ];
 
-        /*
-         * Extensibility
-         */
+        // Extensibility
         $result = Event::fire('rainlab.user.getNotificationVars', [$this]);
         if ($result && is_array($result)) {
             $vars = call_user_func_array('array_merge', $result) + $vars;
@@ -548,7 +436,6 @@ class User extends UserBase
     /**
      * sendInvitation sends an invitation to the user using template
      * "rainlab.user::mail.invite"
-     * @return void
      */
     protected function sendInvitation()
     {
@@ -557,10 +444,84 @@ class User extends UserBase
 
     /**
      * generatePassword assigns this user with a random password.
-     * @return void
      */
-    protected function generatePassword()
+    public function generatePassword()
     {
-        $this->password = $this->password_confirmation = Str::random(static::getMinPasswordLength());
+        $this->password = $this->password_confirmation = Str::random(12);
+    }
+
+    /**
+     * getPreference for this user
+     */
+    public function getPreference($item, $default = null)
+    {
+        if ($userId = $this->getKey()) {
+            return UserPreference::getPreference($userId, $item, $default);
+        }
+
+        return $default;
+    }
+
+    /**
+     * addGroup adds the user to the given group
+     * @param Group|string $group
+     */
+    public function addGroup($group)
+    {
+        if (is_string($group)) {
+            $group = UserGroup::findByCode($group);
+        }
+
+        if (!$group) {
+            return;
+        }
+
+        if (!$this->inGroup($group)) {
+            $this->groups()->attach($group);
+            $this->unsetRelation('groups');
+        }
+    }
+
+    /**
+     * removeGroup removes the user from the given group
+     * @param Group|string $group
+     */
+    public function removeGroup($group)
+    {
+        if (is_string($group)) {
+            $group = UserGroup::findByCode($group);
+        }
+
+        if (!$group) {
+            return;
+        }
+
+        if ($this->inGroup($group)) {
+            $this->groups()->detach($group);
+            $this->unsetRelation('groups');
+        }
+    }
+
+    /**
+     * inGroup see if the user is in the given group
+     * @param Group|string $group
+     */
+    public function inGroup($group): bool
+    {
+        if (is_string($group)) {
+            $group = UserGroup::findByCode($group);
+        }
+
+        if (!$group) {
+            return false;
+        }
+
+        foreach ($this->groups as $inGroup) {
+            if ($inGroup->getKey() === $group->getKey()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

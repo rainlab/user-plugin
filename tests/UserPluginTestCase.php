@@ -3,7 +3,7 @@
 use App;
 use PluginTestCase;
 use Illuminate\Foundation\AliasLoader;
-use RainLab\User\Models\Settings;
+use RainLab\User\Models\Setting;
 
 /**
  * UserPluginTestCase
@@ -18,14 +18,10 @@ abstract class UserPluginTestCase extends PluginTestCase
         parent::setUp();
 
         // Reset any modified settings
-        Settings::resetDefault();
+        Setting::resetDefault();
 
         // Log out after each test
         \RainLab\User\Classes\AuthManager::instance()->logout();
-
-        // Register the auth facade
-        $alias = AliasLoader::getInstance();
-        $alias->alias('Auth', \RainLab\User\Facades\Auth::class);
 
         App::singleton('user.auth', function () {
             return \RainLab\User\Classes\AuthManager::instance();

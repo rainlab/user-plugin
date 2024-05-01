@@ -1,0 +1,16 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    detail:
+        label: Detail
+        type: partial
+        searchable: false
+        sortable: false
+
+    created_at:
+        label: Created
+        type: timetense
+        sortable: true
+        searchable: false

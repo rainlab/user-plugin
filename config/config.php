@@ -1,23 +1,15 @@
 <?php
 
-use RainLab\User\Models\Settings;
-
 return [
-
     /*
     |--------------------------------------------------------------------------
-    | Activation mode
+    | Force Two-Factor Authentication
     |--------------------------------------------------------------------------
     |
-    | Select how a user account should be activated.
-    |
-    | ACTIVATE_ADMIN    Administrators must activate users manually.
-    | ACTIVATE_AUTO     Users are activated automatically upon registration.
-    | ACTIVATE_USER     The user activates their own account using a link sent to them via email.
+    | Force enable two-factor authentication when logging in, if the user has it set up.
     |
     */
-
-    'activateMode' => Settings::ACTIVATE_AUTO,
+    'force_two_factor_auth' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +20,7 @@ return [
     |
     */
 
-    'allowRegistration' => true,
+    'allow_registration' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +31,7 @@ return [
     |
     */
 
-    'blockPersistence' => false,
+    'block_persistence' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -48,71 +40,35 @@ return [
     |
     | Select what primary user detail should be used for signing in.
     |
-    | LOGIN_EMAIL       Authenticate users by email.
-    | LOGIN_USERNAME    Authenticate users by username.
+    | email       Authenticate users by email.
+    | username    Authenticate users by username.
     |
     */
 
-    'loginAttribute' => Settings::LOGIN_EMAIL,
+    'login_attribute' => 'email',
 
     /*
     |--------------------------------------------------------------------------
-    | Minimum Password Length
+    | Password Policy
     |--------------------------------------------------------------------------
     |
-    | The minimum length of characters required for user passwords.
+    | Specify the password policy for backend administrators.
+    |
+    | min_length            - Password minimum length between 4 - 128 chars
+    | require_mixed_case    - Require at least one uppercase and lowercase letter
+    | require_uncompromised - Require a password not found in a leaked password database
+    | require_number        - Require at least one number
+    | require_symbol        - Require at least one non-alphanumeric character
     |
     */
 
-    'minPasswordLength' => 8,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Remember login mode
-    |--------------------------------------------------------------------------
-    |
-    | Select if the user session should be persistent.
-    |
-    | REMEMBER_ALWAYS   Always persist user session.
-    | REMEMBER_ASK      Ask if session should be persistent.
-    | REMEMBER_NEVER    Never persist user session.
-    |
-    */
-
-    'rememberLogin' => Settings::REMEMBER_ALWAYS,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Sign in requires activation
-    |--------------------------------------------------------------------------
-    |
-    | Users must have an activated account to sign in.
-    |
-    */
-
-    'requireActivation' => true,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Throttle registration
-    |--------------------------------------------------------------------------
-    |
-    | Prevent multiple registrations from the same IP in short succession.
-    |
-    */
-
-    'useRegisterThrottle' => true,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Throttle attempts
-    |--------------------------------------------------------------------------
-    |
-    | Repeat failed sign in attempts will temporarily suspend the user.
-    |
-    */
-
-    'useThrottle' => true,
+    'password_policy' => [
+        'min_length' => 8,
+        'require_mixed_case' => false,
+        'require_uncompromised' => false,
+        'require_number' => true,
+        'require_symbol' => false,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -130,7 +86,7 @@ return [
     |
     */
 
-    'bearerToken' => [
+    'bearer_token' => [
         'algorithm' => null,
         'key' => null,
         'ttl' => null,

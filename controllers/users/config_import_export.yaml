@@ -1,0 +1,41 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    # Page title
+    title: Import Users
+
+    # Import List Column configuration
+    list: $/rainlab/user/models/user/columns-import.yaml
+
+    # Import Form Field configuration
+    form: $/rainlab/user/models/user/fields-import.yaml
+
+    # Import Model class
+    modelClass: RainLab\User\Models\User\UserImport
+
+    # Redirect when finished
+    redirect: user/users
+
+    # Required permissions
+    # permissions: user.access_import_export
+
+export:
+    # Page title
+    title: Export Users
+
+    # Output file name
+    fileName: users.csv
+
+    # Export List Column configuration
+    list: $/rainlab/user/models/user/columns-export.yaml
+
+    # Export Model class
+    modelClass: RainLab\User\Models\User\UserExport
+
+    # Redirect when finished
+    redirect: user/users
+
+    # Required permissions
+    # permissions: user.access_import_export
