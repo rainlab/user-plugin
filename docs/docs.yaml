@@ -1,0 +1,45 @@
+navigation:
+    -
+        title: "Introduction"
+        link: "./introduction.md"
+        description: "explains how to get started using the User plugin"
+        children:
+        -
+            title: "Events"
+            link: "./events.md"
+            description: "lists all the available events found in this plugin"
+    -
+        title: "Components"
+        description: "lists all the available components found in this plugin"
+        children:
+        -
+            title: "Session"
+            link: "./component-session.md"
+
+        -
+            title: "Account"
+            link: "./component-account.md"
+
+        -
+            title: "Authentication"
+            link: "./component-authentication.md"
+
+        -
+            title: "Registration"
+            link: "./component-registration.md"
+
+        -
+            title: "Reset Password"
+            link: "./component-reset-password.md"
+    -
+        title: "Services"
+        children:
+        -
+            title: "Auth Manager"
+            link: "./auth-manager.md"
+        -
+            title: "Impersonation"
+            link: "./auth-impersonation.md"
+        -
+            title: "Bearer Tokens"
+            link: "./auth-bearer-tokens.md"
