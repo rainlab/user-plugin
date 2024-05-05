@@ -31,7 +31,7 @@ Package | New Version
 `rainlab/userplus-plugin` | ^2.0
 `rainlab/notify-plugin` | Optional
 
-If you are using the `rainlab/notify-plugin` for sending the new user notifications, you may uninstall this plugin since these notifications are included in the user settings.
+If you are using the `rainlab/notify-plugin` for sending the new user notifications, you may uninstall this plugin since these notifications are now included in the user settings.
 
 ## Key Differences
 
@@ -57,7 +57,7 @@ The `Auth::checkBearerToken` has been renamed to `Auth::loginUsingBearerToken` t
 
 ### Account Component Split Up
 
-The functionality of the `Account` component has been spliut up in to three components:
+The functionality of the `Account` component has been split in to three components:
 
 Component | Purpose
 --------- | ---------
@@ -87,7 +87,9 @@ A user can be checked if they are verified using Twig:
 {% endif %}
 ```
 
-It is possible to require administration approval by creating an "Approved User" user group, or by extending the users database table with a `is_approved` field. Then check in Twig:
+Checking administrator approval is possible by creating an "Approved User" user group and placing approved users in that group.
+
+Alternatively, by extending the users database table with a `is_approved` field. Then check in Twig:
 
 ```twig
 {% if not user.is_approved %}
@@ -105,3 +107,9 @@ The following event names have changed:
 
 - New events added to [the events documentation](./docs/events.md).
 - Removed **rainlab.user.reactivate** event, since users can no longer reactivate their account without help from an administrator.
+
+### Feedback
+
+If there are any changes you would like us to include to make upgrading easier, let us know and we can accommodate them in a new release.
+
+Thanks for reading.
