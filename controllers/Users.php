@@ -132,6 +132,16 @@ class Users extends Controller
     }
 
     /**
+     * modelAfterCreate
+     */
+    public function formAfterCreate($model)
+    {
+        UserLog::createSystemRecord($model->getKey(), UserLog::TYPE_NEW_USER, [
+            'user_full_name' => $model->full_name,
+        ]);
+    }
+
+    /**
      * modelAfterUpdate
      */
     protected function modelAfterUpdate($model)

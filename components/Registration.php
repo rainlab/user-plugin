@@ -5,6 +5,7 @@ use Auth;
 use Event;
 use Validator;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserLog;
 use RainLab\User\Helpers\User as UserHelper;
 use Cms\Classes\ComponentBase;
 
@@ -102,12 +103,18 @@ class Registration extends ComponentBase
             'password' => UserHelper::passwordRules(),
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
             'email' => $input['email'],
             'password' => $input['password'],
             'password_confirmation' => $input['password_confirmation'],
         ]);
+
+        UserLog::createRecord($user->getKey(), UserLog::TYPE_NEW_USER, [
+            'user_full_name' => $user->full_name,
+        ]);
+
+        return $user;
     }
 }
