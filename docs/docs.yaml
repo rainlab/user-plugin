@@ -22,31 +22,35 @@ navigation:
         -
             title: "Session"
             link: "./component-session.md"
-
+            description: "checks the user session and includes the user object on the page"
         -
             title: "Account"
             link: "./component-account.md"
-
+            description: "user management form for updating profile and security details"
         -
             title: "Authentication"
             link: "./component-authentication.md"
-
+            description: "provides services for logging a user in"
         -
             title: "Registration"
             link: "./component-registration.md"
-
+            description: "provides services for registering a user"
         -
             title: "Reset Password"
             link: "./component-reset-password.md"
+            description: "confirms and resets the user with a new password"
     -
         title: "Services"
         children:
         -
             title: "Auth Manager"
             link: "./auth-manager.md"
+            description: "services for managing the user session"
         -
             title: "Impersonation"
             link: "./auth-impersonation.md"
+            description: "extra services for impersonating users"
         -
             title: "Bearer Tokens"
             link: "./auth-bearer-tokens.md"
+            description: "extra services for JWT authentication"

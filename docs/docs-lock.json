@@ -18,22 +18,27 @@
             "children": [
                 {
                     "title": "Session",
+                    "description": "checks the user session and includes the user object on the page",
                     "slug": "component-session"
                 },
                 {
                     "title": "Account",
+                    "description": "user management form for updating profile and security details",
                     "slug": "component-account"
                 },
                 {
                     "title": "Authentication",
+                    "description": "provides services for logging a user in",
                     "slug": "component-authentication"
                 },
                 {
                     "title": "Registration",
+                    "description": "provides services for registering a user",
                     "slug": "component-registration"
                 },
                 {
                     "title": "Reset Password",
+                    "description": "confirms and resets the user with a new password",
                     "slug": "component-reset-password"
                 }
             ]
@@ -43,14 +48,17 @@
             "children": [
                 {
                     "title": "Auth Manager",
+                    "description": "services for managing the user session",
                     "slug": "auth-manager"
                 },
                 {
                     "title": "Impersonation",
+                    "description": "extra services for impersonating users",
                     "slug": "auth-impersonation"
                 },
                 {
                     "title": "Bearer Tokens",
+                    "description": "extra services for JWT authentication",
                     "slug": "auth-bearer-tokens"
                 }
             ]

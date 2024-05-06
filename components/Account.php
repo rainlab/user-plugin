@@ -35,7 +35,7 @@ class Account extends ComponentBase
     {
         return [
             'name' => "Account",
-            'description' => "User management form."
+            'description' => "User management form for updating profile and security details."
         ];
     }
 

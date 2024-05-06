@@ -34,7 +34,7 @@ class Session extends ComponentBase
     {
         return [
             'name' => "Session",
-            'description' => "Provides services for registering a user."
+            'description' => "Checks the user session and includes the user object on the page."
         ];
     }
 
