@@ -113,6 +113,7 @@ class Users extends Controller
 
         // Hide group fields for guests
         if ($model->is_guest) {
+            $form->removeField('_group_ruler');
             $form->removeField('groups');
             $form->removeField('primary_group');
         }

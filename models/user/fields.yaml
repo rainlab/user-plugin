@@ -14,6 +14,11 @@ fields:
 
 tabs:
     fields:
+        username:
+            label: Username
+            tab: Account
+            hidden: true
+            span: left
 
         email:
             label: Email
@@ -36,7 +41,7 @@ tabs:
             cssClass: field-align-above
             context: update
 
-        _account_ruler1:
+        _password_ruler:
             type: ruler
             tab: Account
             cssClass: pb-3 my-2
@@ -71,27 +76,23 @@ tabs:
             cssClass: field-align-above
             context: update
 
-        _account_ruler2:
+        _group_ruler:
             type: ruler
             tab: Account
             cssClass: pb-3 my-2
-
-        username:
-            label: Username
-            tab: Account
-            hidden: true
-            span: left
 
         primary_group:
             label: Primary Group
             tab: Account
             type: relation
+            scope: withoutGuest
 
         groups:
             label: Secondary Groups
             tab: Account
             type: relation
             emptyOption: There are no user groups available.
+            scope: withoutGuest
 
 secondaryTabs:
     fields:
