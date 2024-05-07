@@ -5,7 +5,7 @@ use Auth;
 use Config;
 use Request;
 use Carbon\Carbon;
-use Jenssegers\Agent\Agent;
+use RainLab\User\Classes\Agent;
 use ValidationException;
 
 /**
