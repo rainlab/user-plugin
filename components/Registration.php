@@ -5,6 +5,7 @@ use Auth;
 use Event;
 use Validator;
 use RainLab\User\Models\User;
+use RainLab\User\Models\Setting;
 use RainLab\User\Models\UserLog;
 use RainLab\User\Helpers\User as UserHelper;
 use Cms\Classes\ComponentBase;
@@ -116,5 +117,13 @@ class Registration extends ComponentBase
         ]);
 
         return $user;
+    }
+
+    /**
+     * canRegister checks if the registration is allowed
+     */
+    public function canRegister(): bool
+    {
+        return Setting::get('allow_registration');
     }
 }
