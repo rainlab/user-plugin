@@ -152,6 +152,6 @@ trait ActionLogin
      */
     protected function makeLoginRateLimiter()
     {
-        return new \System\Classes\RateLimiter('login:'.input(UserHelper::username()));
+        return new \System\Classes\RateLimiter('login:'.post(UserHelper::username()));
     }
 }

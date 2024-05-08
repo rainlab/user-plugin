@@ -27,7 +27,7 @@ trait ActionRecoverPassword
         Request::validate(['email' => 'required|email']);
 
         $status = $this->makePasswordBroker()->sendResetLink([
-            'email' => input('email')
+            'email' => post('email')
         ]);
 
         if ($status === PasswordBroker::RESET_THROTTLED) {

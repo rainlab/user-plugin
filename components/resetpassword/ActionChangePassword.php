@@ -25,7 +25,7 @@ trait ActionChangePassword
             throw new ForbiddenException;
         }
 
-        $this->updateUserPassword($user, input());
+        $this->updateUserPassword($user, post());
 
         if (Request::hasSession()) {
             Request::session()->put([

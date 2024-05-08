@@ -129,7 +129,10 @@ class User extends Model implements Authenticatable, CanResetPassword
     /**
      * @var array encryptable is a list of attribute names which should be encrypted
      */
-    protected $encryptable = ['two_factor_secret', 'two_factor_recovery_codes'];
+    protected $encryptable = [
+        'two_factor_secret',
+        'two_factor_recovery_codes'
+    ];
 
     /**
      * appends accessors to the model's array form.
@@ -270,7 +273,7 @@ class User extends Model implements Authenticatable, CanResetPassword
 
         // Confirmation would be an empty string if provided by a form
         if ($this->password && $this->password_confirmation === null) {
-            $this->password_confirmation = $this->password;
+            $this->password_confirmation = $this->getOriginalHashValue('password');
         }
 
         // When the username is not used, the email is substituted.

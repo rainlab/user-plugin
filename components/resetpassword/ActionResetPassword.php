@@ -28,10 +28,10 @@ trait ActionResetPassword
             'password' => 'required',
         ]);
 
-        $status = $this->makePasswordBroker()->reset(array_only(input(), [
+        $status = $this->makePasswordBroker()->reset(array_only(post(), [
             'email', 'password', 'password_confirmation', 'token'
         ]), function($user) {
-            $this->resetUserPassword($user, input());
+            $this->resetUserPassword($user, post());
             $this->completePasswordReset($user);
         });
 
