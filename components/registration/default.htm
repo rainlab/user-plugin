@@ -1,65 +1,72 @@
 <form method="post" data-request="onRegister" data-request-flash>
     <input type="hidden" name="redirect" value="true" />
 
-    <div class="text-center pb-3">
-        <h1 class="h2 mb-3">Create a new account</h1>
-        <h2 class="h5 fw-normal">Enter your information below</h2>
-    </div>
+    {% if __SELF__.canRegister %}
+        <div class="text-center pb-3">
+            <h1 class="h2 mb-3">Create a new account</h1>
+            <h2 class="h5 fw-normal">Enter your information below</h2>
+        </div>
 
-    <div class="form-floating my-3">
-        <input
-            name="first_name"
-            type="text"
-            class="form-control"
-            id="inputFirstName"
-            placeholder="First name"
-            autocomplete="given-name"
-        />
-        <label for="inputFirstName">First name</label>
-    </div>
+        <div class="form-floating my-3">
+            <input
+                name="first_name"
+                type="text"
+                class="form-control"
+                id="inputFirstName"
+                placeholder="First name"
+                autocomplete="given-name"
+            />
+            <label for="inputFirstName">First name</label>
+        </div>
 
-    <div class="form-floating my-3">
-        <input
-            name="last_name"
-            type="text"
-            class="form-control"
-            id="inputLastName"
-            placeholder="Last name"
-            autocomplete="family-name"
-        />
-        <label for="inputLastName">Last name</label>
-    </div>
+        <div class="form-floating my-3">
+            <input
+                name="last_name"
+                type="text"
+                class="form-control"
+                id="inputLastName"
+                placeholder="Last name"
+                autocomplete="family-name"
+            />
+            <label for="inputLastName">Last name</label>
+        </div>
 
-    <div class="form-floating my-3">
-        <input
-            name="email"
-            type="email"
-            class="form-control"
-            id="inputEmail"
-            placeholder="Email address"
-            autocomplete="email"
-        />
-        <label for="inputEmail">Email address</label>
-    </div>
+        <div class="form-floating my-3">
+            <input
+                name="email"
+                type="email"
+                class="form-control"
+                id="inputEmail"
+                placeholder="Email address"
+                autocomplete="email"
+            />
+            <label for="inputEmail">Email address</label>
+        </div>
 
-    <div class="form-floating my-3">
-        <input
-            name="password"
-            type="password"
-            class="form-control"
-            id="inputPassword"
-            placeholder="Password"
-            autocomplete="new-password"
-        />
-        <label for="inputPassword">Password</label>
-    </div>
+        <div class="form-floating my-3">
+            <input
+                name="password"
+                type="password"
+                class="form-control"
+                id="inputPassword"
+                placeholder="Password"
+                autocomplete="new-password"
+            />
+            <label for="inputPassword">Password</label>
+        </div>
 
-    <button
-        class="btn btn-primary btn-lg w-100 py-2"
-        data-attach-loading
-        type="submit">
-        Create account
-    </button>
+        <button
+            class="btn btn-primary btn-lg w-100 py-2"
+            data-attach-loading
+            type="submit">
+            Create account
+        </button>
+    {% else %}
+        <div class="text-center pb-3">
+            <h1 class="h2 mb-3">Create a new account</h1>
+            <h2 class="h5 fw-normal">Registrations are currently disabled</h2>
+        </div>
+    {% endif %}
 
     <div class="text-center">
         <p class="mt-5 mb-1 text-body-secondary">

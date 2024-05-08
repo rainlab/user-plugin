@@ -6,6 +6,7 @@ use Config;
 use Request;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\UserLog;
+use RainLab\User\Models\Setting;
 use RainLab\User\Helpers\User as UserHelper;
 use NotFoundException;
 
@@ -196,6 +197,14 @@ class Authentication extends ComponentBase
     public function showUsernameField()
     {
         return UserHelper::showUsername();
+    }
+
+    /**
+     * canRegister checks if the registration is allowed
+     */
+    public function canRegister(): bool
+    {
+        return Setting::get('allow_registration');
     }
 
     /**

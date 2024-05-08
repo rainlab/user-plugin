@@ -9,6 +9,7 @@ use RainLab\User\Models\Setting;
 use RainLab\User\Models\UserLog;
 use RainLab\User\Helpers\User as UserHelper;
 use Cms\Classes\ComponentBase;
+use NotFoundException;
 
 /**
  * Registration displays registration forms
@@ -31,6 +32,10 @@ class Registration extends ComponentBase
      */
     public function onRegister()
     {
+        if (!$this->canRegister()) {
+            throw new NotFoundException;
+        }
+
         $input = post();
 
         /**

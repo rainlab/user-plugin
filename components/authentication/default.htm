@@ -69,12 +69,14 @@
         </form>
 
         <div class="text-center">
-            <p class="mt-5 mb-1 text-body-secondary">
-                New user?
-                <a href="{{ 'account/register'|page }}">
-                    Create a new account
-                </a>
-            </p>
+            {% if __SELF__.canRegister %}
+                <p class="mt-5 mb-1 text-body-secondary">
+                    New user?
+                    <a href="{{ 'account/register'|page }}">
+                        Create a new account
+                    </a>
+                </p>
+            {% endif %}
 
             {% if __SELF__.usePasswordRecovery %}
                 <p class="mt-1 mb-3 text-body-secondary">
