@@ -12,6 +12,12 @@ isDefault = 1
 ...
 ```
 
+For displaying and clearing other browser sessions for the user, the session driver must be set to `database`. Open the **config/session.php** file and change the driver, this can also be set in the **.env** file with the `SESSION_DRIVER` variable.
+
+```php
+'driver' => env('SESSION_DRIVER', 'database'),
+```
+
 ## API
 
 These AJAX handlers are available.
@@ -36,7 +42,6 @@ Variable | Description
 `sessions` | returns browser sessions for the user
 `twoFactorEnabled` | returns true if the user has two factor enabled
 `twoFactorRecoveryCodes` | returns an array of recovery codes, if available
-
 
 ## Examples
 
