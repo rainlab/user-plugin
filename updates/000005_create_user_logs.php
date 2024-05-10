@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('rainlab_user_user_logs', function(Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned()->nullable()->index();
+            $table->bigInteger('user_id')->unsigned()->nullable()->index();
             $table->string('type')->nullable();
             $table->mediumText('data')->nullable();
             $table->mediumText('comment')->nullable();

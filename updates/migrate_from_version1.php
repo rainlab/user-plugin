@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->string('first_name')->nullable();
                 $table->string('last_name')->nullable();
                 $table->mediumText('notes')->nullable();
-                $table->integer('primary_group_id')->nullable()->unsigned();
+                $table->bigInteger('primary_group_id')->nullable()->unsigned();
                 $table->string('remember_token')->nullable();
                 $table->text('banned_reason')->nullable();
                 $table->timestamp('banned_at')->nullable();

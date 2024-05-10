@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('remember_token')->nullable();
             $table->text('two_factor_secret')->nullable();
             $table->text('two_factor_recovery_codes')->nullable();
-            $table->integer('primary_group_id')->nullable()->unsigned();
+            $table->bigInteger('primary_group_id')->nullable()->unsigned();
             $table->string('created_ip_address')->nullable();
             $table->string('last_ip_address')->nullable();
             $table->text('banned_reason')->nullable();
