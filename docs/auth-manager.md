@@ -2,10 +2,10 @@
 
 There is an `Auth` facade you may use for common tasks, it primarily inherits the `October\Rain\Auth\Manager` class for functionality.
 
-You may use `register` method to register an account.
+You may use `create` method on the `User` model to register an account.
 
 ```php
-$user = Auth::register([
+$user = \RainLab\User\Models\User::create([
     'name' => 'Some User',
     'email' => 'some@website.tld',
     'password' => 'changeme',
@@ -13,32 +13,32 @@ $user = Auth::register([
 ]);
 ```
 
-The second argument can specify if the account should be automatically activated:
+The `markEmailAsVerified` method can be used to activate an existing user.
 
 ```php
 // Auto activate this user
-$user = Auth::register([...], true);
+$user->markEmailAsVerified();
 ```
 
-The `Auth::check` method is a quick way to check if the user is signed in.
+The `check` method is a quick way to check if the user is signed in.
 
 ```php
 // Returns true if signed in.
 $loggedIn = Auth::check();
 ```
 
-To return the user model that is signed in, use `Auth::getUser` instead.
+To return the user model that is signed in, use `user` method instead.
 
 ```php
 // Returns the signed in user
-$user = Auth::getUser();
+$user = Auth::user();
 ```
 
-You may authenticate a user by providing their login and password with `Auth::authenticate`.
+You may authenticate a user by providing their login and password with the `attempt` method.
 
 ```php
 // Authenticate user by credentials
-$user = Auth::authenticate([
+$user = Auth::attempt([
     'login' => post('login'),
     'password' => post('password')
 ]);
@@ -47,17 +47,17 @@ $user = Auth::authenticate([
 The second argument is used to store a non-expire cookie for the user.
 
 ```php
-$user = Auth::authenticate([...], true);
+$user = Auth::attempt([...], true);
 ```
 
-You can also authenticate as a user simply by passing the user model along with `Auth::login`.
+You can also authenticate as a user simply by passing the user model along with the `login` method.
 
 ```php
 // Sign in as a specific user
 Auth::login($user);
 ```
 
-The second argument is the same.
+The second argument will store the non-expire cookie for the user.
 
 ```php
 // Sign in and remember the user
@@ -74,17 +74,20 @@ $user = Auth::retrieveByCredentials(['email' => 'some@email.tld']);
 
 Creating a guest user allows the registration process to be deferred. For example, making a purchase without needing to register first. Guest users are not able to sign in and will be added to the user group with the code `guest`.
 
-Use the `Auth::registerGuest` method to create a guest user, it will return a user object and can be called multiple times. The unique identifier is the email address, which is a required field.
+Use the `is_guest` attribute to create a guest user, it will return a user object and can be called multiple times. The unique identifier is the email address, which is a required field.
 
 ```php
-$user = Auth::registerGuest(['email' => 'person@acme.tld']);
+$user = \RainLab\User\Models\User::([
+    'email' => 'person@acme.tld',
+    'is_guest' => true
+]);
 ```
 
-When a user registers with the same email address using the `Auth::register` method, they will inherit the existing guest user account.
+When a user registers with the same email address using the `User::create` method, they will inherit the existing guest user account.
 
 ```php
 // This will not throw an "Email already taken" error
-$user = Auth::register([
+$user = \RainLab\User\Models\User::create([
     'email' => 'person@acme.tld',
     'password' => 'changeme',
     'password_confirmation' => 'changeme',

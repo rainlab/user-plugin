@@ -99,6 +99,7 @@ class User extends Model implements Authenticatable, CanResetPassword
         'email',
         'password',
         'password_confirmation',
+        'is_guest',
     ];
 
     /**
