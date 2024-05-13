@@ -5,7 +5,7 @@
 fields:
 
     first_name:
-        label: Name
+        label: First Name
         span: auto
 
     last_name:
