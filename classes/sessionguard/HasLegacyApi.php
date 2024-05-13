@@ -31,4 +31,22 @@ trait HasLegacyApi
     {
         return $this->provider->retrieveByCredentials($credentials);
     }
+
+    /**
+     * @deprecated create User model manually
+     */
+    public function register(array $credentials, $activate = false, $autoLogin = true)
+    {
+        $user = \RainLab\User\Models\User::create($credentials);
+
+        if ($activate) {
+            $user->markEmailAsVerified();
+        }
+
+        if ($autoLogin) {
+            $this->loginQuietly($user);
+        }
+
+        return $user;
+    }
 }
