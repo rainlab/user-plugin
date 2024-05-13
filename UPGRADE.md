@@ -72,7 +72,7 @@ The `allowedUserGroups` property has been removed from the `Session` component. 
 ```twig
 {% if not user.inGroup('premium-users') %}
     {% do redirect('account/login') %}
-{% endif }
+{% endif %}
 ```
 
 ### Require Activation is Removed
