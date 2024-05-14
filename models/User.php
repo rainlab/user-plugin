@@ -94,7 +94,6 @@ class User extends Model implements Authenticatable, CanResetPassword
     protected $fillable = [
         'first_name',
         'last_name',
-        'login',
         'username',
         'email',
         'password',

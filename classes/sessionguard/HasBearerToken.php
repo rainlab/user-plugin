@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use RainLab\User\Models\User;
+use RainLab\User\Helpers\User as UserHelper;
 use SystemException;
 use Exception;
 
@@ -52,7 +53,7 @@ trait HasBearerToken
         // Prepare payload
         $persistCode = $user->getPersistCode();
         $data = [
-            'login' => $user->login,
+            'login' => $user->{UserHelper::username()},
             'hash' => Hash::make($persistCode)
         ];
 
@@ -137,7 +138,7 @@ trait HasBearerToken
         }
 
         // Locate user
-        $user = $this->provider->retrieveByCredentials(['login' => $login]);
+        $user = $this->provider->retrieveByCredentials([UserHelper::username() => $login]);
         if (!$user || !$user->persist_code) {
             return false;
         }

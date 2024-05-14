@@ -39,7 +39,7 @@ You may authenticate a user by providing their login and password with the `atte
 ```php
 // Authenticate user by credentials
 $user = Auth::attempt([
-    'login' => post('login'),
+    'email' => post('email'),
     'password' => post('password')
 ]);
 ```

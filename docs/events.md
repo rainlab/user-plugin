@@ -34,11 +34,11 @@ A common requirement is to adapt another to a legacy authentication system. In t
 
 ```php
 Event::listen('rainlab.user.beforeAuthenticate', function($component, $credentials) {
-    $login = array_get($credentials, 'login');
+    $email = array_get($credentials, 'email');
     $password = array_get($credentials, 'password');
 
     // No such user exists
-    if (!$user = Auth::retrieveByCredentials(['login' => $login])) {
+    if (!$user = Auth::retrieveByCredentials(['email' => $email])) {
         return;
     }
 

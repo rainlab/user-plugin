@@ -1,5 +1,7 @@
 <?php namespace RainLab\User\Classes\SessionGuard;
 
+use RainLab\User\Helpers\User as UserHelper;
+
 /**
  * HasLegacyApi provides deprecated interface for Auth
  *
@@ -17,11 +19,11 @@ trait HasLegacyApi
     }
 
     /**
-     * @deprecated use retrieveByCredentials(['login' => $login])
+     * @deprecated use retrieveByCredentials(['email' => $email])
      */
     public function findUserByLogin($login)
     {
-        return $this->provider->retrieveByCredentials(['login' => $login]);
+        return $this->provider->retrieveByCredentials([UserHelper::username() => $login]);
     }
 
     /**
