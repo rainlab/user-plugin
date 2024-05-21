@@ -442,7 +442,7 @@ class User extends Model implements Authenticatable, CanResetPassword
      */
     protected function sendInvitation()
     {
-        Mail::sendTo($this, 'rainlab.user::mail.invite', $this->getNotificationVars());
+        Mail::sendTo($this, 'rainlab.user::mail.invite_email', $this->getNotificationVars());
     }
 
     /**
