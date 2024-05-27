@@ -26,8 +26,11 @@
                     ->confirmMessage("Impersonate this user? You can revert to your original state by logging out.") ?>
             <?php endif ?>
         <?php endif ?>
-        <?= Ui::button("Edit", 'user/users/update/'.$formModel->id)->icon('icon-pencil')->outline()->primary() ?>
+
+        <?= Ui::button("Edit", "user/users/update/{$formModel->id}")->icon('icon-pencil')->outline()->primary() ?>
+
         <div class="toolbar-divider"></div>
+
         <?= Ui::ajaxButton("Ban", 'onBanUser')->icon('icon-ban')->outline()->danger()
             ->confirmMessage("Ban this user? It will prevent them from logging in and holding an active session.") ?>
 
