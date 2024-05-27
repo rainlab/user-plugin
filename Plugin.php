@@ -154,6 +154,10 @@ class Plugin extends PluginBase
                 'tab' => "Users",
                 'label' => "Impersonate Users"
             ],
+            'rainlab.user.timelines' => [
+                'tab' => "Users",
+                'label' => "Manage Timelines"
+            ],
         ];
     }
 
@@ -176,7 +180,7 @@ class Plugin extends PluginBase
                         'label' => "Activity",
                         'icon' => 'icon-bars',
                         'url' => Backend::url('user/timelines'),
-                        'permissions' => []
+                        'permissions' => ['rainlab.user.timelines']
                     ],
                     'users' => [
                         'label' => "Users",
