@@ -94,11 +94,15 @@
                 <?= __("User") ?>
             </a>
         </li>
-        <li>
-            <a href="#history">
-                <?= __("History") ?>
-            </a>
-        </li>
+
+        <?php if ($this->user->hasAccess('rainlab.user.timelines')): ?>
+            <li>
+                <a href="#history">
+                    <?= __("History") ?>
+                </a>
+            </li>
+        <?php endif ?>
+
         <?php foreach ($customTabs as $tabName => $tabPartial): ?>
             <li>
                 <a href="#<?= Str::slug(__($tabName)) ?>">
@@ -120,10 +124,14 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane">
-            <h4 class="my-3 fw-normal">Activity Log</h4>
-            <?= $this->relationRender('activity_log') ?>
-        </div>
+
+        <?php if ($this->user->hasAccess('rainlab.user.timelines')): ?>
+            <div class="tab-pane">
+                <h4 class="my-3 fw-normal">Activity Log</h4>
+                <?= $this->relationRender('activity_log') ?>
+            </div>
+        <?php endif ?>
+
         <?php foreach ($customTabs as $tabName => $tabPartial): ?>
             <div class="tab-pane">
                 <?= $this->makePartial($tabPartial) ?>
