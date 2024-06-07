@@ -2,13 +2,13 @@
 
 ## Overriding Functionality
 
-Here is how you would override the `onSignin()` handler to log any error messages. Inside the page code, define this method:
+Here is how you would override the `onLogin()` handler to log any error messages. Inside the page code, define this method:
 
 ```php
-function onSignin()
+function onLogin()
 {
     try {
-        return $this->account->onSignin();
+        return $this->account->onLogin();
     }
     catch (Exception $ex) {
         Log::error($ex);

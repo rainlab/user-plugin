@@ -53,7 +53,7 @@ The `token` Twig variable can be used for generating a new bearer token for the 
 
 ```twig
 {% do response(
-    ajaxHandler('onSignin').withVars({
+    ajaxHandler('onLogin').withVars({
         token: session.token
     })
 ) %}

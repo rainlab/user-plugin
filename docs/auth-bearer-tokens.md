@@ -55,7 +55,7 @@ checkToken = 1
 ==
 {% if this.param.action == 'signin' %}
     {% do response(
-        ajaxHandler('onSignin').withVars({
+        ajaxHandler('onLogin').withVars({
             token: session.token()
         })
     ) %}

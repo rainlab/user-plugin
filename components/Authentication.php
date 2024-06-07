@@ -227,4 +227,12 @@ class Authentication extends ComponentBase
             Request::session()->regenerate();
         }
     }
+
+    /**
+     * @deprecated use onLogin
+     */
+    public function onSignin()
+    {
+        return $this->onLogin();
+    }
 }
