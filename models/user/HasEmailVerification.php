@@ -97,7 +97,7 @@ trait HasEmailVerification
         if ($setting->notify_system && $setting->admin_group) {
             if (MailTemplate::canSendTemplate($setting->system_message_template)) {
                 try {
-                    Mail::sendTo($setting->system_message_template, $notificationVars, function($message) use ($setting) {
+                    Mail::send($setting->system_message_template, $notificationVars, function($message) use ($setting) {
                         foreach ($setting->admin_group->users as $admin) {
                             $message->to($admin->email, $admin->full_name);
                         }
