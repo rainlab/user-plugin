@@ -62,9 +62,9 @@ trait HasEmailVerification
 
         $url = Url::toSigned($url, $expiration);
 
-        $data = $this->getNotificationVars() + [
+        $data = array_merge($this->getNotificationVars(), [
             'url' => $url
-        ];
+        ]);
 
         Mail::send('user:verify_email', $data, function($message) {
             $message->to($this->email, $this->full_name);
