@@ -419,8 +419,8 @@ class User extends Model implements Authenticatable, CanResetPassword
     public function getNotificationVars(): array
     {
         $url = Cms::entryUrl('resetPassword') . '?' . http_build_query([
-                'reset' => Password::createToken($user),
-                'email' => $user->getEmailForPasswordReset(),
+                'reset' => Password::createToken($this),
+                'email' => $this->getEmailForPasswordReset(),
                 'new'   => true
             ]);
         
