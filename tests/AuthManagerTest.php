@@ -2,67 +2,93 @@
 
 use RainLab\User\Models\User;
 
+/**
+ * AuthManagerTest
+ */
 class AuthManagerTest extends PluginTestCase
 {
+    /**
+     * testRegisterUser
+     */
     public function testRegisterUser()
     {
-        $user = Auth::register([
-            'name' => 'Some User',
+        $user = User::create([
+            'first_name' => 'Some',
+            'last_name' => 'User',
             'email' => 'some@website.tld',
-            'password' => 'changeme',
-            'password_confirmation' => 'changeme',
+            'password' => 'ChangeMe888',
+            'password_confirmation' => 'ChangeMe888',
         ]);
 
         $this->assertEquals(1, User::count());
-        $this->assertInstanceOf(\RainLab\User\Models\User::class, $user);
+        $this->assertInstanceOf(User::class, $user);
 
         $this->assertFalse($user->is_activated);
-        $this->assertEquals('Some User', $user->name);
+        $this->assertEquals('Some User', $user->full_name);
         $this->assertEquals('some@website.tld', $user->email);
     }
 
+    /**
+     * testRegisterUserWithAutoActivation
+     */
     public function testRegisterUserWithAutoActivation()
     {
         // Stop activation events from other plugins
         Event::forget('rainlab.user.activate');
 
-        $user = Auth::register([
-            'name' => 'Some User',
+        $user = User::create([
+            'first_name' => 'Some',
+            'last_name' => 'User',
             'email' => 'some@website.tld',
-            'password' => 'changeme',
-            'password_confirmation' => 'changeme',
-        ], true);
+            'password' => 'ChangeMe888',
+            'password_confirmation' => 'ChangeMe888',
+        ]);
+
+        $user->markEmailAsVerified();
+        Auth::loginQuietly($user);
 
         $this->assertTrue($user->is_activated);
-
-        $this->assertTrue(Auth::check());
+        $this->assertTrue($user->hasVerifiedEmail());
+        $this->assertNotNull(Auth::user());
     }
 
+    /**
+     * testRegisterGuest
+     */
     public function testRegisterGuest()
     {
-        $guest = Auth::registerGuest(['email' => 'person@acme.tld']);
+        $guest = User::create([
+            'first_name' => 'Some',
+            'last_name' => 'User',
+            'email' => 'person@acme.tld',
+            'password' => 'ChangeMe888',
+            'password_confirmation' => 'ChangeMe888',
+            'is_guest' => true
+        ]);
 
         $this->assertEquals(1, User::count());
-        $this->assertInstanceOf(\RainLab\User\Models\User::class, $guest);
+        $this->assertInstanceOf(User::class, $guest);
 
         $this->assertTrue($guest->is_guest);
         $this->assertEquals('person@acme.tld', $guest->email);
     }
 
+    /**
+     * testLoginAndCheckAuth
+     */
     public function testLoginAndCheckAuth()
     {
         $this->assertFalse(Auth::check());
 
         $user = User::create([
-            'name' => 'Some User',
+            'first_name' => 'Some',
+            'last_name' => 'User',
             'email' => 'some@website.tld',
-            'password' => 'changeme',
-            'password_confirmation' => 'changeme',
+            'password' => 'ChangeMe888',
+            'password_confirmation' => 'ChangeMe888',
         ]);
 
-        $user->is_activated = true;
-        $user->activated_at = now();
-        $user->save();
+        $user->markEmailAsVerified();
 
         Auth::login($user);
 
