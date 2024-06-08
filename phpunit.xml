@@ -11,32 +11,20 @@
     stopOnFailure="false"
 >
     <testsuites>
-        <testsuite name="RainLab User Plugin">
+        <testsuite name="Plugin Test Suite">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
     <php>
         <env name="APP_ENV" value="testing" />
-        <env name="APP_LOCALE" value="en" />
         <env name="CACHE_DRIVER" value="array" />
         <env name="SESSION_DRIVER" value="array" />
+        <env name="ACTIVE_THEME" value="test" />
+        <env name="CONVERT_LINE_ENDINGS" value="true" />
+        <env name="CMS_ROUTE_CACHE" value="true" />
+        <env name="CMS_TWIG_CACHE" value="false" />
+        <env name="ENABLE_CSRF" value="false" />
         <env name="DB_CONNECTION" value="sqlite" />
         <env name="DB_DATABASE" value=":memory:" />
     </php>
-    <coverage processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">./classes</directory>
-            <directory suffix=".php">./components</directory>
-            <directory suffix=".php">./controllers</directory>
-            <directory suffix=".php">./facades</directory>
-            <directory suffix=".php">./models</directory>
-            <directory suffix=".php">./notifyrules</directory>
-        </include>
-        <exclude>
-            <file>./Plugin.php</file>
-            <directory>./tests</directory>
-            <directory>./updates</directory>
-            <directory>./vendor</directory>
-        </exclude>
-    </coverage>
 </phpunit>

@@ -1,11 +1,8 @@
-<?php namespace RainLab\User\Tests\Unit\Facades;
+<?php
 
-use Auth;
-use Event;
 use RainLab\User\Models\User;
-use RainLab\User\Tests\UserPluginTestCase;
 
-class AuthFacadeTest extends UserPluginTestCase
+class AuthManagerTest extends PluginTestCase
 {
     public function testRegisterUser()
     {
