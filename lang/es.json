@@ -80,7 +80,7 @@
   "Unban this user": "Desbloquear este usuario",
   "This is a guest user": "Este usuario es un invitado",
   "This user is stored for reference purposes only and needs to register before signing in.": "El usuario es almacenado sólo para efectos de referencia y necesita registrarse antes de iniciar sesión.",
-  "Convert to registered user": "Convertir a usuario registrado",
+  "Convert to Registered": "Convertir a usuario registrado",
   "User has deactivated their account": "El usuario tiene su perfil desactivado",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Este usuario tiene desactivado su perfil y  no quiere aparecer en el sitio. Los usuarios pueden reactivar su perfil en cualquier momento iniciando sesión nuevamente.",
   "Back to users list": "Volver a la lista de usuarios",

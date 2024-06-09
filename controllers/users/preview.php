@@ -31,8 +31,15 @@
 
         <div class="toolbar-divider"></div>
 
-        <?= Ui::ajaxButton("Ban", 'onBanUser')->icon('icon-ban')->outline()->danger()
-            ->confirmMessage("Ban this user? It will prevent them from logging in and holding an active session.") ?>
+        <?php if ($formModel->is_guest): ?>
+            <?= Ui::popupButton("Convert to Registered", 'onLoadConvertGuestForm')->icon('icon-user')->outline()->info() ?>
+            <div class="toolbar-divider"></div>
+        <?php endif ?>
+
+        <?php if ($canDoGeneralActions): ?>
+            <?= Ui::ajaxButton("Ban", 'onBanUser')->icon('icon-ban')->outline()->danger()
+                ->confirmMessage("Ban this user? It will prevent them from logging in and holding an active session.") ?>
+        <?php endif ?>
 
         <?php if (!$formModel->trashed()): ?> ?>
             <?= Ui::ajaxButton("Delete", 'onDelete')->icon('icon-delete')->outline()->danger()

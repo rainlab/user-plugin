@@ -116,6 +116,10 @@ class Users extends Controller
             $form->removeField('_group_ruler');
             $form->removeField('groups');
             $form->removeField('primary_group');
+            $form->removeField('_password_ruler');
+            $form->removeField('password');
+            $form->removeField('password_confirmation');
+            $form->removeField('is_two_factor_enabled');
         }
 
         if (!$model->is_two_factor_enabled) {

@@ -82,7 +82,7 @@
   "Unban this user": "إلغاء حظر هذا المستخدم",
   "This is a guest user": "هذا مستخدم ضيف",
   "This user is stored for reference purposes only and needs to register before signing in.": "يتم تخزين هذا المستخدم لأغراض مرجعية فقط ويحتاج إلى التسجيل قبل تسجيل الدخول.",
-  "Convert to registered user": "التحويل إلى مستخدم مسجل",
+  "Convert to Registered": "التحويل إلى مستخدم مسجل",
   "User has deactivated their account": "قام المستخدم بإلغاء تنشيط حسابه",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "قام هذا المستخدم بإلغاء تنشيط حسابه ولم يعد يريد الظهور على الموقع. يمكنهم استعادة حسابهم في أي وقت عن طريق تسجيل الدخول مرة أخرى.",
   "Back to users list": "رجوع إلى قائمة المستخدمين",
