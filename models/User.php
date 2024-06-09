@@ -188,10 +188,7 @@ class User extends Model implements Authenticatable, CanResetPassword
             return;
         }
 
-        if ($sendNotification) {
-            $this->generatePassword();
-        }
-
+        $this->primary_group = UserGroup::getRegisteredGroup();
         $this->is_guest = false;
         $this->save();
 
@@ -262,12 +259,18 @@ class User extends Model implements Authenticatable, CanResetPassword
      */
     public function beforeValidate()
     {
+        // Apply rules Setting
+        $this->addValidationRule('password', Setting::makePasswordRule());
+
         // Guests are special
         if ($this->is_guest) {
             $this->removeValidationRule('email', 'unique');
         }
 
         if ($this->is_guest && !$this->password) {
+            // @deprecated replace with interface below (3.6.23)
+            // $this->removeValidationRule('password');
+            unset($this->rules['password']);
             $this->generatePassword();
         }
 
@@ -280,9 +283,6 @@ class User extends Model implements Authenticatable, CanResetPassword
         if (!$this->username || ($this->isDirty('email') && $this->getOriginal('email') == $this->username)) {
             $this->username = $this->email;
         }
-
-        // Apply rules Setting
-        $this->addValidationRule('password', Setting::makePasswordRule());
     }
 
     /**
@@ -441,7 +441,7 @@ class User extends Model implements Authenticatable, CanResetPassword
      */
     public function generatePassword()
     {
-        $this->password = $this->password_confirmation = Str::random(12);
+        $this->password = $this->password_confirmation = Str::random(12).rand(10, 99);
     }
 
     /**

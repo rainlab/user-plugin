@@ -61,8 +61,6 @@ class AuthManagerTest extends PluginTestCase
             'first_name' => 'Some',
             'last_name' => 'User',
             'email' => 'person@acme.tld',
-            'password' => 'ChangeMe888',
-            'password_confirmation' => 'ChangeMe888',
             'is_guest' => true
         ]);
 
@@ -71,6 +69,26 @@ class AuthManagerTest extends PluginTestCase
 
         $this->assertTrue($guest->is_guest);
         $this->assertEquals('person@acme.tld', $guest->email);
+
+        $secondGuest = User::create([
+            'first_name' => 'Some',
+            'last_name' => 'User',
+            'email' => 'person@acme.tld',
+            'password' => 'ChangeMe888',
+            'password_confirmation' => 'ChangeMe888',
+            'is_guest' => true
+        ]);
+
+        $this->assertEquals(2, User::count());
+        $this->assertInstanceOf(User::class, $secondGuest);
+        $this->assertTrue($guest->is_guest);
+        $this->assertEquals('person@acme.tld', $guest->email);
+
+        $firstGuest = User::where('email', 'person@acme.tld')->first();
+        $firstGuest->convertToRegistered(false);
+
+        $this->assertEquals('person@acme.tld', $firstGuest->email);
+        $this->assertFalse($firstGuest->is_guest);
     }
 
     /**

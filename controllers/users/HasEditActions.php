@@ -82,9 +82,7 @@ trait HasEditActions
         // Add user to new group, or remove from guest group
         if (($groupId = post('new_group')) && ($group = UserGroup::find($groupId))) {
             $model->primary_group = $group;
-        }
-        else {
-            $model->primary_group = UserGroup::getRegisteredGroup();
+            $model->save();
         }
 
         Flash::success(__("User has been converted to a registered account"));
