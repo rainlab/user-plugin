@@ -196,7 +196,7 @@ class User extends Model implements Authenticatable, CanResetPassword
         $this->save();
 
         if ($sendNotification) {
-            $this->sendInvitation();
+            $this->sendConfirmRegistrationNotification();
         }
     }
 
@@ -306,7 +306,7 @@ class User extends Model implements Authenticatable, CanResetPassword
         $this->restorePurgedValues();
 
         if ($this->send_invite) {
-            $this->sendInvitation();
+            $this->sendConfirmRegistrationNotification();
         }
     }
 
@@ -437,15 +437,6 @@ class User extends Model implements Authenticatable, CanResetPassword
     }
 
     /**
-     * sendInvitation sends an invitation to the user using template
-     * "rainlab.user::mail.invite"
-     */
-    protected function sendInvitation()
-    {
-        Mail::sendTo($this, 'rainlab.user::mail.invite_email', $this->getNotificationVars());
-    }
-
-    /**
      * generatePassword assigns this user with a random password.
      */
     public function generatePassword()
@@ -526,5 +517,13 @@ class User extends Model implements Authenticatable, CanResetPassword
         }
 
         return false;
+    }
+
+    /**
+     * @deprecated use sendConfirmRegistrationNotification
+     */
+    protected function sendInvitation()
+    {
+        $this->sendConfirmRegistrationNotification();
     }
 }
