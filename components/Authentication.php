@@ -67,16 +67,6 @@ class Authentication extends ComponentBase
     }
 
     /**
-     * onRun
-     */
-    public function onRun()
-    {
-        if ($redirect = $this->checkRecoveryPasswordRedirect()) {
-            return $redirect;
-        }
-    }
-
-    /**
      * onLogin signs in the user
      */
     public function onLogin()

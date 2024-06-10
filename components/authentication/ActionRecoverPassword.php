@@ -40,18 +40,6 @@ trait ActionRecoverPassword
     }
 
     /**
-     * checkRecoveryPasswordRedirect
-     */
-    protected function checkRecoveryPasswordRedirect()
-    {
-        if (!$this->usePasswordRecovery() || !get('reset') || !get('email')) {
-            return;
-        }
-
-        return Redirect::to(Cms::entryUrl('resetPassword') . '?' . http_build_query(get()));
-    }
-
-    /**
      * makePasswordBroker to be used during password reset.
      */
     protected function makePasswordBroker(): PasswordBroker
