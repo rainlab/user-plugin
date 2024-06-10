@@ -33,6 +33,13 @@ Package | New Version
 
 If you are using the `rainlab/notify-plugin` for sending the new user notifications, you may uninstall this plugin since these notifications are now included in the user settings.
 
+## Attribute Changes
+
+Old Attribute | New Attribute
+------------- | -------------
+`name`        | `first_name`
+`surname`     | `last_name`
+
 ## Key Differences
 
 - Laravel's authentication system is used as the underlying technology.
