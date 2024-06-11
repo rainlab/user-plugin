@@ -60,11 +60,11 @@ trait HasEmailVerification
             'verify' => sha1($this->getEmailForVerification())
         ]);
 
-        $url = Url::toSigned($url, $expiration);
-
-        $data = $this->getNotificationVars() + [
-            'url' => $url
+        $data = [
+            'url' => Url::toSigned($url, $expiration)
         ];
+
+        $data += $this->getNotificationVars();
 
         Mail::send('user:verify_email', $data, function($message) {
             $message->to($this->email, $this->full_name);

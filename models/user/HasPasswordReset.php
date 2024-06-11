@@ -31,12 +31,12 @@ trait HasPasswordReset
         ]);
 
         $data = [
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
             'url' => $url,
             'token' => $token,
             'count' => Config::get('auth.passwords.users.expire')
         ];
+
+        $data += $this->getNotificationVars();
 
         Mail::send('user:recover_password', $data, function($message) {
             $message->to($this->email, $this->full_name);
@@ -57,12 +57,12 @@ trait HasPasswordReset
         ]);
 
         $data = [
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
             'url' => $url,
             'token' => $token,
             'count' => Config::get('auth.passwords.users.expire')
         ];
+
+        $data += $this->getNotificationVars();
 
         Mail::send('user:invite_email', $data, function($message) {
             $message->to($this->email, $this->full_name);
