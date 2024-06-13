@@ -97,11 +97,11 @@ trait HasEmailVerification
         if ($setting->notify_system && $setting->admin_group) {
             if (MailTemplate::canSendTemplate($setting->system_message_template)) {
                 try {
-                    Mail::send($setting->system_message_template, $notificationVars, function($message) use ($setting) {
-                        foreach ($setting->admin_group->users as $admin) {
+                    foreach ($setting->admin_group->users as $admin) {
+                        Mail::sendTo($admin->email, $setting->system_message_template, $notificationVars, function($message) use ($admin) {
                             $message->to($admin->email, $admin->full_name);
-                        }
-                    });
+                        });
+                    }
                 }
                 catch (Exception $ex) {
                     Log::error($ex);
