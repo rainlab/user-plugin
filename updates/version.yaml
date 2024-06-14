@@ -24,3 +24,4 @@ v3.0.0:
     - migrate_from_version1.php
 v3.0.4: Fixes bug in JWT authentication check
 v3.0.5: Adds permission for viewing user activity log
+v3.0.7: Fixes missing notification variables in mail templates
