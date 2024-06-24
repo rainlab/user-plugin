@@ -21,7 +21,10 @@ v2.0.0: Compatibility with October v3 only
 v2.1.0: Adds bearer token (JWT) support to session component
 v3.0.0:
     - Major Upgrade to User Plugin
-    - migrate_from_version1.php
+    - migrate_v3_0_0.php
 v3.0.4: Fixes bug in JWT authentication check
 v3.0.5: Adds permission for viewing user activity log
 v3.0.7: Fixes missing notification variables in mail templates
+v3.1.0:
+    - New email verification logic
+    - migrate_v3_1_0.php
