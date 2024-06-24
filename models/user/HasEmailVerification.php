@@ -3,6 +3,8 @@
 use Url;
 use Cms;
 use Log;
+use Str;
+use Date;
 use Mail;
 use Event;
 use Config;
@@ -49,6 +51,67 @@ trait HasEmailVerification
     }
 
     /**
+     * getCodeForVerification
+     */
+    public function getCodeForEmailVerification(): string
+    {
+        $activationCode = time().'x'.$this->id.'x'.Str::random(24);
+
+        $this
+            ->newQuery()
+            ->where('id', $this->id)
+            ->update(['activation_code' => $activationCode])
+        ;
+
+        return $activationCode;
+    }
+
+    /**
+     * findUserForEmailVerification checks a supplied verification code and returns the timestamp
+     * it was created or null if the check fails
+     */
+    public static function findUserForEmailVerification($code): ?static
+    {
+        if (!is_string($code)) {
+            return null;
+        }
+
+        $parts = explode("x", $code, 3);
+
+        if (count($parts) !== 3) {
+            return null;
+        }
+
+        $timestamp = intval($parts[0]);
+        if (!$timestamp) {
+            return null;
+        }
+
+        $expiration = Date::createFromTimestamp($timestamp)->addMinutes(Config::get('auth.verification.expire', 60));
+        if ($expiration->isPast()) {
+            return null;
+        }
+
+        $user = static::where('id', $parts[1])->where('activation_code', $code)->first();
+        if (!$user) {
+            return null;
+        }
+
+        // Extra redundancy check
+        if (!$user->activation_code || $user->activation_code !== $code) {
+            return null;
+        }
+
+        $user
+            ->newQuery()
+            ->where('id', $user->id)
+            ->update(['activation_code' => null])
+        ;
+
+        return $user;
+    }
+
+    /**
      * sendEmailVerificationNotification sends the mail message used to verify an account
      */
     public function sendEmailVerificationNotification()
@@ -56,12 +119,12 @@ trait HasEmailVerification
         $expiration = Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60));
 
         $url = Cms::entryUrl('account') . '?' . http_build_query([
-            'id' => $this->getKey(),
-            'verify' => sha1($this->getEmailForVerification())
+            'verify' => $this->getCodeForEmailVerification()
         ]);
 
         $data = [
-            'url' => Url::toSigned($url, $expiration)
+            'url' => $url,
+            'expiration' => $expiration
         ];
 
         $data += $this->getNotificationVars();
