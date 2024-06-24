@@ -88,6 +88,8 @@ trait ActionVerifyEmail
      */
     protected function makeVerifyRateLimiter()
     {
-        return new \System\Classes\RateLimiter('verify:'.$this->user()->getKey());
+        $user = $this->user();
+
+        return new \System\Classes\RateLimiter('verify:'.$user->id.':'.sha1($user->email));
     }
 }
