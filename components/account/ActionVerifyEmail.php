@@ -27,7 +27,7 @@ trait ActionVerifyEmail
 
         $limiter = $this->makeVerifyRateLimiter();
 
-        if ($limiter->tooManyAttempts(1)) {
+        if ($limiter->tooManyAttempts(2)) {
             $seconds = $limiter->availableIn();
 
             throw new ApplicationException(__("Too many verification attempts. Please try again in :seconds seconds.", [
@@ -88,8 +88,6 @@ trait ActionVerifyEmail
      */
     protected function makeVerifyRateLimiter()
     {
-        $user = $this->user();
-
-        return new \System\Classes\RateLimiter('verify:'.$user->id.':'.sha1($user->email));
+        return new \System\Classes\RateLimiter('verify:'.$this->user()->getKey());
     }
 }
