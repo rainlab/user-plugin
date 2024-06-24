@@ -1,7 +1,6 @@
 <?php namespace RainLab\User\Models;
 
 use Str;
-use Mail;
 use Event;
 use Model;
 use Carbon\Carbon;
