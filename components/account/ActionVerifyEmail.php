@@ -31,7 +31,7 @@ trait ActionVerifyEmail
 
         $limiter = $this->makeVerifyRateLimiter();
 
-        if ($limiter->tooManyAttempts(2)) {
+        if ($limiter->tooManyAttempts(1)) {
             $seconds = $limiter->availableIn();
 
             throw new ApplicationException(__("Too many verification attempts. Please try again in :seconds seconds.", [
