@@ -41,7 +41,7 @@ class ResetPassword extends ComponentBase
             'isDefault' => [
                 'title' => 'Default View',
                 'type' => 'checkbox',
-                'description' => 'Used as default entry point when recovering a password.',
+                'description' => 'Use this page as the default entry point when recovering a password.',
                 'showExternalParam' => false
             ],
         ];

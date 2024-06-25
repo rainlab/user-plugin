@@ -5,6 +5,7 @@ use RainLab\User\Classes\TwoFactorManager;
 use RainLab\User\Models\UserLog;
 use ValidationException;
 use ApplicationException;
+use ForbiddenException;
 
 /**
  * ActionTwoFactor
@@ -46,7 +47,7 @@ trait ActionTwoFactor
         $user = $this->user();
 
         if (!$user) {
-            throw new ApplicationException(__("User not found"));
+            throw new ForbiddenException;
         }
 
         $user->enableTwoFactorAuthentication();
@@ -60,7 +61,7 @@ trait ActionTwoFactor
         $user = $this->user();
 
         if (!$user) {
-            throw new ApplicationException(__("User not found"));
+            throw new ForbiddenException;
         }
 
         $user->generateNewRecoveryCodes();
@@ -105,7 +106,7 @@ trait ActionTwoFactor
         $user = $this->user();
 
         if (!$user) {
-            throw new ApplicationException(__("User not found"));
+            throw new ForbiddenException;
         }
 
         $user->disableTwoFactorAuthentication();

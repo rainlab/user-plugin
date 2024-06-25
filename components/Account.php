@@ -48,7 +48,7 @@ class Account extends ComponentBase
             'isDefault' => [
                 'title' => 'Default View',
                 'type' => 'checkbox',
-                'description' => 'Used as default entry point when confirming an email address.',
+                'description' => 'Use this page as the default entry point when verifying the email address.',
                 'showExternalParam' => false
             ],
         ];

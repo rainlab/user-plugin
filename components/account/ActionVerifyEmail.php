@@ -6,6 +6,7 @@ use Redirect;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserLog;
 use ApplicationException;
+use ForbiddenException;
 
 /**
  * ActionVerifyEmail
@@ -21,8 +22,9 @@ trait ActionVerifyEmail
     protected function actionVerifyEmail()
     {
         $user = $this->user();
+
         if (!$user) {
-            throw new ApplicationException(__("User not found"));
+            throw new ForbiddenException;
         }
 
         $limiter = $this->makeVerifyRateLimiter();
