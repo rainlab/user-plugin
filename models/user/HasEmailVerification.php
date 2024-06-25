@@ -69,6 +69,10 @@ trait HasEmailVerification
     {
         $activationCode = time().'x'.$this->id.'x'.Str::random(24);
 
+        $this->forceFill([
+            'activation_code' => $activationCode
+        ]);
+
         $this
             ->newQuery()
             ->where('id', $this->id)

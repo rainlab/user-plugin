@@ -1,5 +1,7 @@
 <?php namespace RainLab\User\Components\Account;
 
+use Cms;
+use Auth;
 use Flash;
 use Request;
 use Redirect;
@@ -52,11 +54,22 @@ trait ActionVerifyEmail
             $verifyCode = post('verify');
         }
 
+        // Locate user from bearer code
         $user = User::findUserForEmailVerification($verifyCode);
         if (!$user) {
             throw new ApplicationException(__('The provided email verification code was invalid.'));
         }
 
+        // Ensure verification is for the logged in user
+        if ($sessionUser = $this->user()) {
+            $user = $sessionUser;
+        }
+        // Make the bearer available the current page cycle
+        else {
+            Auth::setUserViaBearerToken($user);
+        }
+
+        // Verify the bearer/user
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
 
@@ -72,17 +85,28 @@ trait ActionVerifyEmail
      */
     protected function checkVerifyEmailRedirect()
     {
-        if ($verifyCode = get('verify')) {
-            try {
-                $this->actionConfirmEmail($verifyCode);
-                Flash::success(__("Thank you for verifying your email."));
-            }
-            catch (ApplicationException $ex) {
-                Flash::error($ex->getMessage());
-            }
-
-            return Redirect::to(Request::fullUrlWithoutQuery(['verify']));
+        $verifyCode = get('verify');
+        if (!$verifyCode) {
+            return;
         }
+
+        try {
+            $this->actionConfirmEmail($verifyCode);
+
+            if ($flash = Cms::flashFromPost(__("Thank you for verifying your email."))) {
+                Flash::success($flash);
+            }
+        }
+        catch (ApplicationException $ex) {
+            Flash::error($ex->getMessage());
+        }
+
+        if (in_array(get('redirect'), ['0', 'false'])) {
+            return;
+        }
+
+        $redirectUrl = rtrim(Request::fullUrlWithQuery(['verify' => null]), '?');
+        return Redirect::to($redirectUrl);
     }
 
     /**
