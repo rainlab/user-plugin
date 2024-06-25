@@ -93,11 +93,21 @@ trait HasBearerToken
         }
 
         // Pass
+        $this->setUserViaBearerToken($user);
+
+        return $user;
+    }
+
+    /**
+     * setUserViaBearerToken
+     */
+    public function setUserViaBearerToken($user)
+    {
         $this->setUser($user);
 
         $this->viaBearerToken = true;
 
-        return $user;
+        return $this;
     }
 
     /**
