@@ -1,6 +1,5 @@
 <?php namespace RainLab\User\Models\User;
 
-use Url;
 use Cms;
 use Log;
 use Str;
@@ -18,6 +17,19 @@ use Exception;
  */
 trait HasEmailVerification
 {
+    /**
+     * @var string|null emailVerificationUrl
+     */
+    protected $emailVerificationUrl;
+
+    /**
+     * setUrlForEmailVerification
+     */
+    public function setUrlForEmailVerification(?string $url)
+    {
+        $this->emailVerificationUrl = $url;
+    }
+
     /**
      * hasVerifiedEmail determines if the user has verified their email address
      */
@@ -118,7 +130,9 @@ trait HasEmailVerification
     {
         $expiration = Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60));
 
-        $url = Cms::entryUrl('account') . '?' . http_build_query([
+        $url = $this->emailVerificationUrl ?: Cms::entryUrl('account');
+        $url .= str_contains($url, '?') ? '&' : '?';
+        $url .= http_build_query([
             'verify' => $this->getCodeForEmailVerification()
         ]);
 
