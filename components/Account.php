@@ -3,13 +3,12 @@
 use Cms;
 use Auth;
 use Flash;
-use Request;
-use Redirect;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserLog;
 use RainLab\User\Models\UserPreference;
 use Cms\Classes\ComponentBase;
 use ApplicationException;
+use ValidationException;
 use ForbiddenException;
 
 /**
@@ -26,6 +25,7 @@ class Account extends ComponentBase
     use \RainLab\User\Traits\ConfirmsPassword;
     use \RainLab\User\Components\Account\ActionTwoFactor;
     use \RainLab\User\Components\Account\ActionDeleteUser;
+    use \RainLab\User\Components\Account\ActionVerifyEmail;
     use \RainLab\User\Components\Account\ActionBrowserSessions;
 
     /**
@@ -48,7 +48,7 @@ class Account extends ComponentBase
             'isDefault' => [
                 'title' => 'Default View',
                 'type' => 'checkbox',
-                'description' => 'Used as default entry point when confirming an email address.',
+                'description' => 'Use this page as the default entry point when verifying the email address.',
                 'showExternalParam' => false
             ],
         ];
@@ -154,35 +154,34 @@ class Account extends ComponentBase
     }
 
     /**
-     * onVerifyEmail
+     * onVerifyEmail sends the verification email to the user
      */
     public function onVerifyEmail()
     {
-        $user = $this->user();
-        if (!$user) {
-            throw new ForbiddenException;
-        }
-
-        $limiter = $this->makeVerifyRateLimiter();
-
-        if ($limiter->tooManyAttempts(1)) {
-            $seconds = $limiter->availableIn();
-
-            throw new ApplicationException(__("Too many verification attempts. Please try again in :seconds seconds.", [
-                'seconds' => $seconds,
-                'minutes' => ceil($seconds / 60),
-            ]));
-        }
-
-        $limiter->increment();
-
-        $user->sendEmailVerificationNotification();
+        $this->actionVerifyEmail();
 
         if ($flash = Cms::flashFromPost(__("Please check your email for instructions."))) {
             Flash::success($flash);
         }
 
         $this->page['showLinkSent'] = true;
+    }
+
+    /**
+     * onConfirmEmail is used
+     */
+    protected function onConfirmEmail()
+    {
+        try {
+            $this->actionConfirmEmail(post('verify'));
+        }
+        catch (ApplicationException $ex) {
+            throw new ValidationException([
+                'verify' => $ex->getMessage(),
+            ]);
+        }
+
+        $this->page['showSuccess'] = true;
     }
 
     /**
@@ -273,42 +272,6 @@ class Account extends ComponentBase
         if ($redirect = Cms::redirectFromPost()) {
             return $redirect;
         }
-    }
-
-    /**
-     * checkVerifyEmailRedirect
-     */
-    protected function checkVerifyEmailRedirect()
-    {
-        if (!get('verify') || !get('id') || !Request::hasValidSignature()) {
-            return;
-        }
-
-        $user = $this->user();
-        if (!$user) {
-            return;
-        }
-
-        if (!$user->hasVerifiedEmail()) {
-            $user->markEmailAsVerified();
-
-            UserLog::createRecord($user->getKey(), UserLog::TYPE_SELF_VERIFY, [
-                'user_full_name' => $user->full_name,
-                'user_email' => $user->email,
-            ]);
-        }
-
-        Flash::success(__("Thank you for verifying your email."));
-
-        return Redirect::to(Request::url(['verify', 'id', 'signature', 'expires']));
-    }
-
-    /**
-     * makeVerifyRateLimiter
-     */
-    protected function makeVerifyRateLimiter()
-    {
-        return new \System\Classes\RateLimiter('verify:'.$this->user()->getKey());
     }
 
     /**

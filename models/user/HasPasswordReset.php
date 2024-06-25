@@ -11,6 +11,19 @@ use Password;
 trait HasPasswordReset
 {
     /**
+     * @var string|null passwordResetUrl
+     */
+    protected $passwordResetUrl;
+
+    /**
+     * setUrlForPasswordReset
+     */
+    public function setUrlForPasswordReset(?string $url)
+    {
+        $this->passwordResetUrl = $url;
+    }
+
+    /**
      * getEmailForPasswordReset
      * @return string
      */
@@ -25,7 +38,9 @@ trait HasPasswordReset
      */
     public function sendPasswordResetNotification($token)
     {
-        $url = Cms::entryUrl('resetPassword') . '?' . http_build_query([
+        $url = $this->passwordResetUrl ?: Cms::entryUrl('resetPassword');
+        $url .= str_contains($url, '?') ? '&' : '?';
+        $url .= http_build_query([
             'reset' => $token,
             'email' => $this->getEmailForPasswordReset()
         ]);
@@ -50,7 +65,9 @@ trait HasPasswordReset
     {
         $token = Password::createToken($this);
 
-        $url = Cms::entryUrl('resetPassword') . '?' . http_build_query([
+        $url = $this->passwordResetUrl ?: Cms::entryUrl('resetPassword');
+        $url .= str_contains($url, '?') ? '&' : '?';
+        $url .= http_build_query([
             'reset' => $token,
             'email' => $this->getEmailForPasswordReset(),
             'new' => true

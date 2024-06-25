@@ -33,7 +33,6 @@ class MigrateV1Command extends Command
         $columnsToPrune = [
             'name',
             'surname',
-            'activation_code',
             'reset_password_code',
             'permissions',
             'is_superuser',
