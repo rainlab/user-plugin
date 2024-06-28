@@ -93,12 +93,16 @@
   "Unban this user": "Unban this user",
   "This is a guest user": "This is a guest user",
   "This user is stored for reference purposes only and needs to register before signing in.": "This user is stored for reference purposes only and needs to register before signing in.",
-  "Convert to registered user": "Convert to registered user",
+  "Convert to Registered": "Convert to Registered",
   "User has deactivated their account": "User has deactivated their account",
   "Back to users list": "Back to users list",
   "Update details": "Update details",
   "Impersonate this user? You can revert to your original state by logging out.": "Impersonate this user? You can revert to your original state by logging out.",
   "Impersonate User": "Impersonate User",
   "Return to users list": "Return to users list",
-  "Do you really want to delete this user?": "Do you really want to delete this user?"
+  "Do you really want to delete this user?": "Do you really want to delete this user?",
+  "Convert Guest User": "Convert Guest User",
+  "Send Registration Notification": "Send Registration Notification",
+  "Use this checkbox to generate new random password for the user and send a registration notification email.": "Use this checkbox to generate new random password for the user and send a registration notification email.",
+  "Select a New User Group": "Select a New User Group"
 }

@@ -22,6 +22,11 @@ use Exception;
 trait HasBearerToken
 {
     /**
+     * @var bool viaBearerToken indicates if the user was authenticated via a bearer token.
+     */
+    protected $viaBearerToken = false;
+
+    /**
      * getBearerToken
      */
     public function getBearerToken(?User $user = null): ?string
@@ -88,7 +93,21 @@ trait HasBearerToken
         }
 
         // Pass
+        $this->setUserViaBearerToken($user);
+
+        return $user;
+    }
+
+    /**
+     * setUserViaBearerToken
+     */
+    public function setUserViaBearerToken($user)
+    {
         $this->setUser($user);
+
+        $this->viaBearerToken = true;
+
+        return $this;
     }
 
     /**
@@ -150,5 +169,14 @@ trait HasBearerToken
 
         // Pass
         return $user;
+    }
+
+    /**
+     * viaBearerToken indicates if the user was authenticated via a bearer token.
+     * @return bool
+     */
+    public function viaBearerToken()
+    {
+        return $this->viaBearerToken;
     }
 }

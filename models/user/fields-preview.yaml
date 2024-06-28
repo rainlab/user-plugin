@@ -25,16 +25,6 @@ tabs:
             hidden: true
             span: left
 
-        company:
-            label: Company
-            span: auto
-            tab: User
-
-        phone:
-            label: Phone
-            span: auto
-            tab: User
-
         primary_group:
             label: Group
             tab: User

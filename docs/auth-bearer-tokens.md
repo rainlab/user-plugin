@@ -55,7 +55,7 @@ checkToken = 1
 ==
 {% if this.param.action == 'signin' %}
     {% do response(
-        ajaxHandler('onSignin').withVars({
+        ajaxHandler('onLogin').withVars({
             token: session.token()
         })
     ) %}
@@ -89,5 +89,46 @@ checkToken = 1
     {% page %}
 {% else %}
     {% do abort(403, 'Access Denied') %}
+{% endif %}
+```
+
+### Email Verification Example
+
+The following example shows how to implement the email verification process as an API, with the supported actions of **request** (default) and **confirm**.
+
+The `setUrlForEmailVerification` method call overrides the verification URL in the email sent to the user. The `verify` code in the URL acts as a one-time bearer token that authenticates the user (`session.user`) for a single page cycle. The standard redirect is disabled by adding `redirect=0` to the verification URL.
+
+```twig
+title = "User Email Verification API"
+url = "/api/user/verify/:action?request"
+
+[account]
+[session]
+checkToken = 1
+==
+{% if not session.user %}
+    {% do response({
+        error: 'Access Denied'
+    }, 403) %}
+{% endif %}
+
+{% if this.param.action == 'request' %}
+    {% do session.user.setUrlForEmailVerification(
+        this|page({ action: 'confirm' }) ~ '?redirect=0'
+    ) %}
+
+    {% do response(ajaxHandler('onVerifyEmail')) %}
+{% endif %}
+
+{% if this.param.action == 'confirm' %}
+    {% if session.user.hasVerifiedEmail %}
+        {% do response({
+            success: "Thank you for verifying your email."
+        }, 201) %}
+    {% else %}
+        {% do response({
+            error: "The provided email verification code was invalid."
+        }, 400) %}
+    {% endif %}
 {% endif %}
 ```

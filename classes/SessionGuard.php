@@ -103,7 +103,7 @@ class SessionGuard extends SessionGuardBase
             return null;
         }
 
-        if (!$this->hasValidPersistCode($user)) {
+        if (!$this->viaBearerToken && !$this->hasValidPersistCode($user)) {
             return null;
         }
 

@@ -6,10 +6,11 @@ You may use `create` method on the `User` model to register an account.
 
 ```php
 $user = \RainLab\User\Models\User::create([
-    'name' => 'Some User',
+    'first_name' => 'Some',
+    'last_name' => 'User',
     'email' => 'some@website.tld',
-    'password' => 'changeme',
-    'password_confirmation' => 'changeme',
+    'password' => 'ChangeMe888',
+    'password_confirmation' => 'ChangeMe888',
 ]);
 ```
 
@@ -74,31 +75,36 @@ $user = Auth::retrieveByCredentials(['email' => 'some@email.tld']);
 
 Creating a guest user allows the registration process to be deferred. For example, making a purchase without needing to register first. Guest users are not able to sign in and will be added to the user group with the code `guest`.
 
+> **Note**: If you are upgrading from an older version of this plugin, to enable guest users you may need to remove the UNIQUE index on the `email` column in the `users` table.
+
 Use the `is_guest` attribute to create a guest user, it will return a user object and can be called multiple times. The unique identifier is the email address, which is a required field.
 
 ```php
-$user = \RainLab\User\Models\User::([
+$user = \RainLab\User\Models\User::create([
+    'first_name' => 'Some',
+    'last_name' => 'User',
     'email' => 'person@acme.tld',
     'is_guest' => true
 ]);
 ```
 
-When a user registers with the same email address using the `User::create` method, they will inherit the existing guest user account.
+When a user registers with the same email address using the `create` method, another account is created and they will not inherit the existing guest user account.
 
 ```php
 // This will not throw an "Email already taken" error
 $user = \RainLab\User\Models\User::create([
+    'first_name' => 'Some',
+    'last_name' => 'User',
     'email' => 'person@acme.tld',
-    'password' => 'changeme',
-    'password_confirmation' => 'changeme',
+    'password' => 'ChangeMe888',
+    'password_confirmation' => 'ChangeMe888',
 ]);
 ```
 
-> **Important**: If you are using guest accounts, it is important to disable sensitive functionality for user accounts that are not verified, since it may be possible for anyone to inherit a guest account.
-
-You may also convert a guest to a registered user with the `convertToRegistered` method. This will generate a random password and sends an invitation using the `rainlab.user::mail.invite` template.
+You may convert a guest to a registered user with the `convertToRegistered` method. This will send them an invitation using the `user:invite_email` template to set up a new password. When a user is converted they will be added to the user group with the code `registered`.
 
 ```php
+User::where('email', 'person@acme.tld')->first();
 $user->convertToRegistered();
 ```
 

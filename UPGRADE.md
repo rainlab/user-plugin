@@ -47,6 +47,21 @@ If you are using the `rainlab/notify-plugin` for sending the new user notificati
 
 ## Breaking Changes
 
+### Attributes & Methods
+
+The `RainLab\User\Models\User` model has these attribute changes:
+
+Old Attribute | New Attribute
+------------- | -------------
+`name`        | `first_name`
+`surname`     | `last_name`
+
+The `Auth` facade has these method changes:
+
+Old Method  | New Method
+----------- | -------------
+`getUser()` | `user()`
+
 ### Renamed Settings Model
 
 The `RainLab\User\Models\Settings` model has been renamed to `RainLab\User\Models\Setting` for consistency with the core system design.

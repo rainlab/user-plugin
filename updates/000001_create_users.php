@@ -14,9 +14,10 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('username')->nullable()->index();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->mediumText('notes')->nullable();
             $table->string('password');
+            $table->string('activation_code')->nullable()->index();
             $table->string('persist_code')->nullable();
             $table->string('remember_token')->nullable();
             $table->text('two_factor_secret')->nullable();
