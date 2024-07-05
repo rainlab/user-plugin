@@ -40,7 +40,7 @@ trait ActionLogin
          *     });
          *
          */
-        if (null !== $event = $this->fireSystemEvent('rainlab.user.beforeAuthenticate', [&$input])) {
+        if ([] !== $event = $this->fireSystemEvent('rainlab.user.beforeAuthenticate', [&$input])) {
             if ($event === false) {
                 $this->throwFailedAuthenticationException();
             }
