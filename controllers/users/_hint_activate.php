@@ -4,7 +4,7 @@
             <i class="icon-warning"></i>
             <h3><?= __("User not activated!") ?></h3>
             <p>
-                <?= __("This user has not been activated and may be unable to sign in.") ?>
+                <?= __("This user has not confirmed their email address.") ?>
                 <a href="javascript:;"
                     data-request="onActivate"
                     data-request-confirm="<?= __("Do you really want to activate this user?") ?>"

@@ -8,7 +8,7 @@ You can check the logged in user by accessing the **{{ user }}** Twig variable:
 
 ```twig
 {% if user %}
-    <p>Hello {{ user.name }}</p>
+    <p>Hello {{ user.first_name }}</p>
 {% else %}
     <p>Nobody is logged in</p>
 {% endif %}
