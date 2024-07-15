@@ -73,7 +73,6 @@
   "You are now impersonating this user": "أنت الآن تنتحل شخصية هذا المستخدم",
   "User has been unsuspended.": "تم إلغاء تعليق المستخدم.",
   "User not activated!": "المستخدم غير مفعل!",
-  "This user has not been activated and may be unable to sign in.": "لم يتم تنشيط هذا المستخدم وقد يتعذر عليه تسجيل الدخول.",
   "Do you really want to activate this user?": "هل تريد فعلاً تفعيل هذا المستخدم؟",
   "Activate this user manually": "قم بتنشيط هذا المستخدم يدويًا",
   "User has been banned": "تم حظر المستخدم",

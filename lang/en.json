@@ -84,7 +84,7 @@
   "You are now impersonating this user": "You are now impersonating this user",
   "User has been unsuspended.": "User has been unsuspended.",
   "User not activated!": "User not activated!",
-  "This user has not been activated and may be unable to sign in.": "This user has not been activated and may be unable to sign in.",
+  "This user has not confirmed their email address.": "This user has not confirmed their email address.",
   "Do you really want to activate this user?": "Do you really want to activate this user?",
   "Activate this user manually": "Activate this user manually",
   "User has been banned": "User has been banned",

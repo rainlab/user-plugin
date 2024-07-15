@@ -72,7 +72,6 @@
   "You are now impersonating this user": "Sikeresen átjelentkezett a másik fiókba",
   "User has been unsuspended.": "A felfüggesztés sikeresen megtörtént.",
   "User not activated!": "Nincs aktiválva a felhasználó!",
-  "This user has not been activated and may be unable to sign in.": "Ennek a felhasználónak nem történt meg az aktiválása, így nem tud bejelentkezni.",
   "Do you really want to activate this user?": "Valóban aktiválni akarja ezt a felhasználót?",
   "Activate this user manually": "A felhasználó kézi aktiválása",
   "User has been banned": "A felhasználó tiltva van",

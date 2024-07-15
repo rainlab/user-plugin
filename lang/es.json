@@ -71,7 +71,6 @@
   "User has been converted to a registered account": "El usuario ha sido convertido a una cuenta registrada",
   "You are now impersonating this user": "Has iniciado sesión como este usuario correctamente.",
   "User not activated!": "¡El usuario no se pudo activar!",
-  "This user has not been activated and may be unable to sign in.": "Este usuario todavía no ha sido activado y no será capaz de iniciar sesión.",
   "Do you really want to activate this user?": "¿Realmente desea activar este usuario?",
   "Activate this user manually": "Activar usuario manualmente",
   "User has been banned": "El Usuario ha sido bloqueado",

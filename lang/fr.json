@@ -90,7 +90,6 @@
   "You are now impersonating this user": "Vous êtes en train d'usurper l'identité de cet utilisateur",
   "User has been unsuspended.": "La suspension de l'utilisateur a été levée.",
   "User not activated!": "L’utilisateur n’est pas activé !",
-  "This user has not been activated and may be unable to sign in.": "Cet utilisateur n’a pas été activé et sera dans l’impossibilité de se connecter.",
   "Do you really want to activate this user?": "Confirmez-vous l’activation de cet utilisateur ?",
   "Ban": "Bloquer",
   "Unban": "Débloquer",
