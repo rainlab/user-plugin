@@ -87,6 +87,7 @@ tabs:
             commentAbove: Select the mail template to send to the user.
             type: dropdown
             optionsMethod: System\Models\MailTemplate::listAllTemplates
+            valueTrans: false
             tab: Notifications
             cssClass: field-indent
             trigger:
@@ -105,6 +106,7 @@ tabs:
             commentAbove: Select the mail template to send to the admins.
             type: dropdown
             optionsMethod: System\Models\MailTemplate::listAllTemplates
+            valueTrans: false
             tab: Notifications
             cssClass: field-indent
             trigger:
