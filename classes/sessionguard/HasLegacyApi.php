@@ -19,7 +19,7 @@ trait HasLegacyApi
     }
 
     /**
-     * @deprecated use retrieveByCredentials(['email' => $email])
+     * @deprecated use `getProvider()->retrieveByCredentials(['email' => $email])`
      */
     public function findUserByLogin($login)
     {
@@ -27,11 +27,23 @@ trait HasLegacyApi
     }
 
     /**
-     * @deprecated use retrieveByCredentials
+     * @deprecated use `getProvider()->retrieveByCredentials`
      */
     public function findUserByCredentials(array $credentials)
     {
-        return $this->provider->retrieveByCredentials($credentials);
+        $user = $this->provider->retrieveByCredentials($credentials);
+        if (!$user) {
+            return null;
+        }
+
+        if (
+            array_key_exists('password', $credentials) &&
+            !$this->provider->validateCredentials($user, $credentials)
+        ) {
+            return null;
+        }
+
+        return $user;
     }
 
     /**
