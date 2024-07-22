@@ -28,3 +28,4 @@ v3.0.7: Fixes missing notification variables in mail templates
 v3.1.0:
     - New email verification logic
     - migrate_v3_1_0.php
+v3.1.1: Fixes compatibility with Mall plugin
