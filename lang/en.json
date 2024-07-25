@@ -104,5 +104,6 @@
   "Convert Guest User": "Convert Guest User",
   "Send Registration Notification": "Send Registration Notification",
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Use this checkbox to generate new random password for the user and send a registration notification email.",
-  "Select a New User Group": "Select a New User Group"
+  "Select a New User Group": "Select a New User Group",
+  "You have been successfully logged out!": "You have been successfully logged out!"
 }
