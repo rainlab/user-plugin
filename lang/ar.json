@@ -106,5 +106,6 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "استخدم مربع الاختيار هذا لإنشاء كلمة مرور عشوائية جديدة للمستخدم وإرسال بريد إلكتروني لإشعار التسجيل.",
   "Select a New User Group": "حدد مجموعة مستخدمين جديدة",
   "You have been successfully logged out!": "لقد تم تسجيل بنجاح!",
+  "These credentials do not match our records.": "بيانات الاعتماد هذه لا تتطابق مع سجلاتنا.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "قام هذا المستخدم بإلغاء تنشيط حسابه ولم يعد يريد الظهور على الموقع. يمكنهم استعادة حسابهم في أي وقت عن طريق تسجيل الدخول مرة أخرى."
 }

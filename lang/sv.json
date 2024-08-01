@@ -106,5 +106,6 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Använd den här kryssrutan för att skapa ett nytt slumpmässigt lösenord för användaren och skicka ett registreringsmeddelande via e-post.",
   "Select a New User Group": "Välj en ny användargrupp",
   "You have been successfully logged out!": "Du har loggat ut!",
+  "These credentials do not match our records.": "Dessa uppgifter stämmer inte överens med våra uppgifter.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Den här användaren har inaktiverat sitt konto och vill inte längre visas på webbplatsen. De kan återställa sitt konto när som helst genom att logga in igen. "
 }

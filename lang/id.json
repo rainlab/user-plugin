@@ -106,5 +106,6 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Gunakan kotak centang ini untuk membuat kata sandi acak baru bagi pengguna dan mengirim email pemberitahuan pendaftaran.",
   "Select a New User Group": "Pilih Grup Pengguna Baru",
   "You have been successfully logged out!": "Anda telah berhasil logout!",
+  "These credentials do not match our records.": "Kredensial ini tidak cocok dengan catatan kami.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Pengguna ini telah menonaktifkan akunnya dan tidak ingin terlihat lagi di situs ini. Mereka dapat memulihkan akun mereka kapan saja dengan login kembali."
 }

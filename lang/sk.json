@@ -106,5 +106,6 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Toto začiarkavacie políčko použite na vygenerovanie nového náhodného hesla pre používateľa a odoslanie e-mailu s upozornením na registráciu.",
   "Select a New User Group": "Vyberte novú skupinu používateľov",
   "You have been successfully logged out!": "Boli ste úspešne odhlásení!",
+  "These credentials do not match our records.": "Tieto poverenia sa nezhodujú s našimi záznamami.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Tento používateľ deaktivoval svoj účet a už nechce byť zobrazovaný na webe. Môže kedykoľvek obnoviť svoj účet, keď sa prihlási späť."
 }

@@ -106,5 +106,6 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Használja ezt a jelölőnégyzetet új véletlenszerű jelszó generálásához a felhasználó számára, és küldjön egy regisztrációs értesítést e-mailben.",
   "Select a New User Group": "Válasszon ki egy új felhasználói csoportot",
   "You have been successfully logged out!": "Sikeresen kijelentkezett!",
+  "These credentials do not match our records.": "Ezek a hitelesítő adatok nem egyeznek a nyilvántartásunkkal.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Amennyiben nem akarnak megjelenni a weboldalon, úgy deaktiválhatják a saját fiókjukat. Bármikor újra engedélyezhetik, ha újra sikeresen bejelentkeznek a weboldalra."
 }

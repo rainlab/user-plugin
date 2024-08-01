@@ -106,5 +106,6 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Kullanıcı için yeni rastgele şifre oluşturmak ve bir kayıt bildirimi e-postası göndermek için bu onay kutusunu kullanın.",
   "Select a New User Group": "Yeni Bir Kullanıcı Grubu Seçin",
   "You have been successfully logged out!": "Başarılı bir şekilde çıkış yaptınız!",
+  "These credentials do not match our records.": "Bu kimlik bilgileri kayıtlarımızla eşleşmiyor.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Üye hesabını pasifleştirmiş ve bu sitede görünmek istemiyor. Tekrar hesabına giriş yaparak hesabını istediği zaman aktifleştirebilir."
 }

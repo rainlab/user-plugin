@@ -106,6 +106,7 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Gebruik dit selectievakje om een nieuw willekeurig wachtwoord voor de gebruiker te genereren en een registratiemelding per e-mail te verzenden.",
   "Select a New User Group": "Selecteer een nieuwe gebruikersgroep",
   "You have been successfully logged out!": "U bent succesvol uitgelogd!",
+  "These credentials do not match our records.": "Deze gegevens komen niet overeen met onze gegevens.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Deze gebruiker heeft zijn account gedeactiveerd en wil niet meer op de site verschijnen. Hij kan zijn account op elk moment herstellen door opnieuw in te loggen.",
   "History": "Geschiedenis",
   "Impersonate": "Inloggen als",

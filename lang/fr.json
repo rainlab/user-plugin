@@ -106,6 +106,7 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Utilisez cette case à cocher pour générer un nouveau mot de passe aléatoire pour l'utilisateur et envoyer un e-mail de notification d'inscription.",
   "Select a New User Group": "Sélectionnez un nouveau groupe d'utilisateurs",
   "You have been successfully logged out!": "Vous avez été déconnecté avec succès!",
+  "These credentials do not match our records.": "Ces informations d'identification ne correspondent pas à nos dossiers.",
   "More Actions": "Plus d'options",
   "View User": "Voir l'utilisateur",
   "Inactivated": "Désactivé",

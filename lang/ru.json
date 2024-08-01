@@ -106,6 +106,7 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Используйте этот флажок, чтобы сгенерировать новый случайный пароль для пользователя и отправить электронное письмо с уведомлением о регистрации.",
   "Select a New User Group": "Выберите новую группу пользователей",
   "You have been successfully logged out!": "Вы успешно вышли из системы!",
+  "These credentials do not match our records.": "Эти учетные данные не соответствуют нашим записям.",
   "History": "История",
   "Inactivated": "Не активен",
   "Join Date": "Дата присоединения",

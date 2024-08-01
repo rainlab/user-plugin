@@ -106,5 +106,6 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Użyj tego pola wyboru, aby wygenerować nowe losowe hasło dla użytkownika i wysłać e-mail z powiadomieniem o rejestracji.",
   "Select a New User Group": "Wybierz nową grupę użytkowników",
   "You have been successfully logged out!": "Wylogowałeś się poprawnie!",
+  "These credentials do not match our records.": "Te dane uwierzytelniające nie są zgodne z naszymi danymi.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ten użytkownik dezaktywował swoje konto i nie chce już wyświetlać się na stronie. Może przywrócić konto w dowolnym momencie, logując się z powrotem."
 }

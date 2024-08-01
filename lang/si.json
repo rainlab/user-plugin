@@ -106,6 +106,7 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "පරිශීලකයා සඳහා නව අහඹු මුරපදයක් ජනනය කිරීමට සහ ලියාපදිංචි දැනුම්දීම් විද්‍යුත් තැපෑලක් යැවීමට මෙම සලකුණු කොටුව භාවිතා කරන්න.",
   "Select a New User Group": "නව පරිශීලක කණ්ඩායමක් තෝරන්න",
   "You have been successfully logged out!": "ඔබ සාර්ථකව ඉවත් වී ඇත!",
+  "These credentials do not match our records.": "මෙම අක්තපත්‍ර අපගේ වාර්තා සමඟ නොගැලපේ.",
   "Throttle Attempts": "Throttle උත්සාහයන්",
   "Repeat failed sign in attempts will temporarily suspend the user.": "නැවත නැවත අසාර්ථක පුරනය වීමේ උත්සාහයන් පරිශීලකයා තාවකාලිකව අත්හිටුවනු ඇත.",
   "Throttle Registration": "Throttle ලියාපදිංචිය",

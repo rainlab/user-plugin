@@ -106,5 +106,6 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "S tem potrditvenim poljem ustvarite novo naključno geslo za uporabnika in pošljite e-poštno obvestilo o registraciji.",
   "Select a New User Group": "Izberite novo uporabniško skupino",
   "You have been successfully logged out!": "Uspešno ste bili odjavljeni!",
+  "These credentials do not match our records.": "Te poverilnice se ne ujemajo z našo evidenco.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ta uporabnik je deaktiviral svoj račun in se ne želi več pojavljati na spletni strani. Svoj račun lahko kadarkoli obnovi s prijavo."
 }

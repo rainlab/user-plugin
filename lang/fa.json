@@ -106,5 +106,6 @@
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "از این چک باکس برای ایجاد رمز عبور تصادفی جدید برای کاربر و ارسال ایمیل اعلان ثبت نام استفاده کنید.",
   "Select a New User Group": "یک گروه کاربری جدید را انتخاب کنید",
   "You have been successfully logged out!": "شما با موفقیت از سیستم خارج شدید!",
+  "These credentials do not match our records.": "این اعتبارنامه ها با سوابق ما مطابقت ندارد.",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "این کاربر حساب خود را غیر فعال کرده است و علاقه ای به ادامه فعالیت در سایت را ندارد. کاربران با ورود مجدد به سایت میتوانند حساب خود را فعال کنند."
 }
