@@ -171,7 +171,7 @@ class Session extends ComponentBase
     {
         $user = Auth::user();
 
-        if ($user && !$this->impersonator()) {
+        if ($user && !Auth::isImpersonator()) {
             $user->touchLastSeen();
         }
 
