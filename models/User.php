@@ -469,7 +469,7 @@ class User extends Model implements Authenticatable, CanResetPassword
             return;
         }
 
-        if (!$this->inGroup($group)) {
+        if (!$this->inGroup($group, false)) {
             $this->groups()->attach($group);
             $this->unsetRelation('groups');
         }
@@ -489,17 +489,18 @@ class User extends Model implements Authenticatable, CanResetPassword
             return;
         }
 
-        if ($this->inGroup($group)) {
+        if ($this->inGroup($group, false)) {
             $this->groups()->detach($group);
             $this->unsetRelation('groups');
         }
     }
 
     /**
-     * inGroup see if the user is in the given group
+     * inGroup see if the user is in the given group, including checking
+     * if they are in the primary group
      * @param Group|string $group
      */
-    public function inGroup($group): bool
+    public function inGroup($group, $inPrimary = true): bool
     {
         if (is_string($group)) {
             $group = UserGroup::findByCode($group);
@@ -509,8 +510,12 @@ class User extends Model implements Authenticatable, CanResetPassword
             return false;
         }
 
+        if ($inPrimary && $this->primary_group_id == $group->getKey()) {
+            return true;
+        }
+
         foreach ($this->groups as $inGroup) {
-            if ($inGroup->getKey() === $group->getKey()) {
+            if ($inGroup->getKey() == $group->getKey()) {
                 return true;
             }
         }
