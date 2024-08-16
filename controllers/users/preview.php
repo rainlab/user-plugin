@@ -135,7 +135,7 @@
 
         <?php if ($this->user->hasAccess('rainlab.user.timelines')): ?>
             <div class="tab-pane">
-                <h4 class="my-3 fw-normal">Activity Log</h4>
+                <h4 class="my-3 fw-normal"><?= __("Activity Log") ?></h4>
                 <?= $this->relationRender('activity_log') ?>
             </div>
         <?php endif ?>
