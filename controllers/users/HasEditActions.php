@@ -1,6 +1,8 @@
 <?php namespace RainLab\User\Controllers\Users;
 
+use Url;
 use Auth;
+use Site;
 use Lang;
 use Flash;
 use Response;
@@ -106,6 +108,15 @@ trait HasEditActions
         Auth::impersonate($model);
 
         Flash::success(__("You are now impersonating this user"));
+
+        // Open a new window to impersonate the user
+        $baseUrl = Site::hasMultiEditSite()
+            ? Site::getEditSite()->base_url
+            : Url::to('/');
+
+        return [
+            'baseUrl' => $baseUrl
+        ];
     }
 
     /**

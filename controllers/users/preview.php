@@ -23,7 +23,8 @@
             <?php if ($this->user->hasAccess('rainlab.users.impersonate_user')): ?>
                 <div class="toolbar-divider"></div>
                 <?= Ui::ajaxButton("Impersonate", 'onImpersonateUser')->icon('icon-user-secret')->outline()
-                    ->confirmMessage("Impersonate this user? You can revert to your original state by logging out.") ?>
+                    ->confirmMessage("Impersonate this user? You can revert to your original state by logging out.")
+                    ->ajaxSuccess("window.open(data.baseUrl)") ?>
             <?php endif ?>
         <?php endif ?>
 
