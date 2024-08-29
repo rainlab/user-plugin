@@ -236,13 +236,17 @@ class Account extends ComponentBase
             $rules = [];
 
             $rules['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
-                ? 'required|between:2,255'
-                : 'required|email|between:6,255';
+                ? 'required|string|between:2,255'
+                : 'required|string|email|between:6,255';
 
             $rules['password'] = 'required|between:' . UserModel::getMinPasswordLength() . ',255';
 
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
+            }
+
+            if (!is_string($data['login'])) {
+                throw new AuthException("Invalid input");
             }
 
             $data['login'] = trim($data['login']);
