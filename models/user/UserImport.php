@@ -7,12 +7,17 @@ use Exception;
 /**
  * UserExport Model
  */
-class UserExport extends ImportModel
+class UserImport extends ImportModel
 {
     /**
      * @var string table used by the model
      */
     protected $table = 'users';
+
+    /**
+     * @var array rules
+     */
+    public $rules = [];
 
     /**
      * importData
