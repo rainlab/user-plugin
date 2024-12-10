@@ -4,7 +4,7 @@ This plugin will fire some global events that can be useful for interacting with
 
 Events | Description
 ------ | ---------------
-**rainlab.user.beforeAuthenticate** | Before the user is attempting to authenticate using the Account component.
+**rainlab.user.beforeAuthenticate** | Before the user is attempting to authenticate using the Authentication component.
 **rainlab.user.authenticate** | Provides custom response logic after authentication.
 **rainlab.user.login** | The user has successfully signed in.
 **rainlab.user.logout** | The user has successfully signed out.
