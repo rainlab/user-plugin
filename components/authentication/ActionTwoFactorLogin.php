@@ -4,10 +4,12 @@ use Auth;
 use Event;
 use Session;
 use Request;
+use Validator;
 use Redirect;
 use RainLab\User\Models\User;
 use RainLab\User\Classes\TwoFactorManager;
 use RainLab\User\Helpers\User as UserHelper;
+use Illuminate\Contracts\Auth\Authenticatable;
 use ValidationException;
 
 /**
@@ -32,18 +34,19 @@ trait ActionTwoFactorLogin
     {
         $this->ensureLoginIsNotThrottled();
 
-        Request::validate([
-            UserHelper::username() => 'required|string',
-            'password' => 'required|string',
-        ]);
+        if (($event = $this->fireBeforeAuthenticateEvent()) !== null) {
+            if ($event === false || !$event instanceof Authenticatable) {
+                $this->throwFailedAuthenticationException();
+            }
 
-        $user = $this->getUserModel()
-            ->where(UserHelper::username(), post(UserHelper::username()))
-            ->first()
-        ;
+            $user = $event;
+        }
+        else {
+            $user = $this->attemptTwoFactorAuthentication(post());
 
-        if (!$user || !Auth::getProvider()->validateCredentials($user, ['password' => post('password')])) {
-            $this->throwFailedAuthenticationException();
+            if (!$user) {
+                $this->throwFailedAuthenticationException();
+            }
         }
 
         // User does not have 2FA set up
@@ -80,6 +83,10 @@ trait ActionTwoFactorLogin
         Event::fire('rainlab.user.login', [$user]);
 
         $this->recordUserLogAuthenticated($user, true);
+
+        if ($event = $this->fireAuthenticateEvent()) {
+            return $event;
+        }
     }
 
     /**
@@ -169,6 +176,36 @@ trait ActionTwoFactorLogin
         $className = Auth::getProvider()->getModel();
 
         return new $className;
+    }
+
+    /**
+     * attemptTwoFactorAuthentication
+     */
+    protected function attemptTwoFactorAuthentication(array $input): ?Authenticatable
+    {
+        $credentials = array_only($input, [UserHelper::username(), 'password']);
+
+        Validator::make($input, [
+            UserHelper::username() => 'required|string',
+            'password' => 'required|string',
+        ])->validate();
+
+        $user = $this->getUserModel()
+            ->where(UserHelper::username(), $credentials[UserHelper::username()])
+            ->first()
+        ;
+
+        if (!$user) {
+            return null;
+        }
+
+        if (!Auth::getProvider()->validateCredentials($user, [
+            'password' => $credentials['password']
+        ])) {
+            return null;
+        }
+
+        return $user;
     }
 
     /**

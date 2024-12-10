@@ -4,6 +4,7 @@ use Auth;
 use Event;
 use Validator;
 use RainLab\User\Helpers\User as UserHelper;
+use Illuminate\Contracts\Auth\Authenticatable;
 use ValidationException;
 
 /**
@@ -21,33 +22,14 @@ trait ActionLogin
     {
         $this->ensureLoginIsNotThrottled();
 
-        $input = post();
-
-        /**
-         * @event rainlab.user.beforeAuthenticate
-         * Provides custom logic for logging in a user during authentication.
-         *
-         * Example usage:
-         *
-         *     Event::listen('rainlab.user.beforeAuthenticate', function ($component, $input) {
-         *         return User::find(...);
-         *     });
-         *
-         * Or
-         *
-         *     $component->bindEvent('user.beforeAuthenticate', function ($input) {
-         *         return User::find(...);
-         *     });
-         *
-         */
-        if (($event = $this->fireSystemEvent('rainlab.user.beforeAuthenticate', [&$input])) !== null) {
-            if ($event === false) {
+        if (($event = $this->fireBeforeAuthenticateEvent()) !== null) {
+            if ($event === false || !$event instanceof Authenticatable) {
                 $this->throwFailedAuthenticationException();
             }
 
             Auth::login($event, $this->useRememberMe());
         }
-        elseif (!$this->attemptAuthentication($input)) {
+        elseif (!$this->attemptAuthentication(post())) {
             $this->throwFailedAuthenticationException();
         }
 
@@ -60,24 +42,7 @@ trait ActionLogin
             $this->recordUserLogAuthenticated($user);
         }
 
-        /**
-         * @event rainlab.user.authenticate
-         * Provides custom response logic after authentication
-         *
-         * Example usage:
-         *
-         *     Event::listen('rainlab.user.authenticate', function ($component) {
-         *         // Fire logic
-         *     });
-         *
-         * Or
-         *
-         *     $component->bindEvent('user.authenticate', function () {
-         *         // Fire logic
-         *     });
-         *
-         */
-        if ($event = $this->fireSystemEvent('rainlab.user.authenticate')) {
+        if ($event = $this->fireAuthenticateEvent()) {
             return $event;
         }
     }

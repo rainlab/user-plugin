@@ -219,6 +219,59 @@ class Authentication extends ComponentBase
     }
 
     /**
+     * fireBeforeAuthenticateEvent returns false if the authentication failed, a user object
+     * if the authentication was successful (override), or null to do nothing.
+     */
+    protected function fireBeforeAuthenticateEvent()
+    {
+        $input = post();
+
+        /**
+         * @event rainlab.user.beforeAuthenticate
+         * Provides custom logic for logging in a user during authentication.
+         *
+         * Example usage:
+         *
+         *     Event::listen('rainlab.user.beforeAuthenticate', function ($component, $input) {
+         *         return User::find(...);
+         *     });
+         *
+         * Or
+         *
+         *     $component->bindEvent('user.beforeAuthenticate', function ($input) {
+         *         return User::find(...);
+         *     });
+         *
+         */
+        return $this->fireSystemEvent('rainlab.user.beforeAuthenticate', [&$input]);
+    }
+
+    /**
+     * fireAuthenticateEvent can return a custom response, or null to do nothing.
+     */
+    protected function fireAuthenticateEvent()
+    {
+        /**
+         * @event rainlab.user.authenticate
+         * Provides custom response logic after authentication
+         *
+         * Example usage:
+         *
+         *     Event::listen('rainlab.user.authenticate', function ($component) {
+         *         // Fire logic
+         *     });
+         *
+         * Or
+         *
+         *     $component->bindEvent('user.authenticate', function () {
+         *         // Fire logic
+         *     });
+         *
+         */
+        return $this->fireSystemEvent('rainlab.user.authenticate');
+    }
+
+    /**
      * @deprecated use onLogin
      */
     public function onSignin()
