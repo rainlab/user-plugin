@@ -5,6 +5,7 @@ use Illuminate\Auth\AuthManager as AuthManagerBase;
 /**
  * AuthManager
  *
+ * @mixin \RainLab\User\Classes\SessionGuard
  * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
  */
