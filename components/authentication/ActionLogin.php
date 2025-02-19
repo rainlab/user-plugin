@@ -36,7 +36,7 @@ trait ActionLogin
         $this->prepareAuthenticatedSession();
 
         // Trigger login event
-        if ($user = Auth::getUser()) {
+        if ($user = Auth::user()) {
             Event::fire('rainlab.user.login', [$user]);
 
             $this->recordUserLogAuthenticated($user);
