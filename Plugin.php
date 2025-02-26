@@ -109,6 +109,16 @@ class Plugin extends PluginBase
     }
 
     /**
+     * registerContentFields
+     */
+    public function registerContentFields()
+    {
+        return [
+            \RainLab\User\ContentFields\UsersField::class => 'users'
+        ];
+    }
+
+    /**
      * registerPermissions
      */
     public function registerPermissions()

@@ -15,6 +15,10 @@ navigation:
             title: "Events"
             link: "./events.md"
             description: "lists all the available events found in this plugin"
+        -
+            title: "Tailor Integration"
+            link: "./tailor.md"
+            description: "guide on integration with TAilor"
     -
         title: "Components"
         description: "lists all the available components found in this plugin"
