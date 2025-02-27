@@ -150,18 +150,14 @@ class UsersField extends ContentFieldBase
      */
     protected function defineFormFieldAsRelationController($field)
     {
-        $customMessages = (array) $this->customMessages;
-
-        $toolbarButtons = 'add|remove';
-
         $fieldConfig = [
             'label' => $this->label,
             'list' => '~/plugins/rainlab/user/models/user/columns.yaml',
             'form' => '~/plugins/rainlab/user/models/user/fields.yaml',
-            'customMessages' => $customMessages,
+            'customMessages' => (array) $this->customMessages,
             'popupSize' => $this->popupSize,
             'view' => [
-                'toolbarButtons' => $toolbarButtons,
+                'toolbarButtons' => 'add|remove',
                 'recordsPerPage' => $this->recordsPerPage,
             ],
             'manage' => [

@@ -21,7 +21,7 @@ Set the `maxItems` to **0** to associate to an unlimited number of users (belong
 users:
     label: Users
     type: users
-    maxItems: 1
+    maxItems: 0
 ```
 
 Set the `displayMode` to **controller** to show a more advanced user interface for user management.
