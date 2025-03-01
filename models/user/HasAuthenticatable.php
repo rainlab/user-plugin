@@ -28,6 +28,14 @@ trait HasAuthenticatable
     }
 
     /**
+     * getAuthPasswordName of the password attribute for the user.
+     */
+    public function getAuthPasswordName()
+    {
+        return 'password';
+    }
+
+    /**
      * getAuthIdentifierForBroadcasting
      */
     public function getAuthIdentifierForBroadcasting()
