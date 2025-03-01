@@ -67,7 +67,7 @@ trait ConfirmsPassword
     /**
      * passwordIsConfirmed determine if the user's password has been recently confirmed.
      */
-    protected function passwordIsConfirmed(int $maxSecondsSinceConfirmation = null): bool
+    protected function passwordIsConfirmed(?int $maxSecondsSinceConfirmation = null): bool
     {
         $maxSecondsSinceConfirmation = $maxSecondsSinceConfirmation ?: Config::get('auth.password_timeout', 900);
 
