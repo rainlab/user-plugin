@@ -71,7 +71,7 @@ trait HasModelAttributes
     {
         if (App::runningInBackend() && $this->user) {
             return [
-                Backend::url("user/users/preview/{$this->user->id}"),
+                Backend::url("rainlab/user/users/preview/{$this->user->id}"),
                 $this->user->full_name
             ];
         }

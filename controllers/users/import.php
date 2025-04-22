@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('user/users') ?>"><?= __("Users") ?></a></li>
+        <li><a href="<?= Backend::url('rainlab/user/users') ?>"><?= __("Users") ?></a></li>
         <li><?= e(trans($this->pageTitle)) ?></li>
     </ul>
 <?php Block::endPut() ?>
