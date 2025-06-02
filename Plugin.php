@@ -165,7 +165,7 @@ class Plugin extends PluginBase
                     'timelines' => [
                         'label' => "Activity",
                         'icon' => 'icon-bars',
-                        'url' => Backend::url('user/timelines'),
+                        'url' => Backend::url('rainlab/user/timelines'),
                         'permissions' => ['rainlab.user.timelines']
                     ],
                     'users' => [

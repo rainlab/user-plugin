@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="<?= Backend::url('user/users') ?>"><?= __("Users") ?></a></li>
+        <li class="breadcrumb-item"><a href="<?= Backend::url('rainlab/user/users') ?>"><?= __("Users") ?></a></li>
         <li class="breadcrumb-item active" aria-current="page"><?= e(__($this->pageTitle)) ?></li>
     </ol>
 <?php Block::endPut() ?>
@@ -18,7 +18,7 @@
 ?>
 <div class="loading-indicator-container mb-3">
     <div class="control-toolbar form-toolbar" data-control="toolbar">
-        <?= Ui::button("Back", 'user/users')->icon('icon-arrow-left')->outline() ?>
+        <?= Ui::button("Back", 'rainlab/user/users')->icon('icon-arrow-left')->outline() ?>
         <?php if ($canDoGeneralActions): ?>
             <?php if ($this->user->hasAccess('rainlab.users.impersonate_user')): ?>
                 <div class="toolbar-divider"></div>
@@ -28,7 +28,7 @@
             <?php endif ?>
         <?php endif ?>
 
-        <?= Ui::button("Edit", "user/users/update/{$formModel->id}")->icon('icon-pencil')->outline()->primary() ?>
+        <?= Ui::button("Edit", "rainlab/user/users/update/{$formModel->id}")->icon('icon-pencil')->outline()->primary() ?>
 
         <div class="toolbar-divider"></div>
 
