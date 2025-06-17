@@ -221,6 +221,15 @@ class User extends Model implements Authenticatable, CanResetPassword
         }
     }
 
+    /**
+     * Get the name of the password attribute for authentication.
+     */
+    public function getAuthPasswordName(): string
+    {
+        return 'password';
+    }
+
+
     //
     // Events
     //
