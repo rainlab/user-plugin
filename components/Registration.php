@@ -104,14 +104,14 @@ class Registration extends ComponentBase
 
         Validator::make($input, [
             'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => UserHelper::passwordRules(),
         ])->validate();
 
         $user = User::create([
             'first_name' => $input['first_name'],
-            'last_name' => $input['last_name'],
+            'last_name' => $input['last_name'] ?? null,
             'email' => $input['email'],
             'password' => $input['password'],
             'password_confirmation' => $input['password_confirmation'],
