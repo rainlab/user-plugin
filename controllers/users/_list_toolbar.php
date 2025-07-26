@@ -1,5 +1,5 @@
 <div data-control="toolbar">
-    <?= Ui::button("New User", 'user/users/create')
+    <?= Ui::button("New User", 'rainlab/user/users/create')
         ->icon('icon-plus')
         ->primary() ?>
 
@@ -13,7 +13,7 @@
     <?php if ($this->user->hasAccess('rainlab.users.access_groups')): ?>
         <div class="toolbar-divider"></div>
 
-        <?= Ui::button("User Groups", 'user/usergroups')
+        <?= Ui::button("User Groups", 'rainlab/user/usergroups')
             ->icon('icon-group')
             ->secondary() ?>
     <?php endif ?>
