@@ -127,7 +127,7 @@
   ":name has registered as a new user": ":name s'est enregistré comme nouvel utilisateur",
   ":name deleted their account": ":name a supprimé son compte",
   ":name authenticated using 2FA successfully": ":name authentifié avec succès à l'aide de 2FA",
-  ":name authenticated successfully": ":nom authentifié avec succès",
+  ":name authenticated successfully": ":name authentifié avec succès",
   ":name verified their email address :user_email": ":name a vérifié son adresse e-mail :user_email",
   ":name changed this user's email from :old_value to :new_value": ":name a changé l'adresse e-mail de cet utilisateur de :old_value à :new_value",
   ":name changed their email from :old_value to :new_value": ":name a changé son adresse e-mail de :old_value à :new_value",
