@@ -5,13 +5,16 @@
 fields:
     name:
         label: Name
+        span: left
+
+    code:
+        label: Code
+        comment: Enter a unique code used to identify this group.
+        preset: name
+        span: right
 
     description:
         label: Description
         type: textarea
         size: small
 
-    code:
-        label: Code
-        comment: Enter a unique code used to identify this group.
-        preset: name

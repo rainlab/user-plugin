@@ -174,6 +174,12 @@ class Plugin extends PluginBase
                         'url' => Backend::url('rainlab/user/users'),
                         'permissions' => ['rainlab.users.access_users']
                     ],
+                    'usergroups' => [
+                        'label' => "User Groups",
+                        'icon' => 'icon-users',
+                        'url' => Backend::url('rainlab/user/usergroups'),
+                        'permissions' => ['rainlab.users.access_groups']
+                    ],
                 ]
             ]
         ];
