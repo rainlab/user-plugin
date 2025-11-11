@@ -288,7 +288,7 @@ class User extends Model implements Authenticatable, CanResetPassword
         }
 
         // When the username is not used, the email is substituted.
-        if (!$this->username || ($this->isDirty('email') && $this->getOriginal('email') == $this->username)) {
+        if ($this->shouldRegenerateUsername()) {
             $this->username = $this->email;
         }
     }
@@ -538,5 +538,20 @@ class User extends Model implements Authenticatable, CanResetPassword
     protected function sendInvitation()
     {
         $this->sendConfirmRegistrationNotification();
+    }
+
+    /**
+     * shouldRegenerateUsername checks if the username should be reset to the email address
+     * this happens when the username field is not used but is required for logging in
+     */
+    protected function shouldRegenerateUsername(): bool
+    {
+        // Query has not selected email or username
+        if (!$this->hasAttribute('email') || !$this->hasAttribute('username')) {
+            return false;
+        }
+
+        // When the username is not used, the email is substituted.
+        return (!$this->username || ($this->isDirty('email') && (string) $this->getOriginal('email') === (string) $this->username));
     }
 }
