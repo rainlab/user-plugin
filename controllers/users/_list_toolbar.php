@@ -10,14 +10,6 @@
         ->secondary()
         ->confirmMessage("Are you sure?") ?>
 
-    <?php if ($this->user->hasAccess('rainlab.users.access_groups')): ?>
-        <div class="toolbar-divider"></div>
-
-        <?= Ui::button("User Groups", 'user/usergroups')
-            ->icon('icon-group')
-            ->secondary() ?>
-    <?php endif ?>
-
     <?=
         /**
          * @event rainlab.user.view.extendListToolbar
