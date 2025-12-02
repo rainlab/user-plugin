@@ -547,7 +547,10 @@ class User extends Model implements Authenticatable, CanResetPassword
     protected function shouldRegenerateUsername(): bool
     {
         // Query has not selected email or username
-        if (!$this->hasAttribute('email') || !$this->hasAttribute('username')) {
+        if (
+            !array_key_exists('email', $this->attributes) ||
+            !array_key_exists('username', $this->attributes)
+        ) {
             return false;
         }
 
