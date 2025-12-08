@@ -546,15 +546,18 @@ class User extends Model implements Authenticatable, CanResetPassword
      */
     protected function shouldRegenerateUsername(): bool
     {
-        // Query has not selected email or username
-        if (
-            !array_key_exists('email', $this->attributes) ||
-            !array_key_exists('username', $this->attributes)
-        ) {
+        // There is no email source to use
+        // Return false to fail validation and/or avoid data loss
+        if (!$this->email) {
             return false;
         }
 
-        // When the username is not used, the email is substituted.
-        return (!$this->username || ($this->isDirty('email') && (string) $this->getOriginal('email') === (string) $this->username));
+        // Safe: The username is empty
+        if (!$this->username) {
+            return true;
+        }
+
+        // Safe: Email has changed and was previously used as username
+        return $this->isDirty('email') && (string) $this->getOriginal('email') === (string) $this->username;
     }
 }
