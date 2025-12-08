@@ -34,3 +34,4 @@ v3.2.0: Fixes events with 2FA, requires October v3.7 or above
 v3.2.1: Fixes support with Tailor integration
 v3.2.2: Fixes compatibility with October v4
 v3.2.3: Fixes column definition in user tailor field
+v3.2.4: Fixes bug saving user model
