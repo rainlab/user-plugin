@@ -50,6 +50,14 @@ trait HasPersistence
     }
 
     /**
+     * updatePasswordHashSession
+     */
+    protected function updatePasswordHashSession(User $user)
+    {
+        return $this->session->put($this->getPasswordHashName(), $user->getAuthPassword());
+    }
+
+    /**
      * hasValidPersistCode
      */
     protected function hasValidPersistCode(User $user)
@@ -63,5 +71,13 @@ trait HasPersistence
     public function getPersistCodeName()
     {
         return 'user_persist_code';
+    }
+
+    /**
+     * getPasswordHashName gets the name of the session used to store the password
+     */
+    public function getPasswordHashName()
+    {
+        return 'password_hash_' . $this->name;
     }
 }

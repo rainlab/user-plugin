@@ -83,6 +83,8 @@ class SessionGuard extends SessionGuardBase
     {
         $this->updatePersistSession($user);
 
+        $this->updatePasswordHashSession($user);
+
         $this->updateSession($user->getAuthIdentifier());
 
         $this->setUser($user);
@@ -130,6 +132,8 @@ class SessionGuard extends SessionGuardBase
     {
         $this->session->remove($this->getPersistCodeName());
 
+        $this->session->remove($this->getPasswordHashName());
+
         parent::clearUserDataFromStorage();
     }
 
@@ -148,4 +152,5 @@ class SessionGuard extends SessionGuardBase
     {
         return 'user_auth';
     }
+
 }
