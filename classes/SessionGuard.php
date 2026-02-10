@@ -83,7 +83,7 @@ class SessionGuard extends SessionGuardBase
     {
         $this->updatePersistSession($user);
 
-        $this->updateSession($user->getAuthIdentifier());
+        $this->session->put($this->getName(), $user->getAuthIdentifier());
 
         $this->setUser($user);
     }
