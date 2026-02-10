@@ -298,6 +298,12 @@ class Session extends ComponentBase
             return;
         }
 
+        // Skip password hash check during impersonation since the
+        // impersonated user will differ from the stored hash
+        if (Auth::isImpersonator()) {
+            return;
+        }
+
         $logoutFunc = function() {
             Auth::logoutCurrentDevice();
             Request::session()->flush();
