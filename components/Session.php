@@ -314,7 +314,11 @@ class Session extends ComponentBase
 
         if (Auth::viaRemember()) {
             $passwordHash = explode('|', Cookie::get(Auth::getRecallerName()))[2] ?? null;
-            if (!$passwordHash || $passwordHash != $user->getAuthPassword()) {
+            $expectedHash = method_exists(Auth::guard(), 'hashPasswordForCookie')
+                ? Auth::hashPasswordForCookie($user->getAuthPassword())
+                : $user->getAuthPassword();
+
+            if (!$passwordHash || $passwordHash != $expectedHash) {
                 $logoutFunc();
                 return;
             }
