@@ -318,7 +318,7 @@ class Session extends ComponentBase
                 ? Auth::hashPasswordForCookie($user->getAuthPassword())
                 : $user->getAuthPassword();
 
-            if (!$passwordHash || $passwordHash != $expectedHash) {
+            if (!$passwordHash || $passwordHash !== $expectedHash) {
                 $logoutFunc();
                 return;
             }
