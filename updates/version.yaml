@@ -36,3 +36,4 @@ v3.2.2: Fixes compatibility with October v4
 v3.2.3: Fixes column definition in user tailor field
 v3.3.0: Adjusts the group navigation
 v3.3.1: Bump the JWT library version
+v3.3.2: Switch JWT algorithm to match Laravel key length
