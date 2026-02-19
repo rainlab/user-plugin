@@ -132,7 +132,8 @@ trait HasBearerToken
         // Decode token
         try {
             JWT::$leeway = Config::get('rainlab.user::bearer_token.leeway') ?? 60;
-            $token = JWT::decode($jwtToken, new Key($secretKey, 'HS512'));
+            $algorithm = Config::get('rainlab.user::bearer_token.algorithm') ?? 'HS512';
+            $token = JWT::decode($jwtToken, new Key($secretKey, $algorithm));
         }
         catch (Exception $ex) {
             return false;
