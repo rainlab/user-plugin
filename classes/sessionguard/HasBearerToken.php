@@ -45,9 +45,6 @@ trait HasBearerToken
 
         // Secret key
         $secretKey = $this->getJwtSecretKey();
-        if (!$secretKey) {
-            throw new \Illuminate\Encryption\MissingAppKeyException;
-        }
 
         // Prepare metadata
         $tokenId = base64_encode(Str::random(16));
@@ -125,9 +122,6 @@ trait HasBearerToken
 
         // Secret key
         $secretKey = $this->getJwtSecretKey();
-        if (!$secretKey) {
-            throw new \Illuminate\Encryption\MissingAppKeyException;
-        }
 
         // Decode token
         try {
