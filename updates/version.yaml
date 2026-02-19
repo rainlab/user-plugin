@@ -35,3 +35,4 @@ v3.2.1: Fixes support with Tailor integration
 v3.2.2: Fixes compatibility with October v4
 v3.2.3: Fixes column definition in user tailor field
 v3.3.0: Adjusts the group navigation
+v3.3.1: Bump the JWT library version
