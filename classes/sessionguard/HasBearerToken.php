@@ -44,7 +44,7 @@ trait HasBearerToken
         }
 
         // Secret key
-        $secretKey = Config::get('rainlab.user::bearer_token.key') ?? Crypt::getKey();
+        $secretKey = $this->getJwtSecretKey();
         if (!$secretKey) {
             throw new \Illuminate\Encryption\MissingAppKeyException;
         }
@@ -124,7 +124,7 @@ trait HasBearerToken
         }
 
         // Secret key
-        $secretKey = Config::get('rainlab.user::bearer_token.key') ?? Crypt::getKey();
+        $secretKey = $this->getJwtSecretKey();
         if (!$secretKey) {
             throw new \Illuminate\Encryption\MissingAppKeyException;
         }
@@ -180,4 +180,27 @@ trait HasBearerToken
     {
         return $this->viaBearerToken;
     }
+
+    /* Get and prepare JWT secret key
+    * Automatically extends key if needed for the algorithm
+    */
+   protected function getJwtSecretKey(): string
+   {
+       // Get secret key from config or fallback to APP_KEY
+       $secretKey = Config::get('rainlab.user::bearer_token.key') ?? Crypt::getKey();
+       if (!$secretKey) {
+           throw new \Illuminate\Encryption\MissingAppKeyException;
+       }
+   
+       $algorithm = Config::get('rainlab.user::bearer_token.algorithm') ?? 'HS512';
+   
+       // Validate and extend key if needed for HS512/HS384
+       if (in_array($algorithm, ['HS512', 'HS384']) && strlen($secretKey) < 64) {
+           // Extend key using PBKDF2 to ensure sufficient length
+           // Use original key as seed and extend it to 64 bytes
+           $secretKey = hash_pbkdf2('sha256', $secretKey, config('app.key', 'default-salt'), 1000, 64, true);
+       }
+       
+       return $secretKey;
+   }
 }
