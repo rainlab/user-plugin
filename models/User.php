@@ -255,7 +255,10 @@ class User extends Model implements Authenticatable, CanResetPassword
          *     });
          *
          */
-        if (Event::fire('rainlab.user.canDeleteUser', [$this], true) === false) {
+        if (
+            Setting::get('soft_delete') ||
+            Event::fire('rainlab.user.canDeleteUser', [$this], true) === false
+        ) {
             return $this->delete();
         }
 

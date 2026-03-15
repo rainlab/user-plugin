@@ -117,5 +117,8 @@
   "Convert Guest User": "Konverter gjestebruker",
   "Send Registration Notification": "Send registreringsvarsel",
   "Use this checkbox to generate new random password for the user and send a registration notification email.": "Bruk denne avkrysningsboksen for å generere et nytt tilfeldig passord for brukeren og sende en e-post med registreringsvarsel.",
-  "Select a New User Group": "Velg en ny brukergruppe"
+  "Select a New User Group": "Velg en ny brukergruppe",
+  "Soft Delete Users": "Myk sletting av brukere",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Når aktivert blir slettede brukere deaktivert i stedet for å bli permanent fjernet. Dette bevarer referanseintegriteten for utvidelser som refererer til brukerposter.",
+  "Profile": "Profil"
 }

@@ -134,5 +134,8 @@
   ":name changed this user's password": ":name changed this user's password",
   ":name changed their password": ":name changed their password",
   ":name enabled two-factor authentication": ":name enabled two-factor authentication",
-  ":name disabled two-factor authentication": ":name disabled two-factor authentication"
+  ":name disabled two-factor authentication": ":name disabled two-factor authentication",
+  "Soft Delete Users": "Soft Delete Users",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.",
+  "Profile": "Profile"
 }

@@ -156,5 +156,8 @@
   "System Message Template": "Systeem Bericht Sjabloon",
   "Select the mail template to send to the admins.": "Selecteer het e-mail template dat naar beheerders gestuurd wordt.",
   "Notify Admin Group": "Beheer groep Voor Notificatie",
-  "Specify the administrator group that should receive a notification when a new user joins.": "Kies de beheer groep waar een notificatie naar toe gestuurd wordt als een gebruiker geregistreerd is."
+  "Specify the administrator group that should receive a notification when a new user joins.": "Kies de beheer groep waar een notificatie naar toe gestuurd wordt als een gebruiker geregistreerd is.",
+  "Soft Delete Users": "Gebruikers zacht verwijderen",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Wanneer ingeschakeld worden verwijderde gebruikers gedeactiveerd in plaats van permanent verwijderd. Dit behoudt de referentiële integriteit voor plugins die verwijzen naar gebruikersrecords.",
+  "Profile": "Profiel"
 }

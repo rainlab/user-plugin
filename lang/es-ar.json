@@ -51,5 +51,8 @@
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Éste usuario ha desactivado su cuenta y no quiere volver a aparecer en el sitio. Ellos pueden restaurar su cuenta en cualquier momento al re-ingresar.",
   "Back to users list": "Volver a la lista de usuarios",
   "Return to users list": "Regresar a la lista de usuarios",
-  "Do you really want to delete this user?": "Realmente desea eliminar éste usuario?"
+  "Do you really want to delete this user?": "Realmente desea eliminar éste usuario?",
+  "Soft Delete Users": "Eliminación temporal de usuarios",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Cuando está habilitado, los usuarios eliminados se desactivan en lugar de ser eliminados permanentemente. Esto preserva la integridad referencial para los plugins que hacen referencia a registros de usuarios.",
+  "Profile": "Perfil"
 }

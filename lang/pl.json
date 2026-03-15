@@ -135,5 +135,8 @@
   ":name changed their password": ":name zmienił hasło",
   ":name enabled two-factor authentication": ":name włączono uwierzytelnianie dwuskładnikowe",
   ":name disabled two-factor authentication": ":name wyłączono uwierzytelnianie dwuskładnikowe",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ten użytkownik dezaktywował swoje konto i nie chce już wyświetlać się na stronie. Może przywrócić konto w dowolnym momencie, logując się z powrotem."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ten użytkownik dezaktywował swoje konto i nie chce już wyświetlać się na stronie. Może przywrócić konto w dowolnym momencie, logując się z powrotem.",
+  "Soft Delete Users": "Miękkie usuwanie użytkowników",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Po włączeniu usunięci użytkownicy są dezaktywowani zamiast być trwale usuwani. Zapewnia to integralność referencyjną dla wtyczek odwołujących się do rekordów użytkowników.",
+  "Profile": "Profil"
 }

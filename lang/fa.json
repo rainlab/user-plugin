@@ -135,5 +135,8 @@
   ":name changed their password": ":name رمز عبور آنها را تغییر داد",
   ":name enabled two-factor authentication": ":name احراز هویت دو مرحله ای را فعال کرد",
   ":name disabled two-factor authentication": ":name احراز هویت دو مرحله‌ای را غیرفعال کرد",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "این کاربر حساب خود را غیر فعال کرده است و علاقه ای به ادامه فعالیت در سایت را ندارد. کاربران با ورود مجدد به سایت میتوانند حساب خود را فعال کنند."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "این کاربر حساب خود را غیر فعال کرده است و علاقه ای به ادامه فعالیت در سایت را ندارد. کاربران با ورود مجدد به سایت میتوانند حساب خود را فعال کنند.",
+  "Soft Delete Users": "حذف نرم کاربران",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "هنگامی که فعال باشد، کاربران حذف شده به جای حذف دائمی، غیرفعال می‌شوند. این کار یکپارچگی ارجاعی را برای افزونه‌هایی که به رکوردهای کاربران ارجاع می‌دهند حفظ می‌کند.",
+  "Profile": "پروفایل"
 }

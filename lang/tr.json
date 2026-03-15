@@ -135,5 +135,8 @@
   ":name changed their password": ":name şifresini değiştirdi",
   ":name enabled two-factor authentication": ":name iki faktörlü kimlik doğrulamayı etkinleştirdi",
   ":name disabled two-factor authentication": ":name iki faktörlü kimlik doğrulamayı devre dışı bıraktı",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Üye hesabını pasifleştirmiş ve bu sitede görünmek istemiyor. Tekrar hesabına giriş yaparak hesabını istediği zaman aktifleştirebilir."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Üye hesabını pasifleştirmiş ve bu sitede görünmek istemiyor. Tekrar hesabına giriş yaparak hesabını istediği zaman aktifleştirebilir.",
+  "Soft Delete Users": "Kullanıcıları geçici olarak sil",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Etkinleştirildiğinde, silinen kullanıcılar kalıcı olarak kaldırılmak yerine devre dışı bırakılır. Bu, kullanıcı kayıtlarına başvuran eklentiler için referans bütünlüğünü korur.",
+  "Profile": "Profil"
 }

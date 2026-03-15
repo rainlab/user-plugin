@@ -148,5 +148,8 @@
   "The user activates their own account using mail.": "පරිශීලකයා තැපෑල භාවිතයෙන් තමන්ගේම ගිණුම සක්රිය කරයි.",
   "Administrator": "පරිපාලක",
   "Only an Administrator can activate a user.": "පරිශීලකයෙකු සක්‍රිය කළ හැක්කේ පරිපාලකයෙකුට පමණි.",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "මෙම පරිශීලකයා ඔවුන්ගේ ගිණුම අක්‍රිය කර ඇති අතර තවදුරටත් අඩවියේ පෙනී සිටීමට අවශ්‍ය නැත. ඔවුන්ට නැවත පුරනය වීමෙන් ඕනෑම වේලාවක ඔවුන්ගේ ගිණුම ප්‍රතිසාධනය කළ හැක."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "මෙම පරිශීලකයා ඔවුන්ගේ ගිණුම අක්‍රිය කර ඇති අතර තවදුරටත් අඩවියේ පෙනී සිටීමට අවශ්‍ය නැත. ඔවුන්ට නැවත පුරනය වීමෙන් ඕනෑම වේලාවක ඔවුන්ගේ ගිණුම ප්‍රතිසාධනය කළ හැක.",
+  "Soft Delete Users": "පරිශීලකයන් මෘදු මකාදැමීම",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "සබල කළ විට, මකා දැමූ පරිශීලකයන් ස්ථිරවම ඉවත් කිරීම වෙනුවට අක්‍රිය කරනු ලැබේ. මෙය පරිශීලක වාර්තා වෙත යොමු වන ප්ලගින සඳහා යොමු අඛණ්ඩතාව ආරක්ෂා කරයි.",
+  "Profile": "පැතිකඩ"
 }

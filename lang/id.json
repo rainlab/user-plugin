@@ -135,5 +135,8 @@
   ":name changed their password": ":nama mengubah kata sandi mereka",
   ":name enabled two-factor authentication": ":name mengaktifkan autentikasi dua faktor",
   ":name disabled two-factor authentication": ":name menonaktifkan autentikasi dua faktor",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Pengguna ini telah menonaktifkan akunnya dan tidak ingin terlihat lagi di situs ini. Mereka dapat memulihkan akun mereka kapan saja dengan login kembali."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Pengguna ini telah menonaktifkan akunnya dan tidak ingin terlihat lagi di situs ini. Mereka dapat memulihkan akun mereka kapan saja dengan login kembali.",
+  "Soft Delete Users": "Hapus Pengguna Sementara",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Saat diaktifkan, pengguna yang dihapus akan dinonaktifkan alih-alih dihapus secara permanen. Ini menjaga integritas referensial untuk plugin yang merujuk pada catatan pengguna.",
+  "Profile": "Profil"
 }

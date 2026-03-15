@@ -135,5 +135,8 @@
   ":name changed their password": ":name so spremenili geslo",
   ":name enabled two-factor authentication": ":name je omogočilo dvostopenjsko avtentikacijo",
   ":name disabled two-factor authentication": ":name onemogočeno dvofaktorsko preverjanje pristnosti",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ta uporabnik je deaktiviral svoj račun in se ne želi več pojavljati na spletni strani. Svoj račun lahko kadarkoli obnovi s prijavo."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ta uporabnik je deaktiviral svoj račun in se ne želi več pojavljati na spletni strani. Svoj račun lahko kadarkoli obnovi s prijavo.",
+  "Soft Delete Users": "Mehko brisanje uporabnikov",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Ko je omogočeno, se izbrisani uporabniki deaktivirajo namesto trajnega odstranitve. To ohranja referenčno celovitost za vtičnike, ki se sklicujejo na zapise uporabnikov.",
+  "Profile": "Profil"
 }

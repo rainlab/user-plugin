@@ -135,5 +135,8 @@
   ":name changed their password": ":name megváltoztatta a jelszavát",
   ":name enabled two-factor authentication": ":name engedélyezett kéttényezős hitelesítés",
   ":name disabled two-factor authentication": ":name letiltotta a kéttényezős hitelesítést",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Amennyiben nem akarnak megjelenni a weboldalon, úgy deaktiválhatják a saját fiókjukat. Bármikor újra engedélyezhetik, ha újra sikeresen bejelentkeznek a weboldalra."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Amennyiben nem akarnak megjelenni a weboldalon, úgy deaktiválhatják a saját fiókjukat. Bármikor újra engedélyezhetik, ha újra sikeresen bejelentkeznek a weboldalra.",
+  "Soft Delete Users": "Felhasználók lágy törlése",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Ha engedélyezve van, a törölt felhasználók deaktiválásra kerülnek a végleges eltávolítás helyett. Ez megőrzi a hivatkozási integritást azon bővítmények számára, amelyek felhasználói rekordokra hivatkoznak.",
+  "Profile": "Profil"
 }

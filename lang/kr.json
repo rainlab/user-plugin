@@ -91,5 +91,8 @@
   "Impersonate this user? You can revert to your original state by logging out.": "이 사용자로 가장하시겠습니까? 로그 아웃하면 원래 상태로 되돌릴 수 있습니다.",
   "Impersonate User": "가장 로그인",
   "Return to users list": "사용자 목록으로 돌아가기",
-  "Do you really want to delete this user?": "이 사용자를 삭제하시겠습니까??"
+  "Do you really want to delete this user?": "이 사용자를 삭제하시겠습니까??",
+  "Soft Delete Users": "사용자 소프트 삭제",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "활성화하면 삭제된 사용자가 영구적으로 제거되는 대신 비활성화됩니다. 이는 사용자 레코드를 참조하는 플러그인의 참조 무결성을 유지합니다.",
+  "Profile": "프로필"
 }

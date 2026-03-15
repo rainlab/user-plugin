@@ -160,5 +160,8 @@
   "Location is a business address": "L'emplacement est une adresse professionnelle",
   "Use this address by default.": "Utiliser cette adresse par défaut.",
   "Zip / Postal Code": "Code postal",
-  "Ban this user? It will prevent them from logging in and holding an active session.": "Bannir cet utilisateur ? Cela l'empêchera de se connecter et de maintenir une session active."
+  "Ban this user? It will prevent them from logging in and holding an active session.": "Bannir cet utilisateur ? Cela l'empêchera de se connecter et de maintenir une session active.",
+  "Soft Delete Users": "Suppression douce des utilisateurs",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Lorsque cette option est activée, les utilisateurs supprimés sont désactivés au lieu d'être définitivement supprimés. Cela préserve l'intégrité référentielle pour les plugins qui font référence aux enregistrements des utilisateurs.",
+  "Profile": "Profil"
 }

@@ -88,5 +88,8 @@
   "Impersonate this user? You can revert to your original state by logging out.": "是否以此會員登入？你可以登出以切換為原狀態。",
   "Impersonate User": "登入此會員",
   "Return to users list": "返回會員列表",
-  "Do you really want to delete this user?": "是否刪除此會員？"
+  "Do you really want to delete this user?": "是否刪除此會員？",
+  "Soft Delete Users": "軟刪除會員",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "啟用後，已刪除的會員將被停用而不是永久移除。這可以保持引用會員記錄的外掛程式的參照完整性。",
+  "Profile": "個人資料"
 }

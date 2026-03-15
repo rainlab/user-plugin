@@ -134,5 +134,8 @@
   ":name changed this user's password": ":name vaihtoi tämän käyttäjän salasanan",
   ":name changed their password": ":name vaihtoi salasanansa",
   ":name enabled two-factor authentication": ":name otti käyttöön kaksivaiheisen tunnistautumisen",
-  ":name disabled two-factor authentication": ":name poisti käytöstä kaksivaiheisen tunnistautumisen"
+  ":name disabled two-factor authentication": ":name poisti käytöstä kaksivaiheisen tunnistautumisen",
+  "Soft Delete Users": "Käyttäjien pehmeä poisto",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Kun käytössä, poistetut käyttäjät deaktivoidaan sen sijaan, että ne poistettaisiin pysyvästi. Tämä säilyttää viite-eheyden liitännäisille, jotka viittaavat käyttäjätietueisiin.",
+  "Profile": "Profiili"
 }

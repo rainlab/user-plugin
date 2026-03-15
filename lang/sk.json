@@ -135,5 +135,8 @@
   ":name changed their password": ":name zmenili svoje heslo",
   ":name enabled two-factor authentication": ":name povolila dvojfaktorovú autentifikáciu",
   ":name disabled two-factor authentication": ":name zakázaná dvojfaktorová autentifikácia",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Tento používateľ deaktivoval svoj účet a už nechce byť zobrazovaný na webe. Môže kedykoľvek obnoviť svoj účet, keď sa prihlási späť."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Tento používateľ deaktivoval svoj účet a už nechce byť zobrazovaný na webe. Môže kedykoľvek obnoviť svoj účet, keď sa prihlási späť.",
+  "Soft Delete Users": "Mäkké vymazanie používateľov",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Keď je táto možnosť povolená, vymazaní používatelia sú deaktivovaní namiesto trvalého odstránenia. Tým sa zachováva referenčná integrita pre pluginy, ktoré odkazujú na záznamy používateľov.",
+  "Profile": "Profil"
 }

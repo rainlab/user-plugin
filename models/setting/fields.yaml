@@ -125,3 +125,10 @@ tabs:
                 action: enable
                 field: notify_system
                 condition: checked
+
+        soft_delete:
+            label: Soft Delete Users
+            span: full
+            comment: When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.
+            type: switch
+            tab: Profile

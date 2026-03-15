@@ -135,5 +135,8 @@
   ":name changed their password": ":name ändrade sitt lösenord",
   ":name enabled two-factor authentication": ":name aktiverad tvåfaktorsautentisering",
   ":name disabled two-factor authentication": ":name inaktiverade tvåfaktorsautentisering",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Den här användaren har inaktiverat sitt konto och vill inte längre visas på webbplatsen. De kan återställa sitt konto när som helst genom att logga in igen. "
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Den här användaren har inaktiverat sitt konto och vill inte längre visas på webbplatsen. De kan återställa sitt konto när som helst genom att logga in igen. ",
+  "Soft Delete Users": "Mjuk borttagning av användare",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "När aktiverat inaktiveras borttagna användare istället för att tas bort permanent. Detta bevarar referensintegriteten för tillägg som refererar till användarposter.",
+  "Profile": "Profil"
 }

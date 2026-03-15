@@ -70,5 +70,8 @@
   "Back to users list": "Regressar à lista de utilizadores",
   "Update details": "Actualizar detalhes",
   "Return to users list": "Regressar à lista de Utilizadores",
-  "Do you really want to delete this user?": "Deseja eliminar este utilizador?"
+  "Do you really want to delete this user?": "Deseja eliminar este utilizador?",
+  "Soft Delete Users": "Eliminação temporária de utilizadores",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Quando ativado, os utilizadores eliminados são desativados em vez de serem removidos permanentemente. Isto preserva a integridade referencial para plugins que fazem referência a registos de utilizadores.",
+  "Profile": "Perfil"
 }

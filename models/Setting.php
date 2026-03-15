@@ -16,6 +16,7 @@ use System\Models\SettingModel;
  * @property bool password_require_uncompromised
  * @property bool password_require_number
  * @property bool password_require_symbol
+ * @property bool soft_delete
  * @property bool notify_user
  * @property string user_message_template
  * @property bool notify_system
@@ -56,6 +57,7 @@ class Setting extends SettingModel
     public function initSettingsData()
     {
         $this->block_persistence = Config::get('rainlab.user::block_persistence', false);
+        $this->soft_delete = Config::get('rainlab.user::soft_delete', true);
         $this->allow_registration = Config::get('rainlab.user::allow_registration', true);
         $this->login_attribute = Config::get('rainlab.user::login_attribute', self::LOGIN_EMAIL);
 

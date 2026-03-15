@@ -135,5 +135,8 @@
   ":name changed their password": ":name غير كلمة المرور الخاصة به",
   ":name enabled two-factor authentication": ":name تمكين المصادقة الثنائية",
   ":name disabled two-factor authentication": ":name تم تعطيل المصادقة الثنائية",
+  "Soft Delete Users": "حذف المستخدمين بشكل مؤقت",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "عند تفعيل هذه الخاصية، يتم تعطيل حسابات المستخدمين المحذوفين بدلاً من حذفها نهائياً. وهذا يحافظ على سلامة البيانات المرجعية للملحقات التي تشير إلى سجلات المستخدمين.",
+  "Profile": "حساب تعريفي",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "قام هذا المستخدم بإلغاء تنشيط حسابه ولم يعد يريد الظهور على الموقع. يمكنهم استعادة حسابهم في أي وقت عن طريق تسجيل الدخول مرة أخرى."
 }

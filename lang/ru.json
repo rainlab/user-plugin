@@ -153,5 +153,8 @@
   "Edit": "Редактировать",
   "View User": "Просмотр данных пользователя",
   "Refresh": "Обновить",
-  "Secondary Groups": "Дополнительные группы"
+  "Secondary Groups": "Дополнительные группы",
+  "Soft Delete Users": "Мягкое удаление пользователей",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "При включении удалённые пользователи деактивируются вместо окончательного удаления. Это сохраняет ссылочную целостность для плагинов, которые ссылаются на записи пользователей.",
+  "Profile": "Профиль"
 }

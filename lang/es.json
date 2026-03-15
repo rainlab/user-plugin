@@ -135,5 +135,8 @@
   ":name changed their password": ":nombre cambió su contraseña",
   ":name enabled two-factor authentication": ":name habilitó la autenticación de dos factores",
   ":name disabled two-factor authentication": ":name deshabilitó la autenticación de dos factores",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Este usuario tiene desactivado su perfil y  no quiere aparecer en el sitio. Los usuarios pueden reactivar su perfil en cualquier momento iniciando sesión nuevamente."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Este usuario tiene desactivado su perfil y  no quiere aparecer en el sitio. Los usuarios pueden reactivar su perfil en cualquier momento iniciando sesión nuevamente.",
+  "Soft Delete Users": "Eliminación temporal de usuarios",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Cuando está habilitado, los usuarios eliminados se desactivan en lugar de ser eliminados permanentemente. Esto preserva la integridad referencial para los plugins que hacen referencia a registros de usuarios.",
+  "Profile": "Perfil"
 }

@@ -72,6 +72,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Soft Delete Users
+    |--------------------------------------------------------------------------
+    |
+    | When enabled, deleted users are soft deleted (deactivated) instead of
+    | being permanently removed. This preserves referential integrity for
+    | plugins that reference user records, such as orders or activity logs.
+    |
+    */
+
+    'soft_delete' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | JWT Config
     |--------------------------------------------------------------------------
     |

@@ -135,5 +135,8 @@
   ":name changed their password": ":name ha cambiato la password",
   ":name enabled two-factor authentication": ":name ha abilitato l'autenticazione a due fattori",
   ":name disabled two-factor authentication": ":name ha disabilitato l'autenticazione a due fattori",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Questo utente ha disattivato il suo account and e non vuole più apparire sul sito. Possono riattivarsi in qualsiasi momento effettuando l'accesso."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Questo utente ha disattivato il suo account and e non vuole più apparire sul sito. Possono riattivarsi in qualsiasi momento effettuando l'accesso.",
+  "Soft Delete Users": "Eliminazione temporanea degli utenti",
+  "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Quando abilitato, gli utenti eliminati vengono disattivati invece di essere rimossi permanentemente. Questo preserva l'integrità referenziale per i plugin che fanno riferimento ai record degli utenti.",
+  "Profile": "Profilo"
 }
