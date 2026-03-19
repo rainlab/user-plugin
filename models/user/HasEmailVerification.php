@@ -55,6 +55,16 @@ trait HasEmailVerification
     }
 
     /**
+     * markEmailAsUnverified for the given user
+     */
+    public function markEmailAsUnverified(): bool
+    {
+        return $this->forceFill([
+            'activated_at' => null,
+        ])->save();
+    }
+
+    /**
      * getEmailForVerification
      */
     public function getEmailForVerification(): string
