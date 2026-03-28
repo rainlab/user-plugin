@@ -37,6 +37,9 @@ defaultSort:
 # Display checkboxes next to each record
 showCheckboxes: false
 
+# Custom view path for timeline design
+customViewPath: $/rainlab/user/views/partials/timeline
+
 # Toolbar widget configuration
 toolbar:
     # Partial for toolbar buttons

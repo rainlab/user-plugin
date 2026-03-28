@@ -38,3 +38,4 @@ v3.3.0: Adjusts the group navigation
 v3.3.1: Bump the JWT library version
 v3.3.2: Switch JWT algorithm to match Laravel key length
 v3.3.3: Adds Soft Delete Users to the settings page
+v3.4.0: Improves the activity timeline

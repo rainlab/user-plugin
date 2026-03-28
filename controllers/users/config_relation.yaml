@@ -8,6 +8,7 @@ activity_log:
     list: $/rainlab/user/models/userlog/columns.yaml
     readOnly: true
     view:
+        customViewPath: $/rainlab/user/views/partials/timeline
         showSorting: false
         defaultSort:
             column: created_at
