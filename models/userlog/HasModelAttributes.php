@@ -65,6 +65,42 @@ trait HasModelAttributes
     }
 
     /**
+     * getActorUserNameLinkedAttribute returns the `actor_user_name_linked` attribute
+     * as an HTML link when running in the backend
+     */
+    public function getActorUserNameLinkedAttribute()
+    {
+        $name = $this->actor_user_name;
+
+        if (App::runningInBackend() && $this->user) {
+            $url = Backend::url("user/users/preview/{$this->user->id}");
+            return '<a href="'.e($url).'">'.e($name).'</a>';
+        }
+
+        return e($name);
+    }
+
+    /**
+     * getActorAdminNameLinkedAttribute returns the `actor_admin_name_linked` attribute
+     * as an HTML link when running in the backend
+     */
+    public function getActorAdminNameLinkedAttribute()
+    {
+        $name = $this->actor_admin_name;
+
+        if ($name === __("You") || $name === __("System")) {
+            return e($name);
+        }
+
+        if (App::runningInBackend() && $this->created_user_id) {
+            $url = Backend::url("backend/users/update/{$this->created_user_id}");
+            return '<a href="'.e($url).'">'.e($name).'</a>';
+        }
+
+        return e($name);
+    }
+
+    /**
      * getUserBackendLinkageAttribute returns the `user_backend_linkage` attribute
      */
     public function getUserBackendLinkageAttribute()
