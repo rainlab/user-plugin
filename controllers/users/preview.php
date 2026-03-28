@@ -42,7 +42,7 @@
                 ->confirmMessage("Ban this user? It will prevent them from logging in and holding an active session.") ?>
         <?php endif ?>
 
-        <?php if (!$formModel->trashed()): ?> ?>
+        <?php if (!$formModel->trashed()): ?>
             <?= Ui::ajaxButton("Delete", 'onDelete')->icon('icon-delete')->outline()->danger()
                 ->confirmMessage("Are you sure?") ?>
         <?php endif ?>
@@ -82,7 +82,7 @@
     /**
      * @event rainlab.user.view.extendPreviewTabs
      * Provides an opportunity to add tabs to the user preview page in the admin panel.
-     * The event should return an array of `[Tab Name => ~/path/to/partial.php]`
+     * The event should return an array of `[Tab Name => ~/path/to/partial.php]`.
      *
      * Example usage:
      *
