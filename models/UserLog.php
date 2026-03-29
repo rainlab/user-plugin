@@ -33,6 +33,14 @@ class UserLog extends ExpandoModel
     const TYPE_SELF_VERIFY = 'self-verify';
     const TYPE_SELF_LOGIN = 'self-login';
     const TYPE_SELF_DELETE = 'self-delete';
+    const TYPE_SELF_PASSWORD_RESET = 'self-password-reset';
+    const TYPE_SELF_PASSWORD_CHANGE = 'self-password-change';
+    const TYPE_ADMIN_IMPERSONATE = 'admin-impersonate';
+    const TYPE_ADMIN_BAN = 'admin-ban';
+    const TYPE_ADMIN_UNBAN = 'admin-unban';
+    const TYPE_ADMIN_DELETE = 'admin-delete';
+    const TYPE_ADMIN_RESTORE = 'admin-restore';
+    const TYPE_ADMIN_CONVERT_GUEST = 'admin-convert-guest';
     const TYPE_INTERNAL_COMMENT = 'internal-comment';
 
     /**

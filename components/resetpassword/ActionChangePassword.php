@@ -5,6 +5,7 @@ use Request;
 use Validator;
 use ForbiddenException;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserLog;
 use RainLab\User\Helpers\User as UserHelper;
 
 /**
@@ -26,6 +27,8 @@ trait ActionChangePassword
         }
 
         $this->updateUserPassword($user, post());
+
+        UserLog::createRecord($user->getKey(), UserLog::TYPE_SELF_PASSWORD_CHANGE);
 
         if (Request::hasSession()) {
             Request::session()->put([

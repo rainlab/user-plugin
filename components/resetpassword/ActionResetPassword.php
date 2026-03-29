@@ -5,6 +5,7 @@ use Str;
 use Request;
 use Validator;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserLog;
 use RainLab\User\Helpers\User as UserHelper;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use ValidationException;
@@ -85,6 +86,8 @@ trait ActionResetPassword
          *
          */
         $this->fireSystemEvent('rainlab.user.passwordReset', [$user]);
+
+        UserLog::createRecord($user->getKey(), UserLog::TYPE_SELF_PASSWORD_RESET);
     }
 
     /**

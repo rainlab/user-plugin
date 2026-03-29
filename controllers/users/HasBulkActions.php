@@ -2,6 +2,7 @@
 
 use Flash;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserLog;
 use Exception;
 
 /**
@@ -18,6 +19,7 @@ trait HasBulkActions
             foreach ($checkedIds as $objectId) {
                 try {
                     if ($object = User::withTrashed()->find($objectId)) {
+                        UserLog::createSystemRecord($object->getKey(), UserLog::TYPE_ADMIN_DELETE);
                         $object->smartDelete();
                     }
                 }
@@ -42,6 +44,7 @@ trait HasBulkActions
                 try {
                     if ($object = User::withTrashed()->find($objectId)) {
                         $object->restore();
+                        UserLog::createSystemRecord($object->getKey(), UserLog::TYPE_ADMIN_RESTORE);
                     }
                 }
                 catch (Exception $ex) {
@@ -88,6 +91,7 @@ trait HasBulkActions
                 try {
                     if ($object = User::withTrashed()->find($objectId)) {
                         $object->ban();
+                        UserLog::createSystemRecord($object->getKey(), UserLog::TYPE_ADMIN_BAN);
                     }
                 }
                 catch (Exception $ex) {
@@ -111,6 +115,7 @@ trait HasBulkActions
                 try {
                     if ($object = User::withTrashed()->find($objectId)) {
                         $object->unban();
+                        UserLog::createSystemRecord($object->getKey(), UserLog::TYPE_ADMIN_UNBAN);
                     }
                 }
                 catch (Exception $ex) {
