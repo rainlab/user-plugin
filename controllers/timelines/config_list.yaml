@@ -40,6 +40,9 @@ showCheckboxes: false
 # Custom view path for timeline design
 customViewPath: $/rainlab/user/views/partials/timeline
 
+# Filter configuration
+filter: $/rainlab/user/models/userlog/scopes.yaml
+
 # Toolbar widget configuration
 toolbar:
     # Partial for toolbar buttons

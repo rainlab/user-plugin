@@ -1,0 +1,18 @@
+# ===================================
+#  Filter Scope Definitions
+# ===================================
+
+scopes:
+    is_system:
+        label: Admin Activity
+        type: switch
+        conditions:
+            - is_system = false
+            - is_system = true
+
+    type:
+        label: Activity Type
+        type: group
+        modelClass: RainLab\User\Models\UserLog
+        options: filterTypeOptions
+        conditions: type in (:filtered)

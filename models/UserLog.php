@@ -80,6 +80,30 @@ class UserLog extends ExpandoModel
     ];
 
     /**
+     * filterTypeOptions returns available type options for the list filter
+     */
+    public function filterTypeOptions()
+    {
+        return [
+            self::TYPE_NEW_USER => __("New User"),
+            self::TYPE_SELF_LOGIN => __("Login"),
+            self::TYPE_SET_EMAIL => __("Email Changed"),
+            self::TYPE_SET_PASSWORD => __("Password Changed"),
+            self::TYPE_SELF_PASSWORD_CHANGE => __("Password Changed (Self)"),
+            self::TYPE_SELF_PASSWORD_RESET => __("Password Reset"),
+            self::TYPE_SET_TWO_FACTOR => __("Two-Factor Changed"),
+            self::TYPE_SELF_VERIFY => __("Email Verified"),
+            self::TYPE_SELF_DELETE => __("Account Deleted"),
+            self::TYPE_ADMIN_IMPERSONATE => __("Impersonation"),
+            self::TYPE_ADMIN_BAN => __("Banned"),
+            self::TYPE_ADMIN_UNBAN => __("Unbanned"),
+            self::TYPE_ADMIN_DELETE => __("Deleted by Admin"),
+            self::TYPE_ADMIN_RESTORE => __("Restored by Admin"),
+            self::TYPE_ADMIN_CONVERT_GUEST => __("Guest Converted"),
+        ];
+    }
+
+    /**
      * createRecord adds a log for a user
      */
     public static function createRecord($userId, $type, $data = [])
