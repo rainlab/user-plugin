@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Models;
 
+use Event;
 use Request;
 use October\Rain\Database\ExpandoModel;
 
@@ -84,7 +85,7 @@ class UserLog extends ExpandoModel
      */
     public function filterTypeOptions()
     {
-        return [
+        $options = [
             self::TYPE_NEW_USER => __("New User"),
             self::TYPE_SELF_LOGIN => __("Login"),
             self::TYPE_SET_EMAIL => __("Email Changed"),
@@ -101,6 +102,15 @@ class UserLog extends ExpandoModel
             self::TYPE_ADMIN_RESTORE => __("Restored by Admin"),
             self::TYPE_ADMIN_CONVERT_GUEST => __("Guest Converted"),
         ];
+
+        $extended = Event::fire('rainlab.user.extendLogTypeOptions', [$this]);
+        foreach ((array) $extended as $extra) {
+            if (is_array($extra)) {
+                $options += $extra;
+            }
+        }
+
+        return $options;
     }
 
     /**
