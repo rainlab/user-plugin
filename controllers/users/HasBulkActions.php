@@ -3,6 +3,7 @@
 use Flash;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserLog;
+use ApplicationException;
 use Exception;
 
 /**
@@ -126,6 +127,51 @@ trait HasBulkActions
         }
 
         Flash::success(__("Unbanned the selected users"));
+        return $this->listRefresh();
+    }
+
+    /**
+     * onLoadMergeUsersForm shows the merge users popup with leader selection
+     */
+    public function onLoadMergeUsersForm()
+    {
+        $checkedIds = post('checked');
+
+        if (!is_array($checkedIds) || count($checkedIds) < 2) {
+            throw new ApplicationException(__("Please select at least two users to merge."));
+        }
+
+        $this->vars['mergeUsers'] = User::withTrashed()->whereIn('id', $checkedIds)->get();
+
+        return $this->makePartial('merge_users_form');
+    }
+
+    /**
+     * onMergeUsers merges selected users into the chosen leader
+     */
+    public function onMergeUsers()
+    {
+        $checkedIds = post('checked');
+        $leadingUserId = post('leading_user_id');
+
+        if (!$leadingUserId) {
+            throw new ApplicationException(__("Please select a leading user."));
+        }
+
+        $leadingUser = User::withTrashed()->findOrFail($leadingUserId);
+
+        foreach ((array) $checkedIds as $userId) {
+            if ($userId == $leadingUserId) {
+                continue;
+            }
+
+            if ($mergedUser = User::withTrashed()->find($userId)) {
+                $leadingUser->mergeUser($mergedUser);
+            }
+        }
+
+        Flash::success(__("Users have been merged successfully"));
+
         return $this->listRefresh();
     }
 }

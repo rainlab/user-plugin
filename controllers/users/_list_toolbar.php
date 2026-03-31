@@ -71,6 +71,15 @@
                     ->secondary()
                     ->confirmMessage("Are you sure?") ?>
             </li>
+            <li role="separator" class="dropdown-divider"></li>
+            <li>
+                <?= Ui::popupButton("Merge Users", 'onLoadMergeUsersForm')
+                    ->replaceCssClass('dropdown-item')
+                    ->listCheckedTrigger()
+                    ->listCheckedRequest()
+                    ->icon('icon-compress')
+                    ->secondary() ?>
+            </li>
             <?php /*
             <li role="separator" class="dropdown-divider"></li>
             <li>

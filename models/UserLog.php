@@ -42,6 +42,7 @@ class UserLog extends ExpandoModel
     const TYPE_ADMIN_DELETE = 'admin-delete';
     const TYPE_ADMIN_RESTORE = 'admin-restore';
     const TYPE_ADMIN_CONVERT_GUEST = 'admin-convert-guest';
+    const TYPE_ADMIN_MERGE = 'admin-merge';
     const TYPE_INTERNAL_COMMENT = 'internal-comment';
 
     /**
@@ -101,6 +102,7 @@ class UserLog extends ExpandoModel
             self::TYPE_ADMIN_DELETE => __("Deleted by Admin"),
             self::TYPE_ADMIN_RESTORE => __("Restored by Admin"),
             self::TYPE_ADMIN_CONVERT_GUEST => __("Guest Converted"),
+            self::TYPE_ADMIN_MERGE => __("User Merged"),
         ];
 
         $extended = Event::fire('rainlab.user.extendLogTypeOptions', [$this]);

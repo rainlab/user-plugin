@@ -231,6 +231,50 @@ class User extends Model implements Authenticatable, CanResetPassword
 
 
     //
+    // Merging
+    //
+
+    /**
+     * mergeUser absorbs another user's owned records into this user,
+     * then deletes the merged user. This user is the "leading" user
+     * and keeps all its own attributes.
+     */
+    public function mergeUser(User $mergedUser)
+    {
+        if ($this->getKey() === $mergedUser->getKey()) {
+            throw new \ApplicationException("Cannot merge a user with itself.");
+        }
+
+        /**
+         * @event rainlab.user.mergeUser
+         * Called when a user is being merged into another. Plugins should
+         * reassign any records owned by $mergedUser to $this (the leading user).
+         *
+         * Example usage:
+         *
+         *     Event::listen('rainlab.user.mergeUser', function($leadingUser, $mergedUser) {
+         *         Order::where('user_id', $mergedUser->id)
+         *             ->update(['user_id' => $leadingUser->id]);
+         *     });
+         */
+        Event::fire('rainlab.user.mergeUser', [$this, $mergedUser]);
+
+        // Reassign core relations
+        UserLog::where('user_id', $mergedUser->getKey())
+            ->update(['user_id' => $this->getKey()]);
+
+        // Log the merge
+        UserLog::createSystemRecord($this->getKey(), UserLog::TYPE_ADMIN_MERGE, [
+            'user_full_name' => $this->full_name,
+            'merged_user_email' => $mergedUser->email,
+            'merged_user_id' => $mergedUser->getKey(),
+        ]);
+
+        // Delete the merged user (force delete, no soft delete)
+        $mergedUser->forceDelete();
+    }
+
+    //
     // Events
     //
 
