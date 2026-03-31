@@ -20,9 +20,13 @@ navigation:
             link: "./activity-log.md"
             description: "logging and extending user activity events"
         -
+            title: "Merge Users"
+            link: "./merge-users.md"
+            description: "merging duplicate users into a single account"
+        -
             title: "Tailor Integration"
             link: "./tailor.md"
-            description: "guide on integration with TAilor"
+            description: "guide on integration with Tailor"
     -
         title: "Components"
         description: "lists all the available components found in this plugin"

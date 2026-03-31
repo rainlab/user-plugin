@@ -18,6 +18,7 @@ Events | Description
 **rainlab.user.update** | The user has updated their profile information.
 **rainlab.user.canDeleteUser** | Triggered before a user is deleted. This event should return true if the user has dependencies and should be soft deleted to retain those relationships and allow the user to be restored. Otherwise, it will be deleted forever.
 **rainlab.user.getNotificationVars** | Fires when sending a user notification to enable passing more variables to the email templates. Passes the `$user` model the template will be for.
+**rainlab.user.mergeUser** | Fires when a user is being merged into another. Plugins should reassign any records owned by the merged user. See the [Merge Users](./merge-users.md) article.
 **rainlab.user.view.extendListToolbar** | Fires when the user listing page's toolbar is rendered.
 **rainlab.user.view.extendPreviewToolbar** | Fires when the user preview page's toolbar is rendered.
 **rainlab.user.view.extendPreviewTabs** | Provides an opportunity to add tabs to the user preview page in the admin panel. The event should return an array of `[Tab Name => ~/path/to/partial.php]`
