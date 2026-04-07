@@ -122,7 +122,7 @@
   "Select a New User Group": "Selecteer een nieuwe gebruikersgroep",
   "You have been successfully logged out!": "U bent succesvol uitgelogd!",
   "These credentials do not match our records.": "Deze gegevens komen niet overeen met onze gegevens.",
-  "You": "Jou",
+  "You": "U",
   ":name created :user": ":name heeft :user aangemaakt",
   ":name has registered as a new user": ":name heeft zich geregistreerd als nieuwe gebruiker",
   ":name deleted their account": ":name heeft zijn account verwijderd",

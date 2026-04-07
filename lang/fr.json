@@ -122,7 +122,7 @@
   "Select a New User Group": "Sélectionnez un nouveau groupe d'utilisateurs",
   "You have been successfully logged out!": "Vous avez été déconnecté avec succès!",
   "These credentials do not match our records.": "Ces informations d'identification ne correspondent pas à nos dossiers.",
-  "You": "Toi",
+  "You": "Vous",
   ":name created :user": ":name a créé :user",
   ":name has registered as a new user": ":name s'est inscrit en tant que nouvel utilisateur",
   ":name deleted their account": ":name a supprimé son compte",
