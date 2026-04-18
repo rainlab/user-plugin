@@ -19,6 +19,11 @@
 <div class="loading-indicator-container mb-3">
     <div class="control-toolbar form-toolbar" data-control="toolbar">
         <?= Ui::button("Back", 'user/users')->icon('icon-arrow-left')->outline() ?>
+
+        <div class="toolbar-divider"></div>
+
+        <?= Ui::button("Edit", "user/users/update/{$formModel->id}")->icon('icon-pencil')->outline()->primary() ?>
+
         <?php if ($canDoGeneralActions): ?>
             <?php if ($this->user->hasAccess('rainlab.users.impersonate_user')): ?>
                 <div class="toolbar-divider"></div>
@@ -27,8 +32,6 @@
                     ->ajaxSuccess("window.open(data.baseUrl)") ?>
             <?php endif ?>
         <?php endif ?>
-
-        <?= Ui::button("Edit", "user/users/update/{$formModel->id}")->icon('icon-pencil')->outline()->primary() ?>
 
         <div class="toolbar-divider"></div>
 
