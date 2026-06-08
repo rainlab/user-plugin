@@ -40,3 +40,4 @@ v3.3.2: Switch JWT algorithm to match Laravel key length
 v3.3.3: Adds Soft Delete Users to the settings page
 v3.4.0: Improves the activity timeline
 v3.5.0: Adds feature to Merge Users, including Guest accounts
+v3.5.1: Update dependencies to latest versions
