@@ -23,12 +23,13 @@ class MigrateV1Command extends Command
      */
     public function handle()
     {
-        if (!Schema::hasTable('rainlab_user_mail_blockers')) {
-            $this->info("Table [rainlab_user_mail_blockers] is not found, nothing to migrate.");
+        if (!Schema::hasTable('user_throttle')) {
+            $this->info("No legacy tables found, nothing to migrate.");
             return;
         }
 
         Schema::dropIfExists('rainlab_user_mail_blockers');
+        Schema::dropIfExists('user_throttle');
 
         $columnsToPrune = [
             'name',
