@@ -46,6 +46,7 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        $this->app['translator']->addJsonPath(plugins_path('rainlab/user/lang'));
     }
 
     /**
