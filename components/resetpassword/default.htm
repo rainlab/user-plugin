@@ -19,13 +19,13 @@
 
     <div class="text-center pb-3">
         {% if __SELF__.hasInvite %}
-            <h1 class="h2 mb-3">Welcome!</h1>
+            <h1 class="h2 mb-3">{{ 'Welcome'|_ }}!</h1>
         {% elseif __SELF__.hasToken %}
-            <h1 class="h2 mb-3">Reset password</h1>
+            <h1 class="h2 mb-3">{{ 'Reset password'|_ }}</h1>
         {% else %}
-            <h1 class="h2 mb-3">Change password</h1>
+            <h1 class="h2 mb-3">{{ 'Change password'|_ }}</h1>
         {% endif %}
-        <h2 class="h5 fw-normal">Enter a new password.</h2>
+        <h2 class="h5 fw-normal">{{ 'Enter a new password.'|_ }}</h2>
     </div>
 
     {% if __SELF__.hasToken %}
@@ -38,9 +38,9 @@
                 type="password"
                 class="form-control"
                 id="inputCurrentPassword"
-                placeholder="Current Password"
+                placeholder="{{ 'Current Password'|_ }}"
             />
-            <label for="inputPassword">Current password</label>
+            <label for="inputPassword">{{ 'Current password'|_ }}</label>
         </div>
     {% endif %}
 
@@ -50,10 +50,10 @@
             type="password"
             class="form-control"
             id="inputPassword"
-            placeholder="Password"
+            placeholder="{{ 'Password'|_ }}"
             autocomplete="new-password"
         />
-        <label for="inputPassword">Password</label>
+        <label for="inputPassword">{{ 'Password'|_ }}</label>
     </div>
 
     <div class="form-floating my-3">
@@ -62,10 +62,10 @@
             type="password"
             class="form-control"
             id="inputPasswordConfirmation"
-            placeholder="Confirm Password"
+            placeholder="{{ 'Confirm Password'|_ }}"
             autocomplete="new-password"
         />
-        <label for="inputPasswordConfirmation">Confirm password</label>
+        <label for="inputPasswordConfirmation">{{ 'Confirm password'|_ }}</label>
     </div>
 
     <button
@@ -73,9 +73,9 @@
         data-attach-loading
         type="submit">
         {% if __SELF__.hasInvite %}
-            Set password
+        {{ 'Set password'|_ }}
         {% else %}
-            Reset password
+        {{ 'Reset password'|_ }}
         {% endif  %}
     </button>
 </form>
