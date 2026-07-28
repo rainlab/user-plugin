@@ -32,7 +32,7 @@
   "To reset this users password, enter a new password here.": "Per cambiare la password di questo utente, inserisci una nuova password quí",
   "Password Confirmation": "Conferma Password",
   "Enter the password again to confirm it.": "Inserisci nuovamente la password per confermare.",
-  "Username": "Username",
+  "Username": "Nome utente",
   "ID": "ID",
   "There are no user groups available.": "Non ci sono gruppi di utenti disponibili.",
   "Created IP Address": "Indirizzo IP creato",
@@ -50,7 +50,7 @@
   "History": "Storia",
   "Inactivated": "Disabilitato",
   "Unspecified": "Non specificato",
-  "Joined": "Joined",
+  "Joined": "Iscritto il",
   "Anonymous": "Anonimo",
   "Online now": "Online adesso",
   "Currently offline": "Al momento non collegato",
@@ -145,7 +145,7 @@
   "Admin Activity": "Attività amministrativa",
   "Activity Type": "Tipo di attività",
   "New User": "Nuovo utente",
-  "Login": "Login",
+  "Login": "Accesso",
   "Email Changed": "Indirizzo email modificato",
   "Password Changed": "Password modificata",
   "Password Changed (Self)": "Password modificata (da solo)",
@@ -165,5 +165,6 @@
   ":name created this user": ":name ha creato questo utente",
   ":name changed this user's email from :old_value to :new_value": ":name ha modificato l'email di questo utente da :old_value a :new_value",
   ":name changed this user's password": ":name ha modificato la password di questo utente",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Questo utente ha disattivato il suo account and e non vuole più apparire sul sito. Possono riattivarsi in qualsiasi momento effettuando l'accesso."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Questo utente ha disattivato il suo account and e non vuole più apparire sul sito. Possono riattivarsi in qualsiasi momento effettuando l'accesso.",
+  "We can't find a user with that email address.": "Non riusciamo a trovare un utente con quell'indirizzo email."
 }
