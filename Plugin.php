@@ -1,6 +1,7 @@
 <?php namespace RainLab\User;
 
 use App;
+use Lang;
 use Event;
 use Config;
 use Backend;
@@ -46,6 +47,10 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        // Register JSON translations on the frontend
+        if (!App::runningInBackend()) {
+            Lang::addJsonPath(plugins_path('rainlab/user/lang'));
+        }
     }
 
     /**
