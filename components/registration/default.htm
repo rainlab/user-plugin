@@ -3,8 +3,8 @@
 
     {% if __SELF__.canRegister %}
         <div class="text-center pb-3">
-            <h1 class="h2 mb-3">Create a new account</h1>
-            <h2 class="h5 fw-normal">Enter your information below</h2>
+            <h1 class="h2 mb-3">{{ 'Create a new account'|_ }}</h1>
+            <h2 class="h5 fw-normal">{{ 'Enter your information below'|_ }}</h2>
         </div>
 
         <div class="form-floating my-3">
@@ -13,10 +13,10 @@
                 type="text"
                 class="form-control"
                 id="inputFirstName"
-                placeholder="First name"
+                placeholder="{{ 'First name'|_ }}"
                 autocomplete="given-name"
             />
-            <label for="inputFirstName">First name</label>
+            <label for="inputFirstName">{{ 'First name'|_ }}</label>
         </div>
 
         <div class="form-floating my-3">
@@ -25,10 +25,10 @@
                 type="text"
                 class="form-control"
                 id="inputLastName"
-                placeholder="Last name"
+                placeholder="{{ 'Last name'|_ }}"
                 autocomplete="family-name"
             />
-            <label for="inputLastName">Last name</label>
+            <label for="inputLastName">{{ 'Last name'|_ }}</label>
         </div>
 
         <div class="form-floating my-3">
@@ -37,10 +37,10 @@
                 type="email"
                 class="form-control"
                 id="inputEmail"
-                placeholder="Email address"
+                placeholder="{{ 'Email address'|_ }}"
                 autocomplete="email"
             />
-            <label for="inputEmail">Email address</label>
+            <label for="inputEmail">{{ 'Email address'|_ }}</label>
         </div>
 
         <div class="form-floating my-3">
@@ -49,28 +49,28 @@
                 type="password"
                 class="form-control"
                 id="inputPassword"
-                placeholder="Password"
+                placeholder="{{ 'Password'|_ }}"
                 autocomplete="new-password"
             />
-            <label for="inputPassword">Password</label>
+            <label for="inputPassword">{{ 'Password'|_ }}</label>
         </div>
 
         <button
             class="btn btn-primary btn-lg w-100 py-2"
             data-attach-loading
             type="submit">
-            Create account
+            {{ 'Create account'|_ }}
         </button>
     {% else %}
         <div class="text-center pb-3">
-            <h1 class="h2 mb-3">Create a new account</h1>
-            <h2 class="h5 fw-normal">Registrations are currently disabled</h2>
+            <h1 class="h2 mb-3">{{ 'Create a new account'|_ }}</h1>
+            <h2 class="h5 fw-normal">{{ 'Registrations are currently disabled'|_ }}</h2>
         </div>
     {% endif %}
 
     <div class="text-center">
         <p class="mt-5 mb-1 text-body-secondary">
-            Already have an account? <a href="{{ 'account/login'|page }}">Sign in here</a>
+            {{ 'Already have an account?'|_ }} <a href="{{ 'account/login'|page }}">{{ 'Sign in here'|_ }}</a>
         </p>
     </div>
 </form>

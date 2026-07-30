@@ -4,8 +4,8 @@
             <input type="hidden" name="redirect" value="true" />
 
             <div class="text-center pb-3">
-                <h1 class="h2 mb-3">Sign in to your account</h1>
-                <h2 class="h5 fw-normal">Enter your email address and password</h2>
+                <h1 class="h2 mb-3">{{ 'Sign in to your account'|_ }}</h1>
+                <h2 class="h5 fw-normal">{{ 'Enter your email address and password'|_ }}</h2>
             </div>
 
             {% if __SELF__.showUsernameField %}
@@ -16,7 +16,7 @@
                         class="form-control"
                         id="inputUsername"
                     />
-                    <label for="inputEmail">Username</label>
+                    <label for="inputEmail">{{ 'Username'|_ }}</label>
                 </div>
             {% else %}
                 <div class="form-floating my-3">
@@ -28,7 +28,7 @@
                         placeholder="name@example.com"
                         oninput="document.getElementById('inputRecoverEmail').value = this.value"
                     />
-                    <label for="inputEmail">Email address</label>
+                    <label for="inputEmail">{{ 'Email address'|_ }}</label>
                 </div>
             {% endif %}
 
@@ -40,7 +40,7 @@
                     id="inputPassword"
                     placeholder="Password"
                 />
-                <label for="inputPassword">Password</label>
+                <label for="inputPassword">{{ 'Password'|_ }}</label>
             </div>
 
             <button
@@ -61,7 +61,7 @@
                             checked
                         />
                         <label class="form-check-label" for="inputRemember">
-                            Remember me
+                            {{ 'Remember me'|_ }}
                         </label>
                     </div>
                 </div>
@@ -71,9 +71,9 @@
         <div class="text-center">
             {% if __SELF__.canRegister %}
                 <p class="mt-5 mb-1 text-body-secondary">
-                    New user?
+                    {{ 'New user'|_ }}?
                     <a href="{{ 'account/register'|page }}">
-                        Create a new account
+                        {{ 'Create a new account'|_ }}
                     </a>
                 </p>
             {% endif %}
@@ -85,7 +85,7 @@
                         href="javascript:;"
                         data-bs-toggle="collapse"
                         data-bs-target=".login-collapse">
-                        Recover password
+                        {{ 'Recover password'|_ }}
                     </a>
                 </p>
             {% endif %}
@@ -99,8 +99,8 @@
             <input type="hidden" name="redirect" value="true" />
 
             <div class="text-center pb-3">
-                <h1 class="h2 mb-3">Recover password</h1>
-                <h2 class="h5 fw-normal">Enter your email address</h2>
+                <h1 class="h2 mb-3">{{ 'Recover password'|_ }}</h1>
+                <h2 class="h5 fw-normal">{{ 'Enter your email address'|_ }}</h2>
             </div>
 
             <div class="form-floating my-3">
@@ -111,25 +111,25 @@
                     id="inputRecoverEmail"
                     placeholder="name@example.com"
                 />
-                <label for="inputRecoverEmail">Email address</label>
+                <label for="inputRecoverEmail">{{ 'Email address'|_ }}</label>
             </div>
 
             <button
                 class="btn btn-primary btn-lg w-100 py-2"
                 data-attach-loading
                 type="submit">
-                Recover
+                {{ 'Recover'|_ }}
             </button>
         </form>
 
         <div class="text-center">
             <p class="mt-5 mb-3 text-body-secondary">
-                Remembered your password?
+                {{ 'Remembered your password?'|_ }}
                 <a
                     href="javascript:;"
                     data-bs-toggle="collapse"
                     data-bs-target=".login-collapse">
-                    Sign in again
+                    {{ 'Sign in again'|_ }}
                 </a>
             </p>
         </div>
@@ -142,7 +142,7 @@
             <input type="hidden" name="redirect" value="true" />
 
             <div class="text-center pb-2">
-                <h1 class="h2 mb-3">Enter the code found in your authenticator app</h1>
+                <h1 class="h2 mb-3">{{ 'Enter the code found in your authenticator app'|_ }}</h1>
             </div>
 
             <div class="form-floating my-3">
@@ -153,25 +153,25 @@
                     id="inputTwoFactorCode"
                     placeholder="name@example.com"
                 />
-                <label for="inputTwoFactorCode">Authentication code</label>
+                <label for="inputTwoFactorCode">{{ 'Authentication code'|_ }}</label>
             </div>
 
             <button
                 class="btn btn-primary btn-lg w-100 py-2"
                 data-attach-loading
                 type="submit">
-                Confirm
+                {{ 'Confirm'|_ }}
             </button>
         </form>
 
         <div class="text-center">
             <p class="mt-5 mb-3 text-body-secondary">
-                Lost device?
+                {{ 'Lost device'|_ }}?
                 <a
                     href="javascript:;"
                     data-bs-toggle="collapse"
                     data-bs-target=".two-factor-collapse">
-                    Use a recovery code
+                    {{ 'Use a recovery code'|_ }}
                 </a>
             </p>
         </div>
@@ -182,7 +182,7 @@
             <input type="hidden" name="redirect" value="true" />
 
             <div class="text-center pb-2">
-                <h1 class="h2 mb-3">Enter one of your emergency recovery codes</h1>
+                <h1 class="h2 mb-3">{{ 'Enter one of your emergency recovery codes'|_ }}</h1>
             </div>
 
             <div class="form-floating my-3">
@@ -193,25 +193,25 @@
                     id="inputTwoFactorRecoveryCode"
                     placeholder="name@example.com"
                 />
-                <label for="inputTwoFactorRecoveryCode">Recovery code</label>
+                <label for="inputTwoFactorRecoveryCode">{{ 'Recovery code'|_ }}</label>
             </div>
 
             <button
                 class="btn btn-primary btn-lg w-100 py-2"
                 data-attach-loading
                 type="submit">
-                Confirm
+                {{ 'Confirm'|_ }}
             </button>
         </form>
 
         <div class="text-center">
             <p class="mt-5 mb-3 text-body-secondary">
-                Found device?
+                {{ 'Found device'|_ }}?
                 <a
                     href="javascript:;"
                     data-bs-toggle="collapse"
                     data-bs-target=".two-factor-collapse">
-                    Use an authentication code
+                    {{ 'Use an authentication code'|_ }}
                 </a>
             </p>
         </div>
