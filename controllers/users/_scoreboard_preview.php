@@ -2,7 +2,7 @@
     <?php if ($avatarUrl = $formModel->getAvatarThumb(144)): ?>
         <div class="scoreboard-item thumbnail-value me-3">
             <img
-                src="<?= $avatarUrl ?>"
+                src="<?= e($avatarUrl) ?>"
                 class="img-thumbnail object-fit-cover"
                 alt="<?= e($formModel->full_name) ?>"
                 width="72"
