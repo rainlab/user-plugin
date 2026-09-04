@@ -82,7 +82,7 @@ Component | Purpose
 
 ### Session Component
 
-The `allowedUserGroups` property has been removed from the `Session` component. This can be supplemented by some Twig code:
+The `allowedUserGroups` property has been renamed to `allowUserGroups` on the `Session` component, the original name is still checked as a fallback. The same check is also available as Twig code:
 
 ```twig
 {% if not user.inGroup('premium-users') %}

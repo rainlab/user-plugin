@@ -10,6 +10,7 @@ use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\User;
+use RainLab\User\Models\UserGroup;
 use SystemException;
 
 /**
@@ -48,12 +49,21 @@ class Session extends ComponentBase
                 'title' => "Security Mode",
                 'description' => "Restricts access this page to either all users, logged in users, or logged out guests.",
                 'type' => 'dropdown',
+                'group' => "Security",
                 'default' => 'all',
                 'options' => [
                     'all' => "All",
                     'user' => "Users",
                     'guest' => "Guests"
                 ]
+            ],
+            'allowUserGroups' => [
+                'title' => "Allow Groups",
+                'description' => "Choose allowed groups or none to allow all groups.",
+                'placeholder' => '*',
+                'type' => 'set',
+                'group' => "Security",
+                'default' => []
             ],
             'redirect' => [
                 'title' => "Default Redirect",
@@ -62,10 +72,19 @@ class Session extends ComponentBase
                 'group' => "Redirects",
                 'default' => ''
             ],
+            'redirectGroup' => [
+                'title' => "Redirect Group",
+                'description' => "When user is not in a valid group, redirect to this CMS page.",
+                'type' => 'dropdown',
+                'group' => "Redirects",
+                'optionsMethod' => 'getOtherRedirectOptions',
+                'default' => ''
+            ],
             'checkToken' => [
                 'title' => "Check Bearer Token (JWT)",
                 'description' => "Check authentication using a verified bearer token.",
                 'type' => 'checkbox',
+                'group' => "API Mode",
                 'default' => 0,
                 'showExternalParam' => false
             ],
@@ -78,6 +97,22 @@ class Session extends ComponentBase
     public function getRedirectOptions()
     {
         return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+    }
+
+    /**
+     * getOtherRedirectOptions
+     */
+    public function getOtherRedirectOptions()
+    {
+        return [''=>'- default -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+    }
+
+    /**
+     * getAllowUserGroupsOptions
+     */
+    public function getAllowUserGroupsOptions()
+    {
+        return UserGroup::lists('name', 'code');
     }
 
     /**
@@ -195,18 +230,26 @@ class Session extends ComponentBase
      */
     protected function checkUserSecurityRedirect()
     {
-        // No security layer enabled
-        if ($this->checkUserSecurity()) {
-            return;
+        if (!$this->checkUserSecurity()) {
+            if (!$this->property('redirect')) {
+                throw new SystemException("The redirect property is empty on Session component.");
+            }
+
+            return Redirect::guest(
+                Cms::pageUrl($this->property('redirect'))
+            );
         }
 
-        if (!$this->property('redirect')) {
-            throw new SystemException("The redirect property is empty on Session component.");
-        }
+        if (!$this->checkUserGroupSecurity()) {
+            $groupRedirect = $this->property('redirectGroup') ?: $this->property('redirect');
+            if (!$groupRedirect) {
+                throw new SystemException("The redirectGroup property is empty on Session component.");
+            }
 
-        return Redirect::guest(
-            Cms::pageUrl($this->property('redirect'))
-        );
+            return Redirect::guest(
+                Cms::pageUrl($groupRedirect)
+            );
+        }
     }
 
     /**
@@ -228,6 +271,27 @@ class Session extends ComponentBase
         }
 
         return true;
+    }
+
+    /**
+     * checkUserGroupSecurity checks if the user can access this page based on their group.
+     */
+    protected function checkUserGroupSecurity(): bool
+    {
+        $allowUserGroups = (array) $this->property('allowUserGroups', [])
+            ?: (array) $this->property('allowedUserGroups', []);
+
+        if (!$allowUserGroups || !($user = $this->user())) {
+            return true;
+        }
+
+        foreach ($allowUserGroups as $groupCode) {
+            if ($user->inGroup($groupCode)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     //

@@ -37,6 +37,23 @@ redirect = "home"
 
 The `security` property can be user, guest or all. The `redirect` property refers to a page name to redirect to when access is restricted.
 
+## Group Restriction
+
+The `allowUserGroups` property restricts access to users belonging to the specified group codes, including their primary group. Leave it empty to allow all groups. The optional `redirectGroup` property is used when a signed in user is not in an allowed group, falling back to the `redirect` property when unset.
+
+```ini
+title = "Premium page"
+url = "/premium-only"
+
+[session]
+security = "user"
+redirect = "home"
+allowUserGroups[] = "premium"
+redirectGroup = "upgrade"
+```
+
+Guests are not checked by this property, use the `security` property to restrict guests.
+
 ## Route Restriction
 
 Access to routes can be restricted by applying the `AuthMiddleware`.
