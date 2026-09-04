@@ -61,7 +61,6 @@
   "Created": "Créé le",
   "User Groups": "Tous les groupes",
   "Allow Groups": "Autoriser les groupes",
-  "Choose allowed groups or none to allow all groups": "Choisissez les groupes autorisés ou aucun pour autoriser tous les groupes",
   "You are no longer impersonating a user.": "Vous n'êtes plus en train d'usurper l'identité d'un utilisateur",
   "User management form.": "Gestion du compte utilisateur.",
   "Manage User Groups": "Gérer les groupes",
@@ -189,5 +188,19 @@
   "Location is a business address": "L'emplacement est une adresse professionnelle",
   "Use this address by default.": "Utiliser cette adresse par défaut.",
   "Zip / Postal Code": "Code postal",
-  "Ban this user? It will prevent them from logging in and holding an active session.": "Bannir cet utilisateur ? Cela l'empêchera de se connecter et de maintenir une session active."
+  "Ban this user? It will prevent them from logging in and holding an active session.": "Bannir cet utilisateur ? Cela l'empêchera de se connecter et de maintenir une session active.",
+  "Choose allowed groups or none to allow all groups.": "Choisissez les groupes autorisés ou aucun pour autoriser tous les groupes.",
+  "Security Mode": "Mode de sécurité",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Restreint l'accès à cette page à tous les utilisateurs, aux utilisateurs connectés ou aux invités déconnectés.",
+  "Security": "Sécurité",
+  "All": "Tous",
+  "Guests": "Invités",
+  "Default Redirect": "Redirection par défaut",
+  "When access is denied, redirect to this CMS page.": "Lorsque l'accès est refusé, redirige vers cette page CMS.",
+  "Redirects": "Redirections",
+  "Redirect Group": "Redirection de groupe",
+  "When user is not in a valid group, redirect to this CMS page.": "Lorsque l'utilisateur n'appartient pas à un groupe valide, redirige vers cette page CMS.",
+  "Check Bearer Token (JWT)": "Vérifier le jeton Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "Vérifie l'authentification à l'aide d'un jeton Bearer vérifié.",
+  "API Mode": "Mode API"
 }

@@ -61,7 +61,6 @@
   "Created": "创建",
   "User Groups": "用户群组",
   "Allow Groups": "允许组",
-  "Choose allowed groups or none to allow all groups": "选择允许的组或无以允许所有组",
   "You are no longer impersonating a user.": "您不再模拟用户。",
   "User management form.": "用户信息.",
   "Manage User Groups": "管理用户组",
@@ -162,5 +161,19 @@
   "Soft Delete Users": "软删除用户",
   "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "启用后，已删除的用户将被停用而不是永久移除。这可以保持引用用户记录的插件的引用完整性。",
   "Profile": "个人资料",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "此用户已停用其帐户，不再希望出现在网站上。他们可以在任何时候通过重新登录来恢复帐户。"
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "此用户已停用其帐户，不再希望出现在网站上。他们可以在任何时候通过重新登录来恢复帐户。",
+  "Choose allowed groups or none to allow all groups.": "选择允许的组或无以允许所有组。",
+  "Security Mode": "安全模式",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "将此页面的访问限制为所有用户、已登录用户或未登录游客。",
+  "Security": "安全",
+  "All": "所有人",
+  "Guests": "游客",
+  "Default Redirect": "默认重定向",
+  "When access is denied, redirect to this CMS page.": "拒绝访问时，重定向到此 CMS 页面。",
+  "Redirects": "重定向",
+  "Redirect Group": "组重定向",
+  "When user is not in a valid group, redirect to this CMS page.": "当用户不在允许的组中时，重定向到此 CMS 页面。",
+  "Check Bearer Token (JWT)": "检查 Bearer 令牌 (JWT)",
+  "Check authentication using a verified bearer token.": "使用经过验证的 Bearer 令牌检查身份验证。",
+  "API Mode": "API 模式"
 }

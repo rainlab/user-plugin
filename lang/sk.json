@@ -61,7 +61,6 @@
   "Created": "Vytvorená",
   "User Groups": "Skupiny používateľov",
   "Allow Groups": "Povoliť skupiny",
-  "Choose allowed groups or none to allow all groups": "Vyberte povolené skupiny alebo žiadne, aby ste povolili všetky skupiny",
   "You are no longer impersonating a user.": "Už sa nezosobňujete používateľa.",
   "User management form.": "Formulár správy používateľov.",
   "Manage User Groups": "Správa skupín používateľov",
@@ -165,5 +164,19 @@
   ":name created this user": ":name vytvoril tohto používateľa",
   ":name changed this user's email from :old_value to :new_value": ":name zmenil e-mailovú adresu tohto používateľa z :old_value na :new_value",
   ":name changed this user's password": ":name zmenil heslo tohto používateľa",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Tento používateľ deaktivoval svoj účet a už nechce byť zobrazovaný na webe. Môže kedykoľvek obnoviť svoj účet, keď sa prihlási späť."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Tento používateľ deaktivoval svoj účet a už nechce byť zobrazovaný na webe. Môže kedykoľvek obnoviť svoj účet, keď sa prihlási späť.",
+  "Choose allowed groups or none to allow all groups.": "Vyberte povolené skupiny alebo žiadne, aby ste povolili všetky skupiny.",
+  "Security Mode": "Režim zabezpečenia",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Obmedzuje prístup na túto stránku pre všetkých používateľov, prihlásených používateľov alebo odhlásených hostí.",
+  "Security": "Zabezpečenie",
+  "All": "Všetci",
+  "Guests": "Hostia",
+  "Default Redirect": "Predvolené presmerovanie",
+  "When access is denied, redirect to this CMS page.": "Pri odopretí prístupu presmerovať na túto stránku CMS.",
+  "Redirects": "Presmerovania",
+  "Redirect Group": "Presmerovanie skupiny",
+  "When user is not in a valid group, redirect to this CMS page.": "Ak používateľ nie je v povolenej skupine, presmerovať na túto stránku CMS.",
+  "Check Bearer Token (JWT)": "Overiť token Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "Overí prihlásenie pomocou overeného tokenu Bearer.",
+  "API Mode": "Režim API"
 }

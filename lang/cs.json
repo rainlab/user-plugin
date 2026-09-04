@@ -61,7 +61,6 @@
   "Created": "Vytvořeno",
   "User Groups": "Uživatelské skupiny",
   "Allow Groups": "Povolit skupiny",
-  "Choose allowed groups or none to allow all groups": "Vyberte povolené skupiny nebo žádné, chcete-li povolit všechny skupiny",
   "You are no longer impersonating a user.": "Již se nevydáváte za jiného uživatele.",
   "User management form.": "Formulář správy uživatelů.",
   "Manage User Groups": "Správa uživatelských skupin",
@@ -181,5 +180,19 @@
   "The provided email verification code was invalid.": "Zadaný ověřovací kód e-mailu byl neplatný.",
   "The provided password does not match your current password.": "Zadané heslo neodpovídá vašemu aktuálnímu heslu.",
   "This password reset token is invalid. Please try recovering your password again.": "Tento token pro obnovení hesla je neplatný. Zkuste prosím obnovit heslo znovu.",
-  "Your account is locked. Please contact the site administrator.": "Váš účet je uzamčen. Kontaktujte prosím správce webu."
+  "Your account is locked. Please contact the site administrator.": "Váš účet je uzamčen. Kontaktujte prosím správce webu.",
+  "Choose allowed groups or none to allow all groups.": "Vyberte povolené skupiny nebo žádné, chcete-li povolit všechny skupiny.",
+  "Security Mode": "Režim zabezpečení",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Omezuje přístup na tuto stránku pro všechny uživatele, přihlášené uživatele nebo odhlášené hosty.",
+  "Security": "Zabezpečení",
+  "All": "Všichni",
+  "Guests": "Hosti",
+  "Default Redirect": "Výchozí přesměrování",
+  "When access is denied, redirect to this CMS page.": "Při odepření přístupu přesměrovat na tuto stránku CMS.",
+  "Redirects": "Přesměrování",
+  "Redirect Group": "Přesměrování skupiny",
+  "When user is not in a valid group, redirect to this CMS page.": "Pokud uživatel není v povolené skupině, přesměrovat na tuto stránku CMS.",
+  "Check Bearer Token (JWT)": "Ověřit token Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "Ověří přihlášení pomocí ověřeného tokenu Bearer.",
+  "API Mode": "Režim API"
 }

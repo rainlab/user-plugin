@@ -54,5 +54,20 @@
   "Do you really want to delete this user?": "Realmente desea eliminar éste usuario?",
   "Soft Delete Users": "Eliminación temporal de usuarios",
   "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Cuando está habilitado, los usuarios eliminados se desactivan en lugar de ser eliminados permanentemente. Esto preserva la integridad referencial para los plugins que hacen referencia a registros de usuarios.",
-  "Profile": "Perfil"
+  "Profile": "Perfil",
+  "Security Mode": "Modo de seguridad",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Restringe el acceso a esta página a todos los usuarios, usuarios conectados o invitados no conectados.",
+  "Security": "Seguridad",
+  "All": "Todos",
+  "Guests": "Invitados",
+  "Default Redirect": "Redirección predeterminada",
+  "When access is denied, redirect to this CMS page.": "Cuando se deniega el acceso, redirige a esta página del CMS.",
+  "Redirects": "Redirecciones",
+  "Redirect Group": "Redirección de grupo",
+  "When user is not in a valid group, redirect to this CMS page.": "Cuando el usuario no pertenece a un grupo válido, redirige a esta página del CMS.",
+  "Check Bearer Token (JWT)": "Comprobar token Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "Comprueba la autenticación mediante un token Bearer verificado.",
+  "API Mode": "Modo API",
+  "Allow Groups": "Permitir grupos",
+  "Choose allowed groups or none to allow all groups.": "Selecciona los grupos permitidos o ninguno para permitir todos los grupos."
 }

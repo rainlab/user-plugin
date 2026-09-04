@@ -60,7 +60,6 @@
   "Created": "Opprettet",
   "User Groups": "Brukergrupper",
   "Allow Groups": "Tillat grupper",
-  "Choose allowed groups or none to allow all groups": "Velg tillatte grupper eller ingen for å tillate alle grupper",
   "You are no longer impersonating a user.": "Du utgir deg ikke lenger for å være en annen bruker.",
   "User management form.": "Skjema for brukeradministrasjon.",
   "Manage User Groups": "Administrer brukergrupper",
@@ -120,5 +119,19 @@
   "Select a New User Group": "Velg en ny brukergruppe",
   "Soft Delete Users": "Myk sletting av brukere",
   "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Når aktivert blir slettede brukere deaktivert i stedet for å bli permanent fjernet. Dette bevarer referanseintegriteten for utvidelser som refererer til brukerposter.",
-  "Profile": "Profil"
+  "Profile": "Profil",
+  "Choose allowed groups or none to allow all groups.": "Velg tillatte grupper eller ingen for å tillate alle grupper.",
+  "Security Mode": "Sikkerhetsmodus",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Begrenser tilgangen til denne siden til alle brukere, innloggede brukere eller utloggede gjester.",
+  "Security": "Sikkerhet",
+  "All": "Alle",
+  "Guests": "Gjester",
+  "Default Redirect": "Standard omdirigering",
+  "When access is denied, redirect to this CMS page.": "Når tilgang nektes, omdiriger til denne CMS-siden.",
+  "Redirects": "Omdirigeringer",
+  "Redirect Group": "Gruppeomdirigering",
+  "When user is not in a valid group, redirect to this CMS page.": "Når brukeren ikke er i en gyldig gruppe, omdiriger til denne CMS-siden.",
+  "Check Bearer Token (JWT)": "Sjekk Bearer-token (JWT)",
+  "Check authentication using a verified bearer token.": "Sjekker autentisering med et verifisert bearer-token.",
+  "API Mode": "API-modus"
 }

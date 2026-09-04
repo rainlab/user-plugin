@@ -61,7 +61,6 @@
   "Created": "Utworzona",
   "User Groups": "Grupy użytkowników",
   "Allow Groups": "Zezwól grupom",
-  "Choose allowed groups or none to allow all groups": "Wybierz dozwolone grupy lub brak grup, aby umożliwić wszystkim grupom",
   "You are no longer impersonating a user.": "Nie wcielasz się już w użytkownika.",
   "User management form.": "Formularz zarządzania użytkownikiem.",
   "Manage User Groups": "Zarządzaj grupami użytkowników",
@@ -165,5 +164,19 @@
   ":name created this user": ":name utworzył tego użytkownika",
   ":name changed this user's email from :old_value to :new_value": ":name zmienił adres e-mail tego użytkownika z :old_value na :new_value",
   ":name changed this user's password": ":name zmienił hasło tego użytkownika",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ten użytkownik dezaktywował swoje konto i nie chce już wyświetlać się na stronie. Może przywrócić konto w dowolnym momencie, logując się z powrotem."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ten użytkownik dezaktywował swoje konto i nie chce już wyświetlać się na stronie. Może przywrócić konto w dowolnym momencie, logując się z powrotem.",
+  "Choose allowed groups or none to allow all groups.": "Wybierz dozwolone grupy lub brak grup, aby umożliwić wszystkim grupom.",
+  "Security Mode": "Tryb bezpieczeństwa",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Ogranicza dostęp do tej strony do wszystkich użytkowników, zalogowanych użytkowników lub wylogowanych gości.",
+  "Security": "Bezpieczeństwo",
+  "All": "Wszyscy",
+  "Guests": "Goście",
+  "Default Redirect": "Domyślne przekierowanie",
+  "When access is denied, redirect to this CMS page.": "Gdy dostęp jest zabroniony, przekieruj na tę stronę CMS.",
+  "Redirects": "Przekierowania",
+  "Redirect Group": "Przekierowanie grupy",
+  "When user is not in a valid group, redirect to this CMS page.": "Gdy użytkownik nie należy do dozwolonej grupy, przekieruj na tę stronę CMS.",
+  "Check Bearer Token (JWT)": "Sprawdź token Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "Sprawdza uwierzytelnianie za pomocą zweryfikowanego tokenu bearer.",
+  "API Mode": "Tryb API"
 }

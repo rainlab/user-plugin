@@ -61,7 +61,6 @@
   "Created": "Erstellt am",
   "User Groups": "Benutzergruppen",
   "Allow Groups": "Gruppen zulassen",
-  "Choose allowed groups or none to allow all groups": "Wählen Sie zugelassene Gruppen aus. Wird keine Gruppe ausgewhält sind alle zugelassen.",
   "You are no longer impersonating a user.": "Sie sind nicht mehr als diesen Benutzer angemeldet.",
   "User management form.": "Benutzerkontoverwaltung.",
   "Manage User Groups": "Benutzergruppen verwalten",
@@ -161,5 +160,19 @@
   "Guest Converted": "Gast konvertiert",
   "Soft Delete Users": "Benutzer vorläufig gelöscht",
   "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "Wenn diese Option aktiviert ist, werden gelöschte Benutzer deaktiviert, anstatt endgültig entfernt zu werden. Dadurch bleibt die referenzielle Integrität für Plugins erhalten, die auf Benutzerdatensätze zugreifen.",
-  "Profile": "Profil"
+  "Profile": "Profil",
+  "Choose allowed groups or none to allow all groups.": "Wählen Sie zugelassene Gruppen aus. Wird keine Gruppe ausgewhält sind alle zugelassen.",
+  "Security Mode": "Sicherheitsmodus",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Beschränkt den Zugriff auf diese Seite auf alle Benutzer, angemeldete Benutzer oder abgemeldete Gäste.",
+  "Security": "Sicherheit",
+  "All": "Jeder",
+  "Guests": "Gäste",
+  "Default Redirect": "Standard-Weiterleitung",
+  "When access is denied, redirect to this CMS page.": "Bei verweigertem Zugriff auf diese CMS-Seite weiterleiten.",
+  "Redirects": "Weiterleitungen",
+  "Redirect Group": "Gruppen-Weiterleitung",
+  "When user is not in a valid group, redirect to this CMS page.": "Wenn der Benutzer keiner zugelassenen Gruppe angehört, auf diese CMS-Seite weiterleiten.",
+  "Check Bearer Token (JWT)": "Bearer-Token (JWT) prüfen",
+  "Check authentication using a verified bearer token.": "Authentifizierung mit einem verifizierten Bearer-Token prüfen.",
+  "API Mode": "API-Modus"
 }

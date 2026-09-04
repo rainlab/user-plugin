@@ -61,7 +61,6 @@
   "Created": "Aangemaakt op",
   "User Groups": "Gebruikersgroepen",
   "Allow Groups": "Toegestane groepen",
-  "Choose allowed groups or none to allow all groups": "Kies toegelaten groepen of geen om alle groepen toe te laten",
   "You are no longer impersonating a user.": "U bent niet langer ingelogd als een andere gebruiker.",
   "User management form.": "Formulier voor gebruikersbeheer.",
   "Manage User Groups": "Gebruikersgroepen beheren",
@@ -186,5 +185,19 @@
   "System Message Template": "Systeemberichtsjabloon",
   "Select the mail template to send to the admins.": "Selecteer het e-mailsjabloon dat naar de beheerders wordt gestuurd.",
   "Notify Admin Group": "Beheerdersgroep voor notificaties",
-  "Specify the administrator group that should receive a notification when a new user joins.": "Selecteer de beheerdersgroep die een notificatie ontvangt wanneer een nieuwe gebruiker zich registreert."
+  "Specify the administrator group that should receive a notification when a new user joins.": "Selecteer de beheerdersgroep die een notificatie ontvangt wanneer een nieuwe gebruiker zich registreert.",
+  "Choose allowed groups or none to allow all groups.": "Kies toegelaten groepen of geen om alle groepen toe te laten.",
+  "Security Mode": "Beveiligingsmodus",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Beperkt de toegang tot deze pagina tot alle gebruikers, ingelogde gebruikers of uitgelogde gasten.",
+  "Security": "Beveiliging",
+  "All": "Alle",
+  "Guests": "Gasten",
+  "Default Redirect": "Standaard doorverwijzing",
+  "When access is denied, redirect to this CMS page.": "Wanneer de toegang wordt geweigerd, doorverwijzen naar deze CMS-pagina.",
+  "Redirects": "Doorverwijzingen",
+  "Redirect Group": "Groep doorverwijzing",
+  "When user is not in a valid group, redirect to this CMS page.": "Wanneer de gebruiker niet tot een geldige groep behoort, doorverwijzen naar deze CMS-pagina.",
+  "Check Bearer Token (JWT)": "Bearer-token (JWT) controleren",
+  "Check authentication using a verified bearer token.": "Controleert authenticatie met een geverifieerd bearer-token.",
+  "API Mode": "API-modus"
 }

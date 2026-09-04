@@ -61,7 +61,6 @@
   "Created": "أنشئت",
   "User Groups": "مجموعات الاعضاء",
   "Allow Groups": "السماح للمجموعات",
-  "Choose allowed groups or none to allow all groups": "اختر المجموعات المسموح بها أو لا تختارها للسماح لجميع المجموعات",
   "You are no longer impersonating a user.": "لم تعد تنتحل شخصية مستخدم.",
   "User management form.": "نموذج إدارة المستخدم.",
   "Manage User Groups": "إدارة مجموعات المستخدمين",
@@ -161,5 +160,19 @@
   "Guest Converted": "تم تحويل الضيف",
   "Soft Delete Users": "حذف المستخدمين بشكل مؤقت",
   "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "عند تفعيل هذه الخاصية، يتم تعطيل حسابات المستخدمين المحذوفين بدلاً من حذفها نهائياً. وهذا يحافظ على سلامة البيانات المرجعية للملحقات التي تشير إلى سجلات المستخدمين.",
-  "Profile": "حساب تعريفي"
+  "Profile": "حساب تعريفي",
+  "Choose allowed groups or none to allow all groups.": "اختر المجموعات المسموح بها أو لا تختارها للسماح لجميع المجموعات.",
+  "Security Mode": "وضع الأمان",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "يقيد الوصول إلى هذه الصفحة لجميع المستخدمين أو المستخدمين المسجلين دخولهم أو الضيوف.",
+  "Security": "الأمان",
+  "All": "الجميع",
+  "Guests": "ضيوف",
+  "Default Redirect": "إعادة التوجيه الافتراضية",
+  "When access is denied, redirect to this CMS page.": "عند رفض الوصول، يتم إعادة التوجيه إلى صفحة CMS هذه.",
+  "Redirects": "إعادة التوجيه",
+  "Redirect Group": "إعادة توجيه المجموعة",
+  "When user is not in a valid group, redirect to this CMS page.": "عندما لا يكون المستخدم ضمن مجموعة مسموح بها، يتم إعادة التوجيه إلى صفحة CMS هذه.",
+  "Check Bearer Token (JWT)": "التحقق من رمز Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "التحقق من المصادقة باستخدام رمز Bearer موثق.",
+  "API Mode": "وضع API"
 }

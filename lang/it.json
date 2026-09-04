@@ -61,7 +61,6 @@
   "Created": "Creato",
   "User Groups": "Gruppi di Utenti",
   "Allow Groups": "Consenti gruppi",
-  "Choose allowed groups or none to allow all groups": "Scegli i gruppi consentiti o nessuno per consentire tutti i gruppi",
   "You are no longer impersonating a user.": "Non stai più impersonificando un utente.",
   "User management form.": "Form di gestione account.",
   "Manage User Groups": "Gestisci Gruppi di Utenti",
@@ -166,5 +165,19 @@
   ":name changed this user's email from :old_value to :new_value": ":name ha modificato l'email di questo utente da :old_value a :new_value",
   ":name changed this user's password": ":name ha modificato la password di questo utente",
   "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Questo utente ha disattivato il suo account and e non vuole più apparire sul sito. Possono riattivarsi in qualsiasi momento effettuando l'accesso.",
-  "We can't find a user with that email address.": "Non riusciamo a trovare un utente con quell'indirizzo email."
+  "We can't find a user with that email address.": "Non riusciamo a trovare un utente con quell'indirizzo email.",
+  "Choose allowed groups or none to allow all groups.": "Scegli i gruppi consentiti o nessuno per consentire tutti i gruppi.",
+  "Security Mode": "Modalità di sicurezza",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Limita l'accesso a questa pagina a tutti gli utenti, agli utenti connessi o agli ospiti non connessi.",
+  "Security": "Sicurezza",
+  "All": "Tutti",
+  "Guests": "Anonimi",
+  "Default Redirect": "Reindirizzamento predefinito",
+  "When access is denied, redirect to this CMS page.": "Quando l'accesso viene negato, reindirizza a questa pagina CMS.",
+  "Redirects": "Reindirizzamenti",
+  "Redirect Group": "Reindirizzamento gruppo",
+  "When user is not in a valid group, redirect to this CMS page.": "Quando l'utente non appartiene a un gruppo valido, reindirizza a questa pagina CMS.",
+  "Check Bearer Token (JWT)": "Verifica token Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "Verifica l'autenticazione utilizzando un token Bearer verificato.",
+  "API Mode": "Modalità API"
 }

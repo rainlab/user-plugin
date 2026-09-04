@@ -61,7 +61,6 @@
   "Created": "Dibuat",
   "User Groups": "Grup Pengguna",
   "Allow Groups": "Izinkan grup",
-  "Choose allowed groups or none to allow all groups": "Pilih grup yang diizinkan, atau pilih tidak ada untuk mengizinkan semua grup",
   "You are no longer impersonating a user.": "Anda tidak lagi bertidak sebagai pengguna.",
   "User management form.": "Formulir manajemen pengguna.",
   "Manage User Groups": "Kelola Grup Pengguna",
@@ -165,5 +164,19 @@
   ":name created this user": ":name membuat pengguna ini",
   ":name changed this user's email from :old_value to :new_value": ":name mengubah alamat email pengguna ini dari :old_value menjadi :new_value",
   ":name changed this user's password": ":name mengubah kata sandi pengguna ini",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Pengguna ini telah menonaktifkan akunnya dan tidak ingin terlihat lagi di situs ini. Mereka dapat memulihkan akun mereka kapan saja dengan login kembali."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Pengguna ini telah menonaktifkan akunnya dan tidak ingin terlihat lagi di situs ini. Mereka dapat memulihkan akun mereka kapan saja dengan login kembali.",
+  "Choose allowed groups or none to allow all groups.": "Pilih grup yang diizinkan, atau pilih tidak ada untuk mengizinkan semua grup.",
+  "Security Mode": "Mode Keamanan",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Membatasi akses halaman ini untuk semua pengguna, pengguna yang masuk, atau tamu.",
+  "Security": "Keamanan",
+  "All": "Semua",
+  "Guests": "Tamu",
+  "Default Redirect": "Pengalihan Bawaan",
+  "When access is denied, redirect to this CMS page.": "Saat akses ditolak, alihkan ke halaman CMS ini.",
+  "Redirects": "Pengalihan",
+  "Redirect Group": "Pengalihan Grup",
+  "When user is not in a valid group, redirect to this CMS page.": "Saat pengguna tidak berada dalam grup yang diizinkan, alihkan ke halaman CMS ini.",
+  "Check Bearer Token (JWT)": "Periksa Bearer Token (JWT)",
+  "Check authentication using a verified bearer token.": "Periksa autentikasi menggunakan bearer token terverifikasi.",
+  "API Mode": "Mode API"
 }

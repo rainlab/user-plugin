@@ -61,7 +61,6 @@
   "Created": "Létrehozva",
   "User Groups": "Csoportok",
   "Allow Groups": "Csoportok engedélyezése",
-  "Choose allowed groups or none to allow all groups": "Válassza ki az engedélyezni kívánt csoportokat vagy egyiket sem az összes elfogadásához.",
   "You are no longer impersonating a user.": "Sikeresen visszajelentkezett az eredeti profiljába.",
   "User management form.": "Felhasználó kezelési űrlap.",
   "Manage User Groups": "Csoportok kezelése",
@@ -165,5 +164,19 @@
   ":name created this user": ":name létrehozta ezt a felhasználót",
   ":name changed this user's email from :old_value to :new_value": ":name megváltoztatta ennek a felhasználónak az e-mail-címét erről: :old_value, erre: :new_value",
   ":name changed this user's password": ":name megváltoztatta ennek a felhasználónak a jelszavát",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Amennyiben nem akarnak megjelenni a weboldalon, úgy deaktiválhatják a saját fiókjukat. Bármikor újra engedélyezhetik, ha újra sikeresen bejelentkeznek a weboldalra."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Amennyiben nem akarnak megjelenni a weboldalon, úgy deaktiválhatják a saját fiókjukat. Bármikor újra engedélyezhetik, ha újra sikeresen bejelentkeznek a weboldalra.",
+  "Choose allowed groups or none to allow all groups.": "Válassza ki az engedélyezni kívánt csoportokat vagy egyiket sem az összes elfogadásához.",
+  "Security Mode": "Biztonsági mód",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Az oldal elérését minden felhasználóra, bejelentkezett felhasználókra vagy vendégekre korlátozza.",
+  "Security": "Biztonság",
+  "All": "Mindenki",
+  "Guests": "Vendégek",
+  "Default Redirect": "Alapértelmezett átirányítás",
+  "When access is denied, redirect to this CMS page.": "Hozzáférés megtagadása esetén átirányítás erre a CMS oldalra.",
+  "Redirects": "Átirányítások",
+  "Redirect Group": "Csoport átirányítás",
+  "When user is not in a valid group, redirect to this CMS page.": "Ha a felhasználó nem tagja engedélyezett csoportnak, átirányítás erre a CMS oldalra.",
+  "Check Bearer Token (JWT)": "Bearer token (JWT) ellenőrzése",
+  "Check authentication using a verified bearer token.": "Hitelesítés ellenőrzése egy megerősített bearer token használatával.",
+  "API Mode": "API mód"
 }

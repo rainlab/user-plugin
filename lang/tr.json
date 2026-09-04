@@ -61,7 +61,6 @@
   "Created": "Oluşturulma",
   "User Groups": "Üye Grupları",
   "Allow Groups": "Gruplara izin ver",
-  "Choose allowed groups or none to allow all groups": "İzin verilecek grupları seçin, veya \"hiçbiri\" seçerek tüm gruplara izin verin.",
   "You are no longer impersonating a user.": "Artık üye gibi gezinmiyorsunuz. Kendi hesabınızı kullanabilirsiniz.",
   "User management form.": "Üye yönetimi formu.",
   "Manage User Groups": "Üye Gruplarını Yönet",
@@ -165,5 +164,19 @@
   ":name created this user": ":name bu kullanıcıyı oluşturdu",
   ":name changed this user's email from :old_value to :new_value": ":name, bu kullanıcının e-posta adresini :old_value adresinden :new_value adresine değiştirdi",
   ":name changed this user's password": ":name, bu kullanıcının şifresini değiştirdi",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Üye hesabını pasifleştirmiş ve bu sitede görünmek istemiyor. Tekrar hesabına giriş yaparak hesabını istediği zaman aktifleştirebilir."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Üye hesabını pasifleştirmiş ve bu sitede görünmek istemiyor. Tekrar hesabına giriş yaparak hesabını istediği zaman aktifleştirebilir.",
+  "Choose allowed groups or none to allow all groups.": "İzin verilecek grupları seçin, veya \"hiçbiri\" seçerek tüm gruplara izin verin.",
+  "Security Mode": "Güvenlik Modu",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Bu sayfaya erişimi tüm kullanıcılara, giriş yapmış kullanıcılara veya misafirlere kısıtlar.",
+  "Security": "Güvenlik",
+  "All": "Hepsi",
+  "Guests": "Misafirler",
+  "Default Redirect": "Varsayılan Yönlendirme",
+  "When access is denied, redirect to this CMS page.": "Erişim reddedildiğinde bu CMS sayfasına yönlendir.",
+  "Redirects": "Yönlendirmeler",
+  "Redirect Group": "Grup Yönlendirmesi",
+  "When user is not in a valid group, redirect to this CMS page.": "Kullanıcı geçerli bir grupta değilse bu CMS sayfasına yönlendir.",
+  "Check Bearer Token (JWT)": "Bearer Token (JWT) Denetle",
+  "Check authentication using a verified bearer token.": "Doğrulanmış bir bearer token kullanarak kimlik doğrulamasını denetler.",
+  "API Mode": "API Modu"
 }

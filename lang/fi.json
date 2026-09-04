@@ -61,7 +61,6 @@
   "Created": "Luotu",
   "User Groups": "Käyttäjäryhmät",
   "Allow Groups": "Salli ryhmät",
-  "Choose allowed groups or none to allow all groups": "Valitse sallitut ryhmät tai jätä tyhjäksi salliaaksesi kaikki ryhmät.",
   "You are no longer impersonating a user.": "Et ole enää käyttäjän roolissa.",
   "User management form.": "Käyttäjän hallintalomake.",
   "Manage User Groups": "Hallitse käyttäjäryhmiä",
@@ -164,5 +163,19 @@
   "Profile": "Profiili",
   ":name created this user": ":name loi tämän käyttäjän",
   ":name changed this user's email from :old_value to :new_value": ":name vaihtoi tämän käyttäjän sähköpostiosoitteen arvosta :old_value arvoon :new_value",
-  ":name changed this user's password": ":name vaihtoi tämän käyttäjän salasanan"
+  ":name changed this user's password": ":name vaihtoi tämän käyttäjän salasanan",
+  "Choose allowed groups or none to allow all groups.": "Valitse sallitut ryhmät tai jätä tyhjäksi salliaaksesi kaikki ryhmät.",
+  "Security Mode": "Suojaustila",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Rajoittaa pääsyn tälle sivulle kaikille käyttäjille, kirjautuneille käyttäjille tai kirjautumattomille vieraille.",
+  "Security": "Suojaus",
+  "All": "Kaikki",
+  "Guests": "Vieraat",
+  "Default Redirect": "Oletusuudelleenohjaus",
+  "When access is denied, redirect to this CMS page.": "Kun pääsy evätään, ohjataan tälle CMS-sivulle.",
+  "Redirects": "Uudelleenohjaukset",
+  "Redirect Group": "Ryhmän uudelleenohjaus",
+  "When user is not in a valid group, redirect to this CMS page.": "Kun käyttäjä ei kuulu sallittuun ryhmään, ohjataan tälle CMS-sivulle.",
+  "Check Bearer Token (JWT)": "Tarkista Bearer-tunnus (JWT)",
+  "Check authentication using a verified bearer token.": "Tarkistaa todennuksen vahvistetulla Bearer-tunnuksella.",
+  "API Mode": "API-tila"
 }

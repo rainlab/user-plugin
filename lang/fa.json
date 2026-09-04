@@ -61,7 +61,6 @@
   "Created": "تاریخ ایجاد",
   "User Groups": "گروه های کاربر",
   "Allow Groups": "اجازه دادن به گروه ها",
-  "Choose allowed groups or none to allow all groups": "گروه های مجاز یا هیچکدام را برای اجازه دادن به همه گروه ها انتخاب کنید",
   "You are no longer impersonating a user.": "دیگر در نقشِ سایر کاربران نیستید.",
   "User management form.": "فرم مدیریت کاربران.",
   "Manage User Groups": "مدیریت گروه‌های کاربران",
@@ -165,5 +164,19 @@
   ":name created this user": ":name این کاربر را ایجاد کرد",
   ":name changed this user's email from :old_value to :new_value": ":name آدرس ایمیل این کاربر را از :old_value به :new_value تغییر داد",
   ":name changed this user's password": ":name رمز عبور این کاربر را تغییر داد",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "این کاربر حساب خود را غیر فعال کرده است و علاقه ای به ادامه فعالیت در سایت را ندارد. کاربران با ورود مجدد به سایت میتوانند حساب خود را فعال کنند."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "این کاربر حساب خود را غیر فعال کرده است و علاقه ای به ادامه فعالیت در سایت را ندارد. کاربران با ورود مجدد به سایت میتوانند حساب خود را فعال کنند.",
+  "Choose allowed groups or none to allow all groups.": "گروه های مجاز یا هیچکدام را برای اجازه دادن به همه گروه ها انتخاب کنید.",
+  "Security Mode": "حالت امنیتی",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "دسترسی به این صفحه را به همه کاربران، کاربران وارد شده یا میهمان‌ها محدود می‌کند.",
+  "Security": "امنیت",
+  "All": "همه",
+  "Guests": "میهمان ها",
+  "Default Redirect": "تغییر مسیر پیش‌فرض",
+  "When access is denied, redirect to this CMS page.": "در صورت رد دسترسی، به این صفحه CMS هدایت می‌شود.",
+  "Redirects": "تغییر مسیرها",
+  "Redirect Group": "تغییر مسیر گروه",
+  "When user is not in a valid group, redirect to this CMS page.": "اگر کاربر در گروه مجاز نباشد، به این صفحه CMS هدایت می‌شود.",
+  "Check Bearer Token (JWT)": "بررسی توکن Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "بررسی احراز هویت با استفاده از توکن Bearer تأیید شده.",
+  "API Mode": "حالت API"
 }

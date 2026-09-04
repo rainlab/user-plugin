@@ -61,7 +61,6 @@
   "Created": "Skapat",
   "User Groups": "Användargrupper",
   "Allow Groups": "Tillåt grupper",
-  "Choose allowed groups or none to allow all groups": "Välj tillåtna grupper eller ingen för att tillåta alla grupper",
   "You are no longer impersonating a user.": "Du personifierar inte längre en användare.",
   "User management form.": "Användarhanteringsformulär.",
   "Manage User Groups": "Hantera användargrupper",
@@ -165,5 +164,19 @@
   ":name created this user": ":name skapade denna användare",
   ":name changed this user's email from :old_value to :new_value": ":name har ändrat e-postadressen för denna användare från :old_value till :new_value",
   ":name changed this user's password": ":name har ändrat lösenordet för denna användare",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Den här användaren har inaktiverat sitt konto och vill inte längre visas på webbplatsen. De kan återställa sitt konto när som helst genom att logga in igen. "
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Den här användaren har inaktiverat sitt konto och vill inte längre visas på webbplatsen. De kan återställa sitt konto när som helst genom att logga in igen. ",
+  "Choose allowed groups or none to allow all groups.": "Välj tillåtna grupper eller ingen för att tillåta alla grupper.",
+  "Security Mode": "Säkerhetsläge",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Begränsar åtkomsten till denna sida till alla användare, inloggade användare eller utloggade gäster.",
+  "Security": "Säkerhet",
+  "All": "Alla",
+  "Guests": "Gäster",
+  "Default Redirect": "Standardomdirigering",
+  "When access is denied, redirect to this CMS page.": "När åtkomst nekas, omdirigera till denna CMS-sida.",
+  "Redirects": "Omdirigeringar",
+  "Redirect Group": "Gruppomdirigering",
+  "When user is not in a valid group, redirect to this CMS page.": "När användaren inte tillhör en giltig grupp, omdirigera till denna CMS-sida.",
+  "Check Bearer Token (JWT)": "Kontrollera Bearer-token (JWT)",
+  "Check authentication using a verified bearer token.": "Kontrollerar autentisering med en verifierad bearer-token.",
+  "API Mode": "API-läge"
 }

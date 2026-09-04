@@ -61,7 +61,6 @@
   "Created": "Ustvarjeno",
   "User Groups": "Skupine uporabnikov",
   "Allow Groups": "Dovoljenje za skupine",
-  "Choose allowed groups or none to allow all groups": "Določite, katere skupine lahko dostopajo do te strani. Če ne izberete nobene, imajo dovoljenje vse skupine.",
   "You are no longer impersonating a user.": "Uporabnika ne impersonirate več.",
   "User management form.": "Upravljanje uporabnika.",
   "Manage User Groups": "Upravljanje uporabniških skupin",
@@ -165,5 +164,19 @@
   ":name created this user": ":name je ustvaril tega uporabnika",
   ":name changed this user's email from :old_value to :new_value": ":name je spremenil e-poštni naslov tega uporabnika iz :old_value v :new_value",
   ":name changed this user's password": ":name je spremenil geslo tega uporabnika",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ta uporabnik je deaktiviral svoj račun in se ne želi več pojavljati na spletni strani. Svoj račun lahko kadarkoli obnovi s prijavo."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Ta uporabnik je deaktiviral svoj račun in se ne želi več pojavljati na spletni strani. Svoj račun lahko kadarkoli obnovi s prijavo.",
+  "Choose allowed groups or none to allow all groups.": "Določite, katere skupine lahko dostopajo do te strani. Če ne izberete nobene, imajo dovoljenje vse skupine.",
+  "Security Mode": "Varnostni način",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Omeji dostop do te strani na vse uporabnike, prijavljene uporabnike ali odjavljene goste.",
+  "Security": "Varnost",
+  "All": "Vsi",
+  "Guests": "Gosti",
+  "Default Redirect": "Privzeta preusmeritev",
+  "When access is denied, redirect to this CMS page.": "Ko je dostop zavrnjen, preusmeri na to CMS stran.",
+  "Redirects": "Preusmeritve",
+  "Redirect Group": "Preusmeritev skupine",
+  "When user is not in a valid group, redirect to this CMS page.": "Ko uporabnik ni v veljavni skupini, preusmeri na to CMS stran.",
+  "Check Bearer Token (JWT)": "Preveri žeton Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "Preveri avtentikacijo s preverjenim žetonom bearer.",
+  "API Mode": "Način API"
 }

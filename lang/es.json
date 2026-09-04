@@ -61,7 +61,6 @@
   "Created": "Creado",
   "User Groups": "Grupos de usuarios",
   "Allow Groups": "Permitir grupos",
-  "Choose allowed groups or none to allow all groups": "Selecciona los grupos permitidos o ninguno para permitir todos los grupos",
   "You are no longer impersonating a user.": "Has dejado de personificar al usuario.",
   "User management form.": "Formulario para gestionar datos del usuario.",
   "Manage User Groups": "Administrar grupos",
@@ -165,5 +164,19 @@
   ":name created this user": ":name creó este usuario",
   ":name changed this user's email from :old_value to :new_value": ":name cambió el correo electrónico de este usuario de :old_value a :new_value",
   ":name changed this user's password": ":name cambió la contraseña de este usuario",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Este usuario tiene desactivado su perfil y  no quiere aparecer en el sitio. Los usuarios pueden reactivar su perfil en cualquier momento iniciando sesión nuevamente."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "Este usuario tiene desactivado su perfil y  no quiere aparecer en el sitio. Los usuarios pueden reactivar su perfil en cualquier momento iniciando sesión nuevamente.",
+  "Choose allowed groups or none to allow all groups.": "Selecciona los grupos permitidos o ninguno para permitir todos los grupos.",
+  "Security Mode": "Modo de seguridad",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Restringe el acceso a esta página a todos los usuarios, usuarios conectados o invitados no conectados.",
+  "Security": "Seguridad",
+  "All": "Todos",
+  "Guests": "Invitados",
+  "Default Redirect": "Redirección predeterminada",
+  "When access is denied, redirect to this CMS page.": "Cuando se deniega el acceso, redirige a esta página del CMS.",
+  "Redirects": "Redirecciones",
+  "Redirect Group": "Redirección de grupo",
+  "When user is not in a valid group, redirect to this CMS page.": "Cuando el usuario no pertenece a un grupo válido, redirige a esta página del CMS.",
+  "Check Bearer Token (JWT)": "Comprobar token Bearer (JWT)",
+  "Check authentication using a verified bearer token.": "Comprueba la autenticación mediante un token Bearer verificado.",
+  "API Mode": "Modo API"
 }

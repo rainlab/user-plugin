@@ -61,7 +61,6 @@
   "Created": "Дата создания",
   "User Groups": "Группы пользователей",
   "Allow Groups": "Разрешённые группы",
-  "Choose allowed groups or none to allow all groups": "Выберите разрешённые группы или ничего, чтобы разрешить все",
   "You are no longer impersonating a user.": "Вы больше не представлены как другой пользователь.",
   "User management form.": "Управление формой.",
   "Manage User Groups": "Управление группами пользователей",
@@ -182,5 +181,19 @@
   "Edit": "Редактировать",
   "View User": "Просмотр данных пользователя",
   "Refresh": "Обновить",
-  "Secondary Groups": "Дополнительные группы"
+  "Secondary Groups": "Дополнительные группы",
+  "Choose allowed groups or none to allow all groups.": "Выберите разрешённые группы или ничего, чтобы разрешить все.",
+  "Security Mode": "Режим безопасности",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Ограничивает доступ к этой странице для всех пользователей, авторизованных пользователей или гостей.",
+  "Security": "Безопасность",
+  "All": "Все",
+  "Guests": "Гости",
+  "Default Redirect": "Перенаправление по умолчанию",
+  "When access is denied, redirect to this CMS page.": "При отказе в доступе перенаправлять на эту страницу CMS.",
+  "Redirects": "Перенаправления",
+  "Redirect Group": "Перенаправление группы",
+  "When user is not in a valid group, redirect to this CMS page.": "Если пользователь не входит в разрешённую группу, перенаправлять на эту страницу CMS.",
+  "Check Bearer Token (JWT)": "Проверять Bearer-токен (JWT)",
+  "Check authentication using a verified bearer token.": "Проверяет аутентификацию с помощью подтверждённого Bearer-токена.",
+  "API Mode": "Режим API"
 }

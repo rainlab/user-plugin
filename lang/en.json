@@ -62,7 +62,6 @@
   "Created": "Created",
   "User Groups": "User Groups",
   "Allow Groups": "Allow Groups",
-  "Choose allowed groups or none to allow all groups": "Choose allowed groups or none to allow all groups",
   "You are no longer impersonating a user.": "You are no longer impersonating a user.",
   "User management form.": "User management form.",
   "Manage User Groups": "Manage User Groups",
@@ -162,5 +161,19 @@
   "Guest Converted": "Guest Converted",
   "Soft Delete Users": "Soft Delete Users",
   "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.": "When enabled, deleted users are deactivated instead of being permanently removed. This preserves referential integrity for plugins that reference user records.",
-  "Profile": "Profile"
+  "Profile": "Profile",
+  "Choose allowed groups or none to allow all groups.": "Choose allowed groups or none to allow all groups.",
+  "Security Mode": "Security Mode",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "Restricts access this page to either all users, logged in users, or logged out guests.",
+  "Security": "Security",
+  "All": "All",
+  "Guests": "Guests",
+  "Default Redirect": "Default Redirect",
+  "When access is denied, redirect to this CMS page.": "When access is denied, redirect to this CMS page.",
+  "Redirects": "Redirects",
+  "Redirect Group": "Redirect Group",
+  "When user is not in a valid group, redirect to this CMS page.": "When user is not in a valid group, redirect to this CMS page.",
+  "Check Bearer Token (JWT)": "Check Bearer Token (JWT)",
+  "Check authentication using a verified bearer token.": "Check authentication using a verified bearer token.",
+  "API Mode": "API Mode"
 }

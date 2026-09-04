@@ -61,7 +61,6 @@
   "Created": "නිර්මාණය කළා",
   "User Groups": "පරිශීලක කණ්ඩායම්",
   "Allow Groups": "කණ්ඩායම් වලට ඉඩ දෙන්න",
-  "Choose allowed groups or none to allow all groups": "සියලුම කණ්ඩායම්වලට ඉඩ දීමට අවසර දී ඇති කණ්ඩායම් හෝ කිසිවෙකුට ඉඩ නොදෙන්න",
   "You are no longer impersonating a user.": "ඔබ තවදුරටත් පරිශීලකයෙකු ලෙස පෙනී සිටින්නේ නැත.",
   "User management form.": "පරිශීලක කළමනාකරණ පෝරමය.",
   "Manage User Groups": "පරිශීලක කණ්ඩායම් කළමනාකරණය කරන්න",
@@ -178,5 +177,19 @@
   "The user activates their own account using mail.": "පරිශීලකයා තැපෑල භාවිතයෙන් තමන්ගේම ගිණුම සක්රිය කරයි.",
   "Administrator": "පරිපාලක",
   "Only an Administrator can activate a user.": "පරිශීලකයෙකු සක්‍රිය කළ හැක්කේ පරිපාලකයෙකුට පමණි.",
-  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "මෙම පරිශීලකයා ඔවුන්ගේ ගිණුම අක්‍රිය කර ඇති අතර තවදුරටත් අඩවියේ පෙනී සිටීමට අවශ්‍ය නැත. ඔවුන්ට නැවත පුරනය වීමෙන් ඕනෑම වේලාවක ඔවුන්ගේ ගිණුම ප්‍රතිසාධනය කළ හැක."
+  "This user has deactivated their account and no longer wants to appear on the site. They can restore their account at any time by signing back in.": "මෙම පරිශීලකයා ඔවුන්ගේ ගිණුම අක්‍රිය කර ඇති අතර තවදුරටත් අඩවියේ පෙනී සිටීමට අවශ්‍ය නැත. ඔවුන්ට නැවත පුරනය වීමෙන් ඕනෑම වේලාවක ඔවුන්ගේ ගිණුම ප්‍රතිසාධනය කළ හැක.",
+  "Choose allowed groups or none to allow all groups.": "සියලුම කණ්ඩායම්වලට ඉඩ දීමට අවසර දී ඇති කණ්ඩායම් හෝ කිසිවෙකුට ඉඩ නොදෙන්න.",
+  "Security Mode": "ආරක්ෂක ප්‍රකාරය",
+  "Restricts access this page to either all users, logged in users, or logged out guests.": "මෙම පිටුවට ප්‍රවේශය සියලුම පරිශීලකයන්ට, පිවිසි පරිශීලකයන්ට හෝ අමුත්තන්ට සීමා කරයි.",
+  "Security": "ආරක්ෂාව",
+  "All": "සියලුම",
+  "Guests": "අමුත්තන්",
+  "Default Redirect": "පෙරනිමි යළි-යොමුව",
+  "When access is denied, redirect to this CMS page.": "ප්‍රවේශය ප්‍රතික්ෂේප වූ විට මෙම CMS පිටුවට යළි-යොමු කරන්න.",
+  "Redirects": "යළි-යොමු",
+  "Redirect Group": "කණ්ඩායම් යළි-යොමුව",
+  "When user is not in a valid group, redirect to this CMS page.": "පරිශීලකයා වලංගු කණ්ඩායමක නොමැති විට මෙම CMS පිටුවට යළි-යොමු කරන්න.",
+  "Check Bearer Token (JWT)": "Bearer ටෝකනය (JWT) පරීක්ෂා කරන්න",
+  "Check authentication using a verified bearer token.": "සත්‍යාපිත bearer ටෝකනයක් භාවිතයෙන් සත්‍යාපනය පරීක්ෂා කරයි.",
+  "API Mode": "API ප්‍රකාරය"
 }
