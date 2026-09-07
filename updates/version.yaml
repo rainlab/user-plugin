@@ -43,3 +43,4 @@ v3.5.0: Adds feature to Merge Users, including Guest accounts
 v3.5.1: Update dependencies to latest versions
 v3.5.2: Fixes bug when guest accounts try to register manually
 v3.5.3: Fixes compatibility with SQLite
+v3.6.0: Adds user group restriction back to session component
