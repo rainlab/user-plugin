@@ -45,6 +45,10 @@ class UsersField extends ContentFieldBase
     {
         $field = $form->addFormField($this->fieldName, $this->label);
 
+        $field->useConfig($this->config + [
+            'scope' => null
+        ]);
+
         // Singular and multi display modes
         $supportedDisplays = $this->maxItems === 1
             ? ['recordfinder']
