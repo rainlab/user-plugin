@@ -68,6 +68,10 @@ trait ActionResetPassword
 
         $user->save();
 
+        if (!$user->hasVerifiedEmail()) {
+            $user->markEmailAsVerified();
+        }
+
         /**
          * @event rainlab.user.passwordReset
          * Provides custom logic for resetting a user password.
