@@ -68,6 +68,7 @@ class Plugin extends PluginBase
      */
     protected function registerSingletons()
     {
+        $this->app->singleton('user.actions', \RainLab\User\Classes\ActionManager::class);
         $this->app->singleton('user.twofactor', \RainLab\User\Classes\TwoFactorManager::class);
 
         // Laravel services

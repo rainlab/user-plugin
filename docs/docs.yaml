@@ -55,6 +55,10 @@ navigation:
         title: "Services"
         children:
         -
+            title: "Action Manager"
+            link: "./action-manager.md"
+            description: "user workflows for components and headless integrations"
+        -
             title: "Auth Manager"
             link: "./auth-manager.md"
             description: "services for managing the user session"

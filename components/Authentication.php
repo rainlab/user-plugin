@@ -4,9 +4,10 @@ use Cms;
 use Flash;
 use Config;
 use Request;
+use Redirect;
 use Cms\Classes\ComponentBase;
-use RainLab\User\Models\UserLog;
 use RainLab\User\Models\Setting;
+use RainLab\User\Classes\ActionManager;
 use RainLab\User\Helpers\User as UserHelper;
 use NotFoundException;
 
@@ -15,10 +16,6 @@ use NotFoundException;
  */
 class Authentication extends ComponentBase
 {
-    use \RainLab\User\Components\Authentication\ActionLogin;
-    use \RainLab\User\Components\Authentication\ActionTwoFactorLogin;
-    use \RainLab\User\Components\Authentication\ActionRecoverPassword;
-
     const REMEMBER_ALWAYS = 'always';
     const REMEMBER_NEVER = 'never';
     const REMEMBER_ASK = 'ask';
@@ -85,13 +82,20 @@ class Authentication extends ComponentBase
      */
     public function onLogin()
     {
-        if ($this->useTwoFactorAuth()) {
-            if ($response = $this->actionLoginWithTwoFactor()) {
-                return $response;
-            }
+        $options = ['remember' => $this->useRememberMe()];
+
+        $result = $this->useTwoFactorAuth()
+            ? $this->actions()->loginWithTwoFactor(post(), $options)
+            : $this->actions()->login(post(), $options);
+
+        if ($result === ActionManager::TWO_FACTOR_CHALLENGE) {
+            return Redirect::to(Request::fullUrlWithQuery([
+                'two-factor' => 'challenge'
+            ]));
         }
-        elseif ($response = $this->actionLogin()) {
-            return $response;
+
+        if ($result) {
+            return $result;
         }
 
         if ($redirect = Cms::redirectIntendedFromPost($this->makeRedirectUrl())) {
@@ -120,7 +124,7 @@ class Authentication extends ComponentBase
             throw new NotFoundException;
         }
 
-        if ($response = $this->actionTwoFactorChallenge()) {
+        if ($response = $this->actions()->twoFactorChallenge(post(), ['remember' => $this->useRememberMe()])) {
             return $response;
         }
 
@@ -138,9 +142,7 @@ class Authentication extends ComponentBase
             throw new NotFoundException;
         }
 
-        if ($response = $this->actionRecoverPassword()) {
-            return $response;
-        }
+        $this->actions()->recoverPassword(post());
 
         if ($flash = Cms::flashFromPost(__("Please check your email. We have sent instructions to reset your password."))) {
             Flash::success($flash);
@@ -164,7 +166,7 @@ class Authentication extends ComponentBase
      */
     public function showTwoFactorChallenge(): bool
     {
-        return $this->useTwoFactorAuth() && get('two-factor') === 'challenge' && $this->hasChallengedUser();
+        return $this->useTwoFactorAuth() && get('two-factor') === 'challenge' && $this->actions()->hasChallengedUser();
     }
 
     /**
@@ -224,77 +226,11 @@ class Authentication extends ComponentBase
     }
 
     /**
-     * recordUserLogAuthenticated
+     * actions returns user workflow services hosted by this component
      */
-    protected function recordUserLogAuthenticated($user, $twoFactor = false)
+    protected function actions(): ActionManager
     {
-        UserLog::createRecord($user->getKey(), UserLog::TYPE_SELF_LOGIN, [
-            'user_full_name' => $user->full_name,
-            'is_two_factor' => $twoFactor
-        ]);
-    }
-
-    /**
-     * prepareAuthenticatedSession
-     */
-    protected function prepareAuthenticatedSession()
-    {
-        if (Request::hasSession()) {
-            Request::session()->regenerate();
-        }
-    }
-
-    /**
-     * fireBeforeAuthenticateEvent returns false if the authentication failed, a user object
-     * if the authentication was successful (override), or null to do nothing.
-     */
-    protected function fireBeforeAuthenticateEvent()
-    {
-        $input = post();
-
-        /**
-         * @event rainlab.user.beforeAuthenticate
-         * Provides custom logic for logging in a user during authentication.
-         *
-         * Example usage:
-         *
-         *     Event::listen('rainlab.user.beforeAuthenticate', function ($component, $input) {
-         *         return User::find(...);
-         *     });
-         *
-         * Or
-         *
-         *     $component->bindEvent('user.beforeAuthenticate', function ($input) {
-         *         return User::find(...);
-         *     });
-         *
-         */
-        return $this->fireSystemEvent('rainlab.user.beforeAuthenticate', [&$input]);
-    }
-
-    /**
-     * fireAuthenticateEvent can return a custom response, or null to do nothing.
-     */
-    protected function fireAuthenticateEvent()
-    {
-        /**
-         * @event rainlab.user.authenticate
-         * Provides custom response logic after authentication
-         *
-         * Example usage:
-         *
-         *     Event::listen('rainlab.user.authenticate', function ($component) {
-         *         // Fire logic
-         *     });
-         *
-         * Or
-         *
-         *     $component->bindEvent('user.authenticate', function () {
-         *         // Fire logic
-         *     });
-         *
-         */
-        return $this->fireSystemEvent('rainlab.user.authenticate');
+        return ActionManager::instance()->withContext($this);
     }
 
     /**

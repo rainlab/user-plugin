@@ -1,8 +1,6 @@
-<?php namespace RainLab\User\Components\ResetPassword;
+<?php namespace RainLab\User\Classes\ActionManager;
 
-use App;
 use Str;
-use Request;
 use Validator;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserLog;
@@ -19,20 +17,20 @@ use ValidationException;
 trait ActionResetPassword
 {
     /**
-     * actionResetPassword
+     * resetPassword sets a new password using a reset token sent by email
      */
-    protected function actionResetPassword()
+    public function resetPassword(array $input): void
     {
-        Request::validate([
+        Validator::make($input, [
             'token' => 'required',
             'email' => ['required', 'email'],
             'password' => 'required',
-        ]);
+        ])->validate();
 
-        $status = $this->makePasswordBroker()->reset(array_only(post(), [
+        $status = $this->makePasswordBroker()->reset(array_only($input, [
             'email', 'password', 'password_confirmation', 'token'
-        ]), function($user) {
-            $this->resetUserPassword($user, post());
+        ]), function($user) use ($input) {
+            $this->resetUserPassword($user, $input);
             $this->completePasswordReset($user);
         });
 
@@ -92,13 +90,5 @@ trait ActionResetPassword
         $this->fireSystemEvent('rainlab.user.passwordReset', [$user]);
 
         UserLog::createRecord($user->getKey(), UserLog::TYPE_SELF_PASSWORD_RESET);
-    }
-
-    /**
-     * makePasswordBroker to be used during password reset.
-     */
-    protected function makePasswordBroker(): PasswordBroker
-    {
-        return App::make('auth.password')->broker('users');
     }
 }
