@@ -67,11 +67,8 @@ trait HasModelScopes
     {
         $filter = (array) $filter;
 
-        return $query->where(function($q) use ($filter) {
-            $q->whereIn('primary_group_id', $filter);
-            $q->orWhereHas('groups', function($group) use ($filter) {
-                $group->whereIn('id', $filter);
-            });
+        return $query->whereHas('groups', function($group) use ($filter) {
+            $group->whereIn('id', $filter);
         });
     }
 
