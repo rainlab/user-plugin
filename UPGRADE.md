@@ -90,11 +90,18 @@ The `allowedUserGroups` property has been renamed to `allowUserGroups` on the `S
 {% endif %}
 ```
 
-### Require Activation is Removed
+### Require Activation
 
-The "Require Activation" functionality has been removed from the settings page for simplicity. The replacement approach below is more flexible, since custom pages or banners can be used based on the requirements.
+The "Require Activation" functionality is no longer a global settings page option. Instead, it is available per page as the `requireActivation` property on the `Session` component, restricting access to users who have verified their email address. It is disabled by default. When enabled, unactivated users are sent to the `redirect` page.
 
-A user can be checked if they are verified using Twig:
+```ini
+[session]
+security = "user"
+redirect = "home"
+requireActivation = 1
+```
+
+The same check is also available as Twig code, which is more flexible since custom pages or banners can be used based on the requirements:
 
 ```twig
 {% if not user.hasVerifiedEmail %}

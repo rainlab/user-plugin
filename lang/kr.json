@@ -107,5 +107,11 @@
   "When user is not in a valid group, redirect to this CMS page.": "사용자가 허용된 그룹에 속하지 않으면 이 CMS 페이지로 리디렉션합니다.",
   "Check Bearer Token (JWT)": "Bearer 토큰(JWT) 확인",
   "Check authentication using a verified bearer token.": "검증된 Bearer 토큰을 사용하여 인증을 확인합니다.",
-  "API Mode": "API 모드"
+  "API Mode": "API 모드",
+  "Require Activation": "활성화 필요",
+  "Restrict access to users who have verified their email address.": "이메일 주소를 인증한 사용자로 접근을 제한합니다.",
+  "Update existing users": "기존 사용자 업데이트",
+  "Update users that already exist, matched by email address, instead of skipping them.": "이미 존재하는 사용자를 건너뛰지 않고 이메일 주소로 일치시켜 업데이트합니다.",
+  "Auto-create groups": "그룹 자동 생성",
+  "Create user groups that do not yet exist when resolving the groups column.": "그룹 열을 처리할 때 아직 존재하지 않는 사용자 그룹을 생성합니다."
 }

@@ -37,6 +37,22 @@ redirect = "home"
 
 The `security` property can be user, guest or all. The `redirect` property refers to a page name to redirect to when access is restricted.
 
+## Activation Restriction
+
+The `requireActivation` property restricts access to users who have verified their email address. It is disabled by default. When enabled, a signed in user who has not verified their email is sent to the `redirect` page.
+
+```ini
+title = "Members page"
+url = "/members-only"
+
+[session]
+security = "user"
+redirect = "home"
+requireActivation = 1
+```
+
+Guests are not checked by this property, use the `security` property to restrict guests.
+
 ## Group Restriction
 
 The `allowUserGroups` property restricts access to users belonging to the specified group codes, including their primary group. Leave it empty to allow all groups. The optional `redirectGroup` property is used when a signed in user is not in an allowed group, falling back to the `redirect` property when unset.

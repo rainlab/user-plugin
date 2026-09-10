@@ -57,6 +57,14 @@ class Session extends ComponentBase
                     'guest' => "Guests"
                 ]
             ],
+            'requireActivation' => [
+                'title' => "Require Activation",
+                'description' => "Restrict access to users who have verified their email address.",
+                'type' => 'checkbox',
+                'group' => "Security",
+                'default' => false,
+                'showExternalParam' => false
+            ],
             'allowUserGroups' => [
                 'title' => "Allow Groups",
                 'description' => "Choose allowed groups or none to allow all groups.",
@@ -250,6 +258,16 @@ class Session extends ComponentBase
                 Cms::pageUrl($groupRedirect)
             );
         }
+
+        if (!$this->checkUserActivationSecurity()) {
+            if (!$this->property('redirect')) {
+                throw new SystemException("The redirect property is empty on Session component.");
+            }
+
+            return Redirect::guest(
+                Cms::pageUrl($this->property('redirect'))
+            );
+        }
     }
 
     /**
@@ -292,6 +310,23 @@ class Session extends ComponentBase
         }
 
         return false;
+    }
+
+    /**
+     * checkUserActivationSecurity checks if the user has verified their email
+     * address, when the requireActivation property is enabled.
+     */
+    protected function checkUserActivationSecurity(): bool
+    {
+        if (!$this->property('requireActivation', false)) {
+            return true;
+        }
+
+        if (!($user = $this->user())) {
+            return true;
+        }
+
+        return $user->hasVerifiedEmail();
     }
 
     //

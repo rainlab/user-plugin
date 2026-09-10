@@ -178,5 +178,11 @@
   "When user is not in a valid group, redirect to this CMS page.": "Ak používateľ nie je v povolenej skupine, presmerovať na túto stránku CMS.",
   "Check Bearer Token (JWT)": "Overiť token Bearer (JWT)",
   "Check authentication using a verified bearer token.": "Overí prihlásenie pomocou overeného tokenu Bearer.",
-  "API Mode": "Režim API"
+  "API Mode": "Režim API",
+  "Require Activation": "Vyžadovať aktiváciu",
+  "Restrict access to users who have verified their email address.": "Obmedziť prístup na používateľov, ktorí overili svoju e-mailovú adresu.",
+  "Update existing users": "Aktualizovať existujúcich používateľov",
+  "Update users that already exist, matched by email address, instead of skipping them.": "Aktualizovať používateľov, ktorí už existujú, podľa e-mailovej adresy, namiesto ich preskočenia.",
+  "Auto-create groups": "Automaticky vytvárať skupiny",
+  "Create user groups that do not yet exist when resolving the groups column.": "Vytvoriť skupiny používateľov, ktoré ešte neexistujú, pri spracovaní stĺpca skupín."
 }

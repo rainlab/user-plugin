@@ -178,5 +178,11 @@
   "When user is not in a valid group, redirect to this CMS page.": "Cuando el usuario no pertenece a un grupo válido, redirige a esta página del CMS.",
   "Check Bearer Token (JWT)": "Comprobar token Bearer (JWT)",
   "Check authentication using a verified bearer token.": "Comprueba la autenticación mediante un token Bearer verificado.",
-  "API Mode": "Modo API"
+  "API Mode": "Modo API",
+  "Require Activation": "Requerir activación",
+  "Restrict access to users who have verified their email address.": "Restringe el acceso a los usuarios que han verificado su dirección de correo electrónico.",
+  "Update existing users": "Actualizar usuarios existentes",
+  "Update users that already exist, matched by email address, instead of skipping them.": "Actualizar los usuarios que ya existen, según la dirección de correo electrónico, en lugar de omitirlos.",
+  "Auto-create groups": "Crear grupos automáticamente",
+  "Create user groups that do not yet exist when resolving the groups column.": "Crear los grupos de usuarios que aún no existen al procesar la columna de grupos."
 }

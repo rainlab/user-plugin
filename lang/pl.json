@@ -178,5 +178,11 @@
   "When user is not in a valid group, redirect to this CMS page.": "Gdy użytkownik nie należy do dozwolonej grupy, przekieruj na tę stronę CMS.",
   "Check Bearer Token (JWT)": "Sprawdź token Bearer (JWT)",
   "Check authentication using a verified bearer token.": "Sprawdza uwierzytelnianie za pomocą zweryfikowanego tokenu bearer.",
-  "API Mode": "Tryb API"
+  "API Mode": "Tryb API",
+  "Require Activation": "Wymagaj aktywacji",
+  "Restrict access to users who have verified their email address.": "Ogranicz dostęp do użytkowników, którzy zweryfikowali swój adres e-mail.",
+  "Update existing users": "Aktualizuj istniejących użytkowników",
+  "Update users that already exist, matched by email address, instead of skipping them.": "Aktualizuj już istniejących użytkowników na podstawie adresu e-mail, zamiast ich pomijać.",
+  "Auto-create groups": "Automatycznie twórz grupy",
+  "Create user groups that do not yet exist when resolving the groups column.": "Utwórz grupy użytkowników, które jeszcze nie istnieją, podczas przetwarzania kolumny grup."
 }

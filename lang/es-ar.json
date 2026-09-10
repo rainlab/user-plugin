@@ -69,5 +69,11 @@
   "Check authentication using a verified bearer token.": "Comprueba la autenticación mediante un token Bearer verificado.",
   "API Mode": "Modo API",
   "Allow Groups": "Permitir grupos",
-  "Choose allowed groups or none to allow all groups.": "Selecciona los grupos permitidos o ninguno para permitir todos los grupos."
+  "Choose allowed groups or none to allow all groups.": "Selecciona los grupos permitidos o ninguno para permitir todos los grupos.",
+  "Require Activation": "Requerir activación",
+  "Restrict access to users who have verified their email address.": "Restringe el acceso a los usuarios que verificaron su dirección de correo electrónico.",
+  "Update existing users": "Actualizar usuarios existentes",
+  "Update users that already exist, matched by email address, instead of skipping them.": "Actualizar los usuarios que ya existen, según la dirección de correo electrónico, en lugar de omitirlos.",
+  "Auto-create groups": "Crear grupos automáticamente",
+  "Create user groups that do not yet exist when resolving the groups column.": "Crear los grupos de usuarios que aún no existen al procesar la columna de grupos."
 }

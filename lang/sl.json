@@ -178,5 +178,11 @@
   "When user is not in a valid group, redirect to this CMS page.": "Ko uporabnik ni v veljavni skupini, preusmeri na to CMS stran.",
   "Check Bearer Token (JWT)": "Preveri žeton Bearer (JWT)",
   "Check authentication using a verified bearer token.": "Preveri avtentikacijo s preverjenim žetonom bearer.",
-  "API Mode": "Način API"
+  "API Mode": "Način API",
+  "Require Activation": "Zahtevaj aktivacijo",
+  "Restrict access to users who have verified their email address.": "Omeji dostop na uporabnike, ki so potrdili svoj e-poštni naslov.",
+  "Update existing users": "Posodobi obstoječe uporabnike",
+  "Update users that already exist, matched by email address, instead of skipping them.": "Posodobi uporabnike, ki že obstajajo, glede na e-poštni naslov, namesto da bi jih preskočil.",
+  "Auto-create groups": "Samodejno ustvari skupine",
+  "Create user groups that do not yet exist when resolving the groups column.": "Ustvari uporabniške skupine, ki še ne obstajajo, pri obdelavi stolpca skupin."
 }

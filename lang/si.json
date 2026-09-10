@@ -191,5 +191,11 @@
   "When user is not in a valid group, redirect to this CMS page.": "පරිශීලකයා වලංගු කණ්ඩායමක නොමැති විට මෙම CMS පිටුවට යළි-යොමු කරන්න.",
   "Check Bearer Token (JWT)": "Bearer ටෝකනය (JWT) පරීක්ෂා කරන්න",
   "Check authentication using a verified bearer token.": "සත්‍යාපිත bearer ටෝකනයක් භාවිතයෙන් සත්‍යාපනය පරීක්ෂා කරයි.",
-  "API Mode": "API ප්‍රකාරය"
+  "API Mode": "API ප්‍රකාරය",
+  "Require Activation": "සක්‍රීය කිරීම අවශ්‍යයි",
+  "Restrict access to users who have verified their email address.": "ඔවුන්ගේ විද්‍යුත් තැපැල් ලිපිනය සත්‍යාපනය කළ පරිශීලකයන්ට ප්‍රවේශය සීමා කරන්න.",
+  "Update existing users": "පවතින පරිශීලකයන් යාවත්කාලීන කරන්න",
+  "Update users that already exist, matched by email address, instead of skipping them.": "දැනටමත් පවතින පරිශීලකයන් මඟ හැරීම වෙනුවට විද්‍යුත් තැපැල් ලිපිනය අනුව යාවත්කාලීන කරන්න.",
+  "Auto-create groups": "ස්වයංක්‍රීයව කණ්ඩායම් සාදන්න",
+  "Create user groups that do not yet exist when resolving the groups column.": "කණ්ඩායම් තීරුව සැකසීමේදී තවම නොපවතින පරිශීලක කණ්ඩායම් සාදන්න."
 }

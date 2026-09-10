@@ -175,5 +175,11 @@
   "When user is not in a valid group, redirect to this CMS page.": "當會員不在允許的群組中時，重新導向至此 CMS 頁面。",
   "Check Bearer Token (JWT)": "檢查 Bearer 權杖 (JWT)",
   "Check authentication using a verified bearer token.": "使用經過驗證的 Bearer 權杖檢查身份驗證。",
-  "API Mode": "API 模式"
+  "API Mode": "API 模式",
+  "Require Activation": "需要啟用",
+  "Restrict access to users who have verified their email address.": "將存取權限限制為已驗證電子郵件地址的使用者。",
+  "Update existing users": "更新現有使用者",
+  "Update users that already exist, matched by email address, instead of skipping them.": "根據電子郵件地址比對並更新已存在的使用者，而不是略過它們。",
+  "Auto-create groups": "自動建立使用者群組",
+  "Create user groups that do not yet exist when resolving the groups column.": "在處理群組欄位時建立尚不存在的使用者群組。"
 }
