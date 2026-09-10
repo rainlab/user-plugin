@@ -28,6 +28,29 @@ class Registration extends ComponentBase
     }
 
     /**
+     * defineProperties
+     */
+    public function defineProperties()
+    {
+        return [
+            'redirect' => [
+                'title' => "Redirect To",
+                'description' => "Page name to redirect to after registration, unless overridden by the form.",
+                'type' => 'dropdown',
+                'default' => ''
+            ],
+        ];
+    }
+
+    /**
+     * getRedirectOptions
+     */
+    public function getRedirectOptions()
+    {
+        return [''=>'- none -'] + \Cms\Classes\Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+    }
+
+    /**
      * onRegister
      */
     public function onRegister()
@@ -85,10 +108,23 @@ class Registration extends ComponentBase
             return $event;
         }
 
-        // Redirect to the intended page after successful registration
-        if ($redirect = Cms::redirectIntendedFromPost()) {
+        // Redirect to the intended page after successful registration,
+        // falling back to the component's redirect property
+        if ($redirect = Cms::redirectIntendedFromPost($this->makeRedirectUrl())) {
             return $redirect;
         }
+    }
+
+    /**
+     * makeRedirectUrl resolves the redirect property to a URL, or null when unset
+     */
+    protected function makeRedirectUrl(): ?string
+    {
+        if (!$page = $this->property('redirect')) {
+            return null;
+        }
+
+        return Cms::pageUrl($page);
     }
 
     /**

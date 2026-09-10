@@ -63,7 +63,21 @@ class Authentication extends ComponentBase
                 'type' => 'checkbox',
                 'default' => true
             ],
+            'redirect' => [
+                'title' => "Redirect To",
+                'description' => "Page name to redirect to after signing in, unless overridden by the form.",
+                'type' => 'dropdown',
+                'default' => ''
+            ],
         ];
+    }
+
+    /**
+     * getRedirectOptions
+     */
+    public function getRedirectOptions()
+    {
+        return [''=>'- none -'] + \Cms\Classes\Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
     /**
@@ -80,9 +94,21 @@ class Authentication extends ComponentBase
             return $response;
         }
 
-        if ($redirect = Cms::redirectIntendedFromPost()) {
+        if ($redirect = Cms::redirectIntendedFromPost($this->makeRedirectUrl())) {
             return $redirect;
         }
+    }
+
+    /**
+     * makeRedirectUrl resolves the redirect property to a URL, or null when unset
+     */
+    protected function makeRedirectUrl(): ?string
+    {
+        if (!$page = $this->property('redirect')) {
+            return null;
+        }
+
+        return Cms::pageUrl($page);
     }
 
     /**
@@ -98,7 +124,7 @@ class Authentication extends ComponentBase
             return $response;
         }
 
-        if ($redirect = Cms::redirectIntendedFromPost()) {
+        if ($redirect = Cms::redirectIntendedFromPost($this->makeRedirectUrl())) {
             return $redirect;
         }
     }

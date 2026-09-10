@@ -185,5 +185,8 @@
   "Update existing users": "Aggiorna utenti esistenti",
   "Update users that already exist, matched by email address, instead of skipping them.": "Aggiorna gli utenti già esistenti, individuati tramite l'indirizzo email, invece di ignorarli.",
   "Auto-create groups": "Crea gruppi automaticamente",
-  "Create user groups that do not yet exist when resolving the groups column.": "Crea i gruppi di utenti non ancora esistenti durante l'elaborazione della colonna dei gruppi."
+  "Create user groups that do not yet exist when resolving the groups column.": "Crea i gruppi di utenti non ancora esistenti durante l'elaborazione della colonna dei gruppi.",
+  "Redirect To": "Reindirizza a",
+  "Page name to redirect to after registration, unless overridden by the form.": "Nome della pagina a cui reindirizzare dopo la registrazione, se non sovrascritto dal modulo.",
+  "Page name to redirect to after signing in, unless overridden by the form.": "Nome della pagina a cui reindirizzare dopo l'accesso, se non sovrascritto dal modulo."
 }

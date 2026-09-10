@@ -22,9 +22,27 @@ class AuthenticationComponentTest extends PluginTestCase
     /**
      * makeComponent constructs the Authentication component
      */
-    protected function makeComponent(): Authentication
+    protected function makeComponent(array $properties = []): Authentication
     {
-        return new Authentication(null, []);
+        return new Authentication(null, $properties);
+    }
+
+    /**
+     * invokeMakeRedirectUrl calls the protected component method
+     */
+    protected function invokeMakeRedirectUrl(Authentication $component): ?string
+    {
+        $method = new ReflectionMethod(Authentication::class, 'makeRedirectUrl');
+        $method->setAccessible(true);
+
+        return $method->invoke($component);
+    }
+
+    public function testRedirectUrlIsNullWhenPropertyEmpty()
+    {
+        // Preserves the previous behavior where redirect comes only from the form
+        $this->assertNull($this->invokeMakeRedirectUrl($this->makeComponent()));
+        $this->assertNull($this->invokeMakeRedirectUrl($this->makeComponent(['redirect' => ''])));
     }
 
     public function testTwoFactorLoginSkipsGuestWhenRegisteredSharesEmail()

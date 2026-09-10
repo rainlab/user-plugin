@@ -205,5 +205,8 @@
   "Update existing users": "Bestaande gebruikers bijwerken",
   "Update users that already exist, matched by email address, instead of skipping them.": "Werk gebruikers bij die al bestaan, gekoppeld op e-mailadres, in plaats van ze over te slaan.",
   "Auto-create groups": "Groepen automatisch aanmaken",
-  "Create user groups that do not yet exist when resolving the groups column.": "Maak gebruikersgroepen aan die nog niet bestaan bij het verwerken van de groepenkolom."
+  "Create user groups that do not yet exist when resolving the groups column.": "Maak gebruikersgroepen aan die nog niet bestaan bij het verwerken van de groepenkolom.",
+  "Redirect To": "Omleiden naar",
+  "Page name to redirect to after registration, unless overridden by the form.": "Paginanaam om naar om te leiden na registratie, tenzij overschreven door het formulier.",
+  "Page name to redirect to after signing in, unless overridden by the form.": "Paginanaam om naar om te leiden na het aanmelden, tenzij overschreven door het formulier."
 }

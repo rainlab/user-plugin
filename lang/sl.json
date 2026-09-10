@@ -184,5 +184,8 @@
   "Update existing users": "Posodobi obstoječe uporabnike",
   "Update users that already exist, matched by email address, instead of skipping them.": "Posodobi uporabnike, ki že obstajajo, glede na e-poštni naslov, namesto da bi jih preskočil.",
   "Auto-create groups": "Samodejno ustvari skupine",
-  "Create user groups that do not yet exist when resolving the groups column.": "Ustvari uporabniške skupine, ki še ne obstajajo, pri obdelavi stolpca skupin."
+  "Create user groups that do not yet exist when resolving the groups column.": "Ustvari uporabniške skupine, ki še ne obstajajo, pri obdelavi stolpca skupin.",
+  "Redirect To": "Preusmeri na",
+  "Page name to redirect to after registration, unless overridden by the form.": "Ime strani, na katero se preusmeri po registraciji, razen če ga obrazec ne prepiše.",
+  "Page name to redirect to after signing in, unless overridden by the form.": "Ime strani, na katero se preusmeri po prijavi, razen če ga obrazec ne prepiše."
 }

@@ -1,5 +1,16 @@
 # Registration Component
 
+## Redirection
+
+The `redirect` property specifies a page name to redirect to after a successful registration. When it is empty, no redirect is performed unless the form supplies one.
+
+```ini
+[registration]
+redirect = "home"
+```
+
+This allows registration to be performed via AJAX without exposing the redirect URL in the page markup. A redirect posted by the form still takes priority, and can be disabled by posting a `redirect` value of `0`.
+
 ## Using a Login Name
 
 By default the User plugin will use the email address as the login name. To switch to using a user defined login name, navigate to the backend under System > Users > User Settings and change the Login attribute under the Sign in tab to be **Username**. Then simply ask for a username upon registration by adding the username field:

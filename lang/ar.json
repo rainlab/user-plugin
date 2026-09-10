@@ -180,5 +180,8 @@
   "Update existing users": "تحديث المستخدمين الموجودين",
   "Update users that already exist, matched by email address, instead of skipping them.": "تحديث المستخدمين الموجودين مسبقاً، بمطابقة عنوان البريد الإلكتروني، بدلاً من تخطيهم.",
   "Auto-create groups": "إنشاء المجموعات تلقائياً",
-  "Create user groups that do not yet exist when resolving the groups column.": "إنشاء مجموعات المستخدمين غير الموجودة عند معالجة عمود المجموعات."
+  "Create user groups that do not yet exist when resolving the groups column.": "إنشاء مجموعات المستخدمين غير الموجودة عند معالجة عمود المجموعات.",
+  "Redirect To": "إعادة التوجيه إلى",
+  "Page name to redirect to after registration, unless overridden by the form.": "اسم الصفحة التي يتم إعادة التوجيه إليها بعد التسجيل، ما لم يتم تجاوزها بواسطة النموذج.",
+  "Page name to redirect to after signing in, unless overridden by the form.": "اسم الصفحة التي يتم إعادة التوجيه إليها بعد تسجيل الدخول، ما لم يتم تجاوزها بواسطة النموذج."
 }
