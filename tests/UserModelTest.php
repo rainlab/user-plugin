@@ -383,6 +383,37 @@ class UserModelTest extends PluginTestCase
         $this->assertEquals($lastSeen->format('Y-m-d H:i'), $user->last_seen->format('Y-m-d H:i'));
     }
 
+    public function testTouchLastSeenFiresSeenEvent()
+    {
+        $user = $this->createTestUser();
+
+        $fired = null;
+        Event::listen('rainlab.user.seen', function ($eventUser) use (&$fired) {
+            $fired = $eventUser;
+        });
+
+        $user->touchLastSeen();
+
+        $this->assertNotNull($fired);
+        $this->assertEquals($user->id, $fired->id);
+    }
+
+    public function testTouchLastSeenDoesNotFireSeenEventWhenOnline()
+    {
+        $user = $this->createTestUser();
+        $user->last_seen = now();
+        $user->save(['force' => true]);
+
+        $fired = false;
+        Event::listen('rainlab.user.seen', function () use (&$fired) {
+            $fired = true;
+        });
+
+        $user->touchLastSeen();
+
+        $this->assertFalse($fired);
+    }
+
     public function testTouchIpAddress()
     {
         $user = $this->createTestUser();

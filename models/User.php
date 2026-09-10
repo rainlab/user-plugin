@@ -451,6 +451,19 @@ class User extends Model implements Authenticatable, CanResetPassword
 
         $this->last_seen = $this->freshTimestamp();
         $this->timestamps = $oldTimestamps;
+
+        /**
+         * @event rainlab.user.seen
+         * Fired when a user's last_seen timestamp transitions to online after inactivity.
+         *
+         * Example usage:
+         *
+         *     Event::listen('rainlab.user.seen', function ($user) {
+         *         // Record the user presence event
+         *     });
+         *
+         */
+        Event::fire('rainlab.user.seen', [$this]);
     }
 
     /**
