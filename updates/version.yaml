@@ -45,5 +45,5 @@ v3.5.2: Fixes bug when guest accounts try to register manually
 v3.5.3: Fixes compatibility with SQLite
 v3.6.0: Adds user group restriction back to session component
 v3.7.0:
-    - Mirror the primary group into the secondary groups pivot for accurate counts
+    - Adds import and export feature
     - migrate_v3_7_0.php

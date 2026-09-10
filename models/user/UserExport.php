@@ -14,6 +14,17 @@ class UserExport extends ExportModel
     protected $table = 'users';
 
     /**
+     * @var array protectedColumns are never included in the export, even when
+     * present in the column configuration, to avoid leaking sensitive values.
+     */
+    protected $protectedColumns = [
+        'password',
+        'remember_token',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
+    ];
+
+    /**
      * exportData
      */
     public function exportData($columns, $sessionKey = null)
@@ -37,6 +48,10 @@ class UserExport extends ExportModel
      */
     protected function encodeUserAttribute($record, $column)
     {
+        if (in_array($column, $this->protectedColumns)) {
+            return '';
+        }
+
         if ($column === 'groups') {
             return $this->encodeGroupsValue($record);
         }

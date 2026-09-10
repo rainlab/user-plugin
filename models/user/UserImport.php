@@ -63,7 +63,9 @@ class UserImport extends ImportModel
                     }
                 }
 
-                // A password is required to create a new user
+                // A password is required to create a new user. Any supplied
+                // password must be plaintext, it is hashed by the Hashable trait
+                // on assignment above; a random one is generated otherwise.
                 if (!$exists && !$user->password) {
                     $user->generatePassword();
                 }
