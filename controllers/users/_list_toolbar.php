@@ -10,6 +10,54 @@
         ->secondary()
         ->confirmMessage("Are you sure?") ?>
 
+    <div class="toolbar-divider"></div>
+
+    <?php Ui::dropdownButton(
+        label: __("Manage"),
+        icon: 'icon-angle-down',
+        caret: false,
+        secondary: true,
+        dataListCheckedTrigger: true
+    )->slot() ?>
+        <?= Ui::dropdownItem(
+            label: __("Activate"),
+            handler: 'onActivateSelected',
+            icon: 'icon-user-plus',
+            dataListCheckedRequest: true,
+            dataRequestConfirm: __("Are you sure?")
+        ) ?>
+        <?= Ui::dropdownItem(
+            label: __("Restore"),
+            handler: 'onRestoreSelected',
+            icon: 'icon-star',
+            dataListCheckedRequest: true,
+            dataRequestConfirm: __("Are you sure?")
+        ) ?>
+        <?= Ui::dropdownDivider() ?>
+        <?= Ui::dropdownItem(
+            label: __("Ban"),
+            handler: 'onBanSelected',
+            icon: 'icon-ban',
+            dataListCheckedRequest: true,
+            dataRequestConfirm: __("Are you sure?")
+        ) ?>
+        <?= Ui::dropdownItem(
+            label: __("Unban"),
+            handler: 'onUnbanSelected',
+            icon: 'icon-circle-o-notch',
+            dataListCheckedRequest: true,
+            dataRequestConfirm: __("Are you sure?")
+        ) ?>
+        <?= Ui::dropdownDivider() ?>
+        <?= Ui::dropdownItem(
+            label: __("Merge Users"),
+            handler: 'onLoadMergeUsersForm',
+            icon: 'icon-compress',
+            dataControl: 'popup',
+            dataListCheckedRequest: true
+        ) ?>
+    <?= Ui::end() ?>
+
     <?=
         /**
          * @event rainlab.user.view.extendListToolbar
@@ -27,72 +75,22 @@
         $this->fireViewEvent('rainlab.user.view.extendListToolbar');
     ?>
 
-    <div class="dropdown dropdown-fixed">
-        <?= Ui::button("More Actions")
-            ->attributes(['data-toggle' => 'dropdown'])
-            ->circleIcon('icon-ellipsis-v')
-            ->secondary()
-        ?>
-        <ul class="dropdown-menu">
-            <li>
-                <?= Ui::ajaxButton("Activate", 'onActivateSelected')
-                    ->replaceCssClass('dropdown-item')
-                    ->listCheckedTrigger()
-                    ->listCheckedRequest()
-                    ->icon('icon-user-plus')
-                    ->secondary()
-                    ->confirmMessage("Are you sure?") ?>
-            </li>
-            <li>
-                <?= Ui::ajaxButton("Restore", 'onRestoreSelected')
-                    ->replaceCssClass('dropdown-item')
-                    ->listCheckedTrigger()
-                    ->listCheckedRequest()
-                    ->icon('icon-star')
-                    ->secondary()
-                    ->confirmMessage("Are you sure?") ?>
-            </li>
-            <li role="separator" class="dropdown-divider"></li>
-            <li>
-                <?= Ui::ajaxButton("Ban", 'onBanSelected')
-                    ->replaceCssClass('dropdown-item')
-                    ->listCheckedTrigger()
-                    ->listCheckedRequest()
-                    ->icon('icon-ban')
-                    ->secondary()
-                    ->confirmMessage("Are you sure?") ?>
-            </li>
-            <li>
-                <?= Ui::ajaxButton("Unban", 'onUnbanSelected')
-                    ->replaceCssClass('dropdown-item')
-                    ->listCheckedTrigger()
-                    ->listCheckedRequest()
-                    ->icon('icon-circle-o-notch')
-                    ->secondary()
-                    ->confirmMessage("Are you sure?") ?>
-            </li>
-            <li role="separator" class="dropdown-divider"></li>
-            <li>
-                <?= Ui::popupButton("Merge Users", 'onLoadMergeUsersForm')
-                    ->replaceCssClass('dropdown-item')
-                    ->listCheckedTrigger()
-                    ->listCheckedRequest()
-                    ->icon('icon-compress')
-                    ->secondary() ?>
-            </li>
-            <?php /*
-            <li role="separator" class="dropdown-divider"></li>
-            <li>
-                <?= Ui::button("Import", 'rainlab/user/users/import')
-                    ->replaceCssClass('dropdown-item')
-                    ->icon('icon-upload') ?>
-            </li>
-            <li>
-                <?= Ui::button("Export", 'rainlab/user/users/export')
-                    ->replaceCssClass('dropdown-item')
-                    ->icon('icon-download') ?>
-            </li>
-            */ ?>
-        </ul>
-    </div>
+    <?php Ui::dropdownButton(
+        title: __("More Actions"),
+        icon: 'icon-ellipsis-v',
+        secondary: true,
+        caret: false,
+        class: 'btn-circle'
+    )->slot() ?>
+        <?= Ui::dropdownItem(
+            label: __("Import"),
+            href: Backend::url('user/users/import'),
+            icon: 'icon-upload'
+        ) ?>
+        <?= Ui::dropdownItem(
+            label: __("Export"),
+            href: Backend::url('user/users/export'),
+            icon: 'icon-download'
+        ) ?>
+    <?= Ui::end() ?>
 </div>
