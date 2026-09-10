@@ -23,7 +23,8 @@ class Registration extends ComponentBase
     {
         return [
             'name' => "Registration",
-            'description' => "Provides services for registering a user."
+            'description' => "Provides services for registering a user.",
+            'ajaxPartial' => true
         ];
     }
 
