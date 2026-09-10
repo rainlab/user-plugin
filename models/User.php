@@ -366,6 +366,17 @@ class User extends Model implements Authenticatable, CanResetPassword
     }
 
     /**
+     * afterSave event mirrors the primary group into the secondary groups pivot
+     */
+    public function afterSave()
+    {
+        if ($this->primary_group_id) {
+            $this->groups()->syncWithoutDetaching([$this->primary_group_id]);
+            $this->unsetRelation('groups');
+        }
+    }
+
+    /**
      * afterDelete event
      */
     public function afterDelete()

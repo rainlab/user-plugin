@@ -130,4 +130,77 @@ class UserGroupTest extends PluginTestCase
             'code' => 'short-name',
         ]);
     }
+
+    //
+    // Primary group mirrored into the pivot (issue #617)
+    //
+
+    /**
+     * makeUser creates a registered user with a unique email
+     */
+    protected function makeUser(array $overrides = []): User
+    {
+        return User::create(array_merge([
+            'first_name' => 'Test',
+            'last_name' => 'User',
+            'email' => 'group-' . uniqid() . '@example.tld',
+            'password' => 'ChangeMe888',
+            'password_confirmation' => 'ChangeMe888',
+        ], $overrides));
+    }
+
+    public function testRegisteredUserIsCountedInPrimaryGroup()
+    {
+        $registered = UserGroup::getRegisteredGroup();
+        $before = $registered->users()->count();
+
+        $this->makeUser();
+
+        // The default primary group is mirrored into the pivot, so the count grows
+        $this->assertEquals($before + 1, $registered->users()->count());
+    }
+
+    public function testPrimaryGroupIsMirroredIntoPivot()
+    {
+        $group = UserGroup::create(['name' => 'Wholesale', 'code' => 'wholesale-' . uniqid()]);
+
+        $user = $this->makeUser();
+        $user->primary_group = $group;
+        $user->save();
+
+        // Pivot-only membership check (inPrimary = false) must see the group
+        $this->assertTrue($user->inGroup($group, false));
+        $this->assertEquals(1, $group->users()->where('users.id', $user->id)->count());
+    }
+
+    public function testChangingPrimaryGroupAddsNewGroupWithoutDetachingOld()
+    {
+        $groupA = UserGroup::create(['name' => 'Group A', 'code' => 'grp-a-' . uniqid()]);
+        $groupB = UserGroup::create(['name' => 'Group B', 'code' => 'grp-b-' . uniqid()]);
+
+        $user = $this->makeUser();
+        $user->primary_group = $groupA;
+        $user->save();
+
+        $user->primary_group = $groupB;
+        $user->save();
+
+        // Both the old and new primary group remain in the pivot
+        $this->assertTrue($user->inGroup($groupA, false));
+        $this->assertTrue($user->inGroup($groupB, false));
+    }
+
+    public function testMirroringIsIdempotent()
+    {
+        $group = UserGroup::create(['name' => 'Repeat', 'code' => 'repeat-' . uniqid()]);
+
+        $user = $this->makeUser();
+        $user->primary_group = $group;
+        $user->save();
+        $user->save();
+        $user->save();
+
+        // No duplicate pivot rows despite repeated saves
+        $this->assertEquals(1, $group->users()->where('users.id', $user->id)->count());
+    }
 }

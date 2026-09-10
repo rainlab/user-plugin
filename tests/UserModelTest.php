@@ -228,11 +228,15 @@ class UserModelTest extends PluginTestCase
         $user = $this->createTestUser();
         $registeredGroup = UserGroup::getRegisteredGroup();
 
-        // With primary check enabled (default)
+        // The primary group is mirrored into the secondary groups pivot, so it
+        // reports as a member with the primary check either enabled or disabled
         $this->assertTrue($user->inGroup($registeredGroup));
+        $this->assertTrue($user->inGroup($registeredGroup, false));
 
-        // Without primary check
-        $this->assertFalse($user->inGroup($registeredGroup, false));
+        // A group the user was never assigned is not a member either way
+        $other = UserGroup::create(['name' => 'Other', 'code' => 'other-' . uniqid()]);
+        $this->assertFalse($user->inGroup($other));
+        $this->assertFalse($user->inGroup($other, false));
     }
 
     public function testInGroupReturnsFalseForInvalidCode()
