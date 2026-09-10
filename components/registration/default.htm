@@ -1,7 +1,21 @@
-<form method="post" data-request="onRegister" data-request-flash>
+<form method="post" data-request="onRegister" data-request-flash data-request-update="{ '_self': true }">
     <input type="hidden" name="redirect" value="true" />
 
-    {% if __SELF__.canRegister %}
+    {% if awaitingActivation or awaitingApproval %}
+        <div class="text-center pb-3">
+            <h1 class="h2 mb-3">{{ 'Thank you'|_ }}</h1>
+            {% if awaitingActivation %}
+                <p class="h5 fw-normal">
+                    {{ 'Please check your email to confirm your address.'|_ }}
+                </p>
+            {% endif %}
+            {% if awaitingApproval %}
+                <p class="h5 fw-normal">
+                    {{ 'Your account is awaiting approval from an administrator.'|_ }}
+                </p>
+            {% endif %}
+        </div>
+    {% elseif __SELF__.canRegister %}
         <div class="text-center pb-3">
             <h1 class="h2 mb-3">{{ 'Create a new account'|_ }}</h1>
             <h2 class="h5 fw-normal">{{ 'Enter your information below'|_ }}</h2>

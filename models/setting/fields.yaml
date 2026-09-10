@@ -21,6 +21,20 @@ tabs:
             type: checkbox
             tab: Sign In
 
+        require_activation:
+            label: Require Activation
+            span: full
+            comment: Users must confirm their email address before they can sign in.
+            type: checkbox
+            tab: Sign In
+
+        require_approval:
+            label: Require Admin Approval
+            span: full
+            comment: An administrator must approve new users before they can sign in.
+            type: checkbox
+            tab: Sign In
+
         # Registration tab
 
         allow_registration:
@@ -75,6 +89,12 @@ tabs:
             type: hint
             comment: You can customize mail templates by selecting Mail → Mail Templates from the settings menu.
             tab: Notifications
+
+        activation_email:
+            label: Send Activation Email
+            type: checkbox
+            tab: Notifications
+            comment: Email new users a link to confirm their email address when they register.
 
         notify_user:
             label: Notify User

@@ -2,6 +2,7 @@
 
 use Hash;
 use RainLab\User\Models\User;
+use RainLab\User\Models\Setting;
 use Illuminate\Auth\SessionGuard as SessionGuardBase;
 use Illuminate\Contracts\Auth\Authenticatable;
 use InvalidArgumentException;
@@ -54,6 +55,14 @@ class SessionGuard extends SessionGuardBase
     {
         if ($user->is_banned) {
             throw new ValidationException(['password' => __("Your account is locked. Please contact the site administrator.")]);
+        }
+
+        if (Setting::get('require_activation', false) && !$user->hasVerifiedEmail()) {
+            throw new ValidationException(['password' => __("You must confirm your email address before signing in.")]);
+        }
+
+        if (Setting::get('require_approval', false) && !$user->is_approved) {
+            throw new ValidationException(['password' => __("Your account is awaiting approval from an administrator.")]);
         }
 
         $this->preventConcurrentSessions($user);

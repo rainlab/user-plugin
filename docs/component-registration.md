@@ -11,6 +11,34 @@ redirect = "home"
 
 This allows registration to be performed via AJAX without exposing the redirect URL in the page markup. A redirect posted by the form still takes priority, and can be disabled by posting a `redirect` value of `0`.
 
+## Activation
+
+New users are signed in immediately after registering by default. Two independent options in the backend under System > Users > User Settings on the Sign In tab change this. They can be combined.
+
+Setting | Behavior
+------- | --------
+Require Activation | Users must confirm their email address before they can sign in. See the [Account component](./component-account.md).
+Require Admin Approval | An administrator must approve new users before they can sign in. New users are created unapproved.
+
+These policies are enforced at sign in, so an unverified or unapproved user cannot log in until the requirement is satisfied.
+
+To email new users a verification link when they register, enable the **Send Activation Email** setting on the Notifications tab. This is independent of Require Activation, so a link can be sent as a courtesy without forcing verification, or verification can be required while users request the link themselves from the Account component.
+
+When a policy defers sign in after registration, the component exposes the `awaitingActivation` and `awaitingApproval` page variables so the markup can display an appropriate message.
+
+```twig
+{% if awaitingActivation %}
+    <p>{{ 'Please check your email to confirm your address.'|_ }}</p>
+{% endif %}
+{% if awaitingApproval %}
+    <p>{{ 'Your account is awaiting approval from an administrator.'|_ }}</p>
+{% endif %}
+```
+
+### Approving Users
+
+When **Require Admin Approval** is enabled, an **Approve** action appears on the Users list (in the Manage dropdown) and on the user preview page. Approving a user sets the `is_approved` flag, allowing them to sign in.
+
 ## Using a Login Name
 
 By default the User plugin will use the email address as the login name. To switch to using a user defined login name, navigate to the backend under System > Users > User Settings and change the Login attribute under the Sign in tab to be **Username**. Then simply ask for a username upon registration by adding the username field:

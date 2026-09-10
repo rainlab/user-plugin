@@ -85,7 +85,30 @@ class Registration extends ComponentBase
             $user = $this->createNewUser($input);
         }
 
-        Auth::login($user);
+        $requireActivation = Setting::get('require_activation', false);
+        $requireApproval = Setting::get('require_approval', false);
+
+        // Approval requires an administrator to approve the user
+        if ($requireApproval) {
+            $user->unapprove();
+        }
+
+        // Email verification sends a link to confirm the email address
+        if (Setting::get('activation_email', false) && !$user->hasVerifiedEmail()) {
+            $user->sendEmailVerificationNotification();
+        }
+
+        // Sign the user in immediately, unless an activation policy defers it
+        if ($this->canSignInAfterRegister($user)) {
+            Auth::login($user);
+        }
+        else {
+            // Skip the redirect so the markup can inform the user why they are
+            // not signed in, based on which activation policies are active
+            $this->page['awaitingActivation'] = $requireActivation && !$user->hasVerifiedEmail();
+            $this->page['awaitingApproval'] = $requireApproval && !$user->is_approved;
+            return;
+        }
 
         /**
          * @event rainlab.user.register
@@ -113,6 +136,23 @@ class Registration extends ComponentBase
         if ($redirect = Cms::redirectIntendedFromPost($this->makeRedirectUrl())) {
             return $redirect;
         }
+    }
+
+    /**
+     * canSignInAfterRegister returns true when the activation policy allows the
+     * user to be signed in immediately after registering.
+     */
+    protected function canSignInAfterRegister(User $user): bool
+    {
+        if (Setting::get('require_activation', false) && !$user->hasVerifiedEmail()) {
+            return false;
+        }
+
+        if (Setting::get('require_approval', false) && !$user->is_approved) {
+            return false;
+        }
+
+        return true;
     }
 
     /**

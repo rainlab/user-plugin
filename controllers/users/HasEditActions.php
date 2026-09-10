@@ -67,6 +67,24 @@ trait HasEditActions
     }
 
     /**
+     * preview_onApproveUser manually approves a user awaiting activation
+     */
+    public function preview_onApproveUser($recordId = null)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->approve();
+
+        UserLog::createSystemRecord($model->getKey(), UserLog::TYPE_ADMIN_APPROVE);
+
+        Flash::success(__("User has been approved"));
+
+        if ($redirect = $this->makeRedirect('update-close', $model)) {
+            return $redirect;
+        }
+    }
+
+    /**
      * Display the convert to registered user popup
      */
     public function preview_onLoadConvertGuestForm($recordId)

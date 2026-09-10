@@ -138,6 +138,42 @@ class UserModelTest extends PluginTestCase
         $this->assertEquals($bannedAt, $user->banned_at);
     }
 
+    public function testNewUserIsApprovedByDefault()
+    {
+        $user = $this->createTestUser()->fresh();
+
+        $this->assertTrue($user->is_approved);
+    }
+
+    public function testUnapproveUser()
+    {
+        $user = $this->createTestUser();
+        $user->unapprove();
+
+        $this->assertFalse($user->fresh()->is_approved);
+    }
+
+    public function testApproveUser()
+    {
+        $user = $this->createTestUser();
+        $user->unapprove();
+        $user->approve();
+
+        $this->assertTrue($user->fresh()->is_approved);
+    }
+
+    public function testPendingApprovalScope()
+    {
+        $approved = $this->createTestUser(['email' => 'approved@example.tld', 'username' => 'approved']);
+        $pending = $this->createTestUser(['email' => 'pending@example.tld', 'username' => 'pending']);
+        $pending->unapprove();
+
+        $results = User::pendingApproval()->pluck('email')->all();
+
+        $this->assertContains('pending@example.tld', $results);
+        $this->assertNotContains('approved@example.tld', $results);
+    }
+
     public function testUnbanDoesNothingIfNotBanned()
     {
         $user = $this->createTestUser();

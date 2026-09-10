@@ -11,6 +11,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->boolean('is_guest')->default(false);
             $table->boolean('is_mail_blocked')->default(false);
+            $table->boolean('is_approved')->default(true);
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('username')->nullable()->index();

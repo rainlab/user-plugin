@@ -131,6 +131,30 @@ trait HasBulkActions
     }
 
     /**
+     * onApproveSelected approves the selected users awaiting activation.
+     */
+    public function onApproveSelected()
+    {
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
+            foreach ($checkedIds as $objectId) {
+                try {
+                    if ($object = User::withTrashed()->find($objectId)) {
+                        $object->approve();
+                        UserLog::createSystemRecord($object->getKey(), UserLog::TYPE_ADMIN_APPROVE);
+                    }
+                }
+                catch (Exception $ex) {
+                    Flash::error(__("Error with user :id - :message", ['id' => $object->email, 'message' => $ex->getMessage()]));
+                    return $this->listRefresh();
+                }
+            }
+        }
+
+        Flash::success(__("Approved the selected users"));
+        return $this->listRefresh();
+    }
+
+    /**
      * onLoadMergeUsersForm shows the merge users popup with leader selection
      */
     public function onLoadMergeUsersForm()

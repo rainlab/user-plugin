@@ -11,6 +11,9 @@ use System\Models\SettingModel;
  * @property string login_attribute
  * @property bool block_persistence
  * @property bool allow_registration
+ * @property bool require_activation
+ * @property bool require_approval
+ * @property bool activation_email
  * @property int password_min_length
  * @property bool password_require_mixed_case
  * @property bool password_require_uncompromised
@@ -28,9 +31,6 @@ use System\Models\SettingModel;
  */
 class Setting extends SettingModel
 {
-    const ACTIVATE_USER = 'user';
-    const ACTIVATE_ADMIN = 'admin';
-
     const LOGIN_EMAIL = 'email';
     const LOGIN_USERNAME = 'username';
 
@@ -59,6 +59,9 @@ class Setting extends SettingModel
         $this->block_persistence = Config::get('rainlab.user::block_persistence', false);
         $this->soft_delete = Config::get('rainlab.user::soft_delete', true);
         $this->allow_registration = Config::get('rainlab.user::allow_registration', true);
+        $this->require_activation = Config::get('rainlab.user::require_activation', false);
+        $this->require_approval = Config::get('rainlab.user::require_approval', false);
+        $this->activation_email = Config::get('rainlab.user::activation_email', false);
         $this->login_attribute = Config::get('rainlab.user::login_attribute', self::LOGIN_EMAIL);
 
         $this->password_min_length = Config::get('rainlab.user::password_policy.min_length', 8);

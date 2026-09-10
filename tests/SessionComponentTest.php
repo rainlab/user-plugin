@@ -2,6 +2,7 @@
 
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserGroup;
+use RainLab\User\Models\Setting;
 use RainLab\User\Components\Session;
 
 /**
@@ -9,23 +10,19 @@ use RainLab\User\Components\Session;
  */
 class SessionComponentTest extends PluginTestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Setting::clearInternalCache();
+    }
+
     /**
      * invokeCheckUserGroupSecurity calls the protected component method
      */
     protected function invokeCheckUserGroupSecurity(Session $component): bool
     {
         $method = new ReflectionMethod(Session::class, 'checkUserGroupSecurity');
-        $method->setAccessible(true);
-
-        return $method->invoke($component);
-    }
-
-    /**
-     * invokeCheckUserActivationSecurity calls the protected component method
-     */
-    protected function invokeCheckUserActivationSecurity(Session $component): bool
-    {
-        $method = new ReflectionMethod(Session::class, 'checkUserActivationSecurity');
         $method->setAccessible(true);
 
         return $method->invoke($component);
@@ -136,45 +133,5 @@ class SessionComponentTest extends PluginTestCase
         $component = $this->makeComponent(['allowUserGroups' => ['premium']]);
 
         $this->assertFalse($this->invokeCheckUserGroupSecurity($component));
-    }
-
-    public function testActivationSecurityAllowsUnactivatedUserByDefault()
-    {
-        $user = $this->makeUser();
-        $this->assertFalse($user->hasVerifiedEmail());
-
-        // Default behavior does not require activation
-        $component = $this->makeComponent();
-
-        $this->assertTrue($this->invokeCheckUserActivationSecurity($component));
-    }
-
-    public function testActivationSecurityDeniesUnactivatedUserWhenRequired()
-    {
-        $user = $this->makeUser();
-        $this->assertFalse($user->hasVerifiedEmail());
-
-        $component = $this->makeComponent(['requireActivation' => true]);
-
-        $this->assertFalse($this->invokeCheckUserActivationSecurity($component));
-    }
-
-    public function testActivationSecurityAllowsActivatedUserWhenRequired()
-    {
-        $user = $this->makeUser();
-        $user->markEmailAsVerified();
-        $this->assertTrue($user->hasVerifiedEmail());
-
-        $component = $this->makeComponent(['requireActivation' => true]);
-
-        $this->assertTrue($this->invokeCheckUserActivationSecurity($component));
-    }
-
-    public function testActivationSecurityAllowsGuestWhenRequired()
-    {
-        // No authenticated user, activation check should not block
-        $component = $this->makeComponent(['requireActivation' => true]);
-
-        $this->assertTrue($this->invokeCheckUserActivationSecurity($component));
     }
 }

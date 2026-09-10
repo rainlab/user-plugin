@@ -1,6 +1,7 @@
 <?php
 
 use RainLab\User\Models\User;
+use RainLab\User\Models\Setting;
 use RainLab\User\Components\Registration;
 
 /**
@@ -8,6 +9,13 @@ use RainLab\User\Components\Registration;
  */
 class RegistrationComponentTest extends PluginTestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Setting::clearInternalCache();
+    }
+
     /**
      * invokeCreateNewUser calls the protected createNewUser method
      */
@@ -76,5 +84,91 @@ class RegistrationComponentTest extends PluginTestCase
         $this->invokeCreateNewUser($this->validInput([
             'email' => 'taken@example.tld',
         ]));
+    }
+
+    /**
+     * invokeCanSignInAfterRegister calls the protected component method
+     */
+    protected function invokeCanSignInAfterRegister(User $user): bool
+    {
+        $component = new Registration(null, []);
+
+        $method = new ReflectionMethod(Registration::class, 'canSignInAfterRegister');
+        $method->setAccessible(true);
+
+        return $method->invoke($component, $user);
+    }
+
+    public function testUserSignsInWhenNoActivationRequired()
+    {
+        Setting::set('require_activation', false);
+        Setting::set('require_approval', false);
+
+        $user = $this->invokeCreateNewUser($this->validInput());
+        $this->assertFalse($user->hasVerifiedEmail());
+
+        // With no activation policy the user signs in immediately
+        $this->assertTrue($this->invokeCanSignInAfterRegister($user));
+    }
+
+    public function testUnverifiedUserDeferredWhenActivationRequired()
+    {
+        Setting::set('require_activation', true);
+        Setting::set('require_approval', false);
+
+        $user = $this->invokeCreateNewUser($this->validInput());
+
+        $this->assertFalse($this->invokeCanSignInAfterRegister($user));
+    }
+
+    public function testVerifiedUserSignsInWhenActivationRequired()
+    {
+        Setting::set('require_activation', true);
+        Setting::set('require_approval', false);
+
+        $user = $this->invokeCreateNewUser($this->validInput());
+        $user->markEmailAsVerified();
+
+        $this->assertTrue($this->invokeCanSignInAfterRegister($user));
+    }
+
+    public function testUnapprovedUserDeferredWhenApprovalRequired()
+    {
+        Setting::set('require_activation', false);
+        Setting::set('require_approval', true);
+
+        $user = $this->invokeCreateNewUser($this->validInput());
+        $user->unapprove();
+
+        $this->assertFalse($this->invokeCanSignInAfterRegister($user->fresh()));
+    }
+
+    public function testApprovedUserSignsInWhenApprovalRequired()
+    {
+        Setting::set('require_activation', false);
+        Setting::set('require_approval', true);
+
+        $user = $this->invokeCreateNewUser($this->validInput());
+        $user->unapprove();
+        $user->approve();
+
+        $this->assertTrue($this->invokeCanSignInAfterRegister($user->fresh()));
+    }
+
+    public function testBothPoliciesMustBeSatisfied()
+    {
+        Setting::set('require_activation', true);
+        Setting::set('require_approval', true);
+
+        $user = $this->invokeCreateNewUser($this->validInput());
+        $user->unapprove();
+
+        // Verified but not approved is still blocked
+        $user->markEmailAsVerified();
+        $this->assertFalse($this->invokeCanSignInAfterRegister($user->fresh()));
+
+        // Approved as well allows sign in
+        $user->approve();
+        $this->assertTrue($this->invokeCanSignInAfterRegister($user->fresh()));
     }
 }

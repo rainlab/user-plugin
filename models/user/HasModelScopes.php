@@ -49,6 +49,14 @@ trait HasModelScopes
     }
 
     /**
+     * scopePendingApproval returns users awaiting administrator approval.
+     */
+    public function scopePendingApproval($query)
+    {
+        return $query->where('is_approved', false);
+    }
+
+    /**
      * scopeApplyPrimaryGroup
      */
     public function scopeApplyPrimaryGroup($query, $filter)

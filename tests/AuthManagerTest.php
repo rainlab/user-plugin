@@ -1,12 +1,20 @@
 <?php
 
 use RainLab\User\Models\User;
+use RainLab\User\Models\Setting;
 
 /**
  * AuthManagerTest
  */
 class AuthManagerTest extends PluginTestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Setting::clearInternalCache();
+    }
+
     /**
      * testRegisterUser
      */
@@ -145,5 +153,73 @@ class AuthManagerTest extends PluginTestCase
 
         $this->assertTrue($found);
         $this->assertEquals($registered->id, Auth::user()->id);
+    }
+
+    /**
+     * makeSignInUser is a helper to create a verified, approved user
+     */
+    protected function makeSignInUser(array $overrides = []): User
+    {
+        $user = User::create(array_merge([
+            'first_name' => 'Some',
+            'email' => 'signin@website.tld',
+            'password' => 'ChangeMe888',
+            'password_confirmation' => 'ChangeMe888',
+        ], $overrides));
+
+        $user->markEmailAsVerified();
+
+        return $user->fresh();
+    }
+
+    public function testLoginBlockedWhenActivationRequiredAndUnverified()
+    {
+        Setting::set('require_activation', true);
+
+        $user = User::create([
+            'first_name' => 'Some',
+            'email' => 'unverified@website.tld',
+            'password' => 'ChangeMe888',
+            'password_confirmation' => 'ChangeMe888',
+        ]);
+
+        $this->expectException(\Illuminate\Validation\ValidationException::class);
+
+        Auth::login($user);
+    }
+
+    public function testLoginAllowedWhenActivationRequiredAndVerified()
+    {
+        Setting::set('require_activation', true);
+
+        $user = $this->makeSignInUser();
+
+        Auth::login($user);
+
+        $this->assertTrue(Auth::check());
+    }
+
+    public function testLoginBlockedWhenApprovalRequiredAndUnapproved()
+    {
+        Setting::set('require_approval', true);
+
+        $user = $this->makeSignInUser();
+        $user->unapprove();
+
+        $this->expectException(\Illuminate\Validation\ValidationException::class);
+
+        Auth::login($user->fresh());
+    }
+
+    public function testLoginAllowedWhenApprovalRequiredAndApproved()
+    {
+        Setting::set('require_approval', true);
+
+        $user = $this->makeSignInUser();
+        $user->approve();
+
+        Auth::login($user->fresh());
+
+        $this->assertTrue(Auth::check());
     }
 }

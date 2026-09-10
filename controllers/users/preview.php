@@ -15,6 +15,7 @@
 
 <?php
     $canDoGeneralActions = !$formModel->is_guest && !$formModel->is_banned && !$formModel->trashed();
+    $requireApproval = \RainLab\User\Models\Setting::get('require_approval');
 ?>
 <div class="loading-indicator-container mb-3">
     <div class="control-toolbar form-toolbar" data-control="toolbar">
@@ -38,6 +39,11 @@
         <?php if ($formModel->is_guest): ?>
             <?= Ui::popupButton("Convert to Registered", 'onLoadConvertGuestForm')->icon('icon-user')->outline()->info() ?>
             <div class="toolbar-divider"></div>
+        <?php endif ?>
+
+        <?php if ($canDoGeneralActions && !$formModel->is_approved && $requireApproval): ?>
+            <?= Ui::ajaxButton("Approve", 'onApproveUser')->icon('icon-check')->outline()->success()
+                ->confirmMessage("Approve this user? It will allow them to sign in.") ?>
         <?php endif ?>
 
         <?php if ($canDoGeneralActions): ?>
@@ -77,6 +83,8 @@
     <?= $this->makePartial('hint_banned') ?>
 <?php elseif ($formModel->trashed()): ?>
     <?= $this->makePartial('hint_trashed') ?>
+<?php elseif ($requireApproval && !$formModel->is_approved): ?>
+    <?= $this->makePartial('hint_approve') ?>
 <?php elseif (!$formModel->is_activated): ?>
     <?= $this->makePartial('hint_activate') ?>
 <?php endif ?>

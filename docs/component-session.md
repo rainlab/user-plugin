@@ -37,21 +37,7 @@ redirect = "home"
 
 The `security` property can be user, guest or all. The `redirect` property refers to a page name to redirect to when access is restricted.
 
-## Activation Restriction
-
-The `requireActivation` property restricts access to users who have verified their email address. It is disabled by default. When enabled, a signed in user who has not verified their email is sent to the `redirect` page.
-
-```ini
-title = "Members page"
-url = "/members-only"
-
-[session]
-security = "user"
-redirect = "home"
-requireActivation = 1
-```
-
-Guests are not checked by this property, use the `security` property to restrict guests.
+Activation and admin approval are enforced at sign in, based on the User Settings, so no page-level property is needed for them. See the [Registration component](./component-registration.md) article.
 
 ## Group Restriction
 

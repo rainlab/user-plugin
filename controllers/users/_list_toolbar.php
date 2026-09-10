@@ -1,3 +1,4 @@
+<?php $requireApproval = \RainLab\User\Models\Setting::get('require_approval'); ?>
 <div data-control="toolbar">
     <?= Ui::button("New User", 'user/users/create')
         ->icon('icon-plus')
@@ -19,6 +20,16 @@
         secondary: true,
         dataListCheckedTrigger: true
     )->slot() ?>
+        <?php if ($requireApproval): ?>
+            <?= Ui::dropdownItem(
+                label: __("Approve"),
+                handler: 'onApproveSelected',
+                icon: 'icon-check',
+                dataListCheckedRequest: true,
+                dataRequestConfirm: __("Are you sure?")
+            ) ?>
+            <?= Ui::dropdownDivider() ?>
+        <?php endif ?>
         <?= Ui::dropdownItem(
             label: __("Activate"),
             handler: 'onActivateSelected',

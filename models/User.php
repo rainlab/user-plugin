@@ -29,6 +29,7 @@ use October\Rain\Auth\AuthException;
  * @property string $remember_token
  * @property string $two_factor_secret
  * @property string $two_factor_recovery_codes
+ * @property bool $is_approved
  * @property int $primary_group_id
  * @property string $created_ip_address
  * @property string $last_ip_address
@@ -86,6 +87,16 @@ class User extends Model implements Authenticatable, CanResetPassword
         'activated_at',
         'two_factor_confirmed_at',
     ];
+
+    /**
+     * casts for the model attributes
+     */
+    protected function casts()
+    {
+        return [
+            'is_approved' => 'boolean',
+        ];
+    }
 
     /**
      * @var array fillable attributes
@@ -410,6 +421,32 @@ class User extends Model implements Authenticatable, CanResetPassword
         if ($this->is_banned) {
             $this->banned_reason = null;
             $this->banned_at = null;
+            $this->save(['force' => true]);
+        }
+    }
+
+    //
+    // Approval
+    //
+
+    /**
+     * approve marks the user as approved by an administrator.
+     */
+    public function approve()
+    {
+        if ($this->is_approved !== true) {
+            $this->is_approved = true;
+            $this->save(['force' => true]);
+        }
+    }
+
+    /**
+     * unapprove removes administrator approval from the user.
+     */
+    public function unapprove()
+    {
+        if ($this->is_approved !== false) {
+            $this->is_approved = false;
             $this->save(['force' => true]);
         }
     }
