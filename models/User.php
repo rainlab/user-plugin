@@ -451,6 +451,18 @@ class User extends Model implements Authenticatable, CanResetPassword
         }
     }
 
+    /**
+     * isPendingApproval returns true when the user is explicitly unapproved and
+     * awaiting an administrator, since an unhydrated model may not include the
+     * approved-by-default attribute value.
+     */
+    public function isPendingApproval(): bool
+    {
+        $isApproved = $this->is_approved;
+
+        return $isApproved !== null && (bool) $isApproved === false;
+    }
+
     //
     // Last Seen
     //

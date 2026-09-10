@@ -155,6 +155,28 @@ class RegistrationComponentTest extends PluginTestCase
         $this->assertTrue($this->invokeCanSignInAfterRegister($user->fresh()));
     }
 
+    public function testRegisterEventFiresWhenSignInDeferred()
+    {
+        Setting::set('require_activation', true);
+
+        $fired = null;
+        Event::listen('rainlab.user.register', function ($component, $user) use (&$fired) {
+            $fired = $user->email;
+        });
+
+        // Swap the request so the component reads registration input from post()
+        $this->app->instance('request', \Illuminate\Http\Request::create('/', 'POST', $this->validInput()));
+        \Illuminate\Support\Facades\Facade::clearResolvedInstance('request');
+
+        $component = new Registration(null, []);
+        $component->onRegister();
+
+        // The user was created, so integrations must be notified even though
+        // the sign in was deferred by the activation policy
+        $this->assertEquals('test@example.tld', $fired);
+        $this->assertFalse(Auth::check());
+    }
+
     public function testBothPoliciesMustBeSatisfied()
     {
         Setting::set('require_activation', true);

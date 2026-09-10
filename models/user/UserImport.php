@@ -49,10 +49,17 @@ class UserImport extends ImportModel
                 $exists = $user->exists;
 
                 // Set standard attributes
-                $except = ['id', 'primary_group', 'groups'];
+                $except = ['id', 'is_activated', 'primary_group', 'groups'];
 
                 foreach (array_except($data, $except) as $attribute => $value) {
                     $user->{$attribute} = $value;
+                }
+
+                // Activation is derived from a timestamp, the accessor cannot be written
+                if (($isActivated = array_get($data, 'is_activated')) !== null && $isActivated !== '') {
+                    $user->activated_at = filter_var($isActivated, FILTER_VALIDATE_BOOLEAN)
+                        ? ($user->activated_at ?: $user->freshTimestamp())
+                        : null;
                 }
 
                 // Primary group is resolved before saving so the default

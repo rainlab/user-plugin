@@ -41,7 +41,7 @@
             <div class="toolbar-divider"></div>
         <?php endif ?>
 
-        <?php if ($canDoGeneralActions && !$formModel->is_approved && $requireApproval): ?>
+        <?php if ($canDoGeneralActions && $requireApproval && $formModel->isPendingApproval()): ?>
             <?= Ui::ajaxButton("Approve", 'onApproveUser')->icon('icon-check')->outline()->success()
                 ->confirmMessage("Approve this user? It will allow them to sign in.") ?>
         <?php endif ?>
@@ -83,7 +83,7 @@
     <?= $this->makePartial('hint_banned') ?>
 <?php elseif ($formModel->trashed()): ?>
     <?= $this->makePartial('hint_trashed') ?>
-<?php elseif ($requireApproval && !$formModel->is_approved): ?>
+<?php elseif ($requireApproval && $formModel->isPendingApproval()): ?>
     <?= $this->makePartial('hint_approve') ?>
 <?php elseif (!$formModel->is_activated): ?>
     <?= $this->makePartial('hint_activate') ?>

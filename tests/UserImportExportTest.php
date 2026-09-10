@@ -214,6 +214,22 @@ class UserImportExportTest extends PluginTestCase
         $this->assertSame('', $row['remember_token']);
     }
 
+    public function testImportMapsIsActivatedToTimestamp()
+    {
+        $import = $this->makeImport();
+        $import->importData([
+            ['first_name' => 'Jane', 'email' => 'jane@example.tld', 'username' => 'jane', 'is_activated' => '1'],
+        ]);
+
+        $stats = $import->getResultStats();
+        $this->assertEquals(0, $stats->errorCount);
+        $this->assertEquals(1, $stats->created);
+
+        // is_activated is an accessor; the import must write activated_at instead
+        $user = User::where('email', 'jane@example.tld')->first();
+        $this->assertTrue($user->hasVerifiedEmail());
+    }
+
     public function testImportExportRoundTrip()
     {
         UserGroup::create(['name' => 'Wholesale', 'code' => 'wholesale']);

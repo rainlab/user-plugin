@@ -61,7 +61,7 @@ class SessionGuard extends SessionGuardBase
             throw new ValidationException(['password' => __("You must confirm your email address before signing in.")]);
         }
 
-        if (Setting::get('require_approval', false) && !$user->is_approved) {
+        if (Setting::get('require_approval', false) && $user->isPendingApproval()) {
             throw new ValidationException(['password' => __("Your account is awaiting approval from an administrator.")]);
         }
 

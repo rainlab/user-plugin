@@ -162,6 +162,24 @@ class UserModelTest extends PluginTestCase
         $this->assertTrue($user->fresh()->is_approved);
     }
 
+    public function testIsPendingApproval()
+    {
+        // An unhydrated model without the attribute is not pending
+        $this->assertFalse((new User)->isPendingApproval());
+
+        $user = $this->createTestUser();
+        $this->assertFalse($user->fresh()->isPendingApproval());
+
+        $user->unapprove();
+        $this->assertTrue($user->fresh()->isPendingApproval());
+
+        // Raw driver values are normalized before comparison
+        $user->is_approved = 0;
+        $this->assertTrue($user->isPendingApproval());
+        $user->is_approved = 1;
+        $this->assertFalse($user->isPendingApproval());
+    }
+
     public function testPendingApprovalScope()
     {
         $approved = $this->createTestUser(['email' => 'approved@example.tld', 'username' => 'approved']);

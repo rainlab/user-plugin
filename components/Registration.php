@@ -99,15 +99,14 @@ class Registration extends ComponentBase
         }
 
         // Sign the user in immediately, unless an activation policy defers it
-        if ($this->canSignInAfterRegister($user)) {
+        $canSignIn = $this->canSignInAfterRegister($user);
+        if ($canSignIn) {
             Auth::login($user);
         }
         else {
-            // Skip the redirect so the markup can inform the user why they are
-            // not signed in, based on which activation policies are active
+            // Inform the markup why the user is not signed in, based on which activation policies are active
             $this->page['awaitingActivation'] = $requireActivation && !$user->hasVerifiedEmail();
-            $this->page['awaitingApproval'] = $requireApproval && !$user->is_approved;
-            return;
+            $this->page['awaitingApproval'] = $requireApproval && $user->isPendingApproval();
         }
 
         /**
@@ -133,7 +132,7 @@ class Registration extends ComponentBase
 
         // Redirect to the intended page after successful registration,
         // falling back to the component's redirect property
-        if ($redirect = Cms::redirectIntendedFromPost($this->makeRedirectUrl())) {
+        if ($canSignIn && ($redirect = Cms::redirectIntendedFromPost($this->makeRedirectUrl()))) {
             return $redirect;
         }
     }
@@ -148,7 +147,7 @@ class Registration extends ComponentBase
             return false;
         }
 
-        if (Setting::get('require_approval', false) && !$user->is_approved) {
+        if (Setting::get('require_approval', false) && $user->isPendingApproval()) {
             return false;
         }
 

@@ -222,4 +222,23 @@ class AuthManagerTest extends PluginTestCase
 
         $this->assertTrue(Auth::check());
     }
+
+    public function testLoginAllowedForUnhydratedApprovalDefault()
+    {
+        Setting::set('require_approval', true);
+
+        // A freshly created model has no is_approved attribute in memory even
+        // though the database default is approved; only an explicit false blocks
+        $user = User::create([
+            'first_name' => 'Some',
+            'email' => 'unhydrated@website.tld',
+            'password' => 'ChangeMe888',
+            'password_confirmation' => 'ChangeMe888',
+        ]);
+        $user->markEmailAsVerified();
+
+        Auth::login($user);
+
+        $this->assertTrue(Auth::check());
+    }
 }
