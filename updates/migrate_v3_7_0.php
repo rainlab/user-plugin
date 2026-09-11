@@ -55,7 +55,7 @@ return new class extends Migration
         }
 
         Schema::table('users', function ($table) {
-            $table->boolean('is_approved')->default(true)->after('is_activated');
+            $table->boolean('is_approved')->default(true)->after('activated_at');
         });
     }
 };
