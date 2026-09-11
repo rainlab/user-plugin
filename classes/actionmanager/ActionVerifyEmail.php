@@ -1,10 +1,6 @@
-<?php namespace RainLab\User\Components\Account;
+<?php namespace RainLab\User\Classes\ActionManager;
 
-use Cms;
 use Auth;
-use Flash;
-use Request;
-use Redirect;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserLog;
 use ApplicationException;
@@ -19,9 +15,11 @@ use ForbiddenException;
 trait ActionVerifyEmail
 {
     /**
-     * actionVerifyEmail
+     * sendVerifyEmail sends a verification email to the authenticated user. Supported options:
+     *
+     * - verifyUrl: an absolute URL to use in the verification email instead of the CMS entry point.
      */
-    protected function actionVerifyEmail()
+    public function sendVerifyEmail(array $options = []): void
     {
         $user = $this->user();
 
@@ -42,18 +40,19 @@ trait ActionVerifyEmail
 
         $limiter->increment();
 
+        if ($verifyUrl = array_get($options, 'verifyUrl')) {
+            $user->setUrlForEmailVerification($verifyUrl);
+        }
+
         $user->sendEmailVerificationNotification();
     }
 
     /**
-     * actionConfirmEmail
+     * confirmVerifiedEmail marks the user email address as verified using an
+     * emailed verification code
      */
-    protected function actionConfirmEmail($verifyCode = null)
+    public function confirmVerifiedEmail($verifyCode): void
     {
-        if ($verifyCode === null) {
-            $verifyCode = post('verify');
-        }
-
         // Locate user from bearer code
         $user = User::findUserForEmailVerification($verifyCode);
         if (!$user) {
@@ -78,35 +77,6 @@ trait ActionVerifyEmail
                 'user_email' => $user->email,
             ]);
         }
-    }
-
-    /**
-     * checkVerifyEmailRedirect
-     */
-    protected function checkVerifyEmailRedirect()
-    {
-        $verifyCode = get('verify');
-        if (!$verifyCode) {
-            return;
-        }
-
-        try {
-            $this->actionConfirmEmail($verifyCode);
-
-            if ($flash = Cms::flashFromPost(__("Thank you for verifying your email."))) {
-                Flash::success($flash);
-            }
-        }
-        catch (ApplicationException $ex) {
-            Flash::error($ex->getMessage());
-        }
-
-        if (in_array(get('redirect'), ['0', 'false'])) {
-            return;
-        }
-
-        $redirectUrl = rtrim(Request::fullUrlWithQuery(['verify' => null]), '?');
-        return Redirect::to($redirectUrl);
     }
 
     /**

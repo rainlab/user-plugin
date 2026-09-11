@@ -1,6 +1,7 @@
 <?php
 
 use RainLab\User\Models\User;
+use RainLab\User\Classes\ActionManager;
 use RainLab\User\Components\Authentication;
 
 /**
@@ -11,12 +12,12 @@ class AuthenticationComponentTest extends PluginTestCase
     /**
      * invokeAttemptTwoFactorAuthentication calls the protected trait method
      */
-    protected function invokeAttemptTwoFactorAuthentication(Authentication $component, array $input)
+    protected function invokeAttemptTwoFactorAuthentication(array $input)
     {
-        $method = new ReflectionMethod(Authentication::class, 'attemptTwoFactorAuthentication');
+        $method = new ReflectionMethod(ActionManager::class, 'attemptTwoFactorAuthentication');
         $method->setAccessible(true);
 
-        return $method->invoke($component, $input);
+        return $method->invoke(ActionManager::instance(), $input);
     }
 
     /**
@@ -60,7 +61,7 @@ class AuthenticationComponentTest extends PluginTestCase
             'password_confirmation' => 'ChangeMe888',
         ]);
 
-        $user = $this->invokeAttemptTwoFactorAuthentication($this->makeComponent(), [
+        $user = $this->invokeAttemptTwoFactorAuthentication([
             'email' => 'person@acme.tld',
             'password' => 'ChangeMe888',
         ]);

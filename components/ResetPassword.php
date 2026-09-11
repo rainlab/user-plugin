@@ -4,6 +4,7 @@ use Cms;
 use Auth;
 use Flash;
 use RainLab\User\Models\User;
+use RainLab\User\Classes\ActionManager;
 use Cms\Classes\ComponentBase;
 
 /**
@@ -18,9 +19,6 @@ use Cms\Classes\ComponentBase;
  */
 class ResetPassword extends ComponentBase
 {
-    use \RainLab\User\Components\ResetPassword\ActionResetPassword;
-    use \RainLab\User\Components\ResetPassword\ActionChangePassword;
-
     /**
      * componentDetails
      */
@@ -52,9 +50,7 @@ class ResetPassword extends ComponentBase
      */
     public function onConfirmPassword()
     {
-        if ($response = $this->actionResetPassword()) {
-            return $response;
-        }
+        $this->actions()->resetPassword(post());
 
         if ($flash = Cms::flashFromPost(__("Your password has been created and you may now sign in to your account"))) {
             Flash::success($flash);
@@ -70,9 +66,7 @@ class ResetPassword extends ComponentBase
      */
     public function onResetPassword()
     {
-        if ($response = $this->actionResetPassword()) {
-            return $response;
-        }
+        $this->actions()->resetPassword(post());
 
         if ($flash = Cms::flashFromPost(__("Your password has been reset"))) {
             Flash::success($flash);
@@ -88,9 +82,7 @@ class ResetPassword extends ComponentBase
      */
     public function onChangePassword()
     {
-        if ($response = $this->actionChangePassword()) {
-            return $response;
-        }
+        $this->actions()->changePassword(post());
 
         if ($flash = Cms::flashFromPost(__("Your password has been changed"))) {
             Flash::success($flash);
@@ -147,5 +139,13 @@ class ResetPassword extends ComponentBase
     public function token()
     {
         return get('reset');
+    }
+
+    /**
+     * actions returns user workflow services hosted by this component
+     */
+    protected function actions(): ActionManager
+    {
+        return ActionManager::instance()->withContext($this);
     }
 }

@@ -1,11 +1,9 @@
-<?php namespace RainLab\User\Components\Authentication;
+<?php namespace RainLab\User\Classes\ActionManager;
 
 use Auth;
 use Event;
 use Session;
-use Request;
 use Validator;
-use Redirect;
 use RainLab\User\Models\User;
 use RainLab\User\Classes\TwoFactorManager;
 use RainLab\User\Helpers\User as UserHelper;
@@ -15,7 +13,7 @@ use ValidationException;
 /**
  * ActionTwoFactorLogin extends ActionLogin
  *
- * @mixin \RainLab\User\Components\Authentication\ActionLogin
+ * @mixin \RainLab\User\Classes\ActionManager\ActionLogin
  *
  * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
@@ -28,55 +26,63 @@ trait ActionTwoFactorLogin
     protected $challengedUser;
 
     /**
-     * actionLoginWithTwoFactor
+     * loginWithTwoFactor authenticates a user, deferring to a two factor challenge when the
+     * user has one set up. Supported options:
+     *
+     * - remember: persist the user session with a cookie. Default: false.
+     *
+     * Returns the TWO_FACTOR_CHALLENGE constant when a challenge has started,
+     * a custom event response, or null.
      */
-    protected function actionLoginWithTwoFactor()
+    public function loginWithTwoFactor(array $input, array $options = [])
     {
-        $this->ensureLoginIsNotThrottled();
+        $this->ensureLoginIsNotThrottled($input);
 
-        if (($event = $this->fireBeforeAuthenticateEvent()) !== null) {
+        if (($event = $this->fireBeforeAuthenticateEvent($input)) !== null) {
             if ($event === false || !$event instanceof Authenticatable) {
-                $this->throwFailedAuthenticationException();
+                $this->throwFailedAuthenticationException($input);
             }
 
             $user = $event;
         }
         else {
-            $user = $this->attemptTwoFactorAuthentication(post());
+            $user = $this->attemptTwoFactorAuthentication($input);
 
             if (!$user) {
-                $this->throwFailedAuthenticationException();
+                $this->throwFailedAuthenticationException($input);
             }
         }
 
         // User does not have 2FA set up
         if (!$user->two_factor_secret || $user->two_factor_confirmed_at === null) {
-            return $this->actionLogin();
+            return $this->login($input, $options);
         }
 
         Session::put('login.id', $user->getKey());
-        Session::put('login.remember', $this->useRememberMe());
+        Session::put('login.remember', (bool) array_get($options, 'remember', false));
 
-        return Redirect::to(Request::fullUrlWithQuery([
-            'two-factor' => 'challenge'
-        ]));
+        return static::TWO_FACTOR_CHALLENGE;
     }
 
     /**
-     * actionTwoFactorChallenge
+     * twoFactorChallenge completes a login using a two factor or recovery code. Supported options:
+     *
+     * - remember: persist the user session with a cookie. Default: false.
+     *
+     * Returns a custom event response, or null.
      */
-    protected function actionTwoFactorChallenge()
+    public function twoFactorChallenge(array $input, array $options = [])
     {
         $user = $this->getChallengedUser();
 
-        if ($code = $this->getValidRecoveryCode()) {
+        if ($code = $this->getValidRecoveryCode($input)) {
             $user->replaceRecoveryCode($code);
         }
-        elseif (!$this->hasValidCode()) {
-            $this->throwFailedTwoFactorException();
+        elseif (!$this->hasValidCode($input)) {
+            $this->throwFailedTwoFactorException($input);
         }
 
-        Auth::login($user, $this->useRememberMe());
+        Auth::login($user, (bool) array_get($options, 'remember', false));
 
         $this->prepareAuthenticatedSession();
 
@@ -87,6 +93,20 @@ trait ActionTwoFactorLogin
         if ($event = $this->fireAuthenticateEvent()) {
             return $event;
         }
+    }
+
+    /**
+     * hasChallengedUser determines if there is a challenged user in the current session.
+     */
+    public function hasChallengedUser(): bool
+    {
+        if ($this->challengedUser) {
+            return true;
+        }
+
+        $model = $this->getUserModel();
+
+        return Session::has('login.id') && $model->find(Session::get('login.id'));
     }
 
     /**
@@ -104,32 +124,18 @@ trait ActionTwoFactorLogin
             !Session::has('login.id') ||
             !($user = $model->find(Session::get('login.id')))
         ) {
-            $this->throwFailedTwoFactorException();
+            $this->throwFailedTwoFactorException([]);
         }
 
         return $this->challengedUser = $user;
     }
 
     /**
-     * hasChallengedUser determines if there is a challenged user in the current session.
+     * getValidRecoveryCode if one exists on the input.
      */
-    protected function hasChallengedUser(): bool
+    protected function getValidRecoveryCode(array $input): ?string
     {
-        if ($this->challengedUser) {
-            return true;
-        }
-
-        $model = $this->getUserModel();
-
-        return Session::has('login.id') && $model->find(Session::get('login.id'));
-    }
-
-    /**
-     * getValidRecoveryCode if one exists on the request.
-     */
-    protected function getValidRecoveryCode(): ?string
-    {
-        $recoveryCode = post('recovery_code');
+        $recoveryCode = array_get($input, 'recovery_code');
         if (!$recoveryCode || !is_string($recoveryCode)) {
             return null;
         }
@@ -148,11 +154,11 @@ trait ActionTwoFactorLogin
     }
 
     /**
-     * hasValidCode determines if the request has a valid two factor code.
+     * hasValidCode determines if the input has a valid two factor code.
      */
-    protected function hasValidCode(): bool
+    protected function hasValidCode(array $input): bool
     {
-        $code = post('code');
+        $code = array_get($input, 'code');
         if (!$code || !is_string($code)) {
             return false;
         }
@@ -212,9 +218,9 @@ trait ActionTwoFactorLogin
     /**
      * throwFailedTwoFactorException
      */
-    protected function throwFailedTwoFactorException()
+    protected function throwFailedTwoFactorException(array $input)
     {
-        if (post('recovery_code')) {
+        if (array_get($input, 'recovery_code')) {
             throw new ValidationException(['recovery_code' => __("The provided two factor recovery code was invalid.")]);
         }
 

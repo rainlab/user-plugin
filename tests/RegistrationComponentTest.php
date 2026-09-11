@@ -2,6 +2,7 @@
 
 use RainLab\User\Models\User;
 use RainLab\User\Models\Setting;
+use RainLab\User\Classes\ActionManager;
 use RainLab\User\Components\Registration;
 
 /**
@@ -21,12 +22,10 @@ class RegistrationComponentTest extends PluginTestCase
      */
     protected function invokeCreateNewUser(array $input): User
     {
-        $component = new Registration(null, []);
-
-        $method = new ReflectionMethod(Registration::class, 'createNewUser');
+        $method = new ReflectionMethod(ActionManager::class, 'createNewUser');
         $method->setAccessible(true);
 
-        return $method->invoke($component, $input);
+        return $method->invoke(ActionManager::instance(), $input);
     }
 
     /**
@@ -87,16 +86,11 @@ class RegistrationComponentTest extends PluginTestCase
     }
 
     /**
-     * invokeCanSignInAfterRegister calls the protected component method
+     * invokeCanSignInAfterRegister checks the activation policy on the action manager
      */
     protected function invokeCanSignInAfterRegister(User $user): bool
     {
-        $component = new Registration(null, []);
-
-        $method = new ReflectionMethod(Registration::class, 'canSignInAfterRegister');
-        $method->setAccessible(true);
-
-        return $method->invoke($component, $user);
+        return ActionManager::instance()->canSignInAfterRegister($user);
     }
 
     public function testUserSignsInWhenNoActivationRequired()

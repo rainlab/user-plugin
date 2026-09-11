@@ -11,6 +11,7 @@ use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserGroup;
+use RainLab\User\Classes\ActionManager;
 use SystemException;
 
 /**
@@ -156,38 +157,8 @@ class Session extends ComponentBase
      */
     public function onLogout()
     {
-        $user = Auth::user();
-
-        if (Auth::isImpersonator()) {
-            Auth::stopImpersonate();
-        }
-        else {
-            Auth::logout();
-            Request::session()->invalidate();
-            Request::session()->regenerateToken();
-        }
-
-        if ($user) {
-            /**
-             * @event rainlab.user.logout
-             * Provides custom response logic for logging out a user.
-             *
-             * Example usage:
-             *
-             *     Event::listen('rainlab.user.logout', function ($component, $user) {
-             *         // Fire logic
-             *     });
-             *
-             * Or
-             *
-             *     $component->bindEvent('user.logout', function ($user) {
-             *         // Fire logic
-             *     });
-             *
-             */
-            if ($event = $this->fireSystemEvent('rainlab.user.logout', [$user])) {
-                return $event;
-            }
+        if ($event = $this->actions()->logout()) {
+            return $event;
         }
 
         if ($flash = Cms::flashFromPost(__("You have been successfully logged out!"))) {
@@ -197,6 +168,14 @@ class Session extends ComponentBase
         if ($redirectUrl = post('redirect', Request::fullUrl())) {
             return Redirect::to($redirectUrl);
         }
+    }
+
+    /**
+     * actions returns user workflow services hosted by this component
+     */
+    protected function actions(): ActionManager
+    {
+        return ActionManager::instance()->withContext($this);
     }
 
     /**

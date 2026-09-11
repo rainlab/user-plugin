@@ -1,14 +1,13 @@
-<?php namespace RainLab\User\Components\Account;
+<?php namespace RainLab\User\Classes\ActionManager;
 
 use Carbon\Carbon;
 use RainLab\User\Classes\TwoFactorManager;
 use RainLab\User\Models\UserLog;
 use ValidationException;
-use ApplicationException;
 use ForbiddenException;
 
 /**
- * ActionTwoFactor
+ * ActionTwoFactor manages the two factor authentication settings for a user
  *
  * @package rainlab\user
  * @author Alexey Bobkov, Samuel Georges
@@ -16,9 +15,9 @@ use ForbiddenException;
 trait ActionTwoFactor
 {
     /**
-     * fetchTwoFactorEnabled
+     * hasTwoFactorEnabled returns true when the authenticated user has two factor set up
      */
-    protected function fetchTwoFactorEnabled(): bool
+    public function hasTwoFactorEnabled(): bool
     {
         $user = $this->user();
 
@@ -26,9 +25,9 @@ trait ActionTwoFactor
     }
 
     /**
-     * fetchTwoFactorRecoveryCodes
+     * getTwoFactorRecoveryCodes returns the recovery codes for the authenticated user
      */
-    protected function fetchTwoFactorRecoveryCodes(): array
+    public function getTwoFactorRecoveryCodes(): array
     {
         $user = $this->user();
 
@@ -40,9 +39,10 @@ trait ActionTwoFactor
     }
 
     /**
-     * actionEnableTwoFactor
+     * enableTwoFactor generates a two factor secret for the authenticated user,
+     * pending confirmation
      */
-    protected function actionEnableTwoFactor()
+    public function enableTwoFactor(): void
     {
         $user = $this->user();
 
@@ -54,9 +54,9 @@ trait ActionTwoFactor
     }
 
     /**
-     * actionRegenerateTwoFactorRecoveryCodes
+     * regenerateTwoFactorRecoveryCodes for the authenticated user
      */
-    protected function actionRegenerateTwoFactorRecoveryCodes()
+    public function regenerateTwoFactorRecoveryCodes(): void
     {
         $user = $this->user();
 
@@ -68,12 +68,12 @@ trait ActionTwoFactor
     }
 
     /**
-     * actionConfirmTwoFactor
+     * confirmTwoFactor verifies a two factor code to complete the set up
      */
-    protected function actionConfirmTwoFactor()
+    public function confirmTwoFactor(array $input): void
     {
         $user = $this->user();
-        $code = post('code');
+        $code = array_get($input, 'code');
 
         if (
             !$user ||
@@ -99,9 +99,9 @@ trait ActionTwoFactor
     }
 
     /**
-     * actionDisableTwoFactor
+     * disableTwoFactor for the authenticated user
      */
-    protected function actionDisableTwoFactor()
+    public function disableTwoFactor(): void
     {
         $user = $this->user();
 

@@ -1,4 +1,4 @@
-<?php namespace RainLab\User\Components\Account;
+<?php namespace RainLab\User\Classes\ActionManager;
 
 use Db;
 use Auth;
@@ -17,9 +17,10 @@ use ValidationException;
 trait ActionBrowserSessions
 {
     /**
-     * fetchSessions
+     * getBrowserSessions returns the browser sessions of the authenticated user,
+     * only available when using the database session driver
      */
-    protected function fetchSessions()
+    public function getBrowserSessions(): array
     {
         if (Config::get('session.driver') !== 'database') {
             return [];
@@ -48,11 +49,12 @@ trait ActionBrowserSessions
     }
 
     /**
-     * actionDeleteOtherSessions
+     * deleteOtherSessions logs out other browser sessions, requiring the user
+     * password for confirmation
      */
-    protected function actionDeleteOtherSessions()
+    public function deleteOtherSessions(array $input): void
     {
-        $password = (string) post('password');
+        $password = (string) array_get($input, 'password');
 
         if (!$this->isUserPasswordValid($password)) {
             throw new ValidationException([

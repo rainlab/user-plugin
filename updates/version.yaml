@@ -47,3 +47,4 @@ v3.6.0: Adds user group restriction back to session component
 v3.7.0:
     - Adds import/export feature and activation settings
     - migrate_v3_7_0.php
+v3.7.1: Extract user workflows into ActionManager for headless use

@@ -1,7 +1,7 @@
 <?php
 
 use RainLab\User\Models\User;
-use RainLab\User\Components\ResetPassword;
+use RainLab\User\Classes\ActionManager;
 
 /**
  * ResetPasswordComponentTest covers the ResetPassword component, in particular
@@ -27,12 +27,10 @@ class ResetPasswordComponentTest extends PluginTestCase
      */
     protected function invokeCompletePasswordReset(User $user): void
     {
-        $component = new ResetPassword(null, []);
-
-        $method = new ReflectionMethod(ResetPassword::class, 'completePasswordReset');
+        $method = new ReflectionMethod(ActionManager::class, 'completePasswordReset');
         $method->setAccessible(true);
 
-        $method->invoke($component, $user);
+        $method->invoke(ActionManager::instance(), $user);
     }
 
     /**
