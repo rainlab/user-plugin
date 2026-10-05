@@ -1,5 +1,6 @@
 <?php namespace RainLab\User\Classes\ActionManager;
 
+use App;
 use Auth;
 use Event;
 use Session;
@@ -75,12 +76,16 @@ trait ActionTwoFactorLogin
     {
         $user = $this->getChallengedUser();
 
+        $this->ensureTwoFactorIsNotThrottled($user, $input);
+
         if ($code = $this->getValidRecoveryCode($input)) {
             $user->replaceRecoveryCode($code);
         }
         elseif (!$this->hasValidCode($input)) {
             $this->throwFailedTwoFactorException($input);
         }
+
+        $this->makeTwoFactorRateLimiter()->clear($this->getTwoFactorThrottleKey($user));
 
         Auth::login($user, (bool) array_get($options, 'remember', false));
 
@@ -93,6 +98,46 @@ trait ActionTwoFactorLogin
         if ($event = $this->fireAuthenticateEvent()) {
             return $event;
         }
+    }
+
+    /**
+     * ensureTwoFactorIsNotThrottled counts the attempt before the code is checked so parallel requests cannot exceed the limit.
+     */
+    protected function ensureTwoFactorIsNotThrottled($user, array $input)
+    {
+        $limiter = $this->makeTwoFactorRateLimiter();
+        $throttleKey = $this->getTwoFactorThrottleKey($user);
+
+        if ($limiter->hit($throttleKey, 60) <= 5) {
+            return;
+        }
+
+        $this->fireSystemEvent('rainlab.user.lockout');
+
+        $seconds = $limiter->availableIn($throttleKey);
+
+        $message = __("Too many login attempts. Please try again in :seconds seconds.", [
+            'seconds' => $seconds,
+            'minutes' => ceil($seconds / 60),
+        ]);
+
+        throw new ValidationException([array_get($input, 'recovery_code') ? 'recovery_code' : 'code' => $message]);
+    }
+
+    /**
+     * makeTwoFactorRateLimiter
+     */
+    protected function makeTwoFactorRateLimiter(): \Illuminate\Cache\RateLimiter
+    {
+        return App::make(\Illuminate\Cache\RateLimiter::class);
+    }
+
+    /**
+     * getTwoFactorThrottleKey is specific to the user and not their IP address so the limit holds across many addresses.
+     */
+    protected function getTwoFactorThrottleKey($user): string
+    {
+        return 'two-factor:'.$user->getKey();
     }
 
     /**

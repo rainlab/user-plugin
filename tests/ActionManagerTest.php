@@ -3,6 +3,7 @@
 use RainLab\User\Models\User;
 use RainLab\User\Models\Setting;
 use RainLab\User\Classes\ActionManager;
+use RainLab\User\Classes\TwoFactorManager;
 
 /**
  * ActionManagerTest covers headless usage of the user workflows, where no CMS
@@ -132,5 +133,129 @@ class ActionManagerTest extends PluginTestCase
 
         $this->assertTrue(Hash::check('ChangeMe888', $user->fresh()->password));
         $this->assertTrue(Auth::hasValidPasswordHash($user->fresh()));
+    }
+
+    /**
+     * startTwoFactorChallenge registers a two factor user and begins a challenge where 424242 is the valid code
+     */
+    protected function startTwoFactorChallenge(): User
+    {
+        App::instance('user.twofactor', new class extends TwoFactorManager {
+            public function __construct()
+            {
+            }
+
+            public function generateSecretKey(): string
+            {
+                return 'TESTSECRET';
+            }
+
+            public function verify(string $secret, string $code): bool
+            {
+                return $code === '424242';
+            }
+        });
+
+        $user = User::where('email', 'headless@example.tld')->first();
+
+        if (!$user) {
+            $user = ActionManager::instance()->registerUser($this->validInput());
+            $user->enableTwoFactorAuthentication();
+            $user->forceFill(['two_factor_confirmed_at' => $user->freshTimestamp()])->save();
+        }
+
+        Auth::logout();
+
+        $result = ActionManager::instance()->loginWithTwoFactor([
+            'email' => 'headless@example.tld',
+            'password' => 'ChangeMe888',
+        ]);
+
+        $this->assertEquals(ActionManager::TWO_FACTOR_CHALLENGE, $result);
+        $this->assertFalse(Auth::check());
+
+        return $user;
+    }
+
+    /**
+     * attemptTwoFactorChallenge returns the validation message of a failed challenge, or null when it passes
+     */
+    protected function attemptTwoFactorChallenge(array $input): ?string
+    {
+        try {
+            ActionManager::instance()->twoFactorChallenge($input);
+        }
+        catch (ValidationException $ex) {
+            return $ex->getMessage();
+        }
+
+        return null;
+    }
+
+    public function testTwoFactorChallengeSignsInWithValidCode()
+    {
+        $user = $this->startTwoFactorChallenge();
+
+        $this->assertStringContainsString('code was invalid', $this->attemptTwoFactorChallenge(['code' => '000000']));
+        $this->assertFalse(Auth::check());
+
+        $this->assertNull($this->attemptTwoFactorChallenge(['code' => '424242']));
+        $this->assertTrue(Auth::check());
+        $this->assertEquals($user->id, Auth::user()->getKey());
+    }
+
+    public function testTwoFactorChallengeThrottlesFailedAttempts()
+    {
+        $this->startTwoFactorChallenge();
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->assertStringContainsString('code was invalid', $this->attemptTwoFactorChallenge(['code' => '00000'.$i]));
+        }
+
+        $this->assertStringContainsString('Too many login attempts', $this->attemptTwoFactorChallenge(['code' => '424242']));
+        $this->assertFalse(Auth::check());
+    }
+
+    public function testTwoFactorChallengeThrottlesRecoveryCodes()
+    {
+        $this->startTwoFactorChallenge();
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->assertStringContainsString('recovery code was invalid', $this->attemptTwoFactorChallenge(['recovery_code' => 'wrong-'.$i]));
+        }
+
+        $this->assertStringContainsString('Too many login attempts', $this->attemptTwoFactorChallenge(['recovery_code' => 'wrong-again']));
+        $this->assertFalse(Auth::check());
+    }
+
+    public function testTwoFactorChallengeThrottleHoldsAcrossIpAddresses()
+    {
+        $this->startTwoFactorChallenge();
+
+        for ($i = 0; $i < 5; $i++) {
+            Request::instance()->server->set('REMOTE_ADDR', '10.0.0.'.$i);
+            $this->attemptTwoFactorChallenge(['code' => '00000'.$i]);
+        }
+
+        Request::instance()->server->set('REMOTE_ADDR', '10.0.0.99');
+
+        $this->assertStringContainsString('Too many login attempts', $this->attemptTwoFactorChallenge(['code' => '424242']));
+        $this->assertFalse(Auth::check());
+    }
+
+    public function testTwoFactorChallengeClearsAttemptsOnSuccess()
+    {
+        $this->startTwoFactorChallenge();
+
+        for ($i = 0; $i < 4; $i++) {
+            $this->attemptTwoFactorChallenge(['code' => '00000'.$i]);
+        }
+
+        $this->assertNull($this->attemptTwoFactorChallenge(['code' => '424242']));
+        $this->assertTrue(Auth::check());
+
+        $this->startTwoFactorChallenge();
+
+        $this->assertStringContainsString('code was invalid', $this->attemptTwoFactorChallenge(['code' => '000000']));
     }
 }
