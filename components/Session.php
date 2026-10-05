@@ -353,58 +353,29 @@ class Session extends ComponentBase
         };
 
         $user = Auth::getRealUser();
-        $driver = Auth::getDefaultDriver();
 
         if (Auth::viaRemember()) {
-            $passwordHash = explode('|', Cookie::get(Auth::getRecallerName()))[2] ?? null;
-            $expectedHash = method_exists(Auth::guard(), 'hashPasswordForCookie')
-                ? Auth::hashPasswordForCookie($user->getAuthPassword())
-                : $user->getAuthPassword();
+            $cookieHash = explode('|', Cookie::get(Auth::getRecallerName()))[2] ?? null;
 
-            if (!$passwordHash || $passwordHash !== $expectedHash) {
+            if (!Auth::validatePasswordHash($user->getAuthPassword(), $cookieHash)) {
                 $logoutFunc();
                 return;
             }
         }
 
-        if (!Request::session()->has("password_hash_{$driver}")) {
-            Request::session()->put([
-                "password_hash_{$driver}" => $user->getAuthPassword(),
-            ]);
+        if (!Auth::hasPasswordHashSession()) {
+            Auth::updatePasswordHashSession($user);
         }
 
-        if (!$this->isValidSessionPasswordHash($user->getAuthPassword(), Request::session()->get("password_hash_{$driver}"))) {
+        if (!Auth::hasValidPasswordHash($user)) {
             $logoutFunc();
             return;
         }
 
-        App::after(function() use ($driver) {
+        App::after(function() {
             if ($user = Auth::getRealUser()) {
-                Request::session()->put([
-                    "password_hash_{$driver}" => $user->getAuthPassword(),
-                ]);
+                Auth::updatePasswordHashSession($user);
             }
         });
     }
-
-    /**
-     * isValidSessionPasswordHash accepts the raw password hash stored by this component
-     * and the HMAC hash stored by SessionGuard::login() since Laravel 12.69.3
-     *
-     * @see \Illuminate\Session\Middleware\AuthenticateSession::validatePasswordHash
-     */
-    protected function isValidSessionPasswordHash($passwordHash, $storedHash): bool
-    {
-        if (!is_string($passwordHash) || !is_string($storedHash)) {
-            return false;
-        }
-
-        if (hash_equals($passwordHash, $storedHash)) {
-            return true;
-        }
-
-        return method_exists(Auth::guard(), 'hashPasswordForCookie')
-            && hash_equals(Auth::hashPasswordForCookie($passwordHash), $storedHash);
-    }
-
 }

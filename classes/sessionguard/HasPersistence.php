@@ -64,4 +64,64 @@ trait HasPersistence
     {
         return 'user_persist_code';
     }
+
+    /**
+     * updatePasswordHashSession stores an HMAC of the user's password hash in the session.
+     */
+    public function updatePasswordHashSession(User $user): void
+    {
+        if ($passwordHash = $user->getAuthPassword()) {
+            $this->session->put($this->getPasswordHashName(), $this->makePasswordHashValue($passwordHash));
+        }
+    }
+
+    /**
+     * makePasswordHashValue returns the HMAC of a password hash, or the hash itself when the framework has no HMAC support.
+     */
+    protected function makePasswordHashValue(string $passwordHash): string
+    {
+        return method_exists($this, 'hashPasswordForCookie')
+            ? $this->hashPasswordForCookie($passwordHash)
+            : $passwordHash;
+    }
+
+    /**
+     * hasPasswordHashSession returns true when a password hash is stored in the session.
+     */
+    public function hasPasswordHashSession(): bool
+    {
+        return $this->session->has($this->getPasswordHashName());
+    }
+
+    /**
+     * hasValidPasswordHash checks the session password hash against the user's current password.
+     */
+    public function hasValidPasswordHash(User $user): bool
+    {
+        return $this->validatePasswordHash(
+            $user->getAuthPassword(),
+            $this->session->get($this->getPasswordHashName())
+        );
+    }
+
+    /**
+     * validatePasswordHash checks a stored value against the HMAC or raw form of a password hash.
+     */
+    public function validatePasswordHash($passwordHash, $storedValue): bool
+    {
+        if (!is_string($passwordHash) || !is_string($storedValue)) {
+            return false;
+        }
+
+        return hash_equals($this->makePasswordHashValue($passwordHash), $storedValue)
+            || hash_equals($passwordHash, $storedValue);
+    }
+
+    /**
+     * getPasswordHashName gets the name of the session used to store the password hash.
+     */
+    public function getPasswordHashName()
+    {
+        return 'password_hash_'.$this->name;
+    }
 }

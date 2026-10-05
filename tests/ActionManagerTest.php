@@ -123,4 +123,14 @@ class ActionManagerTest extends PluginTestCase
 
         $this->assertFalse(Auth::check());
     }
+
+    public function testDeleteOtherSessionsKeepsCurrentDeviceSignedIn()
+    {
+        $user = ActionManager::instance()->registerUser($this->validInput());
+
+        ActionManager::instance()->deleteOtherSessions(['password' => 'ChangeMe888']);
+
+        $this->assertTrue(Hash::check('ChangeMe888', $user->fresh()->password));
+        $this->assertTrue(Auth::hasValidPasswordHash($user->fresh()));
+    }
 }

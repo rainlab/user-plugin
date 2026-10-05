@@ -15,6 +15,8 @@ class SessionComponentTest extends PluginTestCase
         parent::setUp();
 
         Setting::clearInternalCache();
+
+        Request::setLaravelSession(App::make('session.store'));
     }
 
     /**
@@ -133,5 +135,73 @@ class SessionComponentTest extends PluginTestCase
         $component = $this->makeComponent(['allowUserGroups' => ['premium']]);
 
         $this->assertFalse($this->invokeCheckUserGroupSecurity($component));
+    }
+
+    /**
+     * invokeAuthenticateSession calls the protected component method
+     */
+    protected function invokeAuthenticateSession(Session $component): void
+    {
+        $method = new ReflectionMethod(Session::class, 'authenticateSession');
+        $method->setAccessible(true);
+        $method->invoke($component);
+    }
+
+    public function testAuthenticateSessionStoresHmacWhenMissing()
+    {
+        $user = $this->makeUser();
+
+        Request::session()->forget(Auth::getPasswordHashName());
+
+        $this->invokeAuthenticateSession($this->makeComponent());
+
+        $this->assertTrue(Auth::check());
+        $this->assertEquals(
+            Auth::hashPasswordForCookie($user->getAuthPassword()),
+            Request::session()->get(Auth::getPasswordHashName())
+        );
+    }
+
+    public function testAuthenticateSessionKeepsUserWithLaravelLoginHash()
+    {
+        $user = $this->makeUser();
+
+        Request::session()->put(
+            'password_hash_'.Auth::getDefaultDriver(),
+            Auth::hashPasswordForCookie($user->getAuthPassword())
+        );
+
+        $this->invokeAuthenticateSession($this->makeComponent());
+
+        $this->assertTrue(Auth::check());
+    }
+
+    public function testAuthenticateSessionKeepsUserWithRawHash()
+    {
+        $user = $this->makeUser();
+
+        Request::session()->put(Auth::getPasswordHashName(), $user->getAuthPassword());
+
+        $this->invokeAuthenticateSession($this->makeComponent());
+
+        $this->assertTrue(Auth::check());
+    }
+
+    public function testAuthenticateSessionSignsOutWhenPasswordChanged()
+    {
+        $user = $this->makeUser();
+
+        Request::session()->put(
+            Auth::getPasswordHashName(),
+            Auth::hashPasswordForCookie($user->getAuthPassword())
+        );
+
+        $user->password = 'Different888';
+        $user->password_confirmation = 'Different888';
+        $user->save();
+
+        $this->invokeAuthenticateSession($this->makeComponent());
+
+        $this->assertFalse(Auth::check());
     }
 }

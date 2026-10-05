@@ -22,9 +22,7 @@ class SessionGuard extends SessionGuardBase
     use \RainLab\User\Classes\SessionGuard\HasLegacyApi;
 
     /**
-     * rehashUserPassword for the current user, overrides parent logic
-     * to remove the second hash since it is covered by Hashable during
-     * the Auth::logoutOtherDevices method call
+     * rehashUserPassword passes the plain password to the model for Auth::logoutOtherDevices on Laravel 10, see UserProvider for later versions.
      *
      * @param  string  $password
      * @param  string  $attribute

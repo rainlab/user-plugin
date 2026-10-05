@@ -241,4 +241,77 @@ class AuthManagerTest extends PluginTestCase
 
         $this->assertTrue(Auth::check());
     }
+
+    public function testLogoutOtherDevicesKeepsPasswordUsable()
+    {
+        $user = $this->makeSignInUser();
+        $originalHash = $user->password;
+
+        Auth::login($user);
+        Auth::logoutOtherDevices('ChangeMe888');
+
+        $user = $user->fresh();
+        $this->assertNotEquals($originalHash, $user->password);
+        $this->assertTrue(Hash::check('ChangeMe888', $user->password));
+    }
+
+    public function testLoginRehashKeepsPasswordUsable()
+    {
+        $user = $this->makeSignInUser();
+
+        Db::table('users')->where('id', $user->id)->update([
+            'password' => Hash::make('ChangeMe888', ['rounds' => 4]),
+        ]);
+
+        $this->assertTrue(Hash::needsRehash($user->fresh()->password));
+
+        $this->assertTrue(Auth::attempt([
+            'email' => 'signin@website.tld',
+            'password' => 'ChangeMe888',
+        ]));
+
+        $user = $user->fresh();
+        $this->assertFalse(Hash::needsRehash($user->password));
+        $this->assertTrue(Hash::check('ChangeMe888', $user->password));
+    }
+
+    public function testPasswordHashSessionStoresHmac()
+    {
+        $user = $this->makeSignInUser();
+
+        Auth::login($user);
+        Auth::updatePasswordHashSession($user);
+
+        $storedHash = Session::get(Auth::getPasswordHashName());
+        $this->assertNotEquals($user->password, $storedHash);
+        $this->assertEquals(Auth::hashPasswordForCookie($user->password), $storedHash);
+        $this->assertTrue(Auth::hasValidPasswordHash($user));
+    }
+
+    public function testPasswordHashSessionAcceptsRawHash()
+    {
+        $user = $this->makeSignInUser();
+
+        Auth::login($user);
+        Session::put(Auth::getPasswordHashName(), $user->password);
+
+        $this->assertTrue(Auth::hasValidPasswordHash($user));
+    }
+
+    public function testPasswordHashSessionRejectsOtherPassword()
+    {
+        $user = $this->makeSignInUser();
+        $otherHash = Hash::make('Different888');
+
+        Auth::login($user);
+
+        Session::put(Auth::getPasswordHashName(), $otherHash);
+        $this->assertFalse(Auth::hasValidPasswordHash($user));
+
+        Session::put(Auth::getPasswordHashName(), Auth::hashPasswordForCookie($otherHash));
+        $this->assertFalse(Auth::hasValidPasswordHash($user));
+
+        Session::forget(Auth::getPasswordHashName());
+        $this->assertFalse(Auth::hasValidPasswordHash($user));
+    }
 }

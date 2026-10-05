@@ -66,9 +66,7 @@ trait ActionBrowserSessions
 
         $this->deleteOtherSessionRecords();
 
-        Request::session()->put([
-            'password_hash_'.Auth::getDefaultDriver() => Auth::user()->getAuthPassword(),
-        ]);
+        Auth::updatePasswordHashSession(Auth::user());
     }
 
     /**

@@ -32,9 +32,7 @@ trait ActionChangePassword
         UserLog::createRecord($user->getKey(), UserLog::TYPE_SELF_PASSWORD_CHANGE);
 
         if (Request::hasSession()) {
-            Request::session()->put([
-                'password_hash_'.Auth::getDefaultDriver() => $user->getAuthPassword(),
-            ]);
+            Auth::updatePasswordHashSession($user);
         }
     }
 
