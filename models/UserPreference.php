@@ -176,7 +176,7 @@ class UserPreference extends Model
             return null;
         }
 
-        $emails = array_keys(is_array($recipients) ? $recipients : [$recipients => null]);
+        $emails = array_map(fn($address) => $address->getAddress(), $recipients);
 
         $blockedEmails = User::where('is_mail_blocked', true)
             ->whereIn('email', $emails)

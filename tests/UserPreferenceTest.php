@@ -2,6 +2,8 @@
 
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserPreference;
+use Illuminate\Mail\Message;
+use Symfony\Component\Mime\Email;
 
 /**
  * UserPreferenceTest covers the UserPreference model
@@ -20,6 +22,25 @@ class UserPreferenceTest extends PluginTestCase
             'password' => 'ChangeMe888',
             'password_confirmation' => 'ChangeMe888',
         ]);
+    }
+
+    /**
+     * makeMailMessage is a helper to create a mail message for the given addresses
+     */
+    protected function makeMailMessage(array $addresses): Message
+    {
+        $message = new Message(new Email);
+        $message->to($addresses);
+
+        return $message;
+    }
+
+    /**
+     * getMailRecipients is a helper to list the addresses a mail message is sent to
+     */
+    protected function getMailRecipients(Message $message): array
+    {
+        return array_values(array_map(fn($address) => $address->getAddress(), $message->getTo()));
     }
 
     public function setUp(): void
@@ -200,6 +221,51 @@ class UserPreferenceTest extends PluginTestCase
 
         $this->assertEquals('dark', $user->getPreference('theme'));
         $this->assertEquals('fallback', $user->getPreference('missing', 'fallback'));
+    }
+
+    public function testFilterMailMessageRemovesBlockedRecipients()
+    {
+        $user = $this->createTestUser();
+        $user->is_mail_blocked = true;
+        $user->forceSave();
+
+        $message = $this->makeMailMessage(['test@example.tld', 'other@example.tld']);
+
+        $this->assertNull(UserPreference::filterMailMessage('user:welcome_email', $message));
+        $this->assertEquals(['other@example.tld'], $this->getMailRecipients($message));
+    }
+
+    public function testFilterMailMessageCancelsWhenEveryRecipientIsBlocked()
+    {
+        $user = $this->createTestUser();
+        $user->is_mail_blocked = true;
+        $user->forceSave();
+
+        $message = $this->makeMailMessage(['test@example.tld']);
+
+        $this->assertFalse(UserPreference::filterMailMessage('user:welcome_email', $message));
+    }
+
+    public function testFilterMailMessageSendsSafeTemplatesToBlockedUsers()
+    {
+        $user = $this->createTestUser();
+        $user->is_mail_blocked = true;
+        $user->forceSave();
+
+        $message = $this->makeMailMessage(['test@example.tld']);
+
+        $this->assertNull(UserPreference::filterMailMessage('user:recover_password', $message));
+        $this->assertEquals(['test@example.tld'], $this->getMailRecipients($message));
+    }
+
+    public function testFilterMailMessageLeavesUnblockedRecipients()
+    {
+        $this->createTestUser();
+
+        $message = $this->makeMailMessage(['test@example.tld']);
+
+        $this->assertNull(UserPreference::filterMailMessage('user:welcome_email', $message));
+        $this->assertEquals(['test@example.tld'], $this->getMailRecipients($message));
     }
 
     public function testPreferenceStoresComplexValues()
