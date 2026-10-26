@@ -49,3 +49,6 @@ v3.7.0:
     - migrate_v3_7_0.php
 v3.7.1: Extract user workflows into ActionManager for headless use
 v3.7.2: Fixes sign out after login and password reset after logging out other devices
+v3.8.0:
+    - Restores recording of IP addresses on registration and sign in
+    - migrate_v3_8_0.php

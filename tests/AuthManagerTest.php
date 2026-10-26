@@ -275,6 +275,26 @@ class AuthManagerTest extends PluginTestCase
         $this->assertTrue(Hash::check('ChangeMe888', $user->password));
     }
 
+    public function testRememberTokenSavesWhenUserFailsValidation()
+    {
+        $user = $this->makeSignInUser();
+
+        // A stored user that fails the model rules, like a legacy record or a missing avatar file
+        Db::table('users')->where('id', $user->id)->update(['first_name' => null]);
+
+        $this->assertTrue(Auth::attempt([
+            'email' => 'signin@website.tld',
+            'password' => 'ChangeMe888',
+        ], true));
+
+        $token = Db::table('users')->where('id', $user->id)->value('remember_token');
+        $this->assertNotEmpty($token);
+
+        Auth::logout();
+
+        $this->assertNotEquals($token, Db::table('users')->where('id', $user->id)->value('remember_token'));
+    }
+
     public function testPasswordHashSessionStoresHmac()
     {
         $user = $this->makeSignInUser();

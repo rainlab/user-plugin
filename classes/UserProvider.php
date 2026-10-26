@@ -26,6 +26,23 @@ class UserProvider extends EloquentUserProvider
     }
 
     /**
+     * updateRememberToken saves the token without validating the user, since stored data that
+     * fails the model rules, such as a missing avatar file, should not stop signing in or out.
+     */
+    public function updateRememberToken(Authenticatable $user, $token)
+    {
+        $user->setRememberToken($token);
+
+        $timestamps = $user->timestamps;
+
+        $user->timestamps = false;
+
+        $user->forceSave();
+
+        $user->timestamps = $timestamps;
+    }
+
+    /**
      * newModelQuery adjusts the lookup query to exclude guest accounts
      */
     protected function newModelQuery($model = null)

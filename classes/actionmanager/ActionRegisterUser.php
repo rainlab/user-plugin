@@ -1,6 +1,7 @@
 <?php namespace RainLab\User\Classes\ActionManager;
 
 use Auth;
+use Request;
 use Validator;
 use RainLab\User\Models\User;
 use RainLab\User\Models\Setting;
@@ -132,13 +133,16 @@ trait ActionRegisterUser
             'password' => UserHelper::passwordRules(),
         ])->validate();
 
-        $user = User::create([
+        $user = new User;
+        $user->fill([
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'] ?? null,
             'email' => $input['email'],
             'password' => $input['password'],
             'password_confirmation' => $input['password_confirmation'],
         ]);
+        $user->created_ip_address = $user->last_ip_address = Request::ip();
+        $user->save();
 
         UserLog::createRecord($user->getKey(), UserLog::TYPE_NEW_USER, [
             'user_full_name' => $user->full_name,

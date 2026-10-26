@@ -21,6 +21,19 @@ This allows an AJAX login to be performed without exposing the redirect URL in t
 
 A redirect posted by the form still takes priority, and can be disabled by posting a `redirect` value of `0`.
 
+## Password Recovery
+
+The `onRecoverPassword` handler emails a password reset link to the posted `email` address. It is available unless the `recoverPassword` property is disabled.
+
+```html
+<form data-request="onRecoverPassword" data-request-flash>
+    <input name="email" type="email" />
+    <button type="submit">Recover password</button>
+</form>
+```
+
+The link in the email points to the page that uses the [Reset Password component](./component-reset-password.md), so the site needs a page with that component for the link to work.
+
 ## Overriding Functionality
 
 Here is how you would override the `onLogin()` handler to log any error messages. Inside the page code, define this method:
@@ -29,7 +42,7 @@ Here is how you would override the `onLogin()` handler to log any error messages
 function onLogin()
 {
     try {
-        return $this->account->onLogin();
+        return $this->authentication->onLogin();
     }
     catch (Exception $ex) {
         Log::error($ex);
@@ -37,4 +50,4 @@ function onLogin()
 }
 ```
 
-Here the local handler method will take priority over the **account** component's event handler. Then we simply inherit the logic by calling the parent handler manually, via the component object (`$this->account`).
+Here the local handler method will take priority over the **authentication** component's event handler. Then we simply inherit the logic by calling the parent handler manually, via the component object (`$this->authentication`).

@@ -3,6 +3,7 @@
 use App;
 use Auth;
 use Event;
+use Request;
 use Session;
 use Validator;
 use RainLab\User\Models\User;
@@ -90,6 +91,8 @@ trait ActionTwoFactorLogin
         Auth::login($user, (bool) array_get($options, 'remember', false));
 
         $this->prepareAuthenticatedSession();
+
+        $user->touchIpAddress(Request::ip());
 
         Event::fire('rainlab.user.login', [$user]);
 

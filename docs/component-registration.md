@@ -22,7 +22,9 @@ Require Admin Approval | An administrator must approve new users before they can
 
 These policies are enforced at sign in, so an unverified or unapproved user cannot log in until the requirement is satisfied.
 
-To email new users a verification link when they register, enable the **Send Activation Email** setting on the Notifications tab. This is independent of Require Activation, so a link can be sent as a courtesy without forcing verification, or verification can be required while users request the link themselves from the Account component.
+To email new users a verification link when they register, enable the **Send Activation Email** setting on the Notifications tab. This is independent of Require Activation, so a link can be sent as a courtesy without forcing verification. Logged in users can request a new link from the [Account component](./component-account.md).
+
+When Require Activation is enabled, keep Send Activation Email on as well. Unverified users cannot sign in to request a link from the Account component. A user who loses the email can reset their password instead, which also verifies the address.
 
 When a policy defers sign in after registration, the component exposes the `awaitingActivation` and `awaitingApproval` page variables so the markup can display an appropriate message.
 

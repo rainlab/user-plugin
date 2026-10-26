@@ -2,6 +2,7 @@
 
 use Auth;
 use Event;
+use Request;
 use Validator;
 use RainLab\User\Helpers\User as UserHelper;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -43,6 +44,8 @@ trait ActionLogin
 
         // Trigger login event
         if ($user = Auth::user()) {
+            $user->touchIpAddress(Request::ip());
+
             Event::fire('rainlab.user.login', [$user]);
 
             $this->recordUserLogAuthenticated($user);

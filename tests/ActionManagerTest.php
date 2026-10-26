@@ -91,6 +91,34 @@ class ActionManagerTest extends PluginTestCase
         $this->assertEquals($user->id, Auth::user()->getKey());
     }
 
+    public function testRegisterUserRecordsIpAddress()
+    {
+        Request::instance()->server->set('REMOTE_ADDR', '203.0.113.10');
+
+        $user = ActionManager::instance()->registerUser($this->validInput());
+
+        $user->refresh();
+        $this->assertEquals('203.0.113.10', $user->created_ip_address);
+        $this->assertEquals('203.0.113.10', $user->last_ip_address);
+    }
+
+    public function testLoginRecordsIpAddress()
+    {
+        Request::instance()->server->set('REMOTE_ADDR', '203.0.113.10');
+        $user = ActionManager::instance()->registerUser($this->validInput());
+        Auth::logout();
+
+        Request::instance()->server->set('REMOTE_ADDR', '203.0.113.20');
+        ActionManager::instance()->login([
+            'email' => 'headless@example.tld',
+            'password' => 'ChangeMe888',
+        ]);
+
+        $user->refresh();
+        $this->assertEquals('203.0.113.10', $user->created_ip_address);
+        $this->assertEquals('203.0.113.20', $user->last_ip_address);
+    }
+
     public function testRecoverPasswordUsesCustomResetUrl()
     {
         ActionManager::instance()->registerUser($this->validInput());
@@ -202,6 +230,17 @@ class ActionManagerTest extends PluginTestCase
         $this->assertNull($this->attemptTwoFactorChallenge(['code' => '424242']));
         $this->assertTrue(Auth::check());
         $this->assertEquals($user->id, Auth::user()->getKey());
+    }
+
+    public function testTwoFactorChallengeRecordsIpAddress()
+    {
+        $user = $this->startTwoFactorChallenge();
+
+        Request::instance()->server->set('REMOTE_ADDR', '203.0.113.30');
+        $this->assertNull($this->attemptTwoFactorChallenge(['code' => '424242']));
+
+        $user->refresh();
+        $this->assertEquals('203.0.113.30', $user->last_ip_address);
     }
 
     public function testTwoFactorChallengeThrottlesFailedAttempts()

@@ -503,6 +503,20 @@ class UserModelTest extends PluginTestCase
         $this->assertEquals('192.168.1.1', $user->last_ip_address);
     }
 
+    public function testMigrationAddsMissingIpAddressColumns()
+    {
+        Schema::table('users', function ($table) {
+            $table->dropColumn(['created_ip_address', 'last_ip_address']);
+        });
+        $this->assertFalse(Schema::hasColumn('users', 'created_ip_address'));
+
+        $migration = require __DIR__.'/../updates/migrate_v3_8_0.php';
+        $migration->up();
+        $migration->up();
+
+        $this->assertTrue(Schema::hasColumns('users', ['created_ip_address', 'last_ip_address']));
+    }
+
     //
     // Username generation
     //
