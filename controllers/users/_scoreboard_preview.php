@@ -53,4 +53,24 @@
             </a></p>
         </div>
     <?php endif ?>
+
+    <?=
+        /**
+         * @event rainlab.user.view.extendPreviewScoreboard
+         * Fires when preview user scoreboard is rendered.
+         *
+         * Example usage:
+         *
+         *     Event::listen('rainlab.user.view.extendPreviewScoreboard', function (
+         *         (RainLab\User\Controllers\Users) $controller,
+         *         (RainLab\User\Models\User) $record
+         *     ) {
+         *         return $controller->makePartial('~/path/to/partial');
+         *     });
+         *
+         */
+        $this->fireViewEvent('rainlab.user.view.extendPreviewScoreboard', [
+            'record' => $formModel
+        ]);
+    ?>
 </div>

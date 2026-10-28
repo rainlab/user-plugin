@@ -21,6 +21,7 @@ Events | Description
 **rainlab.user.mergeUser** | Fires when a user is being merged into another. Plugins should reassign any records owned by the merged user. See the [Merge Users](./merge-users.md) article.
 **rainlab.user.view.extendListToolbar** | Fires when the user listing page's toolbar is rendered.
 **rainlab.user.view.extendPreviewToolbar** | Fires when the user preview page's toolbar is rendered.
+**rainlab.user.view.extendPreviewScoreboard** | Fires when the user preview page's scoreboard is rendered. The partial should return one or more `scoreboard-item` elements.
 **rainlab.user.view.extendPreviewTabs** | Provides an opportunity to add tabs to the user preview page in the admin panel. The event should return an array of `[Tab Name => ~/path/to/partial.php]`
 **rainlab.user.extendLogDetailViewPath** | Return a custom partial path for rendering a log type's detail text. Receives the `$record` model and `$type` string. See the [Activity Log](./activity-log.md) article.
 **rainlab.user.extendLogTypeOptions** | Return an array of `['type-slug' => 'Label']` to add custom log types to the activity type filter. See the [Activity Log](./activity-log.md) article.
