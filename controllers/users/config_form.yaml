@@ -21,11 +21,13 @@ design:
 
 # Create page
 create:
+    title: Create User
     redirect: rainlab/user/users/preview/:id
     redirectClose: rainlab/user/users
 
 # Update page
 update:
+    title: Edit User
     redirect: rainlab/user/users/update/:id
     redirectClose: rainlab/user/users/preview/:id
 
