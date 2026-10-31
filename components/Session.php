@@ -165,9 +165,19 @@ class Session extends ComponentBase
             Flash::success($flash);
         }
 
-        if ($redirectUrl = post('redirect', Request::fullUrl())) {
-            return Redirect::to($redirectUrl);
+        return $this->makeRedirectFromPost();
+    }
+
+    /**
+     * makeRedirectFromPost redirects to the posted CMS page or local URL, or refreshes the current page when none is posted
+     */
+    protected function makeRedirectFromPost()
+    {
+        if (!post('redirect')) {
+            return Redirect::to(Request::fullUrl());
         }
+
+        return Cms::redirectFromPost(Request::fullUrl());
     }
 
     /**
@@ -311,13 +321,11 @@ class Session extends ComponentBase
 
         Auth::stopImpersonate();
 
-        $url = post('redirect', Request::fullUrl());
-
         if ($flash = Cms::flashFromPost(__("You are no longer impersonating a user."))) {
             Flash::success($flash);
         }
 
-        return Redirect::to($url);
+        return $this->makeRedirectFromPost();
     }
 
     /**

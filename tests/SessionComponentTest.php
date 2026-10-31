@@ -204,4 +204,53 @@ class SessionComponentTest extends PluginTestCase
 
         $this->assertFalse(Auth::check());
     }
+
+    public function testLogoutRedirectStaysOnSite()
+    {
+        $this->makeUser();
+        $this->postRedirect('https://evil.example/phish');
+
+        $response = $this->makeComponent()->onLogout();
+
+        $this->assertEquals(parse_url(Url::to('/'), PHP_URL_HOST), parse_url($response->getTargetUrl(), PHP_URL_HOST));
+        $this->assertStringEndsWith('/phish', $response->getTargetUrl());
+    }
+
+    public function testLogoutRedirectAcceptsLocalPath()
+    {
+        $this->makeUser();
+        $this->postRedirect('/good-bye');
+
+        $response = $this->makeComponent()->onLogout();
+
+        $this->assertEquals(Url::to('/good-bye'), $response->getTargetUrl());
+    }
+
+    /**
+     * postRedirect posts a redirect value, using the core fixture theme since the redirect may name a CMS page
+     */
+    protected function postRedirect(string $redirect): void
+    {
+        App::useThemesPath(base_path('modules/cms/tests/fixtures/themes'));
+        Config::set('cms.active_theme', 'test');
+
+        request()->setMethod('POST');
+        request()->request->add(['redirect' => $redirect]);
+    }
+
+    public function testLogoutWithoutRedirectRefreshesPage()
+    {
+        $this->makeUser();
+
+        $response = $this->makeComponent()->onLogout();
+
+        $this->assertEquals(Request::fullUrl(), $response->getTargetUrl());
+    }
+
+    public function tearDown(): void
+    {
+        request()->request->replace();
+
+        parent::tearDown();
+    }
 }
