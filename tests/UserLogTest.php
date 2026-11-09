@@ -73,6 +73,24 @@ class UserLogTest extends PluginTestCase
         $this->assertArrayHasKey('ip_address', $log->data);
     }
 
+    public function testRecordKeepsSuppliedIpAddress()
+    {
+        $user = $this->createTestUser();
+
+        $log = UserLog::createRecord($user->id, UserLog::TYPE_SELF_LOGIN, [
+            'ip_address' => '203.0.113.7',
+        ]);
+
+        $this->assertEquals('203.0.113.7', $log->data['ip_address']);
+
+        $log = UserLog::createSystemRecord($user->id, UserLog::TYPE_ADMIN_BAN, [
+            'ip_address' => null,
+        ]);
+
+        $this->assertArrayHasKey('ip_address', $log->data);
+        $this->assertNull($log->data['ip_address']);
+    }
+
     public function testRecordStoresCustomData()
     {
         $user = $this->createTestUser();

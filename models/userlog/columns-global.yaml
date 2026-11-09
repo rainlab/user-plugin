@@ -14,3 +14,21 @@ columns:
         type: timetense
         sortable: true
         searchable: false
+
+    user_first_name:
+        label: First Name
+        relation: user
+        valueFrom: first_name
+        searchable: true
+
+    user_last_name:
+        label: Last Name
+        relation: user
+        valueFrom: last_name
+        searchable: true
+
+    user_email:
+        label: Email
+        relation: user
+        valueFrom: email
+        searchable: true

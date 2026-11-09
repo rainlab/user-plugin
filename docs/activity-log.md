@@ -31,7 +31,14 @@ Argument | Description
 **$type** | a unique string identifier for the event type
 **$data** | an optional array of extra data stored as JSON
 
-The IP address is captured automatically with each log entry.
+The IP address of the request is captured automatically with each log entry. Include an `ip_address` value in the data to store a different one, or `null` to store none, for example when the event comes from a webhook or a queued job.
+
+```php
+UserLog::createSystemRecord($userId, 'acme-subscription-renewed', [
+    'plan' => 'Annual',
+    'ip_address' => null,
+]);
+```
 
 ## Registering a Detail Partial
 
