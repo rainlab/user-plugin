@@ -72,12 +72,12 @@ class UserPreferenceTest extends PluginTestCase
         $this->assertEquals('fallback', $value);
     }
 
-    public function testGetPreferenceReturnsNullByDefault()
+    public function testGetPreferenceReturnsFalseByDefault()
     {
         $user = $this->createTestUser();
 
         $value = UserPreference::getPreference($user->id, 'nonexistent');
-        $this->assertNull($value);
+        $this->assertFalse($value);
     }
 
     public function testSetPreferenceToNullDeletesIt()
@@ -139,8 +139,8 @@ class UserPreferenceTest extends PluginTestCase
         $property->setAccessible(true);
         $property->setValue(null, []);
 
-        $this->assertNull(UserPreference::getPreference($user->id, 'theme'));
-        $this->assertNull(UserPreference::getPreference($user->id, 'language'));
+        $this->assertFalse(UserPreference::getPreference($user->id, 'theme'));
+        $this->assertFalse(UserPreference::getPreference($user->id, 'language'));
     }
 
     public function testSetPreferencesSafeSanitizesStrings()
