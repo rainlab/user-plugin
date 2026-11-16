@@ -114,7 +114,7 @@ class UserPreference extends Model
     /**
      * getPreference
      */
-    public static function getPreference($userId, $item, $default = null)
+    public static function getPreference($userId, $item, $default = false)
     {
         if (!$userId) {
             return $default;
